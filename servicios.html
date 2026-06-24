@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script src="js/yaavs-theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Servicios YAAVS: portabilidad, activaciones RecargaKlic, tiempo aire y liberaciones.">
+  <title>Nuestros servicios | YAAVS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="decorations.css">
+  <link rel="stylesheet" href="theme-light.css">
+  <link rel="stylesheet" href="theme-day-night.css">
+  <link rel="icon" href="https://www.yaavs.com.mx/images/logo.svg" type="image/svg+xml">
+</head>
+<body class="theme-cluster page-servicios" data-page="servicios">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <section class="avisos-hero-banner page-hero-banner servicios-hero-banner" id="servicios-hero" aria-label="Servicios YAAVS">
+      <div class="avisos-hero-banner__aurora" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__media" data-page-banner-media></div>
+      <div class="avisos-hero-banner__scan" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__shade" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__grid" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__content container">
+        <nav class="breadcrumb avisos-hero-banner__breadcrumb" aria-label="Ruta">
+          <a href="index.html">Inicio</a><span>/</span><span>Servicios</span>
+        </nav>
+        <p class="avisos-hero-banner__eyebrow">Operación telecom</p>
+        <h1 class="avisos-hero-banner__title">
+          Servicios <span class="avisos-hero-banner__accent">Yaavs</span>
+        </h1>
+        <p class="avisos-hero-banner__lead">
+          Portabilidad, activaciones RecargaKlic, tiempo aire y liberaciones para tu punto de venta.
+        </p>
+        <a href="#servicios-slider" class="scroll-hint scroll-hint--servicios" aria-label="Ver catálogo de servicios">
+          <span class="scroll-hint-line"></span>
+          <span class="scroll-hint-label">Explorar servicios</span>
+        </a>
+      </div>
+      <div class="avisos-hero-banner__rule" aria-hidden="true"></div>
+    </section>
+
+    <div class="pleca pleca--bridge" aria-hidden="true">
+      <span class="pleca__line"></span>
+      <span class="pleca__label">Catálogo YAAVS</span>
+      <span class="pleca__line"></span>
+    </div>
+
+    <div id="trust-strip"></div>
+
+    <div class="pleca pleca--band" aria-hidden="true"></div>
+
+    <section class="section section--svc-showcase svc-showcase-section" id="servicios-slider" aria-label="Detalle de servicios">
+      <canvas class="svc-showcase__canvas" aria-hidden="true"></canvas>
+      <div class="svc-showcase-section__deco" aria-hidden="true">
+        <div class="svc-showcase-section__mesh"></div>
+        <div class="svc-showcase-section__glow"></div>
+        <span class="svc-neon-orb svc-neon-orb--1"></span>
+        <span class="svc-neon-orb svc-neon-orb--2"></span>
+        <span class="svc-neon-orb svc-neon-orb--3"></span>
+        <span class="svc-neon-ring svc-neon-ring--1"></span>
+        <span class="svc-neon-ring svc-neon-ring--2"></span>
+        <span class="svc-neon-line svc-neon-line--1"></span>
+        <span class="svc-neon-line svc-neon-line--2"></span>
+        <img class="svc-deco-float svc-deco-float--sim" src="assets/floats/float-sim.svg" alt="" width="72" height="92" loading="lazy" decoding="async">
+        <img class="svc-deco-float svc-deco-float--chip" src="assets/floats/float-chip.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+        <img class="svc-deco-float svc-deco-float--phone" src="assets/floats/float-phone.svg" alt="" width="48" height="82" loading="lazy" decoding="async">
+        <img class="svc-deco-float svc-deco-float--signal" src="assets/floats/float-signal.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
+        <img class="svc-deco-float svc-deco-float--esim" src="assets/floats/float-esim.svg" alt="" width="64" height="48" loading="lazy" decoding="async">
+      </div>
+
+      <div class="svc-showcase" data-svc-carousel>
+        <div class="svc-showcase__toolbar container">
+          <p class="svc-showcase__counter" aria-live="polite">
+            <span data-svc-counter-current>01</span>
+            <span class="svc-showcase__counter-sep">/</span>
+            <span data-svc-counter-total>04</span>
+          </p>
+          <div class="svc-showcase__nav" aria-label="Desliza o usa las flechas">
+            <button type="button" class="svc-showcase__arrow svc-showcase__arrow--prev" aria-label="Anterior">
+              <span aria-hidden="true">←</span>
+            </button>
+            <button type="button" class="svc-showcase__arrow svc-showcase__arrow--next" aria-label="Siguiente">
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="svc-showcase__viewport" tabindex="0" aria-roledescription="carrusel" aria-label="Servicios YAAVS">
+          <ul class="svc-showcase__track">
+            <li class="svc-showcase__slide is-active" id="portabilidad" data-svc-index="0">
+              <article class="svc-showcase__panel">
+                <div class="svc-showcase__visual svc-showcase__visual--rosa" style="background-image: url('assets/servicios/portabilidad.jpg')">
+                  <img src="assets/servicios/portabilidad.jpg" alt="" class="svc-showcase__photo" width="1200" height="800" loading="eager" decoding="async" onerror="this.style.display='none'">
+                  <span class="svc-showcase__photo-badge">Imagen provisional</span>
+                </div>
+                <div class="svc-showcase__copy">
+                  <span class="svc-showcase__corner svc-showcase__corner--tl" aria-hidden="true"></span>
+                  <span class="svc-showcase__corner svc-showcase__corner--br" aria-hidden="true"></span>
+                  <h2 class="svc-showcase__title">Portabilidad</h2>
+                  <p class="svc-showcase__desc">Cambia el número de tus clientes de una compañía a otra de forma ágil y segura, con el respaldo de la red YAAVS en todo México.</p>
+                  <ul class="svc-showcase__bullets">
+                    <li>Proceso guiado en tienda</li>
+                    <li>Multi-operador</li>
+                  </ul>
+                  <a href="contacto.html" class="btn btn--line svc-showcase__link">Solicitar información</a>
+                </div>
+              </article>
+            </li>
+            <li class="svc-showcase__slide" id="activaciones" data-svc-index="1">
+              <article class="svc-showcase__panel">
+                <div class="svc-showcase__visual svc-showcase__visual--mint" style="background-image: url('assets/servicios/activaciones.jpg')">
+                  <img src="assets/servicios/activaciones.jpg" alt="" class="svc-showcase__photo" width="1200" height="800" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <span class="svc-showcase__photo-badge">Imagen provisional</span>
+                </div>
+                <div class="svc-showcase__copy">
+                  <span class="svc-showcase__corner svc-showcase__corner--tl" aria-hidden="true"></span>
+                  <span class="svc-showcase__corner svc-showcase__corner--br" aria-hidden="true"></span>
+                  <p class="svc-showcase__kicker">RecargaKlic</p>
+                  <h2 class="svc-showcase__title">Activaciones</h2>
+                  <p class="svc-showcase__desc">Activa SIM en minutos desde la app RecargaKlic: menos filas, más ventas y comisiones claras para tu punto de venta.</p>
+                  <ul class="svc-showcase__bullets">
+                    <li>App propia YAAVS</li>
+                    <li>Capacitación incluida</li>
+                  </ul>
+                  <a href="activar-chip.html" class="btn btn--primary svc-showcase__link">Cómo activar un chip</a>
+                </div>
+              </article>
+            </li>
+            <li class="svc-showcase__slide" id="tiempo-aire" data-svc-index="2">
+              <article class="svc-showcase__panel">
+                <div class="svc-showcase__visual svc-showcase__visual--sky" style="background-image: url('assets/servicios/tiempo-aire.jpg')">
+                  <img src="assets/servicios/tiempo-aire.jpg" alt="" class="svc-showcase__photo" width="1200" height="800" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <span class="svc-showcase__photo-badge">Imagen provisional</span>
+                </div>
+                <div class="svc-showcase__copy">
+                  <span class="svc-showcase__corner svc-showcase__corner--tl" aria-hidden="true"></span>
+                  <span class="svc-showcase__corner svc-showcase__corner--br" aria-hidden="true"></span>
+                  <h2 class="svc-showcase__title">Tiempo aire</h2>
+                  <p class="svc-showcase__desc">Recargas de todas las principales compañías desde un solo socio. Tu cliente sale con saldo al instante.</p>
+                  <ul class="svc-showcase__bullets">
+                    <li>Todas las carriers</li>
+                    <li>Comisión en cada recarga</li>
+                  </ul>
+                  <a href="contacto.html" class="btn btn--line svc-showcase__link">Solicitar información</a>
+                </div>
+              </article>
+            </li>
+            <li class="svc-showcase__slide" id="liberaciones" data-svc-index="3">
+              <article class="svc-showcase__panel">
+                <div class="svc-showcase__visual svc-showcase__visual--sage" style="background-image: url('assets/servicios/liberaciones.jpg')">
+                  <img src="assets/servicios/liberaciones.jpg" alt="" class="svc-showcase__photo" width="1200" height="800" loading="lazy" decoding="async" onerror="this.style.display='none'">
+                  <span class="svc-showcase__photo-badge">Imagen provisional</span>
+                </div>
+                <div class="svc-showcase__copy">
+                  <span class="svc-showcase__corner svc-showcase__corner--tl" aria-hidden="true"></span>
+                  <span class="svc-showcase__corner svc-showcase__corner--br" aria-hidden="true"></span>
+                  <h2 class="svc-showcase__title">Liberaciones</h2>
+                  <p class="svc-showcase__desc">Libera equipos móviles con procesos confiables para que tus clientes usen su terminal con el operador que elijan.</p>
+                  <ul class="svc-showcase__bullets">
+                    <li>Soporte en tienda</li>
+                    <li>Proceso verificado</li>
+                  </ul>
+                  <a href="contacto.html" class="btn btn--line svc-showcase__link">Solicitar información</a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <div class="svc-showcase__dots container" role="tablist" aria-label="Posición en el catálogo"></div>
+
+        <div class="container svc-showcase__footer">
+          <p class="page-actions">
+            <a href="ser-yaavser.html" class="btn btn--primary">Afiliarme como Yaavser</a>
+            <a href="contacto.html" class="btn btn--line">Solicitar información</a>
+          </p>
+
+          <nav class="svc-quickpaths" aria-label="Accesos rápidos">
+            <a href="ser-yaavser.html" class="svc-quickpath">
+              <span class="svc-quickpath__icon" aria-hidden="true">01</span>
+              <span class="svc-quickpath__label">Ser Yaavser</span>
+              <span class="svc-quickpath__hint">Afíliate a la red</span>
+            </a>
+            <a href="activar-chip.html" class="svc-quickpath">
+              <span class="svc-quickpath__icon" aria-hidden="true">02</span>
+              <span class="svc-quickpath__label">Activar chip</span>
+              <span class="svc-quickpath__hint">Guía RecargaKlic</span>
+            </a>
+            <a href="contacto.html" class="svc-quickpath">
+              <span class="svc-quickpath__icon" aria-hidden="true">03</span>
+              <span class="svc-quickpath__label">Contacto</span>
+              <span class="svc-quickpath__hint">Habla con un asesor</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <div class="pleca pleca--band" aria-hidden="true"></div>
+
+    <div id="page-cta"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/layout.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/interior-banners.config.js"></script>
+  <script src="js/interior-banner.js"></script>
+  <script src="js/services-carousel.js"></script>
+  <script src="js/servicios-particles.js"></script>
+</body>
+</html>

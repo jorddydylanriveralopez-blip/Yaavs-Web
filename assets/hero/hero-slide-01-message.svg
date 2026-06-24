@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="heroTitle">
+  <title id="heroTitle">�C�mo convertirme en Yaavser?  YAAVS</title>
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="45%" stop-color="#0d2847"/>
+      <stop offset="100%" stop-color="#050508"/>
+    </linearGradient>
+    <radialGradient id="lights" cx="50%" cy="18%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,220,120,0.35)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+    <linearGradient id="scrim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.75)"/>
+      <stop offset="55%" stop-color="rgba(0,0,0,0.35)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.15)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#lights)"/>
+  <ellipse cx="960" cy="200" rx="720" ry="80" fill="rgba(255,255,255,0.06)"/>
+  <rect width="1920" height="1080" fill="url(#scrim)"/>
+  <text x="120" y="380" fill="#00d4ff" font-family="Montserrat, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="0.32em">DISTRIBUCI�N TELECOM � M�XICO</text>
+  <text x="120" y="500" fill="#ffffff" font-family="Montserrat, system-ui, sans-serif" font-size="72" font-weight="800" letter-spacing="-0.02em">�C�MO CONVERTIRME</text>
+  <text x="120" y="590" fill="#ffffff" font-family="Montserrat, system-ui, sans-serif" font-size="72" font-weight="800" letter-spacing="-0.02em">EN </text>
+  <text x="320" y="590" fill="#00d4ff" font-family="Montserrat, system-ui, sans-serif" font-size="72" font-weight="800">YAAVSER?</text>
+  <text x="120" y="680" fill="rgba(255,255,255,0.82)" font-family="Montserrat, system-ui, sans-serif" font-size="32" font-weight="400">Lleva tu negocio al siguiente nivel con la red</text>
+  <text x="120" y="728" fill="rgba(255,255,255,0.82)" font-family="Montserrat, system-ui, sans-serif" font-size="32" font-weight="400">l�der en SIM, recargas y servicios m�viles.</text>
+</svg>

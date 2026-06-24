@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <defs>
+    <filter id="glow-t" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <path d="M100 36 L156 64 V136 L100 164 L44 136 V64 Z" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.5"/>
+  <g filter="url(#glow-t)" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="68" y="48" width="64" height="108" rx="12"/>
+    <line x1="82" y1="62" x2="118" y2="62"/>
+    <circle cx="100" cy="144" r="5" fill="#ffffff" stroke="none"/>
+  </g>
+  <text x="100" y="112" text-anchor="middle" fill="#ffffff" font-family="Montserrat,Arial,sans-serif" font-size="40" font-weight="800">$</text>
+  <path d="M100 28 L104 40 H96 Z" fill="#ffffff" fill-opacity="0.45"/>
+  <path d="M88 32 L92 38 M112 32 L108 38" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.65"/>
+  <path d="M148 88 L154 82 M148 96 L156 96" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.4"/>
+</svg>

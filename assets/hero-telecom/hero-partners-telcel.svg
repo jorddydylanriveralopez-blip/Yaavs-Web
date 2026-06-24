@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Distribuci�n Telcel">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#001a4d"/>
+      <stop offset="55%" stop-color="#0033a0"/>
+      <stop offset="100%" stop-color="#0a0a12"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="38%" r="45%">
+      <stop offset="0%" stop-color="rgba(0,212,255,0.22)"/>
+      <stop offset="100%" stop-color="rgba(0,212,255,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <g opacity="0.12" fill="none" stroke="#00d4ff" stroke-width="1.5">
+    <circle cx="1580" cy="320" r="180"/>
+    <circle cx="1580" cy="320" r="120"/>
+    <path d="M1480 320h200M1580 220v200"/>
+  </g>
+  <g opacity="0.18" fill="#00d4ff">
+    <rect x="1320" y="520" width="420" height="260" rx="28"/>
+    <rect x="1360" y="560" width="340" height="180" rx="12" fill="#001a4d"/>
+  </g>
+  <text x="120" y="520" fill="#ffffff" font-family="Montserrat, system-ui, sans-serif" font-size="118" font-weight="700" letter-spacing="-2">Telcel</text>
+  <text x="124" y="600" fill="rgba(0,212,255,0.9)" font-family="Montserrat, system-ui, sans-serif" font-size="36" font-weight="500" letter-spacing="0.2em">DISTRIBUCI�N � L�NEAS � SIM</text>
+  <text x="124" y="680" fill="rgba(255,255,255,0.55)" font-family="Montserrat, system-ui, sans-serif" font-size="28" font-weight="400">Red YAAVS  retail telecom en M�xico</text>
+</svg>

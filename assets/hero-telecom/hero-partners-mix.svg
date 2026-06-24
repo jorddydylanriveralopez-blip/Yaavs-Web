@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Operadores y tecnolog�a m�vil">
+  <defs>
+    <linearGradient id="bg" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#1a1f2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g font-family="Montserrat, system-ui, sans-serif" font-weight="600" font-size="42" fill="rgba(255,255,255,0.92)">
+    <text x="960" y="420" text-anchor="middle">Telcel</text>
+    <text x="960" y="500" text-anchor="middle" fill="#00d4ff">Unefon</text>
+    <text x="960" y="580" text-anchor="middle" fill="rgba(255,255,255,0.75)">AT&amp;T � Movistar � Alt�n</text>
+  </g>
+  <text x="960" y="700" text-anchor="middle" fill="rgba(0,212,255,0.85)" font-family="Montserrat, system-ui, sans-serif" font-size="32" font-weight="500" letter-spacing="0.25em">TELECOM � M�XICO � YAAVS</text>
+  <g opacity="0.15" stroke="#00d4ff" stroke-width="1.5" fill="none">
+    <rect x="760" y="200" width="400" height="80" rx="8"/>
+    <rect x="810" y="780" width="300" height="60" rx="8"/>
+  </g>
+</svg>

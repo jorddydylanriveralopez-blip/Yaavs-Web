@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <defs>
+    <filter id="glow-p" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="100" cy="100" r="78" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <circle cx="100" cy="100" r="52" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="4 8"/>
+  <path d="M100 28 L148 52 V148 L100 172 L52 148 V52 Z" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
+  <g filter="url(#glow-p)" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="48" y="44" width="54" height="98" rx="11"/>
+    <line x1="62" y1="58" x2="88" y2="58"/>
+    <circle cx="75" cy="128" r="4" fill="#ffffff" stroke="none"/>
+    <rect x="98" y="58" width="54" height="98" rx="11"/>
+    <line x1="112" y1="72" x2="138" y2="72"/>
+    <circle cx="125" cy="142" r="4" fill="#ffffff" stroke="none"/>
+    <path d="M88 92 H112" stroke-opacity="0.75"/>
+    <path d="M92 100 L108 100" stroke-opacity="0.55"/>
+  </g>
+</svg>
