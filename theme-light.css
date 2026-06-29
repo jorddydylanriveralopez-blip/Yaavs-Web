@@ -19,7 +19,7 @@ body.theme-cluster:not(.page-home) .site-header {
 }
 
 body.theme-cluster:not(.page-home) .logo {
-  filter: brightness(0);
+  --logo-filter: brightness(0);
 }
 
 body.theme-cluster:not(.page-home) .bento-dot {
@@ -247,114 +247,173 @@ body.theme-cluster:not(.page-home) .page-actions a:not(.btn) {
   color: var(--accent-on-light);
 }
 
-/* ─── Home: solo banner oscuro; resto claro ─── */
+/* ─── Home: banner + resto tech oscuro inmersivo ─── */
 .page-home .page-bg,
 .page-home .page-canvas {
   -webkit-mask-image: linear-gradient(
     180deg,
     #000 0%,
-    #000 min(92vh, 820px),
-    transparent min(102vh, 920px)
+    #000 min(88vh, 780px),
+    rgba(0, 0, 0, 0.35) min(98vh, 900px),
+    transparent min(108vh, 980px)
   );
   mask-image: linear-gradient(
     180deg,
     #000 0%,
-    #000 min(92vh, 820px),
-    transparent min(102vh, 920px)
+    #000 min(88vh, 780px),
+    rgba(0, 0, 0, 0.35) min(98vh, 900px),
+    transparent min(108vh, 980px)
   );
 }
 
 .page-home .home-about {
   border-top: none;
-  color: var(--ink);
+  color: #fff;
+  padding: clamp(56px, 9vw, 100px) 0;
 }
 
 .page-home .home-about__tag {
-  color: var(--accent-on-light);
+  color: var(--accent-bright);
 }
 
 .page-home .home-about__title {
-  color: var(--ink);
+  color: #fff;
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
 .page-home .home-about__lead,
 .page-home .home-about__closing {
-  color: var(--ink-muted);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .page-home .home-about__item {
-  background: var(--surface);
+  background: rgba(6, 16, 28, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 212, 255, 0.14);
 }
 
+.page-home .home-about__item:hover {
+  background: rgba(8, 22, 36, 0.82);
+  border-color: rgba(0, 212, 255, 0.28);
+}
+
+.page-home .home-about__item h3 {
+  color: #fff;
+}
+
+.page-home .home-about__item p {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.page-home .home-about__item--accent {
+  background: rgba(0, 40, 58, 0.55);
+  border-top: 2px solid var(--accent-bright);
+}
 
 .page-home .home-about__grid {
-  background: var(--border-on-light);
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+.page-home .home-about__photo--main {
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 4px;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 212, 255, 0.08) inset;
+}
+
+.page-home .home-about__photo--small {
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  border-radius: 4px;
 }
 
 .page-home .home-about__bg-glow {
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
 .page-home .home-about__bg-grid {
-  opacity: 0.15;
+  opacity: 0.28;
 }
 
 .page-home .home-about__bg-dots {
-  opacity: 0.2;
+  opacity: 0.35;
 }
 
+.page-home .home-about__float {
+  opacity: 0.38;
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.25));
+}
 
-/* fondos con textura en decorations.css */
+.page-home .services-showcase {
+  background: transparent;
+}
 
 .page-home .services-showcase__title-white {
-  color: var(--ink);
-  text-shadow: none;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.page-home .services-showcase__title-cyan {
+  color: var(--accent-bright);
+  text-shadow: 0 0 28px rgba(0, 238, 255, 0.35);
 }
 
 .page-home .services-showcase__title-rule {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 200, 230, 0.35) 15%,
-    var(--yaavs-cyan) 50%,
-    rgba(0, 200, 230, 0.35) 85%,
+    rgba(0, 238, 255, 0.45) 15%,
+    var(--accent-bright) 50%,
+    rgba(0, 238, 255, 0.45) 85%,
     transparent
   );
 }
 
 .page-home .manifesto {
-  border-top: 1px solid var(--border-on-light);
+  border-top: 1px solid rgba(0, 212, 255, 0.15);
+  background: transparent;
 }
 
 .page-home .manifesto__line {
-  color: var(--ink);
+  color: #fff;
+  text-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+}
+
+.page-home .manifesto__accent {
+  color: var(--accent-bright);
 }
 
 .page-home .manifesto__stars {
-  opacity: 0.12;
+  opacity: 0.28;
 }
 
-
 .page-home .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-on-light);
-  box-shadow: 0 4px 24px rgba(10, 22, 40, 0.06);
+  background: rgba(3, 10, 18, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
 .page-home .site-header.is-scrolled .logo {
-  filter: brightness(0);
+  --logo-filter: brightness(0) invert(1);
 }
 
 .page-home .site-header.is-scrolled .bento-dot {
-  background: var(--ink);
+  background: #fff;
 }
 
 .page-home .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
-  background: var(--accent);
+  background: var(--accent-bright);
+}
+
+.page-home .nav-menu-hint__label {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .page-home .site-footer {
-  background: linear-gradient(180deg, var(--yaavs-navy-mid) 0%, var(--yaavs-navy) 100%);
-  border-top-color: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, #001a28 0%, #000 100%);
+  border-top-color: rgba(0, 212, 255, 0.2);
 }

@@ -1,8 +1,8 @@
 /**
- * Tema d�a (blanco) / noche (negro) � variables y componentes clave.
+ * Tema día (blanco) / noche (negro) — variables y componentes clave.
  */
 
-/* ??? Modo noche ??? */
+/* ─── Modo noche ─── */
 [data-yaavs-theme="night"] {
   --yaavs-navy: #000000;
   --yaavs-navy-mid: #0a0a0a;
@@ -45,7 +45,19 @@
 
 [data-yaavs-theme="night"] body.theme-cluster:not(.page-home) .logo,
 [data-yaavs-theme="night"] .page-home .site-header.is-scrolled .logo {
-  filter: brightness(0) invert(1);
+  --logo-filter: brightness(0) invert(1);
+}
+
+[data-yaavs-theme="night"] .page-home .site-header:not(.is-scrolled) .logo {
+  --logo-filter: brightness(0) invert(1);
+}
+
+[data-yaavs-theme="day"] .page-home .site-header:not(.is-scrolled) .logo {
+  --logo-filter: brightness(0) invert(1);
+}
+
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo {
+  --logo-filter: brightness(0) invert(1);
 }
 
 [data-yaavs-theme="night"] body.theme-cluster:not(.page-home) .bento-dot,
@@ -76,12 +88,12 @@
     radial-gradient(ellipse 45% 38% at 88% 62%, rgba(255, 255, 255, 0.04) 0%, transparent 52%);
 }
 
-[data-yaavs-theme="night"] .home-about__item {
-  background: var(--bg-soft);
+[data-yaavs-theme="night"] .page-home .home-about__item {
+  background: rgba(6, 16, 28, 0.72);
 }
 
-[data-yaavs-theme="night"] .home-about__item:hover {
-  background: rgba(255, 255, 255, 0.04);
+[data-yaavs-theme="night"] .page-home .home-about__item:hover {
+  background: rgba(8, 22, 36, 0.82);
 }
 
 [data-yaavs-theme="night"] .hero-marquee {
@@ -121,22 +133,20 @@
   filter: brightness(0) invert(1);
 }
 
-/* ??? Redes sociales flotantes ??? */
+/* ─── Redes sociales flotantes ─── */
 .social-float {
-  gap: 12px;
+  gap: 7px;
 }
 
 .social-float__btn {
-  width: 48px;
-  height: 48px;
-  border-width: 2px;
+  width: 34px;
+  height: 34px;
+  border-width: 1px;
   border-style: solid;
-  background-color: #ffffff;
-  border-color: #003d5c;
-  box-shadow:
-    0 6px 22px rgba(0, 61, 92, 0.18),
-    0 0 0 1px rgba(255, 255, 255, 0.9) inset;
-  background-size: 22px 22px;
+  background-color: rgba(255, 255, 255, 0.94);
+  border-color: rgba(0, 136, 184, 0.35);
+  box-shadow: 0 2px 12px rgba(0, 61, 92, 0.12);
+  background-size: 16px 16px;
 }
 
 [data-yaavs-theme="day"] .social-float__btn--fb {
@@ -157,10 +167,6 @@
 
 [data-yaavs-theme="day"] .social-float__btn--mail {
   background-image: url("assets/social/day/mail.svg");
-}
-
-[data-yaavs-theme="day"] .social-float__btn--wa {
-  background-image: url("assets/social/day/whatsapp.svg");
 }
 
 [data-yaavs-theme="night"] .social-float__btn {
@@ -191,27 +197,21 @@
   background-image: url("assets/social/day/mail.svg");
 }
 
-[data-yaavs-theme="night"] .social-float__btn--wa {
-  background-image: url("assets/social/day/whatsapp.svg");
-}
-
 .social-float__btn:hover,
 .social-float__btn:focus-visible {
-  transform: translateX(-8px) scale(1.1);
+  transform: translateX(-4px) scale(1.06);
 }
 
 [data-yaavs-theme="day"] .social-float__btn:hover,
 [data-yaavs-theme="day"] .social-float__btn:focus-visible {
   border-color: #0088b8;
-  box-shadow:
-    0 10px 32px rgba(0, 100, 150, 0.28),
-    0 0 0 2px rgba(0, 136, 184, 0.15);
+  box-shadow: 0 4px 18px rgba(0, 100, 150, 0.22);
 }
 
 [data-yaavs-theme="night"] .social-float__btn:hover,
 [data-yaavs-theme="night"] .social-float__btn:focus-visible {
   border-color: var(--accent-bright);
-  box-shadow: 0 10px 36px rgba(0, 238, 255, 0.28);
+  box-shadow: 0 4px 18px rgba(0, 238, 255, 0.22);
 }
 
 .theme-toggle {
@@ -282,9 +282,27 @@
 
 @media (max-width: 768px) {
   .social-float {
+    top: 50%;
+    bottom: auto;
     right: max(10px, var(--safe-right));
-    bottom: max(16px, calc(var(--safe-bottom) + 8px));
-    gap: 8px;
+    transform: translateY(-50%);
+    gap: 6px;
+  }
+
+  .social-float__btn {
+    width: 32px;
+    height: 32px;
+    background-size: 15px 15px;
+  }
+
+  .header-wa {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-wa__icon {
+    width: 18px;
+    height: 18px;
   }
 
   .theme-toggle {

@@ -1,5 +1,5 @@
 /**
- * Tema dùa / noche ù automùtico por hora (CDMX) + toggle manual.
+ * Tema d√≠a / noche ‚Äî autom√°tico por hora (CDMX) + toggle manual.
  * Ejecutar en <head> antes de los CSS para evitar parpadeo.
  */
 (function () {
@@ -60,12 +60,12 @@
       toggle.setAttribute(
         "aria-label",
         pref === "auto"
-          ? `Modo automùtico (${active === "day" ? "dùa" : "noche"}). Toca para cambiar`
-          : `Modo ${active === "day" ? "dùa" : "noche"}. Toca para cambiar`
+          ? `Modo autom√°tico (${active === "day" ? "d√≠a" : "noche"}). Toca para cambiar`
+          : `Modo ${active === "day" ? "d√≠a" : "noche"}. Toca para cambiar`
       );
       toggle.setAttribute(
         "title",
-        pref === "auto" ? `Automùtico ù ${active === "day" ? "Dùa" : "Noche"}` : active === "day" ? "Modo dùa" : "Modo noche"
+        pref === "auto" ? `Autom√°tico ¬∑ ${active === "day" ? "D√≠a" : "Noche"}` : active === "day" ? "Modo d√≠a" : "Modo noche"
       );
     };
 
