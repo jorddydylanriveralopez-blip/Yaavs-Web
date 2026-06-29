@@ -128,7 +128,7 @@
   }
 
   function revealFloatingDock() {
-    document.querySelectorAll(".social-float, .theme-toggle").forEach((el) => {
+    document.querySelectorAll(".social-float, .theme-toggle, .yaavbot").forEach((el) => {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -179,6 +179,57 @@
     floats.dataset.mounted = "true";
   }
 
+  function initSocialFloatScroll() {
+    if (document.querySelector("script[data-social-float-scroll]")) return;
+    const s = document.createElement("script");
+    s.src = "js/social-float-scroll.js";
+    s.defer = true;
+    s.dataset.socialFloatScroll = "true";
+    document.body.appendChild(s);
+  }
+
+  async function mountChatbot() {
+    if (document.querySelector("[data-yaavbot]")) return;
+
+    const mount = document.createElement("div");
+    mount.id = "yaavbot-mount";
+    mount.hidden = true;
+    document.body.appendChild(mount);
+
+    await loadPartial("partials/yaavs-chatbot.html", mount);
+
+    const bot = mount.querySelector("[data-yaavbot]");
+    if (!bot) {
+      mount.remove();
+      return;
+    }
+
+    document.body.appendChild(bot);
+    mount.remove();
+
+    if (!document.querySelector("script[data-yaavbot-config]")) {
+      await new Promise((resolve) => {
+        const cfg = document.createElement("script");
+        cfg.src = "js/yaavs-chatbot.config.js";
+        cfg.dataset.yaavbotConfig = "true";
+        cfg.onload = resolve;
+        cfg.onerror = resolve;
+        document.body.appendChild(cfg);
+      });
+    }
+
+    if (!document.querySelector("script[data-yaavbot-main]")) {
+      await new Promise((resolve) => {
+        const main = document.createElement("script");
+        main.src = "js/yaavs-chatbot.js";
+        main.dataset.yaavbotMain = "true";
+        main.onload = resolve;
+        main.onerror = resolve;
+        document.body.appendChild(main);
+      });
+    }
+  }
+
   const trustMount = document.getElementById("trust-strip");
   const ctaMount = document.getElementById("page-cta");
 
@@ -192,6 +243,8 @@
     mountSiteFloats();
     mountNavOverlay();
     await mountSocialDock();
+    await mountChatbot();
+    initSocialFloatScroll();
     setActiveNav();
     initNavToggle();
     initHeaderScroll();
