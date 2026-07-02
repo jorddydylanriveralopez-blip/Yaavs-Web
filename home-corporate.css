@@ -19,6 +19,51 @@ body.page-home {
   color: #f2f6fa;
 }
 
+/* Header home: WhatsApp a la izquierda del hint y "Menu" más legible */
+.page-home .header-wa {
+  order: 1;
+}
+
+.page-home .nav-menu-hint {
+  order: 2;
+  padding: 7px 11px 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 227, 255, 0.42);
+  background: rgba(3, 10, 18, 0.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(0, 168, 255, 0.12) inset;
+}
+
+.page-home .nav-bento {
+  order: 3;
+}
+
+.page-home .nav-menu-hint__label {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+
+.page-home .nav-menu-hint__arrow::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, #b8efff 58%, #7adfff 100%);
+  box-shadow: 0 0 14px rgba(122, 223, 255, 0.45);
+}
+
+.page-home .nav-menu-hint__arrow::after {
+  border-left-color: #7adfff;
+  filter: drop-shadow(0 0 8px rgba(122, 223, 255, 0.45));
+}
+
+@media (max-width: 900px) {
+  .page-home .nav-menu-hint {
+    padding: 7px 9px;
+  }
+}
+
 /* Fondo global — acento AT&T sutil */
 .page-home .home-tech-backdrop__photo {
   filter: brightness(0.5) saturate(0.52) contrast(1.1);
