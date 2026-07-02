@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script src="js/yaavs-theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Mapa de tiendas YAAVS por compania: busca por ciudad o usa tu ubicacion en tiempo real.">
+  <title>Mapa de tiendas | YAAVS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="decorations.css">
+  <link rel="stylesheet" href="theme-light.css">
+  <link rel="stylesheet" href="theme-day-night.css">
+  <link rel="stylesheet" href="tiendas-map-page.css">
+  <link rel="icon" href="assets/yaavs-logo.png" type="image/png">
+</head>
+<body class="theme-cluster page-tiendas-map" data-page="tiendas">
+  <div id="site-header"></div>
+
+  <main id="contenido" class="tiendas-map" aria-label="Mapa de tiendas por compania">
+    <section class="tiendas-map__hero">
+      <div class="container">
+        <p class="tiendas-map__kicker" id="carrier-kicker">Cobertura nacional YAAVS</p>
+        <h1 class="tiendas-map__title" id="carrier-title">Selecciona tu ubicacion para ver tiendas</h1>
+        <p class="tiendas-map__lead" id="carrier-lead">
+          Busca por ciudad, colonia o estado, o usa tu ubicacion para ver tiendas cercanas en tiempo real.
+        </p>
+      </div>
+    </section>
+
+    <section class="tiendas-map__panel">
+      <div class="container tiendas-map__panel-inner">
+        <div class="tiendas-map__brand">
+          <img id="carrier-logo" src="assets/operadores/bait-carriers.svg" alt="Carrier" width="220" height="88" loading="lazy" decoding="async">
+          <div class="tiendas-map__brand-copy">
+            <p class="tiendas-map__brand-name" id="carrier-name">BAIT</p>
+            <p class="tiendas-map__brand-sub">Puntos de venta en toda la Republica Mexicana</p>
+          </div>
+        </div>
+
+        <form class="tiendas-map__search" id="carrier-map-form">
+          <label for="carrier-map-query">Selecciona tu ubicacion o busca por lugar</label>
+          <div class="tiendas-map__controls">
+            <input
+              id="carrier-map-query"
+              name="q"
+              type="text"
+              placeholder="Ej. Guadalajara, Jalisco"
+              autocomplete="off"
+            >
+            <button type="submit">Buscar</button>
+            <button type="button" id="carrier-map-geolocate">Usar mi ubicacion</button>
+          </div>
+          <p class="tiendas-map__status" id="carrier-map-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="tiendas-map__viewer" aria-label="Mapa de tiendas">
+      <div class="container">
+        <iframe
+          id="carrier-map-frame"
+          title="Mapa de tiendas"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          src=""
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="tiendas-map__switch" aria-label="Cambiar compania">
+      <div class="container tiendas-map__switch-grid">
+        <a href="tiendas-mapa.html?carrier=bait" data-carrier-link="bait">BAIT</a>
+        <a href="tiendas-mapa.html?carrier=att" data-carrier-link="att">AT&amp;T</a>
+        <a href="tiendas-mapa.html?carrier=movistar" data-carrier-link="movistar">Movistar</a>
+        <a href="tiendas-mapa.html?carrier=unefon" data-carrier-link="unefon">Unefon</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/layout.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/tiendas-map.js" defer></script>
+</body>
+</html>
