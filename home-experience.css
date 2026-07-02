@@ -742,7 +742,7 @@
 
   /* Solo bajar los logos de los carriers (columnas colapsadas) */
   .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label .hx-ops__card-logo {
-    transform: translateY(clamp(200px, 30vh, 330px));
+    transform: translateY(clamp(260px, 38vh, 420px));
   }
 }
 
