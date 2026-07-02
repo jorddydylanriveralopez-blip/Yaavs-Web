@@ -41,6 +41,13 @@ body.page-home {
   order: 3;
 }
 
+/* Mantener la hamburguesa blanca en home aunque cambie el tema automático */
+.page-home .site-header .bento-dot,
+.page-home .site-header.is-scrolled .bento-dot,
+.page-home .site-header .nav-bento[aria-expanded="true"] .bento-dot {
+  background: #fff !important;
+}
+
 .page-home .nav-menu-hint__label {
   color: #fff;
   font-weight: 700;
