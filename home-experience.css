@@ -4994,7 +4994,6 @@ body.hx-svc-panel-open {
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero,
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-kicker,
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-title,
-  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-title .hx-services__cyan,
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-desc {
     color: #fff;
     -webkit-text-fill-color: #fff;
@@ -5036,7 +5035,11 @@ body.hx-svc-panel-open {
   }
 
   .hx-ops__intro-hero-title .hx-services__cyan {
-    text-shadow: 0 0 32px rgba(0, 238, 255, 0.5);
+    color: #00a8ff;
+    -webkit-text-fill-color: #00a8ff;
+    text-shadow:
+      0 0 18px rgba(0, 168, 255, 0.9),
+      0 0 40px rgba(0, 168, 255, 0.58);
   }
 
   .hx-ops__intro-hero-desc {
