@@ -740,9 +740,38 @@
     height: 100dvh;
   }
 
-  /* Solo bajar los logos de los carriers (columnas colapsadas) */
+  /* Logos de carriers al centro + pestañita tipo folder */
+  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label {
+    flex-direction: column;
+    gap: 16px;
+    transform: translateY(clamp(300px, 43vh, 470px));
+  }
+
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-label {
+    transform: translateY(clamp(300px, 43vh, 470px)) scale(0.92);
+  }
+
   .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label .hx-ops__card-logo {
-    transform: translateY(clamp(260px, 38vh, 420px));
+    transform: none;
+  }
+
+  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label::after {
+    content: "Clic para abrir ▾";
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(4, 16, 38, 0.62);
+    backdrop-filter: blur(6px);
+    padding: 11px 26px 13px;
+    clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease;
+  }
+
+  .hx-ops__card:not(.hx-ops__card--intro):hover .hx-ops__card-label::after {
+    transform: translateY(6px);
+    background: rgba(10, 42, 92, 0.85);
   }
 }
 
