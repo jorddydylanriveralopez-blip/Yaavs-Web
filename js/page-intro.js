@@ -1,6 +1,6 @@
 /**
  * Intro editorial — cortinas se abren, logo limpio, entrada rápida.
- * Solo la primera visita por sesión (más rápido al regresar).
+ * Solo la primera visita en el navegador (más rápido al regresar).
  */
 (function () {
   if (!document.body.classList.contains("page-home")) return;
@@ -9,7 +9,7 @@
   if (!intro) return;
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const seenIntro = sessionStorage.getItem("yaavs-intro-seen") === "1";
+  const seenIntro = localStorage.getItem("yaavs-intro-seen") === "1";
 
   function finishIntro() {
     document.dispatchEvent(new CustomEvent("yaavs:intro-start"));
@@ -24,7 +24,7 @@
     return;
   }
 
-  sessionStorage.setItem("yaavs-intro-seen", "1");
+  localStorage.setItem("yaavs-intro-seen", "1");
   intro.classList.add("is-playing");
   document.dispatchEvent(new CustomEvent("yaavs:intro-start"));
 
