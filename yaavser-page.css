@@ -1,0 +1,362 @@
+/**
+ * Ser Yaavser — página visual con imágenes y animaciones
+ */
+
+.page-ser-yaavser #contenido {
+  overflow-x: clip;
+}
+
+.page-ser-yaavser .section--yaavser-teaser {
+  position: relative;
+  padding: clamp(56px, 8vw, 96px) 0;
+  border-top: 1px solid rgba(0, 159, 219, 0.15);
+  overflow: hidden;
+}
+
+.page-ser-yaavser .yaavser-present__square {
+  border-color: rgba(0, 159, 219, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 28px 64px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(0, 159, 219, 0.12);
+}
+
+.page-ser-yaavser .yaavser-present__glow {
+  background: radial-gradient(circle at 30% 20%, rgba(0, 159, 219, 0.28) 0%, transparent 55%);
+}
+
+.page-ser-yaavser .yaavser-present__corner {
+  border-color: var(--accent-bright, #009fdb);
+}
+
+.page-ser-yaavser .yaavser-present__eyebrow {
+  color: var(--accent-bright, #009fdb);
+}
+
+.page-ser-yaavser .yaavser-present__quote {
+  margin-top: 24px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--accent-bright, #009fdb);
+  background: rgba(0, 48, 135, 0.28);
+  border-radius: 0 12px 12px 0;
+}
+
+.page-ser-yaavser .feature-chips li {
+  border-color: rgba(0, 159, 219, 0.35);
+  background: rgba(0, 48, 135, 0.35);
+  color: rgba(255, 255, 255, 0.88);
+  transition: transform 0.3s var(--ease), border-color 0.3s, background 0.3s;
+}
+
+.page-ser-yaavser .feature-chips li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 159, 219, 0.55);
+  background: rgba(0, 48, 135, 0.5);
+}
+
+/* Beneficios con foto */
+.yaavser-benefits-section {
+  position: relative;
+  padding: clamp(64px, 9vw, 100px) 0;
+  overflow: hidden;
+}
+
+.yaavser-benefits-section__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background:
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(0, 159, 219, 0.15) 0%, transparent 60%),
+    repeating-linear-gradient(
+      -12deg,
+      transparent,
+      transparent 48px,
+      rgba(255, 255, 255, 0.015) 49px
+    );
+}
+
+.yaavser-benefits-section .section-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.yaavser-benefits-section .section-header h2 {
+  max-width: 16ch;
+}
+
+.yaavser-benefits {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.yaavser-benefit {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 159, 219, 0.22);
+  background: rgba(0, 24, 60, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s;
+}
+
+.yaavser-benefit:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 159, 219, 0.45);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4), 0 0 32px rgba(0, 159, 219, 0.12);
+}
+
+.yaavser-benefit__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.yaavser-benefit__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.03);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yaavser-benefit:hover .yaavser-benefit__media img {
+  transform: scale(1.08);
+}
+
+.yaavser-benefit__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 16, 40, 0.85) 100%);
+  pointer-events: none;
+}
+
+.yaavser-benefit__tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  padding: 5px 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 48, 135, 0.75);
+  border: 1px solid rgba(0, 159, 219, 0.4);
+  border-radius: 999px;
+}
+
+.yaavser-benefit__body {
+  padding: clamp(18px, 2.5vw, 24px);
+}
+
+.yaavser-benefit__body h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.yaavser-benefit__body p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+/* Pasos + formulario */
+.yaavser-join {
+  position: relative;
+  padding: clamp(72px, 10vw, 120px) 0;
+  overflow: hidden;
+}
+
+.yaavser-join__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.yaavser-join__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.35) saturate(0.7);
+  transform: scale(1.05);
+  animation: yaavser-join-kenburns 22s ease-in-out infinite alternate;
+}
+
+.yaavser-join__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(0, 24, 60, 0.92) 0%, rgba(0, 36, 80, 0.88) 45%, rgba(0, 48, 135, 0.82) 100%);
+}
+
+.yaavser-join__yaavsty {
+  position: absolute;
+  right: max(2vw, 16px);
+  bottom: 0;
+  z-index: 1;
+  width: clamp(100px, 16vw, 200px);
+  pointer-events: none;
+  opacity: 0.92;
+  filter: drop-shadow(0 12px 40px rgba(0, 159, 219, 0.35));
+  animation: yaavser-yaavsty-float 5s ease-in-out infinite;
+}
+
+@keyframes yaavser-join-kenburns {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.1) translate3d(-1%, -1%, 0); }
+}
+
+@keyframes yaavser-yaavsty-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.yaavser-join .container {
+  position: relative;
+  z-index: 2;
+}
+
+.yaavser-join .section-header h2 {
+  max-width: 18ch;
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+.yaavser-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 24px);
+  margin-bottom: clamp(40px, 6vw, 56px);
+}
+
+.yaavser-step {
+  position: relative;
+  padding: clamp(22px, 3vw, 28px);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 159, 219, 0.22);
+  background: rgba(0, 24, 60, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.35s;
+}
+
+.yaavser-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--hx-att-navy, #003087), var(--accent-bright, #009fdb));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s var(--ease);
+}
+
+.yaavser-step.is-visible::before,
+.yaavser-step:hover::before {
+  transform: scaleX(1);
+}
+
+.yaavser-step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 159, 219, 0.4);
+}
+
+.yaavser-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #003087, #009fdb);
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(0, 159, 219, 0.35);
+}
+
+.yaavser-step h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.yaavser-step p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+.page-ser-yaavser .yaavser-join .contact-form {
+  max-width: 680px;
+  margin: 0;
+  border-color: rgba(0, 159, 219, 0.28);
+  background: rgba(0, 18, 45, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+}
+
+.page-ser-yaavser .yaavser-join .form-title {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .yaavser-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .yaavser-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .yaavser-present {
+    grid-template-columns: 1fr;
+  }
+
+  .yaavser-present__square {
+    max-width: 100%;
+    height: clamp(320px, 55vw, 480px);
+  }
+
+  .yaavser-join__yaavsty {
+    opacity: 0.45;
+    width: clamp(80px, 22vw, 120px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yaavser-join__backdrop img,
+  .yaavser-join__yaavsty,
+  .yaavser-benefit,
+  .yaavser-step {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .yaavser-benefit:hover,
+  .yaavser-step:hover {
+    transform: none;
+  }
+}

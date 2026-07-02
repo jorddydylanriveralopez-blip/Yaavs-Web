@@ -128,7 +128,7 @@
   }
 
   function revealFloatingDock() {
-    document.querySelectorAll(".social-float").forEach((el) => {
+    document.querySelectorAll(".social-float, .yaavbot").forEach((el) => {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -167,20 +167,6 @@
     revealFloatingDock();
   }
 
-  function initSocialFloatFade() {
-    const dock = document.querySelector(".social-float");
-    if (!dock) return;
-
-    function onScroll() {
-      const fade = Math.max(0.35, 1 - window.scrollY / 1100);
-      dock.style.opacity = String(fade.toFixed(3));
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    onScroll();
-  }
-
   function mountSiteFloats() {
     const floats = document.querySelector(".site-floats");
     if (!floats || floats.dataset.mounted === "true") return;
@@ -188,42 +174,58 @@
     floats.dataset.mounted = "true";
   }
 
-  function initTrustStrip() {
-    const strip = document.querySelector(".trust-strip");
-    if (!strip) return;
+  function initSocialFloatScroll() {
+    if (document.querySelector("script[data-social-float-scroll]")) return;
+    const s = document.createElement("script");
+    s.src = "js/social-float-scroll.js";
+    s.defer = true;
+    s.dataset.socialFloatScroll = "true";
+    document.body.appendChild(s);
+  }
 
-    const runCounters = () => {
-      strip.querySelectorAll("[data-count-to]").forEach((el) => {
-        const target = parseInt(el.dataset.countTo, 10);
-        const prefix = el.dataset.countPrefix || "";
-        const suffix = el.dataset.countSuffix || "";
-        const duration = 1400;
-        const start = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = prefix + Math.round(target * eased) + suffix;
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
-    };
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced || !("IntersectionObserver" in window)) {
-      strip.classList.add("is-in");
+  async function mountChatbot() {
+    if (document.querySelector("[data-yaavbot]")) {
+      revealFloatingDock();
       return;
     }
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        strip.classList.add("is-in");
-        runCounters();
-        io.disconnect();
+    const mount = document.createElement("div");
+    mount.id = "yaavbot-mount";
+    mount.hidden = true;
+    document.body.appendChild(mount);
+
+    await loadPartial("partials/yaavs-chatbot.html", mount);
+
+    const bot = mount.querySelector("[data-yaavbot]");
+    if (!bot) {
+      mount.remove();
+      return;
+    }
+
+    document.body.appendChild(bot);
+    mount.remove();
+
+    if (!document.querySelector("script[data-yaavbot-config]")) {
+      await new Promise((resolve) => {
+        const cfg = document.createElement("script");
+        cfg.src = "js/yaavs-chatbot.config.js";
+        cfg.dataset.yaavbotConfig = "true";
+        cfg.onload = resolve;
+        cfg.onerror = resolve;
+        document.body.appendChild(cfg);
       });
-    }, { threshold: 0.35 });
-    io.observe(strip);
+    }
+
+    if (!document.querySelector("script[data-yaavbot-main]")) {
+      await new Promise((resolve) => {
+        const main = document.createElement("script");
+        main.src = "js/yaavs-chatbot.js";
+        main.dataset.yaavbotMain = "true";
+        main.onload = resolve;
+        main.onerror = resolve;
+        document.body.appendChild(main);
+      });
+    }
   }
 
   const trustMount = document.getElementById("trust-strip");
@@ -239,8 +241,8 @@
     mountSiteFloats();
     mountNavOverlay();
     await mountSocialDock();
-    initSocialFloatFade();
-    initTrustStrip();
+    await mountChatbot();
+    initSocialFloatScroll();
     setActiveNav();
     initNavToggle();
     initHeaderScroll();

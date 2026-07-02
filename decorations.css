@@ -2,16 +2,167 @@
  * Plecas, texturas y adornos — tema azul + blanco
  */
 
-/* Sin capas claras: el negro del body se ve en todo el sitio */
-.page-home .home-about,
-.page-home .services-showcase,
-.page-home .manifesto,
+/* Sin capas claras: fondo tech oscuro en home */
+.page-home .hx,
+.page-home .hx-pulse,
+.page-home .hx-story,
+.page-home .hx-services,
+.page-home .hx-manifesto,
+.page-home .hx-video,
+.page-home .hx-cta {
+  background: transparent;
+}
+
+.page-home .hx-testimonials {
+  background:
+    linear-gradient(180deg, rgba(8, 14, 22, 0.96) 0%, rgba(10, 20, 32, 0.98) 100%);
+}
+
 body.theme-cluster:not(.page-home) #contenido {
   background-color: var(--bg);
   background-image: none;
 }
 
+/* Fondo tech fijo — home */
+.home-tech-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.home-tech-backdrop__photo {
+  position: absolute;
+  inset: -6%;
+  background:
+    radial-gradient(ellipse 90% 75% at 50% 42%, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.72) 100%),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(2, 10, 18, 0.42) 38%,
+      rgba(0, 0, 0, 0.38) 62%,
+      rgba(0, 0, 0, 0.78) 100%
+    ),
+    url("assets/hero-telecom/hero-telecom-1-smartphone.jpg") center 42% / cover no-repeat;
+  filter: brightness(0.58) saturate(0.72) contrast(1.06);
+  transform: scale(1.06);
+  animation: home-tech-kenburns 28s ease-in-out infinite alternate;
+}
+
+.home-tech-backdrop__mesh {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.09) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 130% 100% at 50% 45%, #000 15%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse 130% 100% at 50% 45%, #000 15%, transparent 92%);
+}
+
+.home-tech-backdrop__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 47px,
+      rgba(0, 238, 255, 0.04) 48px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 47px,
+      rgba(0, 238, 255, 0.04) 48px
+    );
+}
+
+.home-tech-backdrop__glow {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 42% 38% at 18% 32%, rgba(0, 200, 230, 0.22) 0%, transparent 62%),
+    radial-gradient(ellipse 38% 34% at 82% 68%, rgba(0, 136, 184, 0.16) 0%, transparent 58%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(0, 80, 120, 0.24) 0%, transparent 55%);
+  animation: home-tech-glow 10s ease-in-out infinite alternate;
+}
+
+@keyframes home-tech-kenburns {
+  from { transform: scale(1.06) translate3d(0, 0, 0); }
+  to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+}
+
+@keyframes home-tech-glow {
+  from { opacity: 0.75; }
+  to { opacity: 1; }
+}
+
+.home-about__bg-photo {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background:
+    linear-gradient(105deg, rgba(3, 10, 18, 0.92) 0%, rgba(3, 10, 18, 0.55) 45%, rgba(3, 10, 18, 0.88) 100%),
+    url("assets/hero-telecom/hero-telecom-1-smartphone.jpg") center 30% / cover no-repeat;
+}
+
 /* Marquesina bajo el hero (home) */
+.page-home .hero-marquee {
+  background: rgba(4, 12, 22, 0.82);
+  border-top: 1px solid rgba(0, 212, 255, 0.22);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.page-home .hero-marquee__item {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.page-home .hero-marquee__item strong {
+  color: #fff;
+}
+
+.page-home .pleca--bridge {
+  background: rgba(2, 8, 14, 0.9);
+  border-bottom-color: rgba(0, 212, 255, 0.2);
+}
+
+.page-home .trust-strip {
+  background: rgba(4, 14, 24, 0.78);
+  border-color: rgba(0, 212, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.page-home .trust-strip__item strong {
+  color: var(--accent-bright);
+}
+
+.page-home .trust-strip__item span {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.page-home .page-cta-band {
+  background: rgba(3, 10, 18, 0.88);
+  border-top-color: rgba(0, 212, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.page-home .page-cta-band__title,
+.page-home .page-cta-band__eyebrow {
+  color: #fff;
+}
+
+.page-home .page-cta-band__text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .hero-marquee {
   position: relative;
   z-index: 4;
@@ -179,7 +330,14 @@ body.theme-cluster:not(.page-home) #contenido {
   position: relative;
   z-index: 2;
   height: clamp(14px, 2.5vw, 22px);
-  background: var(--bg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 200, 230, 0.08) 18%,
+    rgba(0, 238, 255, 0.18) 50%,
+    rgba(0, 200, 230, 0.08) 82%,
+    transparent 100%
+  );
   border: none;
 }
 
@@ -192,7 +350,7 @@ body.theme-cluster:not(.page-home) #contenido {
   height: 2px;
   transform: translate(-50%, -50%);
   border-radius: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: linear-gradient(90deg, transparent, var(--yaavs-cyan), transparent);
   opacity: 0.55;
 }
 
@@ -459,6 +617,11 @@ body.theme-cluster:not(.page-home) #contenido {
   margin-bottom: 10px;
 }
 
+.page-home .home-about__item--accent {
+  background: rgba(0, 40, 58, 0.55);
+  border-top: 2px solid var(--accent-bright);
+}
+
 .home-about__item--accent {
   background: var(--bg-soft);
   border-top: 3px solid var(--accent);
@@ -475,6 +638,56 @@ body.theme-cluster:not(.page-home) #contenido {
 
 .page-home .manifesto {
   background-image: none;
+}
+
+.manifesto__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.manifesto__bg-photo {
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(ellipse 85% 70% at 55% 40%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.75) 100%),
+    linear-gradient(
+      105deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(2, 10, 18, 0.45) 42%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    url("assets/hero-telecom/hero-telecom-2.jpg") center 45% / cover no-repeat;
+  filter: brightness(0.55) saturate(0.62) contrast(1.1);
+  transform: scale(1.1);
+  animation: manifesto-bg-drift 22s ease-in-out infinite alternate;
+}
+
+.manifesto__bg-mesh {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(0, 238, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 238, 255, 0.09) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 100% 90% at 50% 50%, #000 20%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 90% at 50% 50%, #000 20%, transparent 88%);
+}
+
+.manifesto__bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 45% at 72% 38%, rgba(0, 238, 255, 0.14) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 35% at 18% 62%, rgba(0, 136, 184, 0.1) 0%, transparent 58%);
+}
+
+@keyframes manifesto-bg-drift {
+  from { transform: scale(1.1) translate3d(0, 0, 0); }
+  to { transform: scale(1.16) translate3d(-1.2%, -0.8%, 0); }
 }
 
 .page-home .manifesto__stars {
@@ -1794,5 +2007,92 @@ body.yaavs-game-open {
   body.page-intro-active .site-floats,
   body.page-intro-done .site-floats {
     opacity: 1;
+  }
+}
+
+/* Destellos — home, bolsa y secciones con capa extra */
+.page-sparkles,
+.jobs-apply-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.page-sparkles {
+  position: fixed;
+  z-index: 3;
+}
+
+.page-sparkles::before,
+.page-sparkles::after,
+.jobs-apply-sparkles::before,
+.jobs-apply-sparkles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  opacity: 0.55;
+}
+
+.page-sparkles::before,
+.jobs-apply-sparkles::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 238, 255, 0.9) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.75) 0 1px, transparent 2px);
+  background-size: 280px 280px, 420px 420px, 360px 360px;
+  background-position: 12% 18%, 78% 24%, 45% 72%;
+  animation: page-sparkle-drift 18s ease-in-out infinite alternate;
+}
+
+.page-sparkles::after,
+.jobs-apply-sparkles::after {
+  background-image:
+    radial-gradient(circle, rgba(0, 238, 255, 0.85) 0 1px, transparent 2.5px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 159, 219, 0.9) 0 1.5px, transparent 3px);
+  background-size: 320px 320px, 240px 240px, 400px 400px;
+  background-position: 88% 62%, 22% 48%, 62% 12%;
+  animation: page-sparkle-twinkle 4.5s ease-in-out infinite;
+}
+
+.page-sparkle {
+  position: absolute;
+  width: var(--sz, 3px);
+  height: var(--sz, 3px);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(0, 238, 255, 0.65);
+  opacity: 0;
+  animation: page-sparkle-pulse var(--dur, 3.2s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes page-sparkle-drift {
+  0% { transform: translateY(0); opacity: 0.35; }
+  100% { transform: translateY(-12px); opacity: 0.65; }
+}
+
+@keyframes page-sparkle-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes page-sparkle-pulse {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  45% { opacity: 0.95; transform: scale(1); }
+  70% { opacity: 0.15; transform: scale(0.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-sparkles::before,
+  .page-sparkles::after,
+  .jobs-apply-sparkles::before,
+  .jobs-apply-sparkles::after,
+  .page-sparkle {
+    animation: none;
+    opacity: 0.35;
   }
 }

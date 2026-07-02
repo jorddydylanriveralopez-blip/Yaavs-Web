@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css">
   <link rel="stylesheet" href="theme-day-night.css">
+  <link rel="stylesheet" href="interior-corporate.css">
   <link rel="icon" href="https://www.yaavs.com.mx/images/logo.svg" type="image/svg+xml">
 </head>
 <body class="theme-cluster page-activar-chip" data-page="activar-chip">
@@ -32,13 +33,14 @@
         <nav class="breadcrumb avisos-hero-banner__breadcrumb" aria-label="Ruta">
           <a href="index.html">Inicio</a><span>/</span><span>Activar chip</span>
         </nav>
-        <p class="avisos-hero-banner__eyebrow">RecargaKlic</p>
+        <p class="avisos-hero-banner__eyebrow" data-activar-eyebrow>RecargaKlic</p>
         <h1 class="avisos-hero-banner__title">
-          Activar <span class="avisos-hero-banner__accent">chip</span>
+          Activar <span class="avisos-hero-banner__accent" data-activar-title>chip</span>
         </h1>
-        <p class="avisos-hero-banner__lead">
+        <p class="avisos-hero-banner__lead" data-activar-lead>
           Elige el canal que prefieras: app, web, WhatsApp o línea de soporte YAAVS.
         </p>
+        <a href="#canales" class="btn btn--primary" data-activar-cta style="display: none; margin-top: 16px;">Ver canales</a>
         <a href="#canales" class="scroll-hint scroll-hint--activar" aria-label="Ver canales de activación">
           <span class="scroll-hint-line"></span>
           <span class="scroll-hint-label">Ver canales</span>
@@ -52,8 +54,6 @@
       <span class="pleca__label">RecargaKlic</span>
       <span class="pleca__line"></span>
     </div>
-
-    <div id="trust-strip"></div>
 
     <section class="section section--activate" id="canales" aria-label="Canales de activación">
       <div class="container">

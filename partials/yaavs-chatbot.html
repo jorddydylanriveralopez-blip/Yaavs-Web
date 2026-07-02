@@ -1,0 +1,45 @@
+<div class="yaavbot" data-yaavbot>
+  <div class="yaavbot__panel" id="yaavbot-panel" data-yaavbot-panel hidden>
+    <header class="yaavbot__head" data-yaavbot-head>
+      <div class="yaavbot__head-copy">
+        <p class="yaavbot__title">YaavBot</p>
+        <p class="yaavbot__subtitle" data-yaavbot-status>Asistente YAAVS · IA</p>
+      </div>
+      <div class="yaavbot__head-actions">
+        <button type="button" class="yaavbot__icon-btn" data-yaavbot-minimize aria-label="Minimizar chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="yaavbot__icon-btn yaavbot__icon-btn--close" data-yaavbot-close aria-label="Cerrar chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </header>
+    <div class="yaavbot__body" data-yaavbot-body>
+      <div class="yaavbot__messages" data-yaavbot-messages role="log" aria-live="polite" aria-relevant="additions"></div>
+      <div class="yaavbot__quick" data-yaavbot-quick aria-label="Preguntas rápidas"></div>
+      <form class="yaavbot__form" data-yaavbot-form>
+        <label class="sr-only" for="yaavbot-input">Mensaje</label>
+        <input
+          id="yaavbot-input"
+          class="yaavbot__input"
+          type="text"
+          name="message"
+          data-yaavbot-input
+          placeholder="Escribe tu pregunta…"
+          autocomplete="off"
+          maxlength="500"
+        >
+        <button type="submit" class="yaavbot__send" aria-label="Enviar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h14M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  <button type="button" class="yaavbot__fab" data-yaavbot-fab aria-expanded="false" aria-controls="yaavbot-panel">
+    <span class="yaavbot__fab-icon" aria-hidden="true">
+      <svg class="yaavbot__fab-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 9h10M7 13h6M21 12c0 4.418-4.03 8-9 8-.986 0-1.93-.14-2.8-.4L3 21l1.4-4.2C3.5 15.5 3 13.8 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="yaavbot__fab-icon-min" width="22" height="22" viewBox="0 0 24 24" fill="none" hidden><path d="M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </span>
+    <span class="yaavbot__fab-label" data-yaavbot-fab-label>YaavBot</span>
+  </button>
+</div>
