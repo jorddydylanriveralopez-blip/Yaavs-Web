@@ -1101,6 +1101,7 @@ a:hover { opacity: 0.65; }
 
 .logo {
   height: 36px;
+  width: auto;
   display: block;
   filter: var(--logo-filter, brightness(0));
   transition: filter 0.35s var(--ease);
@@ -5582,6 +5583,7 @@ body.theme-cluster #contenido > .section {
 
 .footer-logo {
   height: 32px;
+  width: auto;
   filter: brightness(0) invert(1);
   margin-bottom: 16px;
 }
