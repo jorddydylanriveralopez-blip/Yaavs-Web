@@ -128,7 +128,7 @@
   }
 
   function revealFloatingDock() {
-    document.querySelectorAll(".social-float, .theme-toggle").forEach((el) => {
+    document.querySelectorAll(".social-float").forEach((el) => {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -155,15 +155,10 @@
 
     await loadPartial("partials/social-float.html", mount);
 
-    const toggle = mount.querySelector("#yaavs-theme-toggle");
     const dock = mount.querySelector(".social-float");
     if (!dock) {
       mount.remove();
       return;
-    }
-
-    if (toggle) {
-      document.body.appendChild(toggle);
     }
 
     document.body.appendChild(dock);
@@ -172,11 +167,63 @@
     revealFloatingDock();
   }
 
+  function initSocialFloatFade() {
+    const dock = document.querySelector(".social-float");
+    if (!dock) return;
+
+    function onScroll() {
+      const fade = Math.max(0.35, 1 - window.scrollY / 1100);
+      dock.style.opacity = String(fade.toFixed(3));
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    onScroll();
+  }
+
   function mountSiteFloats() {
     const floats = document.querySelector(".site-floats");
     if (!floats || floats.dataset.mounted === "true") return;
     document.body.insertBefore(floats, document.body.firstChild);
     floats.dataset.mounted = "true";
+  }
+
+  function initTrustStrip() {
+    const strip = document.querySelector(".trust-strip");
+    if (!strip) return;
+
+    const runCounters = () => {
+      strip.querySelectorAll("[data-count-to]").forEach((el) => {
+        const target = parseInt(el.dataset.countTo, 10);
+        const prefix = el.dataset.countPrefix || "";
+        const suffix = el.dataset.countSuffix || "";
+        const duration = 1400;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    };
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !("IntersectionObserver" in window)) {
+      strip.classList.add("is-in");
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        strip.classList.add("is-in");
+        runCounters();
+        io.disconnect();
+      });
+    }, { threshold: 0.35 });
+    io.observe(strip);
   }
 
   const trustMount = document.getElementById("trust-strip");
@@ -192,6 +239,8 @@
     mountSiteFloats();
     mountNavOverlay();
     await mountSocialDock();
+    initSocialFloatFade();
+    initTrustStrip();
     setActiveNav();
     initNavToggle();
     initHeaderScroll();
