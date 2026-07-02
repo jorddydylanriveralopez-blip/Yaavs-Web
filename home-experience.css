@@ -4990,6 +4990,16 @@ body.hx-svc-panel-open {
     z-index: 6;
   }
 
+  /* Fuerza texto blanco en el copy sobre la imagen del intro */
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-kicker,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-title,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-title .hx-services__cyan,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-desc {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+  }
+
   .hx-ops__card--intro:not(.is-active) .hx-ops__intro-hero {
     opacity: 0;
     transform: translateY(16px);
