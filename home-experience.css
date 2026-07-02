@@ -739,6 +739,12 @@
     min-height: 100dvh;
     height: 100dvh;
   }
+
+  /* Logos de carriers más abajo para no chocar con el encabezado flotante */
+  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label {
+    align-items: flex-end;
+    padding-bottom: clamp(140px, 26vh, 260px);
+  }
 }
 
 .hx-ops__card {
