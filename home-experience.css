@@ -4980,7 +4980,14 @@ body.hx-svc-panel-open {
     width: min(94%, 620px);
     padding: clamp(80px, 12vh, 140px) clamp(24px, 3vw, 44px) clamp(32px, 5vh, 56px) clamp(32px, 3.5vw, 60px);
     pointer-events: none;
+    background: linear-gradient(90deg, rgba(2, 8, 18, 0.85) 0%, rgba(2, 8, 18, 0.55) 55%, transparent 100%);
     transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Gana a `.page-home .hx-ops__card > *` de home-corporate.css */
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero {
+    position: absolute;
+    z-index: 6;
   }
 
   .hx-ops__card--intro:not(.is-active) .hx-ops__intro-hero {
