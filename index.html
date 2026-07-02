@@ -57,10 +57,6 @@
       <p class="page-intro__tagline">grupo yaavs · retail · méxico</p>
     </div>
   </div>
-  <div class="page-bg" aria-hidden="true">
-    <div class="page-bg__media" data-hero-carousel></div>
-    <div class="page-bg__shade"></div>
-  </div>
   <div id="site-header"></div>
 
   <main id="contenido">
@@ -104,80 +100,521 @@
 
     <div class="hx" id="home-experience">
 
-      <section class="hx-group" id="grupo-yaavs" aria-label="Grupo YAAVS">
-        <div class="container hx-group__inner">
-          <div class="hx-group__copy" data-hx-reveal>
-            <p class="hx-group__eyebrow">Grupo YAAVS · Unidades de negocio</p>
-            <h2 class="hx-group__title">Todas las unidades de negocio en un solo ecosistema.</h2>
-            <p class="hx-group__lead">
-              Integramos <strong>prepago, postpago, Academia YAAVS, RecargaKlic, portabilidad, tiempo aire, liberaciones y soporte técnico</strong> para que ninguna área quede fuera.
-            </p>
-            <ul class="hx-group__units" aria-label="Unidades de negocio YAAVS">
-              <li>Prepago</li>
-              <li>Postpago</li>
-              <li>Academia YAAVS</li>
-              <li>RecargaKlic</li>
-              <li>Portabilidad</li>
-              <li>Tiempo aire</li>
-              <li>Liberaciones</li>
-              <li>Soporte técnico</li>
-            </ul>
-            <div class="hx-group__actions">
-              <a href="quienes-somos.html" class="btn btn--primary">Conocer el grupo</a>
-              <a href="servicios.html" class="btn btn--line">Ver unidades</a>
+      <section class="hx-services" id="servicios-preview" aria-label="Nuestros servicios">
+        <header class="hx-services__head">
+          <h2 data-hx-reveal><span class="hx-services__cyan">Nuestros</span> servicios</h2>
+          <p class="hx-services__hint" data-hx-reveal>Haz clic para ver instrucciones · desliza en móvil</p>
+        </header>
+        <div class="hx-services__rail" data-hx-rail tabindex="0">
+          <button type="button" class="hx-svc hx-svc--gold hx-svc--photo" data-hx-svc="prepago" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/operadores/bait.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Prepago</span>
+              <p class="hx-svc__desc">Chips, paquetes y activaciones rápidas para venta diaria en mostrador.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--navy hx-svc--photo" data-hx-svc="postpago" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/operadores/att.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Postpago</span>
+              <p class="hx-svc__desc">Altas y renovaciones con seguimiento comercial y soporte YAAVS.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--coral hx-svc--photo" data-hx-svc="vinculaciones" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/servicios/vinculaciones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Vinculaciones</span>
+              <p class="hx-svc__desc">Vincula equipos y líneas de tus clientes con respaldo YAAVS.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--violet hx-svc--photo" data-hx-svc="tiempo-aire" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/servicios/tiempo-aire.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Tiempo aire</span>
+              <p class="hx-svc__desc">Recargas de múltiples compañías con comisión al instante.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--navy hx-svc--photo" data-hx-svc="portabilidad" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/servicios/portabilidad.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Portabilidad</span>
+              <p class="hx-svc__desc">Cambia el número de tus clientes de una compañía actual a otra.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--gold hx-svc--photo" data-hx-svc="activaciones" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/servicios/activaciones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Activaciones</span>
+              <p class="hx-svc__desc">Activa tus SIMs desde nuestra aplicación: RecargaKlic.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--coral hx-svc--photo" data-hx-svc="soporte-tecnico" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/hero-telecom/hero-telecom-5.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Soporte técnico</span>
+              <p class="hx-svc__desc">Atención operativa para mantener activo y rentable tu negocio.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--green hx-svc--photo" data-hx-svc="rotulaciones" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/hero-telecom/hero-portada-campeones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Rotulaciones</span>
+              <p class="hx-svc__desc">Imagen profesional para tu punto de venta con identidad YAAVS.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--violet hx-svc--photo" data-hx-svc="academia-yaavs" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/quienes-somos-small-1.png" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">Academia YAAVS</span>
+              <p class="hx-svc__desc">Capacitación comercial para vender mejor y crecer más rápido.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--green hx-svc--photo" data-hx-svc="esims" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/servicios/esim.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">eSIMs</span>
+              <p class="hx-svc__desc">Activa líneas digitales sin chip físico, rápido y desde tu mostrador.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+          <button type="button" class="hx-svc hx-svc--green hx-svc--photo" data-hx-svc="recargaklic" aria-haspopup="dialog">
+            <span class="hx-svc__glow" aria-hidden="true"></span>
+            <span class="hx-svc__ring" aria-hidden="true"></span>
+            <span class="hx-svc__scan" aria-hidden="true"></span>
+            <img class="hx-svc__photo" src="assets/servicios/activaciones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
+            <span class="hx-svc__shade" aria-hidden="true"></span>
+            <div class="hx-svc__body">
+              <span class="hx-svc__title">RecargaKlic</span>
+              <p class="hx-svc__desc">Gestiona activaciones, recargas y operación desde una sola app.</p>
+              <span class="hx-svc__arrow">Ver instrucciones →</span>
+            </div>
+          </button>
+        </div>
+        <div class="hx-services__progress" aria-hidden="true"><span></span></div>
+
+        <div class="hx-svc-panel" data-hx-svc-panel hidden aria-hidden="true">
+          <div class="hx-svc-panel__backdrop" data-hx-svc-panel-close tabindex="-1"></div>
+          <div
+            class="hx-svc-panel__sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="hx-svc-panel-title"
+          >
+            <button type="button" class="hx-svc-panel__close" data-hx-svc-panel-close aria-label="Cerrar panel">
+              <span aria-hidden="true">×</span>
+            </button>
+            <div class="hx-svc-panel__head">
+              <img class="hx-svc-panel__icon" data-hx-svc-panel-icon src="" alt="" width="80" height="80" hidden>
+              <div>
+                <p class="hx-svc-panel__kicker" data-hx-svc-panel-kicker hidden></p>
+                <h3 class="hx-svc-panel__title" id="hx-svc-panel-title" data-hx-svc-panel-title></h3>
+              </div>
+            </div>
+            <p class="hx-svc-panel__desc" data-hx-svc-panel-desc></p>
+            <ol class="hx-svc-panel__steps" data-hx-svc-panel-steps></ol>
+            <div class="hx-svc-panel__actions">
+              <a href="#" class="btn btn--primary" data-hx-svc-panel-link>Acceder al servicio</a>
+              <a href="contacto.html" class="btn btn--line">Solicitar ayuda</a>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="hx-group__grid" data-hx-reveal>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">01</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Prepago</strong>
-              <p>Activaciones SIM, recargas y paquetes multi-operador para tu punto de venta.</p>
+      <section class="hx-pulse" aria-label="La red en números" data-hx-pulse>
+        <div class="hx-pulse__mesh" aria-hidden="true"></div>
+        <div class="hx-pulse__scan" aria-hidden="true"></div>
+        <div class="hx-pulse__inner">
+          <p class="hx-pulse__label" data-hx-reveal>Red YAAVS · México</p>
+          <div class="hx-pulse__stats">
+            <div class="hx-pulse__stat" data-hx-reveal>
+              <span class="hx-pulse__num" data-hx-count="10000" data-hx-format="k">0</span>
+              <span class="hx-pulse__cap">Puntos de venta</span>
+            </div>
+            <div class="hx-pulse__stat" data-hx-reveal>
+              <span class="hx-pulse__num" data-hx-count="100" data-hx-suffix="%">0</span>
+              <span class="hx-pulse__cap">Empresa mexicana</span>
+            </div>
+            <div class="hx-pulse__stat" data-hx-reveal>
+              <span class="hx-pulse__num">Multi</span>
+              <span class="hx-pulse__cap">Operador y servicios</span>
+            </div>
+          </div>
+          <div class="hx-pulse__operators" data-hx-reveal>
+            <span>Telcel</span>
+            <span>Unefon</span>
+            <span>AT&amp;T</span>
+            <span>Movistar</span>
+            <span>RecargaKlic</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="hx-ops" id="carriers" aria-label="Compañías que vendes con YAAVS" data-hx-ops data-hx-reveal>
+        <header class="hx-ops__head">
+          <p class="hx-ops__eyebrow">Multi-operador</p>
+          <h3 class="hx-ops__title">Las compañías que <span class="hx-services__cyan">vendes</span> con YAAVS</h3>
+          <p class="hx-ops__hint hx-ops__hint--desktop">Haz clic en un operador para conocer más</p>
+          <p class="hx-ops__hint hx-ops__hint--mobile">Toca un operador para conocer más</p>
+        </header>
+
+        <button type="button" class="hx-ops__back" aria-label="Volver a todos los carriers" hidden>
+          <span class="hx-ops__back-icon" aria-hidden="true">←</span>
+          <span>Todos los carriers</span>
+        </button>
+
+        <div class="hx-ops__deck" role="tablist" aria-label="Compañías aliadas YAAVS">
+          <article class="hx-ops__card hx-ops__card--intro is-active" role="tab" tabindex="0" aria-selected="true" data-hx-op="intro">
+            <img class="hx-ops__intro-photo" src="assets/hero-telecom/hero-telecom-3.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+            <span class="hx-ops__intro-veil" aria-hidden="true"></span>
+            <span class="hx-ops__card-bg" aria-hidden="true"></span>
+            <span class="hx-ops__card-glow" aria-hidden="true"></span>
+            <div class="hx-ops__intro-hero">
+              <p class="hx-ops__intro-hero-kicker">Multi-operador</p>
+              <h4 class="hx-ops__intro-hero-title">Conoce nuestras <span class="hx-services__cyan">compañías</span></h4>
+              <p class="hx-ops__intro-hero-desc">En YAAVS manejamos BAIT, AT&amp;T, Movistar y Unefon. Activaciones, recargas y portabilidades de todas las compañías en un solo mostrador: el tuyo.</p>
+            </div>
+            <div class="hx-ops__card-label">
+              <span class="hx-ops__intro-short hx-ops__intro-short--compact">Compañías</span>
+              <span class="hx-ops__intro-short hx-ops__intro-short--full">Conoce nuestras compañías</span>
+            </div>
+            <div class="hx-ops__card-body">
+              <div class="hx-ops__card-panel hx-ops__intro-panel">
+                <header class="hx-ops__card-panel-head">
+                  <span class="hx-ops__card-kicker">Multi-compañía</span>
+                </header>
+                <h4 class="hx-ops__intro-title">Conoce nuestras <span class="hx-services__cyan">compañías</span></h4>
+                <p class="hx-ops__intro-desc">Selecciona BAIT, AT&amp;T, Movistar o Unefon para ver activaciones, recargas y todo lo que puedes vender con YAAVS en tu mostrador.</p>
+                <div class="hx-ops__intro-logos" aria-hidden="true">
+                  <img src="assets/operadores/bait-carriers.svg" alt="" width="80" height="32">
+                  <img src="assets/operadores/att-carriers.svg" alt="" width="80" height="32">
+                  <img src="assets/operadores/movistar-carriers.svg" alt="" width="90" height="32">
+                  <img class="hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="" width="80" height="48">
+                </div>
+                <p class="hx-ops__intro-cta">Elige BAIT, AT&amp;T, Movistar o Unefon ↓</p>
+                <div class="hx-ops__intro-actions">
+                  <button
+                    type="button"
+                    class="btn btn--primary hx-ops__intro-btn"
+                    data-hx-ops-picker-open
+                    aria-haspopup="dialog"
+                    aria-controls="hx-ops-picker"
+                    aria-expanded="false"
+                  >
+                    Escoge tu compa&ntilde;&iacute;a
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="hx-ops__grid" id="hx-ops-grid">
+            <article class="hx-ops__card hx-ops__card--bait" role="tab" tabindex="-1" aria-selected="false" data-hx-op="bait">
+              <img class="hx-ops__card-photo" src="assets/operadores/bait.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
+              <span class="hx-ops__card-bg" aria-hidden="true"></span>
+              <span class="hx-ops__card-glow" aria-hidden="true"></span>
+              <span class="hx-ops__card-scan" aria-hidden="true"></span>
+              <div class="hx-ops__card-ribbon" aria-hidden="true">01</div>
+              <div class="hx-ops__card-label">
+                <img class="hx-ops__card-logo" src="assets/operadores/bait-carriers.svg" alt="BAIT" width="120" height="48">
+                <span class="hx-ops__card-name">BAIT</span>
+              </div>
+              <div class="hx-ops__card-body">
+                <div class="hx-ops__card-panel">
+                  <header class="hx-ops__card-panel-head">
+                    <img class="hx-ops__card-logo hx-ops__card-logo--panel" src="assets/operadores/bait-carriers.svg" alt="BAIT" width="160" height="64">
+                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
+                  </header>
+                  <p class="hx-ops__card-lead">SIM, recargas y material en tu mostrador</p>
+                  <p class="hx-ops__card-desc">Planes prepago accesibles con respaldo comercial, visitas en tu zona e inventario listo para vender.</p>
+                  <ul class="hx-ops__card-list">
+                    <li>Activación de chip Bait</li>
+                    <li>Recargas y paquetes</li>
+                    <li>Material POS en tu tienda</li>
+                  </ul>
+                  <a class="btn btn--line hx-ops__card-btn" href="https://mibait.com/" target="_blank" rel="noopener noreferrer">Ver página</a>
+                </div>
+              </div>
             </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">02</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Postpago</strong>
-              <p>Altas y renovaciones con flujo comercial respaldado por la red YAAVS.</p>
+
+            <article class="hx-ops__card hx-ops__card--att" role="tab" tabindex="-1" aria-selected="false" data-hx-op="att">
+              <img class="hx-ops__card-photo" src="assets/operadores/att.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
+              <span class="hx-ops__card-bg" aria-hidden="true"></span>
+              <span class="hx-ops__card-glow" aria-hidden="true"></span>
+              <span class="hx-ops__card-scan" aria-hidden="true"></span>
+              <div class="hx-ops__card-ribbon" aria-hidden="true">02</div>
+              <div class="hx-ops__card-label">
+                <img class="hx-ops__card-logo" src="assets/operadores/att-carriers.svg" alt="AT&amp;T" width="120" height="48">
+                <span class="hx-ops__card-name">AT&amp;T</span>
+              </div>
+              <div class="hx-ops__card-body">
+                <div class="hx-ops__card-panel">
+                  <header class="hx-ops__card-panel-head">
+                    <img class="hx-ops__card-logo hx-ops__card-logo--panel" src="assets/operadores/att-carriers.svg" alt="AT&amp;T" width="160" height="64">
+                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
+                  </header>
+                  <p class="hx-ops__card-lead">Altas, portabilidad y tiempo aire</p>
+                  <p class="hx-ops__card-desc">Todo el flujo AT&amp;T desde RecargaKlic: activaciones, recargas y soporte de ejecutivo en tu zona.</p>
+                  <ul class="hx-ops__card-list">
+                    <li>Portabilidad y altas</li>
+                    <li>Recargas y paquetes de datos</li>
+                    <li>Capacitación en mostrador</li>
+                  </ul>
+                  <a class="btn btn--line hx-ops__card-btn" href="https://www.att.com.mx/" target="_blank" rel="noopener noreferrer">Ver página</a>
+                </div>
+              </div>
             </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">03</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Academia YAAVS</strong>
-              <p>Capacitación continua en ventas, operación y ejecución en campo.</p>
+
+            <article class="hx-ops__card hx-ops__card--movistar" role="tab" tabindex="-1" aria-selected="false" data-hx-op="movistar">
+              <img class="hx-ops__card-photo" src="assets/operadores/movistar.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
+              <span class="hx-ops__card-bg" aria-hidden="true"></span>
+              <span class="hx-ops__card-glow" aria-hidden="true"></span>
+              <span class="hx-ops__card-scan" aria-hidden="true"></span>
+              <div class="hx-ops__card-ribbon" aria-hidden="true">03</div>
+              <div class="hx-ops__card-label">
+                <img class="hx-ops__card-logo" src="assets/operadores/movistar-carriers.svg" alt="Movistar" width="140" height="48">
+                <span class="hx-ops__card-name">Movistar</span>
+              </div>
+              <div class="hx-ops__card-body">
+                <div class="hx-ops__card-panel">
+                  <header class="hx-ops__card-panel-head">
+                    <img class="hx-ops__card-logo hx-ops__card-logo--panel" src="assets/operadores/movistar-carriers.svg" alt="Movistar" width="180" height="64">
+                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
+                  </header>
+                  <p class="hx-ops__card-lead">Chip, eSIM, recargas y vinculación</p>
+                  <p class="hx-ops__card-desc">Línea completa Movistar con visitas comerciales, rotulación en tu local y seguimiento de ventas.</p>
+                  <ul class="hx-ops__card-list">
+                    <li>Chip y eSIM Movistar</li>
+                    <li>Tiempo aire y paquetes</li>
+                    <li>Vinculación de equipos</li>
+                  </ul>
+                  <a class="btn btn--line hx-ops__card-btn" href="https://www.movistar.com.mx/" target="_blank" rel="noopener noreferrer">Ver página</a>
+                </div>
+              </div>
             </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">04</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>RecargaKlic</strong>
-              <p>App para activar líneas, recargar saldo y controlar operaciones desde tienda.</p>
-            </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">05</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Portabilidad</strong>
-              <p>Cambios de compañía conservando número con proceso guiado y seguro.</p>
-            </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">06</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Tiempo aire</strong>
-              <p>Recargas instantáneas de múltiples operadores con comisión por venta.</p>
-            </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">07</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Liberaciones</strong>
-              <p>Procesos de desbloqueo con soporte y acompañamiento comercial.</p>
-            </article>
-            <article class="hx-group__brand">
-              <span class="hx-group__brand-index">08</span>
-              <span class="hx-group__brand-tag">Unidad</span>
-              <strong>Soporte técnico</strong>
-              <p>Atención operativa para mantener activo y rentable cada negocio afiliado.</p>
+
+            <article class="hx-ops__card hx-ops__card--unefon" role="tab" tabindex="-1" aria-selected="false" data-hx-op="unefon">
+              <img class="hx-ops__card-photo" src="assets/operadores/unefon.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
+              <span class="hx-ops__card-bg" aria-hidden="true"></span>
+              <span class="hx-ops__card-glow" aria-hidden="true"></span>
+              <span class="hx-ops__card-scan" aria-hidden="true"></span>
+              <div class="hx-ops__card-ribbon" aria-hidden="true">04</div>
+              <div class="hx-ops__card-label">
+                <img class="hx-ops__card-logo hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="Unefon" width="130" height="78">
+                <span class="hx-ops__card-name">Unefon</span>
+              </div>
+              <div class="hx-ops__card-body">
+                <div class="hx-ops__card-panel">
+                  <header class="hx-ops__card-panel-head">
+                    <img class="hx-ops__card-logo hx-ops__card-logo--panel hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="Unefon" width="170" height="102">
+                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
+                  </header>
+                  <p class="hx-ops__card-lead">Prepago, recargas y portabilidad</p>
+                  <p class="hx-ops__card-desc">Activa líneas, recarga saldo y atiende portabilidades con inventario y respaldo directo de la red YAAVS.</p>
+                  <ul class="hx-ops__card-list">
+                    <li>Activaciones Unefon</li>
+                    <li>Recargas ilimitadas y paquetes</li>
+                    <li>Portabilidad entrante</li>
+                  </ul>
+                  <a class="btn btn--line hx-ops__card-btn" href="https://www.unefon.com.mx/" target="_blank" rel="noopener noreferrer">Ver página</a>
+                </div>
+              </div>
             </article>
           </div>
+          <button
+            type="button"
+            class="hx-ops__toggle"
+            data-hx-ops-toggle
+            aria-controls="hx-ops-grid"
+            aria-expanded="false"
+            hidden
+          >
+            ¿Quieres ver más?
+          </button>
+          <div class="hx-ops__picker" id="hx-ops-picker" data-hx-ops-picker hidden>
+            <button
+              type="button"
+              class="hx-ops__picker-backdrop"
+              data-hx-ops-picker-close
+              aria-label="Cerrar selector de compañía"
+            ></button>
+            <div class="hx-ops__picker-dialog" role="dialog" aria-modal="true" aria-labelledby="hx-ops-picker-title">
+              <button
+                type="button"
+                class="hx-ops__picker-close"
+                data-hx-ops-picker-close
+                aria-label="Cerrar selector de compañía"
+              >
+                ×
+              </button>
+              <p class="hx-ops__picker-kicker">Escoge tu compañía</p>
+              <h5 class="hx-ops__picker-title" id="hx-ops-picker-title">Selecciona una opción</h5>
+              <div class="hx-ops__picker-grid">
+                <button type="button" class="hx-ops__picker-option hx-ops__picker-option--bait" data-hx-ops-select="bait">
+                  <img class="hx-ops__picker-option-logo" src="assets/operadores/bait-carriers.svg" alt="" width="100" height="40">
+                  <span class="hx-ops__picker-option-label">BAIT</span>
+                </button>
+                <button type="button" class="hx-ops__picker-option hx-ops__picker-option--att" data-hx-ops-select="att">
+                  <img class="hx-ops__picker-option-logo" src="assets/operadores/att-carriers.svg" alt="" width="110" height="40">
+                  <span class="hx-ops__picker-option-label">AT&amp;T</span>
+                </button>
+                <button type="button" class="hx-ops__picker-option hx-ops__picker-option--movistar" data-hx-ops-select="movistar">
+                  <img class="hx-ops__picker-option-logo" src="assets/operadores/movistar-carriers.svg" alt="" width="90" height="40">
+                  <span class="hx-ops__picker-option-label">Movistar</span>
+                </button>
+                <button type="button" class="hx-ops__picker-option hx-ops__picker-option--unefon" data-hx-ops-select="unefon">
+                  <img class="hx-ops__picker-option-logo hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="" width="84" height="50">
+                  <span class="hx-ops__picker-option-label">Unefon</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hx-testimonials hx-testimonials--cinema" id="testimonios-home" aria-label="Testimonios de socios" data-hx-testimonials data-hx-autoplay="3200">
+        <div class="hx-testimonials__beam" aria-hidden="true"></div>
+        <div class="container">
+          <header class="hx-testimonials__head" data-hx-reveal>
+            <h2>Lo que dicen <span class="hx-testimonials__accent">nuestros Yaavsers</span></h2>
+            <p class="hx-testimonials__sub">Historias reales de socios que crecieron con visitas, rotulación y respaldo YAAVS en todo México.</p>
+          </header>
+        </div>
+        <div class="hx-testimonials__stage">
+          <div class="hx-testimonials__frame">
+            <div class="hx-testimonials__viewport" aria-roledescription="carrusel" aria-label="Testimonios">
+            <ul class="hx-testimonials__track" data-hx-testimonials-track>
+              <li class="hx-testimonials__slide is-active" data-hx-testimonial-index="0">
+                <figure class="hx-testimonials__tile">
+                  <img class="hx-testimonials__photo" src="assets/testimonios/karen-duran.png" alt="Karen Durán — Celular Solution" width="900" height="900" loading="lazy" decoding="async">
+                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>Karen Durán</cite>
+                        <span>Celular Solution</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="hx-testimonials__slide" data-hx-testimonial-index="1">
+                <figure class="hx-testimonials__tile">
+                  <img class="hx-testimonials__photo" src="assets/testimonios/jose-mendez.png" alt="José Juan Méndez — Smart Accesorios" width="900" height="900" loading="lazy" decoding="async">
+                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>José Juan Méndez</cite>
+                        <span>Smart Accesorios</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="hx-testimonials__slide" data-hx-testimonial-index="2">
+                <figure class="hx-testimonials__tile">
+                  <img class="hx-testimonials__photo" src="assets/testimonios/abraham-manjarez.png" alt="Abraham Manjarez — Mc Covers" width="900" height="900" loading="lazy" decoding="async">
+                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>Abraham Manjarez</cite>
+                        <span>Mc Covers</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="hx-testimonials__slide" data-hx-testimonial-index="3">
+                <figure class="hx-testimonials__tile">
+                  <img class="hx-testimonials__photo" src="assets/testimonios/viviana-gonzalez.png" alt="Viviana González — Toxic" width="900" height="900" loading="lazy" decoding="async">
+                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>Viviana González</cite>
+                        <span>Toxic</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+            </div>
+            <div class="hx-testimonials__progress" aria-hidden="true"><span></span></div>
+          </div>
+        </div>
+        <div class="container hx-testimonials__foot">
+          <div class="hx-testimonials__controls" aria-label="Controles del carrusel">
+            <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--prev" aria-label="Testimonio anterior">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="hx-testimonials__dots" role="tablist" aria-label="Ir a testimonio">
+              <button type="button" class="hx-testimonials__dot is-active" data-hx-testimonial-go="0" aria-label="Testimonio 1" aria-current="true"></button>
+              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="1" aria-label="Testimonio 2"></button>
+              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="2" aria-label="Testimonio 3"></button>
+              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="3" aria-label="Testimonio 4"></button>
+            </div>
+            <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--next" aria-label="Siguiente testimonio">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="hx-testimonials__more">
+            <a href="testimonios.html" class="btn btn--line">Ver todos los testimonios</a>
+          </p>
         </div>
       </section>
 
@@ -287,401 +724,6 @@
           </div>
         </div>
 
-        <div class="hx-ops" id="carriers" data-hx-ops data-hx-reveal>
-          <header class="hx-ops__head">
-            <p class="hx-ops__eyebrow">Multi-operador</p>
-            <h3 class="hx-ops__title">Las compañías que <span class="hx-services__cyan">vendes</span> con YAAVS</h3>
-            <p class="hx-ops__hint hx-ops__hint--desktop">Haz clic en un operador para conocer más</p>
-            <p class="hx-ops__hint hx-ops__hint--mobile">Toca un operador para conocer más</p>
-          </header>
-
-          <button type="button" class="hx-ops__back" aria-label="Volver a todos los carriers" hidden>
-            <span class="hx-ops__back-icon" aria-hidden="true">←</span>
-            <span>Todos los carriers</span>
-          </button>
-
-          <div class="hx-ops__deck" role="tablist" aria-label="Compañías aliadas YAAVS">
-            <article class="hx-ops__card hx-ops__card--intro is-active" role="tab" tabindex="0" aria-selected="true" data-hx-op="intro">
-              <img class="hx-ops__intro-photo" src="assets/hero-telecom/hero-telecom-3.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-              <span class="hx-ops__intro-veil" aria-hidden="true"></span>
-              <span class="hx-ops__card-bg" aria-hidden="true"></span>
-              <span class="hx-ops__card-glow" aria-hidden="true"></span>
-              <div class="hx-ops__intro-hero">
-                <p class="hx-ops__intro-hero-kicker">Multi-operador</p>
-                <h4 class="hx-ops__intro-hero-title">Conoce nuestras <span class="hx-services__cyan">compañías</span></h4>
-                <p class="hx-ops__intro-hero-desc">En YAAVS manejamos BAIT, AT&amp;T, Movistar y Unefon. Activaciones, recargas y portabilidades de todas las compañías en un solo mostrador: el tuyo.</p>
-              </div>
-              <div class="hx-ops__card-label">
-                <span class="hx-ops__intro-short hx-ops__intro-short--compact">Compañías</span>
-                <span class="hx-ops__intro-short hx-ops__intro-short--full">Conoce nuestras compañías</span>
-              </div>
-              <div class="hx-ops__card-body">
-                <div class="hx-ops__card-panel hx-ops__intro-panel">
-                  <header class="hx-ops__card-panel-head">
-                    <span class="hx-ops__card-kicker">Multi-compañía</span>
-                  </header>
-                  <h4 class="hx-ops__intro-title">Conoce nuestras <span class="hx-services__cyan">compañías</span></h4>
-                  <p class="hx-ops__intro-desc">Selecciona BAIT, AT&amp;T, Movistar o Unefon para ver activaciones, recargas y todo lo que puedes vender con YAAVS en tu mostrador.</p>
-                  <div class="hx-ops__intro-logos" aria-hidden="true">
-                    <img src="assets/operadores/bait-carriers.svg" alt="" width="80" height="32">
-                    <img src="assets/operadores/att-carriers.svg" alt="" width="80" height="32">
-                    <img src="assets/operadores/movistar-carriers.svg" alt="" width="90" height="32">
-                    <img class="hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="" width="80" height="48">
-                  </div>
-                  <p class="hx-ops__intro-cta">Elige BAIT, AT&amp;T, Movistar o Unefon ↓</p>
-                  <div class="hx-ops__intro-actions">
-                    <a class="btn btn--primary hx-ops__intro-btn" href="activar-chip.html">Ir a activaciones</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <div class="hx-ops__grid">
-            <article class="hx-ops__card hx-ops__card--bait" role="tab" tabindex="-1" aria-selected="false" data-hx-op="bait">
-              <img class="hx-ops__card-photo" src="assets/operadores/bait.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
-              <span class="hx-ops__card-bg" aria-hidden="true"></span>
-              <span class="hx-ops__card-glow" aria-hidden="true"></span>
-              <span class="hx-ops__card-scan" aria-hidden="true"></span>
-              <div class="hx-ops__card-ribbon" aria-hidden="true">01</div>
-              <div class="hx-ops__card-label">
-                <img class="hx-ops__card-logo" src="assets/operadores/bait-carriers.svg" alt="BAIT" width="120" height="48">
-              </div>
-              <div class="hx-ops__card-body">
-                <div class="hx-ops__card-panel">
-                  <header class="hx-ops__card-panel-head">
-                    <img class="hx-ops__card-logo hx-ops__card-logo--panel" src="assets/operadores/bait-carriers.svg" alt="BAIT" width="160" height="64">
-                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
-                  </header>
-                  <p class="hx-ops__card-lead">SIM, recargas y material en tu mostrador</p>
-                  <p class="hx-ops__card-desc">Planes prepago accesibles con respaldo comercial, visitas en tu zona e inventario listo para vender.</p>
-                  <ul class="hx-ops__card-list">
-                    <li>Activación de chip Bait</li>
-                    <li>Recargas y paquetes</li>
-                    <li>Material POS en tu tienda</li>
-                  </ul>
-                  <a class="btn btn--line hx-ops__card-btn" href="https://mibait.com/" target="_blank" rel="noopener noreferrer">Ver página</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="hx-ops__card hx-ops__card--att" role="tab" tabindex="-1" aria-selected="false" data-hx-op="att">
-              <img class="hx-ops__card-photo" src="assets/operadores/att.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
-              <span class="hx-ops__card-bg" aria-hidden="true"></span>
-              <span class="hx-ops__card-glow" aria-hidden="true"></span>
-              <span class="hx-ops__card-scan" aria-hidden="true"></span>
-              <div class="hx-ops__card-ribbon" aria-hidden="true">02</div>
-              <div class="hx-ops__card-label">
-                <img class="hx-ops__card-logo" src="assets/operadores/att-carriers.svg" alt="AT&amp;T" width="120" height="48">
-              </div>
-              <div class="hx-ops__card-body">
-                <div class="hx-ops__card-panel">
-                  <header class="hx-ops__card-panel-head">
-                    <img class="hx-ops__card-logo hx-ops__card-logo--panel" src="assets/operadores/att-carriers.svg" alt="AT&amp;T" width="160" height="64">
-                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
-                  </header>
-                  <p class="hx-ops__card-lead">Altas, portabilidad y tiempo aire</p>
-                  <p class="hx-ops__card-desc">Todo el flujo AT&amp;T desde RecargaKlic: activaciones, recargas y soporte de ejecutivo en tu zona.</p>
-                  <ul class="hx-ops__card-list">
-                    <li>Portabilidad y altas</li>
-                    <li>Recargas y paquetes de datos</li>
-                    <li>Capacitación en mostrador</li>
-                  </ul>
-                  <a class="btn btn--line hx-ops__card-btn" href="https://www.att.com.mx/" target="_blank" rel="noopener noreferrer">Ver página</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="hx-ops__card hx-ops__card--movistar" role="tab" tabindex="-1" aria-selected="false" data-hx-op="movistar">
-              <img class="hx-ops__card-photo" src="assets/operadores/movistar.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
-              <span class="hx-ops__card-bg" aria-hidden="true"></span>
-              <span class="hx-ops__card-glow" aria-hidden="true"></span>
-              <span class="hx-ops__card-scan" aria-hidden="true"></span>
-              <div class="hx-ops__card-ribbon" aria-hidden="true">03</div>
-              <div class="hx-ops__card-label">
-                <img class="hx-ops__card-logo" src="assets/operadores/movistar-carriers.svg" alt="Movistar" width="140" height="48">
-              </div>
-              <div class="hx-ops__card-body">
-                <div class="hx-ops__card-panel">
-                  <header class="hx-ops__card-panel-head">
-                    <img class="hx-ops__card-logo hx-ops__card-logo--panel" src="assets/operadores/movistar-carriers.svg" alt="Movistar" width="180" height="64">
-                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
-                  </header>
-                  <p class="hx-ops__card-lead">Chip, eSIM, recargas y vinculación</p>
-                  <p class="hx-ops__card-desc">Línea completa Movistar con visitas comerciales, rotulación en tu local y seguimiento de ventas.</p>
-                  <ul class="hx-ops__card-list">
-                    <li>Chip y eSIM Movistar</li>
-                    <li>Tiempo aire y paquetes</li>
-                    <li>Vinculación de equipos</li>
-                  </ul>
-                  <a class="btn btn--line hx-ops__card-btn" href="https://www.movistar.com.mx/" target="_blank" rel="noopener noreferrer">Ver página</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="hx-ops__card hx-ops__card--unefon" role="tab" tabindex="-1" aria-selected="false" data-hx-op="unefon">
-              <img class="hx-ops__card-photo" src="assets/operadores/unefon.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
-              <span class="hx-ops__card-bg" aria-hidden="true"></span>
-              <span class="hx-ops__card-glow" aria-hidden="true"></span>
-              <span class="hx-ops__card-scan" aria-hidden="true"></span>
-              <div class="hx-ops__card-ribbon" aria-hidden="true">04</div>
-              <div class="hx-ops__card-label">
-                <img class="hx-ops__card-logo hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="Unefon" width="130" height="78">
-              </div>
-              <div class="hx-ops__card-body">
-                <div class="hx-ops__card-panel">
-                  <header class="hx-ops__card-panel-head">
-                    <img class="hx-ops__card-logo hx-ops__card-logo--panel hx-ops__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="Unefon" width="170" height="102">
-                    <span class="hx-ops__card-kicker">Disponible con YAAVS</span>
-                  </header>
-                  <p class="hx-ops__card-lead">Prepago, recargas y portabilidad</p>
-                  <p class="hx-ops__card-desc">Activa líneas, recarga saldo y atiende portabilidades con inventario y respaldo directo de la red YAAVS.</p>
-                  <ul class="hx-ops__card-list">
-                    <li>Activaciones Unefon</li>
-                    <li>Recargas ilimitadas y paquetes</li>
-                    <li>Portabilidad entrante</li>
-                  </ul>
-                  <a class="btn btn--line hx-ops__card-btn" href="https://www.unefon.com.mx/" target="_blank" rel="noopener noreferrer">Ver página</a>
-                </div>
-              </div>
-            </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="hx-pulse" aria-label="La red en números" data-hx-pulse>
-        <div class="hx-pulse__mesh" aria-hidden="true"></div>
-        <div class="hx-pulse__scan" aria-hidden="true"></div>
-        <div class="hx-pulse__inner">
-          <p class="hx-pulse__label" data-hx-reveal>Red YAAVS · México</p>
-          <div class="hx-pulse__stats">
-            <div class="hx-pulse__stat" data-hx-reveal>
-              <span class="hx-pulse__num" data-hx-count="10000" data-hx-format="k">0</span>
-              <span class="hx-pulse__cap">Puntos de venta</span>
-            </div>
-            <div class="hx-pulse__stat" data-hx-reveal>
-              <span class="hx-pulse__num" data-hx-count="100" data-hx-suffix="%">0</span>
-              <span class="hx-pulse__cap">Empresa mexicana</span>
-            </div>
-            <div class="hx-pulse__stat" data-hx-reveal>
-              <span class="hx-pulse__num">Multi</span>
-              <span class="hx-pulse__cap">Operador y servicios</span>
-            </div>
-          </div>
-          <div class="hx-pulse__operators" data-hx-reveal>
-            <span>Telcel</span>
-            <span>Unefon</span>
-            <span>AT&amp;T</span>
-            <span>Movistar</span>
-            <span>RecargaKlic</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="hx-services" id="servicios-preview" aria-label="Nuestros servicios">
-        <header class="hx-services__head">
-          <h2 data-hx-reveal><span class="hx-services__cyan">Nuestros</span> servicios</h2>
-          <p class="hx-services__hint" data-hx-reveal>Haz clic para ver instrucciones · desliza en móvil</p>
-        </header>
-        <div class="hx-services__rail" data-hx-rail tabindex="0">
-          <button type="button" class="hx-svc hx-svc--navy hx-svc--photo" data-hx-svc="portabilidad" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/servicios/portabilidad.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">Portabilidad</span>
-              <p class="hx-svc__desc">Cambia el número de tus clientes de una compañía actual a otra.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
-          <button type="button" class="hx-svc hx-svc--gold hx-svc--photo" data-hx-svc="activaciones" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/servicios/activaciones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">Activaciones</span>
-              <p class="hx-svc__desc">Activa tus SIMs desde nuestra aplicación: RecargaKlic.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
-          <button type="button" class="hx-svc hx-svc--green hx-svc--photo" data-hx-svc="esims" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/servicios/esim.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">eSIMs</span>
-              <p class="hx-svc__desc">Activa líneas digitales sin chip físico, rápido y desde tu mostrador.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
-          <button type="button" class="hx-svc hx-svc--violet hx-svc--photo" data-hx-svc="tiempo-aire" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/servicios/tiempo-aire.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">Tiempo aire</span>
-              <p class="hx-svc__desc">Haz recargas de las principales compañías.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
-          <button type="button" class="hx-svc hx-svc--coral hx-svc--photo" data-hx-svc="vinculaciones" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/servicios/vinculaciones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">Vinculaciones</span>
-              <p class="hx-svc__desc">Vincula equipos y líneas de tus clientes con respaldo YAAVS.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
-        </div>
-        <div class="hx-services__progress" aria-hidden="true"><span></span></div>
-
-        <div class="hx-svc-panel" data-hx-svc-panel hidden aria-hidden="true">
-          <div class="hx-svc-panel__backdrop" data-hx-svc-panel-close tabindex="-1"></div>
-          <div
-            class="hx-svc-panel__sheet"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="hx-svc-panel-title"
-          >
-            <button type="button" class="hx-svc-panel__close" data-hx-svc-panel-close aria-label="Cerrar panel">
-              <span aria-hidden="true">×</span>
-            </button>
-            <div class="hx-svc-panel__head">
-              <img class="hx-svc-panel__icon" data-hx-svc-panel-icon src="" alt="" width="80" height="80" hidden>
-              <div>
-                <p class="hx-svc-panel__kicker" data-hx-svc-panel-kicker hidden></p>
-                <h3 class="hx-svc-panel__title" id="hx-svc-panel-title" data-hx-svc-panel-title></h3>
-              </div>
-            </div>
-            <p class="hx-svc-panel__desc" data-hx-svc-panel-desc></p>
-            <ol class="hx-svc-panel__steps" data-hx-svc-panel-steps></ol>
-            <div class="hx-svc-panel__actions">
-              <a href="#" class="btn btn--primary" data-hx-svc-panel-link>Acceder al servicio</a>
-              <a href="contacto.html" class="btn btn--line">Solicitar ayuda</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="video-banner hx-video" id="presentacion-video" aria-label="Video presentación YAAVS">
-        <div class="video-banner__media" data-presentacion-video></div>
-        <div class="video-banner__shade" aria-hidden="true"></div>
-        <div class="video-banner__overlay">
-          <p class="video-banner__label">Presentación</p>
-          <button type="button" class="video-banner__play" aria-label="Reproducir video de presentación YAAVS">
-            <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/><path d="M26 20 L46 32 L26 44 Z" fill="currentColor"/></svg>
-          </button>
-        </div>
-      </section>
-
-      <section class="hx-testimonials hx-testimonials--cinema" id="testimonios-home" aria-label="Testimonios de socios" data-hx-testimonials data-hx-autoplay="3200">
-        <div class="hx-testimonials__beam" aria-hidden="true"></div>
-        <div class="container">
-          <header class="hx-testimonials__head" data-hx-reveal>
-            <h2>Lo que dicen <span class="hx-testimonials__accent">nuestros Yaavsers</span></h2>
-            <p class="hx-testimonials__sub">Historias reales de socios que crecieron con visitas, rotulación y respaldo YAAVS en todo México.</p>
-          </header>
-        </div>
-        <div class="hx-testimonials__stage">
-          <div class="hx-testimonials__frame">
-            <div class="hx-testimonials__viewport" aria-roledescription="carrusel" aria-label="Testimonios">
-            <ul class="hx-testimonials__track" data-hx-testimonials-track>
-              <li class="hx-testimonials__slide is-active" data-hx-testimonial-index="0">
-                <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/karen-duran.png" alt="Karen Durán — Celular Solution" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
-                  <figcaption class="hx-testimonials__overlay">
-                    <blockquote class="hx-testimonials__card">
-                      <p class="hx-testimonials__quote">Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.</p>
-                      <footer class="hx-testimonials__author">
-                        <cite>Karen Durán</cite>
-                        <span>Celular Solution</span>
-                      </footer>
-                    </blockquote>
-                  </figcaption>
-                </figure>
-              </li>
-              <li class="hx-testimonials__slide" data-hx-testimonial-index="1">
-                <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/jose-mendez.png" alt="José Juan Méndez — Smart Accesorios" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
-                  <figcaption class="hx-testimonials__overlay">
-                    <blockquote class="hx-testimonials__card">
-                      <p class="hx-testimonials__quote">Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.</p>
-                      <footer class="hx-testimonials__author">
-                        <cite>José Juan Méndez</cite>
-                        <span>Smart Accesorios</span>
-                      </footer>
-                    </blockquote>
-                  </figcaption>
-                </figure>
-              </li>
-              <li class="hx-testimonials__slide" data-hx-testimonial-index="2">
-                <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/abraham-manjarez.png" alt="Abraham Manjarez — Mc Covers" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
-                  <figcaption class="hx-testimonials__overlay">
-                    <blockquote class="hx-testimonials__card">
-                      <p class="hx-testimonials__quote">La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.</p>
-                      <footer class="hx-testimonials__author">
-                        <cite>Abraham Manjarez</cite>
-                        <span>Mc Covers</span>
-                      </footer>
-                    </blockquote>
-                  </figcaption>
-                </figure>
-              </li>
-              <li class="hx-testimonials__slide" data-hx-testimonial-index="3">
-                <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/viviana-gonzalez.png" alt="Viviana González — Toxic" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
-                  <figcaption class="hx-testimonials__overlay">
-                    <blockquote class="hx-testimonials__card">
-                      <p class="hx-testimonials__quote">Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.</p>
-                      <footer class="hx-testimonials__author">
-                        <cite>Viviana González</cite>
-                        <span>Toxic</span>
-                      </footer>
-                    </blockquote>
-                  </figcaption>
-                </figure>
-              </li>
-            </ul>
-            </div>
-            <div class="hx-testimonials__progress" aria-hidden="true"><span></span></div>
-          </div>
-        </div>
-        <div class="container hx-testimonials__foot">
-          <div class="hx-testimonials__controls" aria-label="Controles del carrusel">
-            <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--prev" aria-label="Testimonio anterior">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="hx-testimonials__dots" role="tablist" aria-label="Ir a testimonio">
-              <button type="button" class="hx-testimonials__dot is-active" data-hx-testimonial-go="0" aria-label="Testimonio 1" aria-current="true"></button>
-              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="1" aria-label="Testimonio 2"></button>
-              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="2" aria-label="Testimonio 3"></button>
-              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="3" aria-label="Testimonio 4"></button>
-            </div>
-            <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--next" aria-label="Siguiente testimonio">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-          <p class="hx-testimonials__more">
-            <a href="testimonios.html" class="btn btn--line">Ver todos los testimonios</a>
-          </p>
-        </div>
       </section>
 
       <section class="hx-raffle" id="calendario-sorteos" aria-label="Calendario de sorteos">
@@ -779,19 +821,6 @@
               </table>
             </div>
             <a href="https://ganayaavs.com/" class="hx-raffle__cta" target="_blank" rel="noopener noreferrer">Ir a Ganayaavs.com</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="hx-cta" aria-label="Llamada a la acción">
-        <div class="hx-cta__ring" aria-hidden="true"></div>
-        <div class="hx-cta__inner" data-hx-reveal>
-          <span class="hx-eyebrow">Red YAAVS</span>
-          <h2>¿Listo para vender telecom con respaldo real?</h2>
-          <p>Afíliate como Yaavser o platícanos tu proyecto. Te respondemos con un ejecutivo en tu zona.</p>
-          <div class="hx-cta__actions">
-            <a href="ser-yaavser.html" class="btn btn--primary">Quiero ser Yaavser</a>
-            <a href="contacto.html" class="btn btn--line">Contactar a YAAVS</a>
           </div>
         </div>
       </section>
@@ -930,11 +959,6 @@
           "js/home-experience.js",
         ]);
       });
-
-      loadWhenVisible("#presentacion-video", "presentacion-video", [
-        "js/presentacion-video.config.js",
-        "js/presentacion-video.js",
-      ], "340px 0px");
 
       loadWhenVisible("[data-hx-testimonials]", "home-testimonials", [
         "js/home-testimonials-carousel.js",

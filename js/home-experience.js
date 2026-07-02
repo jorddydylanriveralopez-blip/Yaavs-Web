@@ -167,9 +167,8 @@
     });
   }
 
-  /* Carril servicios — progreso, tilt y panel flotante */
+  /* Carril servicios — autoplay, tilt y panel flotante */
   const rail = root.querySelector("[data-hx-rail]");
-  const progress = root.querySelector(".hx-services__progress span");
   const panel = root.querySelector("[data-hx-svc-panel]");
   const panelSheet = panel?.querySelector(".hx-svc-panel__sheet");
   const panelIcon = panel?.querySelector("[data-hx-svc-panel-icon]");
@@ -180,72 +179,154 @@
   const panelLink = panel?.querySelector("[data-hx-svc-panel-link]");
 
   const SERVICE_PANELS = {
+    prepago: {
+      theme: "gold",
+      kicker: "Alta demanda",
+      icon: "assets/operadores/bait.jpg",
+      title: "Prepago",
+      desc: "Vende chips, paquetes y recargas de alta rotacion para acelerar ventas diarias en tu punto YAAVS.",
+      steps: [
+        "Valida inventario de SIM prepago disponibles por operador.",
+        "Abre RecargaKlic y selecciona activacion prepago.",
+        "Captura datos del cliente y completa la activacion de la linea.",
+        "Ofrece paquete inicial y confirma que el saldo quede aplicado.",
+      ],
+      link: { href: "servicios.html", label: "Ver servicios prepago" },
+    },
+    postpago: {
+      theme: "navy",
+      kicker: "Plan mensual",
+      icon: "assets/operadores/att.jpg",
+      title: "Postpago",
+      desc: "Gestiona altas y renovaciones postpago con seguimiento comercial y respaldo operativo YAAVS.",
+      steps: [
+        "Identifica el perfil del cliente y el plan postpago adecuado.",
+        "Reune documentacion requerida y valida datos del titular.",
+        "Registra la solicitud en la plataforma indicada por el operador.",
+        "Da seguimiento al alta y confirma activacion con el cliente.",
+      ],
+      link: { href: "servicios.html", label: "Ver flujo postpago" },
+    },
+    recargaklic: {
+      theme: "green",
+      kicker: "App oficial",
+      icon: "assets/servicios/activaciones.jpg",
+      title: "RecargaKlic",
+      desc: "Controla activaciones, recargas y operacion diaria desde una sola app para tu mostrador.",
+      steps: [
+        "Inicia sesion en RecargaKlic con tu cuenta de Yaavser.",
+        "Selecciona el modulo: activaciones, recargas o consulta.",
+        "Ejecuta la operacion y revisa el folio de confirmacion.",
+        "Guarda comprobantes para control y soporte posterior.",
+      ],
+      link: { href: "activar-chip.html", label: "Abrir RecargaKlic" },
+    },
+    "tiempo-aire": {
+      theme: "violet",
+      icon: "assets/servicios/tiempo-aire.jpg",
+      title: "Tiempo aire",
+      desc: "Recargas de Telcel, AT&T, Movistar, Unefon y mas desde un solo punto de venta.",
+      steps: [
+        "Abre RecargaKlic y entra al modulo de tiempo aire o recargas.",
+        "Elige la compañia y el monto que solicita el cliente.",
+        "Ingresa el numero a recargar y confirma la operacion.",
+        "Entrega ticket o comprobante; el saldo se refleja al instante.",
+      ],
+      link: { href: "servicios.html#tiempo-aire", label: "Ver catalogo de recargas" },
+    },
     portabilidad: {
       theme: "navy",
       icon: "assets/servicios/portabilidad.jpg",
       title: "Portabilidad",
-      desc: "Cambia el número de tus clientes de una compañía a otra con el respaldo de la red YAAVS en todo México.",
+      desc: "Cambia el numero de tus clientes de una compañia a otra con respaldo de la red YAAVS.",
       steps: [
-        "Solicita al cliente su NIP y verifica que la línea esté activa.",
-        "Ingresa a RecargaKlic o al portal YAAVS con tus credenciales de Yaavser.",
-        "Captura los datos del cliente y el operador de origen y destino.",
+        "Solicita al cliente su NIP y verifica que la linea este activa.",
+        "Ingresa a RecargaKlic o al portal YAAVS con tus credenciales.",
+        "Captura datos del cliente y del operador de origen y destino.",
         "Confirma la portabilidad y entrega comprobante al cliente.",
       ],
-      link: { href: "servicios.html#portabilidad", label: "Ver guía completa" },
+      link: { href: "servicios.html#portabilidad", label: "Ver guia completa" },
     },
     activaciones: {
       theme: "gold",
       kicker: "RecargaKlic",
       icon: "assets/servicios/activaciones.jpg",
       title: "Activaciones",
-      desc: "Activa SIM en minutos desde la app RecargaKlic: menos filas, más ventas y comisiones claras.",
+      desc: "Activa SIM en minutos desde RecargaKlic: menos filas, mas ventas y comisiones claras.",
       steps: [
         "Abre RecargaKlic en tu celular o tablet del mostrador.",
         "Escanea o ingresa el ICCID de la SIM que vas a activar.",
-        "Selecciona operador, plan y datos del cliente según el flujo.",
-        "Finaliza la activación y guarda el comprobante para soporte.",
+        "Selecciona operador, plan y datos del cliente segun el flujo.",
+        "Finaliza la activacion y guarda el comprobante para soporte.",
       ],
-      link: { href: "activar-chip.html", label: "Cómo activar un chip" },
+      link: { href: "activar-chip.html", label: "Como activar un chip" },
+    },
+    "soporte-tecnico": {
+      theme: "coral",
+      icon: "assets/hero-telecom/hero-telecom-5.jpg",
+      title: "Soporte tecnico",
+      desc: "Resuelve fallas de operacion y incidencias para mantener tu tienda activa y productiva.",
+      steps: [
+        "Detecta la incidencia y registra evidencias basicas del caso.",
+        "Levanta el folio con datos de linea, equipo o transaccion.",
+        "Comparte informacion con soporte YAAVS por el canal oficial.",
+        "Da seguimiento hasta el cierre y confirma solucion con cliente.",
+      ],
+      link: { href: "contacto.html", label: "Solicitar soporte tecnico" },
+    },
+    rotulaciones: {
+      theme: "green",
+      icon: "assets/hero-telecom/hero-portada-campeones.jpg",
+      title: "Rotulaciones",
+      desc: "Mejora la imagen de tu negocio con rotulacion comercial alineada a la identidad YAAVS.",
+      steps: [
+        "Comparte fotos y medidas actuales de tu punto de venta.",
+        "Define con YAAVS el concepto visual y materiales requeridos.",
+        "Aprueba propuesta final de imagen y ubicacion de piezas.",
+        "Programa instalacion y valida acabado final en sitio.",
+      ],
+      link: { href: "contacto.html", label: "Solicitar rotulacion" },
+    },
+    "academia-yaavs": {
+      theme: "violet",
+      kicker: "Formacion",
+      icon: "assets/quienes-somos-small-1.png",
+      title: "Academia YAAVS",
+      desc: "Capacitacion practica para ventas, atencion al cliente y ejecucion comercial en tienda.",
+      steps: [
+        "Revisa calendario de sesiones disponibles en Academia YAAVS.",
+        "Inscribe a tu equipo por modulo segun su rol comercial.",
+        "Completa entrenamientos y actividades de aplicacion en tienda.",
+        "Mide resultados en conversion, ticket y calidad de atencion.",
+      ],
+      link: { href: "ser-yaavser.html", label: "Ver formacion YAAVS" },
     },
     esims: {
       theme: "green",
       kicker: "RecargaKlic",
       icon: "assets/servicios/esim.jpg",
       title: "eSIMs",
-      desc: "Activa líneas digitales sin chip físico. Ideal para equipos compatibles y ventas más ágiles en tu tienda.",
+      desc: "Activa lineas digitales sin chip fisico. Ideal para equipos compatibles y ventas agiles.",
       steps: [
-        "Confirma que el equipo del cliente es compatible con eSIM.",
-        "Abre RecargaKlic y selecciona el flujo de activación eSIM.",
-        "Escanea el código QR del operador o ingresa los datos de la eSIM.",
-        "Completa la activación y verifica señal con el cliente antes de cerrar.",
+        "Confirma que el equipo del cliente sea compatible con eSIM.",
+        "Abre RecargaKlic y selecciona el flujo de activacion eSIM.",
+        "Escanea el codigo QR del operador o ingresa datos de eSIM.",
+        "Completa activacion y verifica señal con el cliente antes de cerrar.",
       ],
       link: { href: "activar-chip.html", label: "Activar eSIM en RecargaKlic" },
-    },
-    "tiempo-aire": {
-      theme: "violet",
-      icon: "assets/servicios/tiempo-aire.jpg",
-      title: "Tiempo aire",
-      desc: "Recargas de Telcel, AT&T, Movistar, Unefon y más desde un solo punto de venta.",
-      steps: [
-        "Abre RecargaKlic y entra al módulo de tiempo aire o recargas.",
-        "Elige la compañía y el monto que solicita el cliente.",
-        "Ingresa el número a recargar y confirma la operación.",
-        "Entrega ticket o comprobante; el saldo se refleja al instante.",
-      ],
-      link: { href: "servicios.html#tiempo-aire", label: "Ver catálogo de recargas" },
     },
     vinculaciones: {
       theme: "coral",
       icon: "assets/servicios/vinculaciones.jpg",
       title: "Vinculaciones",
-      desc: "Vincula equipos, líneas y cuentas de tus clientes al ecosistema YAAVS con soporte comercial en tu zona.",
+      desc: "Vincula equipos, lineas y cuentas de clientes al ecosistema YAAVS con soporte comercial.",
       steps: [
-        "Solicita IMEI, número de línea y datos del titular al cliente.",
-        "Ingresa a RecargaKlic o al portal YAAVS con tu usuario Yaavser.",
-        "Registra la vinculación según el operador y tipo de servicio.",
-        "Guarda el folio de vinculación y confirma con tu ejecutivo si aplica.",
+        "Solicita IMEI, numero de linea y datos del titular al cliente.",
+        "Ingresa a RecargaKlic o al portal YAAVS con tu usuario.",
+        "Registra la vinculacion segun operador y tipo de servicio.",
+        "Guarda folio de vinculacion y confirma con tu ejecutivo si aplica.",
       ],
-      link: { href: "contacto.html", label: "Solicitar vinculación" },
+      link: { href: "contacto.html", label: "Solicitar vinculacion" },
     },
   };
 
@@ -332,26 +413,105 @@
     });
   }
 
-  rail?.querySelectorAll("[data-hx-svc]").forEach((card) => {
-    card.addEventListener("click", () => {
+  if (rail) {
+    const baseCards = [...rail.querySelectorAll(".hx-svc")];
+
+    if (!reduced && baseCards.length > 2 && !rail.dataset.hxLoopReady) {
+      const fragment = document.createDocumentFragment();
+      baseCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.dataset.hxLoopClone = "true";
+        clone.tabIndex = -1;
+        clone.setAttribute("aria-hidden", "true");
+        fragment.appendChild(clone);
+      });
+      rail.appendChild(fragment);
+      rail.dataset.hxLoopReady = "true";
+    }
+
+    rail.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-hx-svc]");
+      if (!card || !rail.contains(card)) return;
       openServicePanel(card.dataset.hxSvc);
     });
-  });
 
-  if (rail && progress) {
-    const updateProgress = () => {
-      const max = rail.scrollWidth - rail.clientWidth;
-      if (max <= 0) {
-        progress.style.width = "100%";
-        return;
-      }
-      const ratio = rail.scrollLeft / max;
-      const segment = 100 / Math.max(1, rail.children.length);
-      progress.style.width = `${segment + ratio * (100 - segment)}%`;
-    };
-    rail.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("resize", updateProgress, { passive: true });
-    updateProgress();
+    if (!reduced && rail.dataset.hxLoopReady === "true") {
+      let rafId = 0;
+      let paused = false;
+      let resumeTimeout = 0;
+
+      const getLoopSize = () => rail.scrollWidth / 2;
+
+      const normalizePosition = () => {
+        const size = getLoopSize();
+        if (size <= 0) return;
+        if (rail.scrollLeft <= 0) {
+          rail.scrollLeft += size;
+        } else if (rail.scrollLeft >= size) {
+          rail.scrollLeft -= size;
+        }
+      };
+
+      const setPaused = (value, delay = 0) => {
+        if (resumeTimeout) {
+          window.clearTimeout(resumeTimeout);
+          resumeTimeout = 0;
+        }
+        if (!value && delay > 0) {
+          resumeTimeout = window.setTimeout(() => {
+            paused = false;
+            resumeTimeout = 0;
+          }, delay);
+          return;
+        }
+        paused = value;
+      };
+
+      const tick = () => {
+        if (!paused) {
+          rail.scrollLeft -= 0.55;
+          normalizePosition();
+        }
+        rafId = window.requestAnimationFrame(tick);
+      };
+
+      window.requestAnimationFrame(() => {
+        rail.scrollLeft = Math.max(getLoopSize(), 1);
+        rafId = window.requestAnimationFrame(tick);
+      });
+
+      rail.addEventListener("mouseenter", () => setPaused(true));
+      rail.addEventListener("mouseleave", () => setPaused(false));
+      rail.addEventListener("focusin", () => setPaused(true));
+      rail.addEventListener("focusout", () => setPaused(false, 160));
+      rail.addEventListener("pointerdown", () => setPaused(true));
+      rail.addEventListener("pointerup", () => setPaused(false, 1200));
+      rail.addEventListener("touchstart", () => setPaused(true), { passive: true });
+      rail.addEventListener("touchend", () => setPaused(false, 1200), { passive: true });
+
+      window.addEventListener(
+        "resize",
+        () => {
+          const size = getLoopSize();
+          if (size > 0 && rail.scrollLeft < size * 0.5) {
+            rail.scrollLeft = size;
+          }
+        },
+        { passive: true }
+      );
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          setPaused(true);
+        } else {
+          setPaused(false, 120);
+        }
+      });
+
+      window.addEventListener("beforeunload", () => {
+        if (rafId) window.cancelAnimationFrame(rafId);
+      });
+    }
   }
 
   if (rail && !reduced) {
@@ -394,13 +554,48 @@
   if (opsDeck) {
     const opCards = opsDeck.querySelectorAll(".hx-ops__card");
     const introCard = opsDeck.querySelector('[data-hx-op="intro"]');
+    const carrierCards = Array.from(opCards).filter((card) => card.dataset.hxOp !== "intro");
+    const opsGrid = opsDeck.querySelector(".hx-ops__grid");
+    const opsToggle = opsDeck.querySelector("[data-hx-ops-toggle]");
     const opsBack = opsDeck.querySelector(".hx-ops__back");
+    const opsPicker = opsDeck.querySelector("[data-hx-ops-picker]");
+    const opsPickerOpen = opsDeck.querySelector("[data-hx-ops-picker-open]");
+    const opsPickerClose = opsDeck.querySelectorAll("[data-hx-ops-picker-close]");
+    const opsPickerOptions = opsDeck.querySelectorAll("[data-hx-ops-select]");
     const mobileOps = window.matchMedia("(max-width: 900px)");
+
+    function setOpsPickerOpen(open, { restoreFocus = true } = {}) {
+      if (!opsPicker || !opsPickerOpen) return;
+
+      opsPicker.hidden = !open;
+      opsPickerOpen.setAttribute("aria-expanded", String(open));
+      document.documentElement.classList.toggle("has-hx-ops-picker", open);
+      document.body.classList.toggle("has-hx-ops-picker", open);
+
+      if (open) {
+        const firstOption = opsPicker.querySelector("[data-hx-ops-select]");
+        requestAnimationFrame(() => firstOption?.focus());
+      } else if (restoreFocus) {
+        requestAnimationFrame(() => opsPickerOpen.focus());
+      }
+    }
+
+    function syncOpsPreview() {
+      if (!opsGrid) return;
+
+      const hasCarrierActive = opsDeck.classList.contains("has-carrier-active");
+      opsGrid.hidden = mobileOps.matches && !hasCarrierActive;
+      if (opsToggle) opsToggle.hidden = true;
+    }
 
     function syncOpsState(card) {
       const isCarrier = card?.dataset?.hxOp !== "intro";
       opsDeck.classList.toggle("has-carrier-active", isCarrier);
       if (opsBack) opsBack.hidden = !isCarrier;
+      if (!isCarrier) {
+        setOpsPickerOpen(false, { restoreFocus: false });
+      }
+      syncOpsPreview();
     }
 
     function activateOp(card) {
@@ -415,6 +610,7 @@
         c.tabIndex = active ? 0 : -1;
       });
 
+      setOpsPickerOpen(false, { restoreFocus: false });
       syncOpsState(card);
 
       if (card?.dataset?.hxOp !== "intro") {
@@ -427,7 +623,42 @@
       }
     }
 
+    opsPickerOpen?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpsPickerOpen(true);
+    });
+
+    opsPickerClose.forEach((button) => {
+      button.addEventListener("click", () => setOpsPickerOpen(false));
+    });
+
+    opsPickerOptions.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetCard = carrierCards.find((card) => card.dataset.hxOp === button.dataset.hxOpsSelect);
+        if (targetCard) activateOp(targetCard);
+      });
+    });
+
     opsBack?.addEventListener("click", () => activateOp(introCard));
+
+    const onMobileOpsChange = () => {
+      setOpsPickerOpen(false, { restoreFocus: false });
+      syncOpsPreview();
+    };
+
+    if (typeof mobileOps.addEventListener === "function") {
+      mobileOps.addEventListener("change", onMobileOpsChange);
+    } else if (typeof mobileOps.addListener === "function") {
+      mobileOps.addListener(onMobileOpsChange);
+    }
+
+    opsPicker?.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpsPickerOpen(false);
+      }
+    });
 
     opCards.forEach((card) => {
       const glow = card.querySelector(".hx-ops__card-glow");
@@ -456,5 +687,12 @@
         }
       });
     });
+
+    const initialCard = opsDeck.querySelector(".hx-ops__card.is-active") || introCard || opCards[0];
+    if (initialCard) {
+      syncOpsState(initialCard);
+    } else {
+      syncOpsPreview();
+    }
   }
 })();

@@ -606,6 +606,24 @@ body.page-home {
   color: #fff0d8;
 }
 
+@media (max-width: 900px) {
+  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--bait {
+    --ops-brand-bg: #e4007a;
+  }
+
+  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--att {
+    --ops-brand-bg: #009fdb;
+  }
+
+  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--movistar {
+    --ops-brand-bg: #00a650;
+  }
+
+  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--unefon {
+    --ops-brand-bg: #f5d020;
+  }
+}
+
 /* Pulse — banda AT&T oscura (sin tarjetas blancas) */
 .page-home .hx-pulse {
   background: linear-gradient(180deg, #002855 0%, #001840 55%, #001030 100%);
@@ -705,6 +723,63 @@ body.page-home {
 
 .page-home .hx-services__progress span {
   background: linear-gradient(90deg, var(--hx-att-blue), var(--hx-att-navy));
+}
+
+@media (min-width: 1024px) {
+  .page-home .hx-services__rail {
+    max-width: none;
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: clamp(18px, 2.8vw, 52px);
+    gap: clamp(12px, 1.1vw, 18px);
+  }
+
+  .page-home .hx-svc {
+    flex: 0 0 clamp(270px, 21vw, 360px);
+    min-height: clamp(360px, 48vh, 540px);
+    border-radius: clamp(18px, 1.2vw, 24px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-home .hx-svc {
+    flex-basis: clamp(300px, 18vw, 380px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .page-home .hx-services__rail {
+    padding-inline: max(10px, var(--pad-x));
+    gap: clamp(12px, 3.2vw, 18px);
+  }
+
+  .page-home .hx-svc {
+    flex-basis: min(86vw, 420px);
+    min-height: clamp(320px, 66vw, 460px);
+    border-radius: clamp(16px, 4vw, 22px);
+  }
+}
+
+@media (max-width: 600px) {
+  .page-home .hx-svc {
+    flex-basis: min(88vw, 360px);
+    min-height: clamp(300px, 92vw, 420px);
+  }
+}
+
+@media (min-width: 1600px) {
+  .page-home .hx-services__head h2 {
+    font-size: clamp(2.6rem, 3.5vw, 4.4rem);
+  }
+
+  .page-home .hx-services__rail {
+    padding-inline: clamp(30px, 3vw, 70px);
+  }
+
+  .page-home .hx-svc {
+    flex-basis: clamp(320px, 16vw, 420px);
+    min-height: clamp(420px, 52vh, 620px);
+  }
 }
 
 /* Video */
@@ -889,10 +964,18 @@ body.page-home {
 }
 
 .page-home .hero-word--accent {
+  color: #36c7ff;
+  -webkit-text-fill-color: #36c7ff;
   text-shadow:
     0 2px 4px rgba(0, 0, 0, 0.88),
     0 8px 28px rgba(0, 0, 0, 0.65),
-    0 0 28px rgba(51, 181, 232, 0.4);
+    0 0 22px rgba(34, 193, 255, 0.75),
+    0 0 42px rgba(34, 193, 255, 0.52);
+}
+
+.page-home .hero-promo__accent {
+  color: #36c7ff;
+  -webkit-text-fill-color: #36c7ff;
 }
 
 @keyframes hero-autoplay-progress {

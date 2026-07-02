@@ -44,7 +44,7 @@ window.YAAVS_HERO_CAROUSEL = {
         accent: "YAAVS",
         lead: "Retail, distribución y soporte integrados bajo una sola visión empresarial.",
         cta: "Conocer el grupo",
-        href: "#grupo-yaavs",
+        href: "#quienes-somos",
       },
     },
     {

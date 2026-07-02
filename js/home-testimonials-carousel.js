@@ -228,8 +228,183 @@
     });
   }
 
+  function initReel(root) {
+    var slides = Array.prototype.slice.call(
+      root.querySelectorAll("[data-tx-reel-slide]")
+    );
+    if (!slides.length) return;
+
+    var progress = root.querySelector("[data-tx-reel-progress]");
+    var autoplayMs = Number(root.getAttribute("data-tx-reel-autoplay")) || 4800;
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var current = 0;
+    var timer = null;
+
+    function runProgress() {
+      if (!progress || reducedMotion) return;
+      progress.style.animation = "none";
+      void progress.offsetWidth;
+      progress.style.animation =
+        "tx-reel-progress " + autoplayMs / 1000 + "s linear forwards";
+    }
+
+    function update(index) {
+      current = ((index % slides.length) + slides.length) % slides.length;
+      slides.forEach(function (slide, slideIndex) {
+        var active = slideIndex === current;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+      runProgress();
+    }
+
+    function next() {
+      update(current + 1);
+    }
+
+    function stop() {
+      if (!timer) return;
+      clearInterval(timer);
+      timer = null;
+    }
+
+    function start() {
+      stop();
+      if (reducedMotion || slides.length < 2) return;
+      runProgress();
+      timer = setInterval(next, autoplayMs);
+    }
+
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", function (e) {
+      if (!root.contains(e.relatedTarget)) start();
+    });
+
+    update(0);
+    start();
+  }
+
+  function initFireworks(canvas) {
+    if (!canvas || !canvas.getContext) return;
+
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    var particles = [];
+    var rafId = 0;
+    var lastTime = 0;
+    var lastBurst = -1000;
+    var burstCount = 0;
+    var maxBursts = window.matchMedia("(max-width: 720px)").matches ? 4 : 6;
+    var colors = ["#00eeff", "#33b5e8", "#ffd54a", "#ff5fc7", "#7cff85"];
+    var endAt = performance.now() + 5200;
+    var width = 0;
+    var height = 0;
+    var dpr = 1;
+
+    function resize() {
+      var bounds = canvas.parentElement.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = bounds.width;
+      height = bounds.height;
+      canvas.width = Math.max(1, Math.round(width * dpr));
+      canvas.height = Math.max(1, Math.round(height * dpr));
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function burst(x, y) {
+      for (var i = 0; i < 26; i += 1) {
+        var angle = (Math.PI * 2 * i) / 26 + Math.random() * 0.18;
+        var speed = 1.2 + Math.random() * 2.4;
+        particles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          radius: 1.2 + Math.random() * 1.8,
+          life: 0,
+          ttl: 700 + Math.random() * 400,
+          alpha: 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
+      }
+    }
+
+    function maybeBurst(now) {
+      if (burstCount >= maxBursts) return;
+      if (now - lastBurst < 520) return;
+      lastBurst = now;
+      burstCount += 1;
+      burst(
+        width * (0.18 + Math.random() * 0.64),
+        height * (0.18 + Math.random() * 0.3)
+      );
+    }
+
+    function draw(now) {
+      if (!lastTime) lastTime = now;
+      var delta = now - lastTime;
+      lastTime = now;
+
+      maybeBurst(now);
+      ctx.clearRect(0, 0, width, height);
+
+      particles = particles.filter(function (particle) {
+        particle.life += delta;
+        if (particle.life >= particle.ttl) return false;
+
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.vy += 0.02;
+        particle.vx *= 0.992;
+        particle.vy *= 0.992;
+        particle.alpha = 1 - particle.life / particle.ttl;
+
+        ctx.beginPath();
+        ctx.fillStyle = particle.color;
+        ctx.globalAlpha = particle.alpha * 0.9;
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fill();
+        return true;
+      });
+
+      ctx.globalAlpha = 1;
+
+      if (now < endAt || particles.length) {
+        rafId = window.requestAnimationFrame(draw);
+      } else {
+        ctx.clearRect(0, 0, width, height);
+      }
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    rafId = window.requestAnimationFrame(draw);
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden && rafId) {
+        window.cancelAnimationFrame(rafId);
+        rafId = 0;
+      } else if (!document.hidden && !rafId && particles.length) {
+        lastTime = 0;
+        rafId = window.requestAnimationFrame(draw);
+      }
+    });
+  }
+
   function boot() {
     document.querySelectorAll("[data-hx-testimonials]").forEach(initCarousel);
+    document.querySelectorAll("[data-tx-reel]").forEach(initReel);
+    document
+      .querySelectorAll("[data-testimonios-fireworks]")
+      .forEach(initFireworks);
   }
 
   if (document.readyState === "loading") {

@@ -39,9 +39,13 @@ window.YAAVS_PAGE_BANNERS = {
     interval: 6500,
   },
   testimonios: {
-    images: ["assets/hero-banner-2.jpg", "assets/hero-banner-3.jpg"],
-    poster: "assets/hero-banner-4.jpg",
-    interval: 6000,
+    images: [
+      "assets/yaavser/cliente-satisfecho.jpg",
+      "assets/hero-telecom/hero-portada-campeones.jpg",
+      "assets/hero-telecom/hero-campeones-vincula.png",
+    ],
+    poster: "assets/yaavser/cliente-satisfecho.jpg",
+    interval: 6500,
   },
   "activar-chip": {
     images: ["assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg"],
