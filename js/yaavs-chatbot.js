@@ -61,7 +61,7 @@
     fab.setAttribute("aria-label", isOpen ? "Minimizar YaavBot" : "Abrir YaavBot");
 
     if (fabLabel) {
-      fabLabel.textContent = isMin ? "YaavBot · Minimizado" : "YaavBot";
+      fabLabel.textContent = isMin ? "YaavBot · Minimizado" : "YaavBot · IA";
     }
 
     if (fabIconOpen) fabIconOpen.hidden = isOpen;

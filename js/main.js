@@ -46,17 +46,74 @@
     });
 
     if (vacante && contactAsunto) {
-      contactAsunto.value = "Bolsa de trabajo";
+      contactAsunto.value = "Ser Yaavstar";
       if (msgField) msgField.value = `Me interesa la vacante: ${vacante}.`;
     } else {
       const stored = sessionStorage.getItem("yaavs-vacante");
       if (stored && contactAsunto && window.location.pathname.includes("contacto")) {
-        contactAsunto.value = "Bolsa de trabajo";
+        contactAsunto.value = "Ser Yaavstar";
         if (msgField && !msgField.value.trim()) {
           msgField.value = `Me interesa la vacante: ${stored}.`;
         }
         sessionStorage.removeItem("yaavs-vacante");
       }
+    }
+  }
+
+  function initActivationOperatorContext() {
+    if (!window.location.pathname.includes("activar-chip")) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const operator = (params.get("operador") || "").toLowerCase();
+    if (!operator) return;
+
+    const labels = {
+      bait: {
+        eyebrow: "BAIT",
+        title: "BAIT",
+        lead: "Activa y vende BAIT con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de BAIT",
+      },
+      att: {
+        eyebrow: "AT&T",
+        title: "AT&T",
+        lead: "Activa y vende AT&T con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de AT&T",
+      },
+      movistar: {
+        eyebrow: "Movistar",
+        title: "Movistar",
+        lead: "Activa y vende Movistar con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de Movistar",
+      },
+      unefon: {
+        eyebrow: "Unefon",
+        title: "Unefon",
+        lead: "Activa y vende Unefon con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de Unefon",
+      },
+    };
+
+    const config = labels[operator];
+    if (!config) return;
+
+    const eyebrowEl = document.querySelector("[data-activar-eyebrow]");
+    const titleEl = document.querySelector("[data-activar-title]");
+    const leadEl = document.querySelector("[data-activar-lead]");
+    const ctaEl = document.querySelector("[data-activar-cta]");
+    const anchor = document.querySelector(".scroll-hint--activar");
+
+    if (eyebrowEl) eyebrowEl.textContent = config.eyebrow;
+    if (titleEl) titleEl.textContent = config.title;
+    if (leadEl) leadEl.textContent = config.lead;
+    if (ctaEl) {
+      ctaEl.textContent = config.cta;
+      ctaEl.style.display = "inline-flex";
+    }
+    if (anchor) {
+      anchor.href = "#canales";
+      const anchorLabel = anchor.querySelector(".scroll-hint-label");
+      if (anchorLabel) anchorLabel.textContent = "Ir a canales";
     }
   }
 
@@ -95,6 +152,7 @@
   function boot() {
     initForms();
     initJobApply();
+    initActivationOperatorContext();
     initReveal();
     initHeroParallax();
   }

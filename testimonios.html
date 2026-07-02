@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css">
   <link rel="stylesheet" href="theme-day-night.css">
+  <link rel="stylesheet" href="interior-corporate.css">
+  <link rel="stylesheet" href="home-experience.css">
   <link rel="icon" href="https://www.yaavs.com.mx/images/logo.svg" type="image/svg+xml">
 </head>
 <body class="theme-cluster page-testimonios" data-page="testimonios">
@@ -47,35 +49,142 @@
       <div class="avisos-hero-banner__rule" aria-hidden="true"></div>
     </section>
 
-    <div class="pleca pleca--bridge" aria-hidden="true">
-      <span class="pleca__line"></span>
-      <span class="pleca__label">Historias reales</span>
-      <span class="pleca__line"></span>
-    </div>
-
-    <div id="trust-strip"></div>
-
-    <section class="section section--testimonios" id="voces" aria-label="Testimonios de Yaavsers">
+    <section class="hx-testimonials hx-testimonials--page" id="voces" aria-label="Testimonios de socios" data-hx-testimonials data-hx-autoplay="6000">
       <div class="container">
-        <div class="testimonials-grid">
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">KD</span><div><cite>Karen Durán</cite><span>Celular Solution</span></div></div>
-            <p>«Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.»</p>
-          </blockquote>
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">JM</span><div><cite>José Juan Méndez</cite><span>Smart Accesorios</span></div></div>
-            <p>«Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.»</p>
-          </blockquote>
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">AM</span><div><cite>Abraham Manjarez</cite><span>Mc Covers</span></div></div>
-            <p>«La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.»</p>
-          </blockquote>
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">VG</span><div><cite>Viviana González</cite><span>Toxic</span></div></div>
-            <p>«Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.»</p>
-          </blockquote>
+        <header class="hx-testimonials__head">
+          <span class="hx-eyebrow">Historias reales</span>
+          <h2>Voces que <span class="hx-testimonials__accent">impulsan la red</span></h2>
+          <p class="hx-testimonials__lead">Socios comerciales en todo México que crecieron con visitas, rotulación, eventos y respaldo YAAVS.</p>
+        </header>
+      </div>
+      <div class="hx-testimonials__frame">
+        <div class="hx-testimonials__viewport" aria-roledescription="carrusel" aria-label="Testimonios">
+          <ul class="hx-testimonials__track" data-hx-testimonials-track>
+            <li class="hx-testimonials__slide is-active" data-hx-testimonial-index="0">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/karen-duran.png" alt="Karen Durán — Celular Solution" width="900" height="900" loading="eager" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Karen Durán</cite>
+                      <span>Celular Solution</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="1">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/jose-mendez.png" alt="José Juan Méndez — Smart Accesorios" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>José Juan Méndez</cite>
+                      <span>Smart Accesorios</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="2">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/abraham-manjarez.png" alt="Abraham Manjarez — Mc Covers" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Abraham Manjarez</cite>
+                      <span>Mc Covers</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="3">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/viviana-gonzalez.png" alt="Viviana González — Toxic" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Viviana González</cite>
+                      <span>Toxic</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="4">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/portada-08.png" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">La red YAAVS me dio herramientas reales para competir en mi zona y ganar la confianza de mis clientes.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Socio comercial</cite>
+                      <span>Red YAAVS · CDMX</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="5">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/portada-09.png" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Rotulación, visitas y eventos en un solo socio. Eso es lo que hace diferente a YAAVS.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Socio comercial</cite>
+                      <span>Red YAAVS · México</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="6">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/portada-10.png" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Recomiendo YAAVS a quien quiera crecer con telecom: respaldo, capacitación y presencia en punto de venta.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Socio comercial</cite>
+                      <span>Red YAAVS</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
         </div>
-        <p class="page-actions">
+        <div class="hx-testimonials__controls" aria-label="Controles del carrusel">
+          <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--prev" aria-label="Testimonio anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="hx-testimonials__dots" role="tablist" aria-label="Ir a testimonio">
+            <button type="button" class="hx-testimonials__dot is-active" data-hx-testimonial-go="0" aria-label="Testimonio 1" aria-current="true"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="1" aria-label="Testimonio 2"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="2" aria-label="Testimonio 3"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="3" aria-label="Testimonio 4"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="4" aria-label="Testimonio 5"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="5" aria-label="Testimonio 6"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="6" aria-label="Testimonio 7"></button>
+          </div>
+          <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--next" aria-label="Siguiente testimonio">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <p class="hx-testimonials__more page-actions">
           <a href="ser-yaavser.html" class="btn btn--primary">Quiero ser Yaavser</a>
           <a href="contacto.html" class="btn btn--line">Contactar</a>
         </p>
@@ -90,5 +199,6 @@
   <script src="js/main.js"></script>
   <script src="js/interior-banners.config.js"></script>
   <script src="js/interior-banner.js"></script>
+  <script src="js/home-testimonials-carousel.js" defer></script>
 </body>
 </html>

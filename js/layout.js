@@ -128,7 +128,7 @@
   }
 
   function revealFloatingDock() {
-    document.querySelectorAll(".social-float, .theme-toggle, .yaavbot").forEach((el) => {
+    document.querySelectorAll(".social-float, .yaavbot").forEach((el) => {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -155,15 +155,10 @@
 
     await loadPartial("partials/social-float.html", mount);
 
-    const toggle = mount.querySelector("#yaavs-theme-toggle");
     const dock = mount.querySelector(".social-float");
     if (!dock) {
       mount.remove();
       return;
-    }
-
-    if (toggle) {
-      document.body.appendChild(toggle);
     }
 
     document.body.appendChild(dock);
@@ -189,7 +184,10 @@
   }
 
   async function mountChatbot() {
-    if (document.querySelector("[data-yaavbot]")) return;
+    if (document.querySelector("[data-yaavbot]")) {
+      revealFloatingDock();
+      return;
+    }
 
     const mount = document.createElement("div");
     mount.id = "yaavbot-mount";
