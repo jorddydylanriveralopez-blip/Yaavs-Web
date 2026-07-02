@@ -740,10 +740,9 @@
     height: 100dvh;
   }
 
-  /* Logos de carriers más abajo para no chocar con el encabezado flotante */
-  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label {
-    align-items: flex-end;
-    padding-bottom: clamp(140px, 26vh, 260px);
+  /* Solo bajar los logos de los carriers (columnas colapsadas) */
+  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label .hx-ops__card-logo {
+    transform: translateY(clamp(140px, 20vh, 220px));
   }
 }
 
