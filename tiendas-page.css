@@ -1,176 +1,69 @@
 body.page-tiendas {
-  background: #030b18;
-  color: #f2f8ff;
+  background: #020916;
+  color: #fff;
 }
 
 .page-tiendas #contenido.tiendas-view {
-  position: relative;
-  padding-top: clamp(88px, 10vh, 118px);
+  --tiendas-header-offset: clamp(82px, 10vh, 112px);
+  padding-top: var(--tiendas-header-offset);
   min-height: 100dvh;
-  overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 0% 0%, rgba(0, 159, 219, 0.2) 0%, transparent 60%),
-    radial-gradient(120% 90% at 100% 100%, rgba(0, 48, 135, 0.2) 0%, transparent 64%),
-    linear-gradient(180deg, #031024 0%, #020816 100%);
-}
-
-.tiendas-view__intro {
-  position: relative;
-  z-index: 3;
-  max-width: min(1060px, 100% - 2 * var(--pad-x));
-  margin: 0 auto;
-  padding: 0 0 14px;
-  text-align: center;
-}
-
-.tiendas-view__kicker {
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  padding: 7px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 159, 219, 0.55);
-  background: rgba(0, 48, 135, 0.35);
-  color: #76dbff;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.tiendas-view__title {
-  margin: 14px auto 0;
-  max-width: 20ch;
-  color: #fff;
-  font-size: clamp(1.6rem, 3.5vw, 2.85rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  text-wrap: balance;
-}
-
-.tiendas-view__lead {
-  margin: 12px auto 0;
-  max-width: 74ch;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(0.92rem, 1.4vw, 1.04rem);
-  line-height: 1.55;
+  background: #020916;
 }
 
 .tiendas-strips {
-  position: relative;
-  z-index: 2;
   width: 100%;
+  min-height: calc(100dvh - var(--tiendas-header-offset));
   display: grid;
   grid-template-rows: repeat(4, minmax(0, 1fr));
-  min-height: clamp(640px, calc(100dvh - 224px), 980px);
 }
 
 .tiendas-strip {
-  --strip-accent: #00a8ff;
   position: relative;
-  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.28);
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .tiendas-strip:hover {
-  transform: scale(1.01);
-  filter: saturate(1.08);
-}
-
-.tiendas-strip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.1) 0,
-      rgba(255, 255, 255, 0.1) 16px,
-      transparent 16px,
-      transparent 42px
-    );
-  opacity: 0.2;
-}
-
-.tiendas-strip::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(120% 160% at 100% 0%, color-mix(in srgb, var(--strip-accent) 28%, transparent) 0%, transparent 66%),
-    linear-gradient(120deg, rgba(2, 8, 20, 0.4) 0%, rgba(2, 8, 20, 0.1) 100%);
+  transform: scale(1.005);
+  filter: brightness(1.08);
 }
 
 .tiendas-strip__logo {
   width: auto;
-  height: clamp(52px, 8.2vh, 98px);
-  max-width: min(84vw, 420px);
+  height: clamp(54px, 8.8vh, 102px);
+  max-width: min(86vw, 440px);
   object-fit: contain;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.48));
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
 }
 
 .tiendas-strip__logo--unefon {
-  height: clamp(60px, 9.4vh, 116px);
-}
-
-.tiendas-strip__meta {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(10px, 2vh, 20px);
-  transform: translateX(-50%);
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--strip-accent) 76%, #fff);
-  background: color-mix(in srgb, var(--strip-accent) 20%, transparent);
-  color: #fff;
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  height: clamp(62px, 10vh, 118px);
 }
 
 .tiendas-strip--bait {
-  --strip-accent: #ffcb05;
-  background: linear-gradient(90deg, #1e150f 0%, #320f2d 56%, #5f2732 100%);
+  background: #6a0f4f;
 }
 
 .tiendas-strip--att {
-  --strip-accent: #00a8ff;
-  background: linear-gradient(90deg, #07204d 0%, #153773 52%, #2f67af 100%);
+  background: #00479f;
 }
 
 .tiendas-strip--movistar {
-  --strip-accent: #68db22;
-  background: linear-gradient(90deg, #0a351c 0%, #1f5f2f 50%, #3f9647 100%);
+  background: #188b3c;
 }
 
 .tiendas-strip--unefon {
-  --strip-accent: #ffd65b;
-  background: linear-gradient(90deg, #32280c 0%, #634f13 48%, #9e8131 100%);
+  background: #98721c;
 }
 
 @media (max-width: 900px) {
   .page-tiendas #contenido.tiendas-view {
-    padding-top: clamp(82px, 13vh, 110px);
-  }
-
-  .tiendas-view__title {
-    max-width: 16ch;
-  }
-
-  .tiendas-strips {
-    min-height: clamp(560px, calc(100dvh - 230px), 900px);
+    --tiendas-header-offset: clamp(78px, 12vh, 104px);
   }
 
   .tiendas-strip__logo {
@@ -179,28 +72,11 @@ body.page-tiendas {
 }
 
 @media (max-width: 640px) {
-  .tiendas-view__intro {
-    max-width: min(100% - 28px, 620px);
-  }
-
-  .tiendas-view__kicker {
-    font-size: 0.62rem;
-  }
-
-  .tiendas-view__lead {
-    font-size: 0.9rem;
-  }
-
-  .tiendas-strip__meta {
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-  }
-
   .tiendas-strip__logo {
-    height: clamp(44px, 7.6vh, 74px);
+    height: clamp(44px, 8vh, 74px);
   }
 
   .tiendas-strip__logo--unefon {
-    height: clamp(52px, 8.6vh, 88px);
+    height: clamp(52px, 9vh, 88px);
   }
 }
