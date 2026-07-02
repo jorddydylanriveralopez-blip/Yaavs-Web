@@ -165,6 +165,37 @@ body.page-home {
   font-size: clamp(0.98rem, 1.9vw, 1.1rem);
 }
 
+.page-home .hx-group__lead strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.page-home .hx-group__units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .hx-group__units li {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 159, 219, 0.45);
+  background: linear-gradient(180deg, rgba(0, 48, 135, 0.58) 0%, rgba(0, 18, 45, 0.72) 100%);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
 .page-home .hx-group__actions {
   display: flex;
   flex-wrap: wrap;
@@ -175,19 +206,38 @@ body.page-home {
 .page-home .hx-group__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .page-home .hx-group__brand {
   position: relative;
+  overflow: hidden;
   padding: 20px 18px 18px;
   border-radius: 18px;
   border: 1px solid rgba(0, 159, 219, 0.22);
   background:
-    linear-gradient(180deg, rgba(0, 48, 135, 0.72) 0%, rgba(0, 18, 45, 0.9) 100%);
+    linear-gradient(180deg, rgba(0, 48, 135, 0.78) 0%, rgba(0, 18, 45, 0.92) 100%);
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.page-home .hx-group__brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(0, 159, 219, 0.18) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.page-home .hx-group__brand:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 159, 219, 0.55);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(0, 159, 219, 0.14) inset;
 }
 
 .page-home .hx-group__brand-index {
@@ -205,9 +255,22 @@ body.page-home {
   letter-spacing: 0.16em;
 }
 
+.page-home .hx-group__brand-tag {
+  display: inline-flex;
+  margin-left: 8px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .page-home .hx-group__brand strong {
   display: block;
-  margin-bottom: 10px;
+  margin: 12px 0 10px;
   font-size: 1.02rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -224,6 +287,15 @@ body.page-home {
 @media (max-width: 900px) {
   .page-home .hx-group__inner {
     grid-template-columns: 1fr;
+  }
+
+  .page-home .hx-group__units {
+    gap: 8px;
+  }
+
+  .page-home .hx-group__units li {
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
   }
 
   .page-home .hx-group__grid {
