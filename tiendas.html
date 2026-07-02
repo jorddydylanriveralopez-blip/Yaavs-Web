@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script src="js/yaavs-theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Conoce nuestras tiendas YAAVS en todo México y abre el mapa por compañía: BAIT, AT&T, Movistar y Unefon.">
+  <title>Conoce nuestras tiendas | YAAVS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="decorations.css">
+  <link rel="stylesheet" href="theme-light.css">
+  <link rel="stylesheet" href="theme-day-night.css">
+  <link rel="stylesheet" href="tiendas-page.css">
+  <link rel="icon" href="assets/yaavs-logo.png" type="image/png">
+</head>
+<body class="theme-cluster page-tiendas" data-page="tiendas">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <section class="tiendas-hero" aria-label="Cobertura nacional YAAVS">
+      <div class="container tiendas-hero__inner">
+        <p class="tiendas-hero__eyebrow">Cobertura nacional YAAVS</p>
+        <h1 class="tiendas-hero__title">Conoce nuestras tiendas en toda la Republica Mexicana</h1>
+        <p class="tiendas-hero__lead">
+          YAAVS tiene presencia a nivel nacional con puntos de venta y atencion comercial en todo el pais.
+          Elige la compania para abrir su mapa y ubicar tiendas cercanas.
+        </p>
+        <div class="tiendas-hero__chips" aria-label="Cobertura por zonas">
+          <span>Norte</span>
+          <span>Centro</span>
+          <span>Bajio</span>
+          <span>Sur-Sureste</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="tiendas-directory" aria-label="Mapa por compania">
+      <div class="container">
+        <header class="tiendas-directory__head">
+          <p class="tiendas-directory__kicker">Selecciona una compania</p>
+          <h2>Encuentra puntos de venta por marca</h2>
+          <p>Haz clic en una franja para abrir el mapa de tiendas de esa compania.</p>
+        </header>
+
+        <div class="tiendas-bands">
+          <a class="tiendas-band tiendas-band--bait" href="https://www.google.com/maps/search/?api=1&query=tiendas+BAIT+M%C3%A9xico" target="_blank" rel="noopener noreferrer" aria-label="Ver tiendas BAIT en el mapa">
+            <span class="tiendas-band__logo-wrap">
+              <img class="tiendas-band__logo" src="assets/operadores/bait-carriers.svg" alt="BAIT" width="180" height="72" loading="lazy" decoding="async">
+            </span>
+            <span class="tiendas-band__content">
+              <span class="tiendas-band__name">BAIT</span>
+              <span class="tiendas-band__desc">Ubica puntos BAIT por ciudad y zona comercial.</span>
+            </span>
+            <span class="tiendas-band__cta">Ver mapa</span>
+          </a>
+
+          <a class="tiendas-band tiendas-band--att" href="https://www.google.com/maps/search/?api=1&query=tiendas+AT%26T+M%C3%A9xico" target="_blank" rel="noopener noreferrer" aria-label="Ver tiendas AT&T en el mapa">
+            <span class="tiendas-band__logo-wrap">
+              <img class="tiendas-band__logo" src="assets/operadores/att-carriers.svg" alt="AT&T" width="180" height="72" loading="lazy" decoding="async">
+            </span>
+            <span class="tiendas-band__content">
+              <span class="tiendas-band__name">AT&amp;T</span>
+              <span class="tiendas-band__desc">Consulta tiendas AT&amp;T disponibles en toda la Republica.</span>
+            </span>
+            <span class="tiendas-band__cta">Ver mapa</span>
+          </a>
+
+          <a class="tiendas-band tiendas-band--movistar" href="https://www.google.com/maps/search/?api=1&query=tiendas+Movistar+M%C3%A9xico" target="_blank" rel="noopener noreferrer" aria-label="Ver tiendas Movistar en el mapa">
+            <span class="tiendas-band__logo-wrap">
+              <img class="tiendas-band__logo" src="assets/operadores/movistar-carriers.svg" alt="Movistar" width="190" height="72" loading="lazy" decoding="async">
+            </span>
+            <span class="tiendas-band__content">
+              <span class="tiendas-band__name">Movistar</span>
+              <span class="tiendas-band__desc">Encuentra sucursales y puntos Movistar por region.</span>
+            </span>
+            <span class="tiendas-band__cta">Ver mapa</span>
+          </a>
+
+          <a class="tiendas-band tiendas-band--unefon" href="https://www.google.com/maps/search/?api=1&query=tiendas+Unefon+M%C3%A9xico" target="_blank" rel="noopener noreferrer" aria-label="Ver tiendas Unefon en el mapa">
+            <span class="tiendas-band__logo-wrap">
+              <img class="tiendas-band__logo tiendas-band__logo--unefon" src="assets/operadores/unefon-carriers.png" alt="Unefon" width="190" height="96" loading="lazy" decoding="async">
+            </span>
+            <span class="tiendas-band__content">
+              <span class="tiendas-band__name">Unefon</span>
+              <span class="tiendas-band__desc">Revisa ubicaciones Unefon para activaciones y recargas.</span>
+            </span>
+            <span class="tiendas-band__cta">Ver mapa</span>
+          </a>
+        </div>
+
+        <p class="tiendas-directory__note">
+          Si necesitas apoyo para ubicar el punto ideal para tu zona, <a href="contacto.html">contacta a un asesor YAAVS</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/layout.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
