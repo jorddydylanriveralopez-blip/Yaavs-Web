@@ -5,6 +5,10 @@ body.page-tiendas-map {
   color: #eef6ff;
 }
 
+.page-tiendas-map .nav-menu-hint {
+  display: none !important;
+}
+
 .page-tiendas-map #contenido.tiendas-map {
   padding-top: clamp(88px, 10vh, 118px);
   background:

@@ -3,6 +3,10 @@ body.page-tiendas {
   color: #fff;
 }
 
+.page-tiendas .nav-menu-hint {
+  display: none !important;
+}
+
 .page-tiendas #contenido.tiendas-view {
   --tiendas-header-offset: clamp(24px, 3.5vh, 40px);
   padding-top: var(--tiendas-header-offset);
