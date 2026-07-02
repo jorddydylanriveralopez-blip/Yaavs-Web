@@ -13,6 +13,11 @@
   background: transparent;
 }
 
+.page-home .hx-testimonials {
+  background:
+    linear-gradient(180deg, rgba(8, 14, 22, 0.96) 0%, rgba(10, 20, 32, 0.98) 100%);
+}
+
 body.theme-cluster:not(.page-home) #contenido {
   background-color: var(--bg);
   background-image: none;
@@ -2002,5 +2007,92 @@ body.yaavs-game-open {
   body.page-intro-active .site-floats,
   body.page-intro-done .site-floats {
     opacity: 1;
+  }
+}
+
+/* Destellos — home, bolsa y secciones con capa extra */
+.page-sparkles,
+.jobs-apply-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.page-sparkles {
+  position: fixed;
+  z-index: 3;
+}
+
+.page-sparkles::before,
+.page-sparkles::after,
+.jobs-apply-sparkles::before,
+.jobs-apply-sparkles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  opacity: 0.55;
+}
+
+.page-sparkles::before,
+.jobs-apply-sparkles::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 238, 255, 0.9) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.75) 0 1px, transparent 2px);
+  background-size: 280px 280px, 420px 420px, 360px 360px;
+  background-position: 12% 18%, 78% 24%, 45% 72%;
+  animation: page-sparkle-drift 18s ease-in-out infinite alternate;
+}
+
+.page-sparkles::after,
+.jobs-apply-sparkles::after {
+  background-image:
+    radial-gradient(circle, rgba(0, 238, 255, 0.85) 0 1px, transparent 2.5px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(0, 159, 219, 0.9) 0 1.5px, transparent 3px);
+  background-size: 320px 320px, 240px 240px, 400px 400px;
+  background-position: 88% 62%, 22% 48%, 62% 12%;
+  animation: page-sparkle-twinkle 4.5s ease-in-out infinite;
+}
+
+.page-sparkle {
+  position: absolute;
+  width: var(--sz, 3px);
+  height: var(--sz, 3px);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(0, 238, 255, 0.65);
+  opacity: 0;
+  animation: page-sparkle-pulse var(--dur, 3.2s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes page-sparkle-drift {
+  0% { transform: translateY(0); opacity: 0.35; }
+  100% { transform: translateY(-12px); opacity: 0.65; }
+}
+
+@keyframes page-sparkle-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes page-sparkle-pulse {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  45% { opacity: 0.95; transform: scale(1); }
+  70% { opacity: 0.15; transform: scale(0.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-sparkles::before,
+  .page-sparkles::after,
+  .jobs-apply-sparkles::before,
+  .jobs-apply-sparkles::after,
+  .page-sparkle {
+    animation: none;
+    opacity: 0.35;
   }
 }

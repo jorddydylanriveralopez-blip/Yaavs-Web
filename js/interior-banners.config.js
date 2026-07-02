@@ -25,8 +25,12 @@ window.YAAVS_PAGE_BANNERS = {
     interval: 6000,
   },
   "ser-yaavser": {
-    images: ["assets/hero-banner-4.jpg", "assets/hero-banner-5.jpg", "assets/hero-banner-2.jpg"],
-    poster: "assets/hero-banner-3.jpg",
+    images: [
+      "assets/yaavser/cliente-satisfecho.jpg",
+      "assets/servicios/activaciones.jpg",
+      "assets/quienes-somos.png",
+    ],
+    poster: "assets/yaavser/cliente-satisfecho.jpg",
     interval: 6000,
   },
   contacto: {
