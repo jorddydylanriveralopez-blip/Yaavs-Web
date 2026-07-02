@@ -33,7 +33,7 @@
     document.body.classList.remove("page-intro-active");
     document.body.classList.add("page-intro-done");
     document.dispatchEvent(new CustomEvent("yaavs:intro-done"));
-  }, 1100);
+  }, 800);
 
-  window.setTimeout(() => intro.remove(), 1950);
+  window.setTimeout(() => intro.remove(), 1450);
 })();
