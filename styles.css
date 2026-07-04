@@ -4604,6 +4604,10 @@ body.theme-cluster #contenido > .section {
     linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, transparent 22%);
 }
 
+.bolsa-hero-banner .avisos-hero-banner__title {
+  max-width: 22ch;
+}
+
 .servicios-hero-banner .avisos-hero-banner__aurora {
   background:
     radial-gradient(ellipse 50% 45% at 18% 28%, rgba(255, 203, 5, 0.14) 0%, transparent 55%),
