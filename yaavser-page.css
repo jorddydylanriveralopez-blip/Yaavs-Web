@@ -26,17 +26,17 @@
 }
 
 .page-ser-yaavser .yaavser-present__corner {
-  border-color: var(--accent-bright, #009fdb);
+  border-color: var(--accent-bright, #3d7db5);
 }
 
 .page-ser-yaavser .yaavser-present__eyebrow {
-  color: var(--accent-bright, #009fdb);
+  color: var(--accent-bright, #3d7db5);
 }
 
 .page-ser-yaavser .yaavser-present__quote {
   margin-top: 24px;
   padding: 20px 24px;
-  border-left: 3px solid var(--accent-bright, #009fdb);
+  border-left: 3px solid var(--accent-bright, #3d7db5);
   background: rgba(0, 48, 135, 0.28);
   border-radius: 0 12px 12px 0;
 }
@@ -263,7 +263,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--hx-att-navy, #003087), var(--accent-bright, #009fdb));
+  background: linear-gradient(90deg, var(--hx-att-navy, #0f2440), var(--accent-bright, #3d7db5));
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.5s var(--ease);
@@ -289,7 +289,7 @@
   font-size: 0.85rem;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, #003087, #009fdb);
+  background: linear-gradient(135deg, #0f2440, #3d7db5);
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(0, 159, 219, 0.35);
 }

@@ -1,17 +1,17 @@
 /**
- * Tema fijo en modo día.
+ * Tema fijo en modo oscuro corporativo.
  * Se desactiva el cambio automático día/noche.
  */
 (function () {
-  const FIXED_THEME = "day";
+  const FIXED_THEME = "night";
 
   function applyTheme() {
     document.documentElement.dataset.yaavsTheme = FIXED_THEME;
-    document.documentElement.style.colorScheme = "light";
+    document.documentElement.style.colorScheme = "dark";
 
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
-      meta.setAttribute("content", "#ffffff");
+      meta.setAttribute("content", "#0a0f16");
     }
 
     document.dispatchEvent(
@@ -25,6 +25,6 @@
   window.YaavsTheme = {
     apply: applyTheme,
     get: () => FIXED_THEME,
-    getPreference: () => "day",
+    getPreference: () => "night",
   };
 })();

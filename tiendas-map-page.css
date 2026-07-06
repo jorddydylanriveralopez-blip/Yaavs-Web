@@ -1,5 +1,5 @@
 body.page-tiendas-map {
-  --carrier-accent: #00a8ff;
+  --carrier-accent: #5a9cc4;
   --carrier-accent-soft: rgba(0, 168, 255, 0.35);
   background: #030b18;
   color: #eef6ff;
@@ -140,7 +140,7 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a.is-active {
 }
 
 body.page-tiendas-map {
-  --carrier-accent: #00a8ff;
+  --carrier-accent: #5a9cc4;
   --carrier-accent-strong: #2ebdff;
   --carrier-accent-glow: rgba(0, 168, 255, 0.3);
 }
@@ -680,7 +680,7 @@ body.page-tiendas-map[data-carrier="bait"] {
 }
 
 body.page-tiendas-map[data-carrier="att"] {
-  --carrier-accent: #00a8ff;
+  --carrier-accent: #5a9cc4;
   --carrier-accent-strong: #3bc0ff;
   --carrier-accent-glow: rgba(0, 168, 255, 0.32);
 }

@@ -301,7 +301,7 @@
     var lastBurst = -1000;
     var burstCount = 0;
     var maxBursts = window.matchMedia("(max-width: 720px)").matches ? 4 : 6;
-    var colors = ["#00eeff", "#33b5e8", "#ffd54a", "#ff5fc7", "#7cff85"];
+    var colors = ["#5a9cc4", "#7eb8d9", "#c9a000", "#8fa3b8", "#6a8299"];
     var endAt = performance.now() + 5200;
     var width = 0;
     var height = 0;
