@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0f16">
+  <meta name="theme-color" content="#2563b5">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="YAAVS — Distribuidor #1 de telecom en México.">
@@ -12,14 +12,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="decorations.css">
+  <link rel="stylesheet" href="decorations.css?v=4">
   <link rel="stylesheet" href="theme-light.css">
   <link rel="stylesheet" href="theme-day-night.css">
-  <link rel="stylesheet" href="home-experience.css">
-  <link rel="stylesheet" href="home-corporate.css?v=3">
+  <link rel="stylesheet" href="home-experience.css?v=5">
+  <link rel="stylesheet" href="home-corporate.css?v=32">
   <script src="js/yaavs-theme.js?v=2"></script>
-  <link rel="preload" as="image" href="assets/hero-telecom/mobile/hero-celular-banner.png" media="(max-width: 768px)" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/hero-telecom/hero-portada-campeones-2pc.png" media="(min-width: 769px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero-telecom/mobile/hero-telecom-2.jpg" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero-telecom/hero-telecom-2.jpg" media="(min-width: 769px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/intro/city-night.jpg" fetchpriority="high">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
@@ -67,6 +67,24 @@
       <div class="home-tech-backdrop__glow"></div>
     </div>
 
+    <div class="home-page-floats" aria-hidden="true">
+      <span class="home-page-orb home-page-orb--1"></span>
+      <span class="home-page-orb home-page-orb--2"></span>
+      <span class="home-page-orb home-page-orb--3"></span>
+      <span class="home-page-ring home-page-ring--1"></span>
+      <span class="home-page-ring home-page-ring--2"></span>
+      <img class="home-page-float home-page-float--l-sim" src="assets/floats/float-sim.svg" alt="" width="72" height="92" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--l-chip" src="assets/floats/float-chip.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--l-phone" src="assets/floats/float-phone.svg" alt="" width="48" height="82" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--l-signal" src="assets/floats/float-signal.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--l-esim" src="assets/floats/float-esim.svg" alt="" width="64" height="48" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--r-phones" src="assets/floats/float-phones.svg" alt="" width="90" height="64" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--r-sim" src="assets/floats/float-sim.svg" alt="" width="60" height="76" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--r-chip" src="assets/floats/float-chip.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--r-phone" src="assets/floats/float-phone.svg" alt="" width="44" height="76" loading="lazy" decoding="async">
+      <img class="home-page-float home-page-float--r-signal" src="assets/floats/float-signal.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+    </div>
+
     <section class="hero-banner hero-banner--align-left" id="inicio-banner" aria-label="Banner principal">
       <div class="hero-banner__visual" data-hero-carousel role="presentation" aria-hidden="true"></div>
       <div class="hero-banner__shade" aria-hidden="true"></div>
@@ -99,36 +117,63 @@
     </div>
 
     <div class="hx" id="home-experience">
+      <section class="hx-plan-picker" id="plan-picker" data-hx-plan-picker aria-label="Elige prepago o postpago">
+        <div class="hx-plan-picker__aurora" aria-hidden="true"></div>
+        <div class="hx-plan-picker__grid" aria-hidden="true"></div>
+        <div class="container hx-plan-picker__inner">
+          <header class="hx-plan-picker__head" data-hx-reveal>
+            <span class="hx-eyebrow">Tu operación en mostrador</span>
+            <h2 class="hx-plan-picker__title">
+              ¿Vendes <span class="hx-services__cyan">prepago</span> o <span class="hx-services__cyan">postpago</span>?
+            </h2>
+            <p class="hx-plan-picker__lead">Elige una línea para conocer el flujo completo. Abajo encuentras el catálogo de servicios YAAVS.</p>
+          </header>
+
+          <div class="hx-plan-picker__choices" data-hx-plan-choices>
+              <a href="prepago.html" class="hx-plan-picker__card hx-plan-picker__card--prepago" data-hx-plan-link="prepago">
+                <span class="hx-plan-picker__card-shine" aria-hidden="true"></span>
+                <span class="hx-plan-picker__card-ring" aria-hidden="true"></span>
+                <span class="hx-plan-picker__card-burst" aria-hidden="true"></span>
+                <span class="hx-plan-picker__visual">
+                  <img src="assets/operadores/bait.jpg" alt="" width="640" height="800" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-plan-picker__copy">
+                  <span class="hx-plan-picker__tag">Alta rotación</span>
+                  <span class="hx-plan-picker__name">Prepago</span>
+                  <span class="hx-plan-picker__desc">Chips, paquetes y activaciones rápidas para venta diaria.</span>
+                  <span class="hx-plan-picker__cta">Ir a prepago →</span>
+                </span>
+              </a>
+
+              <a href="postpago.html" class="hx-plan-picker__card hx-plan-picker__card--postpago" data-hx-plan-link="postpago">
+                <span class="hx-plan-picker__card-shine" aria-hidden="true"></span>
+                <span class="hx-plan-picker__card-ring" aria-hidden="true"></span>
+                <span class="hx-plan-picker__card-burst" aria-hidden="true"></span>
+                <span class="hx-plan-picker__visual">
+                  <img src="assets/operadores/att.jpg" alt="" width="640" height="800" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-plan-picker__copy">
+                  <span class="hx-plan-picker__tag">Plan mensual</span>
+                  <span class="hx-plan-picker__name">Postpago</span>
+                  <span class="hx-plan-picker__desc">Altas y renovaciones con seguimiento comercial YAAVS.</span>
+                  <span class="hx-plan-picker__cta">Ir a postpago →</span>
+                </span>
+              </a>
+          </div>
+        </div>
+      </section>
+
       <section class="hx-services" id="servicios-preview" aria-label="Nuestros servicios">
+        <div class="hx-services__floats" aria-hidden="true">
+          <img class="hx-services__float hx-services__float--sim" src="assets/floats/float-sim.svg" alt="" width="68" height="86" loading="lazy" decoding="async">
+          <img class="hx-services__float hx-services__float--signal" src="assets/floats/float-signal.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
+          <img class="hx-services__float hx-services__float--chip" src="assets/floats/float-chip.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+        </div>
         <header class="hx-services__head">
           <h2 data-hx-reveal><span class="hx-services__cyan">Nuestros</span> servicios</h2>
           <p class="hx-services__hint" data-hx-reveal>Haz clic para ver instrucciones · desliza en móvil</p>
         </header>
         <div class="hx-services__rail" data-hx-rail tabindex="0">
-          <button type="button" class="hx-svc hx-svc--gold hx-svc--photo" data-hx-svc="prepago" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/operadores/bait.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">Prepago</span>
-              <p class="hx-svc__desc">Chips, paquetes y activaciones rápidas para venta diaria en mostrador.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
-          <button type="button" class="hx-svc hx-svc--navy hx-svc--photo" data-hx-svc="postpago" aria-haspopup="dialog">
-            <span class="hx-svc__glow" aria-hidden="true"></span>
-            <span class="hx-svc__ring" aria-hidden="true"></span>
-            <span class="hx-svc__scan" aria-hidden="true"></span>
-            <img class="hx-svc__photo" src="assets/operadores/att.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
-            <span class="hx-svc__shade" aria-hidden="true"></span>
-            <div class="hx-svc__body">
-              <span class="hx-svc__title">Postpago</span>
-              <p class="hx-svc__desc">Altas y renovaciones con seguimiento comercial y soporte YAAVS.</p>
-              <span class="hx-svc__arrow">Ver instrucciones →</span>
-            </div>
-          </button>
           <button type="button" class="hx-svc hx-svc--coral hx-svc--photo" data-hx-svc="vinculaciones" aria-haspopup="dialog">
             <span class="hx-svc__glow" aria-hidden="true"></span>
             <span class="hx-svc__ring" aria-hidden="true"></span>
@@ -266,38 +311,38 @@
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="hx-pulse" aria-label="La red en números" data-hx-pulse>
-        <div class="hx-pulse__mesh" aria-hidden="true"></div>
-        <div class="hx-pulse__scan" aria-hidden="true"></div>
-        <div class="hx-pulse__inner">
-          <p class="hx-pulse__label" data-hx-reveal>Red YAAVS · México</p>
-          <div class="hx-pulse__stats">
-            <div class="hx-pulse__stat" data-hx-reveal>
-              <span class="hx-pulse__num" data-hx-count="10000" data-hx-format="k">0</span>
-              <span class="hx-pulse__cap">Puntos de venta</span>
+        <section class="hx-pulse" aria-label="La red en números" data-hx-pulse>
+          <div class="hx-pulse__mesh" aria-hidden="true"></div>
+          <div class="hx-pulse__scan" aria-hidden="true"></div>
+          <div class="hx-pulse__inner">
+            <p class="hx-pulse__label" data-hx-reveal>Red YAAVS · México</p>
+            <div class="hx-pulse__stats">
+              <div class="hx-pulse__stat" data-hx-reveal>
+                <span class="hx-pulse__num" data-hx-count="10000" data-hx-format="k">0</span>
+                <span class="hx-pulse__cap">Puntos de venta</span>
+              </div>
+              <div class="hx-pulse__stat" data-hx-reveal>
+                <span class="hx-pulse__num" data-hx-count="100" data-hx-suffix="%">0</span>
+                <span class="hx-pulse__cap">Empresa mexicana</span>
+              </div>
+              <div class="hx-pulse__stat" data-hx-reveal>
+                <span class="hx-pulse__num">Multi</span>
+                <span class="hx-pulse__cap">Operador y servicios</span>
+              </div>
             </div>
-            <div class="hx-pulse__stat" data-hx-reveal>
-              <span class="hx-pulse__num" data-hx-count="100" data-hx-suffix="%">0</span>
-              <span class="hx-pulse__cap">Empresa mexicana</span>
-            </div>
-            <div class="hx-pulse__stat" data-hx-reveal>
-              <span class="hx-pulse__num">Multi</span>
-              <span class="hx-pulse__cap">Operador y servicios</span>
+            <div class="hx-pulse__operators" data-hx-reveal>
+              <span>Telcel</span>
+              <span>Unefon</span>
+              <span>AT&amp;T</span>
+              <span>Movistar</span>
+              <span>RecargaKlic</span>
             </div>
           </div>
-          <div class="hx-pulse__operators" data-hx-reveal>
-            <span>Telcel</span>
-            <span>Unefon</span>
-            <span>AT&amp;T</span>
-            <span>Movistar</span>
-            <span>RecargaKlic</span>
-          </div>
-        </div>
+        </section>
       </section>
 
-      <section class="hx-ops" id="carriers" aria-label="Compañías que vendes con YAAVS" data-hx-ops data-hx-reveal>
+      <section class="hx-ops" id="carriers" aria-label="Compañías que vendes con YAAVS" data-hx-ops>
         <header class="hx-ops__head">
           <p class="hx-ops__eyebrow">Multi-operador</p>
           <h3 class="hx-ops__title">Las compañías que <span class="hx-services__cyan">vendes</span> con YAAVS</h3>
@@ -522,14 +567,20 @@
       <section
         class="tx-reel tx-reel--home"
         id="video-yaavsers"
-        aria-label="Reel de Yaavsers felices"
+        aria-label="Reel de clientes felices"
         data-tx-reel
         data-tx-reel-autoplay="5600"
       >
+        <div class="tx-reel__floats" aria-hidden="true">
+          <img class="tx-reel__float tx-reel__float--sim" src="assets/floats/float-sim.svg" alt="" width="64" height="82" loading="lazy" decoding="async">
+          <img class="tx-reel__float tx-reel__float--chip" src="assets/floats/float-chip.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
+          <img class="tx-reel__float tx-reel__float--phone" src="assets/floats/float-phone.svg" alt="" width="44" height="76" loading="lazy" decoding="async">
+          <img class="tx-reel__float tx-reel__float--signal" src="assets/floats/float-signal.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+        </div>
         <div class="container">
           <header class="tx-reel__head" data-hx-reveal>
             <span class="hx-eyebrow">Video reel</span>
-            <h2>Yaavsers felices: <span class="hx-testimonials__accent">por qu&eacute; se quedan</span></h2>
+            <h2>Clientes felices: <span class="hx-testimonials__accent">por qu&eacute; se quedan</span></h2>
             <p class="tx-reel__lead">Historias reales de socios que crecieron en ventas con el acompa&ntilde;amiento de YAAVS.</p>
           </header>
           <div class="tx-reel__layout">
@@ -595,11 +646,17 @@
         </div>
       </section>
 
-      <section class="hx-testimonials hx-testimonials--cinema" id="testimonios-home" aria-label="Testimonios de socios" data-hx-testimonials data-hx-autoplay="6000">
+      <section class="hx-testimonials hx-testimonials--cinema hx-testimonials--light hx-testimonials--spectacular" id="testimonios-home" aria-label="Testimonios de socios" data-hx-testimonials data-hx-autoplay="6000" data-hx-per-view="3">
         <div class="hx-testimonials__beam" aria-hidden="true"></div>
+        <div class="hx-testimonials__floats" aria-hidden="true">
+          <img class="hx-testimonials__float hx-testimonials__float--esim" src="assets/floats/float-esim.svg" alt="" width="56" height="42" loading="lazy" decoding="async">
+          <img class="hx-testimonials__float hx-testimonials__float--phones" src="assets/floats/float-phones.svg" alt="" width="80" height="58" loading="lazy" decoding="async">
+          <img class="hx-testimonials__float hx-testimonials__float--chip" src="assets/floats/float-chip.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+        </div>
         <div class="container">
           <header class="hx-testimonials__head" data-hx-reveal>
-            <h2>Lo que dicen <span class="hx-testimonials__accent">nuestros Yaavsers</span></h2>
+            <span class="hx-eyebrow">Voces de la red</span>
+            <h2>Lo que dicen <span class="hx-testimonials__accent">nuestros socios</span></h2>
             <p class="hx-testimonials__sub">Historias reales de socios que crecieron con visitas, rotulación y respaldo YAAVS en todo México.</p>
           </header>
         </div>
@@ -609,9 +666,12 @@
             <ul class="hx-testimonials__track" data-hx-testimonials-track>
               <li class="hx-testimonials__slide is-active" data-hx-testimonial-index="0">
                 <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/karen-duran.png" alt="Karen Durán — Celular Solution" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/karen-duran.png" alt="Karen Durán — Celular Solution" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
                   <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <blockquote class="hx-testimonials__card">
                       <p class="hx-testimonials__quote">Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.</p>
                       <footer class="hx-testimonials__author">
@@ -624,9 +684,12 @@
               </li>
               <li class="hx-testimonials__slide" data-hx-testimonial-index="1">
                 <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/jose-mendez.png" alt="José Juan Méndez — Smart Accesorios" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/jose-mendez.png" alt="José Juan Méndez — Smart Accesorios" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
                   <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <blockquote class="hx-testimonials__card">
                       <p class="hx-testimonials__quote">Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.</p>
                       <footer class="hx-testimonials__author">
@@ -639,9 +702,12 @@
               </li>
               <li class="hx-testimonials__slide" data-hx-testimonial-index="2">
                 <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/abraham-manjarez.png" alt="Abraham Manjarez — Mc Covers" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/abraham-manjarez.png" alt="Abraham Manjarez — Mc Covers" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
                   <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <blockquote class="hx-testimonials__card">
                       <p class="hx-testimonials__quote">La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.</p>
                       <footer class="hx-testimonials__author">
@@ -654,14 +720,71 @@
               </li>
               <li class="hx-testimonials__slide" data-hx-testimonial-index="3">
                 <figure class="hx-testimonials__tile">
-                  <img class="hx-testimonials__photo" src="assets/testimonios/viviana-gonzalez.png" alt="Viviana González — Toxic" width="900" height="900" loading="lazy" decoding="async">
-                  <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/viviana-gonzalez.png" alt="Viviana González — Toxic" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
                   <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                     <blockquote class="hx-testimonials__card">
                       <p class="hx-testimonials__quote">Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.</p>
                       <footer class="hx-testimonials__author">
                         <cite>Viviana González</cite>
                         <span>Toxic</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="hx-testimonials__slide" data-hx-testimonial-index="4">
+                <figure class="hx-testimonials__tile">
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/portada-08.png" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">La red YAAVS me dio herramientas reales para competir en mi zona y ganar la confianza de mis clientes.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>Socio comercial</cite>
+                        <span>Red YAAVS · CDMX</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="hx-testimonials__slide" data-hx-testimonial-index="5">
+                <figure class="hx-testimonials__tile">
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/portada-09.png" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">Rotulación, visitas y eventos en un solo socio. Eso es lo que hace diferente a YAAVS.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>Socio comercial</cite>
+                        <span>Red YAAVS · México</span>
+                      </footer>
+                    </blockquote>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="hx-testimonials__slide" data-hx-testimonial-index="6">
+                <figure class="hx-testimonials__tile">
+                  <div class="hx-testimonials__avatar">
+                    <img class="hx-testimonials__photo" src="assets/testimonios/portada-10.png" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                    <span class="hx-testimonials__avatar-ring" aria-hidden="true"></span>
+                  </div>
+                  <figcaption class="hx-testimonials__overlay">
+                    <div class="hx-testimonials__rating" aria-hidden="true"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <blockquote class="hx-testimonials__card">
+                      <p class="hx-testimonials__quote">Recomiendo YAAVS a quien quiera crecer con telecom: respaldo, capacitación y presencia en punto de venta.</p>
+                      <footer class="hx-testimonials__author">
+                        <cite>Socio comercial</cite>
+                        <span>Red YAAVS</span>
                       </footer>
                     </blockquote>
                   </figcaption>
@@ -682,6 +805,9 @@
               <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="1" aria-label="Testimonio 2"></button>
               <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="2" aria-label="Testimonio 3"></button>
               <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="3" aria-label="Testimonio 4"></button>
+              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="4" aria-label="Testimonio 5"></button>
+              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="5" aria-label="Testimonio 6"></button>
+              <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="6" aria-label="Testimonio 7"></button>
             </div>
             <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--next" aria-label="Siguiente testimonio">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -690,146 +816,6 @@
           <p class="hx-testimonials__more">
             <a href="testimonios.html" class="btn btn--line">Ver m&aacute;s historias</a>
           </p>
-        </div>
-      </section>
-
-      <section class="hx-story hx-story--slide" id="quienes-somos" aria-label="¿Quiénes somos?">
-        <div class="hx-story__backdrop" aria-hidden="true">
-          <img
-            class="hx-story__backdrop-photo"
-            src="assets/hero-telecom/hero-telecom-3.jpg"
-            alt=""
-            width="1600"
-            height="900"
-            loading="lazy"
-            decoding="async"
-          >
-          <span class="hx-story__backdrop-veil"></span>
-        </div>
-        <div class="hx-story__slide" data-hx-reveal>
-          <div class="hx-story__slide-grid">
-            <div class="hx-story__slide-copy">
-              <p class="hx-story__eyebrow">Grupo YAAVS · México</p>
-              <h2 class="hx-story__section-title"><span class="hx-services__cyan">¿Quiénes</span> somos?</h2>
-              <p class="hx-story__tagline">Retail · soporte · distribución con operación nacional</p>
-              <p class="hx-story__headline">
-                Somos un <span class="hx-story__headline-accent">grupo empresarial</span> que impulsa marcas en todo México
-              </p>
-              <p class="hx-story__lead">
-                Integramos Yaavshop, YAAVS, Arregla YAAVS y otras unidades especializadas para operar, vender y dar soporte con una misma visión nacional.
-              </p>
-
-              <ul class="hx-story__highlights">
-                <li>Presencia comercial en todo México</li>
-                <li>Marca, soporte y ejecución en campo</li>
-                <li>Un solo grupo, varias soluciones</li>
-              </ul>
-
-              <ul class="hx-story__stats-row" aria-label="Datos clave YAAVS">
-                <li>
-                  <strong>+10K</strong>
-                  <span>Puntos de venta</span>
-                </li>
-                <li>
-                  <strong>Cobertura nacional</strong>
-                  <span>Operación en México</span>
-                </li>
-                <li>
-                  <strong>Grupo YAAVS</strong>
-                  <span>Ecosistema de marcas</span>
-                </li>
-                <li>
-                  <strong>100% MX</strong>
-                  <span>Empresa mexicana</span>
-                </li>
-              </ul>
-
-              <div class="hx-story__cta hx-story__cta--inline">
-                <a href="quienes-somos.html" class="btn btn--line">Conocer más</a>
-                <a href="ser-yaavser.html" class="btn btn--primary">Quiero ser Yaavser</a>
-              </div>
-            </div>
-
-            <div class="hx-story__collage" data-hx-reveal>
-              <figure class="hx-story__collage-item hx-story__collage-item--main">
-                <img
-                  src="assets/quienes-somos.png"
-                  alt="Equipo YAAVS en operación comercial"
-                  width="640"
-                  height="480"
-                  loading="lazy"
-                  decoding="async"
-                >
-                <figcaption>Red comercial YAAVS</figcaption>
-              </figure>
-              <figure class="hx-story__collage-item hx-story__collage-item--tile">
-                <img
-                  src="assets/quienes-somos-small-1.png"
-                  alt=""
-                  width="480"
-                  height="360"
-                  loading="lazy"
-                  decoding="async"
-                >
-                <span class="hx-story__collage-tag">Yaavser</span>
-              </figure>
-              <figure class="hx-story__collage-item hx-story__collage-item--tile">
-                <img
-                  src="assets/quienes-somos-small-2.png"
-                  alt=""
-                  width="480"
-                  height="360"
-                  loading="lazy"
-                  decoding="async"
-                >
-                <span class="hx-story__collage-tag">Retail</span>
-              </figure>
-              <figure class="hx-story__collage-item hx-story__collage-item--tile">
-                <img
-                  src="assets/servicios/activaciones.jpg"
-                  alt=""
-                  width="480"
-                  height="360"
-                  loading="lazy"
-                  decoding="async"
-                >
-                <span class="hx-story__collage-tag">RecargaKlic</span>
-              </figure>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <section class="hx-faq" id="preguntas-frecuentes" aria-label="Preguntas frecuentes YAAVS">
-        <div class="container">
-          <header class="hx-faq__head" data-hx-reveal>
-            <p class="hx-eyebrow">FAQ YAAVS</p>
-            <h2>Resuelve dudas en <span class="hx-services__cyan">1 minuto</span></h2>
-            <p class="hx-faq__lead">Lo m&aacute;s preguntado por quienes van a empezar a vender con YAAVS.</p>
-          </header>
-          <div class="hx-faq__list" data-hx-reveal>
-            <details class="hx-faq__item" open>
-              <summary>&iquest;Qu&eacute; necesito para empezar a vender con YAAVS?</summary>
-              <p>Tu negocio activo, datos de contacto y completar el proceso de registro como Yaavser.</p>
-            </details>
-            <details class="hx-faq__item">
-              <summary>&iquest;Cu&aacute;nto tarda activar mi operaci&oacute;n?</summary>
-              <p>Depende del alta, pero YAAVS te acompa&ntilde;a para dejar lista tu operaci&oacute;n lo antes posible.</p>
-            </details>
-            <details class="hx-faq__item">
-              <summary>&iquest;Qu&eacute; compa&ntilde;&iacute;as puedo vender?</summary>
-              <p>Puedes trabajar BAIT, AT&amp;T, Movistar y Unefon, adem&aacute;s de recargas y otros servicios.</p>
-            </details>
-            <details class="hx-faq__item">
-              <summary>&iquest;Tengo soporte si se me atora una activaci&oacute;n?</summary>
-              <p>S&iacute;. Cuentas con acompa&ntilde;amiento comercial y soporte YAAVS para resolver incidencias.</p>
-            </details>
-            <details class="hx-faq__item">
-              <summary>&iquest;D&oacute;nde contacto para afiliarme hoy?</summary>
-              <p>Escr&iacute;benos por WhatsApp o entra a <a href="ser-yaavser.html">Ser Yaavser</a> para iniciar tu registro.</p>
-            </details>
-          </div>
         </div>
       </section>
 
@@ -1002,8 +988,8 @@
   </div>
 
   <script src="js/page-intro.js" defer></script>
-  <script src="js/hero-carousel.config.js" defer></script>
-  <script src="js/hero-carousel.js" defer></script>
+  <script src="js/hero-carousel.config.js?v=9" defer></script>
+  <script src="js/hero-carousel.js?v=5" defer></script>
   <script src="js/layout.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>
@@ -1063,12 +1049,12 @@
       scheduleIdle(() => {
         void loadBatchOnce("home-secondary", [
           "js/page-sparkles.js",
-          "js/home-experience.js",
+          "js/home-experience.js?v=5",
         ]);
       });
 
       loadWhenVisible("[data-tx-reel], [data-hx-testimonials]", "home-testimonials", [
-        "js/home-testimonials-carousel.js",
+        "js/home-testimonials-carousel.js?v=3",
       ], "300px 0px");
 
       let chatBootPromise = null;

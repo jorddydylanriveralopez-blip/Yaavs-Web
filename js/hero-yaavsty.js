@@ -6,7 +6,7 @@
   const guideImg = guide.querySelector(".hero-guide__img");
   if (src && guideImg) guideImg.src = src;
 
-  const target = document.getElementById("quienes-somos");
+  const target = document.getElementById("servicios-preview");
   const hero = document.getElementById("inicio-banner");
   const footer = document.getElementById("site-footer");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

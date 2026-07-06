@@ -46,17 +46,27 @@
     });
 
     if (vacante && contactAsunto) {
-      contactAsunto.value = "Ser Yaavstar";
-      if (msgField) msgField.value = `Me interesa la vacante: ${vacante}.`;
+      contactAsunto.value = "Bolsa de trabajo";
+      if (msgField) {
+        msgField.value = `Me interesa la vacante: ${vacante}.`;
+      }
     } else {
       const stored = sessionStorage.getItem("yaavs-vacante");
       if (stored && contactAsunto && window.location.pathname.includes("contacto")) {
-        contactAsunto.value = "Ser Yaavstar";
+        contactAsunto.value = "Bolsa de trabajo";
         if (msgField && !msgField.value.trim()) {
           msgField.value = `Me interesa la vacante: ${stored}.`;
         }
         sessionStorage.removeItem("yaavs-vacante");
       }
+    }
+
+    const asuntoParam = params.get("asunto");
+    if (asuntoParam && contactAsunto) {
+      const match = Array.from(contactAsunto.options).find(
+        (opt) => opt.value.toLowerCase() === asuntoParam.toLowerCase()
+      );
+      if (match) contactAsunto.value = match.value;
     }
   }
 

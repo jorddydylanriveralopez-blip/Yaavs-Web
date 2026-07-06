@@ -221,6 +221,25 @@
     goTo(0);
     startAutoplay();
 
+    if (root.classList.contains("hx-testimonials--spectacular")) {
+      if ("IntersectionObserver" in window) {
+        var revealObs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                root.classList.add("is-revealed");
+                revealObs.disconnect();
+              }
+            });
+          },
+          { threshold: 0.14, rootMargin: "0px 0px -6% 0px" }
+        );
+        revealObs.observe(root);
+      } else {
+        root.classList.add("is-revealed");
+      }
+    }
+
     var resizeTimer;
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);

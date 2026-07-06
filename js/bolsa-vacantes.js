@@ -268,7 +268,7 @@
       const body = buildMailBody(data);
 
       window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
-        "Postulación Yaavstar — YAAVS"
+        "Postulación — Bolsa de trabajo YAAVS"
       )}&body=${encodeURIComponent(body)}`;
 
       if (statusEl) {

@@ -563,6 +563,93 @@
     const opsPickerClose = opsDeck.querySelectorAll("[data-hx-ops-picker-close]");
     const opsPickerOptions = opsDeck.querySelectorAll("[data-hx-ops-select]");
     const mobileOps = window.matchMedia("(max-width: 900px)");
+    const desktopOpsScroll = window.matchMedia("(min-width: 901px)");
+    const scrollCards = [introCard, ...carrierCards].filter(Boolean);
+    let scrollUserPicked = false;
+    let scrollPickProgress = 0;
+    let scrollTicking = false;
+
+    function easeOpsScroll(t) {
+      return 1 - Math.pow(1 - t, 2.4);
+    }
+
+    function getOpsScrollProgress() {
+      const range = window.innerHeight * 0.82 * Math.max(1, scrollCards.length - 1);
+      opsDeck.style.setProperty("--hx-ops-scroll-range", `${Math.round(range)}px`);
+      const scrolled = -opsDeck.getBoundingClientRect().top;
+      return Math.min(1, Math.max(0, scrolled / range));
+    }
+
+    function clearOpsScrollSequence() {
+      opsDeck.classList.remove("hx-ops--scroll-sequence");
+      scrollCards.forEach((card) => card.style.removeProperty("--hx-ops-scroll-flex"));
+      opsDeck.style.removeProperty("--hx-ops-scroll-range");
+      const head = opsDeck.querySelector(".hx-ops__head");
+      if (head) {
+        head.style.removeProperty("opacity");
+        head.style.removeProperty("transform");
+      }
+    }
+
+    function applyOpsScrollSequence(progress) {
+      const n = scrollCards.length;
+      const scaled = progress * (n - 1);
+      const focusIndex = Math.min(n - 2, Math.max(0, Math.floor(scaled)));
+      const t = scaled - focusIndex;
+
+      scrollCards.forEach((card, i) => {
+        let flex = 1;
+        if (i === focusIndex) flex = 1 + (1 - easeOpsScroll(t)) * 3.2;
+        else if (i === focusIndex + 1) flex = 1 + easeOpsScroll(t) * 3.2;
+        card.style.setProperty("--hx-ops-scroll-flex", flex.toFixed(3));
+      });
+
+      const activeIndex = t > 0.5 ? Math.min(n - 1, focusIndex + 1) : focusIndex;
+      const activeCard = scrollCards[activeIndex];
+      scrollCards.forEach((card) => {
+        const active = card === activeCard;
+        card.classList.toggle("is-active", active);
+        card.setAttribute("aria-selected", String(active));
+        card.tabIndex = active ? 0 : -1;
+      });
+      syncOpsState(activeCard);
+
+      const head = opsDeck.querySelector(".hx-ops__head");
+      if (head) {
+        head.style.opacity = String(Math.max(0.1, 1 - progress * 2.4));
+        head.style.transform = `translateX(-50%) translateY(${Math.min(14, progress * 32)}px)`;
+      }
+    }
+
+    function onOpsScroll() {
+      if (reduced || !desktopOpsScroll.matches || scrollCards.length < 2) {
+        clearOpsScrollSequence();
+        scrollUserPicked = false;
+        return;
+      }
+
+      const rect = opsDeck.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight * 1.05 && rect.bottom > -window.innerHeight * 0.15;
+      if (!inView) {
+        clearOpsScrollSequence();
+        scrollUserPicked = false;
+        return;
+      }
+
+      opsDeck.classList.add("hx-ops--scroll-sequence");
+      const progress = getOpsScrollProgress();
+
+      if (scrollUserPicked) {
+        if (Math.abs(progress - scrollPickProgress) > 0.08) {
+          scrollUserPicked = false;
+          scrollCards.forEach((card) => card.style.removeProperty("--hx-ops-scroll-flex"));
+        } else {
+          return;
+        }
+      }
+
+      applyOpsScrollSequence(progress);
+    }
 
     function setOpsPickerOpen(open, { restoreFocus = true } = {}) {
       if (!opsPicker || !opsPickerOpen) return;
@@ -601,6 +688,12 @@
     function activateOp(card) {
       if (card.classList.contains("is-active") && card.dataset.hxOp !== "intro") {
         card = introCard;
+      }
+
+      if (desktopOpsScroll.matches && !reduced) {
+        scrollUserPicked = true;
+        scrollPickProgress = getOpsScrollProgress();
+        scrollCards.forEach((c) => c.style.removeProperty("--hx-ops-scroll-flex"));
       }
 
       opCards.forEach((c) => {
@@ -694,5 +787,81 @@
     } else {
       syncOpsPreview();
     }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+          onOpsScroll();
+          scrollTicking = false;
+        });
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", onOpsScroll, { passive: true });
+    if (typeof desktopOpsScroll.addEventListener === "function") {
+      desktopOpsScroll.addEventListener("change", onOpsScroll);
+    } else if (typeof desktopOpsScroll.addListener === "function") {
+      desktopOpsScroll.addListener(onOpsScroll);
+    }
+    onOpsScroll();
   }
+
+  /* Selector prepago / postpago — animación al navegar */
+  const planLinks = root.querySelectorAll("[data-hx-plan-link]");
+  let planNavTimer = null;
+
+  function resetPlanPicker() {
+    if (planNavTimer !== null) {
+      window.clearTimeout(planNavTimer);
+      planNavTimer = null;
+    }
+    planLinks.forEach((link, index) => {
+      link.classList.remove("is-launching", "is-fading");
+      if (!reduced) {
+        link.classList.add("is-entered");
+        link.style.transitionDelay = `${120 + index * 90}ms`;
+      }
+    });
+  }
+
+  planLinks.forEach((link, index) => {
+    if (!reduced) {
+      link.style.transitionDelay = `${120 + index * 90}ms`;
+      link.classList.add("is-entered");
+    }
+
+    link.addEventListener("click", (event) => {
+      if (reduced || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      if (planNavTimer !== null) {
+        window.clearTimeout(planNavTimer);
+        planNavTimer = null;
+      }
+
+      link.classList.add("is-launching");
+      planLinks.forEach((other) => {
+        if (other !== link) other.classList.remove("is-launching");
+        if (other !== link) other.classList.add("is-fading");
+        else other.classList.remove("is-fading");
+      });
+
+      window.YaavsSonic?.play?.();
+
+      planNavTimer = window.setTimeout(() => {
+        planNavTimer = null;
+        window.location.assign(href);
+      }, reduced ? 0 : 420);
+    });
+  });
+
+  /* Al retroceder el navegador restaura la página con clases de animación pegadas */
+  window.addEventListener("pageshow", () => {
+    resetPlanPicker();
+  });
 })();

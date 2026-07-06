@@ -11,6 +11,7 @@
 
   const MOBILE_MQ = window.matchMedia("(max-width: 768px)");
   const slideDefaults = cfg.slideDefaults || {};
+  let floatLayer = null;
 
   const slides = (cfg.images || [])
     .filter(Boolean)
@@ -253,15 +254,32 @@
     const title = String(promo.title || "").trim();
     const accent = String(promo.accent || "").trim();
     const lead = String(promo.lead || "").trim();
+    const logo = String(promo.logo || "").trim();
+    const variant = String(promo.variant || "").trim();
+    const isBrand = variant === "brand" || Boolean(logo);
     const titleWords = wordsToMarkup(title, "hero-word--title", 0);
     const titleWordCount = title ? title.split(/\s+/).filter(Boolean).length : 0;
     const accentWords = accent
       ? `<span class="hero-promo__accent">${wordsToMarkup(accent, "hero-word--accent", titleWordCount)}</span>`
       : "";
     const fullTitle = [titleWords, accentWords].filter(Boolean).join(" ");
+    const titleBlock = logo
+      ? `<div class="hero-promo__brand-lockup">
+          <span class="hero-promo__brand-glow" aria-hidden="true"></span>
+          <span class="hero-promo__brand-ring" aria-hidden="true"></span>
+          <img class="hero-promo__brand-logo" src="${logo}" alt="YAAVS" width="346" height="82" decoding="async">
+        </div>`
+      : `<h2 class="hero-promo__title">${fullTitle}</h2>`;
+    const ctaClass = isBrand ? "hero-promo__cta hero-promo__cta--pill" : "hero-promo__cta";
+    const innerClass = isBrand
+      ? "hero-promo__inner hero-promo__inner--brand"
+      : "hero-promo__inner";
 
     const slide = document.createElement("article");
-    slide.className = "hero-promo__slide" + (i === 0 ? " is-active" : "");
+    slide.className =
+      "hero-promo__slide" +
+      (i === 0 ? " is-active" : "") +
+      (isBrand ? " hero-promo__slide--brand" : "");
     slide.dataset.promoIndex = String(i);
 
     const box = document.createElement("div");
@@ -270,18 +288,16 @@
     box.innerHTML = `
       <span class="hero-promo__scrim" aria-hidden="true"></span>
       <span class="hero-promo__rail" aria-hidden="true"></span>
-      <div class="hero-promo__inner">
+      <div class="${innerClass}">
         <p class="hero-promo__eyebrow">
           <span class="hero-promo__badge">${promo.badge || "YAAVS"}</span>
           ${promo.kicker ? `<span class="hero-promo__dot" aria-hidden="true">·</span><span class="hero-promo__kicker">${promo.kicker}</span>` : ""}
         </p>
-        <h2 class="hero-promo__title">
-          ${fullTitle}
-        </h2>
+        ${titleBlock}
         <p class="hero-promo__lead">${wordsToMarkup(lead, "hero-word--lead", titleWordCount + (accent ? accent.split(/\s+/).filter(Boolean).length : 0))}</p>
         ${
           promo.cta && promo.href
-            ? `<a class="hero-promo__cta" href="${promo.href}"><span>${promo.cta}</span></a>`
+            ? `<a class="${ctaClass}" href="${promo.href}"><span>${promo.cta}</span></a>`
             : ""
         }
       </div>
@@ -476,6 +492,11 @@
     heroBanner.classList.remove("hero-banner--align-right");
     heroBanner.classList.add("hero-banner--align-left");
     syncBannerLink();
+    if (floatLayer) {
+      const hidden = Boolean(current?.videoSlide);
+      floatLayer.hidden = hidden;
+      floatLayer.classList.toggle("is-hidden", hidden);
+    }
   }
 
   function syncPromo() {
@@ -638,4 +659,105 @@
   } else if (typeof MOBILE_MQ.addListener === "function") {
     MOBILE_MQ.addListener(syncSlideUi);
   }
+
+  function initHeroFloatSticker() {
+    const stickerCfg = cfg.floatSticker;
+    if (!banner || !stickerCfg?.src || reducedMotion) return;
+
+    const layer = document.createElement("div");
+    layer.className = "hero-banner__float";
+    layer.setAttribute("aria-hidden", "true");
+    floatLayer = layer;
+
+    const img = document.createElement("img");
+    img.className = "hero-banner__float-img";
+    img.src = stickerCfg.src;
+    img.alt = stickerCfg.alt || "";
+    if (stickerCfg.width) img.width = stickerCfg.width;
+    if (stickerCfg.height) img.height = stickerCfg.height;
+    img.decoding = "async";
+    layer.appendChild(img);
+
+    const shade = banner.querySelector(".hero-banner__shade");
+    if (shade?.parentNode) {
+      shade.parentNode.insertBefore(layer, shade.nextSibling);
+    } else {
+      banner.appendChild(layer);
+    }
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let rafId = 0;
+    const cursorOffsetX = 18;
+    const cursorOffsetY = 16;
+
+    function clampPosition(x, y) {
+      const rect = banner.getBoundingClientRect();
+      const layerW = layer.offsetWidth || 180;
+      const layerH = layer.offsetHeight || 220;
+      const pad = 12;
+      return {
+        x: Math.min(Math.max(x, pad), rect.width - layerW - pad),
+        y: Math.min(Math.max(y, pad), rect.height - layerH - pad),
+      };
+    }
+
+    function onPointerMove(event) {
+      const rect = banner.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const next = clampPosition(
+        event.clientX - rect.left + cursorOffsetX,
+        event.clientY - rect.top + cursorOffsetY
+      );
+      targetX = next.x;
+      targetY = next.y;
+      layer.classList.add("is-active", "is-hover");
+    }
+
+    function tick() {
+      currentX += (targetX - currentX) * 0.42;
+      currentY += (targetY - currentY) * 0.42;
+      layer.style.left = `${currentX.toFixed(2)}px`;
+      layer.style.top = `${currentY.toFixed(2)}px`;
+      rafId = window.requestAnimationFrame(tick);
+    }
+
+    banner.addEventListener("pointerenter", (event) => {
+      const rect = banner.getBoundingClientRect();
+      const next = clampPosition(
+        event.clientX - rect.left + cursorOffsetX,
+        event.clientY - rect.top + cursorOffsetY
+      );
+      currentX = targetX = next.x;
+      currentY = targetY = next.y;
+      layer.style.left = `${currentX}px`;
+      layer.style.top = `${currentY}px`;
+      layer.classList.add("is-active", "is-hover");
+    });
+
+    banner.addEventListener("pointerleave", () => {
+      layer.classList.remove("is-hover", "is-active");
+    });
+
+    banner.addEventListener("pointermove", onPointerMove, { passive: true });
+
+    const current = slides[index];
+    const hidden = Boolean(current?.videoSlide);
+    layer.hidden = hidden;
+    layer.classList.toggle("is-hidden", hidden);
+
+    rafId = window.requestAnimationFrame(tick);
+
+    window.addEventListener(
+      "pagehide",
+      () => {
+        if (rafId) window.cancelAnimationFrame(rafId);
+      },
+      { once: true }
+    );
+  }
+
+  initHeroFloatSticker();
 })();

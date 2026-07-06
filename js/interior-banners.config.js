@@ -52,4 +52,14 @@ window.YAAVS_PAGE_BANNERS = {
     poster: "assets/hero-banner-1.jpg",
     interval: 6000,
   },
+  prepago: {
+    images: ["assets/operadores/bait.jpg", "assets/hero-banner-2.jpg", "assets/servicios/activaciones.jpg"],
+    poster: "assets/operadores/bait.jpg",
+    interval: 6000,
+  },
+  postpago: {
+    images: ["assets/operadores/att.jpg", "assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg"],
+    poster: "assets/operadores/att.jpg",
+    interval: 6000,
+  },
 };

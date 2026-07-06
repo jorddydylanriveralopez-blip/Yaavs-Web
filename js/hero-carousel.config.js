@@ -15,22 +15,6 @@ window.YAAVS_HERO_CAROUSEL = {
   },
   images: [
     {
-      /* Desktop 3840×2160 · Móvil 1080×2400 (celular banner) */
-      src: "assets/hero-telecom/hero-portada-campeones-2pc.png",
-      srcMobile: "assets/hero-telecom/mobile/hero-celular-banner.png",
-      width: 3840,
-      height: 2160,
-      widthMobile: 1080,
-      heightMobile: 2400,
-      alt: "Grupo YAAVS — liderazgo nacional en retail, distribución y soporte.",
-      hidePromo: true,
-      lightShade: true,
-      objectFit: "cover",
-      objectPosition: "center center",
-      objectFitMobile: "cover",
-      objectPositionMobile: "center top",
-    },
-    {
       src: "assets/hero-telecom/hero-telecom-2.jpg",
       srcMobile: "assets/hero-telecom/mobile/hero-telecom-2.jpg",
       widthMobile: 1080,
@@ -44,7 +28,30 @@ window.YAAVS_HERO_CAROUSEL = {
         accent: "YAAVS",
         lead: "Retail, distribución y soporte integrados bajo una sola visión empresarial.",
         cta: "Conocer el grupo",
-        href: "#quienes-somos",
+        href: "quienes-somos.html",
+      },
+    },
+    {
+      /* Desktop 3840×2160 · Móvil 1080×2400 (celular banner) */
+      src: "assets/hero-telecom/hero-portada-campeones-2pc.png",
+      srcMobile: "assets/hero-telecom/mobile/hero-celular-banner.png",
+      width: 3840,
+      height: 2160,
+      widthMobile: 1080,
+      heightMobile: 2400,
+      objectFit: "cover",
+      objectPosition: "center center",
+      objectFitMobile: "cover",
+      objectPositionMobile: "center top",
+      alt: "YAAVS — N.º 1 en telecomunicaciones y distribuidor nacional.",
+      promo: {
+        badge: "N.º 1 en telecomunicaciones",
+        kicker: "Distribuidor a nivel nacional",
+        title: "Somos",
+        accent: "YAAVS",
+        lead: "El distribuidor líder de chips, recargas y servicios de telecom. Impulsamos a miles de socios comerciales en todo México.",
+        cta: "Conocer YAAVS",
+        href: "quienes-somos.html",
       },
     },
     {
@@ -66,4 +73,11 @@ window.YAAVS_HERO_CAROUSEL = {
     },
   ],
   fallback: "assets/hero-bg.svg",
+  /** Sticker flotante YAAVS — parallax al pasar el mouse */
+  floatSticker: {
+    src: "assets/hero-telecom/hero-yaavs-float.png",
+    alt: "",
+    width: 493,
+    height: 609,
+  },
 };

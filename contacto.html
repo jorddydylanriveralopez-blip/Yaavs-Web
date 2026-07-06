@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script src="js/yaavs-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0f16">
+  <meta name="theme-color" content="#2563b5">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="Contacta a YAAVS: teléfono, correo, WhatsApp y formulario.">
@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css">
   <link rel="stylesheet" href="theme-day-night.css">
-  <link rel="stylesheet" href="interior-corporate.css">
+  <link rel="stylesheet" href="interior-corporate.css?v=6">
+  <link rel="stylesheet" href="interior-light.css?v=3">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-contacto" data-page="contacto">
@@ -38,7 +39,7 @@
           <span class="avisos-hero-banner__accent">Contacto</span>
         </h1>
         <p class="avisos-hero-banner__lead">
-          Afiliación Yaavser, vacantes Yaavstar o dudas operativas — elige el canal que prefieras.
+          Afiliación Yaavser, bolsa de trabajo o dudas operativas — elige el canal que prefieras.
         </p>
         <a href="#escribenos" class="scroll-hint scroll-hint--contacto" aria-label="Ir al formulario">
           <span class="scroll-hint-line"></span>
@@ -70,20 +71,73 @@
             <a href="https://wa.me/525522331210" target="_blank" rel="noopener noreferrer">Enviar mensaje</a>
           </li>
         </ul>
-        <form class="glass-card contact-form" id="contact-form" novalidate>
-          <h3 class="form-title">Escríbenos</h3>
-          <label class="field"><span>Nombre</span><input type="text" name="nombre" required autocomplete="name"></label>
-          <label class="field"><span>Correo o teléfono</span><input type="text" name="contacto" required></label>
-          <label class="field"><span>Asunto</span>
-            <select name="asunto" id="contact-asunto">
-              <option value="Ser Yaavser">Ser Yaavser</option>
-              <option value="Ser Yaavstar">Ser Yaavstar</option>
-              <option value="Servicios">Servicios</option>
-              <option value="Otro">Otro</option>
-            </select>
+        <form class="glass-card contact-form contact-form--full" id="contact-form" novalidate>
+          <header class="contact-form__head">
+            <p class="section-tag">Formulario</p>
+            <h3 class="form-title">Escríbenos</h3>
+            <p class="contact-form__lead">
+              Completa tus datos y un asesor YAAVS te responde en menos de 24 horas hábiles.
+            </p>
+          </header>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Nombre completo</span>
+              <input type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
+            </label>
+            <label class="field">
+              <span>Teléfono</span>
+              <input type="tel" name="telefono" required autocomplete="tel" placeholder="10 dígitos con lada">
+            </label>
+            <label class="field">
+              <span>Correo electrónico</span>
+              <input type="email" name="correo" required autocomplete="email" placeholder="tu@correo.com">
+            </label>
+            <label class="field">
+              <span>Ciudad y estado</span>
+              <input type="text" name="ubicacion" required autocomplete="address-level2" placeholder="Ej. Guadalajara, Jalisco">
+            </label>
+            <label class="field field--full">
+              <span>Empresa o negocio <em class="field-optional">(opcional)</em></span>
+              <input type="text" name="empresa" autocomplete="organization" placeholder="Nombre de tu local o empresa">
+            </label>
+            <label class="field">
+              <span>Asunto</span>
+              <select name="asunto" id="contact-asunto" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Ser Yaavser">Ser Yaavser</option>
+                <option value="Bolsa de trabajo">Bolsa de trabajo</option>
+                <option value="Servicios y productos">Servicios y productos</option>
+                <option value="Activación de chip">Activación de chip</option>
+                <option value="Soporte operativo">Soporte operativo</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>¿Cómo prefieres que te contactemos?</span>
+              <select name="canal_preferido" required>
+                <option value="" disabled selected>Selecciona un canal</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Correo electrónico">Correo electrónico</option>
+                <option value="Llamada telefónica">Llamada telefónica</option>
+              </select>
+            </label>
+            <label class="field field--full">
+              <span>Mensaje</span>
+              <textarea name="mensaje" rows="5" required placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+            </label>
+          </div>
+
+          <label class="field field--check field--full">
+            <input type="checkbox" name="privacidad" required value="Aceptado">
+            <span>He leído el <a href="aviso-privacidad.html">aviso de privacidad</a> y autorizo el uso de mis datos para atender mi solicitud.</span>
           </label>
-          <label class="field"><span>Mensaje</span><textarea name="mensaje" rows="4" required></textarea></label>
-          <button type="submit" class="btn btn--primary">Enviar</button>
+
+          <button type="submit" class="btn btn--primary btn--lg">Enviar mensaje</button>
+          <p class="form-hint contact-form__note">
+            Al enviar se abrirá tu cliente de correo con los datos listos. También puedes escribirnos directo a
+            <a href="mailto:Hola@yaavs.com.mx">Hola@yaavs.com.mx</a>.
+          </p>
           <p class="form-hint" id="contact-status" role="status" aria-live="polite"></p>
         </form>
       </div>

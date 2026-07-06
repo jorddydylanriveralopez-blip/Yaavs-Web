@@ -14,8 +14,7 @@
 }
 
 .page-home .hx-testimonials {
-  background:
-    linear-gradient(180deg, rgba(8, 14, 22, 0.96) 0%, rgba(10, 20, 32, 0.98) 100%);
+  background: var(--bg-soft);
 }
 
 body.theme-cluster:not(.page-home) #contenido {
@@ -112,19 +111,35 @@ body.theme-cluster:not(.page-home) #contenido {
 
 /* Marquesina bajo el hero (home) */
 .page-home .hero-marquee {
-  background: rgba(4, 12, 22, 0.82);
-  border-top: 1px solid rgba(90, 156, 196, 0.22);
-  border-bottom: 1px solid rgba(90, 156, 196, 0.22);
+  background: linear-gradient(
+    90deg,
+    #f5fcfe 0%,
+    #ffffff 25%,
+    #eef8fc 50%,
+    #ffffff 75%,
+    #f5fcfe 100%
+  );
+  border-top: 1px solid rgba(0, 188, 212, 0.2);
+  border-bottom: 1px solid rgba(0, 188, 212, 0.16);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.08);
 }
 
 .page-home .hero-marquee__item {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(15, 36, 64, 0.72);
 }
 
 .page-home .hero-marquee__item strong {
-  color: #fff;
+  color: #0097b2;
+}
+
+.page-home .hero-marquee__fade--left {
+  background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+}
+
+.page-home .hero-marquee__fade--right {
+  background: linear-gradient(270deg, #ffffff 0%, transparent 100%);
 }
 
 .page-home .pleca--bridge {
@@ -199,12 +214,12 @@ body.theme-cluster:not(.page-home) #contenido {
 
 .hero-marquee__fade--left {
   left: 0;
-  background: linear-gradient(90deg, #000 0%, transparent 100%);
+  background: linear-gradient(90deg, var(--bg, #ffffff) 0%, transparent 100%);
 }
 
 .hero-marquee__fade--right {
   right: 0;
-  background: linear-gradient(270deg, #000 0%, transparent 100%);
+  background: linear-gradient(270deg, var(--bg, #ffffff) 0%, transparent 100%);
 }
 
 .hero-marquee__track {
@@ -2094,5 +2109,332 @@ body.yaavs-game-open {
   .page-sparkle {
     animation: none;
     opacity: 0.35;
+  }
+}
+
+/* ─── Home — flotantes telecom en el fondo (estáticos, no siguen scroll) ─── */
+.page-home #contenido > .home-page-floats {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+  min-height: 100%;
+}
+
+.page-home .home-page-float {
+  position: absolute;
+  display: block;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.48;
+  filter:
+    drop-shadow(0 0 8px rgba(0, 212, 238, 0.35))
+    drop-shadow(0 8px 20px rgba(0, 151, 178, 0.18));
+  animation: home-about-float-tech 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+.page-home .home-page-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(0, 212, 238, 0.55) 0%,
+    rgba(0, 188, 212, 0.16) 55%,
+    transparent 72%
+  );
+  box-shadow: 0 0 48px rgba(0, 188, 212, 0.32);
+  animation: svc-orb-pulse 7s ease-in-out infinite;
+}
+
+.page-home .home-page-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 188, 212, 0.42);
+  box-shadow:
+    0 0 24px rgba(0, 188, 212, 0.22),
+    inset 0 0 18px rgba(0, 188, 212, 0.1);
+  animation: svc-ring-spin 24s linear infinite;
+  pointer-events: none;
+}
+
+.page-home .home-page-orb--1 {
+  width: clamp(80px, 11vw, 140px);
+  height: clamp(80px, 11vw, 140px);
+  top: 8%;
+  left: 1%;
+}
+
+.page-home .home-page-orb--2 {
+  width: clamp(56px, 8vw, 96px);
+  height: clamp(56px, 8vw, 96px);
+  top: 35%;
+  right: 1.5%;
+  animation-delay: -2.5s;
+}
+
+.page-home .home-page-orb--3 {
+  width: clamp(42px, 6vw, 68px);
+  height: clamp(42px, 6vw, 68px);
+  top: 62%;
+  left: 2.5%;
+  animation-delay: -4.8s;
+}
+
+.page-home .home-page-ring--1 {
+  width: clamp(100px, 13vw, 160px);
+  height: clamp(100px, 13vw, 160px);
+  top: 22%;
+  right: 0.5%;
+  animation-duration: 28s;
+}
+
+.page-home .home-page-ring--2 {
+  width: clamp(64px, 9vw, 108px);
+  height: clamp(64px, 9vw, 108px);
+  top: 48%;
+  left: 1%;
+  animation-direction: reverse;
+  animation-duration: 18s;
+}
+
+.page-home .home-page-float--l-sim {
+  top: 6%;
+  left: clamp(8px, 2vw, 34px);
+  width: clamp(58px, 6.5vw, 92px);
+  --float-tilt: -16deg;
+  animation-duration: 9s;
+}
+
+.page-home .home-page-float--l-chip {
+  top: 18%;
+  left: clamp(14px, 3vw, 48px);
+  width: clamp(48px, 5.5vw, 72px);
+  --float-tilt: 10deg;
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+
+.page-home .home-page-float--l-phone {
+  top: 30%;
+  left: clamp(6px, 1.6vw, 26px);
+  width: clamp(42px, 4.8vw, 60px);
+  --float-tilt: -8deg;
+  animation-duration: 8.5s;
+  animation-delay: -4.2s;
+}
+
+.page-home .home-page-float--l-signal {
+  top: 42%;
+  left: clamp(16px, 3.2vw, 52px);
+  width: clamp(46px, 5.2vw, 66px);
+  --float-tilt: 6deg;
+  animation-duration: 7s;
+  animation-delay: -1.2s;
+}
+
+.page-home .home-page-float--l-esim {
+  top: 54%;
+  left: clamp(8px, 1.8vw, 30px);
+  width: clamp(58px, 7vw, 86px);
+  --float-tilt: 14deg;
+  animation-duration: 12s;
+  animation-delay: -5.5s;
+}
+
+.page-home .home-page-float--r-phones {
+  top: 10%;
+  right: clamp(8px, 2vw, 34px);
+  width: clamp(78px, 9.5vw, 120px);
+  opacity: 0.52;
+  --float-tilt: -10deg;
+  animation-duration: 10.5s;
+  animation-delay: -3s;
+}
+
+.page-home .home-page-float--r-sim {
+  top: 24%;
+  right: clamp(14px, 3vw, 46px);
+  width: clamp(52px, 6vw, 80px);
+  --float-tilt: 18deg;
+  animation-duration: 9.5s;
+  animation-delay: -6s;
+}
+
+.page-home .home-page-float--r-chip {
+  top: 36%;
+  right: clamp(6px, 1.6vw, 24px);
+  width: clamp(44px, 5vw, 64px);
+  --float-tilt: -12deg;
+  animation-duration: 8s;
+  animation-delay: -2.8s;
+}
+
+.page-home .home-page-float--r-phone {
+  top: 48%;
+  right: clamp(12px, 2.6vw, 40px);
+  width: clamp(40px, 4.6vw, 58px);
+  --float-tilt: 8deg;
+  animation-duration: 11.5s;
+  animation-delay: -4.6s;
+}
+
+.page-home .home-page-float--r-signal {
+  top: 60%;
+  right: clamp(10px, 2.2vw, 36px);
+  width: clamp(44px, 5vw, 62px);
+  --float-tilt: -6deg;
+  animation-duration: 7.5s;
+  animation-delay: -0.8s;
+}
+
+/* Flotantes por sección */
+.page-home .hx-services__floats,
+.page-home .tx-reel__floats,
+.page-home .hx-testimonials__floats {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.page-home .hx-services__float,
+.page-home .tx-reel__float,
+.page-home .hx-testimonials__float {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  opacity: 0.4;
+  filter:
+    drop-shadow(0 0 6px rgba(0, 212, 238, 0.3))
+    drop-shadow(0 6px 16px rgba(0, 151, 178, 0.15));
+  animation: home-about-float-tech 9s ease-in-out infinite;
+}
+
+.page-home .hx-services__float--sim {
+  top: 8%;
+  left: clamp(6px, 2vw, 32px);
+  width: clamp(54px, 6vw, 84px);
+  --float-tilt: -14deg;
+}
+
+.page-home .hx-services__float--signal {
+  top: 42%;
+  right: clamp(6px, 2vw, 32px);
+  width: clamp(44px, 5vw, 66px);
+  --float-tilt: 8deg;
+  animation-delay: -3s;
+}
+
+.page-home .hx-services__float--chip {
+  bottom: 12%;
+  left: clamp(10px, 2.4vw, 40px);
+  width: clamp(42px, 4.8vw, 60px);
+  --float-tilt: 12deg;
+  animation-delay: -5s;
+}
+
+.page-home .tx-reel__float--sim {
+  top: 14%;
+  left: clamp(2px, 1.2vw, 18px);
+  width: clamp(40px, 4.5vw, 60px);
+  --float-tilt: -18deg;
+}
+
+.page-home .tx-reel__float--chip {
+  top: 52%;
+  right: clamp(2px, 1.2vw, 18px);
+  width: clamp(36px, 4vw, 50px);
+  --float-tilt: 10deg;
+  animation-delay: -2.4s;
+}
+
+.page-home .tx-reel__float--phone {
+  bottom: 18%;
+  left: clamp(6px, 1.8vw, 26px);
+  width: clamp(32px, 3.6vw, 44px);
+  --float-tilt: -6deg;
+  animation-delay: -4.8s;
+}
+
+.page-home .tx-reel__float--signal {
+  top: 32%;
+  right: clamp(8px, 2vw, 30px);
+  width: clamp(34px, 3.8vw, 46px);
+  --float-tilt: 4deg;
+  animation-delay: -1.6s;
+}
+
+.page-home .hx-testimonials__float--esim {
+  top: 18%;
+  left: clamp(4px, 1.4vw, 20px);
+  width: clamp(44px, 5vw, 60px);
+  --float-tilt: 12deg;
+}
+
+.page-home .hx-testimonials__float--phones {
+  top: 46%;
+  right: clamp(4px, 1.4vw, 20px);
+  width: clamp(56px, 6.5vw, 80px);
+  opacity: 0.32;
+  --float-tilt: -8deg;
+  animation-delay: -3.2s;
+}
+
+.page-home .hx-testimonials__float--chip {
+  bottom: 16%;
+  left: clamp(10px, 2.2vw, 34px);
+  width: clamp(34px, 4vw, 48px);
+  --float-tilt: -14deg;
+  animation-delay: -5.6s;
+}
+
+.page-home .hx-services,
+.page-home .tx-reel,
+.page-home .hx-testimonials--light {
+  position: relative;
+}
+
+.page-home .hx {
+  position: relative;
+}
+
+.page-home .tx-reel .container,
+.page-home .hx-testimonials--light > .container,
+.page-home .hx-testimonials--light .hx-testimonials__stage {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .page-home .home-page-float--l-esim,
+  .page-home .home-page-float--r-chip,
+  .page-home .home-page-orb--3,
+  .page-home .home-page-ring--2 {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-home .home-page-floats,
+  .page-home .hx-services__floats,
+  .page-home .tx-reel__floats,
+  .page-home .hx-testimonials__floats {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .home-page-float,
+  .page-home .home-page-orb,
+  .page-home .home-page-ring,
+  .page-home .hx-services__float,
+  .page-home .tx-reel__float,
+  .page-home .hx-testimonials__float {
+    animation: none;
   }
 }
