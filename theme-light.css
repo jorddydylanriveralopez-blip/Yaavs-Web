@@ -382,22 +382,37 @@
   opacity: 0.12;
 }
 
+[data-yaavs-theme="day"] .page-home .site-header,
 [data-yaavs-theme="day"] .page-home .site-header.is-scrolled {
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-on-light);
-  box-shadow: 0 4px 24px rgba(15, 36, 64, 0.08);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom-color: rgba(0, 188, 212, 0.22);
+  box-shadow:
+    0 8px 32px rgba(15, 36, 64, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
 }
 
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom-color: rgba(0, 188, 212, 0.28);
+  box-shadow:
+    0 10px 36px rgba(15, 36, 64, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+[data-yaavs-theme="day"] .page-home .site-header .logo,
 [data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo {
-  --logo-filter: brightness(0);
+  --logo-filter: brightness(0) saturate(100%);
+  filter: brightness(0) saturate(100%);
 }
 
+[data-yaavs-theme="day"] .page-home .site-header .bento-dot,
 [data-yaavs-theme="day"] .page-home .site-header.is-scrolled .bento-dot {
   background: var(--ink);
 }
 
+[data-yaavs-theme="day"] .page-home .site-header .nav-bento[aria-expanded="true"] .bento-dot,
 [data-yaavs-theme="day"] .page-home .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
   background: var(--accent);
 }
@@ -480,11 +495,11 @@
 }
 
 [data-yaavs-theme="day"] .page-home .hx-pulse__num {
-  background: linear-gradient(135deg, #0f2440 0%, #0097b2 45%, #00bcd4 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #0f2440;
+  -webkit-text-fill-color: #0f2440;
+  background: none;
+  background-clip: unset;
+  -webkit-background-clip: unset;
 }
 
 [data-yaavs-theme="day"] .page-home .hx-pulse__label {
@@ -522,18 +537,22 @@
   color: var(--accent);
 }
 
-[data-yaavs-theme="day"] .page-home .hx-testimonials {
-  background: var(--bg-soft);
+[data-yaavs-theme="day"] .page-home .tx-gallery--home {
+  background: linear-gradient(180deg, #eef8fc 0%, #ffffff 50%, #f5fcfe 100%);
+  border-block-color: rgba(0, 188, 212, 0.12);
 }
 
-[data-yaavs-theme="day"] .page-home .hx-testimonials__title,
-[data-yaavs-theme="day"] .page-home .hx-testimonials__card blockquote {
+[data-yaavs-theme="day"] .page-home .tx-gallery--home::before {
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 188, 212, 0.08) 0%, transparent 70%);
+}
+
+[data-yaavs-theme="day"] .page-home .tx-gallery--home .tx-gallery__head h2 {
   color: var(--ink);
 }
 
-[data-yaavs-theme="day"] .page-home .hx-testimonials__card {
-  background: var(--surface);
-  border-color: var(--border-on-light);
+[data-yaavs-theme="day"] .page-home .tx-gallery--home .tx-gallery__item {
+  border-color: rgba(0, 188, 212, 0.2);
+  box-shadow: 0 12px 32px rgba(15, 36, 64, 0.08);
 }
 
 /* ─── Home — reel clientes felices ─── */

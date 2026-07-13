@@ -91,9 +91,7 @@
   if (pulse) {
     const pulseItems = [...pulse.querySelectorAll("[data-hx-reveal]")];
     const pulseCounts = [...pulse.querySelectorAll("[data-hx-count]")];
-    const multiNum = pulse.querySelector(
-      ".hx-pulse__stats > .hx-pulse__stat:nth-child(3) .hx-pulse__num"
-    );
+    const multiNum = pulse.querySelector("[data-hx-stat-text]");
 
     function hidePulse() {
       pulse.classList.remove("is-live");
@@ -414,9 +412,13 @@
   }
 
   if (rail) {
-    const baseCards = [...rail.querySelectorAll(".hx-svc")];
+    const isGridRail =
+      rail.dataset.hxRailLayout === "grid" ||
+      rail.classList.contains("hx-services__rail--grid") ||
+      Boolean(rail.closest(".hx-services--catalog"));
+    const baseCards = [...rail.querySelectorAll(".hx-svc:not([data-hx-loop-clone])")];
 
-    if (!reduced && baseCards.length > 2 && !rail.dataset.hxLoopReady) {
+    if (!reduced && !isGridRail && baseCards.length > 2 && !rail.dataset.hxLoopReady) {
       const fragment = document.createDocumentFragment();
       baseCards.forEach((card) => {
         const clone = card.cloneNode(true);
@@ -435,7 +437,7 @@
       openServicePanel(card.dataset.hxSvc);
     });
 
-    if (!reduced && rail.dataset.hxLoopReady === "true") {
+    if (!reduced && !isGridRail && rail.dataset.hxLoopReady === "true") {
       let rafId = 0;
       let paused = false;
       let resumeTimeout = 0;
@@ -515,25 +517,32 @@
   }
 
   if (rail && !reduced) {
-    rail.querySelectorAll(".hx-svc").forEach((card) => {
+    const isGridRail =
+      rail.dataset.hxRailLayout === "grid" ||
+      rail.classList.contains("hx-services__rail--grid") ||
+      Boolean(rail.closest(".hx-services--catalog"));
+
+    rail.querySelectorAll(".hx-svc:not([data-hx-loop-clone])").forEach((card) => {
       const glow = card.querySelector(".hx-svc__glow");
 
       card.addEventListener("mouseenter", () => {
         card.classList.add("is-hover");
       });
 
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const mx = ((e.clientX - rect.left) / rect.width) * 100;
-        const my = ((e.clientY - rect.top) / rect.height) * 100;
-        card.style.setProperty("--mx", `${mx}%`);
-        card.style.setProperty("--my", `${my}%`);
-        const tiltX = (my - 50) * -0.28;
-        const tiltY = (mx - 50) * 0.28;
-        card.style.setProperty("--rx", `${tiltX}deg`);
-        card.style.setProperty("--ry", `${tiltY}deg`);
-        if (glow) glow.style.opacity = "1";
-      });
+      if (!isGridRail) {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const mx = ((e.clientX - rect.left) / rect.width) * 100;
+          const my = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty("--mx", `${mx}%`);
+          card.style.setProperty("--my", `${my}%`);
+          const tiltX = (my - 50) * -0.28;
+          const tiltY = (mx - 50) * 0.28;
+          card.style.setProperty("--rx", `${tiltX}deg`);
+          card.style.setProperty("--ry", `${tiltY}deg`);
+          if (glow) glow.style.opacity = "1";
+        });
+      }
 
       card.addEventListener("mouseleave", () => {
         card.classList.remove("is-hover");
@@ -568,19 +577,32 @@
     let scrollUserPicked = false;
     let scrollPickProgress = 0;
     let scrollTicking = false;
+    let lastOpsProgress = 0;
+    let opsScrollCompleted = false;
 
     function easeOpsScroll(t) {
       return 1 - Math.pow(1 - t, 2.4);
     }
 
+    function getOpsScrollRange() {
+      return window.innerHeight * 0.82 * Math.max(1, scrollCards.length - 1);
+    }
+
     function getOpsScrollProgress() {
-      const range = window.innerHeight * 0.82 * Math.max(1, scrollCards.length - 1);
+      const range = getOpsScrollRange();
       opsDeck.style.setProperty("--hx-ops-scroll-range", `${Math.round(range)}px`);
       const scrolled = -opsDeck.getBoundingClientRect().top;
       return Math.min(1, Math.max(0, scrolled / range));
     }
 
     function clearOpsScrollSequence() {
+      if (!opsDeck.classList.contains("hx-ops--scroll-sequence")) return;
+
+      const scrollYBefore = window.scrollY;
+      const sectionTopBefore = opsDeck.offsetTop;
+      const heightBefore = opsDeck.offsetHeight;
+      const completed = lastOpsProgress >= 0.96;
+
       opsDeck.classList.remove("hx-ops--scroll-sequence");
       scrollCards.forEach((card) => card.style.removeProperty("--hx-ops-scroll-flex"));
       opsDeck.style.removeProperty("--hx-ops-scroll-range");
@@ -589,6 +611,54 @@
         head.style.removeProperty("opacity");
         head.style.removeProperty("transform");
       }
+
+      resetOpsAfterScrollSequence();
+
+      const heightAfter = opsDeck.offsetHeight;
+      const delta = heightBefore - heightAfter;
+      if (delta <= 1) return;
+
+      const sectionTop = opsDeck.offsetTop;
+      const naturalEnd = sectionTop + heightAfter;
+      const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      let targetScroll = scrollYBefore;
+
+      if (
+        completed &&
+        scrollYBefore >= sectionTopBefore &&
+        scrollYBefore <= sectionTopBefore + heightBefore - window.innerHeight * 0.12
+      ) {
+        /* Terminó el recorrido: quedar al inicio de la siguiente sección */
+        targetScroll = naturalEnd;
+      } else if (scrollYBefore > naturalEnd + 40) {
+        /* Ya pasó compañías: conservar posición visual restando el padding eliminado */
+        targetScroll = scrollYBefore - delta;
+      } else if (scrollYBefore > sectionTopBefore + 40) {
+        targetScroll = scrollYBefore - delta;
+      }
+
+      targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+      if (Math.abs(targetScroll - scrollYBefore) > 2) {
+        window.scrollTo(0, targetScroll);
+      }
+    }
+
+    function resetOpsAfterScrollSequence() {
+      if (scrollUserPicked) return;
+
+      opsDeck.classList.remove("has-carrier-active");
+      if (opsBack) opsBack.hidden = true;
+      setOpsPickerOpen(false, { restoreFocus: false });
+      syncOpsPreview();
+
+      if (!introCard) return;
+      scrollCards.forEach((card) => {
+        const active = card === introCard;
+        card.classList.toggle("is-active", active);
+        card.setAttribute("aria-selected", String(active));
+        card.tabIndex = active ? 0 : -1;
+      });
     }
 
     function applyOpsScrollSequence(progress) {
@@ -612,32 +682,67 @@
         card.setAttribute("aria-selected", String(active));
         card.tabIndex = active ? 0 : -1;
       });
-      syncOpsState(activeCard);
 
       const head = opsDeck.querySelector(".hx-ops__head");
       if (head) {
         head.style.opacity = String(Math.max(0.1, 1 - progress * 2.4));
         head.style.transform = `translateX(-50%) translateY(${Math.min(14, progress * 32)}px)`;
       }
+
+      lastOpsProgress = progress;
     }
 
     function onOpsScroll() {
       if (reduced || !desktopOpsScroll.matches || scrollCards.length < 2) {
         clearOpsScrollSequence();
         scrollUserPicked = false;
+        lastOpsProgress = 0;
+        opsScrollCompleted = false;
         return;
       }
 
       const rect = opsDeck.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 1.05 && rect.bottom > -window.innerHeight * 0.15;
-      if (!inView) {
-        clearOpsScrollSequence();
+
+      if (opsScrollCompleted) {
+        if (rect.top > window.innerHeight * 0.45) {
+          opsScrollCompleted = false;
+          lastOpsProgress = 0;
+        } else if (opsDeck.classList.contains("hx-ops--scroll-sequence")) {
+          clearOpsScrollSequence();
+        }
+        return;
+      }
+
+      const range = getOpsScrollRange();
+      const inSequenceZone =
+        rect.top <= 2 &&
+        rect.bottom > window.innerHeight * 0.22;
+
+      if (!inSequenceZone) {
+        if (opsDeck.classList.contains("hx-ops--scroll-sequence")) {
+          clearOpsScrollSequence();
+          if (lastOpsProgress >= 0.96) {
+            opsScrollCompleted = true;
+          }
+        }
         scrollUserPicked = false;
+        if (rect.bottom < 0 || rect.top > window.innerHeight) {
+          lastOpsProgress = 0;
+        }
         return;
       }
 
       opsDeck.classList.add("hx-ops--scroll-sequence");
       const progress = getOpsScrollProgress();
+
+      if (progress >= 0.99) {
+        applyOpsScrollSequence(1);
+        lastOpsProgress = 1;
+        opsScrollCompleted = true;
+        clearOpsScrollSequence();
+        scrollUserPicked = false;
+        return;
+      }
 
       if (scrollUserPicked) {
         if (Math.abs(progress - scrollPickProgress) > 0.08) {
@@ -860,7 +965,288 @@
     });
   });
 
-  /* Al retroceder el navegador restaura la página con clases de animación pegadas */
+  /* Deck de servicios — square expand + video (desktop) / masonry (móvil) */
+  const deckSection = root.querySelector(".hx-services--deck");
+  const deckWrap = root.querySelector("[data-hx-deck-wrap]");
+  const deckRoot = root.querySelector("[data-hx-svc-deck]");
+  const deckMoreRoot = root.querySelector("[data-hx-svc-deck-more]");
+  const deckLayout = deckWrap?.querySelector("[data-hx-deck-layout]");
+  const deckMorePanel = deckWrap?.querySelector("[data-hx-deck-more-panel]");
+  const deckMoreToggle = deckWrap?.querySelector("[data-hx-deck-more-toggle]");
+  const deckMoreLabel = deckWrap?.querySelector("[data-hx-deck-more-label]");
+  const deckDesktopMq = window.matchMedia("(min-width: 769px)");
+  const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
+
+  if (deckSection && deckRoot) {
+    const deckItems = [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
+    let deckLive = false;
+    let deckStaggerTimer = null;
+    let squareReady = false;
+    const squareHandlers = new WeakMap();
+
+    const staggerDeckCards = () => {
+      if (reduced) {
+        deckItems.forEach((item) => item.classList.add("is-deck-in"));
+        return;
+      }
+
+      let index = 0;
+      const step = () => {
+        if (index >= deckItems.length) return;
+        deckItems[index].classList.add("is-deck-in");
+        index += 1;
+        if (index < deckItems.length) {
+          deckStaggerTimer = window.setTimeout(step, deckDesktopMq.matches ? 42 : 36);
+        }
+      };
+      step();
+    };
+
+    const revealDeck = () => {
+      if (deckLive) return;
+      deckLive = true;
+      deckSection.classList.add("is-deck-live");
+      staggerDeckCards();
+    };
+
+    function teardownDeckSquare() {
+      if (!squareReady) return;
+      squareReady = false;
+      deckRoot.classList.remove("hx-svc-deck--square");
+      deckMoreRoot?.classList.remove("hx-svc-deck--square");
+      deckSection.classList.remove("hx-services--deck-square");
+      deckLayout?.classList.remove("is-deck-more-open");
+      if (deckMorePanel) deckMorePanel.setAttribute("aria-hidden", "false");
+      if (deckMoreToggle) deckMoreToggle.setAttribute("aria-expanded", "false");
+      if (deckMoreLabel) deckMoreLabel.textContent = "Ver más";
+
+      deckItems.forEach((item) => {
+        item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on");
+        const handlers = squareHandlers.get(item);
+        if (handlers) {
+          item.removeEventListener("mouseenter", handlers.enter);
+          item.removeEventListener("mouseleave", handlers.leave);
+          item.removeEventListener("focusin", handlers.enter);
+          item.removeEventListener("focusout", handlers.leave);
+          squareHandlers.delete(item);
+        }
+        item.querySelector(".hx-svc-deck__icon")?.remove();
+        item.querySelector(".hx-svc-deck__media")?.remove();
+      });
+    }
+
+    function playDeckMedia(item) {
+      const handlers = squareHandlers.get(item);
+      if (!handlers) return;
+
+      item.classList.add("is-deck-expanded");
+      deckItems.forEach((el) => el.classList.toggle("is-active", el === item));
+
+      const video = handlers.loadVideo();
+      if (!video) {
+        item.classList.add("is-deck-fallback-on");
+        return;
+      }
+
+      video
+        .play()
+        .then(() => {
+          item.classList.add("is-deck-video-on");
+          item.classList.remove("is-deck-fallback-on");
+        })
+        .catch(() => {
+          item.classList.remove("is-deck-video-on");
+          item.classList.add("is-deck-fallback-on");
+        });
+    }
+
+    function stopDeckMedia(item) {
+      item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on");
+      const video = item.querySelector(".hx-svc-deck__video");
+      if (video) {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch (_) {
+          /* noop */
+        }
+      }
+    }
+
+    function setupDeckItemMedia(item) {
+      const id = item.getAttribute("data-deck-svc");
+      const cfg = deckMediaCfg[id];
+      if (!cfg || item.querySelector(".hx-svc-deck__icon")) return;
+
+      const iconEl = document.createElement("span");
+      iconEl.className = "hx-svc-deck__icon";
+      iconEl.setAttribute("aria-hidden", "true");
+      const iconImg = document.createElement("img");
+      const thumbSrc = cfg.thumb || cfg.poster || cfg.icon;
+      iconImg.src = thumbSrc;
+      iconImg.alt = "";
+      iconImg.loading = "lazy";
+      iconImg.decoding = "async";
+      if (cfg.thumb || cfg.poster) iconImg.classList.add("hx-svc-deck__icon-photo");
+      iconEl.appendChild(iconImg);
+
+      const mediaEl = document.createElement("span");
+      mediaEl.className = "hx-svc-deck__media";
+      mediaEl.setAttribute("aria-hidden", "true");
+
+      const video = document.createElement("video");
+      video.className = "hx-svc-deck__video";
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      video.preload = "none";
+      if (cfg.poster) video.poster = cfg.poster;
+      if (cfg.mp4) video.dataset.src = cfg.mp4;
+
+      const fallback = document.createElement("img");
+      fallback.className = "hx-svc-deck__media-fallback";
+      fallback.src = cfg.poster || cfg.icon;
+      fallback.alt = "";
+      fallback.loading = "lazy";
+      fallback.decoding = "async";
+
+      video.addEventListener("error", () => {
+        item.classList.remove("is-deck-video-on");
+        item.classList.add("is-deck-fallback-on");
+      });
+
+      mediaEl.append(video, fallback);
+
+      const bg = item.querySelector(".hx-svc-deck__bg");
+      if (bg) {
+        item.insertBefore(iconEl, bg);
+        item.insertBefore(mediaEl, bg);
+      } else {
+        item.prepend(mediaEl);
+        item.prepend(iconEl);
+      }
+
+      let loaded = false;
+      const handlers = {
+        loadVideo() {
+          if (!cfg.mp4) return null;
+          if (!loaded) {
+            video.src = cfg.mp4;
+            loaded = true;
+          }
+          return video;
+        },
+        enter() {
+          if (!deckDesktopMq.matches) return;
+          playDeckMedia(item);
+        },
+        leave(event) {
+          if (event?.type === "focusout" && item.contains(event.relatedTarget)) return;
+          stopDeckMedia(item);
+        },
+      };
+      squareHandlers.set(item, handlers);
+
+      item.addEventListener("mouseenter", handlers.enter);
+      item.addEventListener("mouseleave", handlers.leave);
+      item.addEventListener("focusin", handlers.enter);
+      item.addEventListener("focusout", handlers.leave);
+    }
+
+    function setMoreOpen(open) {
+      if (!deckLayout || !deckMorePanel) return;
+      deckLayout.classList.toggle("is-deck-more-open", open);
+      deckMorePanel.setAttribute("aria-hidden", String(!open));
+      deckMoreToggle?.setAttribute("aria-expanded", String(open));
+      if (deckMoreLabel) deckMoreLabel.textContent = open ? "Ver menos" : "Ver más";
+    }
+
+    function initDeckSquare() {
+      if (!deckDesktopMq.matches || squareReady) return;
+      squareReady = true;
+      deckRoot.classList.add("hx-svc-deck--square");
+      deckMoreRoot?.classList.add("hx-svc-deck--square");
+      deckSection.classList.add("hx-services--deck-square");
+      deckItems.forEach((item) => setupDeckItemMedia(item));
+      setMoreOpen(false);
+    }
+
+    function syncDeckLayout() {
+      if (deckDesktopMq.matches) {
+        initDeckSquare();
+      } else {
+        teardownDeckSquare();
+      }
+    }
+
+    if ("IntersectionObserver" in window) {
+      const deckObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealDeck();
+            deckObs.disconnect();
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px 10% 0px" }
+      );
+      deckObs.observe(deckSection);
+    } else {
+      revealDeck();
+    }
+
+    setTimeout(revealDeck, 1800);
+    if (reduced) revealDeck();
+
+    syncDeckLayout();
+    deckDesktopMq.addEventListener("change", syncDeckLayout);
+
+    deckMoreToggle?.addEventListener("click", () => {
+      const open = !deckLayout?.classList.contains("is-deck-more-open");
+      setMoreOpen(open);
+    });
+
+    deckItems.forEach((item) => {
+      if (!reduced && !deckDesktopMq.matches) {
+        let tiltFrame = 0;
+        let tiltEvent = null;
+
+        const applyTilt = () => {
+          tiltFrame = 0;
+          if (!tiltEvent) return;
+          const rect = item.getBoundingClientRect();
+          const px = (tiltEvent.clientX - rect.left) / rect.width - 0.5;
+          const py = (tiltEvent.clientY - rect.top) / rect.height - 0.5;
+          item.style.setProperty("--deck-tilt-y", `${(px * 8).toFixed(1)}deg`);
+          item.style.setProperty("--deck-tilt-x", `${(py * -6).toFixed(1)}deg`);
+        };
+
+        item.addEventListener("mousemove", (event) => {
+          tiltEvent = event;
+          if (!tiltFrame) tiltFrame = requestAnimationFrame(applyTilt);
+        });
+
+        item.addEventListener("mouseleave", () => {
+          tiltEvent = null;
+          if (tiltFrame) cancelAnimationFrame(tiltFrame);
+          tiltFrame = 0;
+          item.style.setProperty("--deck-tilt-x", "0deg");
+          item.style.setProperty("--deck-tilt-y", "0deg");
+        });
+      }
+
+      item.addEventListener("focusin", () => {
+        if (!deckDesktopMq.matches) {
+          deckItems.forEach((el) => el.classList.toggle("is-active", el === item));
+        }
+      });
+    });
+
+    window.addEventListener("pageshow", () => {
+      if (deckStaggerTimer) clearTimeout(deckStaggerTimer);
+    });
+  }
   window.addEventListener("pageshow", () => {
     resetPlanPicker();
   });

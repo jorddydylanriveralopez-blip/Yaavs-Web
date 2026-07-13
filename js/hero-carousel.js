@@ -591,37 +591,6 @@
 
     banner.appendChild(dots);
 
-    const controls = document.createElement("div");
-    controls.className = "hero-carousel__controls";
-    controls.innerHTML = `
-      <button type="button" class="hero-carousel__arrow hero-carousel__arrow--prev" aria-label="Slide anterior">
-        <span aria-hidden="true">\u2039</span>
-      </button>
-      <div class="hero-carousel__autoplay" aria-hidden="true">
-        <span></span>
-      </div>
-      <button type="button" class="hero-carousel__arrow hero-carousel__arrow--next" aria-label="Siguiente slide">
-        <span aria-hidden="true">\u203a</span>
-      </button>
-    `;
-    banner.appendChild(controls);
-
-    autoplayProgress = controls.querySelector(".hero-carousel__autoplay span");
-    const prevBtn = controls.querySelector(".hero-carousel__arrow--prev");
-    const nextBtn = controls.querySelector(".hero-carousel__arrow--next");
-
-    prevBtn?.addEventListener("click", () => {
-      goTo(index - 1, -1);
-      startTimer();
-      window.YaavsSonic?.play?.();
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      goTo(index + 1, 1);
-      startTimer();
-      window.YaavsSonic?.play?.();
-    });
-
     banner.addEventListener("mouseenter", stopTimer);
     banner.addEventListener("mouseleave", () => {
       if (!reducedMotion) startTimer();

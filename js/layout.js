@@ -16,7 +16,7 @@
     }
     return new Promise((resolve) => {
       const s = document.createElement("script");
-      s.src = "js/yaavs-sonic.js";
+      s.src = "js/yaavs-sonic.js?v=2";
       s.dataset.yaavsSonic = "true";
       s.onload = () => resolve();
       s.onerror = () => resolve();
@@ -135,6 +135,8 @@
   }
 
   async function mountSocialDock() {
+    if (document.body.classList.contains("page-home")) return;
+
     const existingDock = document.querySelector(".social-float[data-mounted='true']");
     if (existingDock) {
       revealFloatingDock();
@@ -249,8 +251,22 @@
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     document.dispatchEvent(new CustomEvent("yaavs:layout-ready"));
+    initPageEnter();
     initYaavsGame();
   });
+
+  function initPageEnter() {
+    if (document.querySelector("script[data-page-enter]")) {
+      window.YaavsPageEnter?.play();
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = "js/page-enter.js?v=2";
+    s.dataset.pageEnter = "true";
+    s.onload = () => window.YaavsPageEnter?.play();
+    s.onerror = () => document.body.classList.add("page-enter-done");
+    document.body.appendChild(s);
+  }
 
   function initYaavsGame() {
     if (document.querySelector("script[data-yaavs-game]")) return;

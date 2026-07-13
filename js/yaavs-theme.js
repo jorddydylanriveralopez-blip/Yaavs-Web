@@ -21,6 +21,15 @@
 
   applyTheme();
 
+  function markPageEnterPending() {
+    const body = document.body;
+    if (!body || body.classList.contains("page-intro-active")) return;
+    body.classList.add("page-enter-pending");
+  }
+
+  if (document.body) markPageEnterPending();
+  else document.addEventListener("DOMContentLoaded", markPageEnterPending, { once: true });
+
   window.YaavsTheme = {
     apply: applyTheme,
     get: () => FIXED_THEME,

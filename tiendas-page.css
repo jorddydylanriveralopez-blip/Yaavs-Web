@@ -97,18 +97,140 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
   width: 100%;
   min-height: calc(100dvh - var(--tiendas-header-offset));
   display: grid;
-  grid-template-rows: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  position: relative;
+}
+
+.tiendas-strips::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55) 20%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.55) 80%,
+    transparent
+  );
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+}
+
+body.page-enter-active .tiendas-strips::after {
+  animation: tiendas-seam-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
 }
 
 .tiendas-strip {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   border-top: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  transition: transform 0.25s ease, filter 0.25s ease;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+}
+
+.tiendas-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 38%,
+    rgba(0, 0, 0, 0.14) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tiendas-strip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+body.page-enter-pending .tiendas-strip {
+  opacity: 0;
+  clip-path: inset(50% 0 50% 0);
+}
+
+body.page-enter-active .tiendas-strip--bait {
+  animation: tiendas-strip-reveal 0.92s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+body.page-enter-active .tiendas-strip--att {
+  animation: tiendas-strip-reveal 0.92s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+body.page-enter-active .tiendas-strip--bait .tiendas-strip__logo {
+  animation: tiendas-logo-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+
+body.page-enter-active .tiendas-strip--att .tiendas-strip__logo {
+  animation: tiendas-logo-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.52s both;
+}
+
+body.page-enter-active .tiendas-strip--bait .tiendas-strip__hint {
+  animation: tiendas-hint-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.62s both;
+}
+
+body.page-enter-active .tiendas-strip--att .tiendas-strip__hint {
+  animation: tiendas-hint-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.76s both;
+}
+
+@keyframes tiendas-seam-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes tiendas-strip-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+@keyframes tiendas-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
 }
 
 .tiendas-strip + .tiendas-strip {
@@ -116,16 +238,55 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
 }
 
 .tiendas-strip:hover {
-  transform: scale(1.005);
-  filter: brightness(1.12) saturate(1.08);
+  transform: scale(1.008);
+  filter: brightness(1.14) saturate(1.1);
+  z-index: 2;
 }
 
 .tiendas-strip__logo {
+  position: relative;
+  z-index: 3;
   width: auto;
-  height: clamp(58px, 9.2vh, 110px);
-  max-width: min(86vw, 440px);
+  height: clamp(64px, 11vh, 128px);
+  max-width: min(86vw, 460px);
   object-fit: contain;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tiendas-strip:hover .tiendas-strip__logo {
+  transform: scale(1.04);
+}
+
+.tiendas-strip__hint {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(10px, 2vh, 18px);
+  font-size: clamp(0.62rem, 1.8vw, 0.72rem);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  opacity: 0;
+}
+
+.tiendas-strip__hint::after {
+  content: " →";
+}
+
+@keyframes tiendas-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tiendas-strip:hover .tiendas-strip__hint {
+  opacity: 1;
 }
 
 .tiendas-strip__logo--unefon {
@@ -154,7 +315,8 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
   }
 
   .tiendas-strip__logo {
-    max-width: min(90vw, 340px);
+    max-width: min(90vw, 360px);
+    height: clamp(52px, 9vh, 88px);
   }
 }
 
@@ -162,8 +324,22 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
   .tiendas-strip__logo {
     height: clamp(44px, 8vh, 74px);
   }
+}
 
-  .tiendas-strip__logo--unefon {
-    height: clamp(76px, 12vh, 128px);
+@media (prefers-reduced-motion: reduce) {
+  body.page-enter-pending .tiendas-strip {
+    opacity: 1;
+    clip-path: none;
+  }
+
+  body.page-enter-active .tiendas-strip,
+  body.page-enter-active .tiendas-strip__logo,
+  body.page-enter-active .tiendas-strips::after,
+  body.page-enter-active .tiendas-strip__hint {
+    animation: none !important;
+    opacity: 1;
+    clip-path: none;
+    transform: none;
+    filter: none;
   }
 }
