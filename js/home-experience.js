@@ -883,6 +883,22 @@
       activateOp(introCard || opCards[0]);
     }
 
+    const CARRIER_SITE_URLS = {
+      att: "https://www.att.com.mx/",
+      unefon: "https://www.unefon.com.mx/",
+      bait: "https://mibait.com/",
+      movistar: "https://www.movistar.com.mx/",
+    };
+
+    function openCarrierSite(card) {
+      const op = card?.dataset?.hxOp;
+      if (!op || op === "intro") return false;
+      const url = String(card.dataset.hxOpUrl || CARRIER_SITE_URLS[op] || "").trim();
+      if (!url) return false;
+      window.open(url, "_blank", "noopener,noreferrer");
+      return true;
+    }
+
     opsPickerOpen?.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -896,7 +912,10 @@
     opsPickerOptions.forEach((button) => {
       button.addEventListener("click", () => {
         const targetCard = carrierCards.find((card) => card.dataset.hxOp === button.dataset.hxOpsSelect);
-        if (targetCard) activateOp(targetCard);
+        if (targetCard) {
+          if (openCarrierSite(targetCard)) return;
+          activateOp(targetCard);
+        }
       });
     });
 
@@ -942,7 +961,9 @@
         card.style.setProperty("--my", `${my}%`);
       });
 
-      card.addEventListener("click", () => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("a[href], button")) return;
+        if (openCarrierSite(card)) return;
         if (mobileOps.matches && card === introCard) return;
         activateOp(card);
       });
@@ -951,6 +972,7 @@
         const idx = Array.from(opCards).indexOf(card);
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
+          if (openCarrierSite(card)) return;
           activateOp(card);
           return;
         }
