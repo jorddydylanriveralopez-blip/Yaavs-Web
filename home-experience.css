@@ -667,20 +667,11 @@
   margin: 0 auto clamp(20px, 3vw, 28px);
   padding: clamp(20px, 3vw, 28px) var(--pad-x);
   border-radius: 16px;
-  background: rgba(0, 24, 60, 0.92);
-  border: 1px solid rgba(61, 125, 181, 0.28);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.hx-ops__eyebrow {
-  margin: 0 0 8px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent-bright);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  box-shadow: 0 14px 40px rgba(15, 36, 64, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .hx-ops__title {
@@ -690,8 +681,8 @@
   text-transform: uppercase;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: #fff;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+  color: #0f2440;
+  text-shadow: none;
 }
 
 .hx-ops__hint {
@@ -705,13 +696,20 @@
   font-size: clamp(0.82rem, 1.6vw, 0.92rem);
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #fff;
-  background: rgba(0, 48, 135, 0.88);
-  border: 1px solid rgba(61, 125, 181, 0.55);
-  box-shadow:
-    0 4px 18px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #0f2440;
+  background: rgba(0, 188, 212, 0.12);
+  border: 1px solid rgba(0, 188, 212, 0.28);
+  box-shadow: none;
   text-shadow: none;
+}
+
+.hx-ops__eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0097b2;
 }
 
 .hx-ops__hint::before {
@@ -719,7 +717,7 @@
   font-size: 1.05rem;
   font-weight: 800;
   line-height: 1;
-  color: var(--accent-bright, #3d7db5);
+  color: #00bcd4;
 }
 
 .hx-ops__hint--mobile {
@@ -751,74 +749,38 @@
   }
 
   .hx-ops__head {
-    position: absolute;
-    top: clamp(12px, 2vh, 20px);
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    z-index: 10;
-    margin: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    z-index: 2;
+    margin: 0 auto clamp(20px, 3vw, 28px);
     width: min(920px, calc(100% - 2 * var(--pad-x)));
     max-width: none;
     padding: clamp(20px, 3vh, 32px) clamp(24px, 4vw, 40px);
     text-align: center;
-    pointer-events: none;
+    pointer-events: auto;
     border-radius: 18px;
-    background: rgba(0, 24, 60, 0.94);
-    border: 1px solid rgba(61, 125, 181, 0.32);
-    box-shadow:
-      0 20px 56px rgba(0, 0, 0, 0.55),
-      0 0 0 1px rgba(255, 255, 255, 0.04) inset;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0, 188, 212, 0.22);
+    box-shadow: 0 14px 40px rgba(15, 36, 64, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .hx-ops__deck {
-    min-height: 100dvh;
-    height: 100dvh;
+    min-height: clamp(460px, 56vh, 640px);
+    height: auto;
   }
 
-  /* Logos de carriers al centro de la columna */
-  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label {
-    transform: translateY(clamp(300px, 43vh, 470px));
+  .hx-ops__card.is-active .hx-ops__card-body {
+    align-items: center;
+    justify-content: center;
+    padding: clamp(20px, 3vw, 32px);
   }
 
-  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-label {
-    transform: translateY(clamp(300px, 43vh, 470px)) scale(0.92);
-  }
-
-  /* Scroll-sequence: al bajar, cada columna se expande en orden */
-  .hx-ops.hx-ops--scroll-sequence {
-    min-height: calc(100dvh + var(--hx-ops-scroll-range, 300vh));
-    overflow-anchor: none;
-  }
-
-  .page-home .tx-gallery--home {
-    overflow-anchor: auto;
-  }
-
-  .hx-ops.hx-ops--scroll-sequence .hx-ops__deck {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
-
-  .hx-ops.hx-ops--scroll-sequence .hx-ops__head {
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  .hx-ops.hx-ops--scroll-sequence .hx-ops__card {
-    flex: var(--hx-ops-scroll-flex, 1) 1 0;
-    transition:
-      flex 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 0.45s ease,
-      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.42s ease,
-      filter 0.42s ease;
-  }
-
-  .hx-ops.hx-ops--scroll-sequence .hx-ops__card.is-active {
-    flex: var(--hx-ops-scroll-flex, 4.2) 1 0;
+  .hx-ops__card-panel {
+    max-width: min(420px, 92%);
   }
 }
 
