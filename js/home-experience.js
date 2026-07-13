@@ -1286,7 +1286,7 @@
           return video;
         },
         enter() {
-          if (!deckDesktopMq.matches) return;
+          if (!deckDesktopMq.matches || deckLayout) return;
           playDeckMedia(item);
         },
         leave(event) {
@@ -1317,7 +1317,7 @@
       deckMoreRoot?.classList.add("hx-svc-deck--square");
       deckSection.classList.add("hx-services--deck-square");
       deckItems.forEach((item) => setupDeckItemMedia(item));
-      setMoreOpen(false);
+      setMoreOpen(true);
     }
 
     function syncDeckLayout() {
