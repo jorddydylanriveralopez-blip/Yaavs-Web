@@ -762,13 +762,7 @@
       dismissOpsPeek();
 
       if (card?.classList.contains("is-active") && card.dataset.hxOp !== "intro") {
-        card = mobileOps.matches ? null : introCard;
-      }
-
-      if (!card && mobileOps.matches) {
-        setAllOpsCardsInactive();
-        syncOpsState(null);
-        return;
+        card = introCard;
       }
 
       if (!card) card = introCard;
@@ -785,25 +779,10 @@
 
       if (card?.dataset?.hxOp !== "intro") {
         window.YaavsSonic?.play?.();
-        if (mobileOps.matches) {
-          requestAnimationFrame(() => {
-            opsDeck.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
-        }
       }
     }
 
     function applyInitialOpsState() {
-      if (mobileOps.matches) {
-        setAllOpsCardsInactive();
-        carrierCards.forEach((c) => {
-          c.tabIndex = 0;
-        });
-        if (introCard) introCard.tabIndex = -1;
-        syncOpsState(null);
-        return;
-      }
-      if (introCard) introCard.tabIndex = 0;
       activateOp(introCard || opCards[0]);
     }
 
@@ -825,33 +804,12 @@
     });
 
     opsBack?.addEventListener("click", () => {
-      if (mobileOps.matches) {
-        setAllOpsCardsInactive();
-        carrierCards.forEach((c) => {
-          c.tabIndex = 0;
-        });
-        if (introCard) introCard.tabIndex = -1;
-        syncOpsState(null);
-        dismissOpsPeek();
-        return;
-      }
       activateOp(introCard);
     });
 
     const onMobileOpsChange = () => {
       setOpsPickerOpen(false, { restoreFocus: false });
-      if (mobileOps.matches) {
-        if (!opsDeck.classList.contains("has-carrier-active")) {
-          setAllOpsCardsInactive();
-          carrierCards.forEach((c) => {
-            c.tabIndex = 0;
-          });
-          if (introCard) introCard.tabIndex = -1;
-          syncOpsState(null);
-        }
-      } else if (!opsDeck.classList.contains("has-carrier-active") && introCard) {
-        activateOp(introCard);
-      }
+      if (introCard) activateOp(introCard);
       initOpsPeek();
       syncOpsPreview();
     };

@@ -1654,396 +1654,267 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__back {
-    display: none;
-    align-items: center;
-    gap: 8px;
-    margin: 0 calc(var(--pad-x) + 12px) 12px;
-    padding: 11px 18px;
-    border: 1px solid rgba(0, 188, 212, 0.35);
-    border-radius: 999px;
-    background: rgba(0, 188, 212, 0.1);
-    color: #0097b2;
-    font-family: inherit;
-    font-size: 0.84rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__back {
-    display: inline-flex;
+    display: none !important;
   }
 
   .hx-ops.has-carrier-active .hx-ops__head {
-    display: none;
+    display: block;
   }
 
-  .hx-ops__back-icon {
-    font-size: 1rem;
-    line-height: 1;
-  }
-
+  /* —— Acordeón horizontal (mismo concepto que desktop) —— */
   .hx-ops__deck {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    width: auto;
     max-width: none;
-    margin-left: 0;
-    min-height: auto;
-    padding: clamp(12px, 3vw, 18px) calc(var(--pad-x) + 20px) clamp(28px, 7vw, 40px);
-    gap: 12px;
+    margin-left: var(--pad-x);
+    margin-right: var(--pad-x);
+    min-height: min(56vh, 440px);
+    height: min(56vh, 440px);
+    padding: clamp(8px, 2vw, 10px);
+    gap: clamp(4px, 1vw, 6px);
+    border-radius: clamp(14px, 3.5vw, 18px);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow:
+      0 24px 56px rgba(15, 36, 64, 0.1),
+      0 0 0 1px rgba(0, 188, 212, 0.1);
+    overflow: hidden;
   }
 
   .hx-ops__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(10px, 2.5vw, 14px);
+    display: contents;
   }
 
-  .hx-ops:not(.has-carrier-active) .hx-ops__card--intro {
-    display: none;
-  }
-
-  .hx-ops:not(.has-carrier-active) .hx-ops__grid {
-    display: grid;
-  }
-
-  .hx-ops__grid.is-collapsed .hx-ops__card:nth-child(n + 3) {
-    display: none;
-  }
-
-  .hx-ops__toggle {
-    display: none !important;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin: 2px calc(var(--pad-x) + 20px) 0;
-    min-height: 40px;
-    padding: 8px 16px;
-    border: 1px solid rgba(90, 156, 196, 0.3);
-    border-radius: 999px;
-    background: rgba(61, 125, 181, 0.16);
-    color: #eef9ff;
-    font-family: inherit;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-  }
-
-  .hx-ops__toggle::after {
-    content: "▾";
-    font-size: 0.95rem;
-    line-height: 1;
-    transition: transform 0.25s ease;
-  }
-
-  .hx-ops__toggle[aria-expanded="true"]::after {
-    transform: rotate(180deg);
-  }
-
-  .hx-ops__toggle:active {
-    transform: scale(0.98);
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__toggle {
-    display: none !important;
-  }
-
-  /* —— Intro: tarjeta hero fija —— */
-  .hx-ops__card--intro {
-    border-radius: 20px;
-    border: 1px solid rgba(90, 156, 196, 0.18);
-    box-shadow:
-      0 20px 48px rgba(0, 0, 0, 0.45),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    min-height: clamp(280px, 52vw, 360px) !important;
-    flex: none !important;
+  .hx-ops__card {
+    flex: 0.75 1 0;
+    min-width: clamp(38px, 10vw, 50px);
+    max-width: none;
+    border-radius: clamp(10px, 2.5vw, 14px) !important;
+    border: none !important;
+    opacity: 1 !important;
+    filter: none !important;
     transform: none !important;
+    box-shadow: 0 10px 28px rgba(15, 36, 64, 0.16);
+    transition:
+      flex 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      min-width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease,
+      opacity 0.35s ease;
+  }
+
+  .hx-ops__card--intro {
+    display: block !important;
+    flex: 2.1 1 0;
+    min-width: clamp(34px, 8.5vw, 46px) !important;
+    min-height: 0 !important;
     overflow: hidden;
+  }
+
+  .hx-ops__card--intro:not(.is-active) {
+    flex: 0.48 1 0;
+    min-width: clamp(30px, 7.5vw, 40px) !important;
+  }
+
+  .hx-ops__card--intro.is-active {
+    flex: 2.1 1 0;
+  }
+
+  .hx-ops__card:not(.hx-ops__card--intro).is-active {
+    flex: 4.8 1 0;
+    min-width: clamp(150px, 46vw, 230px) !important;
+    z-index: 4;
+    box-shadow:
+      0 18px 44px rgba(15, 36, 64, 0.22),
+      0 0 0 1px color-mix(in srgb, var(--op-accent) 35%, transparent);
+  }
+
+  .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) {
+    opacity: 0.94 !important;
+  }
+
+  .hx-ops.has-carrier-active .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) {
+    opacity: 0.72 !important;
+  }
+
+  .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-photo {
+    display: none;
   }
 
   .hx-ops__card--intro .hx-ops__intro-photo {
-    transform: none;
-    filter: brightness(0.78) saturate(1.05);
+    display: block;
   }
 
-  .hx-ops__card--intro .hx-ops__intro-veil {
-    background:
-      linear-gradient(180deg, rgba(2, 8, 18, 0.55) 0%, rgba(2, 8, 18, 0.82) 100%);
+  .hx-ops__card-bg {
+    display: block;
+    background: var(--ops-brand-bg, linear-gradient(180deg, #0099ff 0%, #0072ce 100%));
+  }
+
+  .hx-ops__card-ribbon {
+    display: block;
+    top: 10px;
+    left: 10px;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .hx-ops__card:not(.is-active) .hx-ops__card-body {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) .hx-ops__card-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) .hx-ops__card-logo {
+    display: block;
+    width: clamp(52px, 88%, 96px);
+    height: auto !important;
+    max-width: 92%;
+    max-height: 48%;
+    margin: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.28));
+    transform: none;
+  }
+
+  .hx-ops__card--movistar:not(.is-active) .hx-ops__card-logo {
+    width: clamp(54px, 90%, 100px);
+    max-height: 52%;
+  }
+
+  .hx-ops__card--unefon:not(.is-active) .hx-ops__card-logo {
+    width: clamp(46px, 82%, 86px);
+    max-height: 46%;
+    filter: none;
+  }
+
+  .hx-ops__card-name {
+    display: none;
   }
 
   .hx-ops__card--intro .hx-ops__card-label {
-    display: none !important;
-  }
-
-  .hx-ops__card--intro .hx-ops__card-body {
-    position: relative;
-    inset: auto;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    padding: clamp(18px, 4vw, 24px);
-    min-height: clamp(280px, 52vw, 360px);
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hx-ops__card--intro .hx-ops__card-panel {
-    padding: clamp(18px, 4vw, 24px);
-    border-radius: 14px;
-    max-width: min(560px, 100%);
-    background:
-      linear-gradient(155deg, rgba(8, 20, 36, 0.9) 0%, rgba(4, 10, 20, 0.86) 100%);
-  }
-
-  .hx-ops__card--intro .hx-ops__intro-title {
-    font-size: clamp(1.35rem, 5.5vw, 1.65rem);
-  }
-
-  .hx-ops__card--intro .hx-ops__intro-desc {
-    font-size: 0.9rem;
-    max-width: none;
-  }
-
-  .hx-ops__card--intro .hx-ops__intro-logos {
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .hx-ops__card--intro .hx-ops__intro-logos img {
-    height: 18px;
-    flex: 1;
-    max-width: 16%;
-    object-fit: contain;
-  }
-
-  .hx-ops__card--intro .hx-ops__intro-cta {
-    font-size: 0.78rem;
-    margin-top: 14px;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__card--intro {
-    display: none;
-  }
-
-  /* —— Tiles de operadores (grid 2×2) —— */
-  .hx-ops__grid .hx-ops__card {
-    flex: none !important;
-    min-height: 0;
-    aspect-ratio: 1 / 0.92;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transform: none !important;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-    transition:
-      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
-  }
-
-  .hx-ops__grid .hx-ops__card:active {
-    transform: scale(0.97) !important;
-  }
-
-  .hx-ops__grid .hx-ops__card .hx-ops__card-photo {
-    transform: none;
-    filter: brightness(0.85) saturate(1.05);
-  }
-
-  .hx-ops__grid .hx-ops__card .hx-ops__card-bg {
-    display: none;
-  }
-
-  .hx-ops__grid .hx-ops__card::before {
-    border-radius: inherit;
-  }
-
-  .hx-ops__grid .hx-ops__card-ribbon,
-  .hx-ops__grid .hx-ops__card-scan,
-  .hx-ops__grid .hx-ops__card-body {
-    display: none;
-  }
-
-  .hx-ops__grid .hx-ops__card-label {
     position: absolute;
     inset: 0;
-    min-height: 0;
-    padding: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: clamp(7px, 1.8vw, 10px);
-    background: none;
+    padding: 8px 4px;
+    opacity: 1;
+    visibility: visible;
     text-align: center;
   }
 
-  .hx-ops__grid .hx-ops__card-logo {
-    position: relative;
-    margin: auto;
+  .hx-ops__card--intro.is-active .hx-ops__card-label {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .hx-ops__card--intro:not(.is-active) .hx-ops__intro-short--full {
+    display: none;
+  }
+
+  .hx-ops__card--intro:not(.is-active) .hx-ops__intro-short--compact {
     display: block;
-    width: clamp(82px, 56%, 128px);
-    height: auto !important;
-    max-width: 74%;
-    max-height: 30%;
-    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.22));
-    object-fit: contain;
-    object-position: center center;
-    transform: none;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   }
 
-  .hx-ops__grid .hx-ops__card-name {
-    display: none;
+  .hx-ops__card--intro .hx-ops__card-body {
+    display: none !important;
   }
 
-  .hx-ops__grid .hx-ops__card--bait .hx-ops__card-logo {
-    transform: translateY(8px);
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-label {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
-  .hx-ops__grid .hx-ops__card--movistar .hx-ops__card-logo {
-    width: clamp(84px, 62%, 136px);
-    transform: translateY(8px);
-  }
-
-  .hx-ops__grid .hx-ops__card--bait .hx-ops__card-name {
-    color: #fff0b2;
-  }
-
-  .hx-ops__grid .hx-ops__card--att .hx-ops__card-name {
-    color: #e8f8ff;
-  }
-
-  .hx-ops__grid .hx-ops__card--movistar .hx-ops__card-name {
-    color: #e9ffe5;
-  }
-
-  .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    width: clamp(70px, 54%, 112px);
-    max-height: 40%;
-    transform: translateY(4px);
-  }
-
-  .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-name {
-    color: #283139;
-    text-shadow: none;
-  }
-
-  .hx-ops__grid .hx-ops__card::after {
-    display: none;
-  }
-
-  /* —— Operador expandido (vista inmersiva) —— */
-  .hx-ops.has-carrier-active .hx-ops__grid {
-    display: block;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card:not(.is-active) {
-    display: none;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active::after {
-    display: none;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active {
-    display: block;
-    aspect-ratio: auto;
-    min-height: min(78vh, calc(100dvh - var(--header-h, 88px) - 72px));
-    border-radius: 18px;
-    border: 1px solid color-mix(in srgb, var(--op-accent) 35%, transparent);
-    box-shadow:
-      0 28px 64px rgba(0, 0, 0, 0.5),
-      0 0 40px color-mix(in srgb, var(--op-accent) 18%, transparent);
-    overflow: hidden;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-photo {
-    transform: scale(1.04);
-    filter: brightness(0.72) saturate(1.12);
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-bg {
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0.92) 100%);
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-label {
-    display: none;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-body {
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-body {
+    position: absolute;
+    inset: 0;
     display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 1;
     transform: none;
     pointer-events: auto;
-    min-height: 100%;
-    padding: clamp(16px, 4vw, 24px);
-    align-items: center;
-    justify-content: center;
+    padding: clamp(12px, 3vw, 16px);
+    min-height: 0;
   }
 
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-panel {
-    max-width: min(520px, 100%);
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-panel {
+    max-width: 100%;
     width: 100%;
-    padding: clamp(24px, 5vw, 32px);
-    max-height: calc(100% - 16px);
+    max-height: calc(100% - 8px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    padding: clamp(16px, 3.5vw, 22px);
     background: rgba(255, 255, 255, 0.97);
     border-color: rgba(15, 36, 64, 0.1);
-    box-shadow: 0 20px 50px rgba(15, 36, 64, 0.14);
+    box-shadow: 0 16px 40px rgba(15, 36, 64, 0.14);
   }
 
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-panel-head,
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-lead,
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-desc,
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-list li {
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-panel-head,
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-lead,
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-desc,
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-list li {
     color: #0f2440;
     text-shadow: none;
   }
 
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-desc {
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-desc {
     color: rgba(15, 36, 64, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.55;
   }
 
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-logo--panel {
-    height: clamp(36px, 8vw, 48px);
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-lead {
+    font-size: clamp(0.95rem, 3.8vw, 1.1rem);
   }
 
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-btn.btn--primary {
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-logo--panel {
+    height: clamp(32px, 7vw, 42px);
+  }
+
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-btn.btn--primary {
     width: 100%;
     justify-content: center;
-    margin-top: 16px;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-panel-head {
-    margin-bottom: clamp(10px, 2vw, 14px);
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-lead {
-    font-size: clamp(1.05rem, 4.2vw, 1.2rem);
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-desc {
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-list {
     margin-top: 12px;
-    gap: 8px;
   }
 
-  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-list li {
-    font-size: 0.84rem;
-    padding: 10px 12px;
+  .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-list li {
+    font-size: 0.8rem;
+    padding: 8px 10px;
     color: #0f2440;
     background: rgba(0, 188, 212, 0.08);
     border-color: rgba(0, 188, 212, 0.14);
+  }
+
+  .hx-ops__card-scan,
+  .hx-ops__toggle {
+    display: none !important;
+  }
+
+  .hx-ops__grid.is-collapsed .hx-ops__card:nth-child(n + 3) {
+    display: block;
   }
 }
 
@@ -6775,6 +6646,89 @@ body.hx-svc-panel-open {
   /* El panel central duplicaría el mensaje: fuera en desktop */
   .hx-ops__card--intro .hx-ops__card-body {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hx-ops__intro-hero {
+    position: absolute;
+    z-index: 6;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 8px;
+    width: 100%;
+    padding: clamp(14px, 3.5vw, 20px);
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(2, 8, 18, 0) 0%, rgba(2, 8, 18, 0.82) 100%);
+    transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero {
+    position: absolute;
+    z-index: 6;
+  }
+
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-kicker,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-title,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-desc {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+  }
+
+  .hx-ops__card--intro:not(.is-active) .hx-ops__intro-hero {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+
+  .hx-ops__intro-hero-kicker {
+    margin: 0;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #5a9cc4;
+  }
+
+  .hx-ops__intro-hero-kicker::before {
+    display: none;
+  }
+
+  .hx-ops__intro-hero-title {
+    margin: 0;
+    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .hx-ops__intro-hero-title .hx-services__cyan {
+    color: #5a9cc4;
+    -webkit-text-fill-color: #5a9cc4;
+  }
+
+  .hx-ops__intro-hero-desc {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hx-ops__card--intro .hx-ops__intro-veil {
+    background: linear-gradient(180deg, rgba(2, 8, 18, 0.15) 0%, rgba(2, 8, 18, 0.55) 100%);
   }
 }
 

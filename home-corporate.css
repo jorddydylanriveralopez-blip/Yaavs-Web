@@ -1490,24 +1490,32 @@ body.page-home {
 }
 
 @media (max-width: 900px) {
-  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--bait {
+  .page-home .hx-ops__grid .hx-ops__card--bait,
+  .page-home .hx-ops__card--bait {
     --ops-brand-bg: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
   }
 
-  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--att {
+  .page-home .hx-ops__grid .hx-ops__card--att,
+  .page-home .hx-ops__card--att {
     --ops-brand-bg: linear-gradient(180deg, #0099ff 0%, #0072ce 100%);
   }
 
-  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--movistar {
+  .page-home .hx-ops__grid .hx-ops__card--movistar,
+  .page-home .hx-ops__card--movistar {
     --ops-brand-bg: linear-gradient(180deg, #00c853 0%, #009624 100%);
   }
 
-  .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--unefon {
+  .page-home .hx-ops__grid .hx-ops__card--unefon,
+  .page-home .hx-ops__card--unefon {
     --ops-brand-bg: linear-gradient(180deg, #ffe033 0%, #ffc400 100%);
   }
 
-  .page-home .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
+  .page-home .hx-ops__card--unefon .hx-ops__card-logo {
     filter: none;
+  }
+
+  .page-home .hx-ops__deck .hx-ops__card:not(.is-active):not(.hx-ops__card--intro):active {
+    transform: scale(0.98) !important;
   }
 }
 
@@ -3148,56 +3156,15 @@ body.page-home {
   filter: none;
 }
 
-/* Tarjeta intro "Conoce nuestras compañías" en móvil */
+/* Tarjeta intro — acordeón horizontal móvil */
 @media (max-width: 900px) {
   .page-home .hx-ops__card--intro {
-    border-color: rgba(0, 188, 212, 0.25);
-    box-shadow: 0 18px 44px rgba(15, 36, 64, 0.14);
+    border-color: rgba(0, 188, 212, 0.2);
+    box-shadow: 0 12px 32px rgba(15, 36, 64, 0.14);
   }
 
   .page-home .hx-ops__card--intro .hx-ops__intro-photo {
-    filter: none;
-  }
-
-  .page-home .hx-ops__card--intro .hx-ops__intro-veil {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.6) 100%);
-  }
-
-  .page-home .hx-ops__card--intro .hx-ops__card-panel {
-    background: rgba(255, 255, 255, 0.96);
-    border-color: rgba(0, 188, 212, 0.28);
-    box-shadow: 0 16px 36px rgba(15, 36, 64, 0.16);
-  }
-
-  .page-home .hx-ops__card--intro .hx-ops__intro-title,
-  .page-home .hx-ops__card--intro .hx-ops__intro-cta,
-  .page-home .hx-ops__card--intro .hx-ops__intro-short {
-    color: #0f2440;
-    text-shadow: none;
-  }
-
-  .page-home .hx-ops__card--intro .hx-ops__intro-desc {
-    color: #4a6278;
-    text-shadow: none;
-  }
-
-  .page-home .hx-ops__card--intro .hx-ops__card-kicker {
-    color: #0097b2;
-    background: rgba(0, 188, 212, 0.1);
-    border-color: rgba(0, 188, 212, 0.3);
-    box-shadow: none;
-  }
-
-  .page-home .hx-ops__card--intro .hx-ops__card-kicker::before {
-    background: #00bcd4;
-    box-shadow: none;
-  }
-
-  /* Logos de marcas en color sobre la tarjeta intro */
-  .page-home .hx-ops__card--intro .hx-ops__intro-logos {
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
+    filter: brightness(0.88) saturate(1.05);
   }
 }
 
