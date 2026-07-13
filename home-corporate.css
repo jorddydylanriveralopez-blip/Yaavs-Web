@@ -3129,7 +3129,7 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck--square {
-    --deck-row-h: clamp(300px, 40vh, 400px);
+    --deck-row-h: clamp(340px, 45vh, 460px);
     --deck-expand-w: calc(var(--deck-row-h) * 2.1);
     display: flex;
     flex-direction: row;
