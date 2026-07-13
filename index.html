@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css">
   <link rel="stylesheet" href="theme-day-night.css">
   <link rel="stylesheet" href="home-experience.css?v=19">
-  <link rel="stylesheet" href="home-corporate.css?v=90">
+  <link rel="stylesheet" href="home-corporate.css?v=100">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/yaavstys/yaavstys-3.png" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/yaavstys/yaavstys-3.png" media="(min-width: 769px)" fetchpriority="high">
@@ -106,7 +106,7 @@
           <h2 data-hx-reveal><span class="hx-services__cyan">Nuestros</span> servicios</h2>
           <p class="hx-services__hint" data-hx-reveal>Elige un servicio y te llevamos al sitio correspondiente</p>
           <p class="hx-svc-deck__peek hx-svc-deck__peek--desk" data-hx-reveal aria-hidden="true">Pasa el mouse sobre un servicio para ver el video</p>
-          <p class="hx-svc-deck__peek hx-svc-deck__peek--mob" data-hx-reveal>Toca un servicio para ir directo</p>
+          <p class="hx-svc-deck__peek hx-svc-deck__peek--mob" data-hx-reveal>Toca un servicio · 10 disponibles</p>
         </header>
 
         <div class="hx-svc-deck-wrap" data-hx-deck-wrap>
@@ -806,11 +806,14 @@
 
       scheduleIdle(() => {
         void loadBatchOnce("home-secondary", [
-          "js/deck-media.config.js",
           "js/page-sparkles.js",
-          "js/home-experience.js?v=41",
         ]);
       });
+
+      loadWhenVisible("#servicios-preview", "home-deck", [
+        "js/deck-media.config.js",
+        "js/home-experience.js?v=47",
+      ], "400px 0px");
 
       let chatBootPromise = null;
       let chatReady = false;

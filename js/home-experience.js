@@ -992,13 +992,141 @@
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
 
   if (deckSection && deckRoot) {
-    const deckItems = [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
+    const getDeckItems = () => [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
+    let deckItems = getDeckItems();
     let deckLive = false;
     let deckStaggerTimer = null;
     let squareReady = false;
     const squareHandlers = new WeakMap();
 
+    let masonryReady = false;
+    let masonryEl = null;
+
+    function teardownMobileMasonry() {
+      if (!masonryReady) return;
+      masonryReady = false;
+      deckLayout?.classList.remove("is-deck-masonry-mob");
+
+      const sorted = [...getDeckItems()].sort(
+        (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
+      );
+      sorted.slice(0, 5).forEach((item) => deckRoot.appendChild(item));
+      sorted.slice(5).forEach((item) => deckMoreRoot?.appendChild(item));
+
+      masonryEl?.remove();
+      masonryEl = null;
+      deckRoot.hidden = false;
+      if (deckMorePanel) deckMorePanel.hidden = false;
+    }
+
+    let masonryBalanceTimer = null;
+
+    function distributeMasonryColumns(items, colLeft, colRight) {
+      if (!colLeft || !colRight) return;
+      colLeft.replaceChildren();
+      colRight.replaceChildren();
+      items.forEach((item, index) => {
+        (index % 2 === 0 ? colLeft : colRight).appendChild(item);
+      });
+    }
+
+    function layoutMobileMasonry() {
+      if (deckDesktopMq.matches || !deckLayout) {
+        teardownMobileMasonry();
+        return;
+      }
+
+      if (!masonryEl) {
+        masonryEl = document.createElement("div");
+        masonryEl.className = "hx-svc-deck-masonry";
+        masonryEl.setAttribute("role", "list");
+
+        const colsWrap = document.createElement("div");
+        colsWrap.className = "hx-svc-deck-masonry__cols";
+
+        const colLeft = document.createElement("div");
+        const colRight = document.createElement("div");
+        colLeft.className = "hx-svc-deck-masonry__col";
+        colRight.className = "hx-svc-deck-masonry__col";
+        colLeft.dataset.masonryCol = "left";
+        colRight.dataset.masonryCol = "right";
+        colsWrap.append(colLeft, colRight);
+        masonryEl.appendChild(colsWrap);
+
+        deckLayout.insertBefore(masonryEl, deckRoot);
+        deckRoot.hidden = true;
+        if (deckMorePanel) deckMorePanel.hidden = true;
+        deckLayout.classList.add("is-deck-masonry-mob");
+        masonryReady = true;
+      }
+
+      if (deckMorePanel) {
+        deckMorePanel.hidden = false;
+        deckMorePanel.setAttribute("aria-hidden", "false");
+      }
+
+      const sorted = [...getDeckItems()].sort(
+        (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
+      );
+      const heroItem = sorted.find((item) => item.dataset.masonry === "hero");
+      const rest = sorted.filter((item) => item !== heroItem);
+      const colsWrap = masonryEl.querySelector(".hx-svc-deck-masonry__cols");
+      const colLeft = masonryEl.querySelector('[data-masonry-col="left"]');
+      const colRight = masonryEl.querySelector('[data-masonry-col="right"]');
+
+      masonryEl.querySelector(":scope > .hx-svc-deck__item[data-masonry=\"hero\"]")?.remove();
+      colLeft.replaceChildren();
+      colRight.replaceChildren();
+
+      if (heroItem) {
+        heroItem.classList.add("is-deck-in");
+        masonryEl.insertBefore(heroItem, colsWrap);
+      }
+
+      rest.forEach((item) => item.classList.add("is-deck-in"));
+      distributeMasonryColumns(rest, colLeft, colRight);
+
+      getDeckItems().forEach((item) => {
+        if (item.dataset.masonry === "hero") return;
+        if (colLeft.contains(item) || colRight.contains(item)) return;
+        (colLeft.children.length <= colRight.children.length ? colLeft : colRight).appendChild(item);
+      });
+    }
+
+    function scheduleMasonryBalance() {
+      if (!masonryReady || deckDesktopMq.matches) return;
+      if (masonryBalanceTimer) cancelAnimationFrame(masonryBalanceTimer);
+      masonryBalanceTimer = requestAnimationFrame(() => {
+        masonryBalanceTimer = null;
+        const sorted = [...getDeckItems()].sort(
+          (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
+        );
+        const rest = sorted.filter((item) => item.dataset.masonry !== "hero");
+        const colLeft = masonryEl?.querySelector('[data-masonry-col="left"]');
+        const colRight = masonryEl?.querySelector('[data-masonry-col="right"]');
+        if (!colLeft || !colRight) return;
+        distributeMasonryColumns(rest, colLeft, colRight);
+        getDeckItems().forEach((item) => {
+          if (item.dataset.masonry === "hero") return;
+          if (colLeft.contains(item) || colRight.contains(item)) return;
+          (colLeft.children.length <= colRight.children.length ? colLeft : colRight).appendChild(item);
+        });
+      });
+    }
+
+    function initMobileMasonry() {
+      layoutMobileMasonry();
+      scheduleMasonryBalance();
+      getDeckItems().forEach((item) => {
+        item.querySelectorAll("img").forEach((img) => {
+          if (img.complete) return;
+          img.addEventListener("load", scheduleMasonryBalance, { once: true });
+        });
+      });
+    }
+
     const staggerDeckCards = () => {
+      deckItems = getDeckItems();
       if (reduced) {
         deckItems.forEach((item) => item.classList.add("is-deck-in"));
         return;
@@ -1006,6 +1134,7 @@
 
       let index = 0;
       const step = () => {
+        deckItems = getDeckItems();
         if (index >= deckItems.length) return;
         deckItems[index].classList.add("is-deck-in");
         index += 1;
@@ -1020,6 +1149,11 @@
       if (deckLive) return;
       deckLive = true;
       deckSection.classList.add("is-deck-live");
+      deckItems = getDeckItems();
+      if (!deckDesktopMq.matches) {
+        deckItems.forEach((item) => item.classList.add("is-deck-in"));
+        return;
+      }
       staggerDeckCards();
     };
 
@@ -1188,9 +1322,11 @@
 
     function syncDeckLayout() {
       if (deckDesktopMq.matches) {
+        teardownMobileMasonry();
         initDeckSquare();
       } else {
         teardownDeckSquare();
+        initMobileMasonry();
       }
     }
 
@@ -1214,6 +1350,7 @@
     if (reduced) revealDeck();
 
     syncDeckLayout();
+    if (!deckDesktopMq.matches) revealDeck();
     deckDesktopMq.addEventListener("change", syncDeckLayout);
 
     deckMoreToggle?.addEventListener("click", () => {
