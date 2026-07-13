@@ -1099,10 +1099,7 @@ body.page-home {
 }
 
 .page-home .hx-ops__card-label img,
-.page-home .hx-ops__card-panel-head img {
-  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
-}
-
+.page-home .hx-ops__card-panel-head img,
 .page-home .hx-ops__card--bait .hx-ops__card-label img,
 .page-home .hx-ops__card--bait .hx-ops__card-panel-head img {
   filter: none;
@@ -1167,7 +1164,7 @@ body.page-home {
   }
 
   .page-home .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    filter: brightness(0) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+    filter: none;
   }
 }
 
@@ -2805,7 +2802,7 @@ body.page-home {
 }
 
 .page-home .hx-ops__picker-option--unefon .hx-ops__picker-option-logo {
-  filter: brightness(0) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  filter: none;
 }
 
 /* Tarjeta intro "Conoce nuestras compañías" en móvil */
@@ -2853,11 +2850,11 @@ body.page-home {
     box-shadow: none;
   }
 
-  /* Logos de marcas sobre pastilla navy para mantener contraste */
+  /* Logos de marcas en color sobre la tarjeta intro */
   .page-home .hx-ops__card--intro .hx-ops__intro-logos {
-    background: #0f2440;
-    border-radius: 999px;
-    padding: 10px 16px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
   }
 }
 

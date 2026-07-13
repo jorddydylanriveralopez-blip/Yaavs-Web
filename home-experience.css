@@ -1025,27 +1025,23 @@
 .hx-ops__card--unefon .hx-ops__card-logo--panel {
   height: clamp(20px, 2.4vw, 30px);
   max-width: min(160px, 72%);
-  filter: brightness(0) saturate(100%) invert(80%) sepia(65%) saturate(2354%) hue-rotate(357deg) brightness(101%) contrast(101%);
+  filter: none;
 }
 
 .hx-ops__logo--unefon {
-  filter:
-    brightness(0) saturate(100%) invert(80%) sepia(65%) saturate(2354%) hue-rotate(357deg) brightness(101%) contrast(101%)
-    drop-shadow(0 8px 28px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.65));
 }
 
 .hx-ops__intro-logos .hx-ops__logo--unefon {
   height: clamp(30px, 3.6vw, 44px);
   max-width: 72px;
-  filter:
-    brightness(0) saturate(100%) invert(80%) sepia(65%) saturate(2354%) hue-rotate(357deg) brightness(101%) contrast(101%)
-    drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+  filter: none;
 }
 
 .hx-ops__card--unefon .hx-ops__card-logo {
   height: clamp(44px, 8vw, 120px);
   max-width: min(72%, 168px);
-  filter: brightness(0) saturate(100%) invert(80%) sepia(65%) saturate(2354%) hue-rotate(357deg) brightness(101%) contrast(101%);
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.65));
 }
 .hx-ops__card--unefon:not(.is-active) .hx-ops__card-label .hx-ops__card-logo {
   height: clamp(46px, 8.5vw, 112px);
@@ -1377,8 +1373,8 @@
   width: auto;
   max-width: 92px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
-  opacity: 0.95;
+  filter: none;
+  opacity: 1;
 }
 
 .hx-ops__intro-logos img:nth-child(1) {
