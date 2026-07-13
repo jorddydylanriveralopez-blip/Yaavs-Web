@@ -39,7 +39,7 @@
   --glass: rgba(255, 255, 255, 0.92);
   --font: "Montserrat", system-ui, sans-serif;
   --max: 1280px;
-  --header-h: 72px;
+  --header-h: 88px;
   --ease: cubic-bezier(0.25, 1, 0.35, 1);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
@@ -1162,13 +1162,13 @@ a:hover { opacity: 0.65; }
 }
 
 .logo--sm {
-  height: 42px;
+  height: 50px;
   animation: header-logo-pulse 4s ease-in-out infinite;
 }
 
 @media (min-width: 901px) {
   .logo--sm {
-    height: 54px;
+    height: 72px;
   }
 
   .header-wa {
@@ -1184,7 +1184,7 @@ a:hover { opacity: 0.65; }
 
 @media (min-width: 1280px) {
   .logo--sm {
-    height: 60px;
+    height: 82px;
   }
 }
 
@@ -5843,7 +5843,7 @@ body.theme-cluster #contenido > .section {
 /* Responsive — tablet, móvil, touch, landscape */
 @media (max-width: 1024px) {
   :root {
-    --header-h: 68px;
+    --header-h: 80px;
   }
 
   .header-inner {
@@ -5944,12 +5944,12 @@ body.theme-cluster #contenido > .section {
 
 @media (max-width: 768px) {
   :root {
-    --header-h: 64px;
+    --header-h: 72px;
     --pad-x: 20px;
   }
 
   .logo--sm {
-    height: 32px;
+    height: 40px;
   }
 
   .hero-banner {
