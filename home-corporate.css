@@ -3611,11 +3611,15 @@ body.page-home {
 
   .page-home .hx-services--deck-square .hx-svc-deck-wrap {
     position: relative;
-    overflow-x: auto;
+    container-type: inline-size;
+    container-name: svc-deck;
+    overflow-x: hidden;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 0 clamp(12px, 1.2vw, 20px) 6px;
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   .page-home .hx-services--deck-square .hx-svc-deck-wrap::-webkit-scrollbar {
@@ -3656,17 +3660,33 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck--square {
-    --deck-row-h: clamp(340px, 45vh, 460px);
-    --deck-expand-w: calc(var(--deck-row-h) * 2.1);
+    --deck-gap: clamp(10px, 1vw, 14px);
+    --deck-cols: 5;
+    /* Fallback sin container queries */
+    --deck-row-h: min(
+      400px,
+      calc((100vw - 64px - (var(--deck-cols) - 1) * var(--deck-gap)) / var(--deck-cols))
+    );
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    gap: 16px;
+    gap: var(--deck-gap);
     height: var(--deck-row-h);
     min-height: var(--deck-row-h);
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin: 0 0 clamp(12px, 2vw, 20px);
+    box-sizing: border-box;
+  }
+
+  @supports (width: 1cqw) {
+    .page-home .hx-svc-deck--square {
+      --deck-row-h: min(
+        400px,
+        calc((100cqw - (var(--deck-cols) - 1) * var(--deck-gap)) / var(--deck-cols))
+      );
+    }
   }
 
   .page-home .hx-svc-deck--square::before {
@@ -3674,12 +3694,13 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item {
-    flex: 0 0 var(--deck-row-h);
-    width: var(--deck-row-h);
-    height: var(--deck-row-h);
-    max-width: var(--deck-row-h);
-    max-height: var(--deck-row-h);
-    aspect-ratio: 1 / 1;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    aspect-ratio: auto;
     opacity: 1;
     transform: none;
     pointer-events: auto;
@@ -3689,9 +3710,8 @@ body.page-home {
     border-radius: 16px;
     box-shadow: 0 10px 28px rgba(15, 36, 64, 0.09);
     transition:
-      width 0.55s cubic-bezier(0.25, 1, 0.35, 1),
+      flex-grow 0.55s cubic-bezier(0.25, 1, 0.35, 1),
       flex-basis 0.55s cubic-bezier(0.25, 1, 0.35, 1),
-      max-width 0.55s cubic-bezier(0.25, 1, 0.35, 1),
       opacity 0.35s ease,
       border-color 0.35s ease,
       box-shadow 0.35s ease;
@@ -3715,11 +3735,11 @@ body.page-home {
   .page-home .hx-svc-deck--square .hx-svc-deck__item:hover,
   .page-home .hx-svc-deck--square .hx-svc-deck__item:focus-visible,
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-active {
-    flex: 0 0 var(--deck-expand-w);
-    width: var(--deck-expand-w);
-    max-width: var(--deck-expand-w);
-    height: var(--deck-row-h);
-    max-height: var(--deck-row-h);
+    flex: 2.2 1 0;
+    width: auto;
+    max-width: none;
+    height: 100%;
+    max-height: none;
     opacity: 1;
     aspect-ratio: auto;
     transform: none;
@@ -3976,10 +3996,11 @@ body.page-home {
     transform: none;
   }
 
-  /* Dos hileras de 5 — grid estático, los 10 visibles siempre */
+  /* Dos hileras de 5 — caben completas en el ancho disponible */
   .page-home .hx-services--deck-square:has(.hx-svc-deck-layout) .hx-svc-deck-wrap {
     overflow: visible;
-    overflow-x: visible;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   .page-home .hx-svc-deck-layout {
@@ -3987,6 +4008,8 @@ body.page-home {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     gap: clamp(12px, 1.2vw, 16px);
   }
 
@@ -3996,28 +4019,30 @@ body.page-home {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     height: var(--deck-row-h);
     min-height: var(--deck-row-h);
     margin: 0;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item {
-    flex: 0 0 var(--deck-row-h);
-    width: var(--deck-row-h);
-    max-width: var(--deck-row-h);
-    height: var(--deck-row-h);
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    height: 100%;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:focus-visible,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-active {
-    flex: 0 0 var(--deck-expand-w);
-    width: var(--deck-expand-w);
-    max-width: var(--deck-expand-w);
-    height: var(--deck-row-h);
+    flex: 2.2 1 0;
+    width: auto;
+    max-width: none;
+    height: 100%;
     color: #fff;
     background: #0f2440;
     border-color: color-mix(in srgb, var(--deck-accent) 45%, rgba(15, 36, 64, 0.2));
