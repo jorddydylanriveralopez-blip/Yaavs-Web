@@ -1,0 +1,25 @@
+---
+description: Commit, push, and deploy Yaavs-Web to Vercel after site changes
+alwaysApply: true
+---
+
+# Vercel auto-deploy (Yaavs-Web)
+
+When you finish user-requested changes to this website, deploy them unless the user explicitly says not to.
+
+## End-of-task workflow
+
+1. Stage and commit only the files you changed (concise message focused on why).
+2. Push to `origin/main`.
+3. Deploy production from the repo root:
+   ```bash
+   npx vercel --prod --yes
+   ```
+   Or: `./scripts/deploy-vercel.sh`
+4. Tell the user the live URL: https://yaavs-web.vercel.app
+
+## Notes
+
+- The project is linked via `.vercel/project.json` (`yaavs-web`).
+- Bump CSS/JS cache-bust query params in HTML when those assets change.
+- Skip commit/push/deploy only when the user asks for local-only or draft work.
