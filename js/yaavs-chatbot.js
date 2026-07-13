@@ -99,8 +99,8 @@
     if (/yaavser|afili|tienda|punto de venta/.test(q)) {
       return "El programa **Yaavser** es la afiliación a la red YAAVS: visita comercial, rotulación, producto y respaldo en tu local. Más de 10,000 tiendas en México ya forman parte. Conoce el proceso en **ser-yaavser.html** o escríbenos por WhatsApp.";
     }
-    if (/recargaklic|recarga|activar|chip|sim/.test(q)) {
-      return "**RecargaKlic** es la app para activar SIMs, hacer recargas y controlar ventas desde tu celular. Si quieres empezar, entra a **activar-chip.html** o pide apoyo a un ejecutivo en tu zona.";
+    if (/recargaklic|recarga|tiempo.?aire|activar|chip|sim/.test(q)) {
+      return "**RecargaKlic** activa SIMs y opera en mostrador. Para **recargar tiempo aire en el sitio**, entra a **recargar.html** (TAECEL). Si necesitas apoyo, escribe por WhatsApp.";
     }
     if (/telcel|movistar|at&t|unefon|operador|compañ/.test(q)) {
       return "YAAVS es **multi-operador**: puedes vender Telcel, AT&T, Movistar, Unefon y más desde un solo distribuidor. Revisa todos los servicios en **servicios.html**.";

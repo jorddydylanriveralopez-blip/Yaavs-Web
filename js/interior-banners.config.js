@@ -57,6 +57,11 @@ window.YAAVS_PAGE_BANNERS = {
     poster: "assets/operadores/bait.jpg",
     interval: 6000,
   },
+  recargar: {
+    images: ["assets/servicios/tiempo-aire.jpg", "assets/hero-banner-2.jpg", "assets/operadores/att.jpg"],
+    poster: "assets/servicios/tiempo-aire.jpg",
+    interval: 6000,
+  },
   postpago: {
     images: ["assets/operadores/att.jpg", "assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg"],
     poster: "assets/operadores/att.jpg",

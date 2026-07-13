@@ -230,7 +230,7 @@
         "Ingresa el numero a recargar y confirma la operacion.",
         "Entrega ticket o comprobante; el saldo se refleja al instante.",
       ],
-      link: { href: "https://play.google.com/store/apps/details?id=mx.com.yaavs.recargaklic&hl=es_MX", label: "Recargar en RecargaKlic" },
+      link: { href: "recargar.html", label: "Recargar en YAAVS" },
     },
     portabilidad: {
       theme: "navy",

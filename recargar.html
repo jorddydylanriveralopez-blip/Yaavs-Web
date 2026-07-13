@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script src="js/yaavs-theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#00bcd4">
+  <meta name="description" content="Recarga tiempo aire desde YAAVS: Telcel, AT&T, Movistar, Unefon y BAIT vía TAECEL.">
+  <title>Recargar tiempo aire | YAAVS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="decorations.css">
+  <link rel="stylesheet" href="theme-light.css">
+  <link rel="stylesheet" href="theme-day-night.css">
+  <link rel="stylesheet" href="interior-corporate.css?v=6">
+  <link rel="stylesheet" href="interior-light.css?v=2">
+  <link rel="stylesheet" href="recargar.css?v=1">
+  <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
+</head>
+<body class="theme-cluster page-recargar" data-page="recargar">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <section class="avisos-hero-banner page-hero-banner recargar-hero-banner" id="recargar-hero" aria-label="Recargar tiempo aire">
+      <div class="avisos-hero-banner__aurora" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__media" data-page-banner-media></div>
+      <div class="avisos-hero-banner__scan" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__shade" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__grid" aria-hidden="true"></div>
+      <div class="avisos-hero-banner__content container">
+        <nav class="breadcrumb avisos-hero-banner__breadcrumb" aria-label="Ruta">
+          <a href="index.html">Inicio</a><span>/</span><span>Recargar</span>
+        </nav>
+        <p class="avisos-hero-banner__eyebrow">Tiempo aire · TAECEL</p>
+        <h1 class="avisos-hero-banner__title">
+          Recarga <span class="avisos-hero-banner__accent">aquí</span>
+        </h1>
+        <p class="avisos-hero-banner__lead">
+          Elige compañía, número y monto. La recarga se procesa en tu propia página YAAVS.
+        </p>
+        <a href="#form-recarga" class="scroll-hint scroll-hint--recargar" aria-label="Ir al formulario">
+          <span class="scroll-hint-line"></span>
+          <span class="scroll-hint-label">Recargar ahora</span>
+        </a>
+      </div>
+      <div class="avisos-hero-banner__rule" aria-hidden="true"></div>
+    </section>
+
+    <div class="pleca pleca--bridge" aria-hidden="true">
+      <span class="pleca__line"></span>
+      <span class="pleca__label">Operación en sitio</span>
+      <span class="pleca__line"></span>
+    </div>
+
+    <section class="section recargar-section" id="form-recarga" aria-label="Formulario de recarga">
+      <div class="container recargar-layout">
+        <form class="recargar-card" id="taecel-form" novalidate>
+          <header class="recargar-card__head">
+            <h2>Nueva recarga</h2>
+            <p class="recargar-card__lead">Telcel, AT&amp;T, Movistar, Unefon y BAIT.</p>
+            <p class="recargar-mode" data-taecel-mode hidden></p>
+          </header>
+
+          <label class="recargar-field">
+            <span class="recargar-field__label">Compañía</span>
+            <select class="recargar-field__control" name="carrier" data-taecel-carrier required>
+              <option value="">Cargando…</option>
+            </select>
+          </label>
+
+          <label class="recargar-field">
+            <span class="recargar-field__label">Producto / monto</span>
+            <select class="recargar-field__control" name="productId" data-taecel-product required disabled>
+              <option value="">Elige compañía primero</option>
+            </select>
+          </label>
+
+          <label class="recargar-field">
+            <span class="recargar-field__label">Número a 10 dígitos</span>
+            <input
+              class="recargar-field__control"
+              type="tel"
+              name="phone"
+              data-taecel-phone
+              inputmode="numeric"
+              autocomplete="tel"
+              maxlength="14"
+              placeholder="55 1234 5678"
+              required
+            >
+          </label>
+
+          <p class="recargar-status" data-taecel-status role="status" aria-live="polite" hidden></p>
+
+          <div class="recargar-actions">
+            <button type="submit" class="btn btn--primary" data-taecel-submit>
+              Recargar ahora
+            </button>
+            <a
+              class="btn btn--line"
+              href="https://wa.me/525522331210?text=Hola%20YAAVS%2C%20necesito%20ayuda%20con%20una%20recarga"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp soporte
+            </a>
+          </div>
+
+          <p class="recargar-note">
+            Recargas operadas con <strong>TAECEL</strong>. Las claves API viven solo en el servidor YAAVS.
+            Si aún no tienes cuenta: <a href="https://taecel.com/portal/integracion-web-services" target="_blank" rel="noopener noreferrer">levantamiento tecnológico</a>.
+          </p>
+        </form>
+
+        <aside class="recargar-aside" aria-label="Resumen">
+          <div class="recargar-aside__card">
+            <h3>Cómo funciona</h3>
+            <ol class="recargar-steps">
+              <li>Elige compañía y monto.</li>
+              <li>Escribe el celular del cliente.</li>
+              <li>Confirma; recibirás un folio.</li>
+            </ol>
+          </div>
+          <div class="recargar-aside__card recargar-aside__card--tip">
+            <h3>Producción</h3>
+            <p>
+              En Vercel configura <code>TAECEL_KEY</code>, <code>TAECEL_NIP</code>,
+              <code>TAECEL_API_BASE</code> y <code>TAECEL_DEMO=0</code>.
+              Hasta entonces el formulario corre en <strong>modo demo</strong> (sin saldo real).
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div id="page-cta"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/layout.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/interior-banners.config.js"></script>
+  <script src="js/interior-banner.js"></script>
+  <script src="js/taecel-recarga.js?v=1" defer></script>
+</body>
+</html>
