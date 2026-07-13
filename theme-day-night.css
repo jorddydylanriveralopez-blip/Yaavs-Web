@@ -190,17 +190,24 @@
 }
 
 [data-yaavs-theme="night"] body.theme-cluster:not(.page-home) .logo,
-[data-yaavs-theme="night"] .page-home .site-header.is-scrolled .logo {
+[data-yaavs-theme="night"] .page-home .site-header.is-scrolled .logo:not(.logo--white) {
   --logo-filter: brightness(0) invert(1);
 }
 
-[data-yaavs-theme="night"] .page-home .site-header:not(.is-scrolled) .logo {
+[data-yaavs-theme="night"] .page-home .site-header:not(.is-scrolled) .logo:not(.logo--white) {
   --logo-filter: brightness(0) saturate(100%);
 }
 
-[data-yaavs-theme="day"] .page-home .site-header .logo:not(.logo--on-light),
-[data-yaavs-theme="day"] .page-home .site-header:not(.is-scrolled) .logo:not(.logo--on-light),
-[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo:not(.logo--on-light) {
+[data-yaavs-theme="night"] .page-home .site-header .logo--white,
+[data-yaavs-theme="night"] .page-home .site-header.is-scrolled .logo--white,
+[data-yaavs-theme="night"] .page-home .site-header:not(.is-scrolled) .logo--white {
+  --logo-filter: none;
+  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.28)) !important;
+}
+
+[data-yaavs-theme="day"] .page-home .site-header .logo:not(.logo--on-light):not(.logo--white),
+[data-yaavs-theme="day"] .page-home .site-header:not(.is-scrolled) .logo:not(.logo--on-light):not(.logo--white),
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo:not(.logo--on-light):not(.logo--white) {
   --logo-filter: brightness(0) saturate(100%);
 }
 

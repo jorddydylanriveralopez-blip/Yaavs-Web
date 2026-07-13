@@ -549,7 +549,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   outline-offset: 3px;
 }
 
-/* Banner video autoplay — full-bleed oscurecido + sin controles */
+/* Banner video autoplay — full-bleed, ligero velo (legibilidad sin apagar el video) */
 .hero-carousel__slide--video-banner .hero-carousel__video--banner {
   position: absolute;
   inset: 0;
@@ -564,15 +564,15 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   background:
     linear-gradient(
       180deg,
-      rgba(2, 8, 18, 0.58) 0%,
-      rgba(2, 8, 18, 0.32) 42%,
-      rgba(2, 8, 18, 0.62) 100%
+      rgba(2, 8, 18, 0.28) 0%,
+      rgba(2, 8, 18, 0.08) 45%,
+      rgba(2, 8, 18, 0.3) 100%
     ),
-    rgba(0, 0, 0, 0.22);
+    rgba(0, 0, 0, 0.06);
 }
 
 .hero-carousel__slide--video-banner .hero-carousel__video-media img {
-  filter: brightness(0.72) saturate(0.92);
+  filter: brightness(0.92) saturate(1);
   opacity: 1;
   z-index: 0;
 }
@@ -582,7 +582,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   opacity: 1;
   object-fit: cover;
   object-position: center center;
-  filter: brightness(0.72) contrast(1.04) saturate(0.95);
+  filter: brightness(0.92) contrast(1.02) saturate(1);
 }
 
 .hero-carousel__slide--video-banner .hero-carousel__video-shade,
@@ -593,7 +593,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
 
 body.page-home.hero-slide--video-banner .hero-banner__shade,
 body.page-home.hero-slide--video-banner .page-bg__shade {
-  opacity: 0.42;
+  opacity: 0.18;
 }
 
 body.page-home.hero-slide--video-banner .hero-banner__promo {
@@ -1195,17 +1195,20 @@ a:hover { opacity: 0.65; }
   transition: filter 0.35s var(--ease);
 }
 
-.logo--on-light {
+.logo--on-light,
+.logo--white {
   filter: none !important;
   --logo-filter: none;
 }
 
 .logo-link:hover .logo--on-light,
-.logo-link:focus-visible .logo--on-light {
+.logo-link:focus-visible .logo--on-light,
+.logo-link:hover .logo--white,
+.logo-link:focus-visible .logo--white {
   filter: drop-shadow(0 6px 16px rgba(0, 188, 212, 0.24)) !important;
 }
 
-.page-home .site-header .logo:not(.logo--on-light) {
+.page-home .site-header .logo:not(.logo--on-light):not(.logo--white) {
   --logo-filter: brightness(0) saturate(100%);
   filter: brightness(0) saturate(100%);
   opacity: 1;
