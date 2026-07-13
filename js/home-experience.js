@@ -693,10 +693,67 @@
     }
 
     function onOpsScroll() {
-      clearOpsScrollSequence();
-      opsScrollCompleted = false;
-      lastOpsProgress = 0;
-      scrollUserPicked = false;
+      if (reduced || !desktopOpsScroll.matches || scrollCards.length < 2) {
+        clearOpsScrollSequence();
+        scrollUserPicked = false;
+        lastOpsProgress = 0;
+        opsScrollCompleted = false;
+        return;
+      }
+
+      const rect = opsDeck.getBoundingClientRect();
+
+      if (opsScrollCompleted) {
+        if (rect.top > window.innerHeight * 0.45) {
+          opsScrollCompleted = false;
+          lastOpsProgress = 0;
+        } else if (opsDeck.classList.contains("hx-ops--scroll-sequence")) {
+          clearOpsScrollSequence();
+        }
+        return;
+      }
+
+      const range = getOpsScrollRange();
+      const inSequenceZone =
+        rect.top <= 2 &&
+        rect.bottom > window.innerHeight * 0.22;
+
+      if (!inSequenceZone) {
+        if (opsDeck.classList.contains("hx-ops--scroll-sequence")) {
+          clearOpsScrollSequence();
+          if (lastOpsProgress >= 0.96) {
+            opsScrollCompleted = true;
+          }
+        }
+        scrollUserPicked = false;
+        if (rect.bottom < 0 || rect.top > window.innerHeight) {
+          lastOpsProgress = 0;
+        }
+        return;
+      }
+
+      opsDeck.classList.add("hx-ops--scroll-sequence");
+      const progress = getOpsScrollProgress();
+
+      if (progress >= 0.99) {
+        applyOpsScrollSequence(1);
+        lastOpsProgress = 1;
+        opsScrollCompleted = true;
+        clearOpsScrollSequence();
+        scrollUserPicked = false;
+        return;
+      }
+
+      if (scrollUserPicked) {
+        if (Math.abs(progress - scrollPickProgress) > 0.08) {
+          scrollUserPicked = false;
+          scrollCards.forEach((card) => card.style.removeProperty("--hx-ops-scroll-flex"));
+        } else {
+          return;
+        }
+      }
+
+      applyOpsScrollSequence(progress);
     }
 
     function setOpsPickerOpen(open, { restoreFocus = true } = {}) {
@@ -736,6 +793,12 @@
     function activateOp(card) {
       if (card.classList.contains("is-active") && card.dataset.hxOp !== "intro") {
         card = introCard;
+      }
+
+      if (desktopOpsScroll.matches && !reduced) {
+        scrollUserPicked = true;
+        scrollPickProgress = getOpsScrollProgress();
+        scrollCards.forEach((c) => c.style.removeProperty("--hx-ops-scroll-flex"));
       }
 
       opCards.forEach((c) => {
