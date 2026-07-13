@@ -271,6 +271,125 @@ body.page-home {
   }
 }
 
+/* Header móvil — glass cristal (estilo iPhone Liquid Glass) */
+@media (max-width: 900px) {
+  .page-home .site-header {
+    top: max(10px, env(safe-area-inset-top, 0px));
+    left: max(10px, env(safe-area-inset-left, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px));
+    width: auto;
+    padding-top: 0;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    background:
+      linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.58) 0%,
+        rgba(255, 255, 255, 0.28) 42%,
+        rgba(220, 246, 252, 0.34) 100%
+      );
+    backdrop-filter: blur(36px) saturate(1.9) brightness(1.08);
+    -webkit-backdrop-filter: blur(36px) saturate(1.9) brightness(1.08);
+    box-shadow:
+      0 12px 40px rgba(15, 36, 64, 0.14),
+      0 2px 8px rgba(0, 188, 212, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.22);
+    overflow: hidden;
+  }
+
+  .page-home .site-header.is-scrolled {
+    background:
+      linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.68) 0%,
+        rgba(255, 255, 255, 0.38) 48%,
+        rgba(220, 246, 252, 0.42) 100%
+      );
+    backdrop-filter: blur(42px) saturate(2) brightness(1.1);
+    -webkit-backdrop-filter: blur(42px) saturate(2) brightness(1.1);
+    border-color: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 16px 48px rgba(15, 36, 64, 0.16),
+      0 4px 14px rgba(0, 188, 212, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .page-home .site-header::before {
+    background:
+      radial-gradient(ellipse 70% 90% at 12% -10%, rgba(255, 255, 255, 0.55) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 80% at 88% 120%, rgba(0, 188, 212, 0.18) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 48%);
+    animation: none;
+  }
+
+  .page-home .site-header::after {
+    height: 1px;
+    left: 12%;
+    right: 12%;
+    bottom: 0;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 188, 212, 0.45) 30%,
+      rgba(0, 229, 255, 0.7) 50%,
+      rgba(0, 188, 212, 0.45) 70%,
+      transparent 100%
+    );
+    opacity: 0.7;
+    box-shadow: 0 0 12px rgba(0, 188, 212, 0.35);
+    animation: none;
+  }
+
+  .page-home .site-header .header-inner {
+    height: calc(var(--header-h) - 4px);
+  }
+
+  .page-home .site-header .header-inner::before {
+    width: 55%;
+    left: -20%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 45%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(255, 255, 255, 0.28) 55%,
+      transparent 100%
+    );
+    animation-duration: 7s;
+  }
+
+  .page-home .header-wa,
+  .page-home .nav-bento {
+    background: rgba(255, 255, 255, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    box-shadow:
+      0 4px 14px rgba(15, 36, 64, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .page-home .header-wa:hover,
+  .page-home .header-wa:focus-visible,
+  .page-home .nav-bento:hover,
+  .page-home .nav-bento:focus-visible {
+    background: rgba(255, 255, 255, 0.55);
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (max-width: 900px) {
+    .page-home .site-header,
+    .page-home .site-header.is-scrolled {
+      background: rgba(255, 255, 255, 0.92);
+    }
+  }
+}
+
 .page-home .site-header .bento-dot,
 .page-home .site-header .nav-bento[aria-expanded="true"] .bento-dot {
   background: #0f2440 !important;
