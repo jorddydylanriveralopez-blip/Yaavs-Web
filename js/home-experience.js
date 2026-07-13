@@ -1320,7 +1320,7 @@
 
       const fallback = document.createElement("img");
       fallback.className = "hx-svc-deck__media-fallback";
-      fallback.src = cfg.poster || cfg.icon;
+      fallback.src = cfg.gif || cfg.poster || cfg.icon;
       fallback.alt = "";
       fallback.loading = "lazy";
       fallback.decoding = "async";
@@ -1344,7 +1344,7 @@
       let loaded = false;
       const handlers = {
         loadVideo() {
-          if (!cfg.mp4) return null;
+          if (cfg.gif || !cfg.mp4) return null;
           if (!loaded) {
             video.src = cfg.mp4;
             loaded = true;
@@ -1352,7 +1352,7 @@
           return video;
         },
         enter() {
-          if (!deckDesktopMq.matches || deckLayout) return;
+          if (!deckDesktopMq.matches) return;
           playDeckMedia(item);
         },
         leave(event) {

@@ -3578,12 +3578,9 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__media,
-  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded:hover .hx-svc-deck__media {
+  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded:hover .hx-svc-deck__media,
+  .page-home .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__media {
     opacity: 1;
-  }
-
-  .page-home .hx-svc-deck--square .hx-svc-deck__item:hover:not(.is-deck-expanded) .hx-svc-deck__media {
-    opacity: 0;
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__video,
@@ -3785,35 +3782,23 @@ body.page-home {
     gap: clamp(12px, 1.2vw, 16px);
   }
 
-  .page-home .hx-svc-deck-layout > .hx-svc-deck--square {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
-    gap: clamp(12px, 1.2vw, 16px);
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    height: auto;
-    min-height: var(--deck-row-h);
-    margin: 0;
-  }
-
+  /* Mantener filas Square con expand al hover (icono → video/gif) */
+  .page-home .hx-svc-deck-layout > .hx-svc-deck--square,
   .page-home .hx-svc-deck-layout .hx-svc-deck-more-panel .hx-svc-deck--square {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: clamp(12px, 1.2vw, 16px);
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: max-content;
+    min-width: 100%;
+    height: var(--deck-row-h);
     min-height: var(--deck-row-h);
     margin: 0;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item {
-    flex: unset;
-    min-width: 0;
-    width: 100%;
-    max-width: none;
+    flex: 0 0 var(--deck-row-h);
+    width: var(--deck-row-h);
+    max-width: var(--deck-row-h);
     height: var(--deck-row-h);
   }
 
@@ -3821,43 +3806,41 @@ body.page-home {
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:focus-visible,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-active {
-    flex: unset;
-    width: 100%;
-    max-width: none;
+    flex: 0 0 var(--deck-expand-w);
+    width: var(--deck-expand-w);
+    max-width: var(--deck-expand-w);
     height: var(--deck-row-h);
-    aspect-ratio: unset;
-    transform: none;
-    color: #0f2440;
-    background: linear-gradient(165deg, #ffffff 0%, #eef6fa 100%);
-    border-color: color-mix(in srgb, var(--deck-accent) 40%, rgba(15, 36, 64, 0.14));
+    color: #fff;
+    background: #0f2440;
+    border-color: color-mix(in srgb, var(--deck-accent) 45%, rgba(15, 36, 64, 0.2));
     box-shadow:
-      0 16px 40px rgba(15, 36, 64, 0.13),
-      0 0 0 1px color-mix(in srgb, var(--deck-accent) 22%, transparent);
-    z-index: 2;
+      0 22px 52px rgba(15, 36, 64, 0.22),
+      0 0 0 1px color-mix(in srgb, var(--deck-accent) 28%, transparent);
+    z-index: 4;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square:has(.hx-svc-deck__item.is-deck-expanded) .hx-svc-deck__item:not(.is-deck-expanded),
   .page-home .hx-svc-deck-layout .hx-svc-deck--square:has(.hx-svc-deck__item:hover) .hx-svc-deck__item:not(:hover):not(.is-deck-expanded) {
-    opacity: 1;
+    opacity: 0.62;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__icon,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__icon {
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.96);
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__media,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__media {
-    opacity: 0;
+    opacity: 1;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__label,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__label,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-active .hx-svc-deck__label {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__body,
@@ -3865,14 +3848,16 @@ body.page-home {
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-active .hx-svc-deck__body,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__body,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded:hover .hx-svc-deck__body {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transform: translate3d(0, 10px, 0) !important;
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+    color: #fff;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__shade,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__shade {
-    opacity: 0;
+    opacity: 1;
   }
 
   .page-home .hx-svc-deck-more-toggle {
