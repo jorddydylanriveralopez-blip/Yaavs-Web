@@ -1520,8 +1520,9 @@ body.page-home {
 
   .page-home .hx-ops__deck .hx-ops__card:not(.hx-ops__card--intro) {
     min-height: 100%;
-    flex: 0.9 1 0;
-    min-width: clamp(56px, 4.5vw, 80px);
+    flex: 1.15 1 0;
+    min-width: 0;
+    max-width: none;
     box-shadow: 0 14px 44px rgba(0, 0, 0, 0.2);
     transition:
       flex 0.65s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1531,20 +1532,26 @@ body.page-home {
   }
 
   .page-home .hx-ops__deck .hx-ops__card--intro:not(.is-active) {
-    flex: 0.6 1 0;
-    min-width: clamp(44px, 3.5vw, 64px);
+    flex: 0.85 1 0;
+    min-width: 0;
   }
 
   .page-home .hx-ops__deck .hx-ops__card:not(.hx-ops__card--intro).is-active {
-    flex: 6.5 1 0;
-    min-width: clamp(300px, 42vw, 580px);
+    flex: 5.2 1 0;
+    min-width: clamp(280px, 36vw, 560px);
     z-index: 5;
     transform: none;
     opacity: 1;
   }
 
   .page-home .hx-ops__deck .hx-ops__card--intro.is-active {
-    flex: 2.4 1 0;
+    flex: 1.35 1 0;
+    min-width: 0;
+  }
+
+  .page-home .hx-ops__mob-guide,
+  .page-home .hx-ops__mob-detail {
+    display: none !important;
   }
 
   .page-home .hx-ops__deck .hx-ops__card.is-active:hover {

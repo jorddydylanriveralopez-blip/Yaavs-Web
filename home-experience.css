@@ -1607,6 +1607,12 @@ body.has-hx-ops-picker {
   display: contents;
 }
 
+/* Guía móvil — oculta en desktop (si no, abre un hueco vacío en el deck) */
+.hx-ops__mob-guide,
+.hx-ops__mob-detail {
+  display: none;
+}
+
 .hx-ops__card:focus-visible {
   outline: 2px solid var(--accent-bright);
   outline-offset: 3px;
