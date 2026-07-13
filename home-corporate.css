@@ -419,6 +419,56 @@ body.page-home {
     filter: brightness(0) invert(1) !important;
     opacity: 1 !important;
   }
+
+  /* Logo móvil: filtros glow (cyan → azul → violeta) */
+  .page-home .site-header .logo.logo--on-light,
+  .page-home .site-header .logo.logo--white {
+    --logo-filter: none;
+    filter:
+      drop-shadow(0 0 5px rgba(0, 229, 255, 0.55))
+      drop-shadow(0 0 14px rgba(56, 120, 255, 0.35))
+      drop-shadow(0 1px 4px rgba(0, 0, 0, 0.28)) !important;
+    animation: header-logo-mobile-glow 3.4s ease-in-out infinite;
+  }
+
+  .page-home .logo-link:hover .logo.logo--on-light,
+  .page-home .logo-link:focus-visible .logo.logo--on-light,
+  .page-home .logo-link:hover .logo.logo--white,
+  .page-home .logo-link:focus-visible .logo.logo--white {
+    filter:
+      drop-shadow(0 0 8px rgba(0, 240, 255, 0.75))
+      drop-shadow(0 0 18px rgba(124, 92, 255, 0.45))
+      drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)) !important;
+  }
+}
+
+@keyframes header-logo-mobile-glow {
+  0%,
+  100% {
+    filter:
+      drop-shadow(0 0 4px rgba(0, 229, 255, 0.4))
+      drop-shadow(0 0 10px rgba(56, 120, 255, 0.22))
+      drop-shadow(0 1px 3px rgba(0, 0, 0, 0.25));
+    transform: scale(1);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 10px rgba(0, 240, 255, 0.78))
+      drop-shadow(0 0 22px rgba(124, 92, 255, 0.42))
+      drop-shadow(0 1px 5px rgba(0, 0, 0, 0.28));
+    transform: scale(1.035);
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  .page-home .site-header .logo.logo--on-light,
+  .page-home .site-header .logo.logo--white {
+    animation: none;
+    filter:
+      drop-shadow(0 0 6px rgba(0, 229, 255, 0.5))
+      drop-shadow(0 0 12px rgba(56, 120, 255, 0.28))
+      drop-shadow(0 1px 4px rgba(0, 0, 0, 0.28)) !important;
+  }
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
