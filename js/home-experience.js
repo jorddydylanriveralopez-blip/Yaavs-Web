@@ -1286,23 +1286,35 @@
       }
     }
 
-    function setupDeckItemMedia(item) {
+    function ensureDeckIcon(item) {
       const id = item.getAttribute("data-deck-svc");
       const cfg = deckMediaCfg[id];
-      if (!cfg || item.querySelector(".hx-svc-deck__icon")) return;
+      if (!cfg || item.querySelector(".hx-svc-deck__icon")) return null;
 
       const iconEl = document.createElement("span");
       iconEl.className = "hx-svc-deck__icon";
       iconEl.setAttribute("aria-hidden", "true");
       const iconImg = document.createElement("img");
-      const iconSrc = cfg.icon || cfg.thumb || cfg.poster;
-      iconImg.src = iconSrc;
+      iconImg.src = cfg.icon || cfg.thumb || cfg.poster;
       iconImg.alt = "";
       iconImg.loading = "lazy";
       iconImg.decoding = "async";
-      /* Solo marcar como foto si no hay icono dedicado (legado) */
       if (!cfg.icon && (cfg.thumb || cfg.poster)) iconImg.classList.add("hx-svc-deck__icon-photo");
       iconEl.appendChild(iconImg);
+
+      const bg = item.querySelector(".hx-svc-deck__bg");
+      if (bg) item.insertBefore(iconEl, bg);
+      else item.prepend(iconEl);
+      return iconEl;
+    }
+
+    function setupDeckItemMedia(item) {
+      const id = item.getAttribute("data-deck-svc");
+      const cfg = deckMediaCfg[id];
+      if (!cfg) return;
+
+      ensureDeckIcon(item);
+      if (item.querySelector(".hx-svc-deck__media")) return;
 
       const mediaEl = document.createElement("span");
       mediaEl.className = "hx-svc-deck__media";
@@ -1332,13 +1344,12 @@
 
       mediaEl.append(video, fallback);
 
-      const bg = item.querySelector(".hx-svc-deck__bg");
-      if (bg) {
-        item.insertBefore(iconEl, bg);
-        item.insertBefore(mediaEl, bg);
-      } else {
-        item.prepend(mediaEl);
-        item.prepend(iconEl);
+      const iconEl = item.querySelector(".hx-svc-deck__icon");
+      if (iconEl) item.insertBefore(mediaEl, iconEl.nextSibling);
+      else {
+        const bg = item.querySelector(".hx-svc-deck__bg");
+        if (bg) item.insertBefore(mediaEl, bg);
+        else item.prepend(mediaEl);
       }
 
       let loaded = false;
@@ -1386,6 +1397,10 @@
       setMoreOpen(true);
     }
 
+    function initMobileDeckIcons() {
+      getDeckItems().forEach((item) => ensureDeckIcon(item));
+    }
+
     function syncDeckLayout() {
       if (deckDesktopMq.matches) {
         teardownMobileMasonry();
@@ -1393,6 +1408,7 @@
       } else {
         teardownDeckSquare();
         initMobileMasonry();
+        initMobileDeckIcons();
       }
     }
 

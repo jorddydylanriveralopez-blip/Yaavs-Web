@@ -4118,9 +4118,41 @@ body.page-home {
     display: none;
   }
 
-  .page-home .hx-svc-deck__icon,
   .page-home .hx-svc-deck__media {
     display: none !important;
+  }
+
+  .page-home .hx-svc-deck__icon {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+    background: #0a1630;
+    pointer-events: none;
+  }
+
+  .page-home .hx-svc-deck__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+  }
+
+  .page-home .hx-svc-deck__bg {
+    position: relative;
+    z-index: 0;
+    flex: 0 0 auto;
+    width: 100%;
+    overflow: hidden;
+    background: #0a1630;
+  }
+
+  .page-home .hx-svc-deck__bg img {
+    opacity: 0;
   }
 
   .page-home .hx-svc-deck__peek--desk {
@@ -4200,6 +4232,7 @@ body.page-home {
   .page-home .hx-svc-deck__item,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item {
     --mob-card-r: clamp(16px, 4vw, 20px);
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -4211,7 +4244,7 @@ body.page-home {
     transform: none;
     contain: none;
     aspect-ratio: auto;
-    background: #fff;
+    background: #0a1630;
     color: #0f2440;
     border: 1px solid rgba(15, 36, 64, 0.06);
     border-radius: var(--mob-card-r);
@@ -4258,10 +4291,11 @@ body.page-home {
 
   .page-home .hx-svc-deck__bg {
     position: relative;
+    z-index: 0;
     flex: 0 0 auto;
     width: 100%;
     overflow: hidden;
-    background: linear-gradient(145deg, #e8f4f8, #dceef5);
+    background: transparent;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg {
@@ -4273,11 +4307,8 @@ body.page-home {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .page-home .hx-svc-deck__item:active .hx-svc-deck__bg img {
-    transform: scale(1.05);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .page-home .hx-svc-deck__shade {
