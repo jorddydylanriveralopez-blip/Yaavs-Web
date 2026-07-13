@@ -1284,8 +1284,8 @@ body.page-home {
 
   .page-home .hx-ops__deck .hx-ops__card:not(.hx-ops__card--intro) {
     min-height: 100%;
-    flex: 1.12 1 0;
-    min-width: clamp(68px, 5.8vw, 104px);
+    flex: 0.9 1 0;
+    min-width: clamp(56px, 4.5vw, 80px);
     box-shadow: 0 14px 44px rgba(0, 0, 0, 0.2);
     transition:
       flex 0.65s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1294,8 +1294,77 @@ body.page-home {
       opacity 0.45s ease;
   }
 
+  .page-home .hx-ops__deck .hx-ops__card--intro:not(.is-active) {
+    flex: 0.6 1 0;
+    min-width: clamp(44px, 3.5vw, 64px);
+  }
+
+  .page-home .hx-ops__deck .hx-ops__card:not(.hx-ops__card--intro).is-active {
+    flex: 6.5 1 0;
+    min-width: clamp(300px, 42vw, 580px);
+    z-index: 5;
+    transform: none;
+    opacity: 1;
+  }
+
   .page-home .hx-ops__deck .hx-ops__card--intro.is-active {
     flex: 2.4 1 0;
+  }
+
+  .page-home .hx-ops__deck .hx-ops__card.is-active:hover {
+    transform: none;
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-body {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: clamp(18px, 2.5vw, 32px);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-panel {
+    max-width: min(520px, 96%);
+    width: 100%;
+    padding: clamp(28px, 3.2vw, 40px);
+    max-height: calc(100% - 20px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-panel-head {
+    margin-bottom: clamp(14px, 2vw, 20px);
+    padding-bottom: clamp(12px, 1.8vw, 18px);
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-logo--panel {
+    height: clamp(36px, 4vw, 52px);
+    max-width: min(220px, 80%);
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-lead {
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    margin-bottom: clamp(10px, 1.5vw, 14px);
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-desc {
+    font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+    line-height: 1.65;
+    max-width: none;
+    margin-bottom: clamp(16px, 2vw, 22px);
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-list {
+    gap: clamp(8px, 1vw, 10px);
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-list li {
+    padding: clamp(10px, 1.2vw, 13px) clamp(12px, 1.5vw, 16px);
+    font-size: clamp(0.82rem, 0.95vw, 0.92rem);
   }
 
   .page-home .hx-ops__deck .hx-ops__card:not(.is-active):not(.hx-ops__card--intro):hover {
