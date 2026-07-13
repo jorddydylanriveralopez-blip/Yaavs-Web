@@ -1252,17 +1252,44 @@ body.page-home {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: clamp(8px, 1.2vh, 14px);
   }
 
   .page-home .hx-ops__head {
+    display: block;
+    flex-shrink: 0;
+    margin: 0 auto;
+    padding: clamp(12px, 1.8vh, 18px) clamp(22px, 3vw, 36px);
+    width: min(920px, calc(100% - 2 * var(--pad-x)));
+    border-radius: 14px;
+  }
+
+  .page-home .hx-ops__head .hx-ops__eyebrow {
+    margin-bottom: 4px;
+    font-size: 0.62rem;
+  }
+
+  .page-home .hx-ops__head .hx-ops__title {
+    margin-bottom: 8px;
+    font-size: clamp(1.05rem, 1.9vw, 1.42rem);
+  }
+
+  .page-home .hx-ops__head .hx-ops__hint--desktop {
+    display: inline-flex;
+    margin-top: 0;
+    padding: 7px 14px;
+    font-size: 0.76rem;
+  }
+
+  .page-home .hx-ops__head .hx-ops__hint--mobile {
     display: none;
   }
 
   .page-home .hx-ops__deck {
     align-items: stretch;
     flex: 1 1 auto;
-    min-height: calc(var(--hx-ops-view-h) - 20px);
-    height: calc(var(--hx-ops-view-h) - 20px);
+    min-height: calc(var(--hx-ops-view-h) - clamp(92px, 13vh, 118px));
+    height: calc(var(--hx-ops-view-h) - clamp(92px, 13vh, 118px));
     gap: clamp(6px, 0.7vw, 14px);
     padding: clamp(8px, 1vw, 14px);
     border-radius: clamp(14px, 1.6vw, 22px);
@@ -1342,8 +1369,42 @@ body.page-home {
   }
 
   .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-logo--panel {
-    height: clamp(36px, 4vw, 52px);
-    max-width: min(220px, 80%);
+    height: clamp(44px, 5vw, 64px);
+    max-width: min(240px, 84%);
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-btn.btn--primary {
+    margin-top: clamp(14px, 2vw, 20px);
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Hint sutil en columnas colapsadas (primera visita) */
+  .page-home .hx-ops.hx-ops--peek .hx-ops__deck .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) .hx-ops__card-label::after {
+    content: "Clic para ver más";
+    position: absolute;
+    bottom: clamp(14px, 2.5vh, 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.88);
+    background: rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    pointer-events: none;
+    animation: hx-ops-peek-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes hx-ops-peek-pulse {
+    0%, 100% { opacity: 0.55; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 1; transform: translateX(-50%) translateY(-2px); }
   }
 
   .page-home .hx-ops__card:not(.hx-ops__card--intro).is-active .hx-ops__card-lead {

@@ -573,6 +573,7 @@
     const opsPickerOptions = opsDeck.querySelectorAll("[data-hx-ops-select]");
     const mobileOps = window.matchMedia("(max-width: 900px)");
     const desktopOpsScroll = window.matchMedia("(min-width: 901px)");
+    const OPS_PEEK_KEY = "yaavs-hx-ops-peeked";
     const scrollCards = [introCard, ...carrierCards].filter(Boolean);
     let scrollUserPicked = false;
     let scrollPickProgress = 0;
@@ -715,28 +716,62 @@
       }
     }
 
-    function syncOpsPreview() {
-      if (!opsGrid) return;
+    function dismissOpsPeek() {
+      opsDeck.classList.remove("hx-ops--peek");
+      try {
+        localStorage.setItem(OPS_PEEK_KEY, "1");
+      } catch (_) {
+        /* storage optional */
+      }
+    }
 
-      const hasCarrierActive = opsDeck.classList.contains("has-carrier-active");
-      opsGrid.hidden = mobileOps.matches && !hasCarrierActive;
+    function initOpsPeek() {
+      if (!desktopOpsScroll.matches) return;
+      try {
+        if (localStorage.getItem(OPS_PEEK_KEY)) return;
+      } catch (_) {
+        /* storage optional */
+      }
+      opsDeck.classList.add("hx-ops--peek");
+    }
+
+    function syncOpsPreview() {
+      if (opsGrid) opsGrid.hidden = false;
       if (opsToggle) opsToggle.hidden = true;
     }
 
     function syncOpsState(card) {
-      const isCarrier = card?.dataset?.hxOp !== "intro";
+      const isCarrier = Boolean(card?.dataset?.hxOp && card.dataset.hxOp !== "intro");
       opsDeck.classList.toggle("has-carrier-active", isCarrier);
-      if (opsBack) opsBack.hidden = !isCarrier;
+      if (opsBack) opsBack.hidden = !(isCarrier && mobileOps.matches);
       if (!isCarrier) {
         setOpsPickerOpen(false, { restoreFocus: false });
       }
       syncOpsPreview();
     }
 
+    function setAllOpsCardsInactive() {
+      opCards.forEach((c) => {
+        c.classList.remove("is-active");
+        c.setAttribute("aria-selected", "false");
+        c.tabIndex = -1;
+      });
+    }
+
     function activateOp(card) {
-      if (card.classList.contains("is-active") && card.dataset.hxOp !== "intro") {
-        card = introCard;
+      dismissOpsPeek();
+
+      if (card?.classList.contains("is-active") && card.dataset.hxOp !== "intro") {
+        card = mobileOps.matches ? null : introCard;
       }
+
+      if (!card && mobileOps.matches) {
+        setAllOpsCardsInactive();
+        syncOpsState(null);
+        return;
+      }
+
+      if (!card) card = introCard;
 
       opCards.forEach((c) => {
         const active = c === card;
@@ -758,6 +793,20 @@
       }
     }
 
+    function applyInitialOpsState() {
+      if (mobileOps.matches) {
+        setAllOpsCardsInactive();
+        carrierCards.forEach((c) => {
+          c.tabIndex = 0;
+        });
+        if (introCard) introCard.tabIndex = -1;
+        syncOpsState(null);
+        return;
+      }
+      if (introCard) introCard.tabIndex = 0;
+      activateOp(introCard || opCards[0]);
+    }
+
     opsPickerOpen?.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -775,10 +824,35 @@
       });
     });
 
-    opsBack?.addEventListener("click", () => activateOp(introCard));
+    opsBack?.addEventListener("click", () => {
+      if (mobileOps.matches) {
+        setAllOpsCardsInactive();
+        carrierCards.forEach((c) => {
+          c.tabIndex = 0;
+        });
+        if (introCard) introCard.tabIndex = -1;
+        syncOpsState(null);
+        dismissOpsPeek();
+        return;
+      }
+      activateOp(introCard);
+    });
 
     const onMobileOpsChange = () => {
       setOpsPickerOpen(false, { restoreFocus: false });
+      if (mobileOps.matches) {
+        if (!opsDeck.classList.contains("has-carrier-active")) {
+          setAllOpsCardsInactive();
+          carrierCards.forEach((c) => {
+            c.tabIndex = 0;
+          });
+          if (introCard) introCard.tabIndex = -1;
+          syncOpsState(null);
+        }
+      } else if (!opsDeck.classList.contains("has-carrier-active") && introCard) {
+        activateOp(introCard);
+      }
+      initOpsPeek();
       syncOpsPreview();
     };
 
@@ -811,24 +885,27 @@
 
       card.addEventListener("keydown", (e) => {
         const idx = Array.from(opCards).indexOf(card);
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activateOp(card);
+          return;
+        }
         if (e.key === "ArrowRight" || e.key === "ArrowDown") {
           e.preventDefault();
-          activateOp(opCards[(idx + 1) % opCards.length]);
-          opCards[(idx + 1) % opCards.length].focus();
+          const next = opCards[(idx + 1) % opCards.length];
+          activateOp(next);
+          next.focus();
         } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
           e.preventDefault();
-          activateOp(opCards[(idx - 1 + opCards.length) % opCards.length]);
-          opCards[(idx - 1 + opCards.length) % opCards.length].focus();
+          const prev = opCards[(idx - 1 + opCards.length) % opCards.length];
+          activateOp(prev);
+          prev.focus();
         }
       });
     });
 
-    const initialCard = opsDeck.querySelector(".hx-ops__card.is-active") || introCard || opCards[0];
-    if (initialCard) {
-      syncOpsState(initialCard);
-    } else {
-      syncOpsPreview();
-    }
+    initOpsPeek();
+    applyInitialOpsState();
 
     window.addEventListener(
       "scroll",

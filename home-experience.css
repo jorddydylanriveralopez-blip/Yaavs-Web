@@ -1615,52 +1615,68 @@ body.has-hx-ops-picker {
 @media (max-width: 900px) {
   .hx-ops {
     margin-top: clamp(28px, 6vw, 40px);
-    padding-top: clamp(24px, 5vw, 32px);
+    padding-top: clamp(16px, 3vw, 24px);
     padding-inline: 0;
   }
 
   .hx-pulse + .hx-ops,
   .hx-services + .hx-ops {
     margin-top: 0;
-    padding-top: 0;
+    padding-top: clamp(12px, 2vw, 18px);
   }
 
   .hx-ops__head {
-    display: none;
-  }
-
-  .hx-ops__hint {
-    font-size: 0.78rem;
-  }
-
-  .hx-ops__hint--desktop {
-    display: none;
-  }
-
-  .hx-ops__hint--mobile {
     display: block;
+    margin: 0 calc(var(--pad-x) + 12px) clamp(14px, 3vw, 18px);
+    padding: clamp(14px, 3.5vw, 18px) clamp(16px, 4vw, 22px);
+    border-radius: 14px;
+  }
+
+  .hx-ops__head .hx-ops__eyebrow {
+    margin-bottom: 4px;
+    font-size: 0.62rem;
+  }
+
+  .hx-ops__head .hx-ops__title {
+    margin-bottom: 8px;
+    font-size: clamp(1.05rem, 4.8vw, 1.35rem);
+  }
+
+  .hx-ops__head .hx-ops__hint--desktop {
+    display: none;
+  }
+
+  .hx-ops__head .hx-ops__hint--mobile {
+    display: inline-flex;
+    margin-top: 0;
+    padding: 7px 14px;
+    font-size: 0.74rem;
   }
 
   .hx-ops__back {
     display: none;
     align-items: center;
     gap: 8px;
-    margin: 0 calc(var(--pad-x) + 20px) 14px;
-    padding: 10px 16px;
-    border: 1px solid rgba(90, 156, 196, 0.28);
+    margin: 0 calc(var(--pad-x) + 12px) 12px;
+    padding: 11px 18px;
+    border: 1px solid rgba(0, 188, 212, 0.35);
     border-radius: 999px;
-    background: rgba(90, 156, 196, 0.08);
-    color: var(--accent-bright);
+    background: rgba(0, 188, 212, 0.1);
+    color: #0097b2;
     font-family: inherit;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
     letter-spacing: 0.03em;
     cursor: pointer;
-    transition: background 0.25s ease, border-color 0.25s ease;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
   }
 
   .hx-ops.has-carrier-active .hx-ops__back {
     display: inline-flex;
+  }
+
+  .hx-ops.has-carrier-active .hx-ops__head {
+    display: none;
   }
 
   .hx-ops__back-icon {
@@ -1681,11 +1697,15 @@ body.has-hx-ops-picker {
   .hx-ops__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
+    gap: clamp(10px, 2.5vw, 14px);
+  }
+
+  .hx-ops:not(.has-carrier-active) .hx-ops__card--intro {
+    display: none;
   }
 
   .hx-ops:not(.has-carrier-active) .hx-ops__grid {
-    display: none;
+    display: grid;
   }
 
   .hx-ops__grid.is-collapsed .hx-ops__card:nth-child(n + 3) {
@@ -1812,8 +1832,8 @@ body.has-hx-ops-picker {
   .hx-ops__grid .hx-ops__card {
     flex: none !important;
     min-height: 0;
-    aspect-ratio: 1 / 1;
-    border-radius: 15px;
+    aspect-ratio: 1 / 0.92;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1932,8 +1952,8 @@ body.has-hx-ops-picker {
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active {
     display: block;
     aspect-ratio: auto;
-    min-height: clamp(440px, 78vh, 620px);
-    border-radius: 22px;
+    min-height: min(78vh, calc(100dvh - var(--header-h, 88px) - 72px));
+    border-radius: 18px;
     border: 1px solid color-mix(in srgb, var(--op-accent) 35%, transparent);
     box-shadow:
       0 28px 64px rgba(0, 0, 0, 0.5),
@@ -1957,43 +1977,60 @@ body.has-hx-ops-picker {
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-body {
     display: flex;
-    position: absolute;
-    inset: auto 0 0 0;
-    top: 0;
-    align-items: flex-end;
-    justify-content: stretch;
-    padding: 0;
     opacity: 1;
     transform: none;
     pointer-events: auto;
+    min-height: 100%;
+    padding: clamp(16px, 4vw, 24px);
+    align-items: center;
+    justify-content: center;
   }
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-panel {
+    max-width: min(520px, 100%);
     width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: clamp(20px, 5vw, 28px) clamp(18px, 4.5vw, 24px) clamp(22px, 5vw, 30px);
-    border-radius: 22px 22px 0 0;
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    background:
-      linear-gradient(180deg, rgba(6, 14, 26, 0.72) 0%, rgba(4, 10, 20, 0.96) 100%);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.4);
+    padding: clamp(24px, 5vw, 32px);
+    max-height: calc(100% - 16px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(255, 255, 255, 0.97);
+    border-color: rgba(15, 36, 64, 0.1);
+    box-shadow: 0 20px 50px rgba(15, 36, 64, 0.14);
+  }
+
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-panel-head,
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-lead,
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-desc,
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-list li {
+    color: #0f2440;
+    text-shadow: none;
+  }
+
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-desc {
+    color: rgba(15, 36, 64, 0.72);
+  }
+
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-logo--panel {
+    height: clamp(36px, 8vw, 48px);
+  }
+
+  .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-btn.btn--primary {
+    width: 100%;
+    justify-content: center;
+    margin-top: 16px;
   }
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-panel-head {
-    margin-bottom: 4px;
+    margin-bottom: clamp(10px, 2vw, 14px);
   }
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-lead {
-    font-size: clamp(1rem, 4.2vw, 1.15rem);
+    font-size: clamp(1.05rem, 4.2vw, 1.2rem);
   }
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-desc {
     font-size: 0.88rem;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-list {
@@ -2003,7 +2040,10 @@ body.has-hx-ops-picker {
 
   .hx-ops.has-carrier-active .hx-ops__grid .hx-ops__card.is-active .hx-ops__card-list li {
     font-size: 0.84rem;
-    padding: 10px 12px 10px 36px;
+    padding: 10px 12px;
+    color: #0f2440;
+    background: rgba(0, 188, 212, 0.08);
+    border-color: rgba(0, 188, 212, 0.14);
   }
 }
 
