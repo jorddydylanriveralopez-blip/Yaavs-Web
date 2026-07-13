@@ -4347,8 +4347,8 @@ body.page-home {
   .page-home .hx-svc-deck,
   .page-home [data-hx-svc-deck-more] {
     display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(10px, 2.8vw, 12px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 2.2vw, 10px);
     width: 100%;
     margin: 0;
     padding: 0;
@@ -4358,36 +4358,40 @@ body.page-home {
     display: none;
   }
 
-  /* ── Masonry móvil ── */
+  /* ── Masonry móvil — 3 columnas ── */
   .page-home .hx-svc-deck-masonry {
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 2.8vw, 12px);
+    gap: clamp(8px, 2.2vw, 10px);
     width: 100%;
   }
 
   .page-home .hx-svc-deck-masonry__cols {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(10px, 2.8vw, 12px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 2.2vw, 10px);
     align-items: start;
   }
 
   .page-home .hx-svc-deck-masonry__col {
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 2.8vw, 12px);
+    gap: clamp(8px, 2.2vw, 10px);
     min-width: 0;
   }
 
-  /* Desfase tipo Pinterest: la columna derecha baja un poco */
+  /* Desfase tipo Pinterest en 3 columnas */
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] {
+    padding-top: clamp(16px, 4.5vw, 26px);
+  }
+
   .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
-    padding-top: clamp(28px, 8vw, 44px);
+    padding-top: clamp(28px, 7vw, 40px);
   }
 
   .page-home .hx-svc-deck__item,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item {
-    --mob-card-r: clamp(16px, 4vw, 20px);
+    --mob-card-r: clamp(12px, 3.2vw, 16px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -4405,7 +4409,7 @@ body.page-home {
     border: 1px solid rgba(15, 36, 64, 0.06);
     border-radius: var(--mob-card-r);
     box-shadow:
-      0 4px 16px rgba(15, 36, 64, 0.07),
+      0 4px 14px rgba(15, 36, 64, 0.07),
       0 1px 0 rgba(255, 255, 255, 0.9) inset;
     transition:
       transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -4525,18 +4529,19 @@ body.page-home {
     right: 0;
     bottom: 0;
     z-index: 2;
-    padding: 10px 11px 12px;
+    padding: 8px 8px 10px;
     background: transparent;
     border-top: none;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__title {
-    font-size: 0.62rem;
+    font-size: clamp(0.48rem, 2.4vw, 0.58rem);
     font-weight: 800;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+    line-height: 1.2;
   }
 
   /* Fallback sin JS — título debajo de imagen */

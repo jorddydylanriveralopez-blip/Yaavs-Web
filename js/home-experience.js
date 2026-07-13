@@ -1086,13 +1086,30 @@
 
     let masonryBalanceTimer = null;
 
-    function distributeMasonryColumns(items, colLeft, colRight) {
-      if (!colLeft || !colRight) return;
-      colLeft.replaceChildren();
-      colRight.replaceChildren();
+    function getMasonryCols() {
+      if (!masonryEl) return [];
+      return [
+        masonryEl.querySelector('[data-masonry-col="left"]'),
+        masonryEl.querySelector('[data-masonry-col="mid"]'),
+        masonryEl.querySelector('[data-masonry-col="right"]'),
+      ].filter(Boolean);
+    }
+
+    function distributeMasonryColumns(items, cols) {
+      if (!cols?.length) return;
+      cols.forEach((col) => col.replaceChildren());
       items.forEach((item, index) => {
-        (index % 2 === 0 ? colLeft : colRight).appendChild(item);
+        cols[index % cols.length].appendChild(item);
       });
+    }
+
+    function appendToShortestMasonryCol(item, cols) {
+      if (!cols?.length) return;
+      let target = cols[0];
+      cols.forEach((col) => {
+        if (col.children.length < target.children.length) target = col;
+      });
+      target.appendChild(item);
     }
 
     function layoutMobileMasonry() {
@@ -1109,13 +1126,12 @@
         const colsWrap = document.createElement("div");
         colsWrap.className = "hx-svc-deck-masonry__cols";
 
-        const colLeft = document.createElement("div");
-        const colRight = document.createElement("div");
-        colLeft.className = "hx-svc-deck-masonry__col";
-        colRight.className = "hx-svc-deck-masonry__col";
-        colLeft.dataset.masonryCol = "left";
-        colRight.dataset.masonryCol = "right";
-        colsWrap.append(colLeft, colRight);
+        ["left", "mid", "right"].forEach((name) => {
+          const col = document.createElement("div");
+          col.className = "hx-svc-deck-masonry__col";
+          col.dataset.masonryCol = name;
+          colsWrap.appendChild(col);
+        });
         masonryEl.appendChild(colsWrap);
 
         deckLayout.insertBefore(masonryEl, deckRoot);
@@ -1123,6 +1139,16 @@
         if (deckMorePanel) deckMorePanel.hidden = true;
         deckLayout.classList.add("is-deck-masonry-mob");
         masonryReady = true;
+      } else {
+        /* Migrar de 2 a 3 columnas si hace falta */
+        const colsWrap = masonryEl.querySelector(".hx-svc-deck-masonry__cols");
+        if (colsWrap && !masonryEl.querySelector('[data-masonry-col="mid"]')) {
+          const mid = document.createElement("div");
+          mid.className = "hx-svc-deck-masonry__col";
+          mid.dataset.masonryCol = "mid";
+          const right = colsWrap.querySelector('[data-masonry-col="right"]');
+          colsWrap.insertBefore(mid, right || null);
+        }
       }
 
       if (deckMorePanel) {
@@ -1136,12 +1162,10 @@
       const heroItem = sorted.find((item) => item.dataset.masonry === "hero");
       const rest = sorted.filter((item) => item !== heroItem);
       const colsWrap = masonryEl.querySelector(".hx-svc-deck-masonry__cols");
-      const colLeft = masonryEl.querySelector('[data-masonry-col="left"]');
-      const colRight = masonryEl.querySelector('[data-masonry-col="right"]');
+      const cols = getMasonryCols();
 
-      masonryEl.querySelector(":scope > .hx-svc-deck__item[data-masonry=\"hero\"]")?.remove();
-      colLeft.replaceChildren();
-      colRight.replaceChildren();
+      masonryEl.querySelector(':scope > .hx-svc-deck__item[data-masonry="hero"]')?.remove();
+      cols.forEach((col) => col.replaceChildren());
 
       if (heroItem) {
         heroItem.classList.add("is-deck-in");
@@ -1149,12 +1173,12 @@
       }
 
       rest.forEach((item) => item.classList.add("is-deck-in"));
-      distributeMasonryColumns(rest, colLeft, colRight);
+      distributeMasonryColumns(rest, cols);
 
       getDeckItems().forEach((item) => {
         if (item.dataset.masonry === "hero") return;
-        if (colLeft.contains(item) || colRight.contains(item)) return;
-        (colLeft.children.length <= colRight.children.length ? colLeft : colRight).appendChild(item);
+        if (cols.some((col) => col.contains(item))) return;
+        appendToShortestMasonryCol(item, cols);
       });
     }
 
@@ -1167,14 +1191,13 @@
           (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
         );
         const rest = sorted.filter((item) => item.dataset.masonry !== "hero");
-        const colLeft = masonryEl?.querySelector('[data-masonry-col="left"]');
-        const colRight = masonryEl?.querySelector('[data-masonry-col="right"]');
-        if (!colLeft || !colRight) return;
-        distributeMasonryColumns(rest, colLeft, colRight);
+        const cols = getMasonryCols();
+        if (cols.length < 3) return;
+        distributeMasonryColumns(rest, cols);
         getDeckItems().forEach((item) => {
           if (item.dataset.masonry === "hero") return;
-          if (colLeft.contains(item) || colRight.contains(item)) return;
-          (colLeft.children.length <= colRight.children.length ? colLeft : colRight).appendChild(item);
+          if (cols.some((col) => col.contains(item))) return;
+          appendToShortestMasonryCol(item, cols);
         });
       });
     }
