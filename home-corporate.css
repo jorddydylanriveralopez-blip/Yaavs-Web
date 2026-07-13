@@ -1021,6 +1021,32 @@ body.page-home {
   z-index: 1;
 }
 
+.page-home .hx-ops__card > .hx-ops__card-label {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-home .hx-ops__card > .hx-ops__card-ribbon {
+  position: absolute;
+  inset: auto;
+  top: 12px;
+  left: 12px;
+}
+
+.page-home .hx-ops__card > .hx-ops__card-bg,
+.page-home .hx-ops__card > .hx-ops__card-glow,
+.page-home .hx-ops__card > .hx-ops__card-scan,
+.page-home .hx-ops__card > .hx-ops__intro-photo,
+.page-home .hx-ops__card > .hx-ops__intro-veil {
+  position: absolute;
+  inset: 0;
+}
+
 .page-home .hx-ops__card-photo {
   display: none;
 }
@@ -1069,8 +1095,7 @@ body.page-home {
 .page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-kicker,
 .page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-lead,
 .page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-desc,
-.page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-list li,
-.page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label {
+.page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-list li {
   color: #0f2440;
   text-shadow: none;
 }
@@ -1214,6 +1239,67 @@ body.page-home {
 .page-home .hx-ops__card--unefon .hx-ops__card-kicker,
 .page-home .hx-ops__card--unefon .hx-ops__card-ribbon {
   color: #fff0d8;
+}
+
+@media (min-width: 901px) {
+  .page-home .hx-ops__deck {
+    align-items: stretch;
+    min-height: clamp(460px, 56vh, 640px);
+  }
+
+  .page-home .hx-ops__deck > .hx-ops__card,
+  .page-home .hx-ops__deck > .hx-ops__grid {
+    align-self: stretch;
+  }
+
+  .page-home .hx-ops__deck .hx-ops__card:not(.hx-ops__card--intro) {
+    min-height: 100%;
+  }
+
+  .page-home .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) .hx-ops__card-body {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .page-home .hx-ops__card:not(.hx-ops__card--intro) .hx-ops__card-label {
+    padding: 0;
+    color: #fff;
+    text-shadow: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page-home .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) .hx-ops__card-label .hx-ops__card-logo {
+    display: block;
+    width: clamp(72px, 88%, 148px);
+    height: auto !important;
+    max-width: 90%;
+    max-height: 40%;
+    margin: auto;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+    transform: none;
+  }
+
+  .page-home .hx-ops__card:not(.is-active) .hx-ops__card--bait .hx-ops__card-label .hx-ops__card-logo {
+    transform: none;
+  }
+
+  .page-home .hx-ops__card:not(.is-active) .hx-ops__card--movistar .hx-ops__card-label .hx-ops__card-logo {
+    width: clamp(74px, 92%, 152px);
+    transform: none;
+  }
+
+  .page-home .hx-ops__card:not(.is-active) .hx-ops__card--unefon .hx-ops__card-label .hx-ops__card-logo {
+    width: clamp(64px, 82%, 128px);
+    max-height: 44%;
+    transform: none;
+    filter: none;
+  }
 }
 
 @media (max-width: 900px) {
