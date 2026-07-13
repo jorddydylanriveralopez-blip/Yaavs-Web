@@ -131,9 +131,14 @@ body.page-home {
   opacity: 1;
 }
 
-.page-home .logo-link:hover .logo,
-.page-home .logo-link:focus-visible .logo {
+.page-home .logo-link:hover .logo:not(.logo--on-light),
+.page-home .logo-link:focus-visible .logo:not(.logo--on-light) {
   filter: brightness(0) saturate(100%) drop-shadow(0 0 10px rgba(0, 188, 212, 0.5)) !important;
+}
+
+.page-home .logo-link:hover .logo--on-light,
+.page-home .logo-link:focus-visible .logo--on-light {
+  filter: drop-shadow(0 6px 16px rgba(0, 188, 212, 0.28)) !important;
 }
 
 .page-home .header-wa {

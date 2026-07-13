@@ -1155,6 +1155,11 @@ a:hover { opacity: 0.65; }
   --logo-filter: none;
 }
 
+.logo-link:hover .logo--on-light,
+.logo-link:focus-visible .logo--on-light {
+  filter: drop-shadow(0 6px 16px rgba(0, 188, 212, 0.24)) !important;
+}
+
 .page-home .site-header .logo:not(.logo--on-light) {
   --logo-filter: brightness(0) saturate(100%);
   filter: brightness(0) saturate(100%);
