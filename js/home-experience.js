@@ -571,9 +571,12 @@
     const opsPickerOpen = opsDeck.querySelector("[data-hx-ops-picker-open]");
     const opsPickerClose = opsDeck.querySelectorAll("[data-hx-ops-picker-close]");
     const opsPickerOptions = opsDeck.querySelectorAll("[data-hx-ops-select]");
+    const mobDetail = opsDeck.querySelector("[data-hx-ops-mob-detail]");
+    const mobGuide = opsDeck.querySelector("[data-hx-ops-mob-guide]");
     const mobileOps = window.matchMedia("(max-width: 900px)");
     const desktopOpsScroll = window.matchMedia("(min-width: 901px)");
     const OPS_PEEK_KEY = "yaavs-hx-ops-peeked";
+    const OPS_MOB_GUIDE_KEY = "yaavs-hx-ops-mob-guided";
     const scrollCards = [introCard, ...carrierCards].filter(Boolean);
     let scrollUserPicked = false;
     let scrollPickProgress = 0;
@@ -735,6 +738,90 @@
       opsDeck.classList.add("hx-ops--peek");
     }
 
+    function dismissOpsMobGuide() {
+      opsDeck.classList.remove("hx-ops--mob-guide");
+      try {
+        localStorage.setItem(OPS_MOB_GUIDE_KEY, "1");
+      } catch (_) {
+        /* storage optional */
+      }
+    }
+
+    function initOpsMobGuide() {
+      if (!mobileOps.matches) return;
+      try {
+        if (localStorage.getItem(OPS_MOB_GUIDE_KEY)) return;
+      } catch (_) {
+        /* storage optional */
+      }
+      opsDeck.classList.add("hx-ops--mob-guide");
+    }
+
+    function clearMobDetail() {
+      if (!mobDetail) return;
+      mobDetail.hidden = true;
+      mobDetail.innerHTML = "";
+      mobDetail.removeAttribute("data-hx-op");
+    }
+
+    function renderMobDetail(card) {
+      const panel = card?.querySelector(".hx-ops__card-panel");
+      if (!panel || !mobDetail) return;
+
+      mobDetail.hidden = false;
+      mobDetail.dataset.hxOp = card.dataset.hxOp || "";
+      mobDetail.innerHTML = `<div class="hx-ops__mob-detail-inner hx-ops__mob-detail-inner--${card.dataset.hxOp || "carrier"}">${panel.outerHTML}</div>`;
+
+      requestAnimationFrame(() => {
+        mobDetail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    }
+
+    function clearMobSelection() {
+      carrierCards.forEach((c) => {
+        c.classList.remove("is-active");
+        c.setAttribute("aria-selected", "false");
+        c.tabIndex = 0;
+      });
+      if (introCard) {
+        introCard.classList.add("is-active");
+        introCard.setAttribute("aria-selected", "true");
+      }
+      clearMobDetail();
+      syncOpsState(introCard);
+    }
+
+    function activateOpMobile(card) {
+      dismissOpsMobGuide();
+
+      if (!card || card === introCard) {
+        clearMobSelection();
+        return;
+      }
+
+      if (card.classList.contains("is-active")) {
+        clearMobSelection();
+        return;
+      }
+
+      carrierCards.forEach((c) => {
+        const active = c === card;
+        c.classList.toggle("is-active", active);
+        c.setAttribute("aria-selected", String(active));
+        c.tabIndex = 0;
+      });
+
+      if (introCard) {
+        introCard.classList.remove("is-active");
+        introCard.setAttribute("aria-selected", "false");
+      }
+
+      renderMobDetail(card);
+      setOpsPickerOpen(false, { restoreFocus: false });
+      syncOpsState(card);
+      window.YaavsSonic?.play?.();
+    }
+
     function syncOpsPreview() {
       if (opsGrid) opsGrid.hidden = false;
       if (opsToggle) opsToggle.hidden = true;
@@ -761,6 +848,11 @@
     function activateOp(card) {
       dismissOpsPeek();
 
+      if (mobileOps.matches) {
+        activateOpMobile(card);
+        return;
+      }
+
       if (card?.classList.contains("is-active") && card.dataset.hxOp !== "intro") {
         card = introCard;
       }
@@ -783,6 +875,11 @@
     }
 
     function applyInitialOpsState() {
+      if (mobileOps.matches) {
+        clearMobSelection();
+        initOpsMobGuide();
+        return;
+      }
       activateOp(introCard || opCards[0]);
     }
 
@@ -809,8 +906,14 @@
 
     const onMobileOpsChange = () => {
       setOpsPickerOpen(false, { restoreFocus: false });
-      if (introCard) activateOp(introCard);
+      clearMobDetail();
+      if (mobileOps.matches) {
+        applyInitialOpsState();
+      } else if (introCard) {
+        activateOp(introCard);
+      }
       initOpsPeek();
+      initOpsMobGuide();
       syncOpsPreview();
     };
 
@@ -839,7 +942,10 @@
         card.style.setProperty("--my", `${my}%`);
       });
 
-      card.addEventListener("click", () => activateOp(card));
+      card.addEventListener("click", () => {
+        if (mobileOps.matches && card === introCard) return;
+        activateOp(card);
+      });
 
       card.addEventListener("keydown", (e) => {
         const idx = Array.from(opCards).indexOf(card);
@@ -863,6 +969,7 @@
     });
 
     initOpsPeek();
+    initOpsMobGuide();
     applyInitialOpsState();
 
     window.addEventListener(

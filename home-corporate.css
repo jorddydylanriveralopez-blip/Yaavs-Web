@@ -1514,8 +1514,8 @@ body.page-home {
     filter: none;
   }
 
-  .page-home .hx-ops__deck .hx-ops__card:not(.is-active):not(.hx-ops__card--intro):active {
-    transform: scale(0.98) !important;
+  .page-home .hx-ops__deck .hx-ops__grid .hx-ops__card:not(.is-active):active {
+    transform: scale(0.97) !important;
   }
 }
 

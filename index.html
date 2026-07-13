@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=4">
   <link rel="stylesheet" href="theme-light.css">
   <link rel="stylesheet" href="theme-day-night.css">
-  <link rel="stylesheet" href="home-experience.css?v=21">
+  <link rel="stylesheet" href="home-experience.css?v=22">
   <link rel="stylesheet" href="home-corporate.css?v=102">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/yaavstys/yaavstys-3.png" media="(max-width: 768px)" fetchpriority="high">
@@ -327,7 +327,7 @@
           <p class="hx-ops__eyebrow">Multi-operador</p>
           <h3 class="hx-ops__title">Las compañías que <span class="hx-services__cyan">vendes</span> con YAAVS</h3>
           <p class="hx-ops__hint hx-ops__hint--desktop">Haz clic en un operador para conocer más</p>
-          <p class="hx-ops__hint hx-ops__hint--mobile">Toca un operador para conocer más</p>
+          <p class="hx-ops__hint hx-ops__hint--mobile">Toca una compañía de abajo para ver qué puedes vender</p>
         </header>
 
         <button type="button" class="hx-ops__back" aria-label="Volver a todas las compañías" hidden>
@@ -380,8 +380,13 @@
             </div>
           </article>
 
+          <p class="hx-ops__mob-guide" data-hx-ops-mob-guide>
+            <span class="hx-ops__mob-guide-pulse" aria-hidden="true"></span>
+            <span class="hx-ops__mob-guide-text">Elige una compañía: toca uno de los cuadros de abajo</span>
+          </p>
+
           <div class="hx-ops__grid" id="hx-ops-grid">
-            <article class="hx-ops__card hx-ops__card--att" role="tab" tabindex="-1" aria-selected="false" data-hx-op="att">
+            <article class="hx-ops__card hx-ops__card--att" role="tab" tabindex="0" aria-selected="false" aria-label="AT&amp;T — toca para ver qué puedes vender" data-hx-op="att">
               <img class="hx-ops__card-photo" src="assets/operadores/att.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
               <span class="hx-ops__card-bg" aria-hidden="true"></span>
               <span class="hx-ops__card-glow" aria-hidden="true"></span>
@@ -409,7 +414,7 @@
               </div>
             </article>
 
-            <article class="hx-ops__card hx-ops__card--unefon" role="tab" tabindex="-1" aria-selected="false" data-hx-op="unefon">
+            <article class="hx-ops__card hx-ops__card--unefon" role="tab" tabindex="0" aria-selected="false" aria-label="Unefon — toca para ver qué puedes vender" data-hx-op="unefon">
               <img class="hx-ops__card-photo" src="assets/operadores/unefon.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
               <span class="hx-ops__card-bg" aria-hidden="true"></span>
               <span class="hx-ops__card-glow" aria-hidden="true"></span>
@@ -437,7 +442,7 @@
               </div>
             </article>
 
-            <article class="hx-ops__card hx-ops__card--bait" role="tab" tabindex="-1" aria-selected="false" data-hx-op="bait">
+            <article class="hx-ops__card hx-ops__card--bait" role="tab" tabindex="0" aria-selected="false" aria-label="BAIT — toca para ver qué puedes vender" data-hx-op="bait">
               <img class="hx-ops__card-photo" src="assets/operadores/bait.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
               <span class="hx-ops__card-bg" aria-hidden="true"></span>
               <span class="hx-ops__card-glow" aria-hidden="true"></span>
@@ -465,7 +470,7 @@
               </div>
             </article>
 
-            <article class="hx-ops__card hx-ops__card--movistar" role="tab" tabindex="-1" aria-selected="false" data-hx-op="movistar">
+            <article class="hx-ops__card hx-ops__card--movistar" role="tab" tabindex="0" aria-selected="false" aria-label="Movistar — toca para ver qué puedes vender" data-hx-op="movistar">
               <img class="hx-ops__card-photo" src="assets/operadores/movistar.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async">
               <span class="hx-ops__card-bg" aria-hidden="true"></span>
               <span class="hx-ops__card-glow" aria-hidden="true"></span>
@@ -493,6 +498,9 @@
               </div>
             </article>
           </div>
+
+          <div class="hx-ops__mob-detail" data-hx-ops-mob-detail hidden aria-live="polite"></div>
+
           <button
             type="button"
             class="hx-ops__toggle"
@@ -812,7 +820,7 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js",
-        "js/home-experience.js?v=49",
+        "js/home-experience.js?v=50",
       ], "400px 0px");
 
       let chatBootPromise = null;
