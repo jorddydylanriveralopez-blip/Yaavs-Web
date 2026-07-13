@@ -955,38 +955,44 @@ body.page-home {
 
 .theme-cluster .hx-ops__hint,
 .theme-cluster .hx-ops__title {
-  color: #fff;
+  color: #0f2440;
 }
 
 /* Operadores */
 .page-home .hx-ops {
-  border-top-color: rgba(61, 125, 181, 0.12);
+  border-top-color: rgba(0, 188, 212, 0.16);
 }
 
 .page-home .hx-ops__head {
-  background: rgba(0, 24, 60, 0.96);
-  border-color: rgba(61, 125, 181, 0.38);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 188, 212, 0.22);
+  box-shadow: 0 14px 40px rgba(15, 36, 64, 0.08);
 }
 
 @media (min-width: 901px) {
   .page-home .hx-ops__head {
-    background: rgba(0, 24, 60, 0.96);
+    background: rgba(255, 255, 255, 0.96);
   }
 }
 
 .page-home .hx-ops__eyebrow {
-  color: var(--hx-att-blue-bright);
+  color: #0097b2;
+  text-shadow: none;
+}
+
+.page-home .hx-ops__title {
+  color: #0f2440;
   text-shadow: none;
 }
 
 .page-home .hx-ops__hint {
-  color: #fff;
-  background: rgba(0, 48, 135, 0.92);
-  border-color: rgba(61, 125, 181, 0.6);
+  color: #0f2440;
+  background: rgba(0, 188, 212, 0.12);
+  border-color: rgba(0, 188, 212, 0.28);
 }
 
 .page-home .hx-ops__hint::before {
-  color: var(--hx-att-blue-bright);
+  color: #00bcd4;
 }
 
 .page-home .hx-ops__back {
@@ -1032,10 +1038,10 @@ body.page-home {
 }
 
 .page-home .hx-ops__card-panel {
-  background: rgba(0, 10, 22, 0.42);
-  border-color: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .page-home .hx-ops__intro-panel {
@@ -1106,23 +1112,23 @@ body.page-home {
 }
 
 .page-home .hx-ops__card--bait {
-  --ops-brand-bg: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+  --ops-brand-bg: linear-gradient(180deg, #ff1f8f 0%, #d40072 100%);
 }
 
 .page-home .hx-ops__card--att {
-  --ops-brand-bg: linear-gradient(180deg, #0078d4 0%, #005a9e 100%);
+  --ops-brand-bg: linear-gradient(180deg, #00b4ff 0%, #0080e8 100%);
 }
 
 .page-home .hx-ops__card--movistar {
-  --ops-brand-bg: linear-gradient(180deg, #00a650 0%, #00773a 100%);
+  --ops-brand-bg: linear-gradient(180deg, #00e676 0%, #00b248 100%);
 }
 
 .page-home .hx-ops__card--unefon {
-  --ops-brand-bg: linear-gradient(180deg, #ffcc00 0%, #d4aa00 100%);
+  --ops-brand-bg: linear-gradient(180deg, #ffe600 0%, #ffc400 100%);
 }
 
 .page-home .hx-ops__card--intro {
-  --ops-brand-bg: linear-gradient(180deg, #08204a 0%, #04132c 100%);
+  --ops-brand-bg: linear-gradient(180deg, #00d4ee 0%, #0097b2 55%, #0078d4 100%);
 }
 
 .page-home .hx-ops__card--bait .hx-ops__card-kicker,
@@ -1142,25 +1148,33 @@ body.page-home {
 
 .page-home .hx-ops__card--unefon .hx-ops__card-kicker,
 .page-home .hx-ops__card--unefon .hx-ops__card-ribbon {
-  color: #fff0d8;
+  color: #5c4a00;
+}
+
+.page-home .hx-ops__card--unefon.is-active .hx-ops__card-panel-head,
+.page-home .hx-ops__card--unefon.is-active .hx-ops__card-kicker,
+.page-home .hx-ops__card--unefon.is-active .hx-ops__card-lead,
+.page-home .hx-ops__card--unefon.is-active .hx-ops__card-desc,
+.page-home .hx-ops__card--unefon.is-active .hx-ops__card-list li {
+  color: #1a2a35;
+  text-shadow: none;
 }
 
 @media (max-width: 900px) {
   .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--bait {
-    --ops-brand-bg: #0a0a0a;
+    --ops-brand-bg: linear-gradient(180deg, #ff1f8f 0%, #d40072 100%);
   }
 
   .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--att {
-    --ops-brand-bg: #3d7db5;
+    --ops-brand-bg: linear-gradient(180deg, #00b4ff 0%, #0080e8 100%);
   }
 
   .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--movistar {
-    --ops-brand-bg: #00a650;
+    --ops-brand-bg: linear-gradient(180deg, #00e676 0%, #00b248 100%);
   }
 
-  /* Amarillo BAIT (#fc0) en lugar del dorado anterior */
   .page-home .hx-ops:not(.has-carrier-active) .hx-ops__grid .hx-ops__card--unefon {
-    --ops-brand-bg: #ffcc00;
+    --ops-brand-bg: linear-gradient(180deg, #ffe600 0%, #ffc400 100%);
   }
 
   .page-home .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
