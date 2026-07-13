@@ -99,10 +99,15 @@ body.page-home {
     filter 0.4s ease;
 }
 
-.page-home .site-header .logo--on-light {
+.page-home .site-header .logo--on-light,
+.page-home .site-header .logo--white {
   filter: none !important;
   --logo-filter: none;
   opacity: 1 !important;
+}
+
+.page-home .site-header .logo--white {
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35)) !important;
 }
 
 .page-home .logo-link {
@@ -137,7 +142,9 @@ body.page-home {
 }
 
 .page-home .logo-link:hover .logo--on-light,
-.page-home .logo-link:focus-visible .logo--on-light {
+.page-home .logo-link:focus-visible .logo--on-light,
+.page-home .logo-link:hover .logo--white,
+.page-home .logo-link:focus-visible .logo--white {
   filter: drop-shadow(0 6px 16px rgba(0, 188, 212, 0.28)) !important;
 }
 

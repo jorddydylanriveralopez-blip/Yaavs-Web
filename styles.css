@@ -549,14 +549,30 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   outline-offset: 3px;
 }
 
-/* Banner video autoplay — full-bleed, sin overlay de controles */
+/* Banner video autoplay — full-bleed oscurecido + sin controles */
 .hero-carousel__slide--video-banner .hero-carousel__video--banner {
   position: absolute;
   inset: 0;
 }
 
+.hero-carousel__slide--video-banner .hero-carousel__video--banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 8, 18, 0.58) 0%,
+      rgba(2, 8, 18, 0.32) 42%,
+      rgba(2, 8, 18, 0.62) 100%
+    ),
+    rgba(0, 0, 0, 0.22);
+}
+
 .hero-carousel__slide--video-banner .hero-carousel__video-media img {
-  filter: none;
+  filter: brightness(0.72) saturate(0.92);
   opacity: 1;
   z-index: 0;
 }
@@ -566,6 +582,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   opacity: 1;
   object-fit: cover;
   object-position: center center;
+  filter: brightness(0.72) contrast(1.04) saturate(0.95);
 }
 
 .hero-carousel__slide--video-banner .hero-carousel__video-shade,
@@ -576,7 +593,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
 
 body.page-home.hero-slide--video-banner .hero-banner__shade,
 body.page-home.hero-slide--video-banner .page-bg__shade {
-  opacity: 0.18;
+  opacity: 0.42;
 }
 
 body.page-home.hero-slide--video-banner .hero-banner__promo {

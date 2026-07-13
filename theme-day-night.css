@@ -72,9 +72,14 @@
 }
 
 [data-yaavs-theme="day"] body.theme-cluster:not(.page-home) .logo,
-[data-yaavs-theme="day"] .page-home .site-header .logo,
-[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo {
+[data-yaavs-theme="day"] .page-home .site-header .logo:not(.logo--white),
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo:not(.logo--white) {
   --logo-filter: brightness(0) saturate(100%);
+}
+
+[data-yaavs-theme="day"] .page-home .site-header .logo--white,
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo--white {
+  --logo-filter: none;
 }
 
 [data-yaavs-theme="day"] body.theme-cluster:not(.page-home) .bento-dot,
