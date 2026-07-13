@@ -3544,10 +3544,11 @@ body.page-home {
   .page-home .hx-svc-deck--square .hx-svc-deck__icon img {
     width: auto;
     height: auto;
-    max-width: 76%;
-    max-height: 64%;
+    max-width: min(78%, 220px);
+    max-height: 58%;
     object-fit: contain;
     filter: none;
+    border-radius: 12px;
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__icon-photo {

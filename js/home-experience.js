@@ -1295,12 +1295,13 @@
       iconEl.className = "hx-svc-deck__icon";
       iconEl.setAttribute("aria-hidden", "true");
       const iconImg = document.createElement("img");
-      const thumbSrc = cfg.thumb || cfg.poster || cfg.icon;
-      iconImg.src = thumbSrc;
+      const iconSrc = cfg.icon || cfg.thumb || cfg.poster;
+      iconImg.src = iconSrc;
       iconImg.alt = "";
       iconImg.loading = "lazy";
       iconImg.decoding = "async";
-      if (cfg.thumb || cfg.poster) iconImg.classList.add("hx-svc-deck__icon-photo");
+      /* Solo marcar como foto si no hay icono dedicado (legado) */
+      if (!cfg.icon && (cfg.thumb || cfg.poster)) iconImg.classList.add("hx-svc-deck__icon-photo");
       iconEl.appendChild(iconImg);
 
       const mediaEl = document.createElement("span");
