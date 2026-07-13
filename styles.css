@@ -549,10 +549,38 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   outline-offset: 3px;
 }
 
-/* Carrusel — slide de video empresarial a pantalla completa */
-.hero-carousel__slide--video .hero-carousel__video {
+/* Banner video autoplay — full-bleed, sin overlay de controles */
+.hero-carousel__slide--video-banner .hero-carousel__video--banner {
   position: absolute;
   inset: 0;
+}
+
+.hero-carousel__slide--video-banner .hero-carousel__video-media img {
+  filter: none;
+  opacity: 1;
+  z-index: 0;
+}
+
+.hero-carousel__slide--video-banner .hero-carousel__video-el {
+  z-index: 2;
+  opacity: 1;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero-carousel__slide--video-banner .hero-carousel__video-shade,
+.hero-carousel__slide--video-banner .hero-carousel__video-overlay,
+.hero-carousel__slide--video-banner .hero-carousel__video-controls {
+  display: none !important;
+}
+
+body.page-home.hero-slide--video-banner .hero-banner__shade,
+body.page-home.hero-slide--video-banner .page-bg__shade {
+  opacity: 0.18;
+}
+
+body.page-home.hero-slide--video-banner .hero-banner__promo {
+  display: none !important;
 }
 
 .hero-carousel__video-media {
