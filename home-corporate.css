@@ -90,13 +90,19 @@ body.page-home {
   z-index: 2;
 }
 
-.page-home .site-header .logo {
+.page-home .site-header .logo:not(.logo--on-light) {
   --logo-filter: brightness(0) saturate(100%);
   filter: brightness(0) saturate(100%) !important;
   opacity: 1 !important;
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.4s ease;
+}
+
+.page-home .site-header .logo--on-light {
+  filter: none !important;
+  --logo-filter: none;
+  opacity: 1 !important;
 }
 
 .page-home .logo-link {

@@ -1150,7 +1150,12 @@ a:hover { opacity: 0.65; }
   transition: filter 0.35s var(--ease);
 }
 
-.page-home .site-header .logo {
+.logo--on-light {
+  filter: none !important;
+  --logo-filter: none;
+}
+
+.page-home .site-header .logo:not(.logo--on-light) {
   --logo-filter: brightness(0) saturate(100%);
   filter: brightness(0) saturate(100%);
   opacity: 1;

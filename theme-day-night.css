@@ -193,9 +193,9 @@
   --logo-filter: brightness(0) saturate(100%);
 }
 
-[data-yaavs-theme="day"] .page-home .site-header .logo,
-[data-yaavs-theme="day"] .page-home .site-header:not(.is-scrolled) .logo,
-[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo {
+[data-yaavs-theme="day"] .page-home .site-header .logo:not(.logo--on-light),
+[data-yaavs-theme="day"] .page-home .site-header:not(.is-scrolled) .logo:not(.logo--on-light),
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .logo:not(.logo--on-light) {
   --logo-filter: brightness(0) saturate(100%);
 }
 

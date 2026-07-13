@@ -531,7 +531,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   padding: clamp(20px, 3.5vw, 32px) var(--pad-x);
 }
 
-.banner-logo-bridge__img {
+.banner-logo-bridge__img.logo--on-light {
   filter: drop-shadow(0 8px 28px rgba(0, 188, 212, 0.22));
 }
 
