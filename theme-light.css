@@ -18,8 +18,13 @@
   border-bottom: 1px solid var(--border-on-light);
 }
 
-[data-yaavs-theme="day"] body.theme-cluster:not(.page-home) .logo {
+[data-yaavs-theme="day"] body.theme-cluster:not(.page-home) .logo:not(.logo--on-light) {
   --logo-filter: brightness(0);
+}
+
+[data-yaavs-theme="day"] body.theme-cluster:not(.page-home) .logo.logo--on-light {
+  --logo-filter: none;
+  filter: none !important;
 }
 
 [data-yaavs-theme="day"] body.theme-cluster:not(.page-home) .bento-dot {

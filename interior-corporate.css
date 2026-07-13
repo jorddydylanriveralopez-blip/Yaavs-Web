@@ -80,9 +80,15 @@ body.theme-cluster:not(.page-home) .site-header .header-inner {
   z-index: 2;
 }
 
-body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo,
-body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo {
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo:not(.logo--on-light),
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo:not(.logo--on-light) {
   --logo-filter: brightness(0);
+}
+
+body.theme-cluster:not(.page-home) .site-header .logo.logo--on-light,
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--on-light {
+  --logo-filter: none;
+  filter: none !important;
 }
 
 body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .bento-dot,
@@ -168,8 +174,13 @@ body.theme-cluster:not(.page-home) #contenido {
   background: transparent;
 }
 
-body.theme-cluster:not(.page-home) .logo {
+body.theme-cluster:not(.page-home) .logo:not(.logo--on-light) {
   --logo-filter: brightness(0);
+}
+
+body.theme-cluster:not(.page-home) .logo.logo--on-light {
+  --logo-filter: none;
+  filter: none !important;
 }
 
 body.theme-cluster:not(.page-home) .bento-dot {

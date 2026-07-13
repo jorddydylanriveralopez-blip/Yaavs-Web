@@ -30,6 +30,23 @@
     });
   }
 
+  /** Home: blanco en móvil / color en desktop. Otras páginas: siempre logo a color. */
+  function initHeaderLogo() {
+    const img = document.querySelector(".site-header .logo");
+    if (!img) return;
+
+    const isHome = document.body.classList.contains("page-home");
+    if (isHome) return;
+
+    const picture = img.closest("picture");
+    picture?.querySelectorAll("source").forEach((source) => source.remove());
+    img.src = "assets/yaavs-logo-on-light.png?v=3";
+    img.classList.add("logo--on-light");
+    img.classList.remove("logo--white");
+    img.style.setProperty("--logo-filter", "none");
+    img.style.filter = "none";
+  }
+
   function initNavToggle() {
     const navToggle = document.getElementById("nav-toggle");
     const mainNav = document.getElementById("main-nav");
@@ -246,6 +263,7 @@
     await mountChatbot();
     initSocialFloatScroll();
     setActiveNav();
+    initHeaderLogo();
     initNavToggle();
     initHeaderScroll();
     const yearEl = document.getElementById("year");
