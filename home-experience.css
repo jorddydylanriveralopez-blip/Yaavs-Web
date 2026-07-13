@@ -3047,9 +3047,10 @@ body.has-hx-ops-picker {
 .hx-plan-picker--split .hx-plan-picker__choices {
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: stretch;
-  gap: clamp(12px, 2vw, 20px);
-  max-width: 1080px;
-  margin: 0 auto;
+  gap: clamp(10px, 1.4vw, 16px);
+  max-width: none;
+  width: 100%;
+  margin: 0;
 }
 
 .hx-plan-picker__or {
@@ -3111,6 +3112,11 @@ body.has-hx-ops-picker {
   display: block;
   min-height: clamp(260px, 34vw, 380px);
   aspect-ratio: 4 / 5;
+}
+
+.hx-plan-picker--split .hx-plan-picker__card--visual {
+  aspect-ratio: 16 / 11;
+  min-height: clamp(280px, 30vw, 440px);
 }
 
 .hx-plan-picker__card--visual .hx-plan-picker__visual {

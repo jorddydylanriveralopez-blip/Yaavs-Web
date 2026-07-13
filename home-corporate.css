@@ -1844,6 +1844,18 @@ body.page-home {
   margin-inline: auto;
 }
 
+/* Cards a ancho completo del viewport (sin banda vacía a los lados) */
+.page-home .hx-plan-picker--split .hx-plan-picker__inner.container {
+  width: 100%;
+  max-width: none;
+  padding-inline: clamp(12px, 2vw, 28px);
+}
+
+.page-home .hx-plan-picker--split .hx-plan-picker__choices {
+  max-width: none;
+  width: 100%;
+}
+
 .page-home .hx-plan-picker__title,
 .page-home .hx-plan-picker__spotlight-title {
   color: #0f2440;
