@@ -960,8 +960,9 @@ body.page-home {
 
 /* Operadores */
 .page-home .hx-ops {
+  --hx-ops-view-h: calc(100dvh - var(--header-h, 88px));
   border-top-color: rgba(0, 188, 212, 0.16);
-  padding: clamp(28px, 4.5vw, 52px) 0 clamp(40px, 6vw, 72px);
+  padding: clamp(8px, 1.2vh, 14px) 0 clamp(10px, 1.5vh, 16px);
   background:
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 188, 212, 0.07) 0%, transparent 62%),
     linear-gradient(180deg, #f8fdfe 0%, #ffffff 45%, #f5fcfe 100%);
@@ -1246,11 +1247,24 @@ body.page-home {
 }
 
 @media (min-width: 901px) {
+  .page-home .hx-ops {
+    min-height: var(--hx-ops-view-h);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .page-home .hx-ops__head {
+    display: none;
+  }
+
   .page-home .hx-ops__deck {
     align-items: stretch;
-    min-height: clamp(620px, 76vh, 900px);
+    flex: 1 1 auto;
+    min-height: calc(var(--hx-ops-view-h) - 20px);
+    height: calc(var(--hx-ops-view-h) - 20px);
     gap: clamp(6px, 0.7vw, 14px);
-    padding: clamp(10px, 1.4vw, 18px);
+    padding: clamp(8px, 1vw, 14px);
     border-radius: clamp(14px, 1.6vw, 22px);
     background: rgba(255, 255, 255, 0.72);
     box-shadow:
