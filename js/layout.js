@@ -256,15 +256,22 @@
   });
 
   function initPageEnter() {
+    const finish = () => {
+      if (!document.body.classList.contains("page-enter-done")) {
+        window.YaavsPageEnter?.finishInstant?.();
+      }
+    };
+    window.setTimeout(finish, 4000);
+
     if (document.querySelector("script[data-page-enter]")) {
       window.YaavsPageEnter?.play();
       return;
     }
     const s = document.createElement("script");
-    s.src = "js/page-enter.js?v=2";
+    s.src = "js/page-enter.js?v=3";
     s.dataset.pageEnter = "true";
     s.onload = () => window.YaavsPageEnter?.play();
-    s.onerror = () => document.body.classList.add("page-enter-done");
+    s.onerror = finish;
     document.body.appendChild(s);
   }
 

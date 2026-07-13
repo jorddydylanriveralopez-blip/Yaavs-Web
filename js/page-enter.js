@@ -7,7 +7,15 @@
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function clearEnterBlocks() {
+    document.querySelectorAll(".page-enter-block").forEach((el) => {
+      el.classList.remove("page-enter-block");
+      el.style.removeProperty("--enter-i");
+    });
+  }
+
   function finishInstant() {
+    clearEnterBlocks();
     body.classList.remove("page-enter-pending", "page-enter-active", "page-enter-stagger");
     body.classList.add("page-enter-done");
   }
@@ -73,8 +81,9 @@
 
     const duration = useStagger ? 1200 + targets.length * 100 : 1000;
     window.setTimeout(() => {
+      clearEnterBlocks();
       body.classList.add("page-enter-done");
-      body.classList.remove("page-enter-active");
+      body.classList.remove("page-enter-active", "page-enter-stagger", "page-enter-pending");
     }, duration);
   }
 

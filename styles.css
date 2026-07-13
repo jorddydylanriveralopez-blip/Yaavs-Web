@@ -7779,6 +7779,12 @@ body.page-enter-active .page-enter-block {
   animation: page-enter-block 0.82s cubic-bezier(0.22, 1, 0.36, 1) calc(0.12s + var(--enter-i, 0) * 0.1s) both;
 }
 
+body.page-enter-done .page-enter-block {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
 @keyframes page-enter-header {
   from {
     opacity: 0;
