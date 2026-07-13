@@ -4229,6 +4229,11 @@ body.page-home {
     min-width: 0;
   }
 
+  /* Desfase tipo Pinterest: la columna derecha baja un poco */
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
+    padding-top: clamp(28px, 8vw, 44px);
+  }
+
   .page-home .hx-svc-deck__item,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item {
     --mob-card-r: clamp(16px, 4vw, 20px);
@@ -4299,7 +4304,19 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg {
-    aspect-ratio: 4 / 5 !important;
+    aspect-ratio: var(--masonry-ratio, 4 / 5);
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="tall"] .hx-svc-deck__bg {
+    aspect-ratio: var(--masonry-ratio, 3 / 4);
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="med"] .hx-svc-deck__bg {
+    aspect-ratio: var(--masonry-ratio, 4 / 5);
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="short"] .hx-svc-deck__bg {
+    aspect-ratio: var(--masonry-ratio, 1 / 1);
   }
 
   .page-home .hx-svc-deck__bg img {
@@ -4458,7 +4475,7 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: var(--masonry-ratio, 4 / 5);
   }
 
   .page-home .hx-svc-deck__item[data-masonry="hero"] .hx-svc-deck__bg {
