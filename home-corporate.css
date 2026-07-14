@@ -107,8 +107,7 @@ body.page-home {
 }
 
 .page-home .site-header .logo--white {
-  /* Soft edge only — keep glyph white, never brightness(0) */
-  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.28)) !important;
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35)) !important;
 }
 
 .page-home .logo-link {
@@ -116,37 +115,21 @@ body.page-home {
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.page-home .logo-link::after {
-  content: "";
-  position: absolute;
-  inset: -6px -10px;
-  border-radius: 14px;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 188, 212, 0.22), transparent 72%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: -1;
-}
-
 .page-home .logo-link:hover,
 .page-home .logo-link:focus-visible {
   transform: scale(1.05);
 }
 
-.page-home .logo-link:hover::after,
-.page-home .logo-link:focus-visible::after {
-  opacity: 1;
-}
-
 .page-home .logo-link:hover .logo:not(.logo--on-light):not(.logo--white),
 .page-home .logo-link:focus-visible .logo:not(.logo--on-light):not(.logo--white) {
-  filter: brightness(0) saturate(100%) drop-shadow(0 0 10px rgba(0, 188, 212, 0.5)) !important;
+  filter: brightness(0) saturate(100%) !important;
 }
 
 .page-home .logo-link:hover .logo--on-light,
 .page-home .logo-link:focus-visible .logo--on-light,
 .page-home .logo-link:hover .logo--white,
 .page-home .logo-link:focus-visible .logo--white {
-  filter: drop-shadow(0 6px 16px rgba(0, 188, 212, 0.28)) !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
 }
 
 .page-home .header-wa {
@@ -417,14 +400,11 @@ body.page-home {
     opacity: 1 !important;
   }
 
-  /* Logo: glow estático (sin animación) */
+  /* Logo blanco limpio, sin glow azul */
   .page-home .site-header .logo.logo--on-light,
   .page-home .site-header .logo.logo--white {
     --logo-filter: none;
-    filter:
-      drop-shadow(0 0 5px rgba(0, 229, 255, 0.45))
-      drop-shadow(0 0 12px rgba(56, 120, 255, 0.28))
-      drop-shadow(0 1px 4px rgba(0, 0, 0, 0.28)) !important;
+    filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35)) !important;
     animation: none;
   }
 
@@ -432,10 +412,7 @@ body.page-home {
   .page-home .logo-link:focus-visible .logo.logo--on-light,
   .page-home .logo-link:hover .logo.logo--white,
   .page-home .logo-link:focus-visible .logo.logo--white {
-    filter:
-      drop-shadow(0 0 8px rgba(0, 240, 255, 0.65))
-      drop-shadow(0 0 16px rgba(124, 92, 255, 0.35))
-      drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)) !important;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
   }
 }
 
@@ -590,10 +567,7 @@ body.page-home {
   .page-home .site-header .logo.logo--on-light,
   .page-home .site-header .logo.logo--white {
     --logo-filter: none;
-    filter:
-      drop-shadow(0 0 6px rgba(0, 229, 255, 0.4))
-      drop-shadow(0 0 14px rgba(56, 120, 255, 0.24))
-      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18)) !important;
+    filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35)) !important;
     animation: none;
   }
 
@@ -601,10 +575,7 @@ body.page-home {
   .page-home .logo-link:focus-visible .logo.logo--on-light,
   .page-home .logo-link:hover .logo.logo--white,
   .page-home .logo-link:focus-visible .logo.logo--white {
-    filter:
-      drop-shadow(0 0 8px rgba(0, 240, 255, 0.6))
-      drop-shadow(0 0 18px rgba(124, 92, 255, 0.32))
-      drop-shadow(0 3px 10px rgba(0, 0, 0, 0.22)) !important;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
   }
 }
 
