@@ -961,11 +961,13 @@
 }
 
 .hx-ops__card--movistar .hx-ops__card-logo {
-  height: clamp(44px, 8vw, 120px);
+  height: clamp(56px, 9vw, 112px);
+  max-width: min(72%, 112px);
 }
 
 .hx-ops__card--movistar:not(.is-active) .hx-ops__card-label .hx-ops__card-logo {
-  height: clamp(46px, 8.5vw, 112px);
+  height: clamp(52px, 9vw, 104px);
+  max-width: min(70%, 104px);
 }
 
 .hx-ops__card-logo--panel {
@@ -981,7 +983,8 @@
 }
 
 .hx-ops__card--movistar .hx-ops__card-logo--panel {
-  height: clamp(20px, 2.4vw, 30px);
+  height: clamp(52px, 5.5vw, 78px);
+  max-width: min(120px, 55%);
 }
 
 .hx-ops__card--unefon .hx-ops__card-logo--panel {
@@ -1331,7 +1334,7 @@
 }
 
 .hx-ops__intro-logos img {
-  height: clamp(20px, 2.2vw, 30px);
+  height: clamp(28px, 3.2vw, 42px);
   width: auto;
   max-width: 92px;
   object-fit: contain;
@@ -1339,9 +1342,11 @@
   opacity: 1;
 }
 
-.hx-ops__intro-logos img:nth-child(1) {
-  height: clamp(20px, 2.4vw, 32px);
-  max-width: 80px;
+.hx-ops__intro-logos img:nth-child(1),
+.hx-ops__intro-logos img:nth-child(4) {
+  height: clamp(40px, 4.6vw, 56px);
+  width: clamp(40px, 4.6vw, 56px);
+  max-width: 56px;
 }
 
 .hx-ops__intro-logos img:nth-child(3) {
@@ -1354,7 +1359,8 @@
 }
 
 .hx-ops__card--att .hx-ops__card-logo {
-  max-width: min(100%, 300px);
+  max-width: min(72%, 120px);
+  height: clamp(56px, 9vw, 120px);
 }
 
 .hx-ops__card--bait .hx-ops__card-logo--panel {
@@ -1363,8 +1369,8 @@
 }
 
 .hx-ops__card--att .hx-ops__card-logo--panel {
-  height: clamp(30px, 3.4vw, 44px);
-  max-width: min(190px, 75%);
+  height: clamp(52px, 5.5vw, 84px);
+  max-width: min(120px, 55%);
 }
 
 .hx-ops__intro-cta {
@@ -1580,15 +1586,17 @@ body.has-hx-ops-picker {
   filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.32));
 }
 
+.hx-ops__picker-option--att .hx-ops__picker-option-logo,
+.hx-ops__picker-option--movistar .hx-ops__picker-option-logo {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.32));
+}
+
 .hx-ops__picker-option--bait .hx-ops__picker-option-logo {
   width: 76px;
   height: 34px;
   filter: none;
-}
-
-.hx-ops__picker-option--movistar .hx-ops__picker-option-logo {
-  width: 56px;
-  height: 34px;
 }
 
 .hx-ops__picker-option--unefon .hx-ops__picker-option-logo {
@@ -2087,12 +2095,14 @@ body.has-hx-ops-picker {
     width: 78px;
   }
 
-  .hx-ops__picker-option--bait .hx-ops__picker-option-logo {
-    width: 70px;
+  .hx-ops__picker-option--att .hx-ops__picker-option-logo,
+  .hx-ops__picker-option--movistar .hx-ops__picker-option-logo {
+    width: 48px;
+    height: 48px;
   }
 
-  .hx-ops__picker-option--movistar .hx-ops__picker-option-logo {
-    width: 52px;
+  .hx-ops__picker-option--bait .hx-ops__picker-option-logo {
+    width: 70px;
   }
 
   .hx-ops__picker-option--unefon .hx-ops__picker-option-logo {

@@ -13,7 +13,7 @@
     att: {
       id: "att",
       name: "AT&T",
-      logo: "assets/operadores/att-carriers.svg",
+      logo: "assets/operadores/att-carriers.png",
       queryTerm: "tiendas AT&T Mexico",
       lead: "Consulta tiendas AT&T disponibles en toda la Republica.",
       title: "Mapa de tiendas AT&T en tiempo real",
@@ -21,7 +21,7 @@
     movistar: {
       id: "movistar",
       name: "Movistar",
-      logo: "assets/operadores/movistar-carriers.svg",
+      logo: "assets/operadores/movistar-carriers.png",
       queryTerm: "tiendas Movistar Mexico",
       lead: "Encuentra sucursales Movistar por region y ciudad.",
       title: "Mapa de tiendas Movistar en tiempo real",
