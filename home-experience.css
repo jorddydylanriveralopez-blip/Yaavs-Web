@@ -3721,17 +3721,28 @@ a.hx-plan-picker__card {
 
 @media (max-width: 900px) {
   .hx-plan-picker--split .hx-plan-picker__choices {
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(10px, 3vw, 14px);
+    grid-template-columns: 1fr;
+    gap: clamp(14px, 3.5vw, 20px);
     max-width: none;
+    width: 100%;
   }
 
   .hx-plan-picker--split .hx-plan-picker__or {
-    display: none;
+    display: grid;
+    width: clamp(40px, 10vw, 48px);
+    height: clamp(40px, 10vw, 48px);
+    margin-inline: auto;
+    justify-self: center;
+  }
+
+  .hx-plan-picker--split .hx-plan-picker__card--visual {
+    aspect-ratio: 16 / 10;
+    min-height: clamp(180px, 42vw, 260px);
+    width: 100%;
   }
 
   .hx-plan-picker__card--visual {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 10;
     min-height: 0;
   }
 

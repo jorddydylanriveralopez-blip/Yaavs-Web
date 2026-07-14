@@ -2020,6 +2020,34 @@ body.page-home {
   padding-top: clamp(28px, 5vw, 40px);
 }
 
+@media (max-width: 900px) {
+  .page-home .hx-plan-picker--split .hx-plan-picker__title {
+    max-width: 16ch;
+    font-size: clamp(1.2rem, 6.2vw, 1.65rem);
+  }
+
+  .page-home .hx-plan-picker--split .hx-plan-picker__choices {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .hx-plan-picker--split .hx-plan-picker__card--visual,
+  .page-home .hx-plan-picker__card--icon {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16 / 10;
+    min-height: clamp(170px, 48vw, 240px);
+  }
+
+  .page-home .hx-plan-picker__card--icon .hx-plan-picker__visual img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .page-home .hx-plan-picker__card--visual .hx-plan-picker__name {
+    font-size: clamp(1rem, 4.2vw, 1.25rem);
+  }
+}
+
 .page-home .hx-plan-picker--split .hx-plan-picker__lead {
   display: none;
 }
