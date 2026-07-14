@@ -30,13 +30,20 @@
     });
   }
 
-  /** Home: blanco en móvil / color en desktop. Otras páginas: siempre logo a color. */
+  /** Home: logo blanco (móvil y PC). Otras páginas: siempre logo a color. */
   function initHeaderLogo() {
     const img = document.querySelector(".site-header .logo");
     if (!img) return;
 
     const isHome = document.body.classList.contains("page-home");
-    if (isHome) return;
+    if (isHome) {
+      img.src = "assets/yaavs-logo-white.png?v=2";
+      img.classList.add("logo--white");
+      img.classList.remove("logo--on-light");
+      img.style.setProperty("--logo-filter", "none");
+      img.style.filter = "";
+      return;
+    }
 
     const picture = img.closest("picture");
     picture?.querySelectorAll("source").forEach((source) => source.remove());
