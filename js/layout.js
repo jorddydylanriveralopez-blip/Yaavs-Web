@@ -72,8 +72,11 @@
       setMenuOpen(open);
     });
 
-    mainNav.addEventListener("click", (e) => {
-      if (e.target === mainNav) setMenuOpen(false);
+    /* Clic fuera del panel (backdrop / página) cierra el menú */
+    document.addEventListener("click", (e) => {
+      if (!document.body.classList.contains("nav-open")) return;
+      if (mainNav.contains(e.target) || navToggle.contains(e.target)) return;
+      setMenuOpen(false);
     });
 
     document.addEventListener("keydown", (e) => {
@@ -85,7 +88,6 @@
     mainNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => setMenuOpen(false));
     });
-
   }
 
   function initHeaderScroll() {

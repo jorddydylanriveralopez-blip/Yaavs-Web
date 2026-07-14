@@ -196,7 +196,7 @@ body.theme-cluster:not(.page-home) .main-nav:not(.main-nav--overlay) a.is-active
   color: var(--accent);
 }
 
-/* Menú pantalla completa — blanco + turquesa corporativo */
+/* Menú panel derecho — blanco + turquesa corporativo */
 body.theme-cluster:not(.page-home) .main-nav--overlay {
   background:
     radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.14) 0%, transparent 58%),
