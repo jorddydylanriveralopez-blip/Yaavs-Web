@@ -1941,12 +1941,12 @@ body.page-home {
 }
 
 .page-home .hx-plan-picker--split .hx-plan-picker__title {
-  text-transform: none;
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   font-size: clamp(1.35rem, 3vw, 2.15rem);
   line-height: 1.2;
   text-wrap: balance;
-  max-width: 20ch;
+  max-width: 22ch;
   margin-inline: auto;
 }
 
@@ -1990,8 +1990,33 @@ body.page-home {
   border-color: rgba(130, 180, 255, 0.28);
 }
 
+/* Iconos oficiales prepago / pospago — sin recortar el arte */
+.page-home .hx-plan-picker__card--icon.hx-plan-picker__card--prepago .hx-plan-picker__visual {
+  background: #1547c2;
+}
+
+.page-home .hx-plan-picker__card--icon.hx-plan-picker__card--postpago .hx-plan-picker__visual {
+  background: #1a2d55;
+}
+
+.page-home .hx-plan-picker__card--icon .hx-plan-picker__visual img {
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1);
+  padding: clamp(10px, 2vw, 22px);
+}
+
+.page-home .hx-plan-picker__card--icon:hover .hx-plan-picker__visual img,
+.page-home .hx-plan-picker__card--icon:focus-visible .hx-plan-picker__visual img {
+  transform: scale(1.04);
+}
+
+.page-home .hx-plan-picker__card--icon .hx-plan-picker__visual::after {
+  background: linear-gradient(180deg, transparent 55%, rgba(8, 20, 38, 0.45) 100%);
+}
+
 .page-home .hx-plan-picker__card--visual .hx-plan-picker__overlay {
-  background: linear-gradient(180deg, transparent 0%, rgba(8, 20, 38, 0.55) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 20, 38, 0.45) 100%);
   padding-top: clamp(28px, 5vw, 40px);
 }
 

@@ -3026,7 +3026,7 @@ body.has-hx-ops-picker {
 }
 
 .hx-plan-picker--split .hx-plan-picker__title {
-  text-transform: none;
+  text-transform: uppercase;
   letter-spacing: -0.02em;
   font-size: clamp(1.65rem, 4.2vw, 2.75rem);
   line-height: 1.12;
