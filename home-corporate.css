@@ -81,7 +81,7 @@ body.page-home {
   transform: skewX(-16deg);
   pointer-events: none;
   z-index: 0;
-  animation: hx-header-shine 8.5s ease-in-out infinite;
+  animation: hx-header-shine 8.5s ease-in-out 1 forwards;
 }
 
 .page-home .site-header .logo-link,
