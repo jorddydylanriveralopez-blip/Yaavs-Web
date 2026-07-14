@@ -1215,13 +1215,12 @@ a:hover { opacity: 0.65; }
 }
 
 .logo--sm {
-  height: 50px;
-  animation: header-logo-pulse 4s ease-in-out infinite;
+  height: 40px;
 }
 
 @media (min-width: 901px) {
   .logo--sm {
-    height: 72px;
+    height: 56px;
   }
 
   .header-wa {
@@ -1237,18 +1236,7 @@ a:hover { opacity: 0.65; }
 
 @media (min-width: 1280px) {
   .logo--sm {
-    height: 82px;
-  }
-}
-
-@keyframes header-logo-pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.92;
-    transform: scale(1.03);
+    height: 62px;
   }
 }
 
@@ -2385,10 +2373,6 @@ body.page-intro-active .hero-logo {
 
   .nav-menu-hint__arrow::before,
   .nav-menu-hint__arrow::after {
-    animation: none;
-  }
-
-  .logo--sm {
     animation: none;
   }
 
@@ -6002,7 +5986,7 @@ body.theme-cluster #contenido > .section {
   }
 
   .logo--sm {
-    height: 40px;
+    height: 34px;
   }
 
   .hero-banner {
