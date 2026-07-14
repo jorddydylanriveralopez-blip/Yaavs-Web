@@ -472,11 +472,186 @@ body.page-home {
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  @media (max-width: 900px) {
-    .page-home .site-header,
-    .page-home .site-header.is-scrolled {
-      background: rgba(255, 255, 255, 0.92);
-    }
+  .page-home .site-header,
+  .page-home .site-header.is-scrolled {
+    background: rgba(255, 255, 255, 0.92);
+  }
+}
+
+/* Header desktop/PC — mismo glassmorphism Liquid Glass que móvil */
+@media (min-width: 901px) {
+  .page-home .site-header,
+  .page-home .site-header.is-scrolled,
+  [data-yaavs-theme="day"] .page-home .site-header,
+  [data-yaavs-theme="day"] .page-home .site-header.is-scrolled,
+  [data-yaavs-theme="night"] .page-home .site-header,
+  [data-yaavs-theme="night"] .page-home .site-header.is-scrolled {
+    top: 14px;
+    left: max(16px, env(safe-area-inset-left, 0px));
+    right: max(16px, env(safe-area-inset-right, 0px));
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+    padding-top: 0;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+    background:
+      linear-gradient(
+        155deg,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.14) 48%,
+        rgba(200, 238, 248, 0.2) 100%
+      ) !important;
+    backdrop-filter: blur(40px) saturate(2.1) brightness(1.12) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(2.1) brightness(1.12) !important;
+    box-shadow:
+      0 18px 52px rgba(15, 36, 64, 0.14),
+      0 4px 16px rgba(0, 188, 212, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2) !important;
+    overflow: visible;
+  }
+
+  .page-home .site-header.is-scrolled,
+  [data-yaavs-theme="day"] .page-home .site-header.is-scrolled,
+  [data-yaavs-theme="night"] .page-home .site-header.is-scrolled {
+    background:
+      linear-gradient(
+        155deg,
+        rgba(255, 255, 255, 0.52) 0%,
+        rgba(255, 255, 255, 0.22) 52%,
+        rgba(200, 238, 248, 0.3) 100%
+      ) !important;
+    backdrop-filter: blur(48px) saturate(2.25) brightness(1.14) !important;
+    -webkit-backdrop-filter: blur(48px) saturate(2.25) brightness(1.14) !important;
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 22px 56px rgba(15, 36, 64, 0.16),
+      0 6px 20px rgba(0, 188, 212, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.22) !important;
+  }
+
+  .page-home .site-header::before,
+  [data-yaavs-theme="day"] .page-home .site-header::before {
+    background:
+      radial-gradient(ellipse 70% 90% at 12% -10%, rgba(255, 255, 255, 0.55) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 80% at 88% 120%, rgba(0, 188, 212, 0.18) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 48%);
+    border-radius: inherit;
+  }
+
+  .page-home .site-header::after,
+  [data-yaavs-theme="day"] .page-home .site-header::after {
+    height: 2px;
+    left: 12%;
+    right: 12%;
+    bottom: 0;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 188, 212, 0.45) 22%,
+      rgba(0, 229, 255, 0.75) 50%,
+      rgba(0, 188, 212, 0.45) 78%,
+      transparent 100%
+    );
+    background-size: 220% 100%;
+    opacity: 0.85;
+    box-shadow: 0 0 16px rgba(0, 188, 212, 0.4);
+  }
+
+  .page-home .site-header .header-inner {
+    height: calc(var(--header-h) - 2px);
+    padding-inline: clamp(18px, 2.4vw, 36px);
+  }
+
+  .page-home .site-header .header-inner::before {
+    width: 42%;
+    left: -22%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.22) 44%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(255, 255, 255, 0.18) 56%,
+      transparent 100%
+    );
+    animation-duration: 7.5s;
+  }
+
+  .page-home .nav-bento {
+    background: rgba(255, 255, 255, 0.34) !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(16px) saturate(1.55);
+    -webkit-backdrop-filter: blur(16px) saturate(1.55);
+    box-shadow:
+      0 6px 18px rgba(15, 36, 64, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+  }
+
+  .page-home .nav-bento:hover,
+  .page-home .nav-bento:focus-visible {
+    background: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  .page-home .header-wa,
+  [data-yaavs-theme="day"] .page-home .header-wa,
+  [data-yaavs-theme="night"] .page-home .header-wa {
+    background: linear-gradient(145deg, #2ee06a 0%, #25d366 45%, #1da851 100%) !important;
+    border: 2px solid rgba(255, 255, 255, 0.58) !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow:
+      0 8px 24px rgba(37, 211, 102, 0.45),
+      0 0 0 1px rgba(37, 211, 102, 0.2) inset !important;
+  }
+
+  .page-home .header-wa:hover,
+  .page-home .header-wa:focus-visible {
+    background: linear-gradient(145deg, #3aeb78 0%, #25d366 50%, #1da851 100%) !important;
+  }
+
+  .page-home .header-wa__icon,
+  [data-yaavs-theme="day"] .page-home .header-wa__icon {
+    display: block !important;
+    width: 22px;
+    height: 22px;
+    background: url("assets/social/whatsapp.svg") center / contain no-repeat !important;
+    filter: brightness(0) invert(1) !important;
+    opacity: 1 !important;
+  }
+
+  .page-home .site-header .logo.logo--on-light,
+  .page-home .site-header .logo.logo--white {
+    --logo-filter: none;
+    filter:
+      drop-shadow(0 0 6px rgba(0, 229, 255, 0.45))
+      drop-shadow(0 0 16px rgba(56, 120, 255, 0.28))
+      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18)) !important;
+    animation: header-logo-mobile-glow 3.8s ease-in-out infinite;
+  }
+
+  .page-home .logo-link:hover .logo.logo--on-light,
+  .page-home .logo-link:focus-visible .logo.logo--on-light,
+  .page-home .logo-link:hover .logo.logo--white,
+  .page-home .logo-link:focus-visible .logo.logo--white {
+    filter:
+      drop-shadow(0 0 10px rgba(0, 240, 255, 0.7))
+      drop-shadow(0 0 22px rgba(124, 92, 255, 0.4))
+      drop-shadow(0 3px 10px rgba(0, 0, 0, 0.22)) !important;
+  }
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: reduce) {
+  .page-home .site-header .logo.logo--on-light,
+  .page-home .site-header .logo.logo--white {
+    animation: none;
+    filter:
+      drop-shadow(0 0 6px rgba(0, 229, 255, 0.45))
+      drop-shadow(0 0 14px rgba(56, 120, 255, 0.28))
+      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18)) !important;
   }
 }
 
