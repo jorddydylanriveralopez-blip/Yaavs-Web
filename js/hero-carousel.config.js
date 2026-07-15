@@ -14,7 +14,7 @@ window.YAAVS_HERO_CAROUSEL = {
   images: [
     {
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/banner-horizontal.mp4",
+      videoSrc: "assets/hero-telecom/banners/video-pagina-web.mp4",
       videoSrcMobile: "assets/hero-telecom/banners/banner-vertical.mp4",
       src: "assets/hero-telecom/banners/banner-horizontal-poster.jpg",
       srcMobile: "assets/hero-telecom/banners/banner-vertical-poster.jpg",
@@ -28,7 +28,7 @@ window.YAAVS_HERO_CAROUSEL = {
       objectPositionMobile: "center center",
       alt: "YAAVS — banner principal.",
       hidePromo: true,
-      duration: 10000,
+      duration: 8000,
     },
     {
       /* Desktop banner (mesa de trabajo 5yaav2web) */
