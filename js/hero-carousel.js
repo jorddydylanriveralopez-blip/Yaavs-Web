@@ -173,7 +173,8 @@
     const video = document.createElement("video");
     video.className = "hero-carousel__video-el";
     video.muted = true;
-    video.loop = true;
+    /* No loop: el carrusel avanza cuando el video termina (evento "ended") */
+    video.loop = false;
     video.playsInline = true;
     video.autoplay = true;
     video.setAttribute("playsinline", "");
@@ -440,6 +441,7 @@
 
   let index = 0;
   let timer = 0;
+  let autoplayActive = false;
   let autoplayProgress = null;
 
   function setSlideStates(previousIndex, direction) {
@@ -522,6 +524,11 @@
         if (desiredSrc && source && source.getAttribute("src") !== desiredSrc) {
           source.src = desiredSrc;
           video.load();
+        }
+
+        if (slide.videoBanner && !video.dataset.endedBound) {
+          video.dataset.endedBound = "1";
+          video.addEventListener("ended", () => handleBannerVideoEnded(i));
         }
 
         if (i === index && (slide.videoBanner || slide.videoSlide)) {
@@ -643,10 +650,58 @@
     document.body.classList.add("hero-carousel--kenburns");
   }
 
+  function getActiveBannerVideo() {
+    const slide = slides[index];
+    if (!slide?.videoBanner) return null;
+    for (const track of tracks) {
+      const slideEl = track.querySelectorAll(".hero-carousel__slide")[index];
+      const video = slideEl?.querySelector(".hero-carousel__video-el");
+      if (video && video.querySelector("source")?.getAttribute("src")) return video;
+    }
+    return null;
+  }
+
+  function handleBannerVideoEnded(slideIndex) {
+    if (slideIndex !== index) return;
+    if (autoplayActive && !document.hidden) {
+      goTo(index + 1);
+      startTimer();
+      return;
+    }
+    /* Autoplay pausado (hover / reduced motion): repite el video en lugar de congelarlo */
+    tracks.forEach((track) => {
+      const slideEl = track.querySelectorAll(".hero-carousel__slide")[slideIndex];
+      const video = slideEl?.querySelector(".hero-carousel__video-el");
+      if (!video) return;
+      try {
+        video.currentTime = 0;
+      } catch (_) {
+        /* noop */
+      }
+      const play = video.play();
+      if (play && typeof play.catch === "function") play.catch(() => {});
+    });
+  }
+
   function startTimer() {
     clearTimeout(timer);
+    autoplayActive = true;
     kickProgress();
     const ms = getSlideInterval(index);
+    const video = getActiveBannerVideo();
+    if (video && !video.ended) {
+      /* El slide avanza cuando el video termina; este timeout es solo de respaldo
+         por si el video nunca llega a reproducirse (falla de red/autoplay). */
+      const fallbackMs =
+        Number.isFinite(video.duration) && video.duration > 0
+          ? video.duration * 1000 + 5000
+          : Math.max(ms * 3, 30000);
+      timer = window.setTimeout(() => {
+        goTo(index + 1);
+        startTimer();
+      }, fallbackMs);
+      return;
+    }
     timer = window.setTimeout(() => {
       goTo(index + 1);
       startTimer();
@@ -654,6 +709,7 @@
   }
 
   function stopTimer() {
+    autoplayActive = false;
     clearTimeout(timer);
     if (autoplayProgress) {
       autoplayProgress.style.animation = "none";
