@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=5">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=35">
+  <link rel="stylesheet" href="home-experience.css?v=36">
   <link rel="stylesheet" href="home-corporate.css?v=129">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -182,7 +182,7 @@
 
           <div class="hx-svc-deck-more-panel" data-hx-deck-more-panel aria-hidden="true">
           <div class="hx-svc-deck" data-hx-svc-deck-more role="list">
-          <a href="contacto.html" class="hx-svc-deck__item" data-deck-svc="vinculaciones" data-masonry="short" data-accent="coral" style="--deck-i: 5; --masonry-ratio: 1 / 1" role="listitem">
+          <a href="#vinculaciones-modal" class="hx-svc-deck__item" data-deck-svc="vinculaciones" data-hx-vinc-open data-masonry="short" data-accent="coral" style="--deck-i: 5; --masonry-ratio: 1 / 1" role="listitem" aria-haspopup="dialog" aria-controls="vinculaciones-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/servicios/vinculaciones.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async">
             </span>
@@ -190,8 +190,8 @@
             <span class="hx-svc-deck__label">Vinculaciones</span>
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">Vinculaciones</span>
-              <span class="hx-svc-deck__desc">Vincula equipos con respaldo YAAVS en tu punto de venta.</span>
-              <span class="hx-svc-deck__cta">Solicitar →</span>
+              <span class="hx-svc-deck__desc">Vincula tu línea con AT&amp;T, Movistar o BAIT paso a paso.</span>
+              <span class="hx-svc-deck__cta">Ver cómo vincular →</span>
             </span>
           </a>
 
@@ -359,6 +359,81 @@
 
           <div class="hx-rotul-modal__actions">
             <a href="contacto.html" class="btn btn--primary hx-rotul-modal__cta">Solicitar rotulación</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-vinc-modal" id="vinculaciones-modal" data-hx-vinc-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vinculaciones-modal-title">
+        <div class="hx-vinc-modal__backdrop" data-hx-vinc-close aria-hidden="true"></div>
+        <div class="hx-vinc-modal__sheet">
+          <button type="button" class="hx-vinc-modal__close" data-hx-vinc-close aria-label="Cerrar">&times;</button>
+          <p class="hx-vinc-modal__kicker">Vinculación oficial</p>
+          <h3 class="hx-vinc-modal__title" id="vinculaciones-modal-title">Elige tu compañía para vincular</h3>
+          <p class="hx-vinc-modal__desc">Por disposición oficial debes vincular tu línea. Cada compañía tiene un proceso distinto: elige la tuya, revisa los pasos y escanea el QR o entra al portal oficial.</p>
+
+          <div class="hx-vinc-modal__carriers" role="tablist" aria-label="Compañías">
+            <button type="button" class="hx-vinc-modal__carrier is-active" data-hx-vinc-carrier="att" role="tab" aria-selected="true" aria-controls="vinc-panel-att" id="vinc-tab-att">
+              <span class="hx-vinc-modal__carrier-logo"><img src="assets/operadores/att-carriers-color.svg" alt="" width="120" height="48" loading="lazy" decoding="async"></span>
+              <span class="hx-vinc-modal__carrier-name">AT&amp;T</span>
+            </button>
+            <button type="button" class="hx-vinc-modal__carrier" data-hx-vinc-carrier="movistar" role="tab" aria-selected="false" aria-controls="vinc-panel-movistar" id="vinc-tab-movistar">
+              <span class="hx-vinc-modal__carrier-logo"><img src="assets/operadores/movistar-carriers-color.svg" alt="" width="72" height="72" loading="lazy" decoding="async"></span>
+              <span class="hx-vinc-modal__carrier-name">Movistar</span>
+            </button>
+            <button type="button" class="hx-vinc-modal__carrier" data-hx-vinc-carrier="bait" role="tab" aria-selected="false" aria-controls="vinc-panel-bait" id="vinc-tab-bait">
+              <span class="hx-vinc-modal__carrier-logo"><img src="assets/operadores/bait-carriers-color.svg" alt="" width="120" height="64" loading="lazy" decoding="async"></span>
+              <span class="hx-vinc-modal__carrier-name">BAIT</span>
+            </button>
+          </div>
+
+          <div class="hx-vinc-modal__panels">
+            <div class="hx-vinc-modal__panel is-active" id="vinc-panel-att" data-hx-vinc-panel="att" role="tabpanel" aria-labelledby="vinc-tab-att">
+              <ol class="hx-vinc-modal__steps">
+                <li>Ten a la mano tu <strong>INE o pasaporte</strong> vigente y tu <strong>CURP</strong>.</li>
+                <li>Entra al portal oficial de AT&amp;T (QR o botón) desde tu celular.</li>
+                <li>Sigue las instrucciones en pantalla para validar tu identidad.</li>
+                <li>Conserva el comprobante; en línea tienes hasta <strong>3 intentos</strong>.</li>
+              </ol>
+              <div class="hx-vinc-modal__go">
+                <figure class="hx-vinc-modal__qr">
+                  <img src="assets/vinculaciones/qr-att.png" alt="Código QR para vincular línea AT&amp;T" width="180" height="180" loading="lazy" decoding="async">
+                  <figcaption>Escanea para vincular AT&amp;T</figcaption>
+                </figure>
+                <a class="btn btn--primary hx-vinc-modal__cta" href="https://www.att.com.mx/vinculartulinea/" target="_blank" rel="noopener noreferrer">Ir a vincular AT&amp;T →</a>
+              </div>
+            </div>
+
+            <div class="hx-vinc-modal__panel" id="vinc-panel-movistar" data-hx-vinc-panel="movistar" role="tabpanel" aria-labelledby="vinc-tab-movistar" hidden>
+              <ol class="hx-vinc-modal__steps">
+                <li>Hazlo preferentemente desde tu <strong>celular</strong> con cámara.</li>
+                <li>Captura tu número Movistar a <strong>10 dígitos</strong>.</li>
+                <li>Toma foto de tu identificación (frente y reverso si es INE).</li>
+                <li>Haz la <strong>selfie / prueba de vida</strong> y confirma el registro.</li>
+              </ol>
+              <div class="hx-vinc-modal__go">
+                <figure class="hx-vinc-modal__qr">
+                  <img src="assets/vinculaciones/qr-movistar.png" alt="Código QR para vincular línea Movistar" width="180" height="180" loading="lazy" decoding="async">
+                  <figcaption>Escanea para vincular Movistar</figcaption>
+                </figure>
+                <a class="btn btn--primary hx-vinc-modal__cta" href="https://www.movistar.com.mx/vinculatulinea" target="_blank" rel="noopener noreferrer">Ir a vincular Movistar →</a>
+              </div>
+            </div>
+
+            <div class="hx-vinc-modal__panel" id="vinc-panel-bait" data-hx-vinc-panel="bait" role="tabpanel" aria-labelledby="vinc-tab-bait" hidden>
+              <ol class="hx-vinc-modal__steps">
+                <li>Entra al portal oficial de BAIT (Altan) con el QR o el botón.</li>
+                <li>Indica si eres mexicano o extranjero e ingresa <strong>CURP o pasaporte</strong>.</li>
+                <li>Captura el <strong>número BAIT</strong> a vincular.</li>
+                <li>Completa la <strong>selfie / prueba de vida</strong> hasta ver la confirmación.</li>
+              </ol>
+              <div class="hx-vinc-modal__go">
+                <figure class="hx-vinc-modal__qr">
+                  <img src="assets/vinculaciones/qr-bait.png" alt="Código QR para vincular línea BAIT" width="180" height="180" loading="lazy" decoding="async">
+                  <figcaption>Escanea para vincular BAIT</figcaption>
+                </figure>
+                <a class="btn btn--primary hx-vinc-modal__cta" href="https://rnu.altanredes.com/bait/vinculatulinea" target="_blank" rel="noopener noreferrer">Ir a vincular BAIT →</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -905,21 +980,28 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=2",
-        "js/home-experience.js?v=65",
+        "js/home-experience.js?v=66",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=65",
+          "js/home-experience.js?v=66",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=65",
+          "js/home-experience.js?v=66",
+        ]);
+      }
+
+      if (window.location.hash === "#vinculaciones-modal") {
+        void loadBatchOnce("home-deck", [
+          "js/deck-media.config.js?v=2",
+          "js/home-experience.js?v=66",
         ]);
       }
 
