@@ -1597,6 +1597,7 @@
   const bandSections = [...root.querySelectorAll("[data-hx-band]")];
   if (bandSections.length) {
     let activeBand = "light";
+    let lastScrollY = window.scrollY || 0;
 
     function setScrollBand(theme) {
       const next = theme === "dark" ? "dark" : "light";
@@ -1609,10 +1610,22 @@
 
     function syncScrollBand() {
       const viewH = window.innerHeight || 1;
-      const focusTop = viewH * 0.18;
-      const focusBottom = viewH * 0.78;
-      let best = null;
-      let bestScore = -1;
+      const y = window.scrollY || 0;
+      const scrollingUp = y < lastScrollY - 2;
+      lastScrollY = y;
+
+      /* Arriba del todo (hero / servicios): siempre claro */
+      if (y < viewH * 0.35) {
+        setScrollBand("light");
+        return;
+      }
+
+      const focusTop = viewH * 0.2;
+      const focusBottom = viewH * 0.72;
+      let bestLight = null;
+      let bestDark = null;
+      let lightScore = 0;
+      let darkScore = 0;
 
       bandSections.forEach((section) => {
         const rect = section.getBoundingClientRect();
@@ -1620,16 +1633,36 @@
         const visibleBottom = Math.min(rect.bottom, focusBottom);
         const overlap = Math.max(0, visibleBottom - visibleTop);
         if (overlap <= 0) return;
-        /* Prioriza un poco las secciones oscuras para que el “apagón” se sienta completo */
-        const bias = section.getAttribute("data-hx-band") === "dark" ? 1.12 : 1;
-        const score = (overlap / viewH) * bias;
-        if (score > bestScore) {
-          bestScore = score;
-          best = section;
+        const score = overlap / viewH;
+        const theme = section.getAttribute("data-hx-band") || "light";
+        if (theme === "dark") {
+          if (score > darkScore) {
+            darkScore = score;
+            bestDark = section;
+          }
+        } else if (score > lightScore) {
+          lightScore = score;
+          bestLight = section;
         }
       });
 
-      if (best) setScrollBand(best.getAttribute("data-hx-band") || "light");
+      /* Al subir, prioriza volver al claro si hay sección clara visible */
+      if (scrollingUp && lightScore >= 0.18 && lightScore + 0.04 >= darkScore) {
+        setScrollBand("light");
+        return;
+      }
+
+      if (darkScore >= 0.22 && darkScore >= lightScore) {
+        setScrollBand("dark");
+        return;
+      }
+
+      if (lightScore > 0 || bestLight) {
+        setScrollBand("light");
+        return;
+      }
+
+      if (bestDark) setScrollBand("dark");
     }
 
     let bandRaf = 0;

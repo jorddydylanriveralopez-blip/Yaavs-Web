@@ -5148,8 +5148,7 @@ body.page-home.hx-band--dark .hx-plan-picker__spotlight-title,
 body.page-home.hx-band--dark .hx-ops__title,
 body.page-home.hx-band--dark .tx-gallery--home .tx-gallery__head h2,
 body.page-home.hx-band--dark .hx-yaavser-band__title,
-body.page-home.hx-band--dark .hx-services--deck .hx-services__head h2,
-body.page-home.hx-band--dark .hx-pulse__num {
+body.page-home.hx-band--dark .hx-services--deck .hx-services__head h2 {
   color: #f4f8fc !important;
   text-shadow: none !important;
   -webkit-text-fill-color: #f4f8fc;
@@ -5161,9 +5160,24 @@ body.page-home.hx-band--dark .hx-services__hint,
 body.page-home.hx-band--dark .hx-svc-deck__peek,
 body.page-home.hx-band--dark .hx-yaavser-band__text,
 body.page-home.hx-band--dark .hx-yaavser-band__eyebrow,
-body.page-home.hx-band--dark .hx-pulse__label,
-body.page-home.hx-band--dark .hx-pulse__cap {
+body.page-home.hx-band--dark .hx-pulse__label {
   color: rgba(232, 240, 246, 0.72) !important;
+}
+
+/* Las tarjetas blancas de métricas siempre conservan texto oscuro (legible) */
+body.page-home.hx-band--dark .hx-pulse__stat {
+  background: #ffffff !important;
+  border-color: rgba(0, 188, 212, 0.28) !important;
+}
+
+body.page-home.hx-band--dark .hx-pulse__stat .hx-pulse__num {
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440 !important;
+  background: none !important;
+}
+
+body.page-home.hx-band--dark .hx-pulse__stat .hx-pulse__cap {
+  color: #3a5268 !important;
 }
 
 body.page-home.hx-band--dark .tx-gallery__more .btn--line {

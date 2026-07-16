@@ -4,12 +4,14 @@
     if (!layers.length) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const count = reduced ? 8 : 22;
+    const count = reduced ? 10 : 36;
 
     const spots = [
       [6, 14], [14, 28], [22, 8], [31, 42], [38, 18], [48, 55], [55, 32], [63, 12],
       [72, 48], [80, 22], [88, 66], [18, 72], [28, 58], [42, 78], [58, 84], [70, 70],
       [8, 88], [92, 38], [46, 26], [76, 8], [12, 46], [84, 52],
+      [25, 35], [65, 40], [40, 60], [85, 15], [15, 55], [50, 10], [33, 88], [77, 78],
+      [5, 40], [95, 70], [60, 5], [45, 92],
     ];
 
     layers.forEach((layer) => {
