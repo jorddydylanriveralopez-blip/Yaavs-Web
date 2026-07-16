@@ -297,7 +297,7 @@
         "Completa entrenamientos y actividades de aplicacion en tienda.",
         "Mide resultados en conversion, ticket y calidad de atencion.",
       ],
-      link: { href: "ser-yaavser.html", label: "Ver formacion YAAVS" },
+      link: { href: "https://academiayaavs.com/", label: "Ir a Academia YAAVS" },
     },
     esims: {
       theme: "green",
