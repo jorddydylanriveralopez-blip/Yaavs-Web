@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=5">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=34">
+  <link rel="stylesheet" href="home-experience.css?v=35">
   <link rel="stylesheet" href="home-corporate.css?v=129">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -208,7 +208,7 @@
             </span>
           </a>
 
-          <a href="contacto.html" class="hx-svc-deck__item" data-deck-svc="rotulaciones" data-masonry="tall" data-accent="green" style="--deck-i: 7; --masonry-ratio: 3 / 4" role="listitem">
+          <a href="#rotulaciones-modal" class="hx-svc-deck__item" data-deck-svc="rotulaciones" data-hx-rotul-open data-masonry="tall" data-accent="green" style="--deck-i: 7; --masonry-ratio: 3 / 4" role="listitem" aria-haspopup="dialog" aria-controls="rotulaciones-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/hero-telecom/hero-portada-campeones.jpg" alt="" width="1024" height="576" loading="lazy" decoding="async">
             </span>
@@ -217,7 +217,7 @@
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">Rotulaciones</span>
               <span class="hx-svc-deck__desc">Material y rotulación que generan tráfico en tu tienda.</span>
-              <span class="hx-svc-deck__cta">Solicitar rotulación →</span>
+              <span class="hx-svc-deck__cta">Ver rotulaciones →</span>
             </span>
           </a>
 
@@ -300,6 +300,65 @@
               <span class="hx-porta-modal__option-logo"><img src="assets/operadores/bait-carriers-color.svg" alt="" width="120" height="64" loading="lazy" decoding="async"></span>
               <span class="hx-porta-modal__option-cta">Ir a portabilidad →</span>
             </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-rotul-modal" id="rotulaciones-modal" data-hx-rotul-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rotulaciones-modal-title">
+        <div class="hx-rotul-modal__backdrop" data-hx-rotul-close aria-hidden="true"></div>
+        <div class="hx-rotul-modal__sheet">
+          <button type="button" class="hx-rotul-modal__close" data-hx-rotul-close aria-label="Cerrar">&times;</button>
+          <p class="hx-rotul-modal__kicker">Galería YAAVS</p>
+          <h3 class="hx-rotul-modal__title" id="rotulaciones-modal-title">Rotulaciones que hemos hecho</h3>
+          <p class="hx-rotul-modal__desc">Desliza el carrusel y conoce 6 ejemplos de imagen comercial para puntos de venta.</p>
+
+          <div class="hx-rotul-carousel" data-hx-rotul-carousel>
+            <div class="hx-rotul-carousel__viewport">
+              <div class="hx-rotul-carousel__track" data-hx-rotul-track>
+                <figure class="hx-rotul-carousel__slide is-active" data-hx-rotul-slide>
+                  <img src="assets/rotulaciones/01.jpg" alt="Rotulación YAAVS Conexión de Campeones" width="1024" height="576" loading="eager" decoding="async">
+                  <figcaption>Conexión de Campeones</figcaption>
+                </figure>
+                <figure class="hx-rotul-carousel__slide" data-hx-rotul-slide>
+                  <img src="assets/rotulaciones/02.jpg" alt="Rotulación YAAVS campaña comercial 2" width="1200" height="675" loading="lazy" decoding="async">
+                  <figcaption>Imagen de campaña</figcaption>
+                </figure>
+                <figure class="hx-rotul-carousel__slide" data-hx-rotul-slide>
+                  <img src="assets/rotulaciones/03.jpg" alt="Rotulación YAAVS campaña comercial 3" width="1200" height="675" loading="lazy" decoding="async">
+                  <figcaption>Material de punto de venta</figcaption>
+                </figure>
+                <figure class="hx-rotul-carousel__slide" data-hx-rotul-slide>
+                  <img src="assets/rotulaciones/04.png" alt="Rotulación YAAVS Prepago" width="1200" height="675" loading="lazy" decoding="async">
+                  <figcaption>Línea Prepago</figcaption>
+                </figure>
+                <figure class="hx-rotul-carousel__slide" data-hx-rotul-slide>
+                  <img src="assets/rotulaciones/05.png" alt="Rotulación YAAVS Pospago" width="1200" height="675" loading="lazy" decoding="async">
+                  <figcaption>Línea Pospago</figcaption>
+                </figure>
+                <figure class="hx-rotul-carousel__slide" data-hx-rotul-slide>
+                  <img src="assets/rotulaciones/06.png" alt="Rotulación YAAVS Vincula y gana" width="1024" height="519" loading="lazy" decoding="async">
+                  <figcaption>Vincula y gana</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="hx-rotul-carousel__controls">
+              <button type="button" class="hx-rotul-carousel__nav hx-rotul-carousel__nav--prev" data-hx-rotul-prev aria-label="Anterior">‹</button>
+              <div class="hx-rotul-carousel__dots" data-hx-rotul-dots role="tablist" aria-label="Rotulaciones">
+                <button type="button" class="hx-rotul-carousel__dot is-active" data-hx-rotul-dot="0" aria-label="Rotulación 1" aria-selected="true"></button>
+                <button type="button" class="hx-rotul-carousel__dot" data-hx-rotul-dot="1" aria-label="Rotulación 2" aria-selected="false"></button>
+                <button type="button" class="hx-rotul-carousel__dot" data-hx-rotul-dot="2" aria-label="Rotulación 3" aria-selected="false"></button>
+                <button type="button" class="hx-rotul-carousel__dot" data-hx-rotul-dot="3" aria-label="Rotulación 4" aria-selected="false"></button>
+                <button type="button" class="hx-rotul-carousel__dot" data-hx-rotul-dot="4" aria-label="Rotulación 5" aria-selected="false"></button>
+                <button type="button" class="hx-rotul-carousel__dot" data-hx-rotul-dot="5" aria-label="Rotulación 6" aria-selected="false"></button>
+              </div>
+              <button type="button" class="hx-rotul-carousel__nav hx-rotul-carousel__nav--next" data-hx-rotul-next aria-label="Siguiente">›</button>
+            </div>
+            <p class="hx-rotul-carousel__counter"><span data-hx-rotul-index>1</span> / 6</p>
+          </div>
+
+          <div class="hx-rotul-modal__actions">
+            <a href="contacto.html" class="btn btn--primary hx-rotul-modal__cta">Solicitar rotulación</a>
           </div>
         </div>
       </div>
@@ -846,14 +905,21 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=2",
-        "js/home-experience.js?v=64",
+        "js/home-experience.js?v=65",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=64",
+          "js/home-experience.js?v=65",
+        ]);
+      }
+
+      if (window.location.hash === "#rotulaciones-modal") {
+        void loadBatchOnce("home-deck", [
+          "js/deck-media.config.js?v=2",
+          "js/home-experience.js?v=65",
         ]);
       }
 

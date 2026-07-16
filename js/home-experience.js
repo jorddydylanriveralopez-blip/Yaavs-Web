@@ -283,7 +283,7 @@
         "Aprueba propuesta final de imagen y ubicacion de piezas.",
         "Programa instalacion y valida acabado final en sitio.",
       ],
-      link: { href: "contacto.html", label: "Solicitar rotulacion" },
+      link: { href: "#rotulaciones-modal", label: "Ver rotulaciones" },
     },
     "academia-yaavs": {
       theme: "violet",
@@ -460,6 +460,137 @@
 
     if (window.location.hash === "#porta-modal") {
       window.requestAnimationFrame(openPortaModal);
+    }
+  }
+
+  /* Modal rotulaciones — carrusel de 6 ejemplos */
+  const rotulModal = root.querySelector("[data-hx-rotul-modal]");
+  if (rotulModal) {
+    let rotulLastFocus = null;
+    let rotulIndex = 0;
+    const slides = [...rotulModal.querySelectorAll("[data-hx-rotul-slide]")];
+    const dots = [...rotulModal.querySelectorAll("[data-hx-rotul-dot]")];
+    const indexEl = rotulModal.querySelector("[data-hx-rotul-index]");
+    const total = slides.length || 6;
+
+    function goRotulSlide(next) {
+      if (!slides.length) return;
+      rotulIndex = ((next % total) + total) % total;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === rotulIndex);
+      });
+      dots.forEach((dot, i) => {
+        const on = i === rotulIndex;
+        dot.classList.toggle("is-active", on);
+        dot.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      if (indexEl) indexEl.textContent = String(rotulIndex + 1);
+    }
+
+    function openRotulModal() {
+      rotulLastFocus = document.activeElement;
+      goRotulSlide(0);
+      rotulModal.hidden = false;
+      rotulModal.removeAttribute("hidden");
+      rotulModal.setAttribute("aria-hidden", "false");
+      window.requestAnimationFrame(() => rotulModal.classList.add("is-open"));
+      document.body.classList.add("hx-svc-panel-open");
+      window.YaavsSonic?.play?.();
+      window.requestAnimationFrame(() => {
+        rotulModal.querySelector(".hx-rotul-modal__close")?.focus();
+      });
+    }
+
+    function closeRotulModal() {
+      if (!rotulModal.classList.contains("is-open") && rotulModal.hidden) return;
+      rotulModal.classList.remove("is-open");
+      rotulModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!rotulModal.classList.contains("is-open")) {
+          rotulModal.hidden = true;
+          rotulModal.setAttribute("hidden", "");
+        }
+      }, 300);
+      if (rotulLastFocus && typeof rotulLastFocus.focus === "function") {
+        rotulLastFocus.focus();
+      }
+    }
+
+    rotulModal.querySelectorAll("[data-hx-rotul-close]").forEach((el) => {
+      el.addEventListener("click", closeRotulModal);
+    });
+
+    rotulModal.querySelector("[data-hx-rotul-prev]")?.addEventListener("click", () => {
+      goRotulSlide(rotulIndex - 1);
+    });
+    rotulModal.querySelector("[data-hx-rotul-next]")?.addEventListener("click", () => {
+      goRotulSlide(rotulIndex + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const i = Number(dot.getAttribute("data-hx-rotul-dot"));
+        if (!Number.isNaN(i)) goRotulSlide(i);
+      });
+    });
+
+    /* Swipe en el viewport del carrusel */
+    const viewport = rotulModal.querySelector(".hx-rotul-carousel__viewport");
+    if (viewport) {
+      let touchX = null;
+      viewport.addEventListener(
+        "touchstart",
+        (e) => {
+          touchX = e.changedTouches?.[0]?.clientX ?? null;
+        },
+        { passive: true }
+      );
+      viewport.addEventListener(
+        "touchend",
+        (e) => {
+          if (touchX == null) return;
+          const endX = e.changedTouches?.[0]?.clientX ?? touchX;
+          const delta = endX - touchX;
+          touchX = null;
+          if (Math.abs(delta) < 40) return;
+          goRotulSlide(rotulIndex + (delta < 0 ? 1 : -1));
+        },
+        { passive: true }
+      );
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (!rotulModal.classList.contains("is-open")) return;
+      if (e.key === "Escape") {
+        closeRotulModal();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goRotulSlide(rotulIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goRotulSlide(rotulIndex + 1);
+      }
+    });
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
+        );
+        if (!item || item.closest(".hx-rotul-modal")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openRotulModal();
+      },
+      true
+    );
+
+    if (window.location.hash === "#rotulaciones-modal") {
+      window.requestAnimationFrame(openRotulModal);
     }
   }
 
