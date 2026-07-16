@@ -1647,12 +1647,12 @@
       });
 
       /* Al subir, prioriza volver al claro si hay sección clara visible */
-      if (scrollingUp && lightScore >= 0.18 && lightScore + 0.04 >= darkScore) {
+      if (scrollingUp && lightScore >= 0.12 && lightScore + 0.02 >= darkScore) {
         setScrollBand("light");
         return;
       }
 
-      if (darkScore >= 0.22 && darkScore >= lightScore) {
+      if (darkScore >= 0.16 && darkScore >= lightScore) {
         setScrollBand("dark");
         return;
       }

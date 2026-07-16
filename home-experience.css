@@ -7680,8 +7680,8 @@ body.has-hx-stat-panel {
 
 /* ─── Fondos alternados al scroll (negro ↔ claro) ─── */
 body.page-home {
-  --hx-band-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --hx-band-ms: 0.9s;
+  --hx-band-ease: cubic-bezier(0.33, 1, 0.68, 1);
+  --hx-band-ms: 0.28s;
   transition:
     background-color var(--hx-band-ms) var(--hx-band-ease),
     background-image var(--hx-band-ms) var(--hx-band-ease);
