@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="decorations.css?v=4">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=31">
-  <link rel="stylesheet" href="home-corporate.css?v=125">
+  <link rel="stylesheet" href="home-experience.css?v=32">
+  <link rel="stylesheet" href="home-corporate.css?v=126">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-horizontal-poster.jpg" media="(min-width: 769px)" fetchpriority="high">
@@ -98,7 +98,7 @@
     </section>
 
     <div class="hx" id="home-experience">
-      <section class="hx-services hx-services--deck" id="servicios-preview" aria-label="Nuestros servicios">
+      <section class="hx-services hx-services--deck" id="servicios-preview" aria-label="Nuestros servicios" data-hx-band="light">
         <div class="hx-services__floats" aria-hidden="true">
           <img class="hx-services__float hx-services__float--sim" src="assets/floats/float-sim.svg" alt="" width="68" height="86" loading="lazy" decoding="async">
           <img class="hx-services__float hx-services__float--signal" src="assets/floats/float-signal.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
@@ -304,7 +304,7 @@
         </div>
       </div>
 
-      <section class="hx-plan-picker hx-plan-picker--split" id="plan-picker" data-hx-plan-picker aria-label="Elige prepago o pospago">
+      <section class="hx-plan-picker hx-plan-picker--split" id="plan-picker" data-hx-plan-picker data-hx-band="dark" aria-label="Elige prepago o pospago">
         <div class="hx-plan-picker__aurora" aria-hidden="true"></div>
         <div class="hx-plan-picker__grid" aria-hidden="true"></div>
         <div class="container hx-plan-picker__inner">
@@ -348,7 +348,7 @@
         </div>
       </section>
 
-      <section class="hx-ops" id="carriers" aria-label="Compañías que vendes con YAAVS" data-hx-ops>
+      <section class="hx-ops" id="carriers" aria-label="Compañías que vendes con YAAVS" data-hx-ops data-hx-band="light">
         <header class="hx-ops__head">
           <p class="hx-ops__eyebrow">Multi-operador</p>
           <h3 class="hx-ops__title">Las compañías que <span class="hx-services__cyan">vendes</span> con YAAVS</h3>
@@ -578,7 +578,7 @@
         </div>
       </section>
 
-      <section class="tx-gallery tx-gallery--home" id="testimonios-home" aria-label="Clientes satisfechos">
+      <section class="tx-gallery tx-gallery--home" id="testimonios-home" aria-label="Clientes satisfechos" data-hx-band="dark">
         <div class="container tx-gallery__head" data-hx-reveal>
           <h2>Clientes <span class="hx-testimonials__accent">satisfechos</span></h2>
         </div>
@@ -620,7 +620,7 @@
         </p>
       </section>
 
-      <section class="hx-yaavser-band" aria-label="Únete a la red YAAVS">
+      <section class="hx-yaavser-band" aria-label="Únete a la red YAAVS" data-hx-band="light">
         <div class="container hx-yaavser-band__inner" data-hx-reveal>
           <p class="hx-yaavser-band__eyebrow">Red nacional</p>
           <h2 class="hx-yaavser-band__title">Conviértete en socio comercial</h2>
@@ -629,7 +629,7 @@
         </div>
       </section>
 
-      <section class="hx-raffle" id="calendario-sorteos" aria-label="Calendario de sorteos">
+      <section class="hx-raffle" id="calendario-sorteos" aria-label="Calendario de sorteos" data-hx-band="dark">
         <div class="hx-raffle__backdrop" aria-hidden="true">
           <picture>
             <source media="(max-width: 768px)" srcset="assets/hero-telecom/mobile/hero-celular-banner.png">
@@ -846,14 +846,14 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=2",
-        "js/home-experience.js?v=60",
+        "js/home-experience.js?v=61",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=60",
+          "js/home-experience.js?v=61",
         ]);
       }
 

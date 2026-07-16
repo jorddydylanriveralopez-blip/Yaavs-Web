@@ -1592,4 +1592,50 @@
   window.addEventListener("pageshow", () => {
     resetPlanPicker();
   });
+
+  /* Fondos alternados al scroll: negro → claro → negro… con transición */
+  const bandSections = [...root.querySelectorAll("[data-hx-band]")];
+  if (bandSections.length) {
+    let activeBand = "light";
+
+    function setScrollBand(theme) {
+      const next = theme === "dark" ? "dark" : "light";
+      if (next === activeBand) return;
+      activeBand = next;
+      document.body.classList.toggle("hx-band--dark", next === "dark");
+      document.body.dataset.hxBand = next;
+    }
+
+    function syncScrollBand() {
+      const mid = window.innerHeight * 0.42;
+      let best = null;
+      let bestDist = Infinity;
+      bandSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.bottom < mid * 0.35 || rect.top > window.innerHeight * 0.92) return;
+        const center = rect.top + rect.height * 0.35;
+        const dist = Math.abs(center - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = section;
+        }
+      });
+      if (best) setScrollBand(best.getAttribute("data-hx-band") || "light");
+    }
+
+    let bandRaf = 0;
+    function onBandScroll() {
+      if (bandRaf) return;
+      bandRaf = window.requestAnimationFrame(() => {
+        bandRaf = 0;
+        syncScrollBand();
+      });
+    }
+
+    if (!reduced) {
+      window.addEventListener("scroll", onBandScroll, { passive: true });
+      window.addEventListener("resize", onBandScroll, { passive: true });
+      syncScrollBand();
+    }
+  }
 })();
