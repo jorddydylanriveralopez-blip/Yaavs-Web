@@ -1593,7 +1593,7 @@
     resetPlanPicker();
   });
 
-  /* Fondos alternados al scroll: negro → claro → negro… con transición */
+  /* Toda la página negra ↔ clara según la sección en vista */
   const bandSections = [...root.querySelectorAll("[data-hx-band]")];
   if (bandSections.length) {
     let activeBand = "light";
@@ -1603,23 +1603,32 @@
       if (next === activeBand) return;
       activeBand = next;
       document.body.classList.toggle("hx-band--dark", next === "dark");
+      document.documentElement.classList.toggle("hx-band--dark", next === "dark");
       document.body.dataset.hxBand = next;
     }
 
     function syncScrollBand() {
-      const mid = window.innerHeight * 0.42;
+      const viewH = window.innerHeight || 1;
+      const focusTop = viewH * 0.18;
+      const focusBottom = viewH * 0.78;
       let best = null;
-      let bestDist = Infinity;
+      let bestScore = -1;
+
       bandSections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.bottom < mid * 0.35 || rect.top > window.innerHeight * 0.92) return;
-        const center = rect.top + rect.height * 0.35;
-        const dist = Math.abs(center - mid);
-        if (dist < bestDist) {
-          bestDist = dist;
+        const visibleTop = Math.max(rect.top, focusTop);
+        const visibleBottom = Math.min(rect.bottom, focusBottom);
+        const overlap = Math.max(0, visibleBottom - visibleTop);
+        if (overlap <= 0) return;
+        /* Prioriza un poco las secciones oscuras para que el “apagón” se sienta completo */
+        const bias = section.getAttribute("data-hx-band") === "dark" ? 1.12 : 1;
+        const score = (overlap / viewH) * bias;
+        if (score > bestScore) {
+          bestScore = score;
           best = section;
         }
       });
+
       if (best) setScrollBand(best.getAttribute("data-hx-band") || "light");
     }
 
