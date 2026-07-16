@@ -399,6 +399,56 @@
     }
   }
 
+  /* Modal de portabilidad — elige compañía (AT&T / Movistar / BAIT) */
+  const portaModal = root.querySelector("[data-hx-porta-modal]");
+  if (portaModal) {
+    let portaLastFocus = null;
+
+    function openPortaModal() {
+      portaLastFocus = document.activeElement;
+      portaModal.hidden = false;
+      portaModal.setAttribute("aria-hidden", "false");
+      window.requestAnimationFrame(() => portaModal.classList.add("is-open"));
+      document.body.classList.add("hx-svc-panel-open");
+      window.YaavsSonic?.play?.();
+      window.requestAnimationFrame(() => {
+        portaModal.querySelector(".hx-porta-modal__close")?.focus();
+      });
+    }
+
+    function closePortaModal() {
+      if (!portaModal.classList.contains("is-open")) return;
+      portaModal.classList.remove("is-open");
+      portaModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!portaModal.classList.contains("is-open")) portaModal.hidden = true;
+      }, 320);
+      if (portaLastFocus && typeof portaLastFocus.focus === "function") {
+        portaLastFocus.focus();
+      }
+    }
+
+    portaModal.querySelectorAll("[data-hx-porta-close]").forEach((el) => {
+      el.addEventListener("click", closePortaModal);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && portaModal.classList.contains("is-open")) {
+        closePortaModal();
+      }
+    });
+
+    /* Delegado: la tarjeta Portabilidad del deck abre el modal en vez de navegar */
+    document.addEventListener("click", (event) => {
+      const item = event.target.closest('[data-deck-svc="portabilidad"]');
+      if (!item) return;
+      event.preventDefault();
+      event.stopPropagation();
+      openPortaModal();
+    });
+  }
+
   if (panel) {
     panel.querySelectorAll("[data-hx-svc-panel-close]").forEach((el) => {
       el.addEventListener("click", closeServicePanel);

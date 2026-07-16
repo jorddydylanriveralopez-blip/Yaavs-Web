@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=4">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=27">
+  <link rel="stylesheet" href="home-experience.css?v=28">
   <link rel="stylesheet" href="home-corporate.css?v=125">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -162,7 +162,7 @@
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">Portabilidad</span>
               <span class="hx-svc-deck__desc">Cambia el número de tus clientes con respaldo YAAVS.</span>
-              <span class="hx-svc-deck__cta">Ver portabilidad →</span>
+              <span class="hx-svc-deck__cta">Elegir compañía →</span>
             </span>
           </a>
 
@@ -279,6 +279,33 @@
           </div>
         </section>
       </section>
+
+      <div class="hx-porta-modal" data-hx-porta-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="porta-modal-title">
+        <div class="hx-porta-modal__backdrop" data-hx-porta-close aria-hidden="true"></div>
+        <div class="hx-porta-modal__sheet">
+          <button type="button" class="hx-porta-modal__close" data-hx-porta-close aria-label="Cerrar">&times;</button>
+          <p class="hx-porta-modal__kicker">Portabilidad</p>
+          <h3 class="hx-porta-modal__title" id="porta-modal-title">Elige en qué compañía gustas hacer la portabilidad</h3>
+          <p class="hx-porta-modal__desc">Te llevamos al sitio oficial de cada compañía para iniciar tu trámite conservando tu número.</p>
+          <div class="hx-porta-modal__options">
+            <a class="hx-porta-modal__option" href="https://www.att.com.mx/cambiate-ahora/" target="_blank" rel="noopener noreferrer">
+              <span class="hx-porta-modal__option-logo"><img src="assets/operadores/att-carriers.png" alt="AT&amp;T" width="120" height="120" loading="lazy" decoding="async"></span>
+              <span class="hx-porta-modal__option-name">AT&amp;T</span>
+              <span class="hx-porta-modal__option-cta">Ir a portabilidad →</span>
+            </a>
+            <a class="hx-porta-modal__option" href="https://www.movistar.com.mx/portabilidad" target="_blank" rel="noopener noreferrer">
+              <span class="hx-porta-modal__option-logo"><img src="assets/operadores/movistar-carriers.png" alt="Movistar" width="120" height="120" loading="lazy" decoding="async"></span>
+              <span class="hx-porta-modal__option-name">Movistar</span>
+              <span class="hx-porta-modal__option-cta">Ir a portabilidad →</span>
+            </a>
+            <a class="hx-porta-modal__option" href="https://mibait.com/portabilidad" target="_blank" rel="noopener noreferrer">
+              <span class="hx-porta-modal__option-logo"><img src="assets/operadores/bait-carriers.svg" alt="BAIT" width="120" height="120" loading="lazy" decoding="async"></span>
+              <span class="hx-porta-modal__option-name">BAIT</span>
+              <span class="hx-porta-modal__option-cta">Ir a portabilidad →</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
       <section class="hx-plan-picker hx-plan-picker--split" id="plan-picker" data-hx-plan-picker aria-label="Elige prepago o pospago">
         <div class="hx-plan-picker__aurora" aria-hidden="true"></div>
@@ -822,7 +849,7 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=2",
-        "js/home-experience.js?v=57",
+        "js/home-experience.js?v=58",
       ], "400px 0px");
 
       let chatBootPromise = null;

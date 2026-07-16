@@ -4369,6 +4369,185 @@ a.hx-plan-picker__card {
   gap: 10px;
 }
 
+/* Modal de portabilidad — elige compañía */
+.hx-porta-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(16px, var(--safe-top)) max(16px, var(--safe-right)) max(16px, var(--safe-bottom)) max(16px, var(--safe-left));
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.32s ease, visibility 0.32s ease;
+}
+
+.hx-porta-modal.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hx-porta-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 8, 16, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hx-porta-modal__sheet {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 640px);
+  max-height: min(88dvh, 680px);
+  overflow-y: auto;
+  padding: clamp(24px, 4vw, 34px);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 136, 184, 0.45);
+  background: linear-gradient(160deg, rgba(8, 20, 32, 0.98) 0%, rgba(2, 10, 18, 0.96) 100%);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 48px rgba(90, 156, 196, 0.1);
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hx-porta-modal.is-open .hx-porta-modal__sheet {
+  transform: translateY(0) scale(1);
+}
+
+.hx-porta-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.hx-porta-modal__close:hover,
+.hx-porta-modal__close:focus-visible {
+  background: rgba(90, 156, 196, 0.12);
+  border-color: rgba(90, 156, 196, 0.4);
+  outline: none;
+}
+
+.hx-porta-modal__kicker {
+  margin: 0 0 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-bright, #35c3f3);
+}
+
+.hx-porta-modal__title {
+  margin: 0 0 8px;
+  padding-right: 36px;
+  font-size: clamp(1.2rem, 3.4vw, 1.55rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.18;
+  color: #fff;
+}
+
+.hx-porta-modal__desc {
+  margin: 0 0 22px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hx-porta-modal__options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hx-porta-modal__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(90, 156, 196, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+}
+
+.hx-porta-modal__option:hover,
+.hx-porta-modal__option:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(53, 195, 243, 0.6);
+  background: rgba(53, 195, 243, 0.08);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+
+.hx-porta-modal__option-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+}
+
+.hx-porta-modal__option-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.hx-porta-modal__option-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.hx-porta-modal__option-cta {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-bright, #35c3f3);
+}
+
+@media (max-width: 640px) {
+  .hx-porta-modal__options {
+    grid-template-columns: 1fr;
+  }
+
+  .hx-porta-modal__option {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 12px 16px;
+  }
+
+  .hx-porta-modal__option-logo {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+
+  .hx-porta-modal__option-name {
+    flex: 1;
+  }
+}
+
 body.hx-svc-panel-open {
   overflow: hidden;
 }
