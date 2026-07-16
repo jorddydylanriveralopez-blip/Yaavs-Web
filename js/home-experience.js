@@ -243,7 +243,7 @@
         "Captura datos del cliente y del operador de origen y destino.",
         "Confirma la portabilidad y entrega comprobante al cliente.",
       ],
-      link: { href: "servicios.html#portabilidad", label: "Ver guia completa" },
+      link: { href: "#porta-modal", label: "Elegir compañía" },
     },
     activaciones: {
       theme: "gold",
@@ -407,6 +407,7 @@
     function openPortaModal() {
       portaLastFocus = document.activeElement;
       portaModal.hidden = false;
+      portaModal.removeAttribute("hidden");
       portaModal.setAttribute("aria-hidden", "false");
       window.requestAnimationFrame(() => portaModal.classList.add("is-open"));
       document.body.classList.add("hx-svc-panel-open");
@@ -417,12 +418,15 @@
     }
 
     function closePortaModal() {
-      if (!portaModal.classList.contains("is-open")) return;
+      if (!portaModal.classList.contains("is-open") && portaModal.hidden) return;
       portaModal.classList.remove("is-open");
       portaModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("hx-svc-panel-open");
       window.setTimeout(() => {
-        if (!portaModal.classList.contains("is-open")) portaModal.hidden = true;
+        if (!portaModal.classList.contains("is-open")) {
+          portaModal.hidden = true;
+          portaModal.setAttribute("hidden", "");
+        }
       }, 320);
       if (portaLastFocus && typeof portaLastFocus.focus === "function") {
         portaLastFocus.focus();
@@ -439,14 +443,24 @@
       }
     });
 
-    /* Delegado: la tarjeta Portabilidad del deck abre el modal en vez de navegar */
-    document.addEventListener("click", (event) => {
-      const item = event.target.closest('[data-deck-svc="portabilidad"]');
-      if (!item) return;
-      event.preventDefault();
-      event.stopPropagation();
-      openPortaModal();
-    });
+    /* Capture: abre el modal al tocar Portabilidad (deck u otros triggers) */
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-porta-open], [data-deck-svc="portabilidad"]'
+        );
+        if (!item || item.closest(".hx-porta-modal")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openPortaModal();
+      },
+      true
+    );
+
+    if (window.location.hash === "#porta-modal") {
+      window.requestAnimationFrame(openPortaModal);
+    }
   }
 
   if (panel) {

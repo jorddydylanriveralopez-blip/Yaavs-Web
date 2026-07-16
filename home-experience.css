@@ -4393,9 +4393,9 @@ a.hx-plan-picker__card {
 .hx-porta-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 8, 16, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(6, 28, 48, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .hx-porta-modal__sheet {
@@ -4405,12 +4405,14 @@ a.hx-plan-picker__card {
   max-height: min(88dvh, 680px);
   overflow-y: auto;
   padding: clamp(24px, 4vw, 34px);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 136, 184, 0.45);
-  background: linear-gradient(160deg, rgba(8, 20, 32, 0.98) 0%, rgba(2, 10, 18, 0.96) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.92) 0%, rgba(236, 246, 252, 0.9) 100%);
   box-shadow:
-    0 32px 80px rgba(0, 0, 0, 0.55),
-    0 0 48px rgba(90, 156, 196, 0.1);
+    0 28px 64px rgba(8, 40, 64, 0.22),
+    0 0 0 1px rgba(53, 195, 243, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   transform: translateY(24px) scale(0.96);
   transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -4425,10 +4427,10 @@ a.hx-plan-picker__card {
   right: 14px;
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(12, 48, 72, 0.12);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  color: #0a2a40;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
@@ -4437,8 +4439,8 @@ a.hx-plan-picker__card {
 
 .hx-porta-modal__close:hover,
 .hx-porta-modal__close:focus-visible {
-  background: rgba(90, 156, 196, 0.12);
-  border-color: rgba(90, 156, 196, 0.4);
+  background: rgba(53, 195, 243, 0.16);
+  border-color: rgba(53, 195, 243, 0.45);
   outline: none;
 }
 
@@ -4448,24 +4450,24 @@ a.hx-plan-picker__card {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent-bright, #35c3f3);
+  color: #0088b8;
 }
 
 .hx-porta-modal__title {
   margin: 0 0 8px;
   padding-right: 36px;
-  font-size: clamp(1.2rem, 3.4vw, 1.55rem);
+  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1.18;
-  color: #fff;
+  color: #0a2a40;
 }
 
 .hx-porta-modal__desc {
   margin: 0 0 22px;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(10, 42, 64, 0.72);
 }
 
 .hx-porta-modal__options {
@@ -4481,19 +4483,20 @@ a.hx-plan-picker__card {
   gap: 10px;
   padding: 18px 12px 16px;
   border-radius: 14px;
-  border: 1px solid rgba(90, 156, 196, 0.22);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 136, 184, 0.18);
+  background: rgba(255, 255, 255, 0.82);
   text-decoration: none;
   text-align: center;
+  box-shadow: 0 8px 22px rgba(8, 40, 64, 0.06);
   transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
 }
 
 .hx-porta-modal__option:hover,
 .hx-porta-modal__option:focus-visible {
   transform: translateY(-3px);
-  border-color: rgba(53, 195, 243, 0.6);
-  background: rgba(53, 195, 243, 0.08);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 136, 184, 0.5);
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(8, 40, 64, 0.14);
   outline: none;
 }
 
@@ -4514,7 +4517,7 @@ a.hx-plan-picker__card {
 .hx-porta-modal__option-name {
   font-size: 1rem;
   font-weight: 800;
-  color: #fff;
+  color: #0a2a40;
 }
 
 .hx-porta-modal__option-cta {
@@ -4522,7 +4525,7 @@ a.hx-plan-picker__card {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent-bright, #35c3f3);
+  color: #0088b8;
 }
 
 @media (max-width: 640px) {
