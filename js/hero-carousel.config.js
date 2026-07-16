@@ -14,8 +14,8 @@ window.YAAVS_HERO_CAROUSEL = {
   images: [
     {
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/video-pagina-web.mp4",
-      videoSrcMobile: "assets/hero-telecom/banners/banner-vertical.mp4",
+      videoSrc: "assets/hero-telecom/banners/dili-dili-dili.mp4",
+      videoSrcMobile: "assets/hero-telecom/banners/dili-dili-dili.mp4",
       src: "assets/hero-telecom/banners/banner-horizontal-poster.jpg",
       srcMobile: "assets/hero-telecom/banners/banner-vertical-poster.jpg",
       width: 1920,
@@ -26,9 +26,9 @@ window.YAAVS_HERO_CAROUSEL = {
       objectPosition: "center center",
       objectFitMobile: "cover",
       objectPositionMobile: "center center",
-      alt: "YAAVS — banner principal.",
+      alt: "YAAVS — Dili Dili Dili.",
       hidePromo: true,
-      duration: 8000,
+      duration: 0,
     },
     {
       /* Desktop banner (mesa de trabajo 5yaav2web) */
