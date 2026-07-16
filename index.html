@@ -852,6 +852,14 @@
         "js/home-experience.js?v=59",
       ], "400px 0px");
 
+      /* Abrir modal de portabilidad desde hash sin esperar al scroll */
+      if (window.location.hash === "#porta-modal") {
+        void loadBatchOnce("home-deck", [
+          "js/deck-media.config.js?v=2",
+          "js/home-experience.js?v=59",
+        ]);
+      }
+
       let chatBootPromise = null;
       let chatReady = false;
 
