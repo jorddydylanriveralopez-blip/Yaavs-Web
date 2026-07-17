@@ -668,6 +668,207 @@
     });
   }
 
+  /* Modal Yaavshop — catálogo flipbook */
+  const yaavshopModal = root.querySelector("[data-hx-yaavshop-modal]");
+  if (yaavshopModal) {
+    const YAAVSHOP_PAGES = [
+      "assets/yaavshop/pages/01.jpg",
+      "assets/yaavshop/pages/02.jpg",
+      "assets/yaavshop/pages/03.jpg",
+      "assets/yaavshop/pages/04.jpg",
+      "assets/yaavshop/pages/05.jpg",
+      "assets/yaavshop/pages/06.jpg",
+      "assets/yaavshop/pages/07.jpg",
+      "assets/yaavshop/pages/08.jpg",
+    ];
+    let yaavshopLastFocus = null;
+    let yaavshopFlip = null;
+    let yaavshopFlipLoading = null;
+    const yaavshopBook = yaavshopModal.querySelector("#yaavshop-book");
+    const yaavshopIndexEl = yaavshopModal.querySelector("[data-hx-yaavshop-index]");
+
+    function updateYaavshopIndex() {
+      if (!yaavshopIndexEl) return;
+      if (!yaavshopFlip) {
+        yaavshopIndexEl.textContent = `1 / ${YAAVSHOP_PAGES.length}`;
+        return;
+      }
+      const current = yaavshopFlip.getCurrentPageIndex() + 1;
+      const total = yaavshopFlip.getPageCount() || YAAVSHOP_PAGES.length;
+      yaavshopIndexEl.textContent = `${current} / ${total}`;
+    }
+
+    function loadPageFlipLib() {
+      if (window.St?.PageFlip) return Promise.resolve();
+      if (yaavshopFlipLoading) return yaavshopFlipLoading;
+      yaavshopFlipLoading = new Promise((resolve, reject) => {
+        const existing = document.querySelector('script[data-hx-page-flip]');
+        if (existing) {
+          existing.addEventListener("load", () => resolve());
+          existing.addEventListener("error", reject);
+          return;
+        }
+        const script = document.createElement("script");
+        script.src = "js/vendor/page-flip.browser.js";
+        script.async = true;
+        script.dataset.hxPageFlip = "1";
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error("page-flip load failed"));
+        document.head.appendChild(script);
+      });
+      return yaavshopFlipLoading;
+    }
+
+    function measureYaavshopBook() {
+      const stage = yaavshopBook?.parentElement || yaavshopBook;
+      const stageW = Math.max(280, Math.floor(stage?.clientWidth || 320));
+      const stageH = Math.max(320, Math.floor(yaavshopBook?.clientHeight || 420));
+      const pageRatio = 1200 / 1500;
+      let width = Math.floor(Math.min(stageW * 0.46, stageH * pageRatio));
+      let height = Math.floor(width / pageRatio);
+      if (width * 2 > stageW) {
+        width = Math.floor(stageW * 0.46);
+        height = Math.floor(width / pageRatio);
+      }
+      if (height > stageH) {
+        height = stageH;
+        width = Math.floor(height * pageRatio);
+      }
+      return { width: Math.max(140, width), height: Math.max(180, height) };
+    }
+
+    async function ensureYaavshopFlip() {
+      if (!yaavshopBook) return;
+      await loadPageFlipLib();
+      if (!window.St?.PageFlip) return;
+
+      if (yaavshopFlip) {
+        try {
+          yaavshopFlip.destroy();
+        } catch (_) {
+          /* noop */
+        }
+        yaavshopFlip = null;
+        yaavshopBook.replaceChildren();
+      }
+
+      const size = measureYaavshopBook();
+      yaavshopFlip = new window.St.PageFlip(yaavshopBook, {
+        width: size.width,
+        height: size.height,
+        size: "stretch",
+        minWidth: 140,
+        maxWidth: 480,
+        minHeight: 180,
+        maxHeight: 640,
+        drawShadow: true,
+        flippingTime: reduced ? 0 : 700,
+        usePortrait: true,
+        autoSize: true,
+        maxShadowOpacity: 0.45,
+        showCover: true,
+        mobileScrollSupport: false,
+        useMouseEvents: true,
+      });
+      yaavshopFlip.loadFromImages(YAAVSHOP_PAGES);
+      yaavshopFlip.on("flip", updateYaavshopIndex);
+      updateYaavshopIndex();
+    }
+
+    function openYaavshopModal() {
+      yaavshopLastFocus = document.activeElement;
+      yaavshopModal.hidden = false;
+      yaavshopModal.removeAttribute("hidden");
+      yaavshopModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("hx-svc-panel-open");
+      yaavshopModal.classList.add("is-open");
+      try {
+        window.YaavsSonic?.play?.();
+      } catch (_) {
+        /* noop */
+      }
+      window.requestAnimationFrame(() => {
+        yaavshopModal.querySelector(".hx-yaavshop-modal__close")?.focus?.();
+        void ensureYaavshopFlip().catch(() => {
+          /* flipbook optional if lib fails */
+        });
+      });
+    }
+
+    function closeYaavshopModal() {
+      if (!yaavshopModal.classList.contains("is-open") && yaavshopModal.hidden) return;
+      yaavshopModal.classList.remove("is-open");
+      yaavshopModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!yaavshopModal.classList.contains("is-open")) {
+          yaavshopModal.hidden = true;
+          yaavshopModal.setAttribute("hidden", "");
+        }
+      }, 320);
+      if (yaavshopLastFocus && typeof yaavshopLastFocus.focus === "function") {
+        yaavshopLastFocus.focus();
+      }
+    }
+
+    yaavshopModal.querySelectorAll("[data-hx-yaavshop-close]").forEach((el) => {
+      el.addEventListener("click", closeYaavshopModal);
+    });
+
+    yaavshopModal.querySelector("[data-hx-yaavshop-prev]")?.addEventListener("click", () => {
+      yaavshopFlip?.flipPrev();
+    });
+    yaavshopModal.querySelector("[data-hx-yaavshop-next]")?.addEventListener("click", () => {
+      yaavshopFlip?.flipNext();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!yaavshopModal.classList.contains("is-open")) return;
+      if (e.key === "Escape") {
+        closeYaavshopModal();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        yaavshopFlip?.flipPrev();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        yaavshopFlip?.flipNext();
+      }
+    });
+
+    let yaavshopResizeTimer = null;
+    window.addEventListener("resize", () => {
+      if (!yaavshopModal.classList.contains("is-open")) return;
+      window.clearTimeout(yaavshopResizeTimer);
+      yaavshopResizeTimer = window.setTimeout(() => {
+        void ensureYaavshopFlip().catch(() => {});
+      }, 180);
+    });
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest?.(
+          '[data-hx-yaavshop-open], [data-deck-svc="yaashop"]'
+        );
+        if (!item || item.closest("[data-hx-yaavshop-modal]")) return;
+        event.preventDefault();
+        if (yaavshopModal.classList.contains("is-open")) return;
+        openYaavshopModal();
+      },
+      true
+    );
+
+    if (window.location.hash === "#yaavshop-modal") {
+      window.requestAnimationFrame(openYaavshopModal);
+    }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#yaavshop-modal") openYaavshopModal();
+    });
+  }
+
   /* Modal rotulaciones — carrusel de 6 ejemplos */
   const rotulModal = root.querySelector("[data-hx-rotul-modal]");
   if (rotulModal) {

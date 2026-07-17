@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=7">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=40">
+  <link rel="stylesheet" href="home-experience.css?v=41">
   <link rel="stylesheet" href="home-corporate.css?v=136">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -221,7 +221,7 @@
             </span>
           </a>
 
-          <a href="tiendas.html" class="hx-svc-deck__item" data-deck-svc="yaashop" data-masonry="short" data-accent="cyan" style="--deck-i: 8; --masonry-ratio: 1 / 1">
+          <a href="#yaavshop-modal" class="hx-svc-deck__item" data-deck-svc="yaashop" data-hx-yaavshop-open data-masonry="short" data-accent="cyan" style="--deck-i: 8; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="yaavshop-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/servicios/icons/yaashop.png" alt="" width="540" height="540" loading="lazy" decoding="async">
             </span>
@@ -229,8 +229,8 @@
             <span class="hx-svc-deck__label">YAAVSHOP</span>
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">YAAVSHOP</span>
-              <span class="hx-svc-deck__desc">Retail y catálogo del Grupo YAAVS para tu mostrador.</span>
-              <span class="hx-svc-deck__cta">Ver tiendas →</span>
+              <span class="hx-svc-deck__desc">Tienda en redes: pide por WhatsApp con el catálogo Yaavstar.</span>
+              <span class="hx-svc-deck__cta">Ver catálogo →</span>
             </span>
           </a>
 
@@ -362,6 +362,41 @@
               <span class="hx-rk-modal__store-name">iPhone / iPad</span>
               <span class="hx-act-modal__option-cta">App Store →</span>
             </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-yaavshop-modal" id="yaavshop-modal" data-hx-yaavshop-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="yaavshop-modal-title">
+        <div class="hx-yaavshop-modal__backdrop" data-hx-yaavshop-close aria-hidden="true"></div>
+        <div class="hx-yaavshop-modal__sheet">
+          <button type="button" class="hx-yaavshop-modal__close" data-hx-yaavshop-close aria-label="Cerrar">&times;</button>
+          <p class="hx-yaavshop-modal__kicker">Yaavshop</p>
+          <h3 class="hx-yaavshop-modal__title" id="yaavshop-modal-title">Catálogo Yaavstar 2026</h3>
+          <p class="hx-yaavshop-modal__desc">Desliza las páginas del catálogo. Sin tienda física: pide por WhatsApp cuando veas algo que te guste.</p>
+
+          <div class="hx-yaavshop-flip" data-hx-yaavshop-flip>
+            <div class="hx-yaavshop-flip__stage" id="yaavshop-book" aria-label="Catálogo interactivo"></div>
+            <div class="hx-yaavshop-flip__controls">
+              <button type="button" class="hx-yaavshop-flip__nav" data-hx-yaavshop-prev aria-label="Página anterior">‹</button>
+              <p class="hx-yaavshop-flip__index" data-hx-yaavshop-index aria-live="polite">1 / 8</p>
+              <button type="button" class="hx-yaavshop-flip__nav" data-hx-yaavshop-next aria-label="Página siguiente">›</button>
+            </div>
+          </div>
+
+          <div class="hx-yaavshop-modal__actions">
+            <a
+              class="btn btn--primary hx-yaavshop-modal__cta"
+              href="https://wa.me/525522331210?text=Hola%2C%20quiero%20pedir%20del%20cat%C3%A1logo%20Yaavshop"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Pedir por WhatsApp →</a>
+            <a
+              class="btn btn--line hx-yaavshop-modal__cta hx-yaavshop-modal__cta--pdf"
+              href="assets/yaavshop/catalogo-yaavstar-2026.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >Descargar PDF</a>
           </div>
         </div>
       </div>
@@ -1118,49 +1153,56 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=4",
-        "js/home-experience.js?v=78",
+        "js/home-experience.js?v=79",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=78",
+          "js/home-experience.js?v=79",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=78",
+          "js/home-experience.js?v=79",
         ]);
       }
 
       if (window.location.hash === "#vinculaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=78",
+          "js/home-experience.js?v=79",
         ]);
       }
 
       if (window.location.hash === "#esim-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=78",
+          "js/home-experience.js?v=79",
         ]);
       }
 
       if (window.location.hash === "#activaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=78",
+          "js/home-experience.js?v=79",
+        ]);
+      }
+
+      if (window.location.hash === "#yaavshop-modal") {
+        void loadBatchOnce("home-deck", [
+          "js/deck-media.config.js?v=4",
+          "js/home-experience.js?v=79",
         ]);
       }
 
       if (window.location.hash === "#recargaklic-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=78",
+          "js/home-experience.js?v=79",
         ]);
       }
 
