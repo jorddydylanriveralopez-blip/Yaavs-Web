@@ -4369,6 +4369,16 @@ a.hx-plan-picker__card {
   gap: 10px;
 }
 
+/* Modales de servicio: [hidden] debe ganar sobre display:flex */
+.hx-porta-modal[hidden],
+.hx-rotul-modal[hidden],
+.hx-vinc-modal[hidden],
+.hx-esim-modal[hidden],
+.hx-svc-panel[hidden] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
 /* Modal de portabilidad — elige compañía */
 .hx-porta-modal {
   position: fixed;
@@ -8025,12 +8035,18 @@ body.hx-svc-panel-open {
   text-underline-offset: 3px;
 }
 
-/* Destellos visibles en home */
+/* Destellos visibles en home — debajo del contenido para no bloquear taps */
 .page-home .page-sparkles {
   display: block;
-  z-index: 4;
+  z-index: 0;
   opacity: 0.85;
   mix-blend-mode: screen;
+  pointer-events: none !important;
+}
+
+.page-home .page-sparkles *,
+.page-home .page-sparkle {
+  pointer-events: none !important;
 }
 
 .page-home.hx-band--dark .page-sparkles {

@@ -449,20 +449,11 @@
       );
       if (!item || item.closest(".hx-porta-modal")) return;
       event.preventDefault();
-      event.stopPropagation();
       if (portaModal.classList.contains("is-open")) return;
       openPortaModal();
     }
 
-    document.addEventListener("click", onPortaOpenIntent, true);
-    document.addEventListener(
-      "pointerup",
-      (event) => {
-        if (event.pointerType === "mouse") return;
-        onPortaOpenIntent(event);
-      },
-      true
-    );
+    document.addEventListener("click", onPortaOpenIntent);
 
     if (window.location.hash === "#porta-modal") {
       window.requestAnimationFrame(openPortaModal);
@@ -581,34 +572,14 @@
       }
     });
 
-    document.addEventListener(
-      "click",
-      (event) => {
-        const item = event.target.closest(
-          '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
-        );
-        if (!item || item.closest(".hx-rotul-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        openRotulModal();
-      },
-      true
-    );
-
-    document.addEventListener(
-      "pointerup",
-      (event) => {
-        if (event.pointerType === "mouse") return;
-        const item = event.target.closest?.(
-          '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
-        );
-        if (!item || item.closest(".hx-rotul-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        if (!rotulModal.classList.contains("is-open")) openRotulModal();
-      },
-      true
-    );
+    document.addEventListener("click", (event) => {
+      const item = event.target.closest(
+        '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
+      );
+      if (!item || item.closest(".hx-rotul-modal")) return;
+      event.preventDefault();
+      if (!rotulModal.classList.contains("is-open")) openRotulModal();
+    });
 
     if (window.location.hash === "#rotulaciones-modal") {
       window.requestAnimationFrame(openRotulModal);
@@ -686,34 +657,14 @@
       }
     });
 
-    document.addEventListener(
-      "click",
-      (event) => {
-        const item = event.target.closest(
-          '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
-        );
-        if (!item || item.closest(".hx-vinc-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        openVincModal();
-      },
-      true
-    );
-
-    document.addEventListener(
-      "pointerup",
-      (event) => {
-        if (event.pointerType === "mouse") return;
-        const item = event.target.closest?.(
-          '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
-        );
-        if (!item || item.closest(".hx-vinc-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        if (!vincModal.classList.contains("is-open")) openVincModal();
-      },
-      true
-    );
+    document.addEventListener("click", (event) => {
+      const item = event.target.closest(
+        '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
+      );
+      if (!item || item.closest(".hx-vinc-modal")) return;
+      event.preventDefault();
+      if (!vincModal.classList.contains("is-open")) openVincModal();
+    });
 
     if (window.location.hash === "#vinculaciones-modal") {
       window.requestAnimationFrame(openVincModal);
@@ -791,34 +742,14 @@
       }
     });
 
-    document.addEventListener(
-      "click",
-      (event) => {
-        const item = event.target.closest(
-          '[data-hx-esim-open], [data-deck-svc="esims"]'
-        );
-        if (!item || item.closest(".hx-esim-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        openEsimModal();
-      },
-      true
-    );
-
-    document.addEventListener(
-      "pointerup",
-      (event) => {
-        if (event.pointerType === "mouse") return;
-        const item = event.target.closest?.(
-          '[data-hx-esim-open], [data-deck-svc="esims"]'
-        );
-        if (!item || item.closest(".hx-esim-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        if (!esimModal.classList.contains("is-open")) openEsimModal();
-      },
-      true
-    );
+    document.addEventListener("click", (event) => {
+      const item = event.target.closest(
+        '[data-hx-esim-open], [data-deck-svc="esims"]'
+      );
+      if (!item || item.closest(".hx-esim-modal")) return;
+      event.preventDefault();
+      if (!esimModal.classList.contains("is-open")) openEsimModal();
+    });
 
     if (window.location.hash === "#esim-modal") {
       window.requestAnimationFrame(openEsimModal);
@@ -1569,7 +1500,6 @@
       if (!masonryEl) {
         masonryEl = document.createElement("div");
         masonryEl.className = "hx-svc-deck-masonry";
-        masonryEl.setAttribute("role", "list");
 
         const colsWrap = document.createElement("div");
         colsWrap.className = "hx-svc-deck-masonry__cols";
@@ -1578,6 +1508,7 @@
           const col = document.createElement("div");
           col.className = "hx-svc-deck-masonry__col";
           col.dataset.masonryCol = name;
+          col.setAttribute("role", "presentation");
           colsWrap.appendChild(col);
         });
         masonryEl.appendChild(colsWrap);
@@ -1616,11 +1547,15 @@
       cols.forEach((col) => col.replaceChildren());
 
       if (heroItem) {
+        heroItem.removeAttribute("role");
         heroItem.classList.add("is-deck-in");
         masonryEl.insertBefore(heroItem, colsWrap);
       }
 
-      rest.forEach((item) => item.classList.add("is-deck-in"));
+      rest.forEach((item) => {
+        item.removeAttribute("role");
+        item.classList.add("is-deck-in");
+      });
       distributeMasonryColumns(rest, cols);
 
       getDeckItems().forEach((item) => {

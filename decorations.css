@@ -2030,14 +2030,20 @@ body.yaavs-game-open {
 .jobs-apply-sparkles {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  pointer-events: none !important;
   overflow: hidden;
   z-index: 2;
 }
 
 .page-sparkles {
   position: fixed;
-  z-index: 3;
+  z-index: 0;
+}
+
+.page-sparkles *,
+.jobs-apply-sparkles *,
+.page-sparkle {
+  pointer-events: none !important;
 }
 
 .page-sparkles::before,

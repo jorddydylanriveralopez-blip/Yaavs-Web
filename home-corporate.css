@@ -3660,6 +3660,10 @@ body.page-home {
   cursor: pointer;
 }
 
+.page-home .hx-svc-deck__item > * {
+  pointer-events: none;
+}
+
 .page-home .hx-svc-deck__item.is-deck-in,
 .page-home .hx-svc-deck-masonry .hx-svc-deck__item,
 .page-home .hx-svc-deck-masonry .hx-svc-deck__item.is-deck-in {
@@ -4541,7 +4545,7 @@ body.page-home {
     padding: 0;
     margin: 0;
     background: #0a1630;
-    pointer-events: none;
+    pointer-events: none !important;
   }
 
   .page-home .hx-svc-deck__icon img {
@@ -4551,6 +4555,7 @@ body.page-home {
     object-fit: cover;
     object-position: center;
     border-radius: 0;
+    pointer-events: none !important;
   }
 
   .page-home .hx-svc-deck__bg {
@@ -4645,6 +4650,12 @@ body.page-home {
     padding-top: 0;
   }
 
+  .page-home .hx-svc-deck-wrap,
+  .page-home .hx-svc-deck-masonry {
+    position: relative;
+    z-index: 5;
+  }
+
   .page-home .hx-svc-deck__item,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item {
     --mob-card-r: clamp(12px, 3.2vw, 16px);
@@ -4658,8 +4669,9 @@ body.page-home {
     overflow: hidden;
     opacity: 1 !important;
     pointer-events: auto !important;
+    cursor: pointer;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 188, 212, 0.25);
     transform: none !important;
     contain: none;
     aspect-ratio: auto;
@@ -4673,6 +4685,12 @@ body.page-home {
     transition: box-shadow 0.2s ease, opacity 0.2s ease;
     will-change: auto;
     animation: none !important;
+  }
+
+  /* Los hijos no deben robar el tap: el <a> recibe el evento */
+  .page-home .hx-svc-deck__item *,
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item * {
+    pointer-events: none !important;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:nth-child(even),
