@@ -257,7 +257,7 @@
         "Selecciona operador, plan y datos del cliente segun el flujo.",
         "Finaliza la activacion y guarda el comprobante para soporte.",
       ],
-      link: { href: "activar-chip.html", label: "Como activar un chip" },
+      link: { href: "#activaciones-modal", label: "Elegir compañía" },
     },
     "soporte-tecnico": {
       theme: "coral",
@@ -465,6 +465,75 @@
 
     window.addEventListener("hashchange", () => {
       if (window.location.hash === "#porta-modal") openPortaModal();
+    });
+  }
+
+  /* Modal activaciones — elige compañía (AT&T / Movistar / BAIT / Unefon) */
+  const actModal = root.querySelector("[data-hx-act-modal]");
+  if (actModal) {
+    let actLastFocus = null;
+
+    function openActModal() {
+      actLastFocus = document.activeElement;
+      actModal.hidden = false;
+      actModal.removeAttribute("hidden");
+      actModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("hx-svc-panel-open");
+      actModal.classList.add("is-open");
+      try {
+        window.YaavsSonic?.play?.();
+      } catch (_) {
+        /* noop */
+      }
+      window.requestAnimationFrame(() => {
+        actModal.querySelector(".hx-act-modal__close")?.focus?.();
+      });
+    }
+
+    function closeActModal() {
+      if (!actModal.classList.contains("is-open") && actModal.hidden) return;
+      actModal.classList.remove("is-open");
+      actModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!actModal.classList.contains("is-open")) {
+          actModal.hidden = true;
+          actModal.setAttribute("hidden", "");
+        }
+      }, 320);
+      if (actLastFocus && typeof actLastFocus.focus === "function") {
+        actLastFocus.focus();
+      }
+    }
+
+    actModal.querySelectorAll("[data-hx-act-close]").forEach((el) => {
+      el.addEventListener("click", closeActModal);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && actModal.classList.contains("is-open")) {
+        closeActModal();
+      }
+    });
+
+    function onActOpenIntent(event) {
+      const item = event.target.closest?.(
+        '[data-hx-act-open], [data-deck-svc="activaciones"]'
+      );
+      if (!item || item.closest(".hx-act-modal")) return;
+      event.preventDefault();
+      if (actModal.classList.contains("is-open")) return;
+      openActModal();
+    }
+
+    document.addEventListener("click", onActOpenIntent, true);
+
+    if (window.location.hash === "#activaciones-modal") {
+      window.requestAnimationFrame(openActModal);
+    }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#activaciones-modal") openActModal();
     });
   }
 

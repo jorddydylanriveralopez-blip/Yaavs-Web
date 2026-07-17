@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=7">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=38">
+  <link rel="stylesheet" href="home-experience.css?v=39">
   <link rel="stylesheet" href="home-corporate.css?v=132">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -127,7 +127,7 @@
             </span>
           </a>
 
-          <a href="activar-chip.html" class="hx-svc-deck__item" data-deck-svc="activaciones" data-masonry="tall" data-accent="gold" style="--deck-i: 1; --masonry-ratio: 3 / 4">
+          <a href="#activaciones-modal" class="hx-svc-deck__item" data-deck-svc="activaciones" data-hx-act-open data-masonry="tall" data-accent="gold" style="--deck-i: 1; --masonry-ratio: 3 / 4" aria-haspopup="dialog" aria-controls="activaciones-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/hero-telecom/hero-campeones-vincula.png" alt="" width="1024" height="576" loading="lazy" decoding="async">
             </span>
@@ -136,7 +136,7 @@
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">Activaciones</span>
               <span class="hx-svc-deck__desc">Activa SIM en minutos desde RecargaKlic en tu mostrador.</span>
-              <span class="hx-svc-deck__cta">Abrir RecargaKlic →</span>
+              <span class="hx-svc-deck__cta">Elegir compañía →</span>
             </span>
           </a>
 
@@ -299,6 +299,34 @@
             <a class="hx-porta-modal__option" href="https://mibait.com/haz-tu-portabilidad" target="_blank" rel="noopener noreferrer" aria-label="BAIT — ir a portabilidad">
               <span class="hx-porta-modal__option-logo"><img src="assets/operadores/bait-carriers-color.svg" alt="" width="120" height="64" loading="lazy" decoding="async"></span>
               <span class="hx-porta-modal__option-cta">Ir a portabilidad →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-act-modal" id="activaciones-modal" data-hx-act-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="activaciones-modal-title">
+        <div class="hx-act-modal__backdrop" data-hx-act-close aria-hidden="true"></div>
+        <div class="hx-act-modal__sheet">
+          <button type="button" class="hx-act-modal__close" data-hx-act-close aria-label="Cerrar">&times;</button>
+          <p class="hx-act-modal__kicker">Activaciones</p>
+          <h3 class="hx-act-modal__title" id="activaciones-modal-title">Elige la compañía para activar un chip</h3>
+          <p class="hx-act-modal__desc">Te llevamos al flujo de activación con RecargaKlic y soporte YAAVS según el operador.</p>
+          <div class="hx-act-modal__options">
+            <a class="hx-act-modal__option" href="activar-chip.html?operador=att" aria-label="AT&amp;T — activar chip">
+              <span class="hx-act-modal__option-logo"><img src="assets/operadores/att-carriers-color.svg" alt="" width="120" height="48" loading="lazy" decoding="async"></span>
+              <span class="hx-act-modal__option-cta">Activar AT&amp;T →</span>
+            </a>
+            <a class="hx-act-modal__option" href="activar-chip.html?operador=movistar" aria-label="Movistar — activar chip">
+              <span class="hx-act-modal__option-logo"><img src="assets/operadores/movistar-carriers-color.svg" alt="" width="72" height="72" loading="lazy" decoding="async"></span>
+              <span class="hx-act-modal__option-cta">Activar Movistar →</span>
+            </a>
+            <a class="hx-act-modal__option" href="activar-chip.html?operador=bait" aria-label="BAIT — activar chip">
+              <span class="hx-act-modal__option-logo"><img src="assets/operadores/bait-carriers-color.svg" alt="" width="120" height="64" loading="lazy" decoding="async"></span>
+              <span class="hx-act-modal__option-cta">Activar BAIT →</span>
+            </a>
+            <a class="hx-act-modal__option" href="activar-chip.html?operador=unefon" aria-label="Unefon — activar chip">
+              <span class="hx-act-modal__option-logo"><img src="assets/operadores/unefon-carriers.png" alt="" width="120" height="70" loading="lazy" decoding="async"></span>
+              <span class="hx-act-modal__option-cta">Activar Unefon →</span>
             </a>
           </div>
         </div>
@@ -1056,35 +1084,42 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=2",
-        "js/home-experience.js?v=71",
+        "js/home-experience.js?v=72",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=71",
+          "js/home-experience.js?v=72",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=71",
+          "js/home-experience.js?v=72",
         ]);
       }
 
       if (window.location.hash === "#vinculaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=71",
+          "js/home-experience.js?v=72",
         ]);
       }
 
       if (window.location.hash === "#esim-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=71",
+          "js/home-experience.js?v=72",
+        ]);
+      }
+
+      if (window.location.hash === "#activaciones-modal") {
+        void loadBatchOnce("home-deck", [
+          "js/deck-media.config.js?v=2",
+          "js/home-experience.js?v=72",
         ]);
       }
 
