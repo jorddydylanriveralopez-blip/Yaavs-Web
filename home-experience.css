@@ -5150,12 +5150,17 @@ a.hx-plan-picker__card {
   flex-direction: column;
   gap: 12px;
   align-items: center;
+  width: 100%;
 }
 
 .hx-yaavshop-flip__stage {
   width: min(100%, 780px);
   height: min(58dvh, 520px);
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .hx-yaavshop-flip__stage .stf__parent,
@@ -5178,15 +5183,17 @@ a.hx-plan-picker__card {
 }
 
 .hx-yaavshop-flip__nav {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid rgba(12, 48, 72, 0.14);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   color: #0a2a40;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hx-yaavshop-flip__nav:hover,
@@ -5220,13 +5227,47 @@ a.hx-plan-picker__card {
 }
 
 @media (max-width: 700px) {
+  .hx-yaavshop-modal {
+    align-items: flex-end;
+    padding: max(8px, var(--safe-top)) 8px max(8px, var(--safe-bottom));
+  }
+
   .hx-yaavshop-modal__sheet {
-    padding: 18px 14px 16px;
-    border-radius: 16px;
+    width: 100%;
+    max-height: min(94dvh, 920px);
+    padding: 16px 12px calc(14px + env(safe-area-inset-bottom, 0px));
+    border-radius: 18px 18px 12px 12px;
+  }
+
+  .hx-yaavshop-modal__title {
+    font-size: 1.05rem;
+  }
+
+  .hx-yaavshop-modal__desc {
+    font-size: 0.84rem;
+    margin-bottom: 12px;
   }
 
   .hx-yaavshop-flip__stage {
-    height: min(52dvh, 420px);
+    width: 100%;
+    height: min(62dvh, 520px);
+    min-height: 320px;
+  }
+
+  .hx-yaavshop-flip__nav {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hx-yaavshop-modal__actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 14px;
+  }
+
+  .hx-yaavshop-modal__cta {
+    min-width: 0;
+    width: 100%;
   }
 }
 

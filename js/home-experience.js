@@ -684,8 +684,26 @@
     let yaavshopLastFocus = null;
     let yaavshopFlip = null;
     let yaavshopFlipLoading = null;
-    const yaavshopBook = yaavshopModal.querySelector("#yaavshop-book");
+    const yaavshopFlipRoot = yaavshopModal.querySelector("[data-hx-yaavshop-flip]");
     const yaavshopIndexEl = yaavshopModal.querySelector("[data-hx-yaavshop-index]");
+    const yaavshopMobileMq = window.matchMedia("(max-width: 700px)");
+
+    function getYaavshopBookEl() {
+      let book = yaavshopModal.querySelector("#yaavshop-book");
+      if (book && yaavshopModal.contains(book)) return book;
+
+      book = document.createElement("div");
+      book.id = "yaavshop-book";
+      book.className = "hx-yaavshop-flip__stage";
+      book.setAttribute("aria-label", "Catálogo interactivo");
+      const controls = yaavshopFlipRoot?.querySelector(".hx-yaavshop-flip__controls");
+      if (yaavshopFlipRoot && controls) {
+        yaavshopFlipRoot.insertBefore(book, controls);
+      } else if (yaavshopFlipRoot) {
+        yaavshopFlipRoot.prepend(book);
+      }
+      return book;
+    }
 
     function updateYaavshopIndex() {
       if (!yaavshopIndexEl) return;
@@ -702,7 +720,7 @@
       if (window.St?.PageFlip) return Promise.resolve();
       if (yaavshopFlipLoading) return yaavshopFlipLoading;
       yaavshopFlipLoading = new Promise((resolve, reject) => {
-        const existing = document.querySelector('script[data-hx-page-flip]');
+        const existing = document.querySelector("script[data-hx-page-flip]");
         if (existing) {
           existing.addEventListener("load", () => resolve());
           existing.addEventListener("error", reject);
@@ -719,11 +737,22 @@
       return yaavshopFlipLoading;
     }
 
-    function measureYaavshopBook() {
-      const stage = yaavshopBook?.parentElement || yaavshopBook;
-      const stageW = Math.max(280, Math.floor(stage?.clientWidth || 320));
-      const stageH = Math.max(320, Math.floor(yaavshopBook?.clientHeight || 420));
+    function measureYaavshopBook(bookEl) {
+      const stageW = Math.max(260, Math.floor(bookEl?.clientWidth || yaavshopFlipRoot?.clientWidth || 320));
+      const stageH = Math.max(300, Math.floor(bookEl?.clientHeight || 420));
       const pageRatio = 1200 / 1500;
+      const mobile = yaavshopMobileMq.matches;
+
+      if (mobile) {
+        let width = Math.floor(stageW * 0.94);
+        let height = Math.floor(width / pageRatio);
+        if (height > stageH) {
+          height = stageH;
+          width = Math.floor(height * pageRatio);
+        }
+        return { width: Math.max(160, width), height: Math.max(200, height) };
+      }
+
       let width = Math.floor(Math.min(stageW * 0.46, stageH * pageRatio));
       let height = Math.floor(width / pageRatio);
       if (width * 2 > stageW) {
@@ -737,11 +766,7 @@
       return { width: Math.max(140, width), height: Math.max(180, height) };
     }
 
-    async function ensureYaavshopFlip() {
-      if (!yaavshopBook) return;
-      await loadPageFlipLib();
-      if (!window.St?.PageFlip) return;
-
+    function teardownYaavshopFlip() {
       if (yaavshopFlip) {
         try {
           yaavshopFlip.destroy();
@@ -749,23 +774,38 @@
           /* noop */
         }
         yaavshopFlip = null;
-        yaavshopBook.replaceChildren();
       }
+      /* destroy() puede borrar #yaavshop-book: siempre recrearlo */
+      const stale = yaavshopModal.querySelector("#yaavshop-book");
+      if (stale) stale.remove();
+      getYaavshopBookEl();
+    }
 
-      const size = measureYaavshopBook();
-      yaavshopFlip = new window.St.PageFlip(yaavshopBook, {
+    async function ensureYaavshopFlip() {
+      await loadPageFlipLib();
+      if (!window.St?.PageFlip) return;
+
+      teardownYaavshopFlip();
+      const bookEl = getYaavshopBookEl();
+      if (!bookEl) return;
+
+      /* Esperar layout del modal abierto para medir bien en móvil */
+      await new Promise((r) => window.requestAnimationFrame(() => window.requestAnimationFrame(r)));
+
+      const size = measureYaavshopBook(bookEl);
+      yaavshopFlip = new window.St.PageFlip(bookEl, {
         width: size.width,
         height: size.height,
         size: "stretch",
-        minWidth: 140,
-        maxWidth: 480,
-        minHeight: 180,
-        maxHeight: 640,
+        minWidth: yaavshopMobileMq.matches ? 160 : 140,
+        maxWidth: yaavshopMobileMq.matches ? 420 : 480,
+        minHeight: yaavshopMobileMq.matches ? 200 : 180,
+        maxHeight: yaavshopMobileMq.matches ? 720 : 640,
         drawShadow: true,
-        flippingTime: reduced ? 0 : 700,
+        flippingTime: reduced ? 0 : 650,
         usePortrait: true,
         autoSize: true,
-        maxShadowOpacity: 0.45,
+        maxShadowOpacity: 0.4,
         showCover: true,
         mobileScrollSupport: false,
         useMouseEvents: true,
@@ -800,6 +840,14 @@
       yaavshopModal.classList.remove("is-open");
       yaavshopModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("hx-svc-panel-open");
+      teardownYaavshopFlip();
+      if (window.location.hash === "#yaavshop-modal") {
+        try {
+          history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+        } catch (_) {
+          /* noop */
+        }
+      }
       window.setTimeout(() => {
         if (!yaavshopModal.classList.contains("is-open")) {
           yaavshopModal.hidden = true;
