@@ -443,17 +443,23 @@
       }
     });
 
-    /* Capture: abre el modal al tocar Portabilidad (deck u otros triggers) */
+    function onPortaOpenIntent(event) {
+      const item = event.target.closest?.(
+        '[data-hx-porta-open], [data-deck-svc="portabilidad"]'
+      );
+      if (!item || item.closest(".hx-porta-modal")) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (portaModal.classList.contains("is-open")) return;
+      openPortaModal();
+    }
+
+    document.addEventListener("click", onPortaOpenIntent, true);
     document.addEventListener(
-      "click",
+      "pointerup",
       (event) => {
-        const item = event.target.closest(
-          '[data-hx-porta-open], [data-deck-svc="portabilidad"]'
-        );
-        if (!item || item.closest(".hx-porta-modal")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        openPortaModal();
+        if (event.pointerType === "mouse") return;
+        onPortaOpenIntent(event);
       },
       true
     );
@@ -589,6 +595,21 @@
       true
     );
 
+    document.addEventListener(
+      "pointerup",
+      (event) => {
+        if (event.pointerType === "mouse") return;
+        const item = event.target.closest?.(
+          '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
+        );
+        if (!item || item.closest(".hx-rotul-modal")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        if (!rotulModal.classList.contains("is-open")) openRotulModal();
+      },
+      true
+    );
+
     if (window.location.hash === "#rotulaciones-modal") {
       window.requestAnimationFrame(openRotulModal);
     }
@@ -679,6 +700,21 @@
       true
     );
 
+    document.addEventListener(
+      "pointerup",
+      (event) => {
+        if (event.pointerType === "mouse") return;
+        const item = event.target.closest?.(
+          '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
+        );
+        if (!item || item.closest(".hx-vinc-modal")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        if (!vincModal.classList.contains("is-open")) openVincModal();
+      },
+      true
+    );
+
     if (window.location.hash === "#vinculaciones-modal") {
       window.requestAnimationFrame(openVincModal);
     }
@@ -765,6 +801,21 @@
         event.preventDefault();
         event.stopPropagation();
         openEsimModal();
+      },
+      true
+    );
+
+    document.addEventListener(
+      "pointerup",
+      (event) => {
+        if (event.pointerType === "mouse") return;
+        const item = event.target.closest?.(
+          '[data-hx-esim-open], [data-deck-svc="esims"]'
+        );
+        if (!item || item.closest(".hx-esim-modal")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        if (!esimModal.classList.contains("is-open")) openEsimModal();
       },
       true
     );
@@ -1824,6 +1875,7 @@
         teardownDeckSquare();
         initMobileMasonry();
         initMobileDeckIcons();
+        getDeckItems().forEach((item) => item.classList.add("is-deck-in"));
       }
     }
 

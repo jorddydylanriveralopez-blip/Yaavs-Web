@@ -3660,6 +3660,12 @@ body.page-home {
   cursor: pointer;
 }
 
+.page-home .hx-svc-deck__item.is-deck-in,
+.page-home .hx-svc-deck-masonry .hx-svc-deck__item,
+.page-home .hx-svc-deck-masonry .hx-svc-deck__item.is-deck-in {
+  pointer-events: auto !important;
+}
+
 .page-home .hx-svc-deck__item:nth-child(odd) {
   --deck-enter-x: -22px;
 }
@@ -4643,15 +4649,15 @@ body.page-home {
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item {
     --mob-card-r: clamp(12px, 3.2vw, 16px);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 0;
     min-width: 0;
     overflow: hidden;
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1 !important;
+    pointer-events: auto !important;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     transform: none !important;

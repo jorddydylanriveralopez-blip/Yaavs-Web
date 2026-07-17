@@ -2129,6 +2129,7 @@ body.yaavs-game-open {
   height: auto;
   object-fit: contain;
   opacity: 0.48;
+  pointer-events: none;
   filter:
     drop-shadow(0 0 8px rgba(0, 212, 238, 0.35))
     drop-shadow(0 8px 20px rgba(0, 151, 178, 0.18));
@@ -2309,6 +2310,7 @@ body.yaavs-game-open {
   display: block;
   object-fit: contain;
   opacity: 0.4;
+  pointer-events: none;
   filter:
     drop-shadow(0 0 6px rgba(0, 212, 238, 0.3))
     drop-shadow(0 6px 16px rgba(0, 151, 178, 0.15));
