@@ -4502,7 +4502,7 @@ body.page-home {
     position: relative;
     isolation: isolate;
     padding-bottom: clamp(32px, 7vw, 48px);
-    overflow: hidden;
+    overflow: visible;
   }
 
   /* Atmósfera de escena — no intercepta taps */
@@ -4726,12 +4726,12 @@ body.page-home {
     margin: 0;
     min-width: 0;
     overflow: hidden;
-    opacity: 0;
+    opacity: 1;
     pointer-events: auto !important;
     cursor: pointer;
     touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(0, 188, 212, 0.25);
-    transform: translateY(14px);
+    transform: none;
     contain: none;
     aspect-ratio: auto;
     background: #0a1630;
@@ -4745,8 +4745,14 @@ body.page-home {
       box-shadow 0.22s ease,
       border-color 0.22s ease,
       transform 0.18s ease;
-    will-change: transform, opacity;
+    will-change: auto;
     animation: none;
+  }
+
+  /* Entrada suave solo si aún no revelamos el deck */
+  .page-home .hx-services--deck:not(.is-deck-live) .hx-svc-deck-masonry .hx-svc-deck__item {
+    opacity: 0;
+    transform: translateY(14px);
   }
 
   /* Los hijos no deben robar el tap: el <a> recibe el evento */
@@ -4763,8 +4769,14 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck__item.is-deck-in,
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item.is-deck-in {
-    animation: hx-masonry-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item.is-deck-in,
+  .page-home .hx-services--deck.is-deck-live .hx-svc-deck-masonry .hx-svc-deck__item {
+    opacity: 1 !important;
+    transform: none;
+  }
+
+  .page-home .hx-services--deck.is-deck-live .hx-svc-deck-masonry .hx-svc-deck__item.is-deck-in {
+    animation: hx-masonry-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__icon img {

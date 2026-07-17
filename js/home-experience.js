@@ -1649,11 +1649,13 @@
 
       if (heroItem) {
         heroItem.removeAttribute("role");
+        if (deckLive) heroItem.classList.add("is-deck-in");
         masonryEl.insertBefore(heroItem, colsWrap);
       }
 
       rest.forEach((item) => {
         item.removeAttribute("role");
+        if (deckLive) item.classList.add("is-deck-in");
       });
       distributeMasonryColumns(rest, cols);
 
@@ -1694,13 +1696,14 @@
       deckItems = [...getDeckItems()].sort(
         (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
       );
-      if (reduced) {
+      if (reduced || !deckDesktopMq.matches) {
+        /* Móvil: revelar todos de una vez (evita tiles fantasma si el DOM se reordena) */
         deckItems.forEach((item) => item.classList.add("is-deck-in"));
         return;
       }
 
       let index = 0;
-      const gap = deckDesktopMq.matches ? 42 : 48;
+      const gap = 42;
       const step = () => {
         if (index >= deckItems.length) return;
         deckItems[index].classList.add("is-deck-in");
