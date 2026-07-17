@@ -304,14 +304,14 @@
       kicker: "RecargaKlic",
       icon: "assets/servicios/esim.jpg",
       title: "eSIMs",
-      desc: "Activa lineas digitales sin chip fisico. Ideal para equipos compatibles y ventas agiles.",
+      desc: "Activa lineas digitales sin chip fisico. Confirma compatibilidad eSIM y elige AT&T, Movistar o BAIT.",
       steps: [
         "Confirma que el equipo del cliente sea compatible con eSIM.",
-        "Abre RecargaKlic y selecciona el flujo de activacion eSIM.",
-        "Escanea el codigo QR del operador o ingresa datos de eSIM.",
-        "Completa activacion y verifica señal con el cliente antes de cerrar.",
+        "Elige la compania: AT&T, Movistar o BAIT.",
+        "Abre el portal oficial con el QR o el boton del panel.",
+        "Escanea el codigo QR de activacion con Wi-Fi y verifica senal.",
       ],
-      link: { href: "activar-chip.html", label: "Activar eSIM en RecargaKlic" },
+      link: { href: "#esim-modal", label: "Ver eSIM por compania" },
     },
     vinculaciones: {
       theme: "coral",
@@ -681,6 +681,96 @@
 
     if (window.location.hash === "#vinculaciones-modal") {
       window.requestAnimationFrame(openVincModal);
+    }
+  }
+
+  /* Modal eSIM — portales oficiales por compañía */
+  const esimModal = root.querySelector("[data-hx-esim-modal]");
+  if (esimModal) {
+    let esimLastFocus = null;
+    const esimTabs = [...esimModal.querySelectorAll("[data-hx-esim-carrier]")];
+    const esimPanels = [...esimModal.querySelectorAll("[data-hx-esim-panel]")];
+
+    function setEsimCarrier(id) {
+      const next = id || "att";
+      esimTabs.forEach((tab) => {
+        const on = tab.getAttribute("data-hx-esim-carrier") === next;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      esimPanels.forEach((panelEl) => {
+        const on = panelEl.getAttribute("data-hx-esim-panel") === next;
+        panelEl.classList.toggle("is-active", on);
+        if (on) {
+          panelEl.removeAttribute("hidden");
+        } else {
+          panelEl.setAttribute("hidden", "");
+        }
+      });
+    }
+
+    function openEsimModal() {
+      esimLastFocus = document.activeElement;
+      setEsimCarrier("att");
+      esimModal.hidden = false;
+      esimModal.removeAttribute("hidden");
+      esimModal.setAttribute("aria-hidden", "false");
+      window.requestAnimationFrame(() => esimModal.classList.add("is-open"));
+      document.body.classList.add("hx-svc-panel-open");
+      window.YaavsSonic?.play?.();
+      window.requestAnimationFrame(() => {
+        esimModal.querySelector(".hx-esim-modal__close")?.focus();
+      });
+    }
+
+    function closeEsimModal() {
+      if (!esimModal.classList.contains("is-open") && esimModal.hidden) return;
+      esimModal.classList.remove("is-open");
+      esimModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!esimModal.classList.contains("is-open")) {
+          esimModal.hidden = true;
+          esimModal.setAttribute("hidden", "");
+        }
+      }, 300);
+      if (esimLastFocus && typeof esimLastFocus.focus === "function") {
+        esimLastFocus.focus();
+      }
+    }
+
+    esimModal.querySelectorAll("[data-hx-esim-close]").forEach((el) => {
+      el.addEventListener("click", closeEsimModal);
+    });
+
+    esimTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        setEsimCarrier(tab.getAttribute("data-hx-esim-carrier"));
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && esimModal.classList.contains("is-open")) {
+        closeEsimModal();
+      }
+    });
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-esim-open], [data-deck-svc="esims"]'
+        );
+        if (!item || item.closest(".hx-esim-modal")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openEsimModal();
+      },
+      true
+    );
+
+    if (window.location.hash === "#esim-modal") {
+      window.requestAnimationFrame(openEsimModal);
     }
   }
 
