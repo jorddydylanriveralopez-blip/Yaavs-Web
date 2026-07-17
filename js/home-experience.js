@@ -409,11 +409,15 @@
       portaModal.hidden = false;
       portaModal.removeAttribute("hidden");
       portaModal.setAttribute("aria-hidden", "false");
-      window.requestAnimationFrame(() => portaModal.classList.add("is-open"));
       document.body.classList.add("hx-svc-panel-open");
-      window.YaavsSonic?.play?.();
+      portaModal.classList.add("is-open");
+      try {
+        window.YaavsSonic?.play?.();
+      } catch (_) {
+        /* noop */
+      }
       window.requestAnimationFrame(() => {
-        portaModal.querySelector(".hx-porta-modal__close")?.focus();
+        portaModal.querySelector(".hx-porta-modal__close")?.focus?.();
       });
     }
 
@@ -453,11 +457,15 @@
       openPortaModal();
     }
 
-    document.addEventListener("click", onPortaOpenIntent);
+    document.addEventListener("click", onPortaOpenIntent, true);
 
     if (window.location.hash === "#porta-modal") {
       window.requestAnimationFrame(openPortaModal);
     }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#porta-modal") openPortaModal();
+    });
   }
 
   /* Modal rotulaciones — carrusel de 6 ejemplos */
@@ -572,18 +580,26 @@
       }
     });
 
-    document.addEventListener("click", (event) => {
-      const item = event.target.closest(
-        '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
-      );
-      if (!item || item.closest(".hx-rotul-modal")) return;
-      event.preventDefault();
-      if (!rotulModal.classList.contains("is-open")) openRotulModal();
-    });
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
+        );
+        if (!item || item.closest(".hx-rotul-modal")) return;
+        event.preventDefault();
+        if (!rotulModal.classList.contains("is-open")) openRotulModal();
+      },
+      true
+    );
 
     if (window.location.hash === "#rotulaciones-modal") {
       window.requestAnimationFrame(openRotulModal);
     }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#rotulaciones-modal") openRotulModal();
+    });
   }
 
   /* Modal vinculaciones — pasos + QR por compañía */
@@ -657,18 +673,26 @@
       }
     });
 
-    document.addEventListener("click", (event) => {
-      const item = event.target.closest(
-        '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
-      );
-      if (!item || item.closest(".hx-vinc-modal")) return;
-      event.preventDefault();
-      if (!vincModal.classList.contains("is-open")) openVincModal();
-    });
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
+        );
+        if (!item || item.closest(".hx-vinc-modal")) return;
+        event.preventDefault();
+        if (!vincModal.classList.contains("is-open")) openVincModal();
+      },
+      true
+    );
 
     if (window.location.hash === "#vinculaciones-modal") {
       window.requestAnimationFrame(openVincModal);
     }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#vinculaciones-modal") openVincModal();
+    });
   }
 
   /* Modal eSIM — portales oficiales por compañía */
@@ -742,18 +766,26 @@
       }
     });
 
-    document.addEventListener("click", (event) => {
-      const item = event.target.closest(
-        '[data-hx-esim-open], [data-deck-svc="esims"]'
-      );
-      if (!item || item.closest(".hx-esim-modal")) return;
-      event.preventDefault();
-      if (!esimModal.classList.contains("is-open")) openEsimModal();
-    });
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-esim-open], [data-deck-svc="esims"]'
+        );
+        if (!item || item.closest(".hx-esim-modal")) return;
+        event.preventDefault();
+        if (!esimModal.classList.contains("is-open")) openEsimModal();
+      },
+      true
+    );
 
     if (window.location.hash === "#esim-modal") {
       window.requestAnimationFrame(openEsimModal);
     }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#esim-modal") openEsimModal();
+    });
   }
 
   if (panel) {
