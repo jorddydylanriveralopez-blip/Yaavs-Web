@@ -5932,6 +5932,28 @@ body.hx-svc-panel-open {
   overflow: hidden;
 }
 
+/* Los modales viven dentro de #contenido; el header (z-index 1100) los tapaba */
+body.hx-svc-panel-open #site-header,
+body.hx-svc-panel-open .site-header {
+  z-index: 1 !important;
+}
+
+body.hx-svc-panel-open .wa-float,
+body.hx-svc-panel-open .yaavbot-fab,
+body.hx-svc-panel-open [data-wa-float] {
+  z-index: 1 !important;
+}
+
+.hx-porta-modal,
+.hx-act-modal,
+.hx-rotul-modal,
+.hx-yaavshop-modal,
+.hx-vinc-modal,
+.hx-esim-modal,
+.hx-svc-panel {
+  z-index: 12000;
+}
+
 /* ─── Manifiesto + video ─── */
 .hx-manifesto.manifesto {
   border-top: 1px solid rgba(90, 156, 196, 0.15);
