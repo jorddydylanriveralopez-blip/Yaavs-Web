@@ -4612,7 +4612,7 @@ body.page-home {
     display: none;
   }
 
-  /* ── Masonry móvil — 3 columnas ── */
+  /* Masonry móvil — 3 columnas alineadas (sin desfase) */
   .page-home .hx-svc-deck-masonry {
     display: flex;
     flex-direction: column;
@@ -4624,7 +4624,7 @@ body.page-home {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(8px, 2.2vw, 10px);
-    align-items: start;
+    align-items: stretch;
   }
 
   .page-home .hx-svc-deck-masonry__col {
@@ -4634,21 +4634,16 @@ body.page-home {
     min-width: 0;
   }
 
-  /* Desfase tipo Pinterest en 3 columnas */
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] {
-    padding-top: clamp(16px, 4.5vw, 26px);
-  }
-
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"],
   .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
-    padding-top: clamp(28px, 7vw, 40px);
+    padding-top: 0;
   }
 
   .page-home .hx-svc-deck__item,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item {
     --mob-card-r: clamp(12px, 3.2vw, 16px);
-    --deck-float-y: 5px;
-    --deck-float-rot: 0.35deg;
     position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -4657,7 +4652,9 @@ body.page-home {
     overflow: hidden;
     opacity: 1;
     pointer-events: auto;
-    transform: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transform: none !important;
     contain: none;
     aspect-ratio: auto;
     background: #0a1630;
@@ -4667,52 +4664,35 @@ body.page-home {
     box-shadow:
       0 4px 14px rgba(15, 36, 64, 0.07),
       0 1px 0 rgba(255, 255, 255, 0.9) inset;
-    transition:
-      box-shadow 0.28s ease;
-    will-change: transform;
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
+    will-change: auto;
+    animation: none !important;
   }
 
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:nth-child(even) {
-    --deck-float-y: -5px;
-    --deck-float-rot: -0.4deg;
-  }
-
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] .hx-svc-deck__item:nth-child(odd) {
-    --deck-float-y: 6px;
-    --deck-float-rot: -0.3deg;
-  }
-
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:nth-child(even),
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] .hx-svc-deck__item:nth-child(odd),
   .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] .hx-svc-deck__item:nth-child(even) {
-    --deck-float-y: 7px;
-    --deck-float-rot: 0.45deg;
+    --deck-float-y: 0px;
+    --deck-float-rot: 0deg;
   }
 
   .page-home .hx-svc-deck__item.is-deck-in,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item.is-deck-in {
-    animation:
-      hx-masonry-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards,
-      hx-masonry-float 4.6s ease-in-out infinite;
-    animation-delay:
-      calc(var(--deck-i, 0) * 45ms),
-      calc(0.5s + var(--deck-i, 0) * 0.32s);
+    animation: none !important;
+    opacity: 1;
+    transform: none !important;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__icon img {
-    animation: hx-masonry-icon-drift 6.8s ease-in-out infinite alternate;
-    animation-delay: calc(var(--deck-i, 0) * 0.28s);
-    transform-origin: center center;
+    animation: none !important;
+    transform: none !important;
   }
 
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"] {
-    animation: hx-masonry-col-sway 7.5s ease-in-out infinite;
-  }
-
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] {
-    animation: hx-masonry-col-sway 8.2s ease-in-out 0.4s infinite reverse;
-  }
-
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"],
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"],
   .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
-    animation: hx-masonry-col-sway 7.8s ease-in-out 0.8s infinite;
+    animation: none !important;
+    transform: none !important;
   }
 
   .page-home .hx-svc-deck__item::before,
@@ -4730,6 +4710,7 @@ body.page-home {
       color-mix(in srgb, var(--deck-accent) 35%, #fff)
     );
     border-radius: var(--mob-card-r) var(--mob-card-r) 0 0;
+    pointer-events: none;
   }
 
   .page-home .hx-svc-deck__item::after {
@@ -4738,8 +4719,8 @@ body.page-home {
 
   .page-home .hx-svc-deck__item:active,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:active {
-    animation-play-state: paused;
-    transform: scale(0.97) !important;
+    animation: none !important;
+    transform: scale(0.98) !important;
     box-shadow: 0 2px 10px rgba(15, 36, 64, 0.12);
   }
 
@@ -4750,22 +4731,15 @@ body.page-home {
     width: 100%;
     overflow: hidden;
     background: transparent;
+    pointer-events: none;
   }
 
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg {
-    aspect-ratio: var(--masonry-ratio, 4 / 5);
-  }
-
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="tall"] .hx-svc-deck__bg {
-    aspect-ratio: var(--masonry-ratio, 3 / 4);
-  }
-
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="med"] .hx-svc-deck__bg {
-    aspect-ratio: var(--masonry-ratio, 4 / 5);
-  }
-
+  /* Misma proporción en todas las tarjetas (salvo hero) para que no se desalineen */
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg,
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="tall"] .hx-svc-deck__bg,
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="med"] .hx-svc-deck__bg,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="short"] .hx-svc-deck__bg {
-    aspect-ratio: var(--masonry-ratio, 1 / 1);
+    aspect-ratio: 1 / 1;
   }
 
   .page-home .hx-svc-deck__bg img {
@@ -4826,6 +4800,7 @@ body.page-home {
     padding: 8px 8px 10px;
     background: transparent;
     border-top: none;
+    pointer-events: none;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__title {

@@ -1601,13 +1601,8 @@
 
     function initMobileMasonry() {
       layoutMobileMasonry();
-      scheduleMasonryBalance();
-      getDeckItems().forEach((item) => {
-        item.querySelectorAll("img").forEach((img) => {
-          if (img.complete) return;
-          img.addEventListener("load", scheduleMasonryBalance, { once: true });
-        });
-      });
+      /* Una sola distribución fija: no rebalancear (evita que se muevan bajo el dedo) */
+      getDeckItems().forEach((item) => ensureDeckIcon(item));
     }
 
     const staggerDeckCards = () => {
@@ -1861,34 +1856,6 @@
     });
 
     deckItems.forEach((item) => {
-      if (!reduced && !deckDesktopMq.matches) {
-        let tiltFrame = 0;
-        let tiltEvent = null;
-
-        const applyTilt = () => {
-          tiltFrame = 0;
-          if (!tiltEvent) return;
-          const rect = item.getBoundingClientRect();
-          const px = (tiltEvent.clientX - rect.left) / rect.width - 0.5;
-          const py = (tiltEvent.clientY - rect.top) / rect.height - 0.5;
-          item.style.setProperty("--deck-tilt-y", `${(px * 8).toFixed(1)}deg`);
-          item.style.setProperty("--deck-tilt-x", `${(py * -6).toFixed(1)}deg`);
-        };
-
-        item.addEventListener("mousemove", (event) => {
-          tiltEvent = event;
-          if (!tiltFrame) tiltFrame = requestAnimationFrame(applyTilt);
-        });
-
-        item.addEventListener("mouseleave", () => {
-          tiltEvent = null;
-          if (tiltFrame) cancelAnimationFrame(tiltFrame);
-          tiltFrame = 0;
-          item.style.setProperty("--deck-tilt-x", "0deg");
-          item.style.setProperty("--deck-tilt-y", "0deg");
-        });
-      }
-
       item.addEventListener("focusin", () => {
         if (!deckDesktopMq.matches) {
           deckItems.forEach((el) => el.classList.toggle("is-active", el === item));
