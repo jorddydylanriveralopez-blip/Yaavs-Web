@@ -1869,6 +1869,7 @@
           "is-deck-expanded",
           "is-deck-video-on",
           "is-deck-fallback-on",
+          "is-deck-gif-on",
           "is-deck-preview"
         );
         const handlers = squareHandlers.get(item);
@@ -1894,6 +1895,9 @@
       const video = handlers.loadVideo();
       if (!video) {
         item.classList.add("is-deck-fallback-on");
+        if (deckMediaCfg[item.getAttribute("data-deck-svc")]?.gif) {
+          item.classList.add("is-deck-gif-on");
+        }
         return;
       }
 
@@ -1910,7 +1914,7 @@
     }
 
     function stopDeckMedia(item) {
-      item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on", "is-deck-preview");
+      item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on", "is-deck-gif-on", "is-deck-preview");
       const video = item.querySelector(".hx-svc-deck__video");
       if (video) {
         video.pause();

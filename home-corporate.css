@@ -4019,6 +4019,10 @@ body.page-home {
     animation: hx-deck-kenburns 9s ease-in-out infinite alternate;
   }
 
+  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-gif-on .hx-svc-deck__media-fallback {
+    animation: none;
+  }
+
   .page-home .hx-svc-deck--square .hx-svc-deck__label {
     left: 16px;
     right: 16px;

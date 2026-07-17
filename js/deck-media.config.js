@@ -44,8 +44,9 @@ window.YAAVS_DECK_MEDIA = {
     mp4: "assets/servicios/videos/rotulaciones.mp4",
   },
   yaashop: {
-    icon: "assets/servicios/icons/yaashop.png",
-    poster: "assets/hero-telecom/hero-yaavs-float.png",
+    icon: "assets/servicios/yaashop.gif",
+    poster: "assets/servicios/yaashop.gif",
+    gif: "assets/servicios/yaashop.gif",
     mp4: "assets/servicios/videos/yaashop.mp4",
   },
   "soporte-tecnico": {
