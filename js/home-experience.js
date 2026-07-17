@@ -5,6 +5,30 @@
   const root = document.getElementById("home-experience");
   if (!root) return;
 
+  /* Móvil: 1er tap = video preview, 2º tap = destino (debe registrarse antes que los modales) */
+  const deckPreviewDesktopMq = window.matchMedia("(min-width: 769px)");
+  let runMobileDeckPreview = null;
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (deckPreviewDesktopMq.matches || reduced) return;
+      const item = event.target.closest?.(".hx-svc-deck__item");
+      if (!item || !root.contains(item)) return;
+      if (item.closest('[role="dialog"]')) return;
+      if (item.classList.contains("is-deck-preview")) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (typeof runMobileDeckPreview === "function") {
+        runMobileDeckPreview(item);
+      } else {
+        item.classList.add("is-deck-preview");
+      }
+    },
+    true
+  );
+
   /* Revelar al scroll (excluye hx-pulse — tiene su propio ciclo) */
   const revealEls = [...root.querySelectorAll("[data-hx-reveal]")].filter(
     (el) => !el.closest(".hx-pulse")
@@ -1841,7 +1865,12 @@
       if (deckMoreLabel) deckMoreLabel.textContent = "Ver más";
 
       deckItems.forEach((item) => {
-        item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on");
+        item.classList.remove(
+          "is-deck-expanded",
+          "is-deck-video-on",
+          "is-deck-fallback-on",
+          "is-deck-preview"
+        );
         const handlers = squareHandlers.get(item);
         if (handlers) {
           item.removeEventListener("mouseenter", handlers.enter);
@@ -1881,7 +1910,7 @@
     }
 
     function stopDeckMedia(item) {
-      item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on");
+      item.classList.remove("is-deck-expanded", "is-deck-video-on", "is-deck-fallback-on", "is-deck-preview");
       const video = item.querySelector(".hx-svc-deck__video");
       if (video) {
         video.pause();
@@ -1892,6 +1921,19 @@
         }
       }
     }
+
+    runMobileDeckPreview = (item) => {
+      deckItems = getDeckItems();
+      deckItems.forEach((el) => {
+        if (el === item) return;
+        if (el.classList.contains("is-deck-preview") || el.classList.contains("is-deck-expanded")) {
+          stopDeckMedia(el);
+        }
+      });
+      setupDeckItemMedia(item);
+      item.classList.add("is-deck-preview");
+      playDeckMedia(item);
+    };
 
     function ensureDeckIcon(item) {
       const id = item.getAttribute("data-deck-svc");
@@ -2005,7 +2047,10 @@
     }
 
     function initMobileDeckIcons() {
-      getDeckItems().forEach((item) => ensureDeckIcon(item));
+      getDeckItems().forEach((item) => {
+        ensureDeckIcon(item);
+        setupDeckItemMedia(item);
+      });
     }
 
     function syncDeckLayout() {
