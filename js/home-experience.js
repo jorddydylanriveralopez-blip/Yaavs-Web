@@ -1649,13 +1649,11 @@
 
       if (heroItem) {
         heroItem.removeAttribute("role");
-        heroItem.classList.add("is-deck-in");
         masonryEl.insertBefore(heroItem, colsWrap);
       }
 
       rest.forEach((item) => {
         item.removeAttribute("role");
-        item.classList.add("is-deck-in");
       });
       distributeMasonryColumns(rest, cols);
 
@@ -1693,20 +1691,22 @@
     }
 
     const staggerDeckCards = () => {
-      deckItems = getDeckItems();
+      deckItems = [...getDeckItems()].sort(
+        (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
+      );
       if (reduced) {
         deckItems.forEach((item) => item.classList.add("is-deck-in"));
         return;
       }
 
       let index = 0;
+      const gap = deckDesktopMq.matches ? 42 : 48;
       const step = () => {
-        deckItems = getDeckItems();
         if (index >= deckItems.length) return;
         deckItems[index].classList.add("is-deck-in");
         index += 1;
         if (index < deckItems.length) {
-          deckStaggerTimer = window.setTimeout(step, deckDesktopMq.matches ? 42 : 36);
+          deckStaggerTimer = window.setTimeout(step, gap);
         }
       };
       step();
@@ -1716,11 +1716,6 @@
       if (deckLive) return;
       deckLive = true;
       deckSection.classList.add("is-deck-live");
-      deckItems = getDeckItems();
-      if (!deckDesktopMq.matches) {
-        deckItems.forEach((item) => item.classList.add("is-deck-in"));
-        return;
-      }
       staggerDeckCards();
     };
 
@@ -1911,7 +1906,9 @@
         teardownDeckSquare();
         initMobileMasonry();
         initMobileDeckIcons();
-        getDeckItems().forEach((item) => item.classList.add("is-deck-in"));
+        if (deckLive) {
+          getDeckItems().forEach((item) => item.classList.add("is-deck-in"));
+        }
       }
     }
 
