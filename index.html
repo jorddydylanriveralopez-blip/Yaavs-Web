@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=7">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=39">
+  <link rel="stylesheet" href="home-experience.css?v=40">
   <link rel="stylesheet" href="home-corporate.css?v=134">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -114,7 +114,7 @@
         <div class="hx-svc-deck-wrap" data-hx-deck-wrap>
           <div class="hx-svc-deck-layout" data-hx-deck-layout>
           <div class="hx-svc-deck" data-hx-svc-deck>
-          <a href="activar-chip.html" class="hx-svc-deck__item" data-deck-svc="recargaklic" data-masonry="hero" data-accent="green" style="--deck-i: 0; --masonry-ratio: 16 / 10">
+          <a href="#recargaklic-modal" class="hx-svc-deck__item" data-deck-svc="recargaklic" data-hx-rk-open data-masonry="hero" data-accent="green" style="--deck-i: 0; --masonry-ratio: 16 / 10" aria-haspopup="dialog" aria-controls="recargaklic-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/servicios/activaciones.jpg" alt="" width="900" height="1200" loading="eager" decoding="async">
             </span>
@@ -327,6 +327,39 @@
             <a class="hx-act-modal__option" href="activar-chip.html?operador=unefon" aria-label="Unefon — activar chip">
               <span class="hx-act-modal__option-logo"><img src="assets/operadores/unefon-carriers.png" alt="" width="120" height="70" loading="lazy" decoding="async"></span>
               <span class="hx-act-modal__option-cta">Activar Unefon →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-act-modal hx-rk-modal" id="recargaklic-modal" data-hx-rk-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="recargaklic-modal-title">
+        <div class="hx-act-modal__backdrop" data-hx-rk-close aria-hidden="true"></div>
+        <div class="hx-act-modal__sheet">
+          <button type="button" class="hx-act-modal__close" data-hx-rk-close aria-label="Cerrar">&times;</button>
+          <p class="hx-act-modal__kicker">RecargaKlic</p>
+          <h3 class="hx-act-modal__title" id="recargaklic-modal-title">Descarga la app en tu celular</h3>
+          <p class="hx-act-modal__desc">Elige tu sistema y te llevamos a la tienda para instalar RecargaKlic.</p>
+          <div class="hx-act-modal__options hx-rk-modal__options">
+            <a
+              class="hx-act-modal__option hx-rk-modal__option"
+              href="https://play.google.com/store/apps/details?id=mx.com.yaavs.recargaklic"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-hx-rk-store="android"
+              aria-label="Descargar RecargaKlic en Google Play"
+            >
+              <span class="hx-rk-modal__store-name">Android</span>
+              <span class="hx-act-modal__option-cta">Google Play →</span>
+            </a>
+            <a
+              class="hx-act-modal__option hx-rk-modal__option is-soon"
+              href="#recargaklic-modal"
+              data-hx-rk-store="ios"
+              aria-disabled="true"
+              aria-label="Descargar RecargaKlic en App Store (próximamente)"
+            >
+              <span class="hx-rk-modal__store-name">iPhone / iPad</span>
+              <span class="hx-act-modal__option-cta">App Store · pronto</span>
             </a>
           </div>
         </div>
@@ -1084,42 +1117,49 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=2",
-        "js/home-experience.js?v=74",
+        "js/home-experience.js?v=75",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=74",
+          "js/home-experience.js?v=75",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=74",
+          "js/home-experience.js?v=75",
         ]);
       }
 
       if (window.location.hash === "#vinculaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=74",
+          "js/home-experience.js?v=75",
         ]);
       }
 
       if (window.location.hash === "#esim-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=74",
+          "js/home-experience.js?v=75",
         ]);
       }
 
       if (window.location.hash === "#activaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=2",
-          "js/home-experience.js?v=74",
+          "js/home-experience.js?v=75",
+        ]);
+      }
+
+      if (window.location.hash === "#recargaklic-modal") {
+        void loadBatchOnce("home-deck", [
+          "js/deck-media.config.js?v=2",
+          "js/home-experience.js?v=75",
         ]);
       }
 

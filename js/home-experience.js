@@ -217,7 +217,7 @@
         "Ejecuta la operacion y revisa el folio de confirmacion.",
         "Guarda comprobantes para control y soporte posterior.",
       ],
-      link: { href: "activar-chip.html", label: "Abrir RecargaKlic" },
+      link: { href: "#recargaklic-modal", label: "Descargar app" },
     },
     "tiempo-aire": {
       theme: "violet",
@@ -534,6 +534,114 @@
 
     window.addEventListener("hashchange", () => {
       if (window.location.hash === "#activaciones-modal") openActModal();
+    });
+  }
+
+  /* Modal RecargaKlic — Android / iOS store */
+  const rkModal = root.querySelector("[data-hx-rk-modal]");
+  if (rkModal) {
+    const RK_ANDROID =
+      "https://play.google.com/store/apps/details?id=mx.com.yaavs.recargaklic";
+    /* Pega aquí el link de App Store cuando lo tengas */
+    const RK_IOS = "";
+    let rkLastFocus = null;
+
+    const iosLink = rkModal.querySelector('[data-hx-rk-store="ios"]');
+    if (RK_IOS && iosLink) {
+      iosLink.href = RK_IOS;
+      iosLink.target = "_blank";
+      iosLink.rel = "noopener noreferrer";
+      iosLink.classList.remove("is-soon");
+      iosLink.removeAttribute("aria-disabled");
+      iosLink.setAttribute("aria-label", "Descargar RecargaKlic en App Store");
+      const cta = iosLink.querySelector(".hx-act-modal__option-cta");
+      if (cta) cta.textContent = "App Store →";
+    }
+
+    function openRkModal() {
+      rkLastFocus = document.activeElement;
+      rkModal.hidden = false;
+      rkModal.removeAttribute("hidden");
+      rkModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("hx-svc-panel-open");
+      rkModal.classList.add("is-open");
+      try {
+        window.YaavsSonic?.play?.();
+      } catch (_) {
+        /* noop */
+      }
+      window.requestAnimationFrame(() => {
+        rkModal.querySelector(".hx-act-modal__close")?.focus?.();
+      });
+    }
+
+    function closeRkModal() {
+      if (!rkModal.classList.contains("is-open") && rkModal.hidden) return;
+      rkModal.classList.remove("is-open");
+      rkModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!rkModal.classList.contains("is-open")) {
+          rkModal.hidden = true;
+          rkModal.setAttribute("hidden", "");
+        }
+      }, 320);
+      if (rkLastFocus && typeof rkLastFocus.focus === "function") {
+        rkLastFocus.focus();
+      }
+    }
+
+    function isAndroidUa() {
+      return /android/i.test(navigator.userAgent || "");
+    }
+
+    function isIosUa() {
+      return /iPad|iPhone|iPod/i.test(navigator.userAgent || "");
+    }
+
+    rkModal.querySelectorAll("[data-hx-rk-close]").forEach((el) => {
+      el.addEventListener("click", closeRkModal);
+    });
+
+    iosLink?.addEventListener("click", (e) => {
+      if (!RK_IOS || iosLink.classList.contains("is-soon")) {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && rkModal.classList.contains("is-open")) {
+        closeRkModal();
+      }
+    });
+
+    function onRkOpenIntent(event) {
+      const item = event.target.closest?.(
+        '[data-hx-rk-open], [data-deck-svc="recargaklic"]'
+      );
+      if (!item || item.closest("[data-hx-rk-modal]")) return;
+      event.preventDefault();
+
+      if (isAndroidUa()) {
+        window.open(RK_ANDROID, "_blank", "noopener,noreferrer");
+        return;
+      }
+      if (isIosUa() && RK_IOS) {
+        window.open(RK_IOS, "_blank", "noopener,noreferrer");
+        return;
+      }
+      if (rkModal.classList.contains("is-open")) return;
+      openRkModal();
+    }
+
+    document.addEventListener("click", onRkOpenIntent, true);
+
+    if (window.location.hash === "#recargaklic-modal") {
+      window.requestAnimationFrame(openRkModal);
+    }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#recargaklic-modal") openRkModal();
     });
   }
 
