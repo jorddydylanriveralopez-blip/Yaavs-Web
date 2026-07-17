@@ -742,9 +742,10 @@
       const stageH = Math.max(300, Math.floor(bookEl?.clientHeight || 420));
       const pageRatio = 1200 / 1500;
       const mobile = yaavshopMobileMq.matches;
+      const fullscreen = yaavshopModal.classList.contains("is-fullscreen");
 
       if (mobile) {
-        let width = Math.floor(stageW * 0.94);
+        let width = Math.floor(stageW * (fullscreen ? 0.96 : 0.94));
         let height = Math.floor(width / pageRatio);
         if (height > stageH) {
           height = stageH;
@@ -753,10 +754,10 @@
         return { width: Math.max(160, width), height: Math.max(200, height) };
       }
 
-      let width = Math.floor(Math.min(stageW * 0.46, stageH * pageRatio));
+      let width = Math.floor(Math.min(stageW * (fullscreen ? 0.48 : 0.46), stageH * pageRatio));
       let height = Math.floor(width / pageRatio);
       if (width * 2 > stageW) {
-        width = Math.floor(stageW * 0.46);
+        width = Math.floor(stageW * (fullscreen ? 0.48 : 0.46));
         height = Math.floor(width / pageRatio);
       }
       if (height > stageH) {
@@ -798,9 +799,15 @@
         height: size.height,
         size: "stretch",
         minWidth: yaavshopMobileMq.matches ? 160 : 140,
-        maxWidth: yaavshopMobileMq.matches ? 420 : 480,
+        maxWidth: yaavshopMobileMq.matches ? 420 : yaavshopModal.classList.contains("is-fullscreen") ? 560 : 480,
         minHeight: yaavshopMobileMq.matches ? 200 : 180,
-        maxHeight: yaavshopMobileMq.matches ? 720 : 640,
+        maxHeight: yaavshopMobileMq.matches
+          ? yaavshopModal.classList.contains("is-fullscreen")
+            ? 820
+            : 720
+          : yaavshopModal.classList.contains("is-fullscreen")
+            ? 820
+            : 640,
         drawShadow: true,
         flippingTime: reduced ? 0 : 650,
         usePortrait: true,
@@ -815,6 +822,22 @@
       updateYaavshopIndex();
     }
 
+    function setYaavshopFullscreen(on) {
+      const fsBtn = yaavshopModal.querySelector("[data-hx-yaavshop-fs]");
+      yaavshopModal.classList.toggle("is-fullscreen", on);
+      if (fsBtn) {
+        fsBtn.setAttribute("aria-pressed", on ? "true" : "false");
+        fsBtn.setAttribute(
+          "aria-label",
+          on ? "Salir de pantalla completa" : "Ver a pantalla completa"
+        );
+        fsBtn.textContent = on ? "Salir" : "Pantalla completa";
+      }
+      window.requestAnimationFrame(() => {
+        void ensureYaavshopFlip().catch(() => {});
+      });
+    }
+
     function openYaavshopModal() {
       yaavshopLastFocus = document.activeElement;
       yaavshopModal.hidden = false;
@@ -822,6 +845,13 @@
       yaavshopModal.setAttribute("aria-hidden", "false");
       document.body.classList.add("hx-svc-panel-open");
       yaavshopModal.classList.add("is-open");
+      yaavshopModal.classList.remove("is-fullscreen");
+      const fsBtn = yaavshopModal.querySelector("[data-hx-yaavshop-fs]");
+      if (fsBtn) {
+        fsBtn.setAttribute("aria-pressed", "false");
+        fsBtn.setAttribute("aria-label", "Ver a pantalla completa");
+        fsBtn.textContent = "Pantalla completa";
+      }
       try {
         window.YaavsSonic?.play?.();
       } catch (_) {
@@ -837,7 +867,7 @@
 
     function closeYaavshopModal() {
       if (!yaavshopModal.classList.contains("is-open") && yaavshopModal.hidden) return;
-      yaavshopModal.classList.remove("is-open");
+      yaavshopModal.classList.remove("is-open", "is-fullscreen");
       yaavshopModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("hx-svc-panel-open");
       teardownYaavshopFlip();
@@ -863,6 +893,10 @@
       el.addEventListener("click", closeYaavshopModal);
     });
 
+    yaavshopModal.querySelector("[data-hx-yaavshop-fs]")?.addEventListener("click", () => {
+      setYaavshopFullscreen(!yaavshopModal.classList.contains("is-fullscreen"));
+    });
+
     yaavshopModal.querySelector("[data-hx-yaavshop-prev]")?.addEventListener("click", () => {
       yaavshopFlip?.flipPrev();
     });
@@ -873,6 +907,10 @@
     document.addEventListener("keydown", (e) => {
       if (!yaavshopModal.classList.contains("is-open")) return;
       if (e.key === "Escape") {
+        if (yaavshopModal.classList.contains("is-fullscreen")) {
+          setYaavshopFullscreen(false);
+          return;
+        }
         closeYaavshopModal();
         return;
       }

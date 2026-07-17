@@ -5096,10 +5096,44 @@ a.hx-plan-picker__card {
   transform: translateY(0) scale(1);
 }
 
-.hx-yaavshop-modal__close {
+.hx-yaavshop-modal__topbar {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hx-yaavshop-modal__fs {
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(12, 48, 72, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0a2a40;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.hx-yaavshop-modal__fs:hover,
+.hx-yaavshop-modal__fs:focus-visible {
+  background: rgba(0, 188, 212, 0.16);
+  border-color: rgba(0, 188, 212, 0.45);
+  outline: none;
+}
+
+.hx-yaavshop-modal__close {
+  position: static;
+  top: auto;
+  right: auto;
   width: 36px;
   height: 36px;
   border: 1px solid rgba(12, 48, 72, 0.12);
@@ -5109,6 +5143,7 @@ a.hx-plan-picker__card {
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .hx-yaavshop-modal__close:hover,
@@ -5118,8 +5153,58 @@ a.hx-plan-picker__card {
   outline: none;
 }
 
+.hx-yaavshop-modal.is-fullscreen {
+  padding: 0;
+  align-items: stretch;
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__backdrop {
+  background: rgba(4, 18, 32, 0.72);
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__sheet {
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  height: 100%;
+  min-height: 100dvh;
+  border-radius: 0;
+  border: none;
+  padding: max(14px, var(--safe-top)) max(14px, var(--safe-right)) max(14px, var(--safe-bottom)) max(14px, var(--safe-left));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__desc {
+  display: none;
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__title {
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
+  margin-bottom: 8px;
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-flip {
+  flex: 1 1 auto;
+  min-height: 0;
+  justify-content: center;
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-flip__stage {
+  width: min(100%, 1100px);
+  height: min(78dvh, 760px);
+  min-height: 280px;
+}
+
+.hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__actions {
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+
 .hx-yaavshop-modal__kicker {
   margin: 0 0 6px;
+  padding-right: 200px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -5129,7 +5214,7 @@ a.hx-plan-picker__card {
 
 .hx-yaavshop-modal__title {
   margin: 0 0 8px;
-  padding-right: 36px;
+  padding-right: 200px;
   font-size: clamp(1.15rem, 3.4vw, 1.5rem);
   font-weight: 800;
   text-transform: uppercase;
@@ -5260,6 +5345,11 @@ a.hx-plan-picker__card {
     padding: max(8px, var(--safe-top)) 8px max(8px, var(--safe-bottom));
   }
 
+  .hx-yaavshop-modal.is-fullscreen {
+    padding: 0;
+    align-items: stretch;
+  }
+
   .hx-yaavshop-modal__sheet {
     width: 100%;
     max-height: min(94dvh, 920px);
@@ -5267,6 +5357,27 @@ a.hx-plan-picker__card {
     border-radius: 18px 18px 12px 12px;
     display: flex;
     flex-direction: column;
+  }
+
+  .hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__sheet {
+    max-height: none;
+    height: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+    padding: max(12px, var(--safe-top)) 10px max(12px, var(--safe-bottom));
+  }
+
+  .hx-yaavshop-modal__fs {
+    font-size: 0.62rem;
+    padding: 0 10px;
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hx-yaavshop-modal__kicker,
+  .hx-yaavshop-modal__title {
+    padding-right: 150px;
   }
 
   .hx-yaavshop-modal__title {
@@ -5289,6 +5400,11 @@ a.hx-plan-picker__card {
     min-height: 260px;
   }
 
+  .hx-yaavshop-modal.is-fullscreen .hx-yaavshop-flip__stage {
+    height: min(68dvh, 620px);
+    min-height: 300px;
+  }
+
   .hx-yaavshop-flip__nav {
     width: 48px;
     height: 48px;
@@ -5303,6 +5419,10 @@ a.hx-plan-picker__card {
     bottom: 0;
     padding-top: 8px;
     background: linear-gradient(180deg, rgba(236, 246, 252, 0) 0%, rgba(236, 246, 252, 0.95) 28%, rgba(236, 246, 252, 0.98) 100%);
+  }
+
+  .hx-yaavshop-modal.is-fullscreen .hx-yaavshop-modal__actions {
+    position: static;
   }
 
   .hx-yaavshop-modal__cta {

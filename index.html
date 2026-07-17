@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=7">
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
-  <link rel="stylesheet" href="home-experience.css?v=43">
+  <link rel="stylesheet" href="home-experience.css?v=44">
   <link rel="stylesheet" href="home-corporate.css?v=136">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -369,7 +369,10 @@
       <div class="hx-yaavshop-modal" id="yaavshop-modal" data-hx-yaavshop-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="yaavshop-modal-title">
         <div class="hx-yaavshop-modal__backdrop" data-hx-yaavshop-close aria-hidden="true"></div>
         <div class="hx-yaavshop-modal__sheet">
-          <button type="button" class="hx-yaavshop-modal__close" data-hx-yaavshop-close aria-label="Cerrar">&times;</button>
+          <div class="hx-yaavshop-modal__topbar">
+            <button type="button" class="hx-yaavshop-modal__fs" data-hx-yaavshop-fs aria-pressed="false" aria-label="Ver a pantalla completa">Pantalla completa</button>
+            <button type="button" class="hx-yaavshop-modal__close" data-hx-yaavshop-close aria-label="Cerrar">&times;</button>
+          </div>
           <p class="hx-yaavshop-modal__kicker">Yaavshop</p>
           <h3 class="hx-yaavshop-modal__title" id="yaavshop-modal-title">Catálogo Yaavstar 2026</h3>
           <p class="hx-yaavshop-modal__desc">Desliza las páginas del catálogo. Sin tienda física: pide por WhatsApp cuando veas algo que te guste.</p>
@@ -1153,56 +1156,56 @@
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=4",
-        "js/home-experience.js?v=80",
+        "js/home-experience.js?v=81",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
       if (window.location.hash === "#vinculaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
       if (window.location.hash === "#esim-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
       if (window.location.hash === "#activaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
       if (window.location.hash === "#yaavshop-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
       if (window.location.hash === "#recargaklic-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=4",
-          "js/home-experience.js?v=80",
+          "js/home-experience.js?v=81",
         ]);
       }
 
