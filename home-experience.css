@@ -5226,6 +5226,34 @@ a.hx-plan-picker__card {
   text-align: center;
 }
 
+/* Evita .page-home .btn--line (blanco) sobre el modal claro */
+.hx-yaavshop-modal .btn--primary.hx-yaavshop-modal__cta {
+  color: #041828;
+  background: linear-gradient(135deg, #00bcd4 0%, #00d4ee 100%);
+  border: none;
+  box-shadow: 0 8px 22px rgba(0, 168, 196, 0.28);
+}
+
+.hx-yaavshop-modal .btn--line.hx-yaavshop-modal__cta,
+.hx-yaavshop-modal .hx-yaavshop-modal__cta--pdf {
+  display: inline-flex;
+  color: #0a2a40 !important;
+  -webkit-text-fill-color: #0a2a40;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1.5px solid rgba(10, 42, 64, 0.28) !important;
+  box-shadow: none;
+}
+
+.hx-yaavshop-modal .btn--line.hx-yaavshop-modal__cta:hover,
+.hx-yaavshop-modal .btn--line.hx-yaavshop-modal__cta:focus-visible,
+.hx-yaavshop-modal .hx-yaavshop-modal__cta--pdf:hover,
+.hx-yaavshop-modal .hx-yaavshop-modal__cta--pdf:focus-visible {
+  color: #087a8c !important;
+  -webkit-text-fill-color: #087a8c;
+  border-color: rgba(0, 188, 212, 0.55) !important;
+  background: rgba(0, 188, 212, 0.1) !important;
+}
+
 @media (max-width: 700px) {
   .hx-yaavshop-modal {
     align-items: flex-end;
@@ -5237,6 +5265,8 @@ a.hx-plan-picker__card {
     max-height: min(94dvh, 920px);
     padding: 16px 12px calc(14px + env(safe-area-inset-bottom, 0px));
     border-radius: 18px 18px 12px 12px;
+    display: flex;
+    flex-direction: column;
   }
 
   .hx-yaavshop-modal__title {
@@ -5248,10 +5278,15 @@ a.hx-plan-picker__card {
     margin-bottom: 12px;
   }
 
+  .hx-yaavshop-flip {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
   .hx-yaavshop-flip__stage {
     width: 100%;
-    height: min(62dvh, 520px);
-    min-height: 320px;
+    height: min(48dvh, 420px);
+    min-height: 260px;
   }
 
   .hx-yaavshop-flip__nav {
@@ -5262,7 +5297,12 @@ a.hx-plan-picker__card {
   .hx-yaavshop-modal__actions {
     flex-direction: column;
     align-items: stretch;
-    margin-top: 14px;
+    margin-top: 12px;
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    padding-top: 8px;
+    background: linear-gradient(180deg, rgba(236, 246, 252, 0) 0%, rgba(236, 246, 252, 0.95) 28%, rgba(236, 246, 252, 0.98) 100%);
   }
 
   .hx-yaavshop-modal__cta {
