@@ -542,8 +542,7 @@
   if (rkModal) {
     const RK_ANDROID =
       "https://play.google.com/store/apps/details?id=mx.com.yaavs.recargaklic";
-    /* Pega aquí el link de App Store cuando lo tengas */
-    const RK_IOS = "";
+    const RK_IOS = "https://apps.apple.com/app/id6470101781";
     let rkLastFocus = null;
 
     const iosLink = rkModal.querySelector('[data-hx-rk-store="ios"]');
