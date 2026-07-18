@@ -955,7 +955,7 @@
     });
   }
 
-  /* Modal rotulaciones — carrusel de 6 ejemplos */
+  /* Modal rotulaciones — carrusel de ejemplos */
   const rotulModal = root.querySelector("[data-hx-rotul-modal]");
   if (rotulModal) {
     let rotulLastFocus = null;
