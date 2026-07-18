@@ -40,7 +40,7 @@ window.YAAVS_DECK_MEDIA = {
   },
   rotulaciones: {
     icon: "assets/servicios/icons/rotulaciones.png",
-    poster: "assets/hero-telecom/hero-portada-campeones.jpg",
+    poster: "assets/rotulaciones/07.jpg",
     mp4: "assets/servicios/videos/rotulaciones.mp4",
   },
   yaashop: {
