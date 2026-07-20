@@ -42,7 +42,7 @@ window.YAAVS_PAGE_BANNERS = {
     images: [
       "assets/yaavser/cliente-satisfecho.jpg",
       "assets/hero-telecom/hero-portada-campeones.jpg",
-      "assets/hero-telecom/hero-campeones-vincula.png",
+      "assets/hero-telecom/hero-campeones-vincula.jpg",
     ],
     poster: "assets/yaavser/cliente-satisfecho.jpg",
     interval: 6500,
