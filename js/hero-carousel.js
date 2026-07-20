@@ -35,9 +35,6 @@
         videoSrc: item.videoSrc || "",
         videoSrcMobile: item.videoSrcMobile || "",
         duration: Number(item.duration) || 0,
-        topCta: item.topCta && item.topCta.href && item.topCta.label
-          ? { label: String(item.topCta.label), href: String(item.topCta.href) }
-          : null,
         objectPosition: item.objectPosition || slideDefaults.objectPosition || "",
         objectPositionMobile: item.objectPositionMobile || slideDefaults.objectPositionMobile || "",
         objectFit: item.objectFit || slideDefaults.objectFit || "",
@@ -372,7 +369,7 @@
     root.setAttribute("aria-live", "polite");
 
     slides.forEach((item, i) => {
-      if (!item.promo || item.videoSlide || item.videoBanner) return;
+      if (!item.promo || item.videoSlide) return;
       root.appendChild(buildPromoSlide(item.promo, i));
     });
 
@@ -411,7 +408,6 @@
 
   const heroBanner = document.querySelector(".hero-banner");
   let bannerLink = null;
-  let topCtaLink = null;
 
   function ensureBannerLink() {
     if (!heroBanner || bannerLink) return;
@@ -424,37 +420,6 @@
     const anchor = heroBanner.querySelector(".hero-particles");
     if (anchor) heroBanner.insertBefore(bannerLink, anchor);
     else heroBanner.appendChild(bannerLink);
-  }
-
-  function ensureTopCta() {
-    if (!heroBanner || topCtaLink) return;
-    topCtaLink = document.createElement("a");
-    topCtaLink.className = "hero-banner__top-cta";
-    topCtaLink.hidden = true;
-    const promoMount = heroBanner.querySelector(".hero-banner__promo");
-    if (promoMount) heroBanner.insertBefore(topCtaLink, promoMount);
-    else {
-      const anchor = heroBanner.querySelector(".hero-particles");
-      if (anchor) heroBanner.insertBefore(topCtaLink, anchor);
-      else heroBanner.appendChild(topCtaLink);
-    }
-  }
-
-  function syncTopCta() {
-    ensureTopCta();
-    if (!topCtaLink) return;
-    const cta = slides[index]?.topCta;
-    if (cta) {
-      topCtaLink.href = cta.href;
-      topCtaLink.textContent = cta.label;
-      topCtaLink.hidden = false;
-      topCtaLink.removeAttribute("aria-hidden");
-    } else {
-      topCtaLink.hidden = true;
-      topCtaLink.setAttribute("aria-hidden", "true");
-      topCtaLink.removeAttribute("href");
-      topCtaLink.textContent = "";
-    }
   }
 
   function syncBannerLink() {
@@ -597,15 +562,20 @@
   function syncSlideUi() {
     const current = slides[index];
     const activeVideoBanner = isActiveVideoBanner(current);
+    const hasPromo = Boolean(current?.promo);
     const isVideo = Boolean(current?.videoSlide || activeVideoBanner);
     document.body.dataset.heroSlide = String(index);
     document.body.dataset.heroAlign = "left";
-    document.body.classList.toggle("hero-slide--graphic", Boolean(current?.hidePromo || activeVideoBanner));
+    document.body.classList.toggle(
+      "hero-slide--graphic",
+      Boolean((current?.hidePromo || activeVideoBanner) && !hasPromo)
+    );
     document.body.classList.toggle("hero-slide--light-shade", Boolean(current?.lightShade));
     document.body.classList.toggle("hero-slide--light-bg", Boolean(current?.lightBg));
     document.body.classList.toggle("hero-slide--video", isVideo);
     document.body.classList.toggle("hero-slide--video-banner", activeVideoBanner);
-    if (current?.hidePromo || activeVideoBanner) {
+    document.body.classList.toggle("hero-slide--has-promo", hasPromo);
+    if ((current?.hidePromo || activeVideoBanner) && !hasPromo) {
       const mobile = isMobileViewport();
       const w = mobile && current.widthMobile ? current.widthMobile : current.width;
       const h = mobile && current.heightMobile ? current.heightMobile : current.height;
@@ -628,7 +598,6 @@
     heroBanner.classList.remove("hero-banner--align-right");
     heroBanner.classList.add("hero-banner--align-left");
     syncBannerLink();
-    syncTopCta();
     if (floatLayer) {
       const hidden = isVideo;
       floatLayer.hidden = hidden;
@@ -639,7 +608,7 @@
   function syncPromo() {
     if (!promoRoot) return;
     const current = slides[index];
-    const hide = Boolean(current?.hidePromo || current?.videoSlide || isActiveVideoBanner(current));
+    const hide = Boolean(current?.hidePromo || current?.videoSlide || !current?.promo);
     promoRoot.hidden = hide;
     promoRoot.setAttribute("aria-hidden", hide ? "true" : "false");
     if (hide) {
@@ -648,7 +617,7 @@
       });
       return;
     }
-    promoRoot.querySelectorAll(".hero-promo__slide").forEach((el, i) => {
+    promoRoot.querySelectorAll(".hero-promo__slide").forEach((el) => {
       const match = Number(el.dataset.promoIndex) === index;
       el.classList.toggle("is-active", match);
       el.setAttribute("aria-hidden", match ? "false" : "true");

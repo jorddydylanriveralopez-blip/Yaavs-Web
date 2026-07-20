@@ -596,8 +596,17 @@ body.page-home.hero-slide--video-banner .page-bg__shade {
   opacity: 0.18;
 }
 
-body.page-home.hero-slide--video-banner .hero-banner__promo {
-  display: none !important;
+body.page-home.hero-slide--video-banner.hero-slide--has-promo .hero-banner__shade,
+body.page-home.hero-slide--video-banner.hero-slide--has-promo .page-bg__shade {
+  opacity: 0.55;
+  background:
+    radial-gradient(ellipse 88% 115% at -6% 50%, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.38) 38%, rgba(0, 0, 0, 0.12) 56%, transparent 72%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, transparent 28%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, transparent 40%);
+}
+
+body.page-home.hero-slide--video-banner.hero-slide--has-promo .hero-banner__promo {
+  display: flex !important;
 }
 
 .hero-carousel__video-media {
@@ -1480,61 +1489,6 @@ body.page-intro-active .nav-menu-hint {
     max(20px, var(--pad-x))
     max(108px, calc(88px + var(--safe-bottom)));
   pointer-events: none;
-}
-
-.hero-banner__top-cta {
-  position: absolute;
-  top: calc(var(--header-h) + clamp(14px, 2.4vw, 22px));
-  left: 50%;
-  z-index: 6;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35em;
-  max-width: min(92vw, 420px);
-  padding: 0.72em 1.35em;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  background: rgba(8, 28, 48, 0.52);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #fff;
-  font-family: Montserrat, system-ui, sans-serif;
-  font-size: clamp(0.82rem, 1.7vw, 0.98rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-align: center;
-  text-decoration: none;
-  text-transform: none;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-  pointer-events: auto;
-  transition:
-    transform 0.22s ease,
-    background 0.22s ease,
-    border-color 0.22s ease;
-}
-
-.hero-banner__top-cta::after {
-  content: "↓";
-  font-weight: 600;
-  opacity: 0.85;
-}
-
-.hero-banner__top-cta:hover,
-.hero-banner__top-cta:focus-visible {
-  background: rgba(12, 48, 72, 0.72);
-  border-color: rgba(255, 255, 255, 0.62);
-  transform: translateX(-50%) translateY(1px);
-}
-
-.hero-banner__top-cta:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
-  outline-offset: 3px;
-}
-
-.hero-banner__top-cta[hidden] {
-  display: none !important;
 }
 
 #servicios-preview {
