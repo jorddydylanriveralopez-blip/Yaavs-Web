@@ -31,16 +31,16 @@ window.YAAVS_HERO_CAROUSEL = {
       duration: 0,
     },
     {
-      /* Desktop: VIDEO SERVICIOS · móvil: banner estático */
+      /* Desktop: VIDEO SERVICIOS horizontal · móvil: formato vertical */
       videoBanner: true,
       videoSrc: "assets/hero-telecom/banners/video-servicios.mp4",
-      videoSrcMobile: "",
+      videoSrcMobile: "assets/hero-telecom/banners/video-servicios-vertical.mp4",
       src: "assets/hero-telecom/banners/video-servicios-poster.jpg",
-      srcMobile: "assets/hero-telecom/mesa-trabajo-5yaav2web.png",
+      srcMobile: "assets/hero-telecom/banners/video-servicios-vertical-poster.jpg",
       width: 1280,
       height: 720,
-      widthMobile: 2400,
-      heightMobile: 1080,
+      widthMobile: 720,
+      heightMobile: 1280,
       objectFit: "cover",
       objectPosition: "center center",
       objectFitMobile: "cover",
