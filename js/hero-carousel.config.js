@@ -31,11 +31,14 @@ window.YAAVS_HERO_CAROUSEL = {
       duration: 0,
     },
     {
-      /* Desktop banner (mesa de trabajo 5yaav2web) */
-      src: "assets/hero-telecom/mesa-trabajo-5yaav2web.png",
+      /* Desktop: VIDEO SERVICIOS · móvil: banner estático */
+      videoBanner: true,
+      videoSrc: "assets/hero-telecom/banners/video-servicios.mp4",
+      videoSrcMobile: "",
+      src: "assets/hero-telecom/banners/video-servicios-poster.jpg",
       srcMobile: "assets/hero-telecom/mesa-trabajo-5yaav2web.png",
-      width: 2400,
-      height: 1080,
+      width: 1280,
+      height: 720,
       widthMobile: 2400,
       heightMobile: 1080,
       objectFit: "cover",
@@ -44,6 +47,7 @@ window.YAAVS_HERO_CAROUSEL = {
       objectPositionMobile: "center center",
       alt: "YAAVS — distribución nacional de SIMs y telecom en México.",
       hidePromo: true,
+      duration: 0,
     },
     {
       src: "assets/yaavser/cliente-satisfecho.jpg",

@@ -153,8 +153,12 @@
   }
 
   function getSlideVideoSrc(slide) {
-    if (isMobileViewport()) return slide.videoSrcMobile || slide.videoSrc || "";
-    return slide.videoSrc || slide.videoSrcMobile || "";
+    if (isMobileViewport()) return slide.videoSrcMobile || "";
+    return slide.videoSrc || "";
+  }
+
+  function isActiveVideoBanner(slide) {
+    return Boolean(slide?.videoBanner && getSlideVideoSrc(slide));
   }
 
   function buildVideoBannerContent(slide, i) {
@@ -283,11 +287,13 @@
       const slideEl = document.createElement("div");
       slideEl.className = "hero-carousel__slide" + (i === 0 ? " is-active" : "");
       if (slide.hidePromo) slideEl.classList.add("hero-carousel__slide--graphic");
-      if (slide.videoSlide || slide.videoBanner) slideEl.classList.add("hero-carousel__slide--video");
-      if (slide.videoBanner) slideEl.classList.add("hero-carousel__slide--video-banner");
+      const videoSrc = getSlideVideoSrc(slide);
+      const useVideoBanner = Boolean(slide.videoBanner && videoSrc);
+      if (slide.videoSlide || useVideoBanner) slideEl.classList.add("hero-carousel__slide--video");
+      if (useVideoBanner) slideEl.classList.add("hero-carousel__slide--video-banner");
       slideEl.style.setProperty("--carousel-ms", `${transitionMs}ms`);
       slideEl.appendChild(
-        slide.videoBanner
+        useVideoBanner
           ? buildVideoBannerContent(slide, i)
           : slide.videoSlide
             ? buildVideoSlideContent(slide, i)
@@ -526,12 +532,12 @@
           video.load();
         }
 
-        if (slide.videoBanner && !video.dataset.endedBound) {
+        if (isActiveVideoBanner(slide) && !video.dataset.endedBound) {
           video.dataset.endedBound = "1";
           video.addEventListener("ended", () => handleBannerVideoEnded(i));
         }
 
-        if (i === index && (slide.videoBanner || slide.videoSlide)) {
+        if (i === index && (isActiveVideoBanner(slide) || slide.videoSlide)) {
           video.muted = true;
           const play = video.play();
           if (play && typeof play.catch === "function") play.catch(() => {});
@@ -543,7 +549,7 @@
           } catch (_) {
             /* noop */
           }
-          if (slide.videoBanner) {
+          if (isActiveVideoBanner(slide)) {
             slideEl.querySelector(".hero-carousel__video")?.classList.add("is-playing");
           } else {
             slideEl.querySelector(".hero-carousel__video")?.classList.remove("is-playing");
@@ -555,15 +561,16 @@
 
   function syncSlideUi() {
     const current = slides[index];
-    const isVideo = Boolean(current?.videoSlide || current?.videoBanner);
+    const activeVideoBanner = isActiveVideoBanner(current);
+    const isVideo = Boolean(current?.videoSlide || activeVideoBanner);
     document.body.dataset.heroSlide = String(index);
     document.body.dataset.heroAlign = "left";
-    document.body.classList.toggle("hero-slide--graphic", Boolean(current?.hidePromo || current?.videoBanner));
+    document.body.classList.toggle("hero-slide--graphic", Boolean(current?.hidePromo || activeVideoBanner));
     document.body.classList.toggle("hero-slide--light-shade", Boolean(current?.lightShade));
     document.body.classList.toggle("hero-slide--light-bg", Boolean(current?.lightBg));
     document.body.classList.toggle("hero-slide--video", isVideo);
-    document.body.classList.toggle("hero-slide--video-banner", Boolean(current?.videoBanner));
-    if (current?.hidePromo || current?.videoBanner) {
+    document.body.classList.toggle("hero-slide--video-banner", activeVideoBanner);
+    if (current?.hidePromo || activeVideoBanner) {
       const mobile = isMobileViewport();
       const w = mobile && current.widthMobile ? current.widthMobile : current.width;
       const h = mobile && current.heightMobile ? current.heightMobile : current.height;
@@ -596,7 +603,7 @@
   function syncPromo() {
     if (!promoRoot) return;
     const current = slides[index];
-    const hide = Boolean(current?.hidePromo || current?.videoSlide || current?.videoBanner);
+    const hide = Boolean(current?.hidePromo || current?.videoSlide || isActiveVideoBanner(current));
     promoRoot.hidden = hide;
     promoRoot.setAttribute("aria-hidden", hide ? "true" : "false");
     if (hide) {
@@ -652,7 +659,7 @@
 
   function getActiveBannerVideo() {
     const slide = slides[index];
-    if (!slide?.videoBanner) return null;
+    if (!isActiveVideoBanner(slide)) return null;
     for (const track of tracks) {
       const slideEl = track.querySelectorAll(".hero-carousel__slide")[index];
       const video = slideEl?.querySelector(".hero-carousel__video-el");
@@ -869,7 +876,7 @@
     banner.addEventListener("pointermove", onPointerMove, { passive: true });
 
     const current = slides[index];
-    const hidden = Boolean(current?.videoSlide || current?.videoBanner);
+    const hidden = Boolean(current?.videoSlide || isActiveVideoBanner(current));
     layer.hidden = hidden;
     layer.classList.toggle("is-hidden", hidden);
 
