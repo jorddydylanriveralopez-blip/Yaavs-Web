@@ -1,4 +1,5 @@
 .vercel
+.netlify
 .vscode/
 yaavs-web-completo.zip
 .env*
