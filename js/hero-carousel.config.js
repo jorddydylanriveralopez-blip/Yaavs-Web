@@ -48,6 +48,10 @@ window.YAAVS_HERO_CAROUSEL = {
       alt: "YAAVS — distribución nacional de SIMs y telecom en México.",
       hidePromo: true,
       duration: 0,
+      topCta: {
+        label: "Conoce nuestros servicios",
+        href: "#servicios-preview",
+      },
     },
     {
       src: "assets/yaavser/cliente-satisfecho.jpg",

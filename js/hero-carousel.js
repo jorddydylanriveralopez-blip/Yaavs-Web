@@ -35,6 +35,9 @@
         videoSrc: item.videoSrc || "",
         videoSrcMobile: item.videoSrcMobile || "",
         duration: Number(item.duration) || 0,
+        topCta: item.topCta && item.topCta.href && item.topCta.label
+          ? { label: String(item.topCta.label), href: String(item.topCta.href) }
+          : null,
         objectPosition: item.objectPosition || slideDefaults.objectPosition || "",
         objectPositionMobile: item.objectPositionMobile || slideDefaults.objectPositionMobile || "",
         objectFit: item.objectFit || slideDefaults.objectFit || "",
@@ -408,6 +411,7 @@
 
   const heroBanner = document.querySelector(".hero-banner");
   let bannerLink = null;
+  let topCtaLink = null;
 
   function ensureBannerLink() {
     if (!heroBanner || bannerLink) return;
@@ -420,6 +424,37 @@
     const anchor = heroBanner.querySelector(".hero-particles");
     if (anchor) heroBanner.insertBefore(bannerLink, anchor);
     else heroBanner.appendChild(bannerLink);
+  }
+
+  function ensureTopCta() {
+    if (!heroBanner || topCtaLink) return;
+    topCtaLink = document.createElement("a");
+    topCtaLink.className = "hero-banner__top-cta";
+    topCtaLink.hidden = true;
+    const promoMount = heroBanner.querySelector(".hero-banner__promo");
+    if (promoMount) heroBanner.insertBefore(topCtaLink, promoMount);
+    else {
+      const anchor = heroBanner.querySelector(".hero-particles");
+      if (anchor) heroBanner.insertBefore(topCtaLink, anchor);
+      else heroBanner.appendChild(topCtaLink);
+    }
+  }
+
+  function syncTopCta() {
+    ensureTopCta();
+    if (!topCtaLink) return;
+    const cta = slides[index]?.topCta;
+    if (cta) {
+      topCtaLink.href = cta.href;
+      topCtaLink.textContent = cta.label;
+      topCtaLink.hidden = false;
+      topCtaLink.removeAttribute("aria-hidden");
+    } else {
+      topCtaLink.hidden = true;
+      topCtaLink.setAttribute("aria-hidden", "true");
+      topCtaLink.removeAttribute("href");
+      topCtaLink.textContent = "";
+    }
   }
 
   function syncBannerLink() {
@@ -593,6 +628,7 @@
     heroBanner.classList.remove("hero-banner--align-right");
     heroBanner.classList.add("hero-banner--align-left");
     syncBannerLink();
+    syncTopCta();
     if (floatLayer) {
       const hidden = isVideo;
       floatLayer.hidden = hidden;
