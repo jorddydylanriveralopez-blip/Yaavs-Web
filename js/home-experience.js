@@ -8,6 +8,7 @@
   /* Móvil: 1er tap = video preview, 2º tap = destino (debe registrarse antes que los modales) */
   const deckPreviewDesktopMq = window.matchMedia("(min-width: 769px)");
   let runMobileDeckPreview = null;
+  let pendingMobileDeckPreview = null;
 
   document.addEventListener(
     "click",
@@ -23,7 +24,8 @@
       if (typeof runMobileDeckPreview === "function") {
         runMobileDeckPreview(item);
       } else {
-        item.classList.add("is-deck-preview");
+        /* No marcar preview hasta que el deck esté listo: si no, el 2º tap navega sin video */
+        pendingMobileDeckPreview = item;
       }
     },
     true
@@ -2188,6 +2190,8 @@
         return;
       }
 
+      /* Mostrar poster mientras carga el video (útil en móvil) */
+      item.classList.add("is-deck-fallback-on");
       video
         .play()
         .then(() => {
@@ -2225,6 +2229,12 @@
       item.classList.add("is-deck-preview");
       playDeckMedia(item);
     };
+
+    if (pendingMobileDeckPreview) {
+      const queued = pendingMobileDeckPreview;
+      pendingMobileDeckPreview = null;
+      runMobileDeckPreview(queued);
+    }
 
     function ensureDeckIcon(item) {
       const id = item.getAttribute("data-deck-svc");
@@ -2402,91 +2412,8 @@
     resetPlanPicker();
   });
 
-  /* Toda la página negra ↔ clara según la sección en vista */
-  const bandSections = [...root.querySelectorAll("[data-hx-band]")];
-  if (bandSections.length) {
-    let activeBand = "light";
-    let lastScrollY = window.scrollY || 0;
-
-    function setScrollBand(theme) {
-      const next = theme === "dark" ? "dark" : "light";
-      if (next === activeBand) return;
-      activeBand = next;
-      document.body.classList.toggle("hx-band--dark", next === "dark");
-      document.documentElement.classList.toggle("hx-band--dark", next === "dark");
-      document.body.dataset.hxBand = next;
-    }
-
-    function syncScrollBand() {
-      const viewH = window.innerHeight || 1;
-      const y = window.scrollY || 0;
-      const scrollingUp = y < lastScrollY - 2;
-      lastScrollY = y;
-
-      /* Arriba del todo (hero / servicios): siempre claro */
-      if (y < viewH * 0.35) {
-        setScrollBand("light");
-        return;
-      }
-
-      const focusTop = viewH * 0.2;
-      const focusBottom = viewH * 0.72;
-      let bestLight = null;
-      let bestDark = null;
-      let lightScore = 0;
-      let darkScore = 0;
-
-      bandSections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const visibleTop = Math.max(rect.top, focusTop);
-        const visibleBottom = Math.min(rect.bottom, focusBottom);
-        const overlap = Math.max(0, visibleBottom - visibleTop);
-        if (overlap <= 0) return;
-        const score = overlap / viewH;
-        const theme = section.getAttribute("data-hx-band") || "light";
-        if (theme === "dark") {
-          if (score > darkScore) {
-            darkScore = score;
-            bestDark = section;
-          }
-        } else if (score > lightScore) {
-          lightScore = score;
-          bestLight = section;
-        }
-      });
-
-      /* Al subir, prioriza volver al claro si hay sección clara visible */
-      if (scrollingUp && lightScore >= 0.12 && lightScore + 0.02 >= darkScore) {
-        setScrollBand("light");
-        return;
-      }
-
-      if (darkScore >= 0.16 && darkScore >= lightScore) {
-        setScrollBand("dark");
-        return;
-      }
-
-      if (lightScore > 0 || bestLight) {
-        setScrollBand("light");
-        return;
-      }
-
-      if (bestDark) setScrollBand("dark");
-    }
-
-    let bandRaf = 0;
-    function onBandScroll() {
-      if (bandRaf) return;
-      bandRaf = window.requestAnimationFrame(() => {
-        bandRaf = 0;
-        syncScrollBand();
-      });
-    }
-
-    if (!reduced) {
-      window.addEventListener("scroll", onBandScroll, { passive: true });
-      window.addEventListener("resize", onBandScroll, { passive: true });
-      syncScrollBand();
-    }
-  }
+  /* Mantener el color claro de la página (sin cambiar a negro al scrollear) */
+  document.body.classList.remove("hx-band--dark");
+  document.documentElement.classList.remove("hx-band--dark");
+  document.body.dataset.hxBand = "light";
 })();

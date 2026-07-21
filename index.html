@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css?v=6">
   <link rel="stylesheet" href="theme-day-night.css?v=3">
   <link rel="stylesheet" href="home-experience.css?v=48">
-  <link rel="stylesheet" href="home-corporate.css?v=136">
+  <link rel="stylesheet" href="home-corporate.css?v=137">
   <link rel="stylesheet" href="home-wow.css?v=1">
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
@@ -1131,58 +1131,64 @@
         ]);
       });
 
+      /* Cargar deck pronto para que el tap móvil muestre video al instante */
+      void loadBatchOnce("home-deck", [
+        "js/deck-media.config.js?v=6",
+        "js/home-experience.js?v=82",
+      ]);
+
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=6",
-        "js/home-experience.js?v=81",
+        "js/home-experience.js?v=82",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 
       if (window.location.hash === "#vinculaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 
       if (window.location.hash === "#esim-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 
       if (window.location.hash === "#activaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 
       if (window.location.hash === "#yaavshop-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 
       if (window.location.hash === "#recargaklic-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=6",
-          "js/home-experience.js?v=81",
+          "js/home-experience.js?v=82",
         ]);
       }
 

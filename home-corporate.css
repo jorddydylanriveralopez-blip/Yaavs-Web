@@ -4600,7 +4600,7 @@ body.page-home {
     display: none;
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     opacity: 0;
     pointer-events: none !important;
     transition: opacity 0.35s ease;
@@ -4643,6 +4643,23 @@ body.page-home {
   .page-home .hx-svc-deck__item.is-deck-preview .hx-svc-deck__icon {
     opacity: 0;
     transition: opacity 0.28s ease;
+  }
+
+  .page-home .hx-svc-deck__item.is-deck-preview .hx-svc-deck__shade,
+  .page-home .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__shade {
+    z-index: 3;
+    opacity: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 20, 38, 0.05) 0%,
+      rgba(8, 20, 38, 0.28) 48%,
+      rgba(8, 20, 38, 0.78) 100%
+    );
+  }
+
+  .page-home .hx-svc-deck__item.is-deck-preview .hx-svc-deck__label,
+  .page-home .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__label {
+    z-index: 4;
   }
 
   .page-home .hx-svc-deck__item.is-deck-preview {
