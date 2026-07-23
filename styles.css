@@ -4852,17 +4852,85 @@ body.theme-cluster #contenido > .section {
 }
 
 .bolsa-hero-banner .avisos-hero-banner__aurora {
-  background:
-    radial-gradient(ellipse 48% 42% at 22% 32%, rgba(201, 160, 0, 0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 40% at 78% 58%, rgba(90, 156, 196, 0.16) 0%, transparent 52%),
-    radial-gradient(ellipse 50% 45% at 50% 100%, rgba(59, 21, 120, 0.12) 0%, transparent 50%);
+  display: none;
 }
 
 .bolsa-hero-banner .avisos-hero-banner__shade {
   background:
-    linear-gradient(105deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.32) 45%, rgba(0, 0, 0, 0.52) 100%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.92) 0%, transparent 46%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.48) 0%, transparent 22%);
+    linear-gradient(105deg, rgba(15, 36, 64, 0.78) 0%, rgba(15, 36, 64, 0.42) 48%, rgba(37, 99, 181, 0.28) 100%),
+    linear-gradient(0deg, rgba(15, 36, 64, 0.72) 0%, transparent 52%),
+    linear-gradient(180deg, rgba(15, 36, 64, 0.35) 0%, transparent 28%);
+}
+
+.bolsa-hero-banner--tienda .avisos-hero-banner__scan,
+.bolsa-hero-banner--tienda .avisos-hero-banner__grid,
+.bolsa-hero-banner--tienda .avisos-hero-banner__rule {
+  display: none;
+}
+
+.bolsa-hero-banner--tienda .avisos-hero-banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: clamp(420px, 72vh, 720px);
+  padding-bottom: clamp(40px, 7vw, 72px);
+}
+
+.bolsa-hero-banner__brand {
+  margin: 0 0 12px;
+  font-size: clamp(2.4rem, 8vw, 4.75rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  color: #fff;
+  text-shadow: 0 8px 36px rgba(15, 36, 64, 0.55);
+}
+
+.bolsa-hero-banner__title {
+  max-width: 14ch;
+  margin-bottom: 16px;
+  font-size: clamp(1.85rem, 5.2vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: none;
+  line-height: 1.05;
+}
+
+.bolsa-hero-banner__lead {
+  max-width: 34ch;
+  margin-bottom: 28px;
+  font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bolsa-hero-banner__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: #2563b5;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(15, 36, 64, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bolsa-hero-banner__cta:hover,
+.bolsa-hero-banner__cta:focus-visible {
+  background: #1d4f91;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__title .avisos-hero-banner__accent {
+  color: #7ec8ff;
+  text-shadow: 0 2px 18px rgba(15, 36, 64, 0.45);
 }
 
 .servicios-hero-banner .avisos-hero-banner__aurora {

@@ -20,8 +20,8 @@ window.YAAVS_PAGE_BANNERS = {
     interval: 5500,
   },
   "bolsa-trabajo": {
-    images: ["assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg", "assets/hero-banner-5.jpg"],
-    poster: "assets/hero-banner-1.jpg",
+    images: ["assets/bolsa/bolsa-hero-tienda.jpg"],
+    poster: "assets/bolsa/bolsa-hero-tienda.jpg",
     interval: 6000,
   },
   "ser-yaavser": {
