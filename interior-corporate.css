@@ -24,11 +24,17 @@
 
 body.theme-cluster:not(.page-home) .site-header {
   background:
-    linear-gradient(118deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 249, 252, 0.96) 42%, rgba(238, 244, 250, 0.98) 68%, rgba(255, 255, 255, 0.99) 100%);
-  backdrop-filter: blur(16px) saturate(1.1);
-  -webkit-backdrop-filter: blur(16px) saturate(1.1);
-  border-bottom: 1px solid var(--border-on-light);
-  box-shadow: 0 4px 20px rgba(15, 36, 64, 0.06);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(255, 255, 255, 0.9) 100%
+    );
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+  box-shadow:
+    0 8px 32px rgba(15, 36, 64, 0.07),
+    0 1px 0 rgba(255, 255, 255, 0.85) inset;
   transition:
     background 0.4s var(--ease),
     backdrop-filter 0.4s var(--ease),
@@ -38,12 +44,13 @@ body.theme-cluster:not(.page-home) .site-header {
 }
 
 body.theme-cluster:not(.page-home) .site-header.is-scrolled {
-  background:
-    linear-gradient(121deg, rgba(255, 255, 255, 0.99) 0%, rgba(245, 249, 252, 0.97) 46%, rgba(255, 255, 255, 0.99) 100%);
-  backdrop-filter: blur(18px) saturate(1.1);
-  -webkit-backdrop-filter: blur(18px) saturate(1.1);
-  border-bottom: 1px solid var(--border-on-light);
-  box-shadow: 0 6px 24px rgba(15, 36, 64, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border-bottom-color: rgba(0, 188, 212, 0.28);
+  box-shadow:
+    0 10px 36px rgba(15, 36, 64, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
 }
 
 body.theme-cluster:not(.page-home) .site-header::before {
@@ -52,8 +59,10 @@ body.theme-cluster:not(.page-home) .site-header::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 52%, transparent 100%);
-  opacity: 0.6;
+  background:
+    radial-gradient(ellipse 42% 120% at 8% 0%, rgba(0, 188, 212, 0.1) 0%, transparent 68%),
+    radial-gradient(ellipse 36% 120% at 92% 0%, rgba(37, 99, 181, 0.08) 0%, transparent 70%);
+  opacity: 1;
   animation: none;
 }
 
@@ -63,15 +72,11 @@ body.theme-cluster:not(.page-home) .site-header::after {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1px;
+  height: 2px;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(90, 156, 196, 0.35) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, #0097b2 0%, #00bcd4 48%, #00d4ee 100%);
+  opacity: 0.9;
   animation: none;
 }
 
