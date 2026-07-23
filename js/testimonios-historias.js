@@ -163,12 +163,17 @@
   }
 
   function boot() {
-    document.querySelectorAll("[data-tx-historias-open]").forEach(function (el) {
-      el.addEventListener("click", function (e) {
+    document.addEventListener(
+      "click",
+      function (e) {
+        var trigger = e.target.closest("[data-tx-historias-open]");
+        if (!trigger) return;
         e.preventDefault();
+        e.stopPropagation();
         open();
-      });
-    });
+      },
+      true
+    );
   }
 
   if (document.readyState === "loading") {
