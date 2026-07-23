@@ -254,12 +254,46 @@
     }
   }
 
+  function closeNavMenu() {
+    const mainNav = document.getElementById("main-nav");
+    const navToggle = document.getElementById("nav-toggle");
+    mainNav?.classList.remove("is-open");
+    document.body.classList.remove("nav-open");
+    navToggle?.setAttribute("aria-expanded", "false");
+    navToggle?.setAttribute("aria-label", "Abrir menú");
+  }
+
+  /** Anclas del menú hacia secciones del inicio (sin abrir otra página). */
+  function initHomeSectionLinks() {
+    document.querySelectorAll('a[href*="#testimonios-home"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const target = document.getElementById("testimonios-home");
+        if (!target || !document.body.classList.contains("page-home")) return;
+        e.preventDefault();
+        closeNavMenu();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", "#testimonios-home");
+      });
+    });
+
+    if (
+      document.body.classList.contains("page-home") &&
+      location.hash === "#testimonios-home"
+    ) {
+      window.setTimeout(() => {
+        document
+          .getElementById("testimonios-home")
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 120);
+    }
+  }
+
   const trustMount = document.getElementById("trust-strip");
   const ctaMount = document.getElementById("page-cta");
 
   Promise.all([
-    loadPartial("partials/header.html?v=9", headerMount),
-    loadPartial("partials/footer.html?v=8", footerMount),
+    loadPartial("partials/header.html?v=10", headerMount),
+    loadPartial("partials/footer.html?v=10", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html", ctaMount),
   ]).then(async () => {
@@ -273,6 +307,7 @@
     initHeaderLogo();
     initNavToggle();
     initHeaderScroll();
+    initHomeSectionLinks();
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     document.dispatchEvent(new CustomEvent("yaavs:layout-ready"));
