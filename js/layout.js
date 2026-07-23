@@ -250,8 +250,8 @@
   const ctaMount = document.getElementById("page-cta");
 
   Promise.all([
-    loadPartial("partials/header.html", headerMount),
-    loadPartial("partials/footer.html", footerMount),
+    loadPartial("partials/header.html?v=8", headerMount),
+    loadPartial("partials/footer.html?v=8", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html", ctaMount),
   ]).then(async () => {

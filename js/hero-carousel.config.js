@@ -80,7 +80,7 @@ window.YAAVS_HERO_CAROUSEL = {
         accent: "Yaavser?",
         lead: "Afíliate con respaldo comercial, visitas en tu zona, rotulación y capacitación para vender más en tu mostrador.",
         cta: "Quiero ser Yaavser",
-        href: "ser-yaavser.html",
+        href: "#yaavser-lead",
       },
     },
   ],
