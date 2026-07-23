@@ -100,15 +100,21 @@
     const navToggle = document.getElementById("nav-toggle");
 
     function getThreshold() {
-      /* Offset tipo RSNL sticky_effects (~160px) para el shrink */
-      if (!hasTallBanner || !banner) return 120;
-      return Math.max(140, Math.min(200, banner.offsetHeight * 0.14));
+      /* Responde casi al empezar a scrollear */
+      if (!hasTallBanner || !banner) return 24;
+      return Math.max(28, Math.min(48, banner.offsetHeight * 0.04));
     }
 
+    let ticking = false;
     function onScroll() {
-      const scrolled = window.scrollY > getThreshold();
-      header.classList.toggle("is-scrolled", scrolled);
-      document.body.classList.toggle("header-scrolled", scrolled);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY > getThreshold();
+        header.classList.toggle("is-scrolled", scrolled);
+        document.body.classList.toggle("header-scrolled", scrolled);
+        ticking = false;
+      });
     }
 
     function closeMenu() {
