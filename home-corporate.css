@@ -2873,17 +2873,77 @@ body.page-home {
   background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 188, 212, 0.08) 0%, transparent 70%);
 }
 
-.page-home .tx-gallery--home .tx-gallery__head h2 {
+.page-home .tx-gallery--home .tx-gallery__head--hero {
+  max-width: 920px;
+  margin-bottom: clamp(32px, 5vw, 52px);
+}
+
+.page-home .tx-gallery--home .tx-gallery__eyebrow {
+  margin: 0 0 12px;
+  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #0097b2;
+}
+
+.page-home .tx-gallery--home .tx-gallery__head--hero h2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.28em 0.42em;
+  margin: 0;
+  font-size: clamp(2.15rem, 7.2vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 0.98;
+  text-transform: uppercase;
   color: #0f2440;
   text-shadow: none;
 }
 
-.page-home .tx-gallery--home .hx-testimonials__accent {
-  background: linear-gradient(135deg, #0097b2 0%, #00bcd4 48%, #00d4ee 100%);
+.page-home .tx-gallery--home .tx-gallery__title-main {
+  color: #0f2440;
+}
+
+.page-home .tx-gallery--home .hx-testimonials__accent,
+.page-home .tx-gallery--home .tx-gallery__title-accent {
+  background: linear-gradient(135deg, #0097b2 0%, #00bcd4 42%, #00e5ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  filter: drop-shadow(0 8px 22px rgba(0, 188, 212, 0.28));
+}
+
+.page-home .tx-gallery--home .tx-gallery__rule {
+  display: block;
+  width: min(180px, 42vw);
+  height: 3px;
+  margin: 18px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #0097b2 18%,
+    #00e5ff 50%,
+    #0097b2 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 18px rgba(0, 188, 212, 0.45);
+  animation: tx-gallery-rule-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes tx-gallery-rule-pulse {
+  0%, 100% { opacity: 0.7; transform: scaleX(0.92); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-home .tx-gallery--home .tx-gallery__rule {
+    animation: none;
+  }
 }
 
 .page-home .tx-gallery--home .tx-gallery__item {
