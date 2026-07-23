@@ -1195,11 +1195,13 @@ a:hover { opacity: 0.65; }
 }
 
 .site-header.is-scrolled .bento-dot {
-  background: #fff;
+  width: 3.5px;
+  height: 3.5px;
+  background: #fff !important;
 }
 
 .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
-  background: #5ce8f7;
+  background: #5ce8f7 !important;
 }
 
 .header-inner {
@@ -1485,16 +1487,19 @@ body.page-intro-active .nav-menu-hint {
 .nav-bento {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 6px);
-  gap: 6px;
+  grid-template-columns: repeat(3, 5px);
+  gap: 5px;
   align-content: center;
   justify-content: center;
-  min-width: 48px;
-  min-height: 48px;
-  padding: 12px;
+  justify-items: center;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
   margin: 0 -8px 0 0;
   background: none;
   border: none;
+  border-radius: 12px;
   cursor: pointer;
   z-index: 1102;
   pointer-events: auto;
@@ -1503,22 +1508,51 @@ body.page-intro-active .nav-menu-hint {
     min-width var(--header-ease),
     min-height var(--header-ease),
     padding var(--header-ease),
-    gap var(--header-ease);
+    gap var(--header-ease),
+    border-radius var(--header-ease),
+    background var(--header-ease),
+    border-color var(--header-ease),
+    box-shadow var(--header-ease),
+    grid-template-columns var(--header-ease);
 }
 
+/* Compacto al scroll: limpio, contrastado, sin chip “sucio” */
 .site-header.is-scrolled .nav-bento {
-  min-width: 34px;
-  min-height: 34px;
-  padding: 6px;
-  gap: 4px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 8px;
+  gap: 3.5px;
+  grid-template-columns: repeat(3, 3.5px);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header.is-scrolled .nav-bento:hover,
+.site-header.is-scrolled .nav-bento:focus-visible {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.62) !important;
+  transform: none;
+}
+
+.site-header.is-scrolled .nav-bento::before {
+  display: none;
 }
 
 .bento-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--ink);
-  transition: transform 0.25s var(--ease), opacity 0.25s, background 0.25s;
+  transition:
+    transform 0.25s var(--ease),
+    opacity 0.25s,
+    background 0.25s,
+    width var(--header-ease),
+    height var(--header-ease);
 }
 
 .page-home .site-header .bento-dot {
@@ -8012,8 +8046,20 @@ video {
     -webkit-backdrop-filter: blur(14px) saturate(1.5);
   }
 
+  .site-header.is-scrolled .nav-bento {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
   .bento-dot {
     background: var(--ink);
+  }
+
+  .site-header.is-scrolled .bento-dot {
+    background: #fff !important;
   }
 }
 

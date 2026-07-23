@@ -401,14 +401,17 @@
   --logo-filter: none;
 }
 
-[data-yaavs-theme="day"] .page-home .site-header .bento-dot,
-[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .bento-dot {
+[data-yaavs-theme="day"] .page-home .site-header .bento-dot {
   background: var(--ink);
+}
+
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled .bento-dot {
+  background: #fff !important;
 }
 
 [data-yaavs-theme="day"] .page-home .site-header .nav-bento[aria-expanded="true"] .bento-dot,
 [data-yaavs-theme="day"] .page-home .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
-  background: var(--accent);
+  background: #5ce8f7 !important;
 }
 
 [data-yaavs-theme="day"] .page-home .site-footer {

@@ -372,9 +372,23 @@ body.page-home {
       inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
   }
 
+  .page-home .site-header.is-scrolled .nav-bento {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
   .page-home .nav-bento:hover,
   .page-home .nav-bento:focus-visible {
     background: rgba(255, 255, 255, 0.48) !important;
+  }
+
+  .page-home .site-header.is-scrolled .nav-bento:hover,
+  .page-home .site-header.is-scrolled .nav-bento:focus-visible {
+    background: rgba(255, 255, 255, 0.14) !important;
+    transform: none;
   }
 
   /* WhatsApp: verde visible (no se blanquea con el glass) */
@@ -537,9 +551,23 @@ body.page-home {
       inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
   }
 
+  .page-home .site-header.is-scrolled .nav-bento {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
   .page-home .nav-bento:hover,
   .page-home .nav-bento:focus-visible {
     background: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  .page-home .site-header.is-scrolled .nav-bento:hover,
+  .page-home .site-header.is-scrolled .nav-bento:focus-visible {
+    background: rgba(255, 255, 255, 0.14) !important;
+    transform: none;
   }
 
   .page-home .header-wa,
@@ -589,8 +617,13 @@ body.page-home {
   background: #0f2440 !important;
 }
 
-.page-home .site-header .nav-bento[aria-expanded="true"] .bento-dot {
-  background: #00bcd4 !important;
+.page-home .site-header.is-scrolled .bento-dot {
+  background: #fff !important;
+}
+
+.page-home .site-header .nav-bento[aria-expanded="true"] .bento-dot,
+.page-home .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
+  background: #5ce8f7 !important;
 }
 
 .page-home .home-tech-backdrop__photo {
