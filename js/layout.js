@@ -30,16 +30,27 @@
     });
   }
 
-  /** Logo a color sobre header glass (todas las páginas). */
+  /** Home: logo blanco arriba; color al scroll. Interiores: logo a color. */
   function initHeaderLogo() {
     const img = document.querySelector(".site-header .logo");
     if (!img) return;
 
     const picture = img.closest("picture");
     picture?.querySelectorAll("source").forEach((source) => source.remove());
-    img.src = "assets/yaavs-logo-on-light.png?v=3";
-    img.classList.add("logo--on-light");
-    img.classList.remove("logo--white");
+
+    const isHome = document.body.classList.contains("page-home");
+    const header = document.getElementById("header");
+    const scrolled = header?.classList.contains("is-scrolled");
+
+    if (isHome && !scrolled) {
+      img.src = "assets/yaavs-logo-white.png?v=2";
+      img.classList.add("logo--white");
+      img.classList.remove("logo--on-light");
+    } else {
+      img.src = "assets/yaavs-logo-on-light.png?v=3";
+      img.classList.add("logo--on-light");
+      img.classList.remove("logo--white");
+    }
     img.style.setProperty("--logo-filter", "none");
     img.style.filter = "none";
   }
@@ -100,8 +111,10 @@
 
     function onScroll() {
       const scrolled = window.scrollY > getThreshold();
+      const changed = header.classList.contains("is-scrolled") !== scrolled;
       header.classList.toggle("is-scrolled", scrolled);
       document.body.classList.toggle("header-scrolled", scrolled);
+      if (changed) initHeaderLogo();
     }
 
     function closeMenu() {
