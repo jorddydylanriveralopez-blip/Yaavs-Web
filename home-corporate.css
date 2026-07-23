@@ -5441,6 +5441,25 @@ body.page-home.hx-band--dark .hx-services--deck .hx-services__head h2 {
   -webkit-text-fill-color: #f4f8fc;
 }
 
+body.page-home.hx-band--dark .tx-gallery--home .tx-gallery__eyebrow {
+  color: #5ce8f7 !important;
+}
+
+body.page-home.hx-band--dark .tx-gallery--home .tx-gallery__title-main {
+  color: #f4f8fc !important;
+  -webkit-text-fill-color: #f4f8fc !important;
+}
+
+body.page-home.hx-band--dark .tx-gallery--home .tx-gallery__title-accent,
+body.page-home.hx-band--dark .tx-gallery--home .hx-testimonials__accent {
+  background: linear-gradient(135deg, #00bcd4 0%, #5ce8f7 45%, #a5f3fc 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.35));
+}
+
 body.page-home.hx-band--dark .hx-ops__eyebrow,
 body.page-home.hx-band--dark .hx-ops__hint,
 body.page-home.hx-band--dark .hx-services__hint,
