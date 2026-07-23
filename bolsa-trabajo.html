@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=92">
+  <link rel="stylesheet" href="styles.css?v=93">
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css?v=5">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
-  <link rel="stylesheet" href="interior-corporate.css?v=8">
+  <link rel="stylesheet" href="interior-corporate.css?v=9">
   <link rel="stylesheet" href="interior-light.css?v=1">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
@@ -63,8 +63,20 @@
       <span class="pleca__line"></span>
     </div>
 
-    <section class="section section--jobs-catalog" id="catalogo-vacantes" aria-label="Catálogo de vacantes en la empresa">
-      <div class="container">
+    <section class="section section--jobs-catalog jobs-catalog-section" id="catalogo-vacantes" aria-label="Catálogo de vacantes en la empresa">
+      <div class="jobs-catalog-backdrop" aria-hidden="true">
+        <img
+          class="jobs-catalog-backdrop__photo"
+          src="assets/bolsa/bolsa-hero-tienda.jpg"
+          alt=""
+          width="1920"
+          height="1280"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="jobs-catalog-backdrop__veil"></div>
+      </div>
+      <div class="container jobs-catalog-section__inner">
         <header class="jobs-section-head">
           <p class="section-tag">Toda la empresa</p>
           <h2 class="jobs-section-title">Puestos en YAAVS</h2>
