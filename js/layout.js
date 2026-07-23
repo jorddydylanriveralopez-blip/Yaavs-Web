@@ -93,8 +93,9 @@
     const navToggle = document.getElementById("nav-toggle");
 
     function getThreshold() {
-      if (!hasTallBanner || !banner) return 24;
-      return Math.max(48, banner.offsetHeight * 0.12);
+      /* Offset tipo RSNL sticky_effects (~160px) para el shrink */
+      if (!hasTallBanner || !banner) return 120;
+      return Math.max(140, Math.min(200, banner.offsetHeight * 0.14));
     }
 
     function onScroll() {
