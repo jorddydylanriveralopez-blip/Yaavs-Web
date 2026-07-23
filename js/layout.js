@@ -297,12 +297,22 @@
   const trustMount = document.getElementById("trust-strip");
   const ctaMount = document.getElementById("page-cta");
 
+  function ensureFooterStyles() {
+    if (document.querySelector('link[data-site-footer-css]')) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "site-footer.css?v=1";
+    link.dataset.siteFooterCss = "true";
+    document.head.appendChild(link);
+  }
+
   Promise.all([
     loadPartial("partials/header.html?v=10", headerMount),
-    loadPartial("partials/footer.html?v=10", footerMount),
+    loadPartial("partials/footer.html?v=11", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html", ctaMount),
   ]).then(async () => {
+    ensureFooterStyles();
     await ensureSonic();
     mountSiteFloats();
     mountNavOverlay();

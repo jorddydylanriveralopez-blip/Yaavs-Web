@@ -1644,7 +1644,8 @@ body.theme-cluster:not(.page-home) .btn--line:hover {
 
 /* Footer interior — refuerzo sobre reglas de tipografía clara */
 body.theme-cluster:not(.page-home) .site-footer p,
-body.theme-cluster:not(.page-home) .site-footer a {
+body.theme-cluster:not(.page-home) .site-footer a,
+body.theme-cluster:not(.page-home) .site-footer summary {
   -webkit-text-fill-color: currentColor;
 }
 
@@ -1653,18 +1654,19 @@ body.theme-cluster:not(.page-home) .site-footer .footer-heading {
 }
 
 body.theme-cluster:not(.page-home) .site-footer .footer-tagline {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(232, 242, 250, 0.72);
 }
 
+body.theme-cluster:not(.page-home) .site-footer .footer-col a,
 body.theme-cluster:not(.page-home) .site-footer .footer-contact p,
 body.theme-cluster:not(.page-home) .site-footer .footer-nav a {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(236, 244, 250, 0.86);
 }
 
 body.theme-cluster:not(.page-home) .site-footer .footer-copy {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(220, 232, 242, 0.58);
 }
 
 body.theme-cluster:not(.page-home) .site-footer .footer-legal-note {
-  color: rgba(209, 223, 238, 0.76);
+  color: rgba(209, 223, 238, 0.68);
 }

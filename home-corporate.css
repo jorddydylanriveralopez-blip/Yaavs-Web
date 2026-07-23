@@ -5480,11 +5480,16 @@ body.page-home.hx-band--dark .tx-gallery__more .btn--line {
 }
 
 body.page-home.hx-band--dark .site-footer,
-body.page-home.hx-band--dark #site-footer,
+body.page-home.hx-band--dark #site-footer {
+  /* Mantener el footer rediseñado; solo afinar borde */
+  border-color: rgba(0, 188, 212, 0.18) !important;
+  color: #f4f8fc;
+}
+
 body.page-home.hx-band--dark .site-footer .footer {
-  background: #050910 !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
-  color: rgba(232, 240, 246, 0.75);
+  background: transparent !important;
+  border-color: transparent !important;
+  color: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {
