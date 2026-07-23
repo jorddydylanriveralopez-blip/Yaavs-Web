@@ -1127,6 +1127,44 @@ body.theme-cluster.page-quienes-somos .valores-carousel .valores-carousel__stat-
   }
 }
 
+/* ─── Contacto — hero texto a la izquierda ─── */
+.page-contacto .contacto-hero-banner {
+  justify-content: flex-start;
+}
+
+.page-contacto .contacto-hero-banner .avisos-hero-banner__content {
+  margin-inline: 0 auto;
+  margin-left: 0;
+  width: min(100%, var(--max, 1200px));
+  max-width: min(100%, 640px);
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  text-align: left;
+  align-self: flex-end;
+}
+
+.page-contacto .contacto-hero-banner .avisos-hero-banner__title,
+.page-contacto .contacto-hero-banner .avisos-hero-banner__lead {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.page-contacto .contacto-hero-banner .scroll-hint--contacto {
+  align-self: flex-start;
+}
+
+.page-contacto .contacto-hero-banner .avisos-hero-banner__content::before {
+  background:
+    radial-gradient(ellipse 120% 100% at 0% 55%, rgba(2, 10, 22, 0.78) 0%, rgba(2, 10, 22, 0.4) 58%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  .page-contacto .contacto-hero-banner .avisos-hero-banner__content::before {
+    background:
+      radial-gradient(ellipse 130% 110% at 0% 80%, rgba(2, 10, 22, 0.84) 0%, rgba(2, 10, 22, 0.52) 55%, transparent 100%);
+  }
+}
+
 /* ─── Contacto — formulario completo ─── */
 .page-contacto .section--contact {
   position: relative;
