@@ -2874,30 +2874,22 @@ body.page-home {
 }
 
 .page-home .tx-gallery--home .tx-gallery__head--hero {
-  max-width: 920px;
-  margin-bottom: clamp(32px, 5vw, 52px);
+  max-width: min(100%, 1100px);
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 
-.page-home .tx-gallery--home .tx-gallery__eyebrow {
-  margin: 0 0 12px;
-  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
-  font-weight: 700;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: #0097b2;
-}
-
-.page-home .tx-gallery--home .tx-gallery__head--hero h2 {
+.page-home .tx-gallery--home .tx-gallery__title-line {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: baseline;
-  gap: 0.28em 0.42em;
+  gap: 0.28em;
   margin: 0;
-  font-size: clamp(2.15rem, 7.2vw, 4.4rem);
+  white-space: nowrap;
+  font-size: clamp(1.35rem, 5.2vw, 3.6rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
-  line-height: 0.98;
+  letter-spacing: 0.08em;
+  line-height: 1;
   text-transform: uppercase;
   color: #0f2440;
   text-shadow: none;
