@@ -300,4 +300,25 @@
   bindFileInputs();
   bindApplyForm();
   prefillFromQuery();
+
+  /* Al bajar: el catálogo pasa de fondo claro a imagen oscura */
+  const catalogScene = document.querySelector(".jobs-catalog-section");
+  if (catalogScene) {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !("IntersectionObserver" in window)) {
+      catalogScene.classList.add("is-scene-on");
+    } else {
+      const sceneObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            catalogScene.classList.add("is-scene-on");
+            sceneObs.disconnect();
+          });
+        },
+        { threshold: 0.22, rootMargin: "0px 0px -8% 0px" }
+      );
+      sceneObs.observe(catalogScene);
+    }
+  }
 })();
