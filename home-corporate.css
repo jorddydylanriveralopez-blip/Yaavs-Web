@@ -5411,10 +5411,22 @@ body.page-home.hx-band--dark .hx-raffle {
   border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
-body.page-home.hx-band--dark .hx-ops__head,
-body.page-home.hx-band--dark .hx-yaavser-band__inner {
+body.page-home.hx-band--dark .hx-ops__head {
   background: rgba(255, 255, 255, 0.04) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+body.page-home.hx-band--dark .hx-yaavser-band--join,
+body.page-home.hx-band--dark .hx-yaavser-band--join .hx-yaavser-band__stage {
+  background: #061018 !important;
+}
+
+body.page-home.hx-band--dark .hx-yaavser-band__panel,
+body.page-home.hx-band--dark .hx-yaavser-band__copy,
+body.page-home.hx-band--dark .hx-yaavser-band__aside {
+  background: transparent !important;
+  border-color: transparent !important;
   box-shadow: none !important;
 }
 

@@ -141,7 +141,9 @@
       { sel: ".hx-raffle__head", dir: "up" },
       { sel: ".hx-raffle__table tbody tr", dir: "left", stagger: true },
       { sel: ".tx-gallery__more", dir: "up" },
-      { sel: ".hx-yaavser-band__inner .btn", dir: "up" },
+      { sel: ".hx-yaavser-band__cta", dir: "up" },
+      { sel: ".hx-yaavser-band__stat", dir: "up", stagger: true },
+      { sel: ".hx-yaavser-band__perks li", dir: "up", stagger: true },
     ];
 
     var revealNodes = [];
