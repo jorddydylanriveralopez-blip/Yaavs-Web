@@ -106,7 +106,7 @@ body.page-home {
   opacity: 1 !important;
   height: var(--logo-h);
   transition:
-    height var(--header-ease, 0.16s cubic-bezier(0.22, 1, 0.36, 1)),
+    height var(--header-ease, 0.22s cubic-bezier(0.25, 0.9, 0.3, 1)),
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.4s ease;
 }
