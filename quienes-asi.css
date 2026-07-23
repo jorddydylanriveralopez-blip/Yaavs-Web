@@ -17,11 +17,105 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: calc(var(--header-h, 88px) + 28px) 0 72px;
 }
 
 .asi-somos__shell {
+  position: relative;
+  z-index: 1;
   max-width: 1120px;
+}
+
+/* ─── Blob / mancha animada (estilo RSNL, colores YAAVS) ─── */
+.asi-blob {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.asi-blob--hero {
+  top: -42vh;
+  right: -4vw;
+  width: min(70vw, 820px);
+  height: min(70vw, 820px);
+}
+
+.asi-blob--footer {
+  left: -120px;
+  bottom: -18vh;
+  width: min(48vw, 520px);
+  height: min(48vw, 520px);
+}
+
+.asi-blob__flex {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.asi-blob__ball {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, filter;
+}
+
+.asi-blob--hero .asi-blob__ball {
+  width: 40vw;
+  height: 40vw;
+  max-width: 560px;
+  max-height: 560px;
+  filter: blur(35px);
+}
+
+.asi-blob--footer .asi-blob__ball {
+  width: 22vw;
+  height: 22vw;
+  max-width: 320px;
+  max-height: 320px;
+  filter: blur(35px);
+}
+
+.asi-blob__ball--1 {
+  background: linear-gradient(90deg, #0097b2 0%, #00bcd4 100%);
+  animation: asi-blob-a 5s linear infinite alternate;
+  transform-origin: center;
+}
+
+.asi-blob__ball--2 {
+  background: radial-gradient(circle, #00bcd4 0%, #5ce8f7 100%);
+  animation: asi-blob-b 5s linear infinite alternate;
+  transform-origin: center;
+}
+
+.asi-blob__ball--3 {
+  background: radial-gradient(circle, #2563b5 0%, #3b82d4 55%, #5ce8f7 100%);
+  animation: asi-blob-c 5s linear infinite alternate;
+  transform-origin: center;
+  filter: blur(55px);
+}
+
+.asi-blob--footer .asi-blob__ball--3 {
+  filter: blur(48px);
+}
+
+@keyframes asi-blob-a {
+  0% { transform: translateX(-300px) rotate(0deg) scale(1.7); }
+  100% { transform: translateX(100px) rotate(160deg) scale(1.3); }
+}
+
+@keyframes asi-blob-b {
+  0% { transform: translateX(300px) scale(1.7); }
+  100% { transform: translateX(-100px) scale(1.3); }
+}
+
+@keyframes asi-blob-c {
+  0% { transform: translateY(-100px) rotate(0deg) scale(1.5); filter: blur(35px); }
+  100% { transform: translateY(200px) rotate(160deg) scale(0.6); filter: blur(60px); }
 }
 
 .asi-somos__breadcrumb {
