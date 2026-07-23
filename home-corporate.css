@@ -343,7 +343,12 @@ body.page-home {
   }
 
   .page-home .site-header .header-inner {
-    height: var(--header-h);
+    height: var(--header-bar-h, auto);
+    min-height: 0;
+  }
+
+  .page-home .site-header.is-scrolled .header-inner {
+    height: var(--header-bar-h, auto);
   }
 
   .page-home .site-header .header-inner::before {
@@ -509,8 +514,13 @@ body.page-home {
   }
 
   .page-home .site-header .header-inner {
-    height: var(--header-h);
+    height: var(--header-bar-h, auto);
+    min-height: 0;
     padding-inline: clamp(18px, 2.4vw, 36px);
+  }
+
+  .page-home .site-header.is-scrolled .header-inner {
+    height: var(--header-bar-h, auto);
   }
 
   .page-home .site-header .header-inner::before {

@@ -1102,9 +1102,10 @@ a:hover { opacity: 0.65; }
 
 /* Header — glass + shrink al scroll (efecto tipo RSNL Creative) */
 .site-header {
-  --header-pad-y: 28px;
+  --header-bar-h: 112px;
+  --header-pad-y: 20px;
   --header-pad-x: max(var(--pad-x), 40px);
-  --logo-h: 72px;
+  --logo-h: 64px;
   position: fixed;
   top: 0;
   left: 0;
@@ -1166,9 +1167,10 @@ a:hover { opacity: 0.65; }
 }
 
 .site-header.is-scrolled {
-  --header-pad-y: 10px;
+  --header-bar-h: 56px;
+  --header-pad-y: 6px;
   --header-pad-x: max(var(--pad-x), 20px);
-  --logo-h: calc(72px * var(--shrink-me));
+  --logo-h: 34px;
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(22px) saturate(1.25);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
@@ -1187,8 +1189,9 @@ a:hover { opacity: 0.65; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: auto;
-  min-height: calc(var(--header-h) - var(--safe-top));
+  box-sizing: border-box;
+  height: var(--header-bar-h);
+  min-height: 0;
   max-width: none;
   width: 100%;
   margin: 0 auto;
@@ -1198,12 +1201,8 @@ a:hover { opacity: 0.65; }
     var(--header-pad-y)
     max(var(--header-pad-x), var(--safe-left));
   transition:
-    padding var(--header-ease),
-    min-height var(--header-ease);
-}
-
-.site-header.is-scrolled .header-inner {
-  min-height: calc(var(--header-h-scrolled) - var(--safe-top));
+    height var(--header-ease),
+    padding var(--header-ease);
 }
 
 .logo-link {
@@ -1264,23 +1263,40 @@ a:hover { opacity: 0.65; }
   }
 
   .site-header.is-scrolled .header-wa {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
   }
 
   .header-wa__icon {
     width: 22px;
     height: 22px;
+    transition: width var(--header-ease), height var(--header-ease);
+  }
+
+  .site-header.is-scrolled .header-wa__icon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .nav-bento {
+    transition: width var(--header-ease), height var(--header-ease);
+  }
+
+  .site-header.is-scrolled .nav-bento {
+    width: 34px;
+    height: 34px;
   }
 }
 
 @media (min-width: 1280px) {
   .site-header {
-    --logo-h: 78px;
+    --header-bar-h: 120px;
+    --logo-h: 70px;
   }
 
   .site-header.is-scrolled {
-    --logo-h: calc(78px * var(--shrink-me));
+    --header-bar-h: 58px;
+    --logo-h: 34px;
   }
 }
 
@@ -1465,6 +1481,18 @@ body.page-intro-active .nav-menu-hint {
   z-index: 1102;
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
+  transition:
+    min-width var(--header-ease),
+    min-height var(--header-ease),
+    padding var(--header-ease),
+    gap var(--header-ease);
+}
+
+.site-header.is-scrolled .nav-bento {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 6px;
+  gap: 4px;
 }
 
 .bento-dot {
@@ -6017,17 +6045,19 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 @media (max-width: 1024px) {
   :root {
     --header-h: 100px;
-    --header-h-scrolled: 64px;
+    --header-h-scrolled: 54px;
   }
 
   .site-header {
-    --logo-h: 58px;
-    --header-pad-y: 20px;
+    --header-bar-h: 96px;
+    --logo-h: 52px;
+    --header-pad-y: 14px;
   }
 
   .site-header.is-scrolled {
-    --logo-h: calc(58px * var(--shrink-me));
-    --header-pad-y: 10px;
+    --header-bar-h: 52px;
+    --logo-h: 30px;
+    --header-pad-y: 6px;
   }
 
   .header-inner {
@@ -6133,19 +6163,21 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 @media (max-width: 768px) {
   :root {
     --header-h: 88px;
-    --header-h-scrolled: 58px;
+    --header-h-scrolled: 50px;
     --pad-x: 20px;
   }
 
   .site-header {
-    --logo-h: 48px;
-    --header-pad-y: 16px;
+    --header-bar-h: 84px;
+    --logo-h: 44px;
+    --header-pad-y: 12px;
     --header-pad-x: 16px;
   }
 
   .site-header.is-scrolled {
-    --logo-h: 28px;
-    --header-pad-y: 8px;
+    --header-bar-h: 48px;
+    --logo-h: 26px;
+    --header-pad-y: 4px;
     --header-pad-x: 12px;
   }
 
