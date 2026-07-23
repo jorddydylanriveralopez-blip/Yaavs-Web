@@ -12,6 +12,10 @@
   background: #ffffff;
 }
 
+body.theme-cluster.page-asi-somos::before {
+  background: #ffffff !important;
+}
+
 .asi-somos {
   padding: calc(var(--header-h, 88px) + 28px) 0 72px;
 }
