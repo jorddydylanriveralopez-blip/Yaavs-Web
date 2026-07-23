@@ -1297,15 +1297,6 @@ a:hover { opacity: 0.65; }
     width: 17px;
     height: 17px;
   }
-
-  .nav-bento {
-    transition: width var(--header-ease), height var(--header-ease);
-  }
-
-  .site-header.is-scrolled .nav-bento {
-    width: 34px;
-    height: 34px;
-  }
 }
 
 @media (min-width: 1280px) {
