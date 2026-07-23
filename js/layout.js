@@ -30,7 +30,7 @@
     });
   }
 
-  /** Home: logo blanco arriba; color al scroll. Interiores: logo a color. */
+  /** Home: logo blanco siempre. Interiores: logo a color (header claro). */
   function initHeaderLogo() {
     const img = document.querySelector(".site-header .logo");
     if (!img) return;
@@ -38,11 +38,7 @@
     const picture = img.closest("picture");
     picture?.querySelectorAll("source").forEach((source) => source.remove());
 
-    const isHome = document.body.classList.contains("page-home");
-    const header = document.getElementById("header");
-    const scrolled = header?.classList.contains("is-scrolled");
-
-    if (isHome && !scrolled) {
+    if (document.body.classList.contains("page-home")) {
       img.src = "assets/yaavs-logo-white.png?v=2";
       img.classList.add("logo--white");
       img.classList.remove("logo--on-light");
@@ -111,10 +107,8 @@
 
     function onScroll() {
       const scrolled = window.scrollY > getThreshold();
-      const changed = header.classList.contains("is-scrolled") !== scrolled;
       header.classList.toggle("is-scrolled", scrolled);
       document.body.classList.toggle("header-scrolled", scrolled);
-      if (changed) initHeaderLogo();
     }
 
     function closeMenu() {
