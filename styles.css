@@ -4836,14 +4836,19 @@ body.theme-cluster #contenido > .section {
   padding-bottom: clamp(40px, 7vw, 72px);
 }
 
-.bolsa-hero-banner__brand {
+.bolsa-hero-banner__brand,
+body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__brand {
   margin: 0 0 12px;
   font-size: clamp(2.4rem, 8vw, 4.75rem);
   font-weight: 800;
   letter-spacing: -0.045em;
   line-height: 0.92;
-  color: #fff;
-  text-shadow: 0 8px 36px rgba(15, 36, 64, 0.55);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
 }
 
 .bolsa-hero-banner__title {
