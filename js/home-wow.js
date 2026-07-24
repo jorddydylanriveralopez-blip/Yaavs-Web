@@ -235,4 +235,17 @@
       el.classList.add("is-wow-visible");
     });
   }
+
+  /* Testimonios: click/tap para resaltar (hover ya va en CSS) */
+  var shotsRoot = document.querySelector("[data-tx-shots]");
+  if (shotsRoot) {
+    shotsRoot.addEventListener("click", function (event) {
+      var shot = event.target.closest(".tx-gallery__shot");
+      if (!shot || !shotsRoot.contains(shot)) return;
+      shotsRoot.querySelectorAll(".tx-gallery__shot.is-active").forEach(function (el) {
+        if (el !== shot) el.classList.remove("is-active");
+      });
+      shot.classList.toggle("is-active");
+    });
+  }
 })();
