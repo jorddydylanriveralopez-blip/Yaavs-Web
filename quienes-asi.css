@@ -13,26 +13,36 @@
   background: #ffffff;
 }
 
+/* Sin overlay blanco fixed (interior-corporate ::before) — tapa el hero */
 body.theme-cluster.page-asi-somos::before {
-  background: #ffffff !important;
+  content: none !important;
+  display: none !important;
+}
+
+/* Header fixed: no reservar hueco en el flujo */
+.page-asi-somos #site-header {
+  height: 0;
+  min-height: 0;
+  overflow: visible;
 }
 
 .asi-somos {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   padding: 0 0 72px;
 }
 
-/* ─── Hero cover: navy siempre visible, sin hueco blanco ─── */
+/* ─── Hero full-bleed bajo el header ─── */
 .asi-cover {
-  --asi-cover-img: url("assets/hero-telecom/hero-telecom-3.jpg");
+  --asi-cover-img: url("assets/hero-telecom/banners/banner-horizontal-poster.jpg");
   position: relative;
-  isolation: isolate;
   z-index: 1;
+  isolation: isolate;
   display: flex;
   align-items: flex-end;
   width: 100%;
-  min-height: clamp(300px, 52vh, 560px);
+  height: clamp(360px, 62vh, 640px);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -46,6 +56,8 @@ body.theme-cluster.page-asi-somos::before {
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 }
 
@@ -65,14 +77,14 @@ body.theme-cluster.page-asi-somos::before {
   background:
     linear-gradient(
       180deg,
-      rgba(6, 21, 38, 0.55) 0%,
-      rgba(6, 21, 38, 0.35) 42%,
-      rgba(6, 21, 38, 0.82) 100%
+      rgba(6, 21, 38, 0.45) 0%,
+      rgba(6, 21, 38, 0.25) 40%,
+      rgba(6, 21, 38, 0.88) 100%
     ),
     linear-gradient(
       90deg,
-      rgba(6, 21, 38, 0.72) 0%,
-      rgba(6, 21, 38, 0.2) 55%,
+      rgba(6, 21, 38, 0.65) 0%,
+      rgba(6, 21, 38, 0.15) 58%,
       transparent 100%
     );
 }
@@ -84,9 +96,9 @@ body.theme-cluster.page-asi-somos::before {
   max-width: 1120px;
   margin: 0 auto;
   padding:
-    calc(var(--header-h, 88px) + clamp(28px, 5vh, 56px))
+    calc(var(--header-h, 88px) + clamp(20px, 3vh, 36px))
     max(20px, var(--pad-x))
-    clamp(28px, 5vh, 48px);
+    clamp(28px, 4.5vh, 44px);
 }
 
 .asi-cover__eyebrow {
@@ -94,7 +106,7 @@ body.theme-cluster.page-asi-somos::before {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   font-size: clamp(0.68rem, 1.4vw, 0.78rem);
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -112,8 +124,8 @@ body.theme-cluster.page-asi-somos::before {
 
 .asi-cover__title {
   margin: 0;
-  max-width: 14ch;
-  font-size: clamp(2.4rem, 8vw, 4.6rem);
+  max-width: 12ch;
+  font-size: clamp(2.35rem, 7.2vw, 4.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 0.98;
