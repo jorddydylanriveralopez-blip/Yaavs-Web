@@ -16,22 +16,36 @@ body.theme-cluster.page-asi-somos::before {
   background: #ffffff !important;
 }
 
-.asi-somos {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 0 0 72px;
+/* El header fixed no debe empujar el banner */
+.page-asi-somos #site-header {
+  height: 0;
+  min-height: 0;
+  overflow: visible;
 }
 
-/* Portada telecom — video loop + poster YAAVS */
+.page-asi-somos {
+  scroll-padding-top: 0;
+}
+
+.asi-somos {
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 72px;
+  scroll-margin-top: 0;
+}
+
+/* Portada telecom — full-bleed bajo el header */
 .asi-cover {
   position: relative;
   z-index: 1;
   margin: 0;
   width: 100%;
-  height: clamp(280px, 52vh, 560px);
+  height: clamp(300px, 58vh, 640px);
   overflow: hidden;
-  background: #0b1f33;
+  background:
+    #0b1f33
+    url("assets/hero-telecom/banners/banner-horizontal-poster.jpg")
+    center 40% / cover no-repeat;
 }
 
 .asi-cover__fallback,
@@ -59,8 +73,8 @@ body.theme-cluster.page-asi-somos::before {
   z-index: 2;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(11, 31, 51, 0.28) 0%, transparent 36%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.55) 0%, transparent 22%);
+    linear-gradient(180deg, rgba(11, 31, 51, 0.22) 0%, transparent 34%),
+    linear-gradient(0deg, rgba(11, 31, 51, 0.35) 0%, transparent 28%);
 }
 
 .asi-somos__shell {
@@ -79,7 +93,7 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-blob--hero {
-  top: clamp(180px, 28vh, 360px);
+  top: -12vh;
   right: -4vw;
   width: min(70vw, 820px);
   height: min(70vw, 820px);
