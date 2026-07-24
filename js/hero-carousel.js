@@ -349,10 +349,18 @@
           ${promo.kicker ? `<span class="hero-promo__dot" aria-hidden="true">·</span><span class="hero-promo__kicker">${promo.kicker}</span>` : ""}
         </p>
         ${titleBlock}
-        <p class="hero-promo__lead">${wordsToMarkup(lead, "hero-word--lead", titleWordCount + (accent ? accent.split(/\s+/).filter(Boolean).length : 0))}</p>
+        ${
+          lead
+            ? `<p class="hero-promo__lead">${wordsToMarkup(lead, "hero-word--lead", titleWordCount + (accent ? accent.split(/\s+/).filter(Boolean).length : 0))}</p>`
+            : ""
+        }
         ${
           promo.cta && promo.href
-            ? `<a class="${ctaClass}" href="${promo.href}"><span>${promo.cta}</span></a>`
+            ? `<a class="${ctaClass}" href="${promo.href}"${
+                promo.openLead || promo.href === "#yaavser-lead"
+                  ? ' data-yaavser-lead-open'
+                  : ""
+              }><span>${promo.cta}</span></a>`
             : ""
         }
       </div>
