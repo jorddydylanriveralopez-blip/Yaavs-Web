@@ -248,7 +248,7 @@
     "tiempo-aire": {
       theme: "violet",
       icon: "assets/servicios/tiempo-aire.jpg",
-      title: "Tiempo aire",
+      title: "Yaavsta",
       desc: "Recargas de Telcel, AT&T, Movistar, Unefon y mas desde un solo punto de venta.",
       steps: [
         "Abre RecargaKlic y entra al modulo de tiempo aire o recargas.",
