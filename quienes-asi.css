@@ -19,6 +19,14 @@ body.theme-cluster.page-asi-somos::before {
   display: none !important;
 }
 
+/* Sin iconos flotantes (SIM / eSIM / señal) en esta página */
+.page-asi-somos .site-floats,
+.page-quienes-somos .site-floats,
+.page-asi-somos .quienes-page-deco,
+.page-quienes-somos .quienes-page-deco {
+  display: none !important;
+}
+
 /* Header fixed: no reservar hueco en el flujo */
 .page-asi-somos #site-header {
   height: 0;
