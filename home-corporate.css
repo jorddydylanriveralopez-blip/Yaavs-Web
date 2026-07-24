@@ -3024,10 +3024,8 @@ body.page-home {
   --shot-delay: 0s;
   position: relative;
   margin: 0;
-  aspect-ratio: 3 / 4;
-  min-height: 0;
-  max-height: clamp(260px, 34vw, 380px);
-  height: auto;
+  aspect-ratio: auto;
+  height: clamp(250px, 28vw, 360px);
   overflow: hidden;
   border-radius: clamp(16px, 2vw, 22px);
   border: 1px solid rgba(0, 188, 212, 0.22);
