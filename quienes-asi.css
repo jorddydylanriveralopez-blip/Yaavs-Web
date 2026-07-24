@@ -316,7 +316,7 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-blob--hero {
-    top: clamp(140px, 24vh, 260px);
+    top: -8vh;
     right: -18vw;
     opacity: 0.85;
   }
