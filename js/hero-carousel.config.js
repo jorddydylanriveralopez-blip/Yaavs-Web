@@ -26,9 +26,17 @@ window.YAAVS_HERO_CAROUSEL = {
       objectPosition: "center center",
       objectFitMobile: "cover",
       objectPositionMobile: "center center",
-      alt: "YAAVS — Dili Dili Dili.",
-      hidePromo: true,
+      alt: "YAAVS — ¿Quiénes somos?",
       duration: 0,
+      promo: {
+        badge: "YAAVS",
+        kicker: "Red de servicios",
+        title: "¿Quiénes",
+        accent: "somos?",
+        lead: "Conoce la red que impulsa tu negocio en todo México.",
+        cta: "Conócenos",
+        href: "quienes-somos.html",
+      },
     },
     {
       /* Desktop: VIDEO SERVICIOS horizontal · móvil: formato vertical */
