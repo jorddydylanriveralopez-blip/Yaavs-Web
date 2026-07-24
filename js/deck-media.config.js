@@ -53,7 +53,7 @@ window.YAAVS_DECK_MEDIA = {
     poster: "assets/hero-telecom/hero-telecom-5.jpg",
     mp4: "assets/servicios/videos/soporte-tecnico.mp4",
   },
-  pospago: {
+  postpago: {
     icon: "assets/planes/pospago.png",
     poster: "assets/planes/pospago.png",
   },
