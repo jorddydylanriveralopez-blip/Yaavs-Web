@@ -136,8 +136,6 @@
       { sel: ".hx-ops__head", dir: "up" },
       { sel: ".hx-ops__deck", dir: "up" },
       { sel: ".hx-svc-deck__item", dir: "up", stagger: true },
-      { sel: ".hx-plan-picker__card", dir: "up", stagger: true },
-      { sel: ".hx-plan-picker__or", dir: "fade" },
       { sel: ".hx-raffle__head", dir: "up" },
       { sel: ".hx-raffle__table tbody tr", dir: "left", stagger: true },
       { sel: ".tx-gallery__more", dir: "up" },
@@ -162,7 +160,7 @@
     /* Secciones: clase is-wow-inview para acentos hijos */
     var sectionNodes = [
       ...root.querySelectorAll(
-        ".hx-services, .hx-pulse, .hx-plan-picker, .hx-ops, .tx-gallery--home, .hx-yaavser-band, .hx-raffle"
+        ".hx-services, .hx-pulse, .hx-ops, .tx-gallery--home, .hx-yaavser-band, .hx-raffle"
       ),
     ];
     sectionNodes.forEach(function (sec) {
@@ -201,7 +199,7 @@
     /* Parallax muy ligero solo en 2–3 capas decorativas */
     var parallaxEls = [
       ...root.querySelectorAll(
-        ".hx-plan-picker__aurora, .hx-raffle__bg-glow--left, .hx-raffle__bg-glow--right, .wow-aurora"
+        ".hx-raffle__bg-glow--left, .hx-raffle__bg-glow--right, .wow-aurora"
       ),
     ].slice(0, 4);
 
