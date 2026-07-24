@@ -269,11 +269,6 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 @media (max-width: 720px) {
-  .asi-cover__img {
-    max-height: min(38vh, 280px);
-    object-position: center 30%;
-  }
-
   .asi-somos__shell {
     padding-top: 24px;
   }
