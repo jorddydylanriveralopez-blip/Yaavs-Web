@@ -34,47 +34,22 @@ body.theme-cluster.page-asi-somos::before {
   scroll-margin-top: 0;
 }
 
-/* Portada telecom — full-bleed bajo el header */
+/* Banner telecom — solo la imagen, sin caja vacía de 58vh */
 .asi-cover {
   position: relative;
   z-index: 1;
   margin: 0;
+  padding: 0;
+  line-height: 0;
   width: 100%;
-  height: clamp(300px, 58vh, 640px);
-  overflow: hidden;
-  background:
-    #0b1f33
-    url("assets/hero-telecom/banners/banner-horizontal-poster.jpg")
-    center 40% / cover no-repeat;
+  background: #0b1f33;
 }
 
-.asi-cover__fallback,
-.asi-cover__media {
-  position: absolute;
-  inset: 0;
+.asi-cover__img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
-}
-
-.asi-cover__fallback {
-  z-index: 0;
-}
-
-.asi-cover__media {
-  z-index: 1;
-}
-
-.asi-cover__shade {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(11, 31, 51, 0.22) 0%, transparent 34%),
-    linear-gradient(0deg, rgba(11, 31, 51, 0.35) 0%, transparent 28%);
+  height: auto;
+  vertical-align: top;
 }
 
 .asi-somos__shell {
@@ -294,12 +269,8 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 @media (max-width: 720px) {
-  .asi-cover {
-    height: clamp(220px, 42vh, 360px);
-  }
-
-  .asi-cover__fallback,
-  .asi-cover__media {
+  .asi-cover__img {
+    max-height: min(38vh, 280px);
     object-position: center 30%;
   }
 
@@ -337,10 +308,6 @@ body.theme-cluster.page-asi-somos::before {
   .asi-card,
   .asi-card__media img {
     transition: none;
-  }
-
-  .asi-cover__media {
-    display: none;
   }
 
   .asi-blob__ball {
