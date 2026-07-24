@@ -3011,12 +3011,12 @@ body.page-home {
 .page-home .tx-gallery__shots {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1.4vw, 18px);
-  width: 100%;
+  gap: clamp(12px, 1.5vw, 20px);
+  width: min(1180px, calc(100% - 2 * clamp(16px, 3vw, 36px)));
   max-width: none;
-  margin: 0;
-  padding: 12px clamp(12px, 2.2vw, 28px) 16px;
-  perspective: 1400px;
+  margin: 0 auto;
+  padding: 10px 0 14px;
+  perspective: 1200px;
   box-sizing: border-box;
 }
 
@@ -3025,9 +3025,11 @@ body.page-home {
   position: relative;
   margin: 0;
   aspect-ratio: 3 / 4;
-  min-height: clamp(280px, 42vw, 520px);
+  min-height: 0;
+  max-height: clamp(260px, 34vw, 380px);
+  height: auto;
   overflow: hidden;
-  border-radius: clamp(16px, 2vw, 24px);
+  border-radius: clamp(16px, 2vw, 22px);
   border: 1px solid rgba(0, 188, 212, 0.22);
   background: #061526;
   box-shadow: 0 14px 36px rgba(15, 36, 64, 0.1);
@@ -3114,13 +3116,13 @@ body.page-home {
   .page-home .tx-gallery__shots {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-    width: 100%;
-    padding-inline: clamp(10px, 3vw, 16px);
+    width: min(440px, calc(100% - 2 * var(--pad-x, 16px)));
+    padding-inline: 0;
     perspective: none;
   }
 
   .page-home .tx-gallery__shot {
-    min-height: clamp(220px, 56vw, 340px);
+    max-height: clamp(200px, 52vw, 280px);
   }
 
   @keyframes tx-shot-orbit {
