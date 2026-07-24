@@ -20,13 +20,42 @@ body.theme-cluster.page-asi-somos::before {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: calc(var(--header-h, 88px) + 28px) 0 72px;
+  padding: 0 0 72px;
+}
+
+/* Portada provisional telecom (full-bleed) */
+.asi-cover {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 100%;
+  height: clamp(240px, 46vh, 480px);
+  overflow: hidden;
+  background: #0b1f33;
+}
+
+.asi-cover__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.asi-cover__shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(11, 31, 51, 0.35) 0%, transparent 42%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.92) 0%, transparent 28%);
 }
 
 .asi-somos__shell {
   position: relative;
   z-index: 1;
   max-width: 1120px;
+  padding-top: 36px;
 }
 
 /* ─── Blob / mancha animada (estilo RSNL, colores YAAVS) ─── */
@@ -38,7 +67,7 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-blob--hero {
-  top: -42vh;
+  top: clamp(180px, 28vh, 360px);
   right: -4vw;
   width: min(70vw, 820px);
   height: min(70vw, 820px);
@@ -239,8 +268,12 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 @media (max-width: 720px) {
-  .asi-somos {
-    padding-top: calc(var(--header-h, 72px) + 18px);
+  .asi-cover {
+    height: clamp(200px, 38vh, 320px);
+  }
+
+  .asi-somos__shell {
+    padding-top: 24px;
   }
 
   .asi-somos__grid {
@@ -250,11 +283,44 @@ body.theme-cluster.page-asi-somos::before {
   .asi-card__media {
     border-radius: 14px;
   }
+
+  .asi-blob--hero {
+    top: clamp(140px, 24vh, 260px);
+    right: -18vw;
+    opacity: 0.85;
+  }
+
+  .asi-blob--hero .asi-blob__ball {
+    width: 58vw;
+    height: 58vw;
+  }
+
+  .asi-blob--footer {
+    left: -80px;
+    bottom: -12vh;
+    opacity: 0.75;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .asi-card,
   .asi-card__media img {
     transition: none;
+  }
+
+  .asi-blob__ball {
+    animation: none !important;
+  }
+
+  .asi-blob__ball--1 {
+    transform: translateX(-40px) scale(1.25);
+  }
+
+  .asi-blob__ball--2 {
+    transform: translateX(40px) scale(1.2);
+  }
+
+  .asi-blob__ball--3 {
+    transform: translateY(40px) scale(1.1);
   }
 }
