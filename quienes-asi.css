@@ -6,6 +6,7 @@
 .page-asi-somos {
   background: #ffffff;
   color: #0b1f33;
+  scroll-padding-top: calc(var(--header-h, 88px) + 12px);
 }
 
 .page-asi-somos #contenido {
@@ -16,40 +17,118 @@ body.theme-cluster.page-asi-somos::before {
   background: #ffffff !important;
 }
 
-/* El header fixed no debe empujar el banner */
-.page-asi-somos #site-header {
-  height: 0;
-  min-height: 0;
-  overflow: visible;
-}
-
-.page-asi-somos {
-  scroll-padding-top: 0;
-}
-
 .asi-somos {
   position: relative;
   overflow: hidden;
   padding: 0 0 72px;
-  scroll-margin-top: 0;
 }
 
-/* Banner telecom — solo la imagen, sin caja vacía de 58vh */
+/* ─── Hero cover: navy siempre visible, sin hueco blanco ─── */
 .asi-cover {
+  --asi-cover-img: url("assets/hero-telecom/hero-telecom-3.jpg");
   position: relative;
+  isolation: isolate;
   z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  min-height: clamp(300px, 52vh, 560px);
   margin: 0;
   padding: 0;
-  line-height: 0;
-  width: 100%;
-  background: #0b1f33;
+  overflow: hidden;
+  background-color: #061526;
+  background-image: var(--asi-cover-img);
+  background-size: cover;
+  background-position: center;
+}
+
+.asi-cover__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .asi-cover__img {
   display: block;
   width: 100%;
-  height: auto;
-  vertical-align: top;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.asi-cover__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 21, 38, 0.55) 0%,
+      rgba(6, 21, 38, 0.35) 42%,
+      rgba(6, 21, 38, 0.82) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(6, 21, 38, 0.72) 0%,
+      rgba(6, 21, 38, 0.2) 55%,
+      transparent 100%
+    );
+}
+
+.asi-cover__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding:
+    calc(var(--header-h, 88px) + clamp(28px, 5vh, 56px))
+    max(20px, var(--pad-x))
+    clamp(28px, 5vh, 48px);
+}
+
+.asi-cover__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.asi-cover__badge {
+  color: #fff;
+}
+
+.asi-cover__dot {
+  opacity: 0.7;
+}
+
+.asi-cover__title {
+  margin: 0;
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 8vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
+}
+
+.asi-cover__accent {
+  background: linear-gradient(135deg, #5ce8f7 0%, #00bcd4 45%, #0097b2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 8px 22px rgba(0, 188, 212, 0.35));
 }
 
 .asi-somos__shell {
