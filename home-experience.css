@@ -9058,35 +9058,51 @@ body.has-hx-stat-panel {
   position: absolute;
   inset: 0;
   display: block;
+  overflow: hidden;
+  background: #061018;
 }
 
+.hx-yaavser-band__fallback,
+.hx-yaavser-band__video,
 .hx-yaavser-band__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 28%;
+  object-position: center 28%;
   display: block;
-  transform: scale(1.04);
+}
+
+.hx-yaavser-band__fallback {
+  z-index: 0;
+}
+
+.hx-yaavser-band__video {
+  z-index: 1;
+  transform: scale(1.02);
   filter: saturate(1.05) contrast(1.04);
 }
 
 .hx-yaavser-band__veil {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     linear-gradient(
       105deg,
-      rgba(4, 12, 22, 0.94) 0%,
-      rgba(4, 12, 22, 0.82) 34%,
-      rgba(4, 12, 22, 0.42) 62%,
-      rgba(4, 12, 22, 0.28) 100%
+      rgba(4, 12, 22, 0.9) 0%,
+      rgba(4, 12, 22, 0.72) 34%,
+      rgba(4, 12, 22, 0.28) 62%,
+      rgba(4, 12, 22, 0.18) 100%
     ),
-    linear-gradient(180deg, rgba(4, 12, 22, 0.35) 0%, transparent 28%, rgba(4, 12, 22, 0.55) 100%);
+    linear-gradient(180deg, rgba(4, 12, 22, 0.28) 0%, transparent 28%, rgba(4, 12, 22, 0.45) 100%);
 }
 
 .hx-yaavser-band__frame {
   position: absolute;
   inset: 18px;
+  z-index: 2;
   border: 1px solid rgba(0, 229, 255, 0.18);
   border-radius: 22px;
   pointer-events: none;
@@ -9096,9 +9112,9 @@ body.has-hx-stat-panel {
 
 .hx-yaavser-band__panel {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.7fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(24px, 5vw, 48px);
   align-items: end;
   width: min(calc(100% - 2 * var(--pad-x)), var(--max, 1200px));
@@ -9146,6 +9162,12 @@ body.has-hx-stat-panel {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hx-yaavser-band__video {
+    display: none;
+  }
 }
 
 .hx-yaavser-band__text {
@@ -9259,7 +9281,9 @@ body.has-hx-stat-panel {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .hx-yaavser-band__media img {
+  .hx-yaavser-band__media img,
+  .hx-yaavser-band__fallback,
+  .hx-yaavser-band__video {
     object-position: 70% 20%;
   }
 

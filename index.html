@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="decorations.css?v=7">
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
-  <link rel="stylesheet" href="home-experience.css?v=49">
+  <link rel="stylesheet" href="home-experience.css?v=50">
   <link rel="stylesheet" href="home-corporate.css?v=148">
   <link rel="stylesheet" href="home-wow.css?v=3">
   <link rel="stylesheet" href="yaavser-lead.css?v=1">
@@ -891,9 +891,9 @@
 
       <section class="hx-yaavser-band hx-yaavser-band--join" aria-label="Únete a la red YAAVS" data-hx-band="light">
         <div class="hx-yaavser-band__stage">
-          <picture class="hx-yaavser-band__media" aria-hidden="true">
-            <source media="(max-width: 768px)" srcset="assets/hero-telecom/banners/conviertete-en-yaavser-poster.jpg">
+          <div class="hx-yaavser-band__media" aria-hidden="true">
             <img
+              class="hx-yaavser-band__fallback"
               src="assets/hero-telecom/banners/conviertete-en-yaavser-poster.jpg"
               alt=""
               width="1920"
@@ -901,17 +901,31 @@
               loading="lazy"
               decoding="async"
             >
-          </picture>
+            <video
+              class="hx-yaavser-band__video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/hero-telecom/banners/conviertete-en-yaavser-poster.jpg"
+            >
+              <source src="assets/hero-telecom/banners/conviertete-en-yaavser.mp4" type="video/mp4">
+            </video>
+          </div>
           <div class="hx-yaavser-band__veil" aria-hidden="true"></div>
           <div class="hx-yaavser-band__frame" aria-hidden="true"></div>
 
           <div class="container hx-yaavser-band__panel" data-hx-reveal>
             <div class="hx-yaavser-band__copy">
-              <p class="hx-yaavser-band__eyebrow">Red nacional YAAVS</p>
+              <p class="hx-yaavser-band__eyebrow">Red nacional · Únete a la red</p>
               <h2 class="hx-yaavser-band__title">
                 Conviértete en<br>
                 <span>socio comercial</span>
               </h2>
+              <p class="hx-yaavser-band__text">
+                Afíliate con respaldo comercial, visitas en tu zona, rotulación y capacitación para vender más en tu mostrador.
+              </p>
               <div class="hx-yaavser-band__actions">
                 <a href="#yaavser-lead" class="btn btn--primary hx-yaavser-band__cta" data-yaavser-lead-open>Formar parte del equipo</a>
                 <a href="ser-yaavser.html" class="hx-yaavser-band__more">Conocer el modelo →</a>
