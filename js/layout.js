@@ -307,8 +307,8 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=13", headerMount),
-    loadPartial("partials/footer.html?v=12", footerMount),
+    loadPartial("partials/header.html?v=14", headerMount),
+    loadPartial("partials/footer.html?v=13", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html", ctaMount),
   ]).then(async () => {
