@@ -37,7 +37,7 @@
 
   /* ── Auroras de fondo en secciones clave ── */
   if (!reduceMotion) {
-    ["#servicios-preview", "#carriers", "#calendario-sorteos"].forEach(function (sel) {
+    ["#servicios-preview", "#carriers"].forEach(function (sel) {
       var section = document.querySelector(sel);
       if (!section || section.querySelector(".wow-aurora")) return;
       var aurora = document.createElement("div");
@@ -136,8 +136,6 @@
       { sel: ".hx-ops__head", dir: "up" },
       { sel: ".hx-ops__deck", dir: "up" },
       { sel: ".hx-svc-deck__item", dir: "up", stagger: true },
-      { sel: ".hx-raffle__head", dir: "up" },
-      { sel: ".hx-raffle__table tbody tr", dir: "left", stagger: true },
       { sel: ".tx-gallery__more", dir: "up" },
       { sel: ".hx-yaavser-band__cta", dir: "up" },
       { sel: ".hx-yaavser-band__stat", dir: "up", stagger: true },
@@ -160,7 +158,7 @@
     /* Secciones: clase is-wow-inview para acentos hijos */
     var sectionNodes = [
       ...root.querySelectorAll(
-        ".hx-services, .hx-pulse, .hx-ops, .tx-gallery--home, .hx-yaavser-band, .hx-raffle"
+        ".hx-services, .hx-pulse, .hx-ops, .tx-gallery--home, .hx-yaavser-band"
       ),
     ];
     sectionNodes.forEach(function (sec) {
@@ -199,7 +197,7 @@
     /* Parallax muy ligero solo en 2–3 capas decorativas */
     var parallaxEls = [
       ...root.querySelectorAll(
-        ".hx-raffle__bg-glow--left, .hx-raffle__bg-glow--right, .wow-aurora"
+        ".wow-aurora"
       ),
     ].slice(0, 4);
 
