@@ -1,14 +1,14 @@
 /**
- * Banner superior ¿Quiénes somos? — imágenes en assets/
+ * Banner superior ¿Quiénes somos? — video telecom YAAVS
  */
 window.YAAVS_QUIENES_BANNER = {
   images: [
+    "assets/hero-telecom/banners/banner-horizontal-poster.jpg",
+    "assets/hero-telecom/hero-telecom-3.jpg",
     "assets/hero-banner-1.jpg",
-    "assets/hero-banner-2.jpg",
-    "assets/hero-banner-5.jpg",
   ],
-  poster: "assets/quienes-somos.png",
-  mp4: "",
+  poster: "assets/hero-telecom/banners/banner-horizontal-poster.jpg",
+  mp4: "assets/hero-telecom/banners/video-servicios.mp4",
   webm: "",
   interval: 6000,
 };
