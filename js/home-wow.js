@@ -235,4 +235,23 @@
       el.classList.add("is-wow-visible");
     });
   }
+
+  /* Clientes satisfechos — spotlight automático entre 4 fotos */
+  var shotsRoot = document.querySelector("[data-tx-shots]");
+  if (shotsRoot && !reduceMotion) {
+    var shots = Array.prototype.slice.call(shotsRoot.querySelectorAll(".tx-gallery__shot"));
+    if (shots.length > 1) {
+      var shotIndex = Math.max(
+        0,
+        shots.findIndex(function (el) {
+          return el.classList.contains("is-focus");
+        })
+      );
+      window.setInterval(function () {
+        shots[shotIndex].classList.remove("is-focus");
+        shotIndex = (shotIndex + 1) % shots.length;
+        shots[shotIndex].classList.add("is-focus");
+      }, 2800);
+    }
+  }
 })();
