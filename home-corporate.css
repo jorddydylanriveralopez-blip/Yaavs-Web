@@ -1338,32 +1338,61 @@ body.page-home {
 
 .page-home .hx-ops__head .hx-ops__title {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: baseline;
-  gap: 0.28em;
-  margin: 0;
+  gap: 0.1em;
+  margin: 0 auto;
   max-width: 100%;
-  font-size: clamp(1.35rem, 5.2vw, 3.6rem);
+  padding-bottom: 12px;
+  font-size: clamp(1.05rem, 0.72rem + 2vw, 2.15rem);
   font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1.05;
+  letter-spacing: 0.055em;
+  line-height: 1.12;
   text-transform: uppercase;
   text-align: center;
-  white-space: normal;
 }
 
 .page-home .hx-ops__head .hx-ops__title-main {
+  display: block;
+  max-width: 22ch;
   color: #0f2440;
+  text-wrap: balance;
 }
 
 .page-home .hx-ops__head .hx-ops__title-accent {
+  display: block;
+  margin-top: 0.08em;
+  font-size: 1.06em;
+  letter-spacing: 0.12em;
   background: linear-gradient(135deg, #0097b2 0%, #00bcd4 42%, #00e5ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 8px 22px rgba(0, 188, 212, 0.28));
+  filter: drop-shadow(0 6px 18px rgba(0, 188, 212, 0.28));
+}
+
+/* Centrar subrayado wow: este título es largo y multicarril */
+.page-home .hx-ops__head .hx-ops__title::after,
+.page-home .hx-ops__head.is-wow-visible .hx-ops__title::after {
+  left: 50%;
+  width: min(160px, 48%);
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #0097b2 18%,
+    #00e5ff 50%,
+    #0097b2 82%,
+    transparent 100%
+  );
+}
+
+.page-home .hx-ops__head.is-wow-visible .hx-ops__title::after,
+.page-home .hx-ops__head .hx-ops__title.is-visible::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .page-home .hx-ops__hint {
@@ -1635,8 +1664,8 @@ body.page-home {
     display: block;
     flex-shrink: 0;
     margin: 0 auto;
-    padding: clamp(12px, 1.8vh, 18px) clamp(22px, 3vw, 36px);
-    width: min(1100px, calc(100% - 2 * var(--pad-x)));
+    padding: clamp(14px, 1.6vh, 20px) clamp(20px, 2.8vw, 40px);
+    width: min(980px, calc(100% - 2 * var(--pad-x)));
     border-radius: 14px;
   }
 
@@ -1647,7 +1676,12 @@ body.page-home {
 
   .page-home .hx-ops__head .hx-ops__title {
     margin-bottom: 0;
-    font-size: clamp(1.35rem, 5.2vw, 3.6rem);
+    font-size: clamp(1.2rem, 1.1rem + 1.35vw, 2.15rem);
+  }
+
+  .page-home .hx-ops__head .hx-ops__title-main {
+    max-width: none;
+    white-space: nowrap;
   }
 
   .page-home .hx-ops__head .hx-ops__hint--desktop {
