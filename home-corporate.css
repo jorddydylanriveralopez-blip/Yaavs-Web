@@ -3044,7 +3044,7 @@ body.page-home {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -3073,7 +3073,8 @@ body.page-home {
   }
 
   .page-home .tx-gallery__shot {
-    height: clamp(240px, 34vw, 320px);
+    aspect-ratio: 3 / 4;
+    height: auto;
   }
 }
 
@@ -3086,7 +3087,8 @@ body.page-home {
   }
 
   .page-home .tx-gallery__shot {
-    height: clamp(220px, 52vw, 290px);
+    aspect-ratio: 3 / 4;
+    height: auto;
   }
 }
 
