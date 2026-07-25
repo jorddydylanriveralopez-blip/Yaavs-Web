@@ -3022,8 +3022,9 @@ body.page-home {
 .page-home .tx-gallery__shot {
   position: relative;
   margin: 0;
-  aspect-ratio: auto;
-  height: clamp(280px, 32vw, 420px);
+  aspect-ratio: 3 / 4;
+  height: auto;
+  min-height: 0;
   overflow: hidden;
   border-radius: clamp(16px, 2vw, 22px);
   border: 1px solid rgba(0, 188, 212, 0.22);
@@ -3067,11 +3068,12 @@ body.page-home {
 @media (max-width: 900px) {
   .page-home .tx-gallery__shots {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    width: min(720px, calc(100% - 2 * var(--pad-x, 16px)));
+    width: 100%;
+    padding-inline: clamp(10px, 2vw, 16px);
   }
 
   .page-home .tx-gallery__shot {
-    height: clamp(220px, 30vw, 300px);
+    height: clamp(240px, 34vw, 320px);
   }
 }
 
@@ -3079,8 +3081,8 @@ body.page-home {
   .page-home .tx-gallery__shots {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
-    width: min(440px, calc(100% - 2 * var(--pad-x, 16px)));
-    padding-inline: 0;
+    width: 100%;
+    padding-inline: clamp(10px, 3vw, 16px);
   }
 
   .page-home .tx-gallery__shot {
