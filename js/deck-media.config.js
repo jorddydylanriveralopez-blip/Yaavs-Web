@@ -49,7 +49,7 @@ window.YAAVS_DECK_MEDIA = {
     mp4: "assets/servicios/videos/soporte-tecnico.mp4",
   },
   postpago: {
-    icon: "assets/planes/pospago.png",
-    poster: "assets/planes/pospago.png",
+    icon: "assets/planes/pospago.png?v=6",
+    poster: "assets/planes/pospago.png?v=6",
   },
 };
