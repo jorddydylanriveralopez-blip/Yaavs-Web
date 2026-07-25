@@ -165,8 +165,6 @@
   }
 
   async function mountSocialDock() {
-    if (document.body.classList.contains("page-home")) return;
-
     const existingDock = document.querySelector(".social-float[data-mounted='true']");
     if (existingDock) {
       revealFloatingDock();
