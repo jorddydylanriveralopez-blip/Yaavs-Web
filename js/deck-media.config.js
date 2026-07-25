@@ -28,11 +28,6 @@ window.YAAVS_DECK_MEDIA = {
     poster: "assets/servicios/esim.jpg",
     mp4: "assets/servicios/videos/esims.mp4",
   },
-  vinculaciones: {
-    icon: "assets/servicios/icons/vinculaciones.png",
-    poster: "assets/servicios/vinculaciones.jpg",
-    mp4: "assets/servicios/videos/vinculaciones.mp4",
-  },
   "academia-yaavs": {
     icon: "assets/servicios/icons/academia.png",
     poster: "assets/testimonios/viviana-gonzalez.jpg",
