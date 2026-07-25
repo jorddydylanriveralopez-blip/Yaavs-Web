@@ -3011,8 +3011,8 @@ body.page-home {
 .page-home .tx-gallery__shots {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.5vw, 20px);
-  width: min(1180px, calc(100% - 2 * clamp(16px, 3vw, 36px)));
+  gap: clamp(6px, 0.8vw, 12px);
+  width: min(1080px, calc(100% - 2 * clamp(16px, 3vw, 36px)));
   max-width: none;
   margin: 0 auto;
   padding: 10px 0 14px;
