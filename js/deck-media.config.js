@@ -36,7 +36,7 @@ window.YAAVS_DECK_MEDIA = {
   "academia-yaavs": {
     icon: "assets/servicios/icons/academia.png",
     poster: "assets/testimonios/viviana-gonzalez.jpg",
-    mp4: "assets/servicios/videos/academia-yaavs.mp4",
+    mp4: "assets/servicios/videos/academia-yaavs.mp4?v=4",
   },
   rotulaciones: {
     icon: "assets/servicios/icons/rotulaciones.png",
