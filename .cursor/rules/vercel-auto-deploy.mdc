@@ -21,5 +21,6 @@ When you finish user-requested changes to this website, deploy them unless the u
 ## Notes
 
 - The project is linked via `.vercel/project.json` (`yaavs-web`).
-- Bump CSS/JS cache-bust query params in HTML when those assets change.
+- **Always bump cache** on every site change: raise `?v=` on every CSS/JS (and video/config URLs) you touched in the HTML loaders. Prefer a clear jump (e.g. +1 or a date stamp like `202`) so Hostinger/CDN cannot serve stale assets. Never ship asset edits without bumping.
 - Skip commit/push/deploy only when the user asks for local-only or draft work.
+- If Vercel fair-use is blocked, still push to `origin/main` (Hostinger syncs from GitHub) and tell the user.

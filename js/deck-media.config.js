@@ -21,7 +21,7 @@ window.YAAVS_DECK_MEDIA = {
   portabilidad: {
     icon: "assets/servicios/icons/portabilidad.png",
     poster: "assets/servicios/portabilidad.jpg",
-    mp4: "assets/servicios/videos/portabilidad.mp4",
+    mp4: "assets/servicios/videos/portabilidad.mp4?v=3",
   },
   esims: {
     icon: "assets/servicios/icons/esim.png",
