@@ -26,7 +26,7 @@ window.YAAVS_DECK_MEDIA = {
   esims: {
     icon: "assets/servicios/icons/esim.png",
     poster: "assets/servicios/esim.jpg",
-    mp4: "assets/servicios/videos/esims.mp4",
+    mp4: "assets/servicios/videos/esims.mp4?v=4",
   },
   "academia-yaavs": {
     icon: "assets/servicios/icons/academia.png",
