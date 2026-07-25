@@ -5,15 +5,15 @@
   const root = document.getElementById("home-experience");
   if (!root) return;
 
-  /* Móvil: 1er tap = video preview, 2º tap = destino (debe registrarse antes que los modales) */
-  const deckPreviewDesktopMq = window.matchMedia("(min-width: 769px)");
+  /* Touch / sin hover: 1er tap = video preview, 2º tap = destino (antes que los modales) */
+  const deckHoverMq = window.matchMedia("(hover: hover) and (pointer: fine)");
   let runMobileDeckPreview = null;
   let pendingMobileDeckPreview = null;
 
   document.addEventListener(
     "click",
     (event) => {
-      if (deckPreviewDesktopMq.matches || reduced) return;
+      if (deckHoverMq.matches || reduced) return;
       const item = event.target.closest?.(".hx-svc-deck__item");
       if (!item || !root.contains(item)) return;
       if (item.closest('[role="dialog"]')) return;
@@ -478,9 +478,9 @@
         '[data-hx-porta-open], [data-deck-svc="portabilidad"]'
       );
       if (!item || item.closest(".hx-porta-modal")) return;
-      /* Móvil: 1er tap = video; 2º tap = modal */
+      /* Touch: 1er tap = video; 2º tap = modal */
       if (
-        !deckPreviewDesktopMq.matches &&
+        !deckHoverMq.matches &&
         item.classList.contains("hx-svc-deck__item") &&
         !item.classList.contains("is-deck-preview")
       ) {
@@ -556,7 +556,7 @@
       );
       if (!item || item.closest(".hx-act-modal")) return;
       if (
-        !deckPreviewDesktopMq.matches &&
+        !deckHoverMq.matches &&
         item.classList.contains("hx-svc-deck__item") &&
         !item.classList.contains("is-deck-preview")
       ) {
@@ -660,6 +660,13 @@
         '[data-hx-rk-open], [data-deck-svc="recargaklic"]'
       );
       if (!item || item.closest("[data-hx-rk-modal]")) return;
+      if (
+        !deckHoverMq.matches &&
+        item.classList.contains("hx-svc-deck__item") &&
+        !item.classList.contains("is-deck-preview")
+      ) {
+        return;
+      }
       event.preventDefault();
 
       if (isAndroidUa()) {
@@ -1091,6 +1098,13 @@
           '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
         );
         if (!item || item.closest(".hx-rotul-modal")) return;
+        if (
+          !deckHoverMq.matches &&
+          item.classList.contains("hx-svc-deck__item") &&
+          !item.classList.contains("is-deck-preview")
+        ) {
+          return;
+        }
         event.preventDefault();
         if (!rotulModal.classList.contains("is-open")) openRotulModal();
       },
@@ -1184,6 +1198,13 @@
           '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
         );
         if (!item || item.closest(".hx-vinc-modal")) return;
+        if (
+          !deckHoverMq.matches &&
+          item.classList.contains("hx-svc-deck__item") &&
+          !item.classList.contains("is-deck-preview")
+        ) {
+          return;
+        }
         event.preventDefault();
         if (!vincModal.classList.contains("is-open")) openVincModal();
       },
@@ -1278,7 +1299,7 @@
         );
         if (!item || item.closest(".hx-esim-modal")) return;
         if (
-          !deckPreviewDesktopMq.matches &&
+          !deckHoverMq.matches &&
           item.classList.contains("hx-svc-deck__item") &&
           !item.classList.contains("is-deck-preview")
         ) {
@@ -2204,7 +2225,11 @@
     }
 
     function playDeckMedia(item) {
-      const handlers = squareHandlers.get(item);
+      let handlers = squareHandlers.get(item);
+      if (!handlers) {
+        setupDeckItemMedia(item);
+        handlers = squareHandlers.get(item);
+      }
       if (!handlers) return;
 
       item.classList.add("is-deck-expanded");
@@ -2221,16 +2246,52 @@
 
       /* Mostrar poster mientras carga el video (útil en móvil) */
       item.classList.add("is-deck-fallback-on");
-      video
-        .play()
-        .then(() => {
-          item.classList.add("is-deck-video-on");
-          item.classList.remove("is-deck-fallback-on");
-        })
-        .catch(() => {
-          item.classList.remove("is-deck-video-on");
-          item.classList.add("is-deck-fallback-on");
-        });
+
+      const armMuted = () => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        try {
+          video.volume = 0;
+        } catch (_) {
+          /* noop */
+        }
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+      };
+
+      const showVideo = () => {
+        item.classList.add("is-deck-video-on");
+        item.classList.remove("is-deck-fallback-on");
+      };
+
+      const failToPoster = () => {
+        item.classList.remove("is-deck-video-on");
+        item.classList.add("is-deck-fallback-on");
+      };
+
+      const tryPlay = () => {
+        armMuted();
+        return video.play().then(showVideo);
+      };
+
+      tryPlay().catch(() => {
+        const retry = () => {
+          video.removeEventListener("canplay", retry);
+          video.removeEventListener("loadeddata", retry);
+          tryPlay().catch(failToPoster);
+        };
+        video.addEventListener("canplay", retry);
+        video.addEventListener("loadeddata", retry);
+        window.setTimeout(() => {
+          if (!item.classList.contains("is-deck-video-on")) {
+            video.removeEventListener("canplay", retry);
+            video.removeEventListener("loadeddata", retry);
+            tryPlay().catch(failToPoster);
+          }
+        }, 700);
+      });
     }
 
     function stopDeckMedia(item) {
@@ -2347,12 +2408,12 @@
           return video;
         },
         enter() {
-          if (!deckDesktopMq.matches) return;
+          if (!deckHoverMq.matches) return;
           playDeckMedia(item);
         },
         leave(event) {
           if (event?.type === "focusout" && item.contains(event.relatedTarget)) return;
-          if (!deckDesktopMq.matches && item.classList.contains("is-deck-preview")) return;
+          if (!deckHoverMq.matches && item.classList.contains("is-deck-preview")) return;
           stopDeckMedia(item);
         },
       };

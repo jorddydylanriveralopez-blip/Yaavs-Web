@@ -4400,6 +4400,7 @@ body.page-home {
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded:hover .hx-svc-deck__media,
   .page-home .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__media {
     opacity: 1;
+    z-index: 5;
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__video,
