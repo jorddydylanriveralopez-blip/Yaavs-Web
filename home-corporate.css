@@ -2001,6 +2001,31 @@ body.page-home {
   letter-spacing: 0.12em;
 }
 
+@media (max-width: 900px) {
+  .page-home .hx-pulse__stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 2vw, 12px);
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .page-home .hx-pulse__stat {
+    padding: clamp(14px, 3.2vw, 18px) clamp(8px, 2vw, 12px);
+    min-width: 0;
+  }
+
+  .page-home .hx-pulse__num {
+    font-size: clamp(1.35rem, 6.5vw, 1.85rem);
+  }
+
+  .page-home .hx-pulse__cap {
+    margin-top: 6px;
+    font-size: clamp(0.52rem, 2.4vw, 0.68rem);
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+  }
+}
+
 .theme-cluster.page-home .hx-pulse__label,
 .theme-cluster.page-home .hx-pulse__cap {
   color: inherit;
