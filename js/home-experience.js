@@ -478,6 +478,14 @@
         '[data-hx-porta-open], [data-deck-svc="portabilidad"]'
       );
       if (!item || item.closest(".hx-porta-modal")) return;
+      /* Móvil: 1er tap = video; 2º tap = modal */
+      if (
+        !deckPreviewDesktopMq.matches &&
+        item.classList.contains("hx-svc-deck__item") &&
+        !item.classList.contains("is-deck-preview")
+      ) {
+        return;
+      }
       event.preventDefault();
       if (portaModal.classList.contains("is-open")) return;
       openPortaModal();
@@ -547,6 +555,13 @@
         '[data-hx-act-open], [data-deck-svc="activaciones"]'
       );
       if (!item || item.closest(".hx-act-modal")) return;
+      if (
+        !deckPreviewDesktopMq.matches &&
+        item.classList.contains("hx-svc-deck__item") &&
+        !item.classList.contains("is-deck-preview")
+      ) {
+        return;
+      }
       event.preventDefault();
       if (actModal.classList.contains("is-open")) return;
       openActModal();
@@ -1262,6 +1277,13 @@
           '[data-hx-esim-open], [data-deck-svc="esims"]'
         );
         if (!item || item.closest(".hx-esim-modal")) return;
+        if (
+          !deckPreviewDesktopMq.matches &&
+          item.classList.contains("hx-svc-deck__item") &&
+          !item.classList.contains("is-deck-preview")
+        ) {
+          return;
+        }
         event.preventDefault();
         if (!esimModal.classList.contains("is-open")) openEsimModal();
       },
@@ -2280,10 +2302,14 @@
       const video = document.createElement("video");
       video.className = "hx-svc-deck__video";
       video.muted = true;
+      video.defaultMuted = true;
       video.loop = true;
       video.playsInline = true;
+      video.autoplay = false;
+      video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
-      video.preload = "none";
+      video.setAttribute("webkit-playsinline", "");
+      video.preload = cfg.mp4 ? "metadata" : "none";
       if (cfg.poster) video.poster = cfg.poster;
       if (cfg.mp4) video.dataset.src = cfg.mp4;
 
@@ -2315,6 +2341,7 @@
           if (cfg.gif || !cfg.mp4) return null;
           if (!loaded) {
             video.src = cfg.mp4;
+            video.load();
             loaded = true;
           }
           return video;
@@ -2325,6 +2352,7 @@
         },
         leave(event) {
           if (event?.type === "focusout" && item.contains(event.relatedTarget)) return;
+          if (!deckDesktopMq.matches && item.classList.contains("is-deck-preview")) return;
           stopDeckMedia(item);
         },
       };
@@ -2334,6 +2362,7 @@
       item.addEventListener("mouseleave", handlers.leave);
       item.addEventListener("focusin", handlers.enter);
       item.addEventListener("focusout", handlers.leave);
+      item.addEventListener("pointerenter", handlers.enter);
     }
 
     function setMoreOpen(open) {
