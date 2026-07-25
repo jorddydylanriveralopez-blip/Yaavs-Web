@@ -435,15 +435,7 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
 }
 
 .page-tiendas #contenido.tiendas-view {
-  background: linear-gradient(180deg, #f5fcfe 0%, #eef8fc 100%);
-}
-
-.page-tiendas .tiendas-strip {
-  border-bottom-color: rgba(255, 255, 255, 0.25);
-}
-
-.page-tiendas .tiendas-strip + .tiendas-strip {
-  border-top-color: rgba(255, 255, 255, 0.22);
+  background: #071018;
 }
 
 .page-tiendas-map #contenido.tiendas-map,
