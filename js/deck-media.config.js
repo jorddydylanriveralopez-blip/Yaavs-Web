@@ -8,11 +8,6 @@ window.YAAVS_DECK_MEDIA = {
     poster: "assets/servicios/activaciones.jpg",
     mp4: "assets/servicios/videos/recargaklic.mp4",
   },
-  activaciones: {
-    icon: "assets/servicios/icons/activaciones.png",
-    poster: "assets/servicios/activaciones.jpg",
-    mp4: "assets/servicios/videos/activaciones.mp4",
-  },
   "tiempo-aire": {
     icon: "assets/servicios/icons/tiempo-aire.png",
     poster: "assets/servicios/tiempo-aire.jpg",

@@ -236,10 +236,10 @@
       kicker: "App oficial",
       icon: "assets/servicios/activaciones.jpg",
       title: "RecargaKlic",
-      desc: "Controla activaciones, recargas y operacion diaria desde una sola app para tu mostrador.",
+      desc: "Controla recargas y operacion diaria desde una sola app para tu mostrador.",
       steps: [
         "Inicia sesion en RecargaKlic con tu cuenta de Yaavser.",
-        "Selecciona el modulo: activaciones, recargas o consulta.",
+        "Selecciona el modulo de recargas o consulta.",
         "Ejecuta la operacion y revisa el folio de confirmacion.",
         "Guarda comprobantes para control y soporte posterior.",
       ],
@@ -270,20 +270,6 @@
         "Confirma la portabilidad y entrega comprobante al cliente.",
       ],
       link: { href: "#porta-modal", label: "Elegir compañía" },
-    },
-    activaciones: {
-      theme: "gold",
-      kicker: "RecargaKlic",
-      icon: "assets/servicios/activaciones.jpg",
-      title: "Activaciones",
-      desc: "Activa SIM en minutos desde RecargaKlic: menos filas, mas ventas y comisiones claras.",
-      steps: [
-        "Abre RecargaKlic en tu celular o tablet del mostrador.",
-        "Escanea o ingresa el ICCID de la SIM que vas a activar.",
-        "Selecciona operador, plan y datos del cliente segun el flujo.",
-        "Finaliza la activacion y guarda el comprobante para soporte.",
-      ],
-      link: { href: "#activaciones-modal", label: "Elegir compañía" },
     },
     "soporte-tecnico": {
       theme: "coral",
@@ -486,82 +472,6 @@
 
     window.addEventListener("hashchange", () => {
       if (window.location.hash === "#porta-modal") openPortaModal();
-    });
-  }
-
-  /* Modal activaciones — elige compañía (AT&T / Movistar / BAIT / Unefon) */
-  const actModal = root.querySelector("[data-hx-act-modal]");
-  if (actModal) {
-    let actLastFocus = null;
-
-    function openActModal() {
-      actLastFocus = document.activeElement;
-      actModal.hidden = false;
-      actModal.removeAttribute("hidden");
-      actModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("hx-svc-panel-open");
-      actModal.classList.add("is-open");
-      try {
-        window.YaavsSonic?.play?.();
-      } catch (_) {
-        /* noop */
-      }
-      window.requestAnimationFrame(() => {
-        actModal.querySelector(".hx-act-modal__close")?.focus?.();
-      });
-    }
-
-    function closeActModal() {
-      if (!actModal.classList.contains("is-open") && actModal.hidden) return;
-      actModal.classList.remove("is-open");
-      actModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("hx-svc-panel-open");
-      window.setTimeout(() => {
-        if (!actModal.classList.contains("is-open")) {
-          actModal.hidden = true;
-          actModal.setAttribute("hidden", "");
-        }
-      }, 320);
-      if (actLastFocus && typeof actLastFocus.focus === "function") {
-        actLastFocus.focus();
-      }
-    }
-
-    actModal.querySelectorAll("[data-hx-act-close]").forEach((el) => {
-      el.addEventListener("click", closeActModal);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && actModal.classList.contains("is-open")) {
-        closeActModal();
-      }
-    });
-
-    function onActOpenIntent(event) {
-      const item = event.target.closest?.(
-        '[data-hx-act-open], [data-deck-svc="activaciones"]'
-      );
-      if (!item || item.closest(".hx-act-modal")) return;
-      if (
-        !deckHoverMq.matches &&
-        item.classList.contains("hx-svc-deck__item") &&
-        !item.classList.contains("is-deck-preview")
-      ) {
-        return;
-      }
-      event.preventDefault();
-      if (actModal.classList.contains("is-open")) return;
-      openActModal();
-    }
-
-    document.addEventListener("click", onActOpenIntent, true);
-
-    if (window.location.hash === "#activaciones-modal") {
-      window.requestAnimationFrame(openActModal);
-    }
-
-    window.addEventListener("hashchange", () => {
-      if (window.location.hash === "#activaciones-modal") openActModal();
     });
   }
 
