@@ -325,6 +325,19 @@
       ],
       link: { href: "#esim-modal", label: "Ver eSIM por compania" },
     },
+    vinculaciones: {
+      theme: "coral",
+      icon: "assets/servicios/vinculaciones.jpg",
+      title: "Vinculaciones",
+      desc: "Guia a tus clientes a vincular su linea en AT&T, Movistar o BAIT con pasos claros por compania.",
+      steps: [
+        "Elige la compania del cliente: AT&T, Movistar o BAIT.",
+        "Revisa juntos los pasos especificos de esa compania.",
+        "Escanea el QR o abre el portal oficial de vinculacion.",
+        "Confirma que el cliente complete el tramite y conserve el comprobante.",
+      ],
+      link: { href: "#vinculaciones-modal", label: "Ver como vincular" },
+    },
   };
 
   let lastFocusedBeforePanel = null;
@@ -1014,6 +1027,106 @@
 
     window.addEventListener("hashchange", () => {
       if (window.location.hash === "#rotulaciones-modal") openRotulModal();
+    });
+  }
+
+  /* Modal vinculaciones — pasos + QR por compañía */
+  const vincModal = root.querySelector("[data-hx-vinc-modal]");
+  if (vincModal) {
+    let vincLastFocus = null;
+    const carrierTabs = [...vincModal.querySelectorAll("[data-hx-vinc-carrier]")];
+    const carrierPanels = [...vincModal.querySelectorAll("[data-hx-vinc-panel]")];
+
+    function setVincCarrier(id) {
+      const next = id || "att";
+      carrierTabs.forEach((tab) => {
+        const on = tab.getAttribute("data-hx-vinc-carrier") === next;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      carrierPanels.forEach((panelEl) => {
+        const on = panelEl.getAttribute("data-hx-vinc-panel") === next;
+        panelEl.classList.toggle("is-active", on);
+        if (on) {
+          panelEl.removeAttribute("hidden");
+        } else {
+          panelEl.setAttribute("hidden", "");
+        }
+      });
+    }
+
+    function openVincModal() {
+      vincLastFocus = document.activeElement;
+      setVincCarrier("att");
+      vincModal.hidden = false;
+      vincModal.removeAttribute("hidden");
+      vincModal.setAttribute("aria-hidden", "false");
+      window.requestAnimationFrame(() => vincModal.classList.add("is-open"));
+      document.body.classList.add("hx-svc-panel-open");
+      window.YaavsSonic?.play?.();
+      window.requestAnimationFrame(() => {
+        vincModal.querySelector(".hx-vinc-modal__close")?.focus();
+      });
+    }
+
+    function closeVincModal() {
+      if (!vincModal.classList.contains("is-open") && vincModal.hidden) return;
+      vincModal.classList.remove("is-open");
+      vincModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!vincModal.classList.contains("is-open")) {
+          vincModal.hidden = true;
+          vincModal.setAttribute("hidden", "");
+        }
+      }, 300);
+      if (vincLastFocus && typeof vincLastFocus.focus === "function") {
+        vincLastFocus.focus();
+      }
+    }
+
+    vincModal.querySelectorAll("[data-hx-vinc-close]").forEach((el) => {
+      el.addEventListener("click", closeVincModal);
+    });
+
+    carrierTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        setVincCarrier(tab.getAttribute("data-hx-vinc-carrier"));
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && vincModal.classList.contains("is-open")) {
+        closeVincModal();
+      }
+    });
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const item = event.target.closest(
+          '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
+        );
+        if (!item || item.closest(".hx-vinc-modal")) return;
+        if (
+          !deckHoverMq.matches &&
+          item.classList.contains("hx-svc-deck__item") &&
+          !item.classList.contains("is-deck-preview")
+        ) {
+          return;
+        }
+        event.preventDefault();
+        if (!vincModal.classList.contains("is-open")) openVincModal();
+      },
+      true
+    );
+
+    if (window.location.hash === "#vinculaciones-modal") {
+      window.requestAnimationFrame(openVincModal);
+    }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#vinculaciones-modal") openVincModal();
     });
   }
 
