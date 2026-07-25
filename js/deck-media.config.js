@@ -4,7 +4,7 @@
  */
 window.YAAVS_DECK_MEDIA = {
   recargaklic: {
-    icon: "assets/servicios/icons/recargaklic.png",
+    icon: "assets/servicios/icons/recargaklic.png?v=5",
     poster: "assets/servicios/activaciones.jpg",
     mp4: "assets/servicios/videos/recargaklic.mp4",
   },
