@@ -5227,9 +5227,30 @@ body.page-home {
     min-width: 0;
   }
 
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"],
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
+  /* Desfase tipo Pinterest — mismas tarjetas, ritmo visual */
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"] {
     padding-top: 0;
+  }
+
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] {
+    padding-top: clamp(28px, 8vw, 48px);
+  }
+
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
+    padding-top: clamp(14px, 4vw, 26px);
+  }
+
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"] .hx-svc-deck__item:nth-child(even),
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] .hx-svc-deck__item:nth-child(odd) {
+    margin-top: clamp(8px, 2.2vw, 14px);
+  }
+
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] .hx-svc-deck__item:nth-child(even) {
+    margin-top: clamp(4px, 1.2vw, 8px);
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:active {
+    transform: scale(0.97) !important;
   }
 
   .page-home .hx-svc-deck-wrap,
