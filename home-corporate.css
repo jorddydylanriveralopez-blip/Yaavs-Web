@@ -4784,6 +4784,23 @@ body.page-home {
   object-position: center;
 }
 
+.page-home .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(91, 159, 255, 0.35) 0%, transparent 55%),
+    linear-gradient(165deg, #0a1630 0%, #152a52 48%, #1e3a6e 100%);
+  padding: 16%;
+}
+
+.page-home .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__icon img {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
 .page-home .hx-svc-deck__item[data-deck-svc="postpago"]:hover .hx-svc-deck__bg img,
 .page-home .hx-svc-deck__item[data-deck-svc="postpago"].is-active .hx-svc-deck__bg img {
   transform: scale(1.02);
@@ -5188,7 +5205,7 @@ body.page-home {
     display: none;
   }
 
-  /* Masonry móvil — 3 columnas alineadas (sin desfase) */
+  /* Masonry móvil — columnas con desfase tipo Pinterest */
   .page-home .hx-svc-deck-masonry {
     display: flex;
     flex-direction: column;
@@ -5200,7 +5217,7 @@ body.page-home {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(8px, 2.2vw, 10px);
-    align-items: stretch;
+    align-items: start;
   }
 
   .page-home .hx-svc-deck-masonry__col {
@@ -5210,9 +5227,12 @@ body.page-home {
     min-width: 0;
   }
 
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"],
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] {
+    padding-top: clamp(22px, 6vw, 36px);
+  }
+
   .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
-    padding-top: 0;
+    padding-top: clamp(10px, 3vw, 18px);
   }
 
   .page-home .hx-svc-deck-wrap,
@@ -5349,10 +5369,19 @@ body.page-home {
     pointer-events: none;
   }
 
-  /* Misma proporción en todas las tarjetas (salvo hero) para que no se desalineen */
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg,
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="tall"] .hx-svc-deck__bg,
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="med"] .hx-svc-deck__bg,
+  /* Proporciones Pinterest por tipo de tarjeta */
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg {
+    aspect-ratio: var(--masonry-ratio, 4 / 5);
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="tall"] .hx-svc-deck__bg {
+    aspect-ratio: 3 / 4;
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="med"] .hx-svc-deck__bg {
+    aspect-ratio: 4 / 5;
+  }
+
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-masonry="short"] .hx-svc-deck__bg {
     aspect-ratio: 1 / 1;
   }
@@ -5548,11 +5577,15 @@ body.page-home {
     aspect-ratio: 1.65 / 1;
   }
 
-  /* Fallback sin masonry JS — visible de inmediato */
+  /* Fallback sin masonry JS — visible de inmediato, mismos tamaños */
   .page-home .hx-svc-deck-layout:not(.is-deck-masonry-mob) .hx-svc-deck__item {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .page-home .hx-svc-deck-layout:not(.is-deck-masonry-mob) .hx-svc-deck__item:not([data-masonry="hero"]) .hx-svc-deck__bg {
+    aspect-ratio: 1 / 1;
   }
 }
 

@@ -1995,11 +1995,30 @@
       ].filter(Boolean);
     }
 
+    function masonryItemWeight(item) {
+      const type = item.dataset.masonry;
+      if (type === "tall") return 1.35;
+      if (type === "med") return 1.15;
+      if (type === "short") return 1;
+      const raw = item.style.getPropertyValue("--masonry-ratio").trim();
+      const parts = raw.split("/").map((part) => Number(part.trim()));
+      if (parts.length === 2 && parts[0] > 0 && parts[1] > 0) {
+        return parts[1] / parts[0];
+      }
+      return 1.1;
+    }
+
     function distributeMasonryColumns(items, cols) {
       if (!cols?.length) return;
       cols.forEach((col) => col.replaceChildren());
-      items.forEach((item, index) => {
-        cols[index % cols.length].appendChild(item);
+      const heights = cols.map(() => 0);
+      items.forEach((item) => {
+        let target = 0;
+        for (let i = 1; i < heights.length; i += 1) {
+          if (heights[i] < heights[target]) target = i;
+        }
+        cols[target].appendChild(item);
+        heights[target] += masonryItemWeight(item);
       });
     }
 
