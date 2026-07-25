@@ -3012,7 +3012,7 @@ body.page-home {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(6px, 0.8vw, 12px);
-  width: min(1080px, calc(100% - 2 * clamp(16px, 3vw, 36px)));
+  width: min(1240px, calc(100% - 2 * clamp(14px, 2.5vw, 28px)));
   max-width: none;
   margin: 0 auto;
   padding: 10px 0 14px;
@@ -3023,7 +3023,7 @@ body.page-home {
   position: relative;
   margin: 0;
   aspect-ratio: auto;
-  height: clamp(250px, 28vw, 360px);
+  height: clamp(280px, 32vw, 420px);
   overflow: hidden;
   border-radius: clamp(16px, 2vw, 22px);
   border: 1px solid rgba(0, 188, 212, 0.22);
@@ -3067,7 +3067,7 @@ body.page-home {
 @media (max-width: 720px) {
   .page-home .tx-gallery__shots {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
     width: min(440px, calc(100% - 2 * var(--pad-x, 16px)));
     padding-inline: 0;
   }
