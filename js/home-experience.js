@@ -2078,28 +2078,18 @@
       const sorted = [...getDeckItems()].sort(
         (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
       );
-      const heroItem = sorted.find((item) => item.dataset.masonry === "hero");
-      const rest = sorted.filter((item) => item !== heroItem);
-      const colsWrap = masonryEl.querySelector(".hx-svc-deck-masonry__cols");
       const cols = getMasonryCols();
 
-      masonryEl.querySelector(':scope > .hx-svc-deck__item[data-masonry="hero"]')?.remove();
+      masonryEl.querySelector(':scope > .hx-svc-deck__item')?.remove();
       cols.forEach((col) => col.replaceChildren());
 
-      if (heroItem) {
-        heroItem.removeAttribute("role");
-        if (deckLive) heroItem.classList.add("is-deck-in");
-        masonryEl.insertBefore(heroItem, colsWrap);
-      }
-
-      rest.forEach((item) => {
+      sorted.forEach((item) => {
         item.removeAttribute("role");
         if (deckLive) item.classList.add("is-deck-in");
       });
-      distributeMasonryColumns(rest, cols);
+      distributeMasonryColumns(sorted, cols);
 
       getDeckItems().forEach((item) => {
-        if (item.dataset.masonry === "hero") return;
         if (cols.some((col) => col.contains(item))) return;
         appendToShortestMasonryCol(item, cols);
       });
@@ -2113,12 +2103,10 @@
         const sorted = [...getDeckItems()].sort(
           (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
         );
-        const rest = sorted.filter((item) => item.dataset.masonry !== "hero");
         const cols = getMasonryCols();
         if (cols.length < 3) return;
-        distributeMasonryColumns(rest, cols);
+        distributeMasonryColumns(sorted, cols);
         getDeckItems().forEach((item) => {
-          if (item.dataset.masonry === "hero") return;
           if (cols.some((col) => col.contains(item))) return;
           appendToShortestMasonryCol(item, cols);
         });
