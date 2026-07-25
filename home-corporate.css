@@ -4532,31 +4532,9 @@ body.page-home {
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
   }
 
-  .page-home .hx-svc-deck--square .hx-svc-deck__desc {
-    display: block;
-    font-size: 0.84rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.94);
-    margin-top: 8px;
-    max-width: 40ch;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-  }
-
+  .page-home .hx-svc-deck--square .hx-svc-deck__desc,
   .page-home .hx-svc-deck--square .hx-svc-deck__cta {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--deck-accent);
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
-  }
-
-  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__cta {
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    display: none;
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item::after,
