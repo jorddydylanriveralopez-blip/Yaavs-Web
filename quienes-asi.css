@@ -48,15 +48,15 @@ body.theme-cluster.page-asi-somos::before {
   z-index: 1;
   isolation: isolate;
   width: 100%;
-  height: auto;
-  aspect-ratio: 2400 / 1080;
+  height: clamp(200px, 32vh, 360px);
+  aspect-ratio: auto;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #04101f;
   background-image: var(--asi-cover-img);
-  background-size: 100% 100%;
-  background-position: center;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
@@ -82,19 +82,19 @@ body.theme-cluster.page-asi-somos::before {
   display: none;
 }
 
-/* Suave transición al blanco, sin tapar logos ni el arte */
+/* Transición corta al blanco, sin tapar el arte */
 .asi-cover__fade {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  height: min(12%, 56px);
+  height: 40px;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 55%,
+    rgba(255, 255, 255, 0.55) 60%,
     #ffffff 100%
   );
 }
@@ -322,8 +322,7 @@ body.theme-cluster.page-asi-somos::before {
 
 @media (max-width: 720px) {
   .asi-cover {
-    aspect-ratio: 2400 / 1080;
-    height: auto;
+    height: clamp(160px, 28vh, 240px);
   }
 
   .asi-somos__shell {
