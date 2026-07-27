@@ -49,8 +49,8 @@ body.theme-cluster.page-asi-somos::before {
   isolation: isolate;
   width: 100%;
   height: auto;
-  min-height: clamp(420px, 72vh, 680px);
-  min-height: clamp(420px, 72svh, 680px);
+  min-height: clamp(280px, 42vh, 460px);
+  min-height: clamp(280px, 42svh, 460px);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -83,19 +83,19 @@ body.theme-cluster.page-asi-somos::before {
   display: none;
 }
 
-/* Corte al panel tech (no blanco) */
+/* Corte al panel tech (continuo, sin línea dura) */
 .asi-cover__fade {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  height: 88px;
+  height: 120px;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     rgba(4, 16, 31, 0) 0%,
-    rgba(4, 16, 31, 0.55) 48%,
+    rgba(4, 16, 31, 0.72) 55%,
     #04101f 100%
   );
 }
@@ -202,13 +202,15 @@ body.theme-cluster.page-asi-somos::before {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.62) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.62) !important;
 }
 
 .asi-somos__breadcrumb a {
-  color: #5ce8f7;
+  color: #5ce8f7 !important;
+  -webkit-text-fill-color: #5ce8f7 !important;
   text-decoration: none;
   font-weight: 600;
 }
@@ -218,13 +220,18 @@ body.theme-cluster.page-asi-somos::before {
   text-underline-offset: 3px;
 }
 
+.asi-somos__breadcrumb span {
+  color: rgba(255, 255, 255, 0.55) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.55) !important;
+}
+
 /* ─── Panel tech ¿Qué somos? ─── */
 .asi-somos__hero {
   position: relative;
   isolation: isolate;
-  margin: 0 calc(50% - 50vw) clamp(48px, 7vw, 80px);
+  margin: -1px calc(50% - 50vw) clamp(40px, 6vw, 72px);
   width: 100vw;
-  padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 64px);
+  padding: clamp(28px, 4.5vw, 56px) clamp(20px, 5vw, 64px) clamp(48px, 7vw, 80px);
   overflow: hidden;
   background: #04101f;
   color: #e8f4ff;
@@ -233,7 +240,7 @@ body.theme-cluster.page-asi-somos::before {
 .asi-somos__hero-copy {
   position: relative;
   z-index: 2;
-  max-width: 1120px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -248,124 +255,108 @@ body.theme-cluster.page-asi-somos::before {
 .asi-tech__glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(8px);
+  filter: blur(10px);
 }
 
 .asi-tech__glow--a {
-  top: -18%;
-  right: -8%;
-  width: min(58vw, 620px);
-  height: min(58vw, 620px);
-  background: radial-gradient(circle, rgba(0, 188, 212, 0.38) 0%, transparent 68%);
-  animation: asi-tech-drift 12s ease-in-out infinite alternate;
+  top: -20%;
+  right: -12%;
+  width: min(50vw, 520px);
+  height: min(50vw, 520px);
+  background: radial-gradient(circle, rgba(0, 188, 212, 0.32) 0%, transparent 70%);
+  animation: asi-tech-drift 14s ease-in-out infinite alternate;
 }
 
 .asi-tech__glow--b {
-  bottom: -22%;
-  left: -10%;
-  width: min(52vw, 540px);
-  height: min(52vw, 540px);
-  background: radial-gradient(circle, rgba(37, 99, 181, 0.42) 0%, transparent 70%);
-  animation: asi-tech-drift 16s ease-in-out infinite alternate-reverse;
+  bottom: -28%;
+  left: -14%;
+  width: min(46vw, 460px);
+  height: min(46vw, 460px);
+  background: radial-gradient(circle, rgba(37, 99, 181, 0.36) 0%, transparent 72%);
+  animation: asi-tech-drift 18s ease-in-out infinite alternate-reverse;
 }
 
 .asi-tech__grid {
   position: absolute;
-  inset: -10%;
+  inset: 0;
   background-image:
-    linear-gradient(rgba(92, 232, 247, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92, 232, 247, 0.07) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 20%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 20%, transparent 78%);
-  transform: perspective(700px) rotateX(52deg) scale(1.35);
-  transform-origin: center top;
-  opacity: 0.85;
+    linear-gradient(rgba(92, 232, 247, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 232, 247, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 40% 35%, #000 10%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 40% 35%, #000 10%, transparent 75%);
+  opacity: 0.9;
 }
 
 .asi-tech__nodes {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 12% 28%, rgba(92, 232, 247, 0.95) 0 2px, transparent 3px),
-    radial-gradient(circle at 28% 62%, rgba(0, 188, 212, 0.8) 0 2px, transparent 3px),
-    radial-gradient(circle at 46% 22%, rgba(255, 255, 255, 0.75) 0 1.5px, transparent 3px),
-    radial-gradient(circle at 63% 48%, rgba(92, 232, 247, 0.9) 0 2px, transparent 3px),
-    radial-gradient(circle at 78% 30%, rgba(0, 188, 212, 0.75) 0 2px, transparent 3px),
-    radial-gradient(circle at 88% 68%, rgba(255, 255, 255, 0.65) 0 1.5px, transparent 3px),
-    linear-gradient(115deg, transparent 48%, rgba(92, 232, 247, 0.18) 49.5%, transparent 51%),
-    linear-gradient(205deg, transparent 46%, rgba(37, 99, 181, 0.22) 49%, transparent 52%);
-  opacity: 0.9;
+    radial-gradient(circle at 14% 30%, rgba(92, 232, 247, 0.85) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 26%, rgba(0, 188, 212, 0.7) 0 2px, transparent 3px),
+    radial-gradient(circle at 86% 62%, rgba(255, 255, 255, 0.55) 0 1.5px, transparent 3px);
+  opacity: 0.75;
 }
 
 .asi-tech__scan {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 28%;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(92, 232, 247, 0.08),
-    rgba(92, 232, 247, 0.16),
-    transparent
-  );
-  animation: asi-tech-scan 9s linear infinite;
-  mix-blend-mode: soft-light;
+  display: none;
 }
 
 @keyframes asi-tech-drift {
   from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(-3%, 4%) scale(1.08); }
+  to { transform: translate(-2%, 3%) scale(1.06); }
 }
 
-@keyframes asi-tech-scan {
-  0% { top: -30%; }
-  100% { top: 110%; }
-}
-
+body.theme-cluster.page-asi-somos .asi-somos__kicker,
 .asi-somos__kicker {
-  margin: 0 0 14px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #5ce8f7;
+  margin: 0 0 12px !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: #5ce8f7 !important;
+  -webkit-text-fill-color: #5ce8f7 !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__title,
 .asi-somos__title {
-  margin: 0 0 18px;
-  font-size: clamp(2.8rem, 8vw, 5.2rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 0 40px rgba(0, 188, 212, 0.25);
+  margin: 0 0 16px !important;
+  font-size: clamp(2.6rem, 7vw, 4.6rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.045em !important;
+  line-height: 0.94 !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 0 36px rgba(0, 188, 212, 0.22);
+  background: none !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__title span,
 .asi-somos__title span {
-  display: inline-block;
-  background: linear-gradient(120deg, #5ce8f7 0%, #00bcd4 45%, #7dd3fc 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  display: inline !important;
+  background: none !important;
+  color: #5ce8f7 !important;
+  -webkit-text-fill-color: #5ce8f7 !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__statement,
 .asi-somos__statement {
-  margin: 0 0 clamp(22px, 3vw, 32px);
-  max-width: 22em;
-  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
-  line-height: 1.35;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: rgba(232, 244, 255, 0.92);
+  margin: 0 0 clamp(20px, 3vw, 28px) !important;
+  max-width: 28em;
+  font-size: clamp(1.12rem, 2vw, 1.42rem) !important;
+  line-height: 1.4 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: rgba(236, 246, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(236, 246, 255, 0.92) !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__statement strong,
 .asi-somos__statement strong {
-  color: #ffffff;
-  font-weight: 800;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 800 !important;
 }
 
 .asi-somos__stats {
@@ -373,65 +364,74 @@ body.theme-cluster.page-asi-somos::before {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   list-style: none;
-  margin: 0 0 clamp(22px, 3vw, 30px);
+  margin: 0 0 clamp(20px, 3vw, 28px);
   padding: 0;
-  max-width: 720px;
+  max-width: 680px;
 }
 
 .asi-somos__stats li {
   display: grid;
   gap: 4px;
   padding: 14px 16px;
-  border: 1px solid rgba(92, 232, 247, 0.22);
-  border-radius: 16px;
-  background: rgba(8, 28, 48, 0.55);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  border: 1px solid rgba(92, 232, 247, 0.28);
+  border-radius: 14px;
+  background: rgba(6, 24, 42, 0.72);
+  backdrop-filter: blur(8px);
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__stats strong,
 .asi-somos__stats strong {
-  font-size: clamp(1.45rem, 3vw, 1.9rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: #5ce8f7;
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1 !important;
+  color: #5ce8f7 !important;
+  -webkit-text-fill-color: #5ce8f7 !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__stats span,
 .asi-somos__stats span {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(232, 244, 255, 0.68);
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: rgba(220, 236, 250, 0.72) !important;
+  -webkit-text-fill-color: rgba(220, 236, 250, 0.72) !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__lead,
 .asi-somos__lead {
-  margin: 0;
+  margin: 0 !important;
   max-width: 34em;
-  font-size: clamp(1rem, 1.5vw, 1.12rem);
-  line-height: 1.6;
-  color: rgba(200, 220, 236, 0.88);
-  font-weight: 500;
+  font-size: clamp(1rem, 1.45vw, 1.12rem) !important;
+  line-height: 1.6 !important;
+  color: rgba(220, 236, 250, 0.9) !important;
+  -webkit-text-fill-color: rgba(220, 236, 250, 0.9) !important;
+  font-weight: 500 !important;
   letter-spacing: -0.01em;
 }
 
 .asi-somos__lead + .asi-somos__lead {
-  margin-top: 0.85em;
+  margin-top: 0.85em !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__lead strong,
 .asi-somos__lead strong {
-  color: #ffffff;
-  font-weight: 800;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 800 !important;
 }
 
+body.theme-cluster.page-asi-somos .asi-somos__punch,
 .asi-somos__punch {
-  margin: 1.15em 0 0;
+  margin: 1.1em 0 0 !important;
   max-width: 34em;
-  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-  color: #5ce8f7;
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.3 !important;
+  color: #5ce8f7 !important;
+  -webkit-text-fill-color: #5ce8f7 !important;
 }
 
 .asi-somos__hero::after {
@@ -441,9 +441,9 @@ body.theme-cluster.page-asi-somos::before {
   right: 0;
   bottom: 0;
   z-index: 1;
-  height: 64px;
+  height: 72px;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent, #ffffff);
+  background: linear-gradient(180deg, transparent 0%, #ffffff 100%);
 }
 
 .asi-somos__section-title {
@@ -524,8 +524,8 @@ body.theme-cluster.page-asi-somos::before {
 
 @media (max-width: 720px) {
   .asi-cover {
-    min-height: clamp(320px, 58vh, 520px);
-    min-height: clamp(320px, 58svh, 520px);
+    min-height: clamp(220px, 34vh, 320px);
+    min-height: clamp(220px, 34svh, 320px);
   }
 
   .asi-somos__shell {
