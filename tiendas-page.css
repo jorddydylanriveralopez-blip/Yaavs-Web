@@ -1,22 +1,24 @@
+/* Tiendas chooser — oscuro tech alineado al mapa */
+
 body.page-tiendas,
 body.theme-cluster.page-tiendas {
-  background: #071018;
-  color: #0f2440;
+  background: #040a12;
+  color: #f4fbff;
 }
 
 body.theme-cluster.page-tiendas .site-header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  border-bottom: 1px solid rgba(0, 188, 212, 0.16);
-  box-shadow: 0 8px 24px rgba(15, 36, 64, 0.06);
+  background: rgba(6, 12, 22, 0.72);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  border-bottom: 1px solid rgba(0, 188, 212, 0.22);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
   isolation: isolate;
 }
 
 body.theme-cluster.page-tiendas .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom-color: rgba(0, 188, 212, 0.22);
-  box-shadow: 0 10px 28px rgba(15, 36, 64, 0.08);
+  background: rgba(4, 10, 18, 0.88);
+  border-bottom-color: rgba(0, 188, 212, 0.28);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
 }
 
 body.theme-cluster.page-tiendas .site-header::before,
@@ -30,41 +32,91 @@ body.theme-cluster.page-tiendas .site-header .header-inner {
 }
 
 body.theme-cluster.page-tiendas .site-header .logo {
-  --logo-filter: none;
+  --logo-filter: brightness(0) invert(1);
 }
 
 body.theme-cluster.page-tiendas .site-header .bento-dot {
-  background: #0f2440;
+  background: #e8f7fc;
 }
 
 .page-tiendas .nav-menu-hint {
   display: none !important;
 }
 
-body.theme-cluster.page-tiendas .main-nav--overlay,
-body.theme-cluster.page-tiendas-map .main-nav--overlay {
+body.theme-cluster.page-tiendas .main-nav--overlay {
   background:
-    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.14) 0%, transparent 58%),
-    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.08) 0%, transparent 62%),
-    linear-gradient(180deg, #ffffff 0%, #f5fcfe 42%, #e8f7fb 100%);
+    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.16) 0%, transparent 62%),
+    linear-gradient(180deg, #06101c 0%, #0a1628 55%, #071018 100%);
 }
 
-body.theme-cluster.page-tiendas .main-nav--overlay a,
-body.theme-cluster.page-tiendas-map .main-nav--overlay a {
-  border-bottom-color: rgba(0, 188, 212, 0.18);
-  color: #0f2440;
-  -webkit-text-fill-color: #0f2440;
+body.theme-cluster.page-tiendas .main-nav--overlay a {
+  border-bottom-color: rgba(0, 188, 212, 0.22);
+  color: #f4fbff;
+  -webkit-text-fill-color: #f4fbff;
 }
 
 .page-tiendas #contenido.tiendas-view {
   --tiendas-header-offset: clamp(64px, 10vh, 88px);
+  position: relative;
+  isolation: isolate;
   padding-top: 0;
   min-height: 100dvh;
-  background: #071018;
+  background: transparent;
+}
+
+/* Stage detrás del split (no tapa fotos de operador) */
+.tiendas-view__stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tiendas-view__stage-img {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.5) brightness(0.38);
+  animation: tiendas-stage-drift 28s ease-in-out infinite alternate;
+}
+
+.tiendas-view__stage-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.26) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(4, 10, 18, 0.78) 0%, rgba(4, 10, 18, 0.62) 45%, rgba(4, 10, 18, 0.9) 100%);
+}
+
+.tiendas-view__stage-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(0, 188, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 188, 212, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, #000 15%, transparent 72%);
+}
+
+@keyframes tiendas-stage-drift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1%, 0.6%, 0);
+  }
 }
 
 .tiendas-chooser {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
@@ -77,8 +129,8 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
   left: 50%;
   z-index: 6;
   transform: translateX(-50%);
-  width: min(90vw, 380px);
-  padding: 14px 22px 15px;
+  width: min(90vw, 400px);
+  padding: 16px 22px 17px;
   text-align: center;
   pointer-events: none;
   border-radius: 18px;
@@ -88,7 +140,7 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow:
     0 18px 42px rgba(0, 0, 0, 0.38),
-    0 0 0 1px rgba(0, 188, 212, 0.12),
+    0 0 0 1px rgba(0, 188, 212, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
@@ -104,10 +156,10 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
 
 .tiendas-chooser__title {
   margin: 0;
-  font-size: clamp(1.15rem, 2.8vw, 1.55rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  font-size: clamp(1.2rem, 2.9vw, 1.65rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
   text-transform: none;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff;
@@ -360,10 +412,12 @@ body.theme-cluster.page-tiendas-map .main-nav--overlay a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tiendas-view__stage-img,
   .tiendas-choice__media img,
   .tiendas-choice__content,
   .tiendas-choice__logo,
   .tiendas-choice__cta {
+    animation: none;
     transition: none;
   }
 

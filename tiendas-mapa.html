@@ -4,27 +4,41 @@
   <meta charset="UTF-8">
   <script src="js/yaavs-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#2563b5">
+  <meta name="theme-color" content="#06101c">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="Mapa de tiendas YAAVS por compañía: busca por ciudad o usa tu ubicación en tiempo real.">
   <title>Mapa de tiendas | YAAVS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=101">
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=3">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=4">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-tiendas-map" data-page="tiendas">
   <div id="site-header"></div>
 
   <main id="contenido" class="tiendas-map" aria-label="Mapa de tiendas por compañía">
+    <div class="tiendas-map__stage" aria-hidden="true">
+      <img
+        class="tiendas-map__stage-img"
+        src="assets/hero-telecom/hero-telecom-5.jpg"
+        alt=""
+        width="1600"
+        height="1067"
+        decoding="async"
+        fetchpriority="high"
+      >
+      <span class="tiendas-map__stage-veil"></span>
+      <span class="tiendas-map__stage-grid"></span>
+    </div>
+
     <div class="tiendas-map__floaters" aria-hidden="true">
       <span class="tiendas-map__floater tiendas-map__floater--orb-1"></span>
       <span class="tiendas-map__floater tiendas-map__floater--orb-2"></span>
@@ -99,6 +113,6 @@
   <div id="site-footer"></div>
   <script src="js/layout.js?v=19"></script>
   <script src="js/main.js"></script>
-  <script src="js/tiendas-map.js?v=3" defer></script>
+  <script src="js/tiendas-map.js?v=4" defer></script>
 </body>
 </html>

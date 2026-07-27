@@ -1,23 +1,46 @@
+/* Tiendas mapa — oscuro tech (BAIT / AT&T) */
+
 body.page-tiendas-map {
   --carrier-accent: #00bcd4;
-  --carrier-accent-soft: rgba(0, 188, 212, 0.25);
-  background: #f5fcfe;
-  color: #0f2440;
+  --carrier-accent-strong: #5ce1f5;
+  --carrier-accent-soft: rgba(0, 188, 212, 0.28);
+  --carrier-accent-glow: rgba(0, 188, 212, 0.35);
+  --map-ink: #f4fbff;
+  --map-muted: rgba(232, 244, 252, 0.72);
+  --map-glass: rgba(8, 16, 30, 0.72);
+  --map-glass-border: rgba(255, 255, 255, 0.14);
+  background: #040a12;
+  color: var(--map-ink);
 }
 
+body.page-tiendas-map[data-carrier="bait"] {
+  --carrier-accent: #00bcd4;
+  --carrier-accent-strong: #5ce1f5;
+  --carrier-accent-soft: rgba(0, 188, 212, 0.3);
+  --carrier-accent-glow: rgba(0, 188, 212, 0.4);
+}
+
+body.page-tiendas-map[data-carrier="att"] {
+  --carrier-accent: #5b9fff;
+  --carrier-accent-strong: #8cbcff;
+  --carrier-accent-soft: rgba(91, 159, 255, 0.3);
+  --carrier-accent-glow: rgba(91, 159, 255, 0.38);
+}
+
+/* Header glass oscuro */
 body.theme-cluster.page-tiendas-map .site-header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  border-bottom: 1px solid rgba(0, 188, 212, 0.16);
-  box-shadow: 0 8px 24px rgba(15, 36, 64, 0.06);
+  background: rgba(6, 12, 22, 0.72);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  border-bottom: 1px solid rgba(0, 188, 212, 0.22);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
   isolation: isolate;
 }
 
 body.theme-cluster.page-tiendas-map .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom-color: rgba(0, 188, 212, 0.22);
-  box-shadow: 0 10px 28px rgba(15, 36, 64, 0.08);
+  background: rgba(4, 10, 18, 0.88);
+  border-bottom-color: rgba(0, 188, 212, 0.28);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
 }
 
 body.theme-cluster.page-tiendas-map .site-header::before,
@@ -31,42 +54,11 @@ body.theme-cluster.page-tiendas-map .site-header .header-inner {
 }
 
 body.theme-cluster.page-tiendas-map .site-header .logo {
-  --logo-filter: none;
+  --logo-filter: brightness(0) invert(1);
 }
 
 body.theme-cluster.page-tiendas-map .site-header .bento-dot {
-  background: #0f2440;
-}
-
-@keyframes tiendas-map-header-aurora {
-  0% {
-    transform: translate3d(-5%, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(4%, -2%, 0) scale(1.04);
-  }
-
-  100% {
-    transform: translate3d(-3%, 1%, 0) scale(1);
-  }
-}
-
-@keyframes tiendas-map-header-shimmer {
-  0% {
-    background-position: 180% 0;
-  }
-
-  100% {
-    background-position: -20% 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.theme-cluster.page-tiendas-map .site-header::before,
-  body.theme-cluster.page-tiendas-map .site-header::after {
-    animation: none;
-  }
+  background: #e8f7fc;
 }
 
 .page-tiendas-map .nav-menu-hint {
@@ -75,48 +67,98 @@ body.theme-cluster.page-tiendas-map .site-header .bento-dot {
 
 body.theme-cluster.page-tiendas-map .main-nav--overlay {
   background:
-    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.14) 0%, transparent 58%),
-    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.08) 0%, transparent 62%),
-    linear-gradient(180deg, #ffffff 0%, #f5fcfe 42%, #e8f7fb 100%);
+    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.16) 0%, transparent 62%),
+    linear-gradient(180deg, #06101c 0%, #0a1628 55%, #071018 100%);
 }
 
 body.theme-cluster.page-tiendas-map .main-nav--overlay a {
-  border-bottom-color: rgba(0, 188, 212, 0.18);
-  color: #0f2440;
-  -webkit-text-fill-color: #0f2440;
+  border-bottom-color: rgba(0, 188, 212, 0.22);
+  color: #f4fbff;
+  -webkit-text-fill-color: #f4fbff;
 }
 
 body.page-tiendas-map .site-floats {
   display: none;
 }
 
-body.theme-cluster.page-tiendas-map #contenido.tiendas-map {
-  position: relative;
-  isolation: isolate;
-  padding-top: clamp(94px, 10vh, 126px);
-  padding-bottom: clamp(34px, 5vw, 64px);
-  background:
-    radial-gradient(92% 58% at 12% 0%, color-mix(in srgb, var(--carrier-accent) 10%, transparent) 0%, transparent 64%),
-    radial-gradient(86% 54% at 86% 12%, color-mix(in srgb, var(--carrier-accent) 8%, transparent) 0%, transparent 68%),
-    linear-gradient(180deg, #f5fcfe 0%, #ffffff 55%, #eef8fc 100%);
-}
-
-body.theme-cluster.page-tiendas-map #contenido.tiendas-map::before {
-  content: "";
-  position: absolute;
+/* Stage de fondo fijo */
+body.theme-cluster.page-tiendas-map .tiendas-map__stage {
+  position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.22;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 62px,
-      rgba(0, 188, 212, 0.04) 63px
-    );
+  overflow: hidden;
 }
 
+body.theme-cluster.page-tiendas-map .tiendas-map__stage-img {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.55) brightness(0.42);
+  transform: scale(1.02);
+  animation: tiendas-map-stage-drift 28s ease-in-out infinite alternate;
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__stage-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.28) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(4, 10, 18, 0.72) 0%, rgba(4, 10, 18, 0.55) 42%, rgba(4, 10, 18, 0.88) 100%),
+    linear-gradient(120deg, rgba(6, 20, 40, 0.85) 0%, rgba(4, 10, 18, 0.55) 55%, rgba(2, 8, 16, 0.9) 100%);
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__stage-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(0, 188, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 188, 212, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 20%, transparent 75%);
+}
+
+@keyframes tiendas-map-stage-drift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1.2%, 0.8%, 0);
+  }
+}
+
+body.theme-cluster.page-tiendas-map #contenido.tiendas-map {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  padding-top: clamp(94px, 10vh, 126px);
+  padding-bottom: clamp(34px, 5vw, 64px);
+  background: transparent;
+  animation: tiendas-map-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+body.theme-cluster.page-tiendas-map #contenido.tiendas-map::before {
+  display: none;
+}
+
+@keyframes tiendas-map-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Floaters */
 body.theme-cluster.page-tiendas-map .tiendas-map__floaters {
   position: absolute;
   inset: 0;
@@ -128,8 +170,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floaters {
 body.theme-cluster.page-tiendas-map .tiendas-map__floater {
   position: absolute;
   display: block;
-  opacity: 0.18;
-  filter: drop-shadow(0 8px 20px rgba(15, 36, 64, 0.08));
+  opacity: 0.34;
+  filter: drop-shadow(0 0 18px var(--carrier-accent-glow));
   animation: tiendas-map-float 12s ease-in-out infinite;
 }
 
@@ -139,8 +181,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--orb-3 {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    color-mix(in srgb, var(--carrier-accent) 66%, #ffffff) 0%,
-    color-mix(in srgb, var(--carrier-accent) 36%, transparent) 42%,
+    color-mix(in srgb, var(--carrier-accent) 70%, #fff) 0%,
+    color-mix(in srgb, var(--carrier-accent) 28%, transparent) 45%,
     transparent 74%
   );
   animation-name: tiendas-map-float, tiendas-map-pulse;
@@ -174,8 +216,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--orb-3 {
 body.theme-cluster.page-tiendas-map .tiendas-map__floater--ring-1,
 body.theme-cluster.page-tiendas-map .tiendas-map__floater--ring-2 {
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--carrier-accent) 62%, rgba(255, 255, 255, 0.24));
-  background: radial-gradient(circle, transparent 62%, color-mix(in srgb, var(--carrier-accent) 16%, transparent) 100%);
+  border: 1px solid color-mix(in srgb, var(--carrier-accent) 55%, rgba(255, 255, 255, 0.3));
+  background: radial-gradient(circle, transparent 62%, color-mix(in srgb, var(--carrier-accent) 18%, transparent) 100%);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__floater--ring-1 {
@@ -183,7 +225,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--ring-1 {
   right: 11%;
   width: clamp(140px, 15vw, 220px);
   height: clamp(140px, 15vw, 220px);
-  opacity: 0.28;
+  opacity: 0.36;
   animation-duration: 17s;
   animation-delay: -8.2s;
 }
@@ -193,7 +235,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--ring-2 {
   right: 6%;
   width: clamp(96px, 11vw, 164px);
   height: clamp(96px, 11vw, 164px);
-  opacity: 0.24;
+  opacity: 0.3;
   animation-duration: 14.5s;
   animation-delay: -4.8s;
 }
@@ -205,10 +247,10 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--beam-2 {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    color-mix(in srgb, var(--carrier-accent) 56%, rgba(255, 255, 255, 0.62)) 36%,
+    color-mix(in srgb, var(--carrier-accent) 70%, #fff) 36%,
     transparent 100%
   );
-  opacity: 0.3;
+  opacity: 0.4;
   animation-name: tiendas-map-scan;
   animation-duration: 8.5s;
 }
@@ -230,7 +272,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--sim {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 0.26;
+  opacity: 0.32;
+  filter: drop-shadow(0 0 12px var(--carrier-accent-glow)) brightness(1.35);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__floater--chip {
@@ -258,7 +301,6 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--sim {
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
-
   50% {
     transform: translate3d(0, -14px, 0) rotate(6deg);
   }
@@ -269,9 +311,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--sim {
   100% {
     opacity: 0.28;
   }
-
   50% {
-    opacity: 0.5;
+    opacity: 0.55;
   }
 }
 
@@ -279,12 +320,11 @@ body.theme-cluster.page-tiendas-map .tiendas-map__floater--sim {
   0%,
   100% {
     transform: translate3d(0, -10px, 0);
-    opacity: 0.2;
+    opacity: 0.22;
   }
-
   50% {
     transform: translate3d(0, 10px, 0);
-    opacity: 0.4;
+    opacity: 0.48;
   }
 }
 
@@ -296,6 +336,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch {
   z-index: 1;
 }
 
+/* Hero */
 body.theme-cluster.page-tiendas-map .tiendas-map__hero {
   padding: clamp(26px, 4.2vw, 46px) var(--pad-x) clamp(20px, 2.8vw, 32px);
 }
@@ -307,35 +348,38 @@ body.theme-cluster.page-tiendas-map .tiendas-map__kicker {
   margin: 0;
   padding: 8px 15px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 188, 212, 0.35);
-  background: rgba(0, 188, 212, 0.08);
-  color: #0097b2;
+  border: 1px solid color-mix(in srgb, var(--carrier-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--carrier-accent) 16%, rgba(6, 12, 22, 0.55));
+  color: var(--carrier-accent-strong);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  box-shadow: none;
+  box-shadow: 0 0 24px var(--carrier-accent-glow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__title {
   margin: 16px 0 0;
-  color: #0f2440;
+  color: #ffffff;
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.035em;
   text-wrap: balance;
-  text-shadow: none;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__lead {
   margin: 13px 0 0;
   max-width: 66ch;
-  color: #4a6278;
+  color: var(--map-muted);
   font-size: clamp(1rem, 1.7vw, 1.16rem);
   line-height: 1.58;
 }
 
+/* Panel glass */
 body.theme-cluster.page-tiendas-map .tiendas-map__panel {
   padding: 0 var(--pad-x) clamp(20px, 3vw, 34px);
 }
@@ -347,10 +391,15 @@ body.theme-cluster.page-tiendas-map .tiendas-map__panel-inner {
   gap: clamp(16px, 2.2vw, 28px);
   padding: clamp(20px, 3vw, 32px);
   border-radius: 24px;
-  border: 1px solid rgba(0, 188, 212, 0.22);
-  color: #0f2440;
-  background: #ffffff;
-  box-shadow: 0 22px 48px rgba(15, 36, 64, 0.08);
+  border: 1px solid var(--map-glass-border);
+  color: var(--map-ink);
+  background: var(--map-glass);
+  backdrop-filter: blur(22px) saturate(1.25);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, var(--carrier-accent) 18%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__brand {
@@ -365,7 +414,11 @@ body.theme-cluster.page-tiendas-map .tiendas-map__brand img {
   height: clamp(40px, 5.8vw, 62px);
   max-width: min(46vw, 270px);
   object-fit: contain;
-  filter: drop-shadow(0 4px 12px rgba(15, 36, 64, 0.08));
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  filter: none;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__brand-copy {
@@ -374,7 +427,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__brand-copy {
 
 body.theme-cluster.page-tiendas-map .tiendas-map__brand-name {
   margin: 0;
-  color: #0f2440;
+  color: #ffffff;
   font-size: clamp(1.15rem, 2.4vw, 1.56rem);
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -383,7 +436,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__brand-name {
 
 body.theme-cluster.page-tiendas-map .tiendas-map__brand-sub {
   margin: 5px 0 0;
-  color: #4a6278;
+  color: var(--map-muted);
   font-size: 0.91rem;
   line-height: 1.45;
 }
@@ -394,7 +447,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__search {
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__search label {
-  color: #0097b2;
+  color: var(--carrier-accent-strong);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -411,29 +464,29 @@ body.theme-cluster.page-tiendas-map .tiendas-map__controls input,
 body.theme-cluster.page-tiendas-map .tiendas-map__controls button {
   min-height: 50px;
   border-radius: 14px;
-  border: 1px solid rgba(170, 205, 235, 0.34);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   font-family: inherit;
   font-size: 0.94rem;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls input {
   padding: 0 16px;
-  background: #f5fcfe;
-  border-color: rgba(0, 188, 212, 0.22);
-  color: #0f2440;
-  box-shadow: inset 0 1px 2px rgba(15, 36, 64, 0.04);
+  background: rgba(4, 10, 18, 0.55);
+  border-color: color-mix(in srgb, var(--carrier-accent) 28%, rgba(255, 255, 255, 0.12));
+  color: #f4fbff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls input::placeholder {
-  color: #7a94a8;
+  color: rgba(200, 220, 235, 0.45);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls input:focus {
   outline: none;
-  border-color: #00bcd4;
+  border-color: var(--carrier-accent);
   box-shadow:
-    0 0 0 1px rgba(0, 188, 212, 0.2) inset,
-    0 0 0 3px rgba(0, 188, 212, 0.12);
+    0 0 0 1px color-mix(in srgb, var(--carrier-accent) 35%, transparent) inset,
+    0 0 0 3px color-mix(in srgb, var(--carrier-accent) 22%, transparent);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls button {
@@ -451,14 +504,18 @@ body.theme-cluster.page-tiendas-map .tiendas-map__controls button {
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls button[type="submit"] {
   border-color: transparent;
-  background: linear-gradient(135deg, #0097b2 0%, #00bcd4 100%);
-  box-shadow: 0 10px 24px rgba(0, 188, 212, 0.22);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--carrier-accent) 82%, #004d5c) 0%,
+    var(--carrier-accent) 100%
+  );
+  box-shadow: 0 12px 28px var(--carrier-accent-glow);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls button[type="button"] {
-  border-color: rgba(0, 188, 212, 0.3);
-  background: #ffffff;
-  color: #0097b2;
+  border-color: color-mix(in srgb, var(--carrier-accent) 45%, transparent);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--carrier-accent-strong);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__controls button:hover {
@@ -474,11 +531,12 @@ body.theme-cluster.page-tiendas-map .tiendas-map__controls button:focus-visible 
 body.theme-cluster.page-tiendas-map .tiendas-map__status {
   min-height: 1.28em;
   margin: 0;
-  color: #4a6278;
+  color: rgba(220, 236, 248, 0.62);
   font-size: 0.84rem;
   letter-spacing: 0.01em;
 }
 
+/* Viewer */
 body.theme-cluster.page-tiendas-map .tiendas-map__viewer {
   padding: 0 var(--pad-x) clamp(22px, 3.2vw, 38px);
 }
@@ -486,19 +544,24 @@ body.theme-cluster.page-tiendas-map .tiendas-map__viewer {
 body.theme-cluster.page-tiendas-map .tiendas-map__viewer .container {
   padding: clamp(10px, 1.4vw, 14px);
   border-radius: 24px;
-  border: 1px solid rgba(0, 188, 212, 0.2);
-  background: #ffffff;
-  box-shadow: 0 16px 40px rgba(15, 36, 64, 0.08);
+  border: 1px solid var(--map-glass-border);
+  background: rgba(8, 16, 30, 0.55);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.42),
+    0 0 0 1px color-mix(in srgb, var(--carrier-accent) 16%, transparent);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__viewer iframe {
   width: 100%;
   height: clamp(380px, 64vh, 720px);
-  border: 1px solid rgba(0, 188, 212, 0.14);
+  border: 1px solid color-mix(in srgb, var(--carrier-accent) 22%, transparent);
   border-radius: 16px;
-  background: #eef8fc;
+  background: #0a1628;
 }
 
+/* Switcher */
 body.theme-cluster.page-tiendas-map .tiendas-map__switch {
   padding: 0 var(--pad-x) clamp(54px, 7vw, 88px);
 }
@@ -517,9 +580,11 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch a {
   justify-content: center;
   min-height: 50px;
   border-radius: 14px;
-  border: 1px solid rgba(0, 188, 212, 0.22);
-  background: #ffffff;
-  color: #0f2440;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(8, 16, 30, 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #f4fbff;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -534,47 +599,30 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch a {
 
 body.theme-cluster.page-tiendas-map .tiendas-map__switch a:hover {
   transform: translateY(-1px);
-  border-color: rgba(0, 188, 212, 0.45);
-  background: #f5fcfe;
+  border-color: color-mix(in srgb, var(--carrier-accent) 55%, transparent);
+  background: rgba(12, 24, 42, 0.78);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__switch a.is-active {
   border-color: transparent;
-  background: linear-gradient(135deg, #0097b2 0%, #00bcd4 100%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--carrier-accent) 78%, #003844) 0%,
+    var(--carrier-accent) 100%
+  );
   color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.22);
+  box-shadow: 0 10px 28px var(--carrier-accent-glow);
 }
 
 body.theme-cluster.page-tiendas-map #site-footer {
   background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 body.theme-cluster.page-tiendas-map .site-footer {
   padding: clamp(58px, 7vw, 86px) 0 clamp(28px, 4vw, 40px);
-}
-
-body.page-tiendas-map[data-carrier="bait"] {
-  --carrier-accent: #ffcb05;
-  --carrier-accent-strong: #ffe05a;
-  --carrier-accent-glow: rgba(255, 203, 5, 0.4);
-}
-
-body.page-tiendas-map[data-carrier="att"] {
-  --carrier-accent: #5a9cc4;
-  --carrier-accent-strong: #3bc0ff;
-  --carrier-accent-glow: rgba(0, 168, 255, 0.32);
-}
-
-body.page-tiendas-map[data-carrier="movistar"] {
-  --carrier-accent: #68db22;
-  --carrier-accent-strong: #86f04a;
-  --carrier-accent-glow: rgba(104, 219, 34, 0.3);
-}
-
-body.page-tiendas-map[data-carrier="unefon"] {
-  --carrier-accent: #ffd558;
-  --carrier-accent-strong: #ffe07f;
-  --carrier-accent-glow: rgba(255, 213, 88, 0.34);
+  color: rgba(232, 244, 252, 0.78);
 }
 
 @media (max-width: 1100px) {
@@ -631,12 +679,14 @@ body.page-tiendas-map[data-carrier="unefon"] {
   }
 
   body.theme-cluster.page-tiendas-map .tiendas-map__floater {
-    opacity: 0.2;
+    opacity: 0.22;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.theme-cluster.page-tiendas-map .tiendas-map__floater {
+  body.theme-cluster.page-tiendas-map .tiendas-map__floater,
+  body.theme-cluster.page-tiendas-map .tiendas-map__stage-img,
+  body.theme-cluster.page-tiendas-map #contenido.tiendas-map {
     animation: none;
   }
 }
