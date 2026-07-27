@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
   <link rel="stylesheet" href="interior-light.css?v=3">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=9">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=11">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
@@ -90,15 +90,43 @@
         </form>
 
         <div class="tiendas-map__stores" id="carrier-stores" hidden></div>
+
+        <aside class="tiendas-map__nav" id="carrier-nav-panel" hidden>
+          <p class="tiendas-map__nav-kicker">GPS · Cómo llegar</p>
+          <h2 class="tiendas-map__nav-title" id="carrier-nav-title">Sucursal</h2>
+          <p class="tiendas-map__nav-address" id="carrier-nav-address"></p>
+          <div class="tiendas-map__nav-actions">
+            <a
+              class="tiendas-map__nav-go"
+              id="carrier-nav-go"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ir allá</a>
+            <a
+              class="tiendas-map__nav-open"
+              id="carrier-nav-open"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Abrir en Google Maps</a>
+          </div>
+        </aside>
       </div>
     </section>
 
     <section class="tiendas-map__viewer" aria-label="Mapa de tiendas">
       <div class="container">
+        <div class="tiendas-map__map-tools" aria-label="Controles del mapa">
+          <button type="button" id="carrier-map-zoom-in" title="Acercar">+</button>
+          <button type="button" id="carrier-map-zoom-out" title="Alejar">−</button>
+          <button type="button" id="carrier-map-fit-all" title="Ver las 3 sucursales">Ver todas</button>
+        </div>
         <div id="carrier-map-host" class="tiendas-map__leaflet" hidden></div>
+        <p class="tiendas-map__street-label">Vista de calles (Google Maps)</p>
         <iframe
           id="carrier-map-frame"
-          title="Mapa de tiendas"
+          title="Mapa de calles Google"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen
@@ -119,6 +147,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
   <script src="js/layout.js?v=19" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/tiendas-map.js?v=7" defer></script>
+  <script src="js/tiendas-map.js?v=9" defer></script>
 </body>
 </html>
