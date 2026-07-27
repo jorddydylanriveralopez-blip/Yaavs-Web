@@ -5204,7 +5204,23 @@ body.page-home {
   );
 }
 
+/* Yaavsta bloqueado: se ve y anima, sin navegación */
+.page-home .hx-svc-deck__item.is-deck-locked,
+.page-home .hx-svc-deck__item[data-deck-svc="tiempo-aire"].is-deck-locked {
+  cursor: default;
+  user-select: none;
+}
+
+.page-home .hx-svc-deck__item.is-deck-locked .hx-svc-deck__cta {
+  opacity: 0.85;
+  letter-spacing: 0.02em;
+}
+
 @media (max-width: 768px) {
+  .page-home .hx-svc-deck__item.is-deck-locked {
+    cursor: default;
+  }
+
   .page-home .hx-svc-deck__item[data-deck-svc="tiempo-aire"] .hx-svc-deck__bg {
     background: #1547c2;
   }

@@ -17,7 +17,14 @@
       const item = event.target.closest?.(".hx-svc-deck__item");
       if (!item || !root.contains(item)) return;
       if (item.closest('[role="dialog"]')) return;
-      if (item.classList.contains("is-deck-preview")) return;
+      if (item.classList.contains("is-deck-preview")) {
+        /* Yaavsta u otros bloqueados: no navegar en el 2º tap */
+        if (item.classList.contains("is-deck-locked") || item.getAttribute("aria-disabled") === "true") {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+        return;
+      }
 
       event.preventDefault();
       event.stopImmediatePropagation();

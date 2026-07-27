@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="home-experience.css?v=202">
-  <link rel="stylesheet" href="home-corporate.css?v=221">
+  <link rel="stylesheet" href="home-corporate.css?v=222">
   <link rel="stylesheet" href="home-wow.css?v=3" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="yaavser-lead.css?v=1" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="testimonios-historias.css?v=3" media="print" onload="this.media='all'">
@@ -152,7 +152,7 @@
             </span>
           </a>
 
-          <a href="recargar.html" class="hx-svc-deck__item" data-deck-svc="tiempo-aire" data-masonry="short" data-accent="violet" style="--deck-i: 1; --masonry-ratio: 1 / 1">
+          <div class="hx-svc-deck__item is-deck-locked" data-deck-svc="tiempo-aire" data-masonry="short" data-accent="violet" style="--deck-i: 1; --masonry-ratio: 1 / 1" aria-disabled="true" title="Próximamente">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/servicios/icons/yaavsta.png?v=1" alt="" width="1085" height="1084" loading="lazy" decoding="async">
             </span>
@@ -161,9 +161,9 @@
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">Yaavsta</span>
               <span class="hx-svc-deck__desc">Recargas de todas las compañías con comisión al instante.</span>
-              <span class="hx-svc-deck__cta">Recargar en YAAVS →</span>
+              <span class="hx-svc-deck__cta">Próximamente</span>
             </span>
-          </a>
+          </div>
 
           <a href="#porta-modal" class="hx-svc-deck__item" data-deck-svc="portabilidad" data-hx-porta-open data-masonry="short" data-accent="navy" style="--deck-i: 2; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="porta-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
@@ -1102,54 +1102,54 @@
       /* Cargar deck pronto para que el tap móvil muestre video al instante */
       void loadBatchOnce("home-deck", [
         "js/deck-media.config.js?v=221",
-        "js/home-experience.js?v=220",
+        "js/home-experience.js?v=221",
       ]);
 
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=221",
-        "js/home-experience.js?v=220",
+        "js/home-experience.js?v=221",
       ], "400px 0px");
 
       /* Abrir modal de portabilidad desde hash sin esperar al scroll */
       if (window.location.hash === "#porta-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=220",
+          "js/home-experience.js?v=221",
         ]);
       }
 
       if (window.location.hash === "#rotulaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=220",
+          "js/home-experience.js?v=221",
         ]);
       }
 
       if (window.location.hash === "#vinculaciones-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=220",
+          "js/home-experience.js?v=221",
         ]);
       }
 
       if (window.location.hash === "#esim-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=220",
+          "js/home-experience.js?v=221",
         ]);
       }
 
       if (window.location.hash === "#yaavshop-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=220",
+          "js/home-experience.js?v=221",
         ]);
       }
 
       if (window.location.hash === "#recargaklic-modal") {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=220",
+          "js/home-experience.js?v=221",
         ]);
       }
 
