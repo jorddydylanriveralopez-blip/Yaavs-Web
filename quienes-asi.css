@@ -208,7 +208,7 @@ body.theme-cluster.page-asi-somos::before {
   left: 14%;
   width: clamp(48px, 6.5vw, 80px);
   --asi-float-rot: -6deg;
-  opacity: 0.5;
+  opacity: 0.82;
   animation-name: asi-float-sway;
   animation-duration: 8.8s;
   animation-delay: -2.7s;
@@ -228,7 +228,7 @@ body.theme-cluster.page-asi-somos::before {
   right: 3%;
   width: clamp(88px, 12vw, 140px);
   --asi-float-rot: 12deg;
-  opacity: 0.52;
+  opacity: 0.86;
   animation-duration: 9.6s;
   animation-delay: -1.1s;
 }
@@ -257,7 +257,7 @@ body.theme-cluster.page-asi-somos::before {
   left: 48%;
   width: clamp(50px, 7vw, 84px);
   --asi-float-rot: 14deg;
-  opacity: 0.4;
+  opacity: 0.7;
   animation-name: asi-float-sway;
   animation-duration: 8.4s;
   animation-delay: -4.6s;
@@ -286,7 +286,7 @@ body.theme-cluster.page-asi-somos::before {
   right: 18%;
   width: clamp(78px, 10vw, 124px);
   --asi-float-rot: 4deg;
-  opacity: 0.48;
+  opacity: 0.8;
   animation-name: asi-float-sway;
   animation-duration: 11.2s;
   animation-delay: -5.2s;
@@ -340,7 +340,7 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-float {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
   .asi-float--a,
