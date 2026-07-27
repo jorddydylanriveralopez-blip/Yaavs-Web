@@ -3241,6 +3241,32 @@ body.page-home {
   }
 }
 
+.page-home .tx-gallery__feature-video {
+  margin: clamp(28px, 4vw, 44px) auto 0;
+  max-width: min(1120px, 100%);
+  padding-inline: var(--pad-x, 20px);
+}
+
+.page-home .tx-gallery__feature-video-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: clamp(16px, 2vw, 24px);
+  aspect-ratio: 16 / 9;
+  background: #061018;
+  box-shadow:
+    0 22px 48px rgba(8, 20, 38, 0.28),
+    0 0 0 1px rgba(0, 188, 212, 0.28),
+    0 0 40px rgba(0, 212, 238, 0.16);
+}
+
+.page-home .tx-gallery__feature-video-el {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .page-home .tx-gallery__more {
   margin: clamp(32px, 4.5vw, 48px) auto 0;
   text-align: center;
