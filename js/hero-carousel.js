@@ -340,14 +340,26 @@
     const box = document.createElement("div");
     box.className = "hero-promo__box";
 
+    const badge = String(promo.badge || "").trim();
+    const kicker = String(promo.kicker || "").trim();
+    const eyebrow =
+      badge || kicker
+        ? `<p class="hero-promo__eyebrow">
+          ${badge ? `<span class="hero-promo__badge">${badge}</span>` : ""}
+          ${
+            badge && kicker
+              ? `<span class="hero-promo__dot" aria-hidden="true">·</span>`
+              : ""
+          }
+          ${kicker ? `<span class="hero-promo__kicker">${kicker}</span>` : ""}
+        </p>`
+        : "";
+
     box.innerHTML = `
       <span class="hero-promo__scrim" aria-hidden="true"></span>
       <span class="hero-promo__rail" aria-hidden="true"></span>
       <div class="${innerClass}">
-        <p class="hero-promo__eyebrow">
-          <span class="hero-promo__badge">${promo.badge || "YAAVS"}</span>
-          ${promo.kicker ? `<span class="hero-promo__dot" aria-hidden="true">·</span><span class="hero-promo__kicker">${promo.kicker}</span>` : ""}
-        </p>
+        ${eyebrow}
         ${titleBlock}
         ${
           lead
