@@ -29,8 +29,6 @@ window.YAAVS_HERO_CAROUSEL = {
       alt: "YAAVS — ¿Quiénes somos?",
       duration: 0,
       promo: {
-        badge: "YAAVS",
-        kicker: "Red de servicios",
         title: "¿Quiénes",
         accent: "somos?",
         lead: "Conoce la red que impulsa tu negocio en todo México.",
@@ -56,8 +54,6 @@ window.YAAVS_HERO_CAROUSEL = {
       alt: "YAAVS — distribución nacional de SIMs y telecom en México.",
       duration: 0,
       promo: {
-        badge: "YAAVS",
-        kicker: "Red de servicios",
         title: "Conoce",
         accent: "nuestros servicios",
         lead: "Elige un servicio y te llevamos al sitio correspondiente.",
@@ -82,8 +78,6 @@ window.YAAVS_HERO_CAROUSEL = {
       alt: "Conviértete en socio comercial — red nacional YAAVS.",
       duration: 0,
       promo: {
-        badge: "Red nacional",
-        kicker: "Únete a la red",
         title: "Conviértete en",
         accent: "socio comercial",
         lead: "",
