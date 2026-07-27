@@ -18,7 +18,8 @@
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
   <link rel="stylesheet" href="interior-light.css?v=3">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=7">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=8">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-tiendas-map" data-page="tiendas">
@@ -55,7 +56,7 @@
 
     <section class="tiendas-map__hero">
       <div class="container">
-        <p class="tiendas-map__kicker" id="carrier-kicker">Cobertura nacional YAAVS</p>
+        <p class="tiendas-map__kicker" id="carrier-kicker">Cobertura YAAVS</p>
         <h1 class="tiendas-map__title" id="carrier-title">Selecciona tu ubicación para ver tiendas</h1>
         <p class="tiendas-map__lead" id="carrier-lead">
           Busca por ciudad, colonia o estado, o usa tu ubicación para ver tiendas cercanas en tiempo real.
@@ -69,7 +70,7 @@
           <img id="carrier-logo" src="assets/operadores/bait-carriers-color.svg" alt="Compañía" width="220" height="88" loading="lazy" decoding="async">
           <div class="tiendas-map__brand-copy">
             <p class="tiendas-map__brand-name" id="carrier-name">BAIT</p>
-            <p class="tiendas-map__brand-sub">Puntos de venta en toda la República Mexicana</p>
+            <p class="tiendas-map__brand-sub" id="carrier-brand-sub">Puntos de venta en toda la República Mexicana</p>
           </div>
         </div>
 
@@ -88,11 +89,14 @@
           </div>
           <p class="tiendas-map__status" id="carrier-map-status" aria-live="polite"></p>
         </form>
+
+        <div class="tiendas-map__stores" id="carrier-stores" hidden></div>
       </div>
     </section>
 
     <section class="tiendas-map__viewer" aria-label="Mapa de tiendas">
       <div class="container">
+        <div id="carrier-map-host" class="tiendas-map__leaflet" hidden></div>
         <iframe
           id="carrier-map-frame"
           title="Mapa de tiendas"
@@ -113,8 +117,9 @@
   </main>
 
   <div id="site-footer"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
   <script src="js/layout.js?v=19" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/tiendas-map.js?v=5" defer></script>
+  <script src="js/tiendas-map.js?v=6" defer></script>
 </body>
 </html>
