@@ -123,11 +123,11 @@
           const active = store.id === activeId ? " is-active" : "";
           return `
             <article class="tiendas-map__store${active}" data-store-id="${store.id}">
-              <button type="button" class="tiendas-map__store-main" data-store-focus="${store.id}">
+              <div class="tiendas-map__store-main" role="button" tabindex="0" data-store-focus="${store.id}">
                 <span class="tiendas-map__store-name">${store.name}</span>
                 <span class="tiendas-map__store-city">${store.city}</span>
                 <span class="tiendas-map__store-address">${store.address}</span>
-              </button>
+              </div>
               <a class="tiendas-map__store-link" href="${mapsSearchUrl(store.address)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
             </article>
           `;
@@ -201,14 +201,9 @@
     initLeaflet();
 
     storesEl?.addEventListener("click", (event) => {
-      const link = event.target.closest(".tiendas-map__store-link");
-      if (link) {
-        event.stopPropagation();
-        return;
-      }
-      const btn = event.target.closest("[data-store-id]");
-      if (!btn) return;
-      const store = carrier.stores.find((s) => s.id === btn.dataset.storeId);
+      const focusBtn = event.target.closest("[data-store-focus]");
+      if (!focusBtn) return;
+      const store = carrier.stores.find((s) => s.id === focusBtn.dataset.storeFocus);
       focusStore(store, { zoom: 15 });
     });
 

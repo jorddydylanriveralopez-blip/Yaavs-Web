@@ -624,16 +624,15 @@ body.theme-cluster.page-tiendas-map .tiendas-map__stores {
 body.theme-cluster.page-tiendas-map .tiendas-map__store {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
+  align-items: stretch;
+  gap: 10px;
   width: 100%;
-  padding: 16px 16px 14px;
+  padding: 16px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(8, 16, 30, 0.72);
-  color: #f4fbff;
-  text-align: left;
-  cursor: pointer;
+  border: 1px solid rgba(245, 197, 24, 0.45);
+  background: #101820;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
@@ -641,46 +640,78 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store {
     transform 0.2s ease;
 }
 
+body.theme-cluster.page-tiendas-map .tiendas-map__store-main {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: none;
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__store:hover,
 body.theme-cluster.page-tiendas-map .tiendas-map__store.is-active {
-  border-color: color-mix(in srgb, var(--carrier-accent) 55%, transparent);
-  background: rgba(12, 24, 42, 0.9);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  border-color: #f5c518;
+  background: #16202c;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42);
   transform: translateY(-1px);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-name {
+  display: block;
   font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-city {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: color-mix(in srgb, var(--carrier-accent) 78%, #fff);
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #f5c518 !important;
+  -webkit-text-fill-color: #f5c518;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-address {
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: rgba(220, 236, 248, 0.72);
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #d7e6f2 !important;
+  -webkit-text-fill-color: #d7e6f2;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-link {
-  margin-top: 4px;
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: 2px;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #7ec8ff;
+  color: #7ec8ff !important;
+  -webkit-text-fill-color: #7ec8ff;
   text-decoration: none;
-  pointer-events: auto;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-link:hover {
-  color: #fff;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
 }
 
 @media (max-width: 900px) {
