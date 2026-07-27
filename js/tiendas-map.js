@@ -5,18 +5,20 @@
     bait: {
       id: "bait",
       name: "BAIT",
-      logo: "assets/operadores/bait-carriers.svg",
+      logo: "assets/operadores/bait-carriers-color.svg",
       queryTerm: "tiendas BAIT Mexico",
       lead: "Ubica tiendas BAIT por ciudad, colonia o punto comercial.",
       title: "Mapa de tiendas BAIT en tiempo real",
+      themeColor: "#0a0a0a",
     },
     att: {
       id: "att",
       name: "AT&T",
-      logo: "assets/operadores/att-carriers.png",
+      logo: "assets/operadores/att-carriers-color.svg",
       queryTerm: "tiendas AT&T Mexico",
       lead: "Consulta tiendas AT&T disponibles en toda la República.",
       title: "Mapa de tiendas AT&T en tiempo real",
+      themeColor: "#00a8e0",
     },
   };
 
@@ -25,6 +27,10 @@
   const carrier = carriers[requested] || carriers.bait;
 
   document.body.dataset.carrier = carrier.id;
+  document.title = `${carrier.title} | YAAVS`;
+
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeMeta) themeMeta.setAttribute("content", carrier.themeColor);
 
   const titleEl = document.getElementById("carrier-title");
   const leadEl = document.getElementById("carrier-lead");
