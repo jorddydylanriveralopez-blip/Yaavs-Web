@@ -105,6 +105,134 @@ body.theme-cluster.page-asi-somos::before {
   to { transform: translate(-2%, 3%) scale(1.06); }
 }
 
+/* Elementos flotantes: chips, celulares, señal */
+.asi-floats {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.asi-float {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  opacity: 0.42;
+  filter: drop-shadow(0 10px 18px rgba(0, 48, 135, 0.12));
+  will-change: transform;
+  animation: asi-float-bob 7.5s ease-in-out infinite;
+}
+
+.asi-float--sim {
+  top: 38%;
+  left: 3%;
+  width: clamp(42px, 6vw, 68px);
+  animation-duration: 8.2s;
+  animation-delay: -1.2s;
+}
+
+.asi-float--chip {
+  top: 52%;
+  left: 8%;
+  width: clamp(34px, 4.5vw, 50px);
+  animation-duration: 6.8s;
+  animation-delay: -2.4s;
+}
+
+.asi-float--phone {
+  top: 44%;
+  right: 4%;
+  width: clamp(36px, 5vw, 52px);
+  animation-duration: 9s;
+  animation-delay: -0.8s;
+}
+
+.asi-float--signal {
+  top: 62%;
+  right: 9%;
+  width: clamp(32px, 4.2vw, 46px);
+  opacity: 0.36;
+  animation-duration: 7.2s;
+  animation-delay: -3.1s;
+}
+
+.asi-float--esim {
+  top: 78%;
+  left: 5%;
+  width: clamp(40px, 5.5vw, 58px);
+  animation-duration: 8.6s;
+  animation-delay: -4.2s;
+}
+
+.asi-float--phones {
+  top: 72%;
+  right: 3%;
+  width: clamp(64px, 9vw, 104px);
+  opacity: 0.38;
+  animation-duration: 10s;
+  animation-delay: -1.8s;
+}
+
+.asi-float--sim-b {
+  top: 88%;
+  right: 14%;
+  width: clamp(36px, 4.8vw, 54px);
+  transform: rotate(18deg);
+  animation-duration: 7.8s;
+  animation-delay: -2.9s;
+}
+
+.asi-float--phone-b {
+  top: 34%;
+  left: 12%;
+  width: clamp(30px, 4vw, 42px);
+  opacity: 0.34;
+  animation-duration: 9.4s;
+  animation-delay: -5s;
+}
+
+.asi-float--chip-b {
+  top: 58%;
+  left: 48%;
+  width: clamp(28px, 3.8vw, 42px);
+  opacity: 0.28;
+  animation-duration: 6.4s;
+  animation-delay: -3.6s;
+}
+
+@keyframes asi-float-bob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg));
+  }
+  50% {
+    transform: translate3d(6px, -14px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 4deg));
+  }
+}
+
+.asi-float--sim { --asi-float-rot: -8deg; }
+.asi-float--chip { --asi-float-rot: 12deg; }
+.asi-float--phone { --asi-float-rot: 6deg; }
+.asi-float--signal { --asi-float-rot: -4deg; }
+.asi-float--esim { --asi-float-rot: 10deg; }
+.asi-float--phones { --asi-float-rot: -6deg; }
+.asi-float--sim-b { --asi-float-rot: 18deg; }
+.asi-float--phone-b { --asi-float-rot: -12deg; }
+.asi-float--chip-b { --asi-float-rot: 8deg; }
+
+@media (max-width: 720px) {
+  .asi-float--phone-b,
+  .asi-float--chip-b,
+  .asi-float--signal {
+    display: none;
+  }
+
+  .asi-float {
+    opacity: 0.3;
+  }
+}
+
 /* ─── Hero full-bleed bajo el header ─── */
 .asi-cover {
   --asi-cover-img: url("assets/quienes-somos-fondo.png");
@@ -534,7 +662,8 @@ body.theme-cluster.page-asi-somos::before {
 
   .asi-tech__glow,
   .asi-tech__scan,
-  .asi-ambient__glow {
+  .asi-ambient__glow,
+  .asi-float {
     animation: none !important;
   }
 
