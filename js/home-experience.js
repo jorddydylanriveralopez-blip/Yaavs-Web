@@ -2294,7 +2294,7 @@
       video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
-      video.preload = cfg.mp4 ? "auto" : "none";
+      video.preload = cfg.mp4 ? "metadata" : "none";
       /* Sin poster del <video>: evita flash de foto distinta al icono antes del primer frame. */
       if (cfg.mp4) video.removeAttribute("poster");
       else if (cfg.poster) video.poster = cfg.poster;

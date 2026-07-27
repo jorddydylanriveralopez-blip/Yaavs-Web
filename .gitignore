@@ -1,5 +1,7 @@
-.vercel
-.netlify
-.vscode/
-yaavs-web-completo.zip
 .env*
+.netlify
+.vercel
+.vscode/
+node_modules/
+package-lock.json
+yaavs-web-completo.zip

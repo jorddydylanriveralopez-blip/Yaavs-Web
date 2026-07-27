@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <script src="js/yaavs-theme.js"></script>
+  <script src="js/yaavs-theme.js?v=2"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#2563b5">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,11 +12,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/quienes-somos-fondo.jpg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css?v=101">
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="quienes-asi.css?v=38">
+  <link rel="stylesheet" href="quienes-asi.css?v=39">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-quienes-somos page-asi-somos" data-page="quienes-somos">
@@ -53,7 +54,7 @@
       <div class="asi-cover__media" aria-hidden="true">
         <img
           class="asi-cover__img"
-          src="assets/quienes-somos-fondo.png"
+          src="assets/quienes-somos-fondo.jpg"
           alt=""
           width="2400"
           height="1080"
@@ -116,7 +117,7 @@
             aria-controls="asi-historia"
           >
             <figure class="asi-card__media">
-              <img src="assets/quienes-historia.png" alt="" width="720" height="480" loading="eager" decoding="async">
+              <img src="assets/quienes-historia.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
               <span class="asi-card__hint">Ver línea de tiempo</span>
             </figure>
             <h3 class="asi-card__title">Nuestra historia</h3>
@@ -151,7 +152,7 @@
             aria-controls="asi-valores-modal"
           >
             <figure class="asi-card__media">
-              <img src="assets/valores/valores.png" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <img src="assets/valores/valores.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
               <span class="asi-card__hint">Ver valores</span>
             </figure>
             <h3 class="asi-card__title">Valores</h3>
@@ -165,7 +166,7 @@
             aria-controls="asi-filosofia-modal"
           >
             <figure class="asi-card__media">
-              <img src="assets/valores/filosofia.png" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <img src="assets/valores/filosofia.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
               <span class="asi-card__hint">Ver filosofía</span>
             </figure>
             <h3 class="asi-card__title">Filosofía</h3>
@@ -385,7 +386,7 @@
 
       <div class="asi-valores__hero">
         <img
-          src="assets/valores/valores-empresa.jpg"
+          src="assets/valores/valores.jpg"
           alt=""
           width="1600"
           height="900"
@@ -498,8 +499,8 @@
   </dialog>
 
   <div id="site-footer"></div>
-  <script src="js/layout.js?v=19"></script>
-  <script src="js/main.js"></script>
+  <script src="js/layout.js?v=19" defer></script>
+  <script src="js/main.js" defer></script>
   <script src="js/quienes-historia.js?v=2" defer></script>
   <script src="js/quienes-valores.js?v=3" defer></script>
   <script src="js/quienes-filosofia.js?v=1" defer></script>
