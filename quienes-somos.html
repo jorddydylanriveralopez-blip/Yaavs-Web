@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="quienes-asi.css?v=28">
+  <link rel="stylesheet" href="quienes-asi.css?v=29">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-quienes-somos page-asi-somos" data-page="quienes-somos">
@@ -119,12 +119,19 @@
             <h3 class="asi-card__title">Nuestros servicios</h3>
           </a>
 
-          <a class="asi-card" href="#asi-valores">
+          <button
+            type="button"
+            class="asi-card"
+            data-valores-open
+            aria-haspopup="dialog"
+            aria-controls="asi-valores-modal"
+          >
             <figure class="asi-card__media">
-              <img src="assets/hero-telecom/hero-campeones-vincula.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <img src="assets/valores/valores-empresa.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <span class="asi-card__hint">Ver valores</span>
             </figure>
             <h3 class="asi-card__title">Valores</h3>
-          </a>
+          </button>
 
           <a class="asi-card" href="bolsa-trabajo.html">
             <figure class="asi-card__media">
@@ -161,9 +168,10 @@
       <section class="asi-somos__detail" id="asi-valores" aria-labelledby="asi-valores-title">
         <h2 id="asi-valores-title">Valores</h2>
         <p>
-          Nos guiamos por cercanía comercial, excelencia operativa, equidad con nuestros Yaavsers y la alegría
-          de ver crecer cada tienda. Apostamos por innovación práctica —de RecargaKlic a campañas nacionales—
-          para que la red YAAVS sea más fuerte, más clara y más rentable.
+          Nos guiamos por cercanía, excelencia, equidad e innovación.
+          Toca
+          <button type="button" class="asi-inline-link" data-valores-open aria-controls="asi-valores-modal">Valores</button>
+          para ver la experiencia, misión, compromiso y filosofía de YAAVS.
         </p>
       </section>
     </div>
@@ -344,9 +352,109 @@
     </div>
   </dialog>
 
+  <dialog class="asi-valores" id="asi-valores-modal" aria-labelledby="asi-valores-modal-title">
+    <div class="asi-valores__sheet">
+      <header class="asi-valores__top">
+        <div>
+          <p class="asi-valores__kicker">Lo que nos guía</p>
+          <h2 id="asi-valores-modal-title" class="asi-valores__title">Nuestros valores</h2>
+        </div>
+        <button type="button" class="asi-valores__close" data-valores-close aria-label="Cerrar valores">
+          <span aria-hidden="true">×</span>
+        </button>
+      </header>
+
+      <div class="asi-valores__hero">
+        <img
+          src="assets/valores/valores-empresa.jpg"
+          alt=""
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="asi-valores__hero-copy">
+          <p>Grupo Comercial YAAVS</p>
+          <strong>Pilares que impulsan la red</strong>
+        </div>
+        <div class="asi-valores__hero-fade" aria-hidden="true"></div>
+      </div>
+
+      <div class="asi-valores__grid">
+        <article class="asi-valores__card">
+          <figure class="asi-valores__media">
+            <img src="assets/valores/experiencia.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
+          </figure>
+          <div class="asi-valores__body">
+            <span class="asi-valores__num">01</span>
+            <span class="asi-valores__tag">Cobertura nacional</span>
+            <h3 class="asi-valores__card-title">Experiencia</h3>
+            <p>Más de diez mil puntos en todo el país respaldan nuestra operación, logística y presencia comercial.</p>
+          </div>
+        </article>
+
+        <article class="asi-valores__card">
+          <figure class="asi-valores__media">
+            <img src="assets/valores/mision.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
+          </figure>
+          <div class="asi-valores__body">
+            <span class="asi-valores__num">02</span>
+            <span class="asi-valores__tag">Tu tienda, tu impulso</span>
+            <h3 class="asi-valores__card-title">Misión</h3>
+            <p>Impulsar micro y medianos negocios con herramientas, soporte y beneficios reales — no promesas vacías.</p>
+          </div>
+        </article>
+
+        <article class="asi-valores__card">
+          <figure class="asi-valores__media">
+            <img src="assets/valores/compromiso.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
+          </figure>
+          <div class="asi-valores__body">
+            <span class="asi-valores__num">03</span>
+            <span class="asi-valores__tag">En tu puerta</span>
+            <h3 class="asi-valores__card-title">Compromiso</h3>
+            <p>Visitas comerciales, líneas de calidad y valor agregado que marca la diferencia en tu local, semana a semana.</p>
+          </div>
+        </article>
+
+        <article class="asi-valores__card asi-valores__card--wide">
+          <figure class="asi-valores__media">
+            <img src="assets/valores/filosofia.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
+          </figure>
+          <div class="asi-valores__body">
+            <span class="asi-valores__num">04</span>
+            <span class="asi-valores__tag">Lo que nos guía</span>
+            <h3 class="asi-valores__card-title">Valores de la empresa</h3>
+            <ul class="asi-valores__list">
+              <li><strong>Honestidad</strong> — relación transparente con cada Yaavser.</li>
+              <li><strong>Cercanía</strong> — visitas, soporte y seguimiento real.</li>
+              <li><strong>Innovación</strong> — herramientas como RecargaKlic.</li>
+              <li><strong>Compromiso</strong> — cumplimos lo que prometemos.</li>
+              <li><strong>Respeto</strong> — al socio, a su negocio y a su comunidad.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="asi-valores__card asi-valores__card--wide">
+          <figure class="asi-valores__media">
+            <img src="assets/valores/quienes-somos.jpg" alt="" width="800" height="500" loading="lazy" decoding="async">
+          </figure>
+          <div class="asi-valores__body">
+            <span class="asi-valores__num">05</span>
+            <span class="asi-valores__tag">Nuestra forma de trabajar</span>
+            <h3 class="asi-valores__card-title">Filosofía</h3>
+            <p>No solo distribuimos telecom: acompañamos a cada punto de venta para que crezca con herramientas, presencia comercial y beneficios que se sienten en el mostrador.</p>
+            <p class="asi-valores__punch">Tu tienda, tu impulso, nuestra misión.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </dialog>
+
   <div id="site-footer"></div>
   <script src="js/layout.js?v=19"></script>
   <script src="js/main.js"></script>
   <script src="js/quienes-historia.js?v=2" defer></script>
+  <script src="js/quienes-valores.js?v=1" defer></script>
 </body>
 </html>
