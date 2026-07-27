@@ -43,7 +43,7 @@ body.theme-cluster.page-asi-somos::before {
 
 /* ─── Hero full-bleed bajo el header ─── */
 .asi-cover {
-  --asi-cover-img: url("assets/hero-telecom/banners/banner-horizontal-poster.jpg");
+  --asi-cover-img: url("assets/quienes-somos-fondo.png");
   position: relative;
   z-index: 1;
   isolation: isolate;
