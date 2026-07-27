@@ -201,6 +201,7 @@ body.theme-cluster.page-asi-somos::before {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   margin: 0 0 22px;
   font-size: 0.92rem;
@@ -220,6 +221,7 @@ body.theme-cluster.page-asi-somos::before {
 
 .asi-somos__hero {
   margin-bottom: clamp(40px, 6vw, 64px);
+  text-align: center;
 }
 
 .asi-somos__kicker {
@@ -246,7 +248,7 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__statement {
-  margin: 0 0 clamp(20px, 3vw, 28px);
+  margin: 0 auto clamp(20px, 3vw, 28px);
   max-width: 28em;
   font-size: clamp(1.12rem, 2vw, 1.4rem);
   line-height: 1.4;
@@ -265,18 +267,22 @@ body.theme-cluster.page-asi-somos::before {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   list-style: none;
-  margin: 0 0 clamp(20px, 3vw, 28px);
+  margin: 0 auto clamp(20px, 3vw, 28px);
   padding: 0;
   max-width: 680px;
+  text-align: center;
+  justify-items: center;
 }
 
 .asi-somos__stats li {
   display: grid;
   gap: 4px;
+  width: 100%;
   padding: 14px 16px;
   border: 1px solid rgba(0, 151, 178, 0.2);
   border-radius: 14px;
   background: linear-gradient(180deg, #f7fcfe 0%, #eef8fb 100%);
+  justify-items: center;
 }
 
 .asi-somos__stats strong {
@@ -296,7 +302,7 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__lead {
-  margin: 0;
+  margin: 0 auto;
   max-width: 34em;
   font-size: clamp(1rem, 1.45vw, 1.12rem);
   line-height: 1.6;
@@ -311,7 +317,7 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__punch {
-  margin: 1.1em 0 0;
+  margin: 1.1em auto 0;
   max-width: 34em;
   font-size: clamp(1.05rem, 1.7vw, 1.25rem);
   font-weight: 800;
