@@ -326,8 +326,13 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 @media (max-width: 720px) {
+  .asi-cover {
+    height: clamp(220px, 42vh, 360px);
+  }
+
   .asi-somos__shell {
-    padding-top: calc(var(--header-h, 88px) + 20px);
+    padding-top: 4px;
+    margin-top: -36px;
   }
 
   .asi-somos__grid {
@@ -336,17 +341,6 @@ body.theme-cluster.page-asi-somos::before {
 
   .asi-card__media {
     border-radius: 14px;
-  }
-
-  .asi-blob--hero {
-    top: -8vh;
-    right: -18vw;
-    opacity: 0.85;
-  }
-
-  .asi-blob--hero .asi-blob__ball {
-    width: 58vw;
-    height: 58vw;
   }
 
   .asi-blob--footer {
