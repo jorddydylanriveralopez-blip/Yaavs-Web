@@ -234,15 +234,31 @@ body.theme-cluster.page-asi-somos::before {
 
 .asi-somos__lead {
   margin: 0;
-  max-width: 72ch;
-  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-  line-height: 1.7;
-  color: #24384c;
+  max-width: 38em;
+  font-size: clamp(1.08rem, 1.7vw, 1.28rem);
+  line-height: 1.65;
+  color: #3a5168;
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .asi-somos__lead + .asi-somos__lead {
-  margin-top: 1.1em;
+  margin-top: 0.85em;
+}
+
+.asi-somos__lead strong {
+  color: #003087;
+  font-weight: 800;
+}
+
+.asi-somos__punch {
+  margin: 1.35em 0 0;
+  max-width: 38em;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  color: #0097b2;
 }
 
 .asi-somos__section-title {
