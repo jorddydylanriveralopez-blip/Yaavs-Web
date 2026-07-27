@@ -15,7 +15,7 @@
       name: "AT&T",
       logo: "assets/operadores/att-carriers.png",
       queryTerm: "tiendas AT&T Mexico",
-      lead: "Consulta tiendas AT&T disponibles en toda la Republica.",
+      lead: "Consulta tiendas AT&T disponibles en toda la República.",
       title: "Mapa de tiendas AT&T en tiempo real",
     },
     movistar: {
@@ -23,7 +23,7 @@
       name: "Movistar",
       logo: "assets/operadores/movistar-carriers.png",
       queryTerm: "tiendas Movistar Mexico",
-      lead: "Encuentra sucursales Movistar por region y ciudad.",
+      lead: "Encuentra sucursales Movistar por región y ciudad.",
       title: "Mapa de tiendas Movistar en tiempo real",
     },
     unefon: {
@@ -79,7 +79,7 @@
     setStatus(statusText || `Mostrando resultados para: ${query}`);
   }
 
-  updateMap(carrier.queryTerm, `Mostrando ${carrier.name} en todo Mexico.`);
+  updateMap(carrier.queryTerm, `Mostrando ${carrier.name} en todo México.`);
 
   formEl.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -95,22 +95,22 @@
 
   geolocateBtn?.addEventListener("click", () => {
     if (!navigator.geolocation) {
-      setStatus("Tu navegador no permite geolocalizacion.");
+      setStatus("Tu navegador no permite geolocalización.");
       return;
     }
 
     geolocateBtn.disabled = true;
-    setStatus("Obteniendo tu ubicacion...");
+    setStatus("Obteniendo tu ubicación...");
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
         const query = `${carrier.name} tiendas cerca de ${latitude}, ${longitude}`;
-        updateMap(query, `Ubicacion detectada. Mostrando tiendas ${carrier.name} cercanas.`);
+        updateMap(query, `Ubicación detectada. Mostrando tiendas ${carrier.name} cercanas.`);
         geolocateBtn.disabled = false;
       },
       () => {
-        setStatus("No pudimos detectar tu ubicacion. Intenta buscar por ciudad.");
+        setStatus("No pudimos detectar tu ubicación. Intenta buscar por ciudad.");
         geolocateBtn.disabled = false;
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
