@@ -1,6 +1,9 @@
-/* Tiendas mapa — oscuro tech (BAIT / AT&T) */
+/* Tiendas mapa — ciudad de noche (BAIT / AT&T) */
 
-body.page-tiendas-map {
+html:has(body.page-tiendas-map),
+body.page-tiendas-map,
+body.theme-cluster.page-tiendas-map,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map {
   --carrier-accent: #00bcd4;
   --carrier-accent-strong: #5ce1f5;
   --carrier-accent-soft: rgba(0, 188, 212, 0.28);
@@ -9,8 +12,9 @@ body.page-tiendas-map {
   --map-muted: rgba(232, 244, 252, 0.72);
   --map-glass: rgba(8, 16, 30, 0.72);
   --map-glass-border: rgba(255, 255, 255, 0.14);
-  background: #040a12;
+  background: #040a12 !important;
   color: var(--map-ink);
+  min-height: 100%;
 }
 
 body.page-tiendas-map[data-carrier="bait"] {
@@ -27,9 +31,10 @@ body.page-tiendas-map[data-carrier="att"] {
   --carrier-accent-glow: rgba(91, 159, 255, 0.38);
 }
 
-/* Header glass oscuro */
-body.theme-cluster.page-tiendas-map .site-header {
-  background: rgba(6, 12, 22, 0.72);
+/* Header glass oscuro (gana al tema día) */
+body.theme-cluster.page-tiendas-map .site-header,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header {
+  background: rgba(6, 12, 22, 0.55) !important;
   backdrop-filter: blur(18px) saturate(1.25);
   -webkit-backdrop-filter: blur(18px) saturate(1.25);
   border-bottom: 1px solid rgba(0, 188, 212, 0.22);
@@ -37,8 +42,9 @@ body.theme-cluster.page-tiendas-map .site-header {
   isolation: isolate;
 }
 
-body.theme-cluster.page-tiendas-map .site-header.is-scrolled {
-  background: rgba(4, 10, 18, 0.88);
+body.theme-cluster.page-tiendas-map .site-header.is-scrolled,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header.is-scrolled {
+  background: rgba(4, 10, 18, 0.82) !important;
   border-bottom-color: rgba(0, 188, 212, 0.28);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
 }
@@ -53,11 +59,14 @@ body.theme-cluster.page-tiendas-map .site-header .header-inner {
   z-index: 2;
 }
 
-body.theme-cluster.page-tiendas-map .site-header .logo {
+body.theme-cluster.page-tiendas-map .site-header .logo,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header .logo,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .logo:not(.logo--on-light) {
   --logo-filter: brightness(0) invert(1);
 }
 
-body.theme-cluster.page-tiendas-map .site-header .bento-dot {
+body.theme-cluster.page-tiendas-map .site-header .bento-dot,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .bento-dot {
   background: #e8f7fc;
 }
 
@@ -82,35 +91,36 @@ body.page-tiendas-map .site-floats {
   display: none;
 }
 
-/* Stage de fondo fijo */
+/* Stage de fondo fijo — ciudad de noche en loop */
 body.theme-cluster.page-tiendas-map .tiendas-map__stage {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  background: #040a12;
 }
 
-body.theme-cluster.page-tiendas-map .tiendas-map__stage-img {
+body.theme-cluster.page-tiendas-map .tiendas-map__stage-video {
   position: absolute;
-  inset: -4%;
-  width: 108%;
-  height: 108%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.55) brightness(0.42);
-  transform: scale(1.02);
-  animation: tiendas-map-stage-drift 28s ease-in-out infinite alternate;
+  filter: saturate(1.05) brightness(0.55) contrast(1.05);
+  transform: scale(1.04);
+  animation: tiendas-map-stage-drift 36s ease-in-out infinite alternate;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__stage-veil {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.28) 0%, transparent 58%),
-    linear-gradient(180deg, rgba(4, 10, 18, 0.72) 0%, rgba(4, 10, 18, 0.55) 42%, rgba(4, 10, 18, 0.88) 100%),
-    linear-gradient(120deg, rgba(6, 20, 40, 0.85) 0%, rgba(4, 10, 18, 0.55) 55%, rgba(2, 8, 16, 0.9) 100%);
+    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.2) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(4, 10, 18, 0.55) 0%, rgba(4, 10, 18, 0.42) 42%, rgba(4, 10, 18, 0.78) 100%),
+    linear-gradient(120deg, rgba(6, 20, 40, 0.55) 0%, rgba(4, 10, 18, 0.35) 55%, rgba(2, 8, 16, 0.72) 100%);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__stage-grid {
@@ -614,7 +624,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch a.is-active {
   box-shadow: 0 10px 28px var(--carrier-accent-glow);
 }
 
-body.theme-cluster.page-tiendas-map #site-footer {
+body.theme-cluster.page-tiendas-map #site-footer,
+body.theme-cluster.page-tiendas #site-footer {
   background: transparent;
   position: relative;
   z-index: 1;
@@ -685,8 +696,18 @@ body.theme-cluster.page-tiendas-map .site-footer {
 
 @media (prefers-reduced-motion: reduce) {
   body.theme-cluster.page-tiendas-map .tiendas-map__floater,
-  body.theme-cluster.page-tiendas-map .tiendas-map__stage-img,
+  body.theme-cluster.page-tiendas-map .tiendas-map__stage-video,
   body.theme-cluster.page-tiendas-map #contenido.tiendas-map {
     animation: none;
+  }
+
+  body.theme-cluster.page-tiendas-map .tiendas-map__stage-video {
+    display: none;
+  }
+
+  body.theme-cluster.page-tiendas-map .tiendas-map__stage {
+    background:
+      #040a12
+      url("assets/tiendas/city-night.jpg") center / cover no-repeat;
   }
 }

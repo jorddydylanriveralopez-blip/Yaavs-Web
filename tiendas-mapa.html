@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=4">
+  <link rel="stylesheet" href="interior-light.css?v=3">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=5">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-tiendas-map" data-page="tiendas">
@@ -26,15 +26,17 @@
 
   <main id="contenido" class="tiendas-map" aria-label="Mapa de tiendas por compañía">
     <div class="tiendas-map__stage" aria-hidden="true">
-      <img
-        class="tiendas-map__stage-img"
-        src="assets/hero-telecom/hero-telecom-5.jpg"
-        alt=""
-        width="1600"
-        height="1067"
-        decoding="async"
-        fetchpriority="high"
+      <video
+        class="tiendas-map__stage-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="assets/tiendas/city-night.jpg"
       >
+        <source src="assets/tiendas/city-night.mp4" type="video/mp4">
+      </video>
       <span class="tiendas-map__stage-veil"></span>
       <span class="tiendas-map__stage-grid"></span>
     </div>

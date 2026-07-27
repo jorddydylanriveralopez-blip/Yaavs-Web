@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
   <link rel="stylesheet" href="interior-light.css?v=3">
-  <link rel="stylesheet" href="tiendas-page.css?v=10">
+  <link rel="stylesheet" href="tiendas-page.css?v=11">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-tiendas" data-page="tiendas">
@@ -26,15 +26,17 @@
 
   <main id="contenido" class="tiendas-view" aria-label="Compañías con cobertura nacional">
     <div class="tiendas-view__stage" aria-hidden="true">
-      <img
-        class="tiendas-view__stage-img"
-        src="assets/hero-telecom/hero-telecom-5.jpg"
-        alt=""
-        width="1600"
-        height="1067"
-        decoding="async"
-        fetchpriority="high"
+      <video
+        class="tiendas-view__stage-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="assets/tiendas/city-night.jpg"
       >
+        <source src="assets/tiendas/city-night.mp4" type="video/mp4">
+      </video>
       <span class="tiendas-view__stage-veil"></span>
       <span class="tiendas-view__stage-grid"></span>
     </div>

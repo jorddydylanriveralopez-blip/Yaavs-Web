@@ -1,13 +1,17 @@
-/* Tiendas chooser — oscuro tech alineado al mapa */
+/* Tiendas chooser — ciudad de noche alineada al mapa */
 
+html:has(body.page-tiendas),
 body.page-tiendas,
-body.theme-cluster.page-tiendas {
-  background: #040a12;
+body.theme-cluster.page-tiendas,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas {
+  background: #040a12 !important;
   color: #f4fbff;
+  min-height: 100%;
 }
 
-body.theme-cluster.page-tiendas .site-header {
-  background: rgba(6, 12, 22, 0.72);
+body.theme-cluster.page-tiendas .site-header,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .site-header {
+  background: rgba(6, 12, 22, 0.55) !important;
   backdrop-filter: blur(18px) saturate(1.25);
   -webkit-backdrop-filter: blur(18px) saturate(1.25);
   border-bottom: 1px solid rgba(0, 188, 212, 0.22);
@@ -15,8 +19,9 @@ body.theme-cluster.page-tiendas .site-header {
   isolation: isolate;
 }
 
-body.theme-cluster.page-tiendas .site-header.is-scrolled {
-  background: rgba(4, 10, 18, 0.88);
+body.theme-cluster.page-tiendas .site-header.is-scrolled,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .site-header.is-scrolled {
+  background: rgba(4, 10, 18, 0.82) !important;
   border-bottom-color: rgba(0, 188, 212, 0.28);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
 }
@@ -31,11 +36,14 @@ body.theme-cluster.page-tiendas .site-header .header-inner {
   z-index: 2;
 }
 
-body.theme-cluster.page-tiendas .site-header .logo {
+body.theme-cluster.page-tiendas .site-header .logo,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .site-header .logo,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .logo:not(.logo--on-light) {
   --logo-filter: brightness(0) invert(1);
 }
 
-body.theme-cluster.page-tiendas .site-header .bento-dot {
+body.theme-cluster.page-tiendas .site-header .bento-dot,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .bento-dot {
   background: #e8f7fc;
 }
 
@@ -72,26 +80,28 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  background: #040a12;
 }
 
-.tiendas-view__stage-img {
+.tiendas-view__stage-video {
   position: absolute;
-  inset: -4%;
-  width: 108%;
-  height: 108%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.5) brightness(0.38);
-  animation: tiendas-stage-drift 28s ease-in-out infinite alternate;
+  filter: saturate(1.05) brightness(0.52) contrast(1.05);
+  transform: scale(1.04);
+  animation: tiendas-stage-drift 36s ease-in-out infinite alternate;
 }
 
 .tiendas-view__stage-veil {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.2) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.26) 0%, transparent 58%),
-    linear-gradient(180deg, rgba(4, 10, 18, 0.78) 0%, rgba(4, 10, 18, 0.62) 45%, rgba(4, 10, 18, 0.9) 100%);
+    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.2) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(4, 10, 18, 0.58) 0%, rgba(4, 10, 18, 0.45) 45%, rgba(4, 10, 18, 0.82) 100%);
 }
 
 .tiendas-view__stage-grid {
@@ -412,13 +422,23 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tiendas-view__stage-img,
+  .tiendas-view__stage-video,
   .tiendas-choice__media img,
   .tiendas-choice__content,
   .tiendas-choice__logo,
   .tiendas-choice__cta {
     animation: none;
     transition: none;
+  }
+
+  .tiendas-view__stage-video {
+    display: none;
+  }
+
+  .tiendas-view__stage {
+    background:
+      #040a12
+      url("assets/tiendas/city-night.jpg") center / cover no-repeat;
   }
 
   .tiendas-choice:hover .tiendas-choice__media img,
