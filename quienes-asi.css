@@ -105,7 +105,7 @@ body.theme-cluster.page-asi-somos::before {
   to { transform: translate(-2%, 3%) scale(1.06); }
 }
 
-/* Elementos flotantes: chips, celulares, señal */
+/* Elementos flotantes: chips, celulares, señal — más grandes y variados */
 .asi-floats {
   position: absolute;
   inset: 0;
@@ -118,87 +118,168 @@ body.theme-cluster.page-asi-somos::before {
   position: absolute;
   display: block;
   object-fit: contain;
-  opacity: 0.42;
-  filter: drop-shadow(0 10px 18px rgba(0, 48, 135, 0.12));
+  opacity: 0.62;
+  filter: drop-shadow(0 14px 22px rgba(0, 48, 135, 0.18));
   will-change: transform;
-  animation: asi-float-bob 7.5s ease-in-out infinite;
+  animation-name: asi-float-bob;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-.asi-float--sim {
-  top: 38%;
+.asi-float--a {
+  top: 34%;
+  left: 1.5%;
+  width: clamp(64px, 9vw, 110px);
+  --asi-float-rot: -14deg;
+  animation-duration: 7.8s;
+  animation-delay: -0.6s;
+}
+
+.asi-float--b {
+  top: 42%;
+  right: 2%;
+  width: clamp(56px, 7.5vw, 92px);
+  --asi-float-rot: 10deg;
+  animation-name: asi-float-sway;
+  animation-duration: 9.2s;
+  animation-delay: -1.4s;
+}
+
+.asi-float--c {
+  top: 54%;
+  left: 6%;
+  width: clamp(52px, 7vw, 86px);
+  --asi-float-rot: 18deg;
+  animation-duration: 6.6s;
+  animation-delay: -2.2s;
+}
+
+.asi-float--d {
+  top: 58%;
+  right: 1%;
+  width: clamp(96px, 13vw, 160px);
+  --asi-float-rot: -8deg;
+  opacity: 0.55;
+  animation-name: asi-float-sway;
+  animation-duration: 10.4s;
+  animation-delay: -0.9s;
+}
+
+.asi-float--e {
+  top: 68%;
   left: 3%;
-  width: clamp(42px, 6vw, 68px);
-  animation-duration: 8.2s;
-  animation-delay: -1.2s;
+  width: clamp(48px, 6.5vw, 78px);
+  --asi-float-rot: 6deg;
+  animation-duration: 8s;
+  animation-delay: -3.3s;
 }
 
-.asi-float--chip {
-  top: 52%;
-  left: 8%;
-  width: clamp(34px, 4.5vw, 50px);
-  animation-duration: 6.8s;
-  animation-delay: -2.4s;
-}
-
-.asi-float--phone {
-  top: 44%;
-  right: 4%;
-  width: clamp(36px, 5vw, 52px);
-  animation-duration: 9s;
-  animation-delay: -0.8s;
-}
-
-.asi-float--signal {
-  top: 62%;
-  right: 9%;
-  width: clamp(32px, 4.2vw, 46px);
-  opacity: 0.36;
-  animation-duration: 7.2s;
-  animation-delay: -3.1s;
-}
-
-.asi-float--esim {
-  top: 78%;
-  left: 5%;
-  width: clamp(40px, 5.5vw, 58px);
-  animation-duration: 8.6s;
-  animation-delay: -4.2s;
-}
-
-.asi-float--phones {
-  top: 72%;
-  right: 3%;
-  width: clamp(64px, 9vw, 104px);
-  opacity: 0.38;
-  animation-duration: 10s;
+.asi-float--f {
+  top: 48%;
+  left: 11%;
+  width: clamp(58px, 8vw, 98px);
+  --asi-float-rot: -20deg;
+  animation-name: asi-float-spinbob;
+  animation-duration: 11s;
   animation-delay: -1.8s;
 }
 
-.asi-float--sim-b {
-  top: 88%;
-  right: 14%;
-  width: clamp(36px, 4.8vw, 54px);
-  transform: rotate(18deg);
-  animation-duration: 7.8s;
-  animation-delay: -2.9s;
+.asi-float--g {
+  top: 76%;
+  right: 7%;
+  width: clamp(60px, 8vw, 100px);
+  --asi-float-rot: 22deg;
+  animation-duration: 7.4s;
+  animation-delay: -4.1s;
 }
 
-.asi-float--phone-b {
-  top: 34%;
-  left: 12%;
-  width: clamp(30px, 4vw, 42px);
-  opacity: 0.34;
-  animation-duration: 9.4s;
+.asi-float--h {
+  top: 36%;
+  left: 14%;
+  width: clamp(48px, 6.5vw, 80px);
+  --asi-float-rot: -6deg;
+  opacity: 0.5;
+  animation-name: asi-float-sway;
+  animation-duration: 8.8s;
+  animation-delay: -2.7s;
+}
+
+.asi-float--i {
+  top: 82%;
+  left: 8%;
+  width: clamp(46px, 6vw, 74px);
+  --asi-float-rot: -16deg;
+  animation-duration: 6.9s;
   animation-delay: -5s;
 }
 
-.asi-float--chip-b {
-  top: 58%;
+.asi-float--j {
+  top: 88%;
+  right: 3%;
+  width: clamp(88px, 12vw, 140px);
+  --asi-float-rot: 12deg;
+  opacity: 0.52;
+  animation-duration: 9.6s;
+  animation-delay: -1.1s;
+}
+
+.asi-float--k {
+  top: 64%;
+  right: 12%;
+  width: clamp(54px, 7vw, 88px);
+  --asi-float-rot: 8deg;
+  animation-name: asi-float-spinbob;
+  animation-duration: 10.2s;
+  animation-delay: -3.8s;
+}
+
+.asi-float--l {
+  top: 92%;
+  left: 18%;
+  width: clamp(44px, 6vw, 70px);
+  --asi-float-rot: -10deg;
+  animation-duration: 7.1s;
+  animation-delay: -2s;
+}
+
+.asi-float--m {
+  top: 70%;
   left: 48%;
-  width: clamp(28px, 3.8vw, 42px);
-  opacity: 0.28;
-  animation-duration: 6.4s;
-  animation-delay: -3.6s;
+  width: clamp(50px, 7vw, 84px);
+  --asi-float-rot: 14deg;
+  opacity: 0.4;
+  animation-name: asi-float-sway;
+  animation-duration: 8.4s;
+  animation-delay: -4.6s;
+}
+
+.asi-float--n {
+  top: 50%;
+  right: 15%;
+  width: clamp(52px, 7vw, 88px);
+  --asi-float-rot: -18deg;
+  animation-duration: 9s;
+  animation-delay: -0.4s;
+}
+
+.asi-float--o {
+  top: 96%;
+  right: 22%;
+  width: clamp(42px, 5.5vw, 68px);
+  --asi-float-rot: 24deg;
+  animation-duration: 6.5s;
+  animation-delay: -3s;
+}
+
+.asi-float--p {
+  top: 40%;
+  right: 18%;
+  width: clamp(78px, 10vw, 124px);
+  --asi-float-rot: 4deg;
+  opacity: 0.48;
+  animation-name: asi-float-sway;
+  animation-duration: 11.2s;
+  animation-delay: -5.2s;
 }
 
 @keyframes asi-float-bob {
@@ -207,29 +288,55 @@ body.theme-cluster.page-asi-somos::before {
     transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg));
   }
   50% {
-    transform: translate3d(6px, -14px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 4deg));
+    transform: translate3d(8px, -22px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 6deg));
   }
 }
 
-.asi-float--sim { --asi-float-rot: -8deg; }
-.asi-float--chip { --asi-float-rot: 12deg; }
-.asi-float--phone { --asi-float-rot: 6deg; }
-.asi-float--signal { --asi-float-rot: -4deg; }
-.asi-float--esim { --asi-float-rot: 10deg; }
-.asi-float--phones { --asi-float-rot: -6deg; }
-.asi-float--sim-b { --asi-float-rot: 18deg; }
-.asi-float--phone-b { --asi-float-rot: -12deg; }
-.asi-float--chip-b { --asi-float-rot: 8deg; }
+@keyframes asi-float-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg));
+  }
+  50% {
+    transform: translate3d(-16px, -18px, 0) rotate(calc(var(--asi-float-rot, 0deg) - 5deg));
+  }
+}
+
+@keyframes asi-float-spinbob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg)) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, -20px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 12deg)) scale(1.06);
+  }
+}
+
+@media (max-width: 900px) {
+  .asi-float--h,
+  .asi-float--m,
+  .asi-float--p,
+  .asi-float--l {
+    display: none;
+  }
+}
 
 @media (max-width: 720px) {
-  .asi-float--phone-b,
-  .asi-float--chip-b,
-  .asi-float--signal {
+  .asi-float--f,
+  .asi-float--k,
+  .asi-float--n,
+  .asi-float--o {
     display: none;
   }
 
   .asi-float {
-    opacity: 0.3;
+    opacity: 0.5;
+  }
+
+  .asi-float--a,
+  .asi-float--b,
+  .asi-float--d {
+    width: clamp(58px, 16vw, 92px);
   }
 }
 
