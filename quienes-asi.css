@@ -48,14 +48,15 @@ body.theme-cluster.page-asi-somos::before {
   z-index: 1;
   isolation: isolate;
   width: 100%;
-  height: clamp(200px, 32vh, 360px);
-  aspect-ratio: auto;
+  height: auto;
+  min-height: clamp(420px, 72vh, 680px);
+  min-height: clamp(420px, 72svh, 680px);
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #04101f;
   background-image: var(--asi-cover-img);
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -73,28 +74,28 @@ body.theme-cluster.page-asi-somos::before {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
-  transform: none;
+  transform: scale(1.01);
 }
 
 .asi-cover__shade {
   display: none;
 }
 
-/* Transición corta al blanco, sin tapar el arte */
+/* Corte limpio al contenido blanco, estilo bolsa */
 .asi-cover__fade {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  height: 40px;
+  height: 72px;
   pointer-events: none;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.55) 60%,
+    rgba(255, 255, 255, 0.35) 45%,
     #ffffff 100%
   );
 }
@@ -322,7 +323,8 @@ body.theme-cluster.page-asi-somos::before {
 
 @media (max-width: 720px) {
   .asi-cover {
-    height: clamp(160px, 28vh, 240px);
+    min-height: clamp(320px, 58vh, 520px);
+    min-height: clamp(320px, 58svh, 520px);
   }
 
   .asi-somos__shell {
