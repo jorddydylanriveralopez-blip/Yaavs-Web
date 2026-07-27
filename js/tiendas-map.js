@@ -66,7 +66,6 @@
 
   const titleEl = document.getElementById("carrier-title");
   const leadEl = document.getElementById("carrier-lead");
-  const nameEl = document.getElementById("carrier-name");
   const brandSubEl = document.getElementById("carrier-brand-sub");
   const logoEl = document.getElementById("carrier-logo");
   const frameEl = document.getElementById("carrier-map-frame");
@@ -203,6 +202,15 @@
     storesEl?.addEventListener("click", (event) => {
       const focusBtn = event.target.closest("[data-store-focus]");
       if (!focusBtn) return;
+      const store = carrier.stores.find((s) => s.id === focusBtn.dataset.storeFocus);
+      focusStore(store, { zoom: 15 });
+    });
+
+    storesEl?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      const focusBtn = event.target.closest("[data-store-focus]");
+      if (!focusBtn) return;
+      event.preventDefault();
       const store = carrier.stores.find((s) => s.id === focusBtn.dataset.storeFocus);
       focusStore(store, { zoom: 15 });
     });
