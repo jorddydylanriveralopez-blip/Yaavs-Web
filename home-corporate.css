@@ -4667,13 +4667,8 @@ body.page-home {
     border-radius: 0;
   }
 
-  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__icon {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.96);
-  }
-
-  .page-home .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__icon {
+  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__icon,
+  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__icon {
     opacity: 0;
     pointer-events: none;
     transform: scale(0.96);
@@ -4684,12 +4679,12 @@ body.page-home {
     inset: 0;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.4s ease 0.05s;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
   }
 
-  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__media,
-  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded:hover .hx-svc-deck__media,
-  .page-home .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__media {
+  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media,
+  .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__media {
     opacity: 1;
     z-index: 5;
   }
@@ -4706,7 +4701,11 @@ body.page-home {
 
   .page-home .hx-svc-deck--square .hx-svc-deck__video {
     opacity: 0;
-    transition: opacity 0.32s ease;
+    transition: opacity 0.28s ease;
+  }
+
+  .page-home .hx-svc-deck--square .hx-svc-deck__media-fallback {
+    opacity: 0;
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__video {
@@ -4718,6 +4717,7 @@ body.page-home {
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__media-fallback {
+    opacity: 1;
     animation: hx-deck-kenburns 9s ease-in-out infinite alternate;
   }
 
@@ -4964,15 +4964,15 @@ body.page-home {
     opacity: 0.62;
   }
 
-  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__icon,
-  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__icon {
+  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__icon,
+  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__icon {
     opacity: 0;
     pointer-events: none;
     transform: scale(0.96);
   }
 
-  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__media,
-  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__media {
+  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media,
+  .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__media {
     opacity: 1;
   }
 
@@ -5467,12 +5467,11 @@ body.page-home {
     z-index: 2;
     opacity: 0;
     pointer-events: none !important;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.28s ease;
   }
 
-  .page-home .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__media,
-  .page-home .hx-svc-deck__item.is-deck-preview .hx-svc-deck__media,
-  .page-home .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media {
+  .page-home .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media,
+  .page-home .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__media {
     display: block;
     opacity: 1;
     z-index: 5;
@@ -5493,6 +5492,10 @@ body.page-home {
     transition: opacity 0.28s ease;
   }
 
+  .page-home .hx-svc-deck__media-fallback {
+    opacity: 0;
+  }
+
   .page-home .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__video {
     opacity: 1;
   }
@@ -5505,8 +5508,8 @@ body.page-home {
     opacity: 1;
   }
 
-  .page-home .hx-svc-deck__item.is-deck-expanded .hx-svc-deck__icon,
-  .page-home .hx-svc-deck__item.is-deck-preview .hx-svc-deck__icon {
+  .page-home .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__icon,
+  .page-home .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__icon {
     opacity: 0;
     transition: opacity 0.28s ease;
   }

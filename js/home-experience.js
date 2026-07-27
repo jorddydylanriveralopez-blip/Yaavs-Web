@@ -2154,8 +2154,8 @@
         return;
       }
 
-      /* Mostrar poster mientras carga el video (útil en móvil) */
-      item.classList.add("is-deck-fallback-on");
+      /* Mantener el icono hasta que el video tenga frame listo (evita flash del poster). */
+      item.classList.remove("is-deck-fallback-on", "is-deck-video-on");
 
       const armMuted = () => {
         video.muted = true;
@@ -2172,6 +2172,9 @@
       };
 
       const showVideo = () => {
+        if (!item.classList.contains("is-deck-expanded") && !item.classList.contains("is-deck-preview")) {
+          return;
+        }
         item.classList.add("is-deck-video-on");
         item.classList.remove("is-deck-fallback-on");
       };
@@ -2183,7 +2186,18 @@
 
       const tryPlay = () => {
         armMuted();
-        return video.play().then(showVideo);
+        return video.play().then(() => {
+          if (video.readyState >= 2) showVideo();
+          else {
+            const onReady = () => {
+              video.removeEventListener("loadeddata", onReady);
+              video.removeEventListener("playing", onReady);
+              showVideo();
+            };
+            video.addEventListener("loadeddata", onReady);
+            video.addEventListener("playing", onReady);
+          }
+        });
       };
 
       tryPlay().catch(() => {
@@ -2280,13 +2294,15 @@
       video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
-      video.preload = cfg.mp4 ? "metadata" : "none";
-      if (cfg.poster) video.poster = cfg.poster;
+      video.preload = cfg.mp4 ? "auto" : "none";
+      /* Sin poster del <video>: evita flash de foto distinta al icono antes del primer frame. */
+      if (cfg.mp4) video.removeAttribute("poster");
+      else if (cfg.poster) video.poster = cfg.poster;
       if (cfg.mp4) video.dataset.src = cfg.mp4;
 
       const fallback = document.createElement("img");
       fallback.className = "hx-svc-deck__media-fallback";
-      fallback.src = cfg.gif || cfg.poster || cfg.icon;
+      fallback.src = cfg.gif || cfg.icon || cfg.poster;
       fallback.alt = "";
       fallback.loading = "lazy";
       fallback.decoding = "async";
