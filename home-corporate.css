@@ -5135,6 +5135,31 @@ body.page-home {
   );
 }
 
+/* Móvil: el bg opaco tapaba el icono (mismo z-index, bg encima). Mostrar el PNG. */
+@media (max-width: 768px) {
+  .page-home .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__bg {
+    background: #011142;
+  }
+
+  .page-home .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__bg img {
+    opacity: 1 !important;
+  }
+
+  .page-home .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__icon {
+    z-index: 1;
+  }
+
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__shade {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 48%,
+      rgba(4, 14, 30, 0.35) 72%,
+      rgba(4, 14, 30, 0.82) 100%
+    );
+  }
+}
+
 .page-home .hx-svc-deck__shade {
   position: absolute;
   inset: 0;
