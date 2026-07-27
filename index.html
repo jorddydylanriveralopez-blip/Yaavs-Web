@@ -836,18 +836,21 @@
         </div>
 
         <div class="tx-gallery__feature-video container" data-hx-reveal>
-          <div class="tx-gallery__feature-video-frame">
+          <div class="tx-gallery__feature-video-frame" data-tecamac-player>
             <video
               class="tx-gallery__feature-video-el"
-              autoplay
-              muted
-              loop
+              controls
               playsinline
               preload="metadata"
-              aria-label="Video Tecámac YAAVS"
+              controlslist="nodownload"
+              aria-label="Video Tecámac YAAVS — reproducir con audio"
             >
-              <source src="assets/testimonios/tecamac.mp4?v=1" type="video/mp4">
+              <source src="assets/testimonios/tecamac.mp4?v=2" type="video/mp4">
             </video>
+            <button type="button" class="tx-gallery__feature-video-play" data-tecamac-play aria-label="Reproducir video Tecámac">
+              <span class="tx-gallery__feature-video-play-icon" aria-hidden="true">▶</span>
+              <span class="tx-gallery__feature-video-play-label">Ver video</span>
+            </button>
           </div>
         </div>
 
@@ -958,6 +961,42 @@
   </div>
 
   <script src="js/page-intro.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const frame = document.querySelector("[data-tecamac-player]");
+      const video = frame?.querySelector("video");
+      const playBtn = frame?.querySelector("[data-tecamac-play]");
+      if (!frame || !video || !playBtn) return;
+
+      const startWithSound = () => {
+        video.muted = false;
+        video.defaultMuted = false;
+        video.removeAttribute("muted");
+        video.setAttribute("controls", "");
+        const playPromise = video.play();
+        frame.classList.add("is-playing");
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {
+            frame.classList.remove("is-playing");
+          });
+        }
+      };
+
+      playBtn.addEventListener("click", startWithSound);
+      video.addEventListener("play", () => {
+        video.muted = false;
+        frame.classList.add("is-playing");
+      });
+      video.addEventListener("pause", () => {
+        if (video.currentTime < 0.2 || video.ended) {
+          frame.classList.remove("is-playing");
+        }
+      });
+      video.addEventListener("ended", () => {
+        frame.classList.remove("is-playing");
+      });
+    });
+  </script>
   <script src="js/hero-carousel.config.js?v=29" defer></script>
   <script src="js/hero-carousel.js?v=12" defer></script>
   <script src="js/layout.js?v=202" defer></script>
