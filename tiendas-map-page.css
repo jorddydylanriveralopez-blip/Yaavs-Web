@@ -605,15 +605,6 @@ body.theme-cluster.page-tiendas-map .tiendas-map__viewer iframe {
   background: #0a1628;
 }
 
-body.theme-cluster.page-tiendas-map .tiendas-map__leaflet {
-  width: 100%;
-  height: clamp(380px, 64vh, 720px);
-  border: 1px solid color-mix(in srgb, var(--carrier-accent) 22%, transparent);
-  border-radius: 16px;
-  background: #0a1628;
-  z-index: 1;
-}
-
 body.theme-cluster.page-tiendas-map .tiendas-map__stores {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -701,6 +692,22 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store-actions {
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__store-link {
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7ec8ff !important;
+  -webkit-text-fill-color: #7ec8ff;
+  text-decoration: none;
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__store-link:hover {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-go {
