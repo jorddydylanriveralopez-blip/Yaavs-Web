@@ -112,15 +112,11 @@
   }
 
   function mapsDirectionsUrl(store, origin) {
-    const dest = `${store.lat},${store.lng}`;
     const params = new URLSearchParams({
       api: "1",
-      destination: dest,
-      destination_place_id: "",
+      destination: `${store.lat},${store.lng}`,
       travelmode: "driving",
     });
-    /* destination as address helps Google resolve the place name */
-    params.set("destination", `${store.name}, ${store.address}`);
     if (origin && Number.isFinite(origin.lat) && Number.isFinite(origin.lng)) {
       params.set("origin", `${origin.lat},${origin.lng}`);
     }
