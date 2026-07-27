@@ -51,5 +51,6 @@ window.YAAVS_DECK_MEDIA = {
   postpago: {
     icon: "assets/servicios/icons/postpago.png?v=1",
     poster: "assets/servicios/icons/postpago.png?v=1",
+    mp4: "assets/servicios/videos/postpago.mp4?v=1",
   },
 };
