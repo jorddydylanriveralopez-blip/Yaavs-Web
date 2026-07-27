@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
   <link rel="stylesheet" href="interior-light.css?v=3">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=11">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=12">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
@@ -121,15 +121,30 @@
           <button type="button" id="carrier-map-zoom-in" title="Acercar">+</button>
           <button type="button" id="carrier-map-zoom-out" title="Alejar">−</button>
           <button type="button" id="carrier-map-fit-all" title="Ver las 3 sucursales">Ver todas</button>
+          <button type="button" id="carrier-pegman-reset" title="Poner personita en la sucursal">Personita aquí</button>
         </div>
+        <p class="tiendas-map__pegman-hint" id="carrier-pegman-hint">
+          Arrastra la <strong>personita amarilla</strong> a la calle para ver cómo se ve el lugar en 360°.
+        </p>
         <div id="carrier-map-host" class="tiendas-map__leaflet" hidden></div>
-        <p class="tiendas-map__street-label">Vista de calles (Google Maps)</p>
+        <div class="tiendas-map__street-head">
+          <p class="tiendas-map__street-label">Vista calle en tiempo real (Street View)</p>
+          <a
+            class="tiendas-map__street-open"
+            id="carrier-street-open"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Abrir Street View</a>
+        </div>
         <iframe
           id="carrier-map-frame"
-          title="Mapa de calles Google"
+          class="tiendas-map__streetview"
+          title="Street View de la calle"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen
+          allow="accelerometer; gyroscope; fullscreen"
           src=""
         ></iframe>
       </div>
@@ -147,6 +162,6 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
   <script src="js/layout.js?v=19" defer></script>
   <script src="js/main.js" defer></script>
-  <script src="js/tiendas-map.js?v=9" defer></script>
+  <script src="js/tiendas-map.js?v=10" defer></script>
 </body>
 </html>

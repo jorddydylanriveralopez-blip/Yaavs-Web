@@ -83,6 +83,9 @@
   const zoomInBtn = document.getElementById("carrier-map-zoom-in");
   const zoomOutBtn = document.getElementById("carrier-map-zoom-out");
   const fitAllBtn = document.getElementById("carrier-map-fit-all");
+  const pegmanResetBtn = document.getElementById("carrier-pegman-reset");
+  const streetOpenEl = document.getElementById("carrier-street-open");
+  const pegmanHintEl = document.getElementById("carrier-pegman-hint");
 
   if (!formEl || !queryEl) return;
 
@@ -123,6 +126,15 @@
     return `https://www.google.com/maps/dir/?${params.toString()}`;
   }
 
+  function streetViewEmbedUrl(lat, lng, heading) {
+    const h = Number.isFinite(heading) ? heading : 0;
+    return `https://www.google.com/maps?hl=es&layer=c&cbll=${lat},${lng}&cbp=12,${h},,0,0&output=embed`;
+  }
+
+  function streetViewOpenUrl(lat, lng) {
+    return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
+  }
+
   /* ─── BAIT: mapa interactivo + GPS ─── */
   if (carrier.stores && carrier.stores.length) {
     document.body.classList.add("is-stores-fixed");
@@ -135,6 +147,8 @@
     let userMarker = null;
     let userAccuracy = null;
     let userOrigin = null;
+    let pegmanMarker = null;
+    let pegmanDragging = false;
     let activeId = carrier.stores[0].id;
 
     function activeStore() {
@@ -155,9 +169,88 @@
     }
 
     function syncGoogleStreet(store) {
-      if (!frameEl || !store) return;
-      frameEl.hidden = false;
-      frameEl.src = mapsEmbedUrl(`${store.lat},${store.lng} (${store.name})`, 17);
+      if (!store) return;
+      showStreetView(store.lat, store.lng, store.name);
+    }
+
+    function showStreetView(lat, lng, label) {
+      if (frameEl) {
+        frameEl.hidden = false;
+        frameEl.src = streetViewEmbedUrl(lat, lng);
+      }
+      if (streetOpenEl) {
+        streetOpenEl.href = streetViewOpenUrl(lat, lng);
+      }
+      if (label) {
+        setStatus(`Street View: ${label}. Arrastra la personita para mirar otra calle.`);
+      } else {
+        setStatus("Street View actualizado. Mueve la personita para explorar.");
+      }
+    }
+
+    function pegmanIcon() {
+      return window.L.divIcon({
+        className: "tiendas-map__pegman",
+        html:
+          '<span class="tiendas-map__pegman-body" aria-hidden="true">' +
+          '<span class="tiendas-map__pegman-head"></span>' +
+          '<span class="tiendas-map__pegman-torso"></span>' +
+          '<span class="tiendas-map__pegman-legs"></span>' +
+          "</span>" +
+          '<span class="tiendas-map__pegman-tip">Arrástrame</span>',
+        iconSize: [54, 64],
+        iconAnchor: [27, 58],
+      });
+    }
+
+    function placePegman(lat, lng, opts) {
+      if (!leafletMap || typeof window.L === "undefined") {
+        showStreetView(lat, lng);
+        return;
+      }
+      if (!pegmanMarker) {
+        pegmanMarker = window.L.marker([lat, lng], {
+          draggable: true,
+          autoPan: true,
+          zIndexOffset: 1200,
+          title: "Arrastra a la calle para Street View",
+          icon: pegmanIcon(),
+          riseOnHover: true,
+        }).addTo(leafletMap);
+
+        pegmanMarker.on("dragstart", () => {
+          pegmanDragging = true;
+          mapHostEl?.classList.add("is-pegman-dragging");
+          setStatus("Suelta la personita sobre la calle...");
+        });
+
+        pegmanMarker.on("drag", () => {
+          const pos = pegmanMarker.getLatLng();
+          /* preview ligero no recarga iframe en cada pixel; solo al soltar */
+          if (streetOpenEl) streetOpenEl.href = streetViewOpenUrl(pos.lat, pos.lng);
+        });
+
+        pegmanMarker.on("dragend", () => {
+          pegmanDragging = false;
+          mapHostEl?.classList.remove("is-pegman-dragging");
+          const pos = pegmanMarker.getLatLng();
+          showStreetView(pos.lat, pos.lng);
+          if (pegmanHintEl) {
+            pegmanHintEl.innerHTML =
+              "Listo: abajo ves la calle en 360°. Sigue arrastrando la personita para explorar.";
+          }
+        });
+      } else {
+        pegmanMarker.setLatLng([lat, lng]);
+      }
+
+      if (!opts?.silentStreet) {
+        showStreetView(lat, lng, opts?.label);
+      }
+      if (opts?.pan !== false) {
+        const zoom = Math.max(leafletMap.getZoom(), opts?.zoom || 17);
+        leafletMap.setView([lat, lng], zoom, { animate: true });
+      }
     }
 
     function renderStoreList(list) {
@@ -211,7 +304,16 @@
         markersById[store.id].openPopup();
       }
 
-      setStatus(`Seleccionada: ${store.name}. Puedes hacer zoom o tocar Ir allá.`);
+      /* Coloca la personita junto a la sucursal para Street View */
+      if (!pegmanDragging) {
+        placePegman(store.lat, store.lng, {
+          label: store.name,
+          zoom: opts?.zoom == null ? 17 : Math.max(opts.zoom, 16),
+          pan: false,
+        });
+      }
+
+      setStatus(`Seleccionada: ${store.name}. Arrastra la personita para ver la calle.`);
     }
 
     function fitAllStores() {
@@ -315,6 +417,10 @@
       window.setTimeout(() => leafletMap.invalidateSize(), 120);
       focusStore(carrier.stores[0], { zoom: 7 });
       leafletMap.fitBounds(bounds, { padding: [48, 48], maxZoom: 7 });
+
+      /* Personita inicial en la primera sucursal */
+      const first = carrier.stores[0];
+      placePegman(first.lat, first.lng, { label: first.name, pan: false, zoom: 7 });
     }
 
     function showUserOnMap(lat, lng, accuracy) {
@@ -385,6 +491,12 @@
       if (leafletMap) leafletMap.zoomOut();
     });
     fitAllBtn?.addEventListener("click", () => fitAllStores());
+    pegmanResetBtn?.addEventListener("click", () => {
+      const store = activeStore();
+      if (!store) return;
+      placePegman(store.lat, store.lng, { label: store.name, zoom: 18 });
+      setStatus(`Personita en ${store.name}. Arrástrala por la calle.`);
+    });
 
     navGoEl?.addEventListener("click", (event) => {
       const store = activeStore();
