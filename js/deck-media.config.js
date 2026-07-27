@@ -11,7 +11,7 @@ window.YAAVS_DECK_MEDIA = {
   "tiempo-aire": {
     icon: "assets/servicios/icons/yaavsta.png?v=1",
     poster: "assets/servicios/icons/yaavsta.png?v=1",
-    mp4: "assets/servicios/videos/tiempo-aire.mp4",
+    mp4: "assets/servicios/videos/yaavsta.mp4?v=1",
   },
   portabilidad: {
     icon: "assets/servicios/icons/portabilidad.png",
