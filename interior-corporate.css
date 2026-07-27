@@ -926,6 +926,27 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   transition: color 0.7s ease 0.15s;
 }
 
+.page-bolsa-trabajo .jobs-catalog-section .jobs-section-title--hero {
+  font-size: clamp(1.85rem, 4.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  text-shadow: 0 2px 24px rgba(0, 188, 212, 0.35);
+}
+
+.page-bolsa-trabajo .jobs-catalog-section.is-scene-on .jobs-section-title--hero {
+  color: #fff;
+  text-shadow:
+    0 0 28px rgba(0, 212, 238, 0.45),
+    0 4px 28px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(90deg, #ffffff 0%, #7ec8ff 48%, #00d4ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 .page-bolsa-trabajo .jobs-catalog-section .jobs-section-lead {
   color: var(--muted);
   transition: color 0.7s ease 0.18s;
