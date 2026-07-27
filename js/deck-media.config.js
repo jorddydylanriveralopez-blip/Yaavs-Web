@@ -45,8 +45,8 @@ window.YAAVS_DECK_MEDIA = {
   },
   "soporte-tecnico": {
     icon: "assets/servicios/icons/soporte.png",
-    poster: "assets/hero-telecom/hero-telecom-5.jpg",
-    mp4: "assets/servicios/videos/soporte-tecnico.mp4",
+    poster: "assets/servicios/icons/soporte.png",
+    mp4: "assets/servicios/videos/soporte-tecnico.mp4?v=5",
   },
   postpago: {
     icon: "assets/servicios/icons/postpago.png?v=1",
