@@ -31,27 +31,24 @@ body.page-tiendas-map[data-carrier="att"] {
   --carrier-accent-glow: rgba(91, 159, 255, 0.38);
 }
 
-/* Header glass oscuro (gana al tema día) */
+/* Header claro — mismo look que el inicio */
 body.theme-cluster.page-tiendas-map .site-header,
-[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header {
-  background: rgba(6, 12, 22, 0.55) !important;
-  backdrop-filter: blur(18px) saturate(1.25);
-  -webkit-backdrop-filter: blur(18px) saturate(1.25);
-  border-bottom: 1px solid rgba(0, 188, 212, 0.22);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
-  isolation: isolate;
-}
-
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header,
 body.theme-cluster.page-tiendas-map .site-header.is-scrolled,
 [data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header.is-scrolled {
-  background: rgba(4, 10, 18, 0.82) !important;
-  border-bottom-color: rgba(0, 188, 212, 0.28);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  border-bottom: 1px solid rgba(0, 188, 212, 0.18);
+  box-shadow:
+    0 8px 28px rgba(15, 36, 64, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  isolation: isolate;
 }
 
 body.theme-cluster.page-tiendas-map .site-header::before,
 body.theme-cluster.page-tiendas-map .site-header::after {
-  display: none;
+  display: revert;
 }
 
 body.theme-cluster.page-tiendas-map .site-header .header-inner {
@@ -62,12 +59,12 @@ body.theme-cluster.page-tiendas-map .site-header .header-inner {
 body.theme-cluster.page-tiendas-map .site-header .logo,
 [data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .site-header .logo,
 [data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .logo:not(.logo--on-light) {
-  --logo-filter: brightness(0) invert(1);
+  --logo-filter: brightness(0) saturate(100%);
 }
 
 body.theme-cluster.page-tiendas-map .site-header .bento-dot,
 [data-yaavs-theme="day"] body.theme-cluster.page-tiendas-map .bento-dot {
-  background: #e8f7fc;
+  background: #0f2440;
 }
 
 .page-tiendas-map .nav-menu-hint {
@@ -76,15 +73,15 @@ body.theme-cluster.page-tiendas-map .site-header .bento-dot,
 
 body.theme-cluster.page-tiendas-map .main-nav--overlay {
   background:
-    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.18) 0%, transparent 58%),
-    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.16) 0%, transparent 62%),
-    linear-gradient(180deg, #06101c 0%, #0a1628 55%, #071018 100%);
+    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.14) 0%, transparent 58%),
+    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.08) 0%, transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f5fcfe 42%, #e8f7fb 100%);
 }
 
 body.theme-cluster.page-tiendas-map .main-nav--overlay a {
-  border-bottom-color: rgba(0, 188, 212, 0.22);
-  color: #f4fbff;
-  -webkit-text-fill-color: #f4fbff;
+  border-bottom-color: rgba(0, 188, 212, 0.18);
+  color: #0f2440;
+  -webkit-text-fill-color: #0f2440;
 }
 
 body.page-tiendas-map .site-floats {
