@@ -118,8 +118,18 @@ body.theme-cluster.page-asi-somos::before {
   position: absolute;
   display: block;
   object-fit: contain;
-  opacity: 0.62;
-  filter: drop-shadow(0 14px 22px rgba(0, 48, 135, 0.18));
+  opacity: 0.92;
+  /* Cyan SVG → azul marino YAAVS (#003087), más fuerte */
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(14%)
+    sepia(92%)
+    saturate(2800%)
+    hue-rotate(201deg)
+    brightness(0.78)
+    contrast(1.2)
+    drop-shadow(0 16px 26px rgba(0, 48, 135, 0.4));
   will-change: transform;
   animation-name: asi-float-bob;
   animation-timing-function: ease-in-out;
@@ -159,7 +169,7 @@ body.theme-cluster.page-asi-somos::before {
   right: 1%;
   width: clamp(96px, 13vw, 160px);
   --asi-float-rot: -8deg;
-  opacity: 0.55;
+  opacity: 0.88;
   animation-name: asi-float-sway;
   animation-duration: 10.4s;
   animation-delay: -0.9s;
