@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="quienes-asi.css?v=31">
+  <link rel="stylesheet" href="quienes-asi.css?v=32">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-quienes-somos page-asi-somos" data-page="quienes-somos">
@@ -133,18 +133,26 @@
             <h3 class="asi-card__title">Valores</h3>
           </button>
 
-          <a class="asi-card" href="bolsa-trabajo.html">
+          <button
+            type="button"
+            class="asi-card"
+            data-filosofia-open
+            aria-haspopup="dialog"
+            aria-controls="asi-filosofia-modal"
+          >
             <figure class="asi-card__media">
-              <img src="assets/hero-telecom/banners/conviertete-en-yaavser-poster.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <img src="assets/valores/filosofia.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <span class="asi-card__hint">Ver filosofía</span>
             </figure>
-            <h3 class="asi-card__title">Nuestro equipo</h3>
-          </a>
+            <h3 class="asi-card__title">Filosofía</h3>
+          </button>
 
           <a class="asi-card" href="https://ganayaavs.com/" target="_blank" rel="noopener noreferrer">
             <figure class="asi-card__media">
               <img src="assets/hero-telecom/hero-portada-campeones.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <span class="asi-card__hint">Abrir sitio</span>
             </figure>
-            <h3 class="asi-card__title">Gana YAAVS</h3>
+            <h3 class="asi-card__title">GanaYaavs</h3>
           </a>
 
           <a class="asi-card" href="contacto.html">
@@ -432,10 +440,56 @@
     </div>
   </dialog>
 
+  <dialog class="asi-filosofia" id="asi-filosofia-modal" aria-labelledby="asi-filosofia-modal-title">
+    <div class="asi-filosofia__sheet">
+      <header class="asi-filosofia__top">
+        <div>
+          <p class="asi-filosofia__kicker">Nuestra forma de trabajar</p>
+          <h2 id="asi-filosofia-modal-title" class="asi-filosofia__title">Filosofía</h2>
+        </div>
+        <button type="button" class="asi-filosofia__close" data-filosofia-close aria-label="Cerrar filosofía">
+          <span aria-hidden="true">×</span>
+        </button>
+      </header>
+
+      <div class="asi-filosofia__hero">
+        <img
+          src="assets/valores/filosofia.jpg"
+          alt=""
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="asi-filosofia__hero-copy">
+          <p>Grupo Comercial YAAVS</p>
+          <strong>Tu tienda, tu impulso, nuestra misión</strong>
+        </div>
+        <div class="asi-filosofia__hero-fade" aria-hidden="true"></div>
+      </div>
+
+      <div class="asi-filosofia__body">
+        <p class="asi-filosofia__lead">
+          No solo distribuimos telecom: <strong>acompañamos a cada punto de venta</strong>
+          para que crezca con herramientas, presencia comercial y beneficios que se sienten en el mostrador.
+        </p>
+        <p>
+          Creemos en el <strong>retail mexicano</strong>, en las tiendas de barrio y en el poder de una red que impulsa.
+          Nuestra filosofía es simple: estar cerca, cumplir lo que prometemos y hacer que cada Yaavser venda más
+          con respaldo real.
+        </p>
+        <p class="asi-filosofia__punch">
+          Impulsamos negocios. Construimos red. Crecemos juntos.
+        </p>
+      </div>
+    </div>
+  </dialog>
+
   <div id="site-footer"></div>
   <script src="js/layout.js?v=19"></script>
   <script src="js/main.js"></script>
   <script src="js/quienes-historia.js?v=2" defer></script>
   <script src="js/quienes-valores.js?v=3" defer></script>
+  <script src="js/quienes-filosofia.js?v=1" defer></script>
 </body>
 </html>
