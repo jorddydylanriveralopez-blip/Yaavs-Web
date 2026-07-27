@@ -1175,11 +1175,81 @@ body.is-valores-open {
   -webkit-text-fill-color: #ffffff !important;
 }
 
-.asi-valores__grid {
+.asi-valores__list-only {
+  list-style: none;
+  margin: 0;
+  padding: 8px 22px 32px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  padding: 8px 18px 28px;
+  gap: 14px;
+}
+
+.asi-valores__pill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 36, 64, 0.08);
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 36, 64, 0.06);
+  font-size: clamp(1.02rem, 2.2vw, 1.28rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-align: left;
+  opacity: 0;
+  transform: translateX(-18px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--asi-v-delay, 0ms),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--asi-v-delay, 0ms),
+    box-shadow 0.25s ease;
+}
+
+.asi-valores__pill.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.asi-valores__pill:hover {
+  box-shadow: 0 14px 32px rgba(15, 36, 64, 0.1);
+}
+
+.asi-valores__dot {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.asi-valores__pill--orange {
+  color: #e67a18;
+  border-color: rgba(230, 122, 24, 0.22);
+  background: linear-gradient(135deg, #fff8f1 0%, #ffffff 70%);
+}
+
+.asi-valores__pill--yellow {
+  color: #c9a000;
+  border-color: rgba(201, 160, 0, 0.22);
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 70%);
+}
+
+.asi-valores__pill--teal {
+  color: #0097b2;
+  border-color: rgba(0, 151, 178, 0.22);
+  background: linear-gradient(135deg, #f0fbfd 0%, #ffffff 70%);
+}
+
+.asi-valores__pill--navy {
+  color: #003087;
+  border-color: rgba(0, 48, 135, 0.18);
+  background: linear-gradient(135deg, #f3f7fd 0%, #ffffff 70%);
+}
+
+.asi-valores__grid {
+  display: none;
 }
 
 .asi-valores__card {
@@ -1343,6 +1413,7 @@ body.is-valores-open {
 
 @media (prefers-reduced-motion: reduce) {
   .asi-valores__card,
+  .asi-valores__pill,
   .asi-valores__media img,
   .asi-valores.is-open .asi-valores__hero img,
   .asi-valores.is-open .asi-valores__top {
@@ -1351,7 +1422,9 @@ body.is-valores-open {
   }
 
   .asi-valores__card,
-  .asi-valores__card.is-visible {
+  .asi-valores__card.is-visible,
+  .asi-valores__pill,
+  .asi-valores__pill.is-visible {
     opacity: 1;
     transform: none;
   }

@@ -7,25 +7,25 @@
 
   const sheet = dialog.querySelector(".asi-valores__sheet");
   const closeBtn = dialog.querySelector("[data-valores-close]");
-  const cards = Array.from(dialog.querySelectorAll(".asi-valores__card"));
+  const pills = Array.from(dialog.querySelectorAll(".asi-valores__pill"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let lastFocus = null;
 
-  cards.forEach((card, index) => {
-    card.style.setProperty("--asi-v-delay", `${Math.min(index * 80, 400)}ms`);
+  pills.forEach((pill, index) => {
+    pill.style.setProperty("--asi-v-delay", `${Math.min(index * 90, 360)}ms`);
   });
 
   function resetReveal() {
-    cards.forEach((card) => card.classList.remove("is-visible"));
+    pills.forEach((pill) => pill.classList.remove("is-visible"));
   }
 
   function kickReveal() {
     if (reduceMotion) {
-      cards.forEach((card) => card.classList.add("is-visible"));
+      pills.forEach((pill) => pill.classList.add("is-visible"));
       return;
     }
-    cards.forEach((card, i) => {
-      window.setTimeout(() => card.classList.add("is-visible"), 90 + i * 70);
+    pills.forEach((pill, i) => {
+      window.setTimeout(() => pill.classList.add("is-visible"), 100 + i * 80);
     });
   }
 
