@@ -3748,6 +3748,15 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
 
 .btn:hover { opacity: 1; transform: translateY(-2px); }
 
+.btn.is-disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
 .btn--primary {
   background: linear-gradient(135deg, var(--yaavs-navy-mid) 0%, var(--yaavs-navy-soft) 100%);
   color: #fff;
