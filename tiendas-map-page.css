@@ -505,8 +505,10 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch {
 
 body.theme-cluster.page-tiendas-map .tiendas-map__switch-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 11px;
+  max-width: 420px;
+  margin-inline: auto;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__switch a {

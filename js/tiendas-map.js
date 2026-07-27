@@ -18,22 +18,6 @@
       lead: "Consulta tiendas AT&T disponibles en toda la República.",
       title: "Mapa de tiendas AT&T en tiempo real",
     },
-    movistar: {
-      id: "movistar",
-      name: "Movistar",
-      logo: "assets/operadores/movistar-carriers.png",
-      queryTerm: "tiendas Movistar Mexico",
-      lead: "Encuentra sucursales Movistar por región y ciudad.",
-      title: "Mapa de tiendas Movistar en tiempo real",
-    },
-    unefon: {
-      id: "unefon",
-      name: "Unefon",
-      logo: "assets/operadores/unefon-carriers.png",
-      queryTerm: "tiendas Unefon Mexico",
-      lead: "Revisa ubicaciones Unefon para activaciones y recargas.",
-      title: "Mapa de tiendas Unefon en tiempo real",
-    },
   };
 
   const params = new URLSearchParams(window.location.search);
