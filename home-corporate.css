@@ -3243,7 +3243,7 @@ body.page-home {
 
 .page-home .tx-gallery__feature-video {
   margin: clamp(28px, 4vw, 44px) auto 0;
-  max-width: min(1120px, 100%);
+  max-width: min(420px, 92vw);
   padding-inline: var(--pad-x, 20px);
 }
 
@@ -3251,7 +3251,9 @@ body.page-home {
   position: relative;
   overflow: hidden;
   border-radius: clamp(16px, 2vw, 24px);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  margin-inline: auto;
   background: #061018;
   box-shadow:
     0 22px 48px rgba(8, 20, 38, 0.28),
