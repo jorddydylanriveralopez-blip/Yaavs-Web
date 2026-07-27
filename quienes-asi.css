@@ -47,10 +47,8 @@ body.theme-cluster.page-asi-somos::before {
   position: relative;
   z-index: 1;
   isolation: isolate;
-  display: flex;
-  align-items: flex-end;
   width: 100%;
-  height: clamp(360px, 62vh, 640px);
+  height: clamp(280px, 48vh, 520px);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -74,7 +72,8 @@ body.theme-cluster.page-asi-somos::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 35%;
+  transform: scale(1.02);
 }
 
 .asi-cover__shade {
@@ -85,77 +84,36 @@ body.theme-cluster.page-asi-somos::before {
   background:
     linear-gradient(
       180deg,
-      rgba(6, 21, 38, 0.45) 0%,
-      rgba(6, 21, 38, 0.25) 40%,
-      rgba(6, 21, 38, 0.88) 100%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(6, 21, 38, 0.65) 0%,
-      rgba(6, 21, 38, 0.15) 58%,
-      transparent 100%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.12) 28%,
+      transparent 52%
     );
 }
 
-.asi-cover__content {
-  position: relative;
+/* Desvanecido inferior → blanco del contenido */
+.asi-cover__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding:
-    calc(var(--header-h, 88px) + clamp(20px, 3vh, 36px))
-    max(20px, var(--pad-x))
-    clamp(28px, 4.5vh, 44px);
-}
-
-.asi-cover__eyebrow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 12px;
-  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.asi-cover__badge {
-  color: #fff;
-}
-
-.asi-cover__dot {
-  opacity: 0.7;
-}
-
-.asi-cover__title {
-  margin: 0;
-  max-width: 12ch;
-  font-size: clamp(2.35rem, 7.2vw, 4.4rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 0.98;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
-}
-
-.asi-cover__accent {
-  background: linear-gradient(135deg, #5ce8f7 0%, #00bcd4 45%, #0097b2 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 8px 22px rgba(0, 188, 212, 0.35));
+  height: min(58%, 280px);
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 38%,
+    rgba(255, 255, 255, 0.82) 72%,
+    #ffffff 100%
+  );
 }
 
 .asi-somos__shell {
   position: relative;
   z-index: 1;
   max-width: 1120px;
-  padding-top: calc(var(--header-h, 88px) + 28px);
+  padding-top: 8px;
+  margin-top: -48px;
 }
 
 /* ─── Blob / mancha animada (estilo RSNL, colores YAAVS) ─── */
