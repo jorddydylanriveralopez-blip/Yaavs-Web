@@ -475,60 +475,13 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__punch {
-  margin: 0 auto clamp(22px, 3.2vw, 30px);
+  margin: 0 auto 14px;
   max-width: 22em;
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.25;
   color: #003087;
-}
-
-/* Cifras sin cards: franja de prueba */
-.asi-somos__stats {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-  gap: 0;
-  list-style: none;
-  margin: 0 auto clamp(20px, 3vw, 28px);
-  padding: 0;
-  max-width: 720px;
-  text-align: center;
-}
-
-.asi-somos__stats li {
-  display: grid;
-  gap: 4px;
-  flex: 1 1 140px;
-  min-width: 120px;
-  max-width: 220px;
-  padding: 8px 18px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  justify-items: center;
-}
-
-.asi-somos__stats li + li {
-  border-left: 1px solid rgba(0, 48, 135, 0.14);
-}
-
-.asi-somos__stats strong {
-  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: #003087;
-}
-
-.asi-somos__stats span {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #5b6f82;
 }
 
 .asi-somos__lead {
