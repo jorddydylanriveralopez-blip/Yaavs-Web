@@ -6300,17 +6300,17 @@ body.page-home.hx-band--dark .site-footer .footer {
   background:
     linear-gradient(
       105deg,
-      rgba(4, 16, 31, 0.92) 0%,
-      rgba(4, 16, 31, 0.78) 38%,
-      rgba(4, 16, 31, 0.42) 68%,
-      rgba(0, 48, 135, 0.28) 100%
+      rgba(4, 16, 31, 0.94) 0%,
+      rgba(4, 16, 31, 0.88) 34%,
+      rgba(4, 16, 31, 0.55) 62%,
+      rgba(4, 16, 31, 0.32) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(4, 16, 31, 0.35) 0%,
-      transparent 28%,
-      transparent 55%,
-      rgba(4, 16, 31, 0.72) 100%
+      rgba(4, 16, 31, 0.4) 0%,
+      transparent 26%,
+      transparent 48%,
+      rgba(4, 16, 31, 0.82) 100%
     );
 }
 
@@ -6367,10 +6367,14 @@ body.page-home.hx-band--dark .site-footer .footer {
 
 .page-home .hx-somos__panel {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: min(640px, 100%);
   margin: 0;
   margin-right: auto;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  color: #ffffff;
 }
 
 .page-home .hx-somos__brand {
@@ -6379,7 +6383,8 @@ body.page-home.hx-band--dark .site-footer .footer {
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.9;
-  color: #ffffff;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
 }
 
@@ -6393,14 +6398,21 @@ body.page-home.hx-band--dark .site-footer .footer {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.05;
-  color: #e8f4fc;
+  color: #e8f4fc !important;
+  -webkit-text-fill-color: #e8f4fc;
+}
+
+.page-home .hx-somos__title-a {
+  color: #e8f4fc !important;
+  -webkit-text-fill-color: #e8f4fc;
 }
 
 .page-home .hx-somos__title-b {
   background: linear-gradient(135deg, #5ce8f7 0%, #00bcd4 45%, #0097b2 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
 }
 
 .page-home .hx-somos__punch {
@@ -6410,7 +6422,8 @@ body.page-home.hx-band--dark .site-footer .footer {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.35;
-  color: #ffffff;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .page-home .hx-somos__lead {
@@ -6419,7 +6432,8 @@ body.page-home.hx-band--dark .site-footer .footer {
   font-size: clamp(0.95rem, 1.35vw, 1.05rem);
   line-height: 1.55;
   font-weight: 500;
-  color: rgba(232, 244, 252, 0.78);
+  color: rgba(232, 244, 252, 0.86) !important;
+  -webkit-text-fill-color: rgba(232, 244, 252, 0.86);
 }
 
 .page-home .hx-somos__cta {
@@ -6487,21 +6501,6 @@ body.page-home.hx-band--dark .site-footer .footer {
 .page-home .hx-somos__cta:hover .hx-somos__cta-arrow,
 .page-home .hx-somos__cta:focus-visible .hx-somos__cta-arrow {
   transform: translateX(3px);
-}
-
-/* Reveal más dramático en esta banda */
-.page-home .hx-somos__panel[data-hx-reveal] {
-  opacity: 0;
-  transform: translate3d(0, 36px, 0);
-  transition:
-    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.page-home .hx-somos__panel[data-hx-reveal].is-inview,
-.page-home .hx.is-ready .hx-somos__panel[data-hx-reveal] {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
 }
 
 @media (max-width: 760px) {
