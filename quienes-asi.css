@@ -586,15 +586,15 @@ body.theme-cluster.page-asi-somos::before {
   margin: 0 0 14px;
   overflow: hidden;
   border-radius: clamp(14px, 2.2vw, 18px);
-  background: #0a1624;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  background: #e8eef4;
+  box-shadow: 0 12px 32px rgba(15, 36, 64, 0.12);
   aspect-ratio: 3 / 2;
   isolation: isolate;
   transition:
     box-shadow 0.35s ease,
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease;
-  border: 1px solid rgba(92, 232, 247, 0.16);
+  border: 1px solid rgba(0, 151, 178, 0.16);
 }
 
 .asi-card__media::before {
@@ -642,10 +642,10 @@ body.theme-cluster.page-asi-somos::before {
   font-size: clamp(1.05rem, 2.4vw, 1.35rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #f4fbff !important;
-  -webkit-text-fill-color: #f4fbff;
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
   text-align: center;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  text-shadow: none;
   transition: color 0.25s ease, transform 0.25s ease, -webkit-text-fill-color 0.25s ease;
 }
 
@@ -677,8 +677,8 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-card:hover .asi-card__title {
-    color: #5ce8f7 !important;
-    -webkit-text-fill-color: #5ce8f7;
+    color: #0097b2 !important;
+    -webkit-text-fill-color: #0097b2;
     transform: translateY(-2px);
   }
 
@@ -2086,38 +2086,33 @@ body.is-filosofia-open {
   }
 }
 
-/* Contraste forzado: interior-corporate pinta h1/h3/p en tinta oscura */
+/* Tipografía clara sobre fondo blanco (contraste con el banner oscuro) */
 body.theme-cluster.page-asi-somos .asi-somos__shell h1,
 body.theme-cluster.page-asi-somos .asi-somos__shell h3,
-body.theme-cluster.page-asi-somos .asi-somos__shell p,
 body.theme-cluster.page-asi-somos .asi-somos__shell .asi-card__title,
-body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__statement,
-body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__lead,
-body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__punch,
-body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__kicker,
-body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__breadcrumb {
-  color: #f4fbff !important;
-  -webkit-text-fill-color: #f4fbff !important;
+body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__punch {
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__title span {
-  color: #5ce8f7 !important;
-  -webkit-text-fill-color: #5ce8f7 !important;
+  color: #0097b2 !important;
+  -webkit-text-fill-color: #0097b2 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__breadcrumb a {
-  color: #7af0ff !important;
-  -webkit-text-fill-color: #7af0ff !important;
+  color: #0093c9 !important;
+  -webkit-text-fill-color: #0093c9 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__statement,
 body.theme-cluster.page-asi-somos .asi-somos__lead {
-  color: rgba(236, 246, 255, 0.94) !important;
-  -webkit-text-fill-color: rgba(236, 246, 255, 0.94) !important;
+  color: #3a5168 !important;
+  -webkit-text-fill-color: #3a5168 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__kicker,
 body.theme-cluster.page-asi-somos .asi-somos__breadcrumb {
-  color: rgba(200, 230, 245, 0.88) !important;
-  -webkit-text-fill-color: rgba(200, 230, 245, 0.88) !important;
+  color: #5b6f82 !important;
+  -webkit-text-fill-color: #5b6f82 !important;
 }
