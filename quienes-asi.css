@@ -1216,7 +1216,7 @@ body.is-historia-open {
   overflow: hidden;
   border-radius: 14px;
   aspect-ratio: 16 / 10;
-  background: #e8eef4;
+  background: #0f2440;
   clip-path: inset(12% 8% 12% 8% round 14px);
   transition: clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--asi-delay, 0ms);
 }
@@ -1229,10 +1229,10 @@ body.is-historia-open {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-  transform: scale(1.12);
-  filter: saturate(0.9);
+  transform: scale(1.02);
+  filter: none;
   transition:
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--asi-delay, 0ms),
     filter 0.5s ease;
