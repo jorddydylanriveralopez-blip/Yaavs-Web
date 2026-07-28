@@ -1629,6 +1629,51 @@ body.page-home {
 
 .page-home .hx-ops__card--intro {
   --ops-brand-bg: linear-gradient(180deg, #0097b2 0%, #0078a8 100%);
+  background:
+    radial-gradient(ellipse 80% 70% at 78% 18%, rgba(0, 229, 255, 0.28) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 60% at 12% 88%, rgba(37, 99, 255, 0.35) 0%, transparent 55%),
+    linear-gradient(155deg, #050b2e 0%, #0a1250 42%, #061a3a 100%);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow:
+    0 18px 48px rgba(5, 11, 46, 0.45),
+    inset 0 0 0 1px rgba(0, 229, 255, 0.18),
+    inset 0 0 48px rgba(0, 188, 212, 0.12);
+}
+
+.page-home .hx-ops__card--intro > .hx-ops__intro-photo {
+  display: none !important;
+}
+
+.page-home .hx-ops__card--intro > .hx-ops__intro-veil {
+  background:
+    radial-gradient(circle at 70% 25%, rgba(0, 245, 255, 0.18) 0%, transparent 45%),
+    linear-gradient(160deg, rgba(5, 11, 46, 0.2) 0%, rgba(0, 48, 120, 0.15) 100%);
+  opacity: 1;
+}
+
+@media (min-width: 901px) {
+  .page-home .hx-ops__card--intro > .hx-ops__intro-hero {
+    background: transparent;
+  }
+
+  .page-home .hx-ops__card--intro .hx-ops__intro-hero-title .hx-services__cyan {
+    color: #5ce8f7 !important;
+    -webkit-text-fill-color: #5ce8f7 !important;
+    text-shadow:
+      0 0 16px rgba(0, 229, 255, 0.85),
+      0 0 36px rgba(0, 188, 212, 0.55);
+  }
+}
+
+@media (max-width: 900px) {
+  .page-home .hx-ops__card--intro > .hx-ops__intro-hero {
+    background: linear-gradient(180deg, transparent 0%, rgba(5, 11, 46, 0.55) 100%);
+  }
+
+  .page-home .hx-ops__card--intro .hx-ops__intro-hero-title .hx-services__cyan {
+    color: #5ce8f7 !important;
+    -webkit-text-fill-color: #5ce8f7 !important;
+  }
 }
 
 .page-home .hx-ops__card--bait .hx-ops__card-kicker,
@@ -4240,12 +4285,14 @@ body.page-home {
 /* Tarjeta intro — acordeón horizontal móvil */
 @media (max-width: 900px) {
   .page-home .hx-ops__card--intro {
-    border-color: rgba(0, 188, 212, 0.2);
-    box-shadow: 0 12px 32px rgba(15, 36, 64, 0.14);
+    border-color: rgba(0, 229, 255, 0.35);
+    box-shadow:
+      0 12px 32px rgba(5, 11, 46, 0.35),
+      inset 0 0 0 1px rgba(0, 229, 255, 0.16);
   }
 
   .page-home .hx-ops__card--intro .hx-ops__intro-photo {
-    filter: brightness(0.88) saturate(1.05);
+    display: none !important;
   }
 }
 
