@@ -8129,6 +8129,14 @@ body.page-enter-pending #contenido,
 body.page-enter-pending .social-float,
 body.page-enter-pending .yaavbot {
   opacity: 0;
+  /* Si page-enter.js no corre, no dejar la página en blanco */
+  animation: page-enter-pending-failsafe 0.2s linear 1.8s forwards;
+}
+
+@keyframes page-enter-pending-failsafe {
+  to {
+    opacity: 1;
+  }
 }
 
 body.page-enter-active #site-header {

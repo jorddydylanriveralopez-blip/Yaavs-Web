@@ -32,6 +32,10 @@
       return [...main.querySelectorAll(":scope > section")];
     }
 
+    if (body.classList.contains("page-asi-somos") || body.classList.contains("page-quienes-somos")) {
+      return [...main.querySelectorAll(":scope > .asi-cover, :scope > .asi-somos__shell")];
+    }
+
     if (body.classList.contains("page-tiendas")) {
       return [];
     }
