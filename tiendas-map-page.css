@@ -892,10 +892,9 @@ body.theme-cluster.page-tiendas-map .tiendas-map__street-open {
 
 body.theme-cluster.page-tiendas-map .tiendas-map__canvas {
   position: relative;
-  width: min(100%, min(72vh, 640px));
+  width: 100%;
   aspect-ratio: 1 / 1;
   height: auto;
-  margin-inline: auto;
   border: 1px solid color-mix(in srgb, var(--carrier-accent) 22%, transparent);
   border-radius: 16px;
   overflow: hidden;
