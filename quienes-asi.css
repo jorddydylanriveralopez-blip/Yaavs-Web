@@ -805,32 +805,318 @@ body.theme-cluster.page-asi-somos::before {
     padding-bottom: clamp(36px, 8vw, 56px);
   }
 
+  .asi-somos {
+    padding: 0 0 calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .asi-ambient__wash {
+    filter: blur(4px) saturate(0.95);
+    opacity: 0.28;
+    background-position: center 42%;
+  }
+
+  .asi-ambient__grid {
+    background-size: 36px 36px;
+    opacity: 0.7;
+  }
+
+  .asi-ambient__glow--a,
+  .asi-ambient__glow--b {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  .asi-floats {
+    display: none !important;
+  }
+
+  /* El dock social tapa las cards en móvil */
+  body.page-asi-somos .social-float {
+    display: none !important;
+  }
+
+  .asi-blob--hero {
+    top: 10vh;
+    right: -28vw;
+    width: 78vw;
+    height: 78vw;
+    opacity: 0.34;
+  }
+
+  .asi-blob--footer {
+    left: -80px;
+    bottom: -12vh;
+    opacity: 0.55;
+  }
+
   .asi-somos__shell {
-    padding-top: calc(var(--header-h, 72px) + 14px);
+    padding-top: calc(var(--header-h, 72px) + 10px + env(safe-area-inset-top, 0px));
     margin-top: 0;
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+  }
+
+  .asi-somos__breadcrumb {
+    margin: 0 0 14px;
+    font-size: 0.84rem;
+    gap: 6px;
+  }
+
+  .asi-somos__hero {
+    margin: 0 auto 28px;
+    max-width: none;
+    padding: 22px 18px 24px;
+    border-radius: 22px;
+    background:
+      linear-gradient(160deg, rgba(255, 255, 255, 0.94) 0%, rgba(240, 250, 253, 0.9) 100%);
+    border: 1px solid rgba(0, 151, 178, 0.2);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+      0 20px 48px rgba(15, 36, 64, 0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .asi-somos__kicker {
+    margin: 0 0 8px;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+
+  .asi-somos__title {
+    margin: 0 0 12px;
+    font-size: clamp(2.15rem, 11vw, 2.85rem);
+    line-height: 0.94;
   }
 
   .asi-somos__statement {
     max-width: none;
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  .asi-somos__punch {
+    margin: 0 0 14px;
+    font-size: clamp(1.05rem, 4.6vw, 1.22rem);
+  }
+
+  .asi-somos__lead {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   .asi-somos__grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .asi-card--historia {
+    grid-column: 1 / -1;
+    margin-bottom: 4px;
+  }
+
+  .asi-card--historia .asi-card__media {
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
+    box-shadow:
+      0 0 0 1px rgba(0, 188, 212, 0.28),
+      0 18px 40px rgba(0, 48, 135, 0.18);
+  }
+
+  .asi-card--historia .asi-card__title {
+    font-size: 1.28rem;
+    margin-top: 2px;
   }
 
   .asi-card__media {
-    border-radius: 14px;
+    margin: 0 0 10px;
+    border-radius: 16px;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 10px 28px rgba(15, 36, 64, 0.14);
+  }
+
+  .asi-card__title {
+    font-size: clamp(0.92rem, 3.6vw, 1.05rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .asi-card__hint {
+    left: 8px;
+    bottom: 8px;
+    padding: 6px 9px;
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  }
+
+  .asi-card--historia .asi-card__hint {
+    left: 12px;
+    bottom: 12px;
+    padding: 8px 12px;
+    font-size: 0.7rem;
   }
 
   .asi-card.is-inview:active {
     transform: scale(0.985);
   }
 
-  .asi-blob--footer {
-    left: -80px;
-    bottom: -12vh;
-    opacity: 0.75;
+  /* Modales: sheet móvil a pantalla casi completa */
+  .asi-historia,
+  .asi-valores,
+  .asi-manifiesto {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .asi-historia__sheet,
+  .asi-valores__sheet,
+  .asi-manifiesto__sheet {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .asi-historia__top {
+    padding: 14px 14px 12px;
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  }
+
+  .asi-historia__hero {
+    margin: 10px 12px 8px;
+    height: clamp(160px, 28vh, 220px);
+    border-radius: 16px;
+  }
+
+  .asi-historia__controls {
+    top: calc(64px + env(safe-area-inset-top, 0px));
+    margin: 0 12px;
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .asi-historia__status {
+    font-size: 0.76rem !important;
+  }
+
+  .asi-historia__nav-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .asi-historia__years {
+    top: calc(120px + env(safe-area-inset-top, 0px));
+    margin: 8px 12px 2px;
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+
+  .asi-historia__year-btn {
+    min-width: 54px;
+    padding: 10px 12px;
+    font-size: 0.76rem;
+  }
+
+  .asi-historia__rail {
+    padding: 12px 14px 36px;
+  }
+
+  .asi-historia__item {
+    padding: 10px 8px 12px 22px;
+  }
+
+  .asi-historia__media {
+    border-radius: 14px;
+  }
+
+  .asi-valores__top {
+    padding: 14px 14px 12px;
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+  }
+
+  .asi-valores__hero {
+    margin: 10px 12px;
+    height: clamp(150px, 26vh, 210px);
+    border-radius: 16px;
+  }
+
+  .asi-valores__accordion {
+    padding: 8px 14px 28px;
+  }
+
+  .asi-valores__trigger {
+    padding: 14px 4px;
+    min-height: 52px;
+  }
+
+  .asi-valores__label {
+    font-size: 0.95rem;
+  }
+
+  .asi-manifiesto__close {
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    right: 12px;
+    width: 46px;
+    height: 46px;
+  }
+
+  .asi-manifiesto__hero {
+    height: clamp(200px, 36vh, 280px);
+  }
+
+  .asi-manifiesto__hero-copy {
+    left: 18px;
+    right: 64px;
+    bottom: 18px;
+  }
+
+  .asi-manifiesto__title,
+  .asi-manifiesto h2.asi-manifiesto__title {
+    font-size: clamp(2.1rem, 10vw, 2.8rem) !important;
+  }
+
+  .asi-manifiesto__body {
+    padding: 24px 18px calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .asi-manifiesto__manifesto,
+  .asi-manifiesto .asi-manifiesto__manifesto {
+    max-width: none;
+    font-size: clamp(1.55rem, 7.2vw, 2rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .asi-manifiesto__lead,
+  .asi-manifiesto .asi-manifiesto__lead {
+    font-size: 1rem !important;
+    margin-bottom: 22px !important;
+  }
+
+  .asi-manifiesto__pillars {
+    margin-bottom: 28px;
+  }
+
+  .asi-manifiesto__pillar {
+    padding: 16px 0;
+    gap: 12px 14px;
+  }
+
+  .asi-manifiesto__punch,
+  .asi-manifiesto .asi-manifiesto__punch {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .asi-manifiesto__punch p,
+  .asi-manifiesto .asi-manifiesto__punch p {
+    font-size: clamp(1.15rem, 5.2vw, 1.4rem) !important;
   }
 }
 
@@ -920,14 +1206,6 @@ button.asi-card {
   text-transform: uppercase;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
   transition: transform 0.3s ease, background 0.3s ease;
-}
-
-@media (max-width: 720px) {
-  .asi-card__hint {
-    left: 10px;
-    bottom: 10px;
-    padding: 6px 10px;
-  }
 }
 
 .asi-inline-link {
@@ -2162,6 +2440,10 @@ body.is-manifiesto-open {
   object-fit: cover;
   object-position: 68% center;
   transform: scale(1.04);
+}
+
+.asi-manifiesto--vision .asi-manifiesto__hero img {
+  object-position: 28% center;
 }
 
 .asi-manifiesto.is-open .asi-manifiesto__hero img {
