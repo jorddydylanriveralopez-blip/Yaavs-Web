@@ -2115,28 +2115,35 @@ body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__punch {
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__title span {
-  color: #0097b2 !important;
-  -webkit-text-fill-color: #0097b2 !important;
+  color: #007a96 !important;
+  -webkit-text-fill-color: #007a96 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__breadcrumb a {
-  color: #0093c9 !important;
-  -webkit-text-fill-color: #0093c9 !important;
+  color: #007a96 !important;
+  -webkit-text-fill-color: #007a96 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__statement,
 body.theme-cluster.page-asi-somos .asi-somos__lead,
 body.theme-cluster.page-asi-somos .asi-somos__shell p {
-  color: #24384c !important;
-  -webkit-text-fill-color: #24384c !important;
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440 !important;
   opacity: 1 !important;
+  font-weight: 600;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__kicker,
 body.theme-cluster.page-asi-somos .asi-somos__breadcrumb,
 body.theme-cluster.page-asi-somos .asi-somos__breadcrumb span {
-  color: #4a6278 !important;
-  -webkit-text-fill-color: #4a6278 !important;
+  color: #24384c !important;
+  -webkit-text-fill-color: #24384c !important;
+}
+
+body.theme-cluster.page-asi-somos .asi-cover__name,
+body.theme-cluster.page-asi-somos .asi-cover__tag {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__shell,

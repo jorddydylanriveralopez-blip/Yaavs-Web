@@ -93,4 +93,9 @@
   }
 
   window.YaavsPageEnter = { play, finishInstant };
+
+  /* Si quedó page-enter-active pegado, limpiar */
+  if (body.classList.contains("page-enter-done") && body.classList.contains("page-enter-active")) {
+    finishInstant();
+  }
 })();
