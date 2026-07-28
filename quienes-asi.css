@@ -439,7 +439,13 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__hero {
-  margin-bottom: clamp(40px, 6vw, 64px);
+  margin: 0 auto clamp(40px, 6vw, 64px);
+  max-width: 44rem;
+  padding: clamp(22px, 3.5vw, 36px) clamp(18px, 3vw, 32px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(0, 151, 178, 0.14);
+  box-shadow: 0 18px 48px rgba(15, 36, 64, 0.08);
   text-align: center;
 }
 
@@ -2086,13 +2092,20 @@ body.is-filosofia-open {
   }
 }
 
-/* Tipografía clara sobre fondo blanco (contraste con el banner oscuro) */
+/* Tipografía legible forzada sobre fondo claro */
+body.theme-cluster.page-asi-somos .asi-somos__shell,
+body.theme-cluster.page-asi-somos .asi-somos__shell * {
+  color: #0f2440;
+}
+
 body.theme-cluster.page-asi-somos .asi-somos__shell h1,
+body.theme-cluster.page-asi-somos .asi-somos__shell h1.asi-somos__title,
 body.theme-cluster.page-asi-somos .asi-somos__shell h3,
 body.theme-cluster.page-asi-somos .asi-somos__shell .asi-card__title,
 body.theme-cluster.page-asi-somos .asi-somos__shell .asi-somos__punch {
   color: #003087 !important;
   -webkit-text-fill-color: #003087 !important;
+  opacity: 1 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__title span {
@@ -2106,13 +2119,24 @@ body.theme-cluster.page-asi-somos .asi-somos__breadcrumb a {
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__statement,
-body.theme-cluster.page-asi-somos .asi-somos__lead {
-  color: #3a5168 !important;
-  -webkit-text-fill-color: #3a5168 !important;
+body.theme-cluster.page-asi-somos .asi-somos__lead,
+body.theme-cluster.page-asi-somos .asi-somos__shell p {
+  color: #24384c !important;
+  -webkit-text-fill-color: #24384c !important;
+  opacity: 1 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__kicker,
-body.theme-cluster.page-asi-somos .asi-somos__breadcrumb {
-  color: #5b6f82 !important;
-  -webkit-text-fill-color: #5b6f82 !important;
+body.theme-cluster.page-asi-somos .asi-somos__breadcrumb,
+body.theme-cluster.page-asi-somos .asi-somos__breadcrumb span {
+  color: #4a6278 !important;
+  -webkit-text-fill-color: #4a6278 !important;
+}
+
+body.theme-cluster.page-asi-somos .asi-somos__shell,
+body.theme-cluster.page-asi-somos .asi-somos__hero,
+body.theme-cluster.page-asi-somos .asi-somos__story {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
 }

@@ -342,7 +342,7 @@
       return;
     }
     const s = document.createElement("script");
-    s.src = "js/page-enter.js?v=4";
+    s.src = "js/page-enter.js?v=5";
     s.dataset.pageEnter = "true";
     s.onload = () => window.YaavsPageEnter?.play();
     s.onerror = finish;

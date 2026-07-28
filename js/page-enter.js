@@ -33,7 +33,8 @@
     }
 
     if (body.classList.contains("page-asi-somos") || body.classList.contains("page-quienes-somos")) {
-      return [...main.querySelectorAll(":scope > .asi-cover, :scope > .asi-somos__shell")];
+      /* Evita bloques en opacity:0 que dejan el texto invisible */
+      return [];
     }
 
     if (body.classList.contains("page-tiendas")) {
