@@ -277,15 +277,20 @@ body.theme-cluster.page-asi-somos::before {
   letter-spacing: -0.05em;
   line-height: 0.9;
   text-transform: uppercase;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 }
 
 .asi-cover__tag {
   margin: 10px 0 0;
-  font-size: clamp(0.78rem, 1.4vw, 0.95rem);
-  font-weight: 700;
+  font-size: clamp(0.82rem, 1.5vw, 1rem);
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(220, 245, 255, 0.88);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
 }
 
 @keyframes asi-cover-brand-in {
@@ -422,15 +427,16 @@ body.theme-cluster.page-asi-somos::before {
   gap: 8px;
   margin: 0 0 22px;
   font-size: 0.92rem;
-  color: #5b6f82 !important;
-  -webkit-text-fill-color: #5b6f82;
+  font-weight: 600;
+  color: #24384c !important;
+  -webkit-text-fill-color: #24384c;
 }
 
 .asi-somos__breadcrumb a {
-  color: #0093c9 !important;
-  -webkit-text-fill-color: #0093c9;
+  color: #007a96 !important;
+  -webkit-text-fill-color: #007a96;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .asi-somos__breadcrumb a:hover {
@@ -443,20 +449,20 @@ body.theme-cluster.page-asi-somos::before {
   max-width: 44rem;
   padding: clamp(22px, 3.5vw, 36px) clamp(18px, 3vw, 32px);
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(0, 151, 178, 0.14);
-  box-shadow: 0 18px 48px rgba(15, 36, 64, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(0, 151, 178, 0.16);
+  box-shadow: 0 18px 48px rgba(15, 36, 64, 0.1);
   text-align: center;
 }
 
 .asi-somos__kicker {
   margin: 0 0 10px;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #5b6f82 !important;
-  -webkit-text-fill-color: #5b6f82;
+  color: #24384c !important;
+  -webkit-text-fill-color: #24384c;
 }
 
 .asi-somos__title {
@@ -472,19 +478,19 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__title span {
-  color: #0097b2 !important;
-  -webkit-text-fill-color: #0097b2;
+  color: #007a96 !important;
+  -webkit-text-fill-color: #007a96;
 }
 
 .asi-somos__statement {
   margin: 0 auto 14px;
   max-width: 30em;
-  font-size: clamp(1.05rem, 1.7vw, 1.22rem);
-  line-height: 1.45;
-  font-weight: 500;
+  font-size: clamp(1.08rem, 1.8vw, 1.24rem);
+  line-height: 1.5;
+  font-weight: 600;
   letter-spacing: -0.015em;
-  color: #3a5168 !important;
-  -webkit-text-fill-color: #3a5168;
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440;
   text-shadow: none;
 }
 
@@ -509,11 +515,11 @@ body.theme-cluster.page-asi-somos::before {
 .asi-somos__lead {
   margin: 0 auto;
   max-width: 34em;
-  font-size: clamp(0.98rem, 1.35vw, 1.08rem);
-  line-height: 1.6;
-  color: #5b6f82 !important;
-  -webkit-text-fill-color: #5b6f82;
-  font-weight: 500;
+  font-size: clamp(1.02rem, 1.45vw, 1.12rem);
+  line-height: 1.65;
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440;
+  font-weight: 600;
   letter-spacing: -0.01em;
   text-shadow: none;
 }
@@ -521,7 +527,7 @@ body.theme-cluster.page-asi-somos::before {
 .asi-somos__lead strong {
   color: #003087 !important;
   -webkit-text-fill-color: #003087;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .asi-somos__section-title {
