@@ -9,9 +9,9 @@
   --muted: rgba(15, 36, 64, 0.62);
   --caption: rgba(15, 36, 64, 0.45);
   background:
-    radial-gradient(ellipse 70% 48% at 12% 22%, rgba(0, 188, 212, 0.1) 0%, transparent 58%),
-    radial-gradient(ellipse 58% 42% at 88% 68%, rgba(37, 99, 181, 0.08) 0%, transparent 60%),
-    linear-gradient(180deg, #ffffff 0%, #f5fcfe 46%, #eaf6fb 100%) !important;
+    radial-gradient(ellipse 70% 48% at 12% 22%, rgba(0, 188, 212, 0.12) 0%, transparent 58%),
+    radial-gradient(ellipse 58% 42% at 88% 68%, rgba(37, 99, 181, 0.1) 0%, transparent 60%),
+    linear-gradient(180deg, #f8fcfe 0%, #f0f8fb 46%, #e4f2f8 100%) !important;
   color: #0f2440 !important;
   scroll-padding-top: calc(var(--header-h, 88px) + 12px);
 }
@@ -49,7 +49,7 @@ body.theme-cluster.page-asi-somos::before {
   padding: 0 0 72px;
 }
 
-/* Ambiente suave detrás del contenido (grid + glows) */
+/* Ambiente: foto lavada + grid + glows (sin vaciar el blanco) */
 .asi-ambient {
   position: absolute;
   inset: 0;
@@ -58,16 +58,41 @@ body.theme-cluster.page-asi-somos::before {
   overflow: hidden;
 }
 
+.asi-ambient__wash {
+  position: absolute;
+  inset: -28px;
+  background-image: url("assets/quienes-somos-fondo.jpg");
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+  filter: blur(10px) saturate(0.85);
+  opacity: 0.13;
+  transform: scale(1.06);
+}
+
+.asi-ambient__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.72) 0%,
+      rgba(245, 252, 254, 0.55) 38%,
+      rgba(234, 246, 251, 0.68) 100%
+    ),
+    radial-gradient(ellipse 80% 55% at 50% 18%, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+}
+
 .asi-ambient__grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 151, 178, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 151, 178, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 151, 178, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 151, 178, 0.07) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 15%, transparent 78%);
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 15%, transparent 78%);
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .asi-ambient__glow {
@@ -81,7 +106,7 @@ body.theme-cluster.page-asi-somos::before {
   right: -8%;
   width: min(48vw, 480px);
   height: min(48vw, 480px);
-  background: radial-gradient(circle, rgba(0, 188, 212, 0.16) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 188, 212, 0.2) 0%, transparent 70%);
   animation: asi-ambient-drift 16s ease-in-out infinite alternate;
 }
 
@@ -90,7 +115,7 @@ body.theme-cluster.page-asi-somos::before {
   left: -12%;
   width: min(42vw, 420px);
   height: min(42vw, 420px);
-  background: radial-gradient(circle, rgba(37, 99, 181, 0.12) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(37, 99, 181, 0.15) 0%, transparent 72%);
   animation: asi-ambient-drift 20s ease-in-out infinite alternate-reverse;
 }
 
@@ -102,7 +127,7 @@ body.theme-cluster.page-asi-somos::before {
     radial-gradient(circle at 72% 34%, rgba(37, 99, 181, 0.3) 0 2px, transparent 3px),
     radial-gradient(circle at 84% 68%, rgba(0, 151, 178, 0.28) 0 1.5px, transparent 3px),
     radial-gradient(circle at 28% 74%, rgba(0, 188, 212, 0.22) 0 1.5px, transparent 3px);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 @keyframes asi-ambient-drift {
@@ -449,9 +474,11 @@ body.theme-cluster.page-asi-somos::before {
   max-width: 44rem;
   padding: clamp(22px, 3.5vw, 36px) clamp(18px, 3vw, 32px);
   border-radius: 24px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(0, 151, 178, 0.16);
   box-shadow: 0 18px 48px rgba(15, 36, 64, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-align: center;
 }
 
