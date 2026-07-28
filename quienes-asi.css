@@ -2100,7 +2100,7 @@ body.is-filosofia-open {
 
 /* Tipografía legible forzada sobre fondo claro */
 body.theme-cluster.page-asi-somos .asi-somos__shell,
-body.theme-cluster.page-asi-somos .asi-somos__shell * {
+body.theme-cluster.page-asi-somos .asi-somos__shell *:not(.asi-card__hint) {
   color: #0f2440;
 }
 
@@ -2144,6 +2144,12 @@ body.theme-cluster.page-asi-somos .asi-cover__name,
 body.theme-cluster.page-asi-somos .asi-cover__tag {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+}
+
+body.theme-cluster.page-asi-somos .asi-card__hint {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #003087 !important;
 }
 
 body.theme-cluster.page-asi-somos .asi-somos__shell,
