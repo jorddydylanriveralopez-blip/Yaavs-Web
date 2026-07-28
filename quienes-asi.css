@@ -1,22 +1,24 @@
 /**
- * Quiénes somos — escena oscura, tipografía luminosa, grid de cards.
+ * Quiénes somos — fondo claro fresco, tipografía con contraste, grid de cards.
  */
 
 .page-asi-somos {
-  /* Anula tipografía “ink” oscura de interior-corporate */
-  --ink: #f4fbff;
-  --ink-muted: rgba(236, 246, 255, 0.92);
-  --ink-soft: rgba(210, 230, 245, 0.8);
-  --muted: rgba(210, 230, 245, 0.78);
-  --caption: rgba(180, 214, 232, 0.7);
-  background: #050d16 !important;
-  color: #f4fbff !important;
+  --ink: #0f2440;
+  --ink-muted: rgba(15, 36, 64, 0.78);
+  --ink-soft: rgba(15, 36, 64, 0.58);
+  --muted: rgba(15, 36, 64, 0.62);
+  --caption: rgba(15, 36, 64, 0.45);
+  background:
+    radial-gradient(ellipse 70% 48% at 12% 22%, rgba(0, 188, 212, 0.1) 0%, transparent 58%),
+    radial-gradient(ellipse 58% 42% at 88% 68%, rgba(37, 99, 181, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f5fcfe 46%, #eaf6fb 100%) !important;
+  color: #0f2440 !important;
   scroll-padding-top: calc(var(--header-h, 88px) + 12px);
 }
 
 .page-asi-somos #contenido {
   background: transparent;
-  color: #f4fbff;
+  color: #0f2440;
 }
 
 /* Sin overlay blanco fixed (interior-corporate ::before) — tapa el hero */
@@ -47,48 +49,6 @@ body.theme-cluster.page-asi-somos::before {
   padding: 0 0 72px;
 }
 
-/* Fondo ciudad nocturna detrás del contenido */
-.asi-scene {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.asi-scene__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
-  transform: scale(1.06);
-  filter: saturate(1.15) contrast(1.08);
-}
-
-.asi-scene__veil {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(3, 10, 18, 0.82) 0%, rgba(3, 10, 18, 0.88) 48%, rgba(3, 10, 18, 0.95) 100%),
-    radial-gradient(ellipse 70% 50% at 50% 22%, rgba(0, 188, 212, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 82% 72%, rgba(37, 99, 181, 0.22) 0%, transparent 65%);
-}
-
-.asi-scene__glow {
-  position: absolute;
-  left: 50%;
-  top: 28%;
-  width: min(70vw, 720px);
-  height: min(48vw, 420px);
-  transform: translate(-50%, -30%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 238, 0.2) 0%, transparent 70%);
-  filter: blur(8px);
-  animation: asi-ambient-drift 18s ease-in-out infinite alternate;
-}
-
 /* Ambiente suave detrás del contenido (grid + glows) */
 .asi-ambient {
   position: absolute;
@@ -102,12 +62,12 @@ body.theme-cluster.page-asi-somos::before {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(92, 232, 247, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92, 232, 247, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0, 151, 178, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 151, 178, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 15%, transparent 78%);
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 15%, transparent 78%);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .asi-ambient__glow {
@@ -121,7 +81,7 @@ body.theme-cluster.page-asi-somos::before {
   right: -8%;
   width: min(48vw, 480px);
   height: min(48vw, 480px);
-  background: radial-gradient(circle, rgba(0, 188, 212, 0.28) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 188, 212, 0.16) 0%, transparent 70%);
   animation: asi-ambient-drift 16s ease-in-out infinite alternate;
 }
 
@@ -130,7 +90,7 @@ body.theme-cluster.page-asi-somos::before {
   left: -12%;
   width: min(42vw, 420px);
   height: min(42vw, 420px);
-  background: radial-gradient(circle, rgba(37, 99, 181, 0.26) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(37, 99, 181, 0.12) 0%, transparent 72%);
   animation: asi-ambient-drift 20s ease-in-out infinite alternate-reverse;
 }
 
@@ -138,11 +98,11 @@ body.theme-cluster.page-asi-somos::before {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 18% 28%, rgba(0, 188, 212, 0.55) 0 2px, transparent 3px),
-    radial-gradient(circle at 72% 34%, rgba(92, 232, 247, 0.4) 0 2px, transparent 3px),
-    radial-gradient(circle at 84% 68%, rgba(0, 151, 178, 0.35) 0 1.5px, transparent 3px),
-    radial-gradient(circle at 28% 74%, rgba(92, 232, 247, 0.3) 0 1.5px, transparent 3px);
-  opacity: 0.65;
+    radial-gradient(circle at 18% 28%, rgba(0, 188, 212, 0.4) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 34%, rgba(37, 99, 181, 0.3) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 68%, rgba(0, 151, 178, 0.28) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 28% 74%, rgba(0, 188, 212, 0.22) 0 1.5px, transparent 3px);
+  opacity: 0.5;
 }
 
 @keyframes asi-ambient-drift {
@@ -167,13 +127,13 @@ body.theme-cluster.page-asi-somos::before {
   filter:
     brightness(0)
     saturate(100%)
-    invert(78%)
-    sepia(42%)
-    saturate(650%)
-    hue-rotate(146deg)
-    brightness(1.05)
-    contrast(1.05)
-    drop-shadow(0 12px 22px rgba(0, 212, 238, 0.28));
+    invert(14%)
+    sepia(92%)
+    saturate(2800%)
+    hue-rotate(201deg)
+    brightness(0.78)
+    contrast(1.2)
+    drop-shadow(0 12px 20px rgba(0, 48, 135, 0.18));
   will-change: transform;
   animation-name: asi-float-bob;
   animation-timing-function: ease-in-out;
@@ -339,7 +299,7 @@ body.theme-cluster.page-asi-somos::before {
   }
 }
 
-/* Fade de portada → escena oscura */
+/* Fade de portada → fondo claro */
 .asi-cover__fade {
   position: absolute;
   left: 0;
@@ -350,9 +310,9 @@ body.theme-cluster.page-asi-somos::before {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(6, 16, 24, 0) 0%,
-    rgba(6, 16, 24, 0.55) 48%,
-    #061018 100%
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 48%,
+    #ffffff 100%
   );
 }
 
@@ -462,13 +422,13 @@ body.theme-cluster.page-asi-somos::before {
   gap: 8px;
   margin: 0 0 22px;
   font-size: 0.92rem;
-  color: rgba(200, 230, 245, 0.85) !important;
-  -webkit-text-fill-color: rgba(200, 230, 245, 0.85);
+  color: #5b6f82 !important;
+  -webkit-text-fill-color: #5b6f82;
 }
 
 .asi-somos__breadcrumb a {
-  color: #7af0ff !important;
-  -webkit-text-fill-color: #7af0ff;
+  color: #0093c9 !important;
+  -webkit-text-fill-color: #0093c9;
   text-decoration: none;
   font-weight: 600;
 }
@@ -489,8 +449,8 @@ body.theme-cluster.page-asi-somos::before {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(180, 220, 240, 0.82) !important;
-  -webkit-text-fill-color: rgba(180, 220, 240, 0.82);
+  color: #5b6f82 !important;
+  -webkit-text-fill-color: #5b6f82;
 }
 
 .asi-somos__title {
@@ -500,14 +460,14 @@ body.theme-cluster.page-asi-somos::before {
   letter-spacing: -0.04em;
   line-height: 0.98;
   text-transform: uppercase;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff;
-  text-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
+  text-shadow: none;
 }
 
 .asi-somos__title span {
-  color: #5ce8f7 !important;
-  -webkit-text-fill-color: #5ce8f7;
+  color: #0097b2 !important;
+  -webkit-text-fill-color: #0097b2;
 }
 
 .asi-somos__statement {
@@ -517,14 +477,14 @@ body.theme-cluster.page-asi-somos::before {
   line-height: 1.45;
   font-weight: 500;
   letter-spacing: -0.015em;
-  color: rgba(236, 246, 255, 0.94) !important;
-  -webkit-text-fill-color: rgba(236, 246, 255, 0.94);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  color: #3a5168 !important;
+  -webkit-text-fill-color: #3a5168;
+  text-shadow: none;
 }
 
 .asi-somos__statement strong {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff;
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
   font-weight: 800;
 }
 
@@ -535,9 +495,9 @@ body.theme-cluster.page-asi-somos::before {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.25;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff;
-  text-shadow: 0 8px 24px rgba(0, 188, 212, 0.4);
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
+  text-shadow: none;
 }
 
 .asi-somos__lead {
@@ -545,16 +505,16 @@ body.theme-cluster.page-asi-somos::before {
   max-width: 34em;
   font-size: clamp(0.98rem, 1.35vw, 1.08rem);
   line-height: 1.6;
-  color: rgba(210, 230, 245, 0.9) !important;
-  -webkit-text-fill-color: rgba(210, 230, 245, 0.9);
+  color: #5b6f82 !important;
+  -webkit-text-fill-color: #5b6f82;
   font-weight: 500;
   letter-spacing: -0.01em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
 
 .asi-somos__lead strong {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff;
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
   font-weight: 700;
 }
 
