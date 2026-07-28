@@ -1,0 +1,55 @@
+{
+  "id": "/",
+  "name": "YAAVS — Telecomunicaciones",
+  "short_name": "YAAVS",
+  "description": "Distribuidor #1 de telecom en México. Chips, recargas, portabilidades y red de Yaavsers.",
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f2440",
+  "theme_color": "#2563b5",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": ["business", "shopping"],
+  "icons": [
+    {
+      "src": "assets/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nuestros servicios",
+      "short_name": "Servicios",
+      "url": "./servicios.html?source=pwa",
+      "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "url": "./contacto.html?source=pwa",
+      "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Conoce nuestras tiendas",
+      "short_name": "Tiendas",
+      "url": "./tiendas.html?source=pwa",
+      "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

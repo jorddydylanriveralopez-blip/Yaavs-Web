@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563b5">
+  <title>Sin conexión | YAAVS</title>
+  <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #0f2440;
+      --blue: #003087;
+      --cyan: #0097b2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: Montserrat, system-ui, sans-serif;
+      color: var(--navy);
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 10%, rgba(0, 188, 212, 0.16), transparent 60%),
+        linear-gradient(180deg, #f7fcfe 0%, #e8f3f8 100%);
+      text-align: center;
+    }
+    img { width: min(160px, 46vw); height: auto; margin-bottom: 18px; }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      letter-spacing: -0.03em;
+      color: var(--blue);
+    }
+    p {
+      margin: 0 auto 22px;
+      max-width: 28em;
+      line-height: 1.5;
+      color: #3a5166;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #003087, #0097b2);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="assets/yaavs-logo-on-light.png" alt="YAAVS" width="160" height="48">
+    <h1>Sin conexión</h1>
+    <p>No hay internet en este momento. Revisa tu red e inténtalo de nuevo para seguir navegando YAAVS.</p>
+    <a href="index.html">Reintentar</a>
+  </main>
+</body>
+</html>
