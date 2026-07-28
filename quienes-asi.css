@@ -105,7 +105,7 @@ body.theme-cluster.page-asi-somos::before {
   to { transform: translate(-2%, 3%) scale(1.06); }
 }
 
-/* Elementos flotantes: chips, celulares, señal — más grandes y variados */
+/* Elementos flotantes: solo 3, fuera del primer texto */
 .asi-floats {
   position: absolute;
   inset: 0;
@@ -118,8 +118,7 @@ body.theme-cluster.page-asi-somos::before {
   position: absolute;
   display: block;
   object-fit: contain;
-  opacity: 0.92;
-  /* Cyan SVG → azul marino YAAVS (#003087), más fuerte */
+  opacity: 0.42;
   filter:
     brightness(0)
     saturate(100%)
@@ -129,7 +128,7 @@ body.theme-cluster.page-asi-somos::before {
     hue-rotate(201deg)
     brightness(0.78)
     contrast(1.2)
-    drop-shadow(0 16px 26px rgba(0, 48, 135, 0.4));
+    drop-shadow(0 12px 20px rgba(0, 48, 135, 0.22));
   will-change: transform;
   animation-name: asi-float-bob;
   animation-timing-function: ease-in-out;
@@ -137,159 +136,33 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-float--a {
-  top: 34%;
-  left: 1.5%;
-  width: clamp(64px, 9vw, 110px);
-  --asi-float-rot: -14deg;
-  animation-duration: 7.8s;
+  top: 62%;
+  left: 2%;
+  width: clamp(52px, 7vw, 88px);
+  --asi-float-rot: -12deg;
+  animation-duration: 8.4s;
   animation-delay: -0.6s;
 }
 
 .asi-float--b {
-  top: 42%;
-  right: 2%;
-  width: clamp(56px, 7.5vw, 92px);
+  top: 72%;
+  right: 3%;
+  width: clamp(46px, 6vw, 76px);
   --asi-float-rot: 10deg;
   animation-name: asi-float-sway;
-  animation-duration: 9.2s;
+  animation-duration: 9.6s;
   animation-delay: -1.4s;
 }
 
-.asi-float--c {
-  top: 54%;
-  left: 6%;
-  width: clamp(52px, 7vw, 86px);
-  --asi-float-rot: 18deg;
-  animation-duration: 6.6s;
-  animation-delay: -2.2s;
-}
-
 .asi-float--d {
-  top: 58%;
-  right: 1%;
-  width: clamp(96px, 13vw, 160px);
-  --asi-float-rot: -8deg;
-  opacity: 0.88;
-  animation-name: asi-float-sway;
-  animation-duration: 10.4s;
-  animation-delay: -0.9s;
-}
-
-.asi-float--e {
-  top: 68%;
-  left: 3%;
-  width: clamp(48px, 6.5vw, 78px);
-  --asi-float-rot: 6deg;
-  animation-duration: 8s;
-  animation-delay: -3.3s;
-}
-
-.asi-float--f {
-  top: 48%;
-  left: 11%;
-  width: clamp(58px, 8vw, 98px);
-  --asi-float-rot: -20deg;
-  animation-name: asi-float-spinbob;
-  animation-duration: 11s;
-  animation-delay: -1.8s;
-}
-
-.asi-float--g {
-  top: 76%;
-  right: 7%;
-  width: clamp(60px, 8vw, 100px);
-  --asi-float-rot: 22deg;
-  animation-duration: 7.4s;
-  animation-delay: -4.1s;
-}
-
-.asi-float--h {
-  top: 36%;
-  left: 14%;
-  width: clamp(48px, 6.5vw, 80px);
-  --asi-float-rot: -6deg;
-  opacity: 0.82;
-  animation-name: asi-float-sway;
-  animation-duration: 8.8s;
-  animation-delay: -2.7s;
-}
-
-.asi-float--i {
-  top: 82%;
+  top: 84%;
   left: 8%;
-  width: clamp(46px, 6vw, 74px);
-  --asi-float-rot: -16deg;
-  animation-duration: 6.9s;
-  animation-delay: -5s;
-}
-
-.asi-float--j {
-  top: 88%;
-  right: 3%;
-  width: clamp(88px, 12vw, 140px);
-  --asi-float-rot: 12deg;
-  opacity: 0.86;
-  animation-duration: 9.6s;
-  animation-delay: -1.1s;
-}
-
-.asi-float--k {
-  top: 64%;
-  right: 12%;
-  width: clamp(54px, 7vw, 88px);
-  --asi-float-rot: 8deg;
-  animation-name: asi-float-spinbob;
-  animation-duration: 10.2s;
-  animation-delay: -3.8s;
-}
-
-.asi-float--l {
-  top: 92%;
-  left: 18%;
-  width: clamp(44px, 6vw, 70px);
-  --asi-float-rot: -10deg;
-  animation-duration: 7.1s;
-  animation-delay: -2s;
-}
-
-.asi-float--m {
-  top: 70%;
-  left: 48%;
-  width: clamp(50px, 7vw, 84px);
-  --asi-float-rot: 14deg;
-  opacity: 0.7;
+  width: clamp(72px, 10vw, 120px);
+  --asi-float-rot: -6deg;
+  opacity: 0.36;
   animation-name: asi-float-sway;
-  animation-duration: 8.4s;
-  animation-delay: -4.6s;
-}
-
-.asi-float--n {
-  top: 50%;
-  right: 15%;
-  width: clamp(52px, 7vw, 88px);
-  --asi-float-rot: -18deg;
-  animation-duration: 9s;
-  animation-delay: -0.4s;
-}
-
-.asi-float--o {
-  top: 96%;
-  right: 22%;
-  width: clamp(42px, 5.5vw, 68px);
-  --asi-float-rot: 24deg;
-  animation-duration: 6.5s;
-  animation-delay: -3s;
-}
-
-.asi-float--p {
-  top: 40%;
-  right: 18%;
-  width: clamp(78px, 10vw, 124px);
-  --asi-float-rot: 4deg;
-  opacity: 0.8;
-  animation-name: asi-float-sway;
-  animation-duration: 11.2s;
-  animation-delay: -5.2s;
+  animation-duration: 10.8s;
+  animation-delay: -0.9s;
 }
 
 @keyframes asi-float-bob {
@@ -298,7 +171,7 @@ body.theme-cluster.page-asi-somos::before {
     transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg));
   }
   50% {
-    transform: translate3d(8px, -22px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 6deg));
+    transform: translate3d(6px, -14px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 4deg));
   }
 }
 
@@ -308,7 +181,7 @@ body.theme-cluster.page-asi-somos::before {
     transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg));
   }
   50% {
-    transform: translate3d(-16px, -18px, 0) rotate(calc(var(--asi-float-rot, 0deg) - 5deg));
+    transform: translate3d(-10px, -12px, 0) rotate(calc(var(--asi-float-rot, 0deg) - 4deg));
   }
 }
 
@@ -318,35 +191,17 @@ body.theme-cluster.page-asi-somos::before {
     transform: translate3d(0, 0, 0) rotate(var(--asi-float-rot, 0deg)) scale(1);
   }
   50% {
-    transform: translate3d(10px, -20px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 12deg)) scale(1.06);
-  }
-}
-
-@media (max-width: 900px) {
-  .asi-float--h,
-  .asi-float--m,
-  .asi-float--p,
-  .asi-float--l {
-    display: none;
+    transform: translate3d(8px, -14px, 0) rotate(calc(var(--asi-float-rot, 0deg) + 8deg)) scale(1.04);
   }
 }
 
 @media (max-width: 720px) {
-  .asi-float--f,
-  .asi-float--k,
-  .asi-float--n,
-  .asi-float--o {
+  .asi-float--d {
     display: none;
   }
 
   .asi-float {
-    opacity: 0.8;
-  }
-
-  .asi-float--a,
-  .asi-float--b,
-  .asi-float--d {
-    width: clamp(58px, 16vw, 92px);
+    opacity: 0.32;
   }
 }
 
@@ -356,10 +211,12 @@ body.theme-cluster.page-asi-somos::before {
   position: relative;
   z-index: 1;
   isolation: isolate;
+  display: grid;
+  place-items: end start;
   width: 100%;
   height: auto;
-  min-height: clamp(280px, 42vh, 460px);
-  min-height: clamp(280px, 42svh, 460px);
+  min-height: clamp(360px, 56vh, 640px);
+  min-height: clamp(360px, 56svh, 640px);
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -389,23 +246,68 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-cover__shade {
-  display: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(4, 16, 31, 0.55) 0%, rgba(4, 16, 31, 0.18) 42%, rgba(4, 16, 31, 0.08) 100%),
+    linear-gradient(180deg, rgba(4, 16, 31, 0.2) 0%, transparent 36%, rgba(4, 16, 31, 0.35) 100%);
 }
 
-/* Fade de la portada → blanco del contenido */
+.asi-cover__brand {
+  position: relative;
+  z-index: 3;
+  padding: clamp(28px, 5vw, 56px) clamp(20px, 5vw, 64px) clamp(40px, 6vw, 72px);
+  color: #fff;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  animation: asi-cover-brand-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.asi-cover__name {
+  margin: 0;
+  font-size: clamp(3.2rem, 10vw, 6.4rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.asi-cover__tag {
+  margin: 10px 0 0;
+  font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(220, 245, 255, 0.88);
+}
+
+@keyframes asi-cover-brand-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade corto hacia el fondo de página (no nube blanca) */
 .asi-cover__fade {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  height: 88px;
+  height: 56px;
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 45%,
-    #ffffff 100%
+    rgba(244, 250, 252, 0) 0%,
+    rgba(244, 250, 252, 0.55) 55%,
+    #f4fafc 100%
   );
 }
 
@@ -535,20 +437,20 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__kicker {
-  margin: 0 0 12px;
-  font-size: 0.76rem;
+  margin: 0 0 10px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #0097b2;
+  color: #5b6f82;
 }
 
 .asi-somos__title {
-  margin: 0 0 16px;
-  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  margin: 0 0 14px;
+  font-size: clamp(2.2rem, 5.8vw, 3.6rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 0.96;
+  line-height: 0.98;
   text-transform: uppercase;
   color: #003087;
 }
@@ -558,13 +460,13 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-somos__statement {
-  margin: 0 auto clamp(20px, 3vw, 28px);
-  max-width: 28em;
-  font-size: clamp(1.12rem, 2vw, 1.4rem);
-  line-height: 1.4;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #24384c;
+  margin: 0 auto 14px;
+  max-width: 30em;
+  font-size: clamp(1.05rem, 1.7vw, 1.22rem);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: #3a5168;
 }
 
 .asi-somos__statement strong {
@@ -572,41 +474,59 @@ body.theme-cluster.page-asi-somos::before {
   font-weight: 800;
 }
 
+.asi-somos__punch {
+  margin: 0 auto clamp(22px, 3.2vw, 30px);
+  max-width: 22em;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: #003087;
+}
+
+/* Cifras sin cards: franja de prueba */
 .asi-somos__stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
   list-style: none;
   margin: 0 auto clamp(20px, 3vw, 28px);
   padding: 0;
-  max-width: 680px;
+  max-width: 720px;
   text-align: center;
-  justify-items: center;
 }
 
 .asi-somos__stats li {
   display: grid;
   gap: 4px;
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid rgba(0, 151, 178, 0.2);
-  border-radius: 14px;
-  background: linear-gradient(180deg, #f7fcfe 0%, #eef8fb 100%);
+  flex: 1 1 140px;
+  min-width: 120px;
+  max-width: 220px;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   justify-items: center;
 }
 
+.asi-somos__stats li + li {
+  border-left: 1px solid rgba(0, 48, 135, 0.14);
+}
+
 .asi-somos__stats strong {
-  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1;
-  color: #0097b2;
+  color: #003087;
 }
 
 .asi-somos__stats span {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #5b6f82;
 }
@@ -614,26 +534,16 @@ body.theme-cluster.page-asi-somos::before {
 .asi-somos__lead {
   margin: 0 auto;
   max-width: 34em;
-  font-size: clamp(1rem, 1.45vw, 1.12rem);
+  font-size: clamp(0.98rem, 1.35vw, 1.08rem);
   line-height: 1.6;
-  color: #3a5168;
+  color: #5b6f82;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
 .asi-somos__lead strong {
   color: #003087;
-  font-weight: 800;
-}
-
-.asi-somos__punch {
-  margin: 1.1em auto 0;
-  max-width: 34em;
-  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-  color: #0097b2;
+  font-weight: 700;
 }
 
 .asi-somos__section-title {
@@ -844,8 +754,12 @@ body.theme-cluster.page-asi-somos::before {
 
 @media (max-width: 720px) {
   .asi-cover {
-    min-height: clamp(220px, 34vh, 320px);
-    min-height: clamp(220px, 34svh, 320px);
+    min-height: clamp(300px, 48vh, 420px);
+    min-height: clamp(300px, 48svh, 420px);
+  }
+
+  .asi-cover__brand {
+    padding-bottom: clamp(36px, 8vw, 56px);
   }
 
   .asi-somos__shell {
@@ -854,8 +768,20 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-somos__stats {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .asi-somos__stats li {
     max-width: none;
+    padding: 0;
+  }
+
+  .asi-somos__stats li + li {
+    border-left: 0;
+    border-top: 1px solid rgba(0, 48, 135, 0.12);
+    padding-top: 14px;
   }
 
   .asi-somos__statement {
@@ -898,11 +824,17 @@ body.theme-cluster.page-asi-somos::before {
   .asi-card__media,
   .asi-card__media img,
   .asi-card__title,
-  .asi-card__hint {
+  .asi-card__hint,
+  .asi-cover__brand,
+  .asi-float {
     transition: none !important;
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .asi-float {
+    opacity: 0.36 !important;
   }
 
   .asi-card__media::before {
