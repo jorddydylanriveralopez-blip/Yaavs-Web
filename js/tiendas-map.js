@@ -127,8 +127,14 @@
   }
 
   function streetViewEmbedUrl(lat, lng, heading) {
-    const h = Number.isFinite(heading) ? heading : 0;
-    return `https://www.google.com/maps?hl=es&layer=c&cbll=${lat},${lng}&cbp=12,${h},,0,0&output=embed`;
+    const h = Number.isFinite(heading) ? Math.round(heading) : 0;
+    /* output=svembed (no embed): sin esto Google muestra el mapa mundial */
+    return (
+      "https://www.google.com/maps?hl=es" +
+      `&layer=c&cbll=${lat},${lng}` +
+      `&cbp=12,${h},0,0,0` +
+      "&output=svembed"
+    );
   }
 
   /* ─── BAIT / AT&T con lista fija YAAVS ─── */
