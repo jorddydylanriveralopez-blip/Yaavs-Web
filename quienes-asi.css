@@ -625,17 +625,20 @@ body.theme-cluster.page-asi-somos::before {
   grid-column: 1 / -1;
 }
 
-.asi-card--filosofia .asi-card__media {
+.asi-card--filosofia .asi-card__media,
+.asi-card--vision .asi-card__media {
   box-shadow:
     0 0 0 1px rgba(0, 188, 212, 0.35),
     0 16px 40px rgba(0, 48, 135, 0.2);
 }
 
-.asi-card--filosofia .asi-card__title {
+.asi-card--filosofia .asi-card__title,
+.asi-card--vision .asi-card__title {
   color: #003087;
 }
 
-.asi-card--filosofia .asi-card__hint {
+.asi-card--filosofia .asi-card__hint,
+.asi-card--vision .asi-card__hint {
   background: #003087;
 }
 
@@ -2077,12 +2080,12 @@ body.is-valores-open {
   }
 }
 
-/* ─── Modal Filosofía ─── */
-body.is-filosofia-open {
+/* ─── Modales Filosofía / Visión ─── */
+body.is-manifiesto-open {
   overflow: hidden;
 }
 
-.asi-filosofia {
+.asi-manifiesto {
   position: fixed;
   inset: 0;
   width: min(920px, calc(100vw - 20px));
@@ -2101,13 +2104,13 @@ body.is-filosofia-open {
   overflow: hidden;
 }
 
-.asi-filosofia::backdrop {
+.asi-manifiesto::backdrop {
   background: rgba(2, 10, 22, 0.72);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-.asi-filosofia__sheet {
+.asi-manifiesto__sheet {
   position: relative;
   height: 100%;
   overflow: auto;
@@ -2116,7 +2119,7 @@ body.is-filosofia-open {
   background: #ffffff;
 }
 
-.asi-filosofia__close {
+.asi-manifiesto__close {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -2135,15 +2138,15 @@ body.is-filosofia-open {
   transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
-.asi-filosofia__close:hover,
-.asi-filosofia__close:focus-visible {
+.asi-manifiesto__close:hover,
+.asi-manifiesto__close:focus-visible {
   background: rgba(0, 188, 212, 0.35);
   border-color: rgba(92, 232, 247, 0.7);
   transform: scale(1.05);
   outline: none;
 }
 
-.asi-filosofia__hero {
+.asi-manifiesto__hero {
   position: relative;
   flex-shrink: 0;
   height: clamp(220px, 34vh, 320px);
@@ -2152,7 +2155,7 @@ body.is-filosofia-open {
   isolation: isolate;
 }
 
-.asi-filosofia__hero img {
+.asi-manifiesto__hero img {
   display: block;
   width: 100%;
   height: 100%;
@@ -2161,7 +2164,7 @@ body.is-filosofia-open {
   transform: scale(1.04);
 }
 
-.asi-filosofia.is-open .asi-filosofia__hero img {
+.asi-manifiesto.is-open .asi-manifiesto__hero img {
   animation: asi-filo-hero-zoom 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -2176,7 +2179,7 @@ body.is-filosofia-open {
   }
 }
 
-.asi-filosofia__hero-veil {
+.asi-manifiesto__hero-veil {
   position: absolute;
   inset: 0;
   background:
@@ -2185,7 +2188,7 @@ body.is-filosofia-open {
   pointer-events: none;
 }
 
-.asi-filosofia__hero-copy {
+.asi-manifiesto__hero-copy {
   position: absolute;
   left: clamp(20px, 4vw, 40px);
   right: clamp(64px, 8vw, 80px);
@@ -2195,7 +2198,7 @@ body.is-filosofia-open {
   color: #fff;
 }
 
-.asi-filosofia__kicker {
+.asi-manifiesto__kicker {
   margin: 0 0 8px !important;
   font-size: 0.72rem !important;
   font-weight: 700 !important;
@@ -2205,8 +2208,8 @@ body.is-filosofia-open {
   -webkit-text-fill-color: #5ce8f7 !important;
 }
 
-.asi-filosofia__title,
-.asi-filosofia h2.asi-filosofia__title {
+.asi-manifiesto__title,
+.asi-manifiesto h2.asi-manifiesto__title {
   margin: 0 0 10px !important;
   font-size: clamp(2.2rem, 6vw, 3.2rem) !important;
   font-weight: 800 !important;
@@ -2218,7 +2221,7 @@ body.is-filosofia-open {
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
-.asi-filosofia__tagline {
+.asi-manifiesto__tagline {
   margin: 0 !important;
   max-width: 16em;
   font-size: clamp(0.95rem, 2vw, 1.1rem) !important;
@@ -2228,7 +2231,7 @@ body.is-filosofia-open {
   -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
 }
 
-.asi-filosofia__body {
+.asi-manifiesto__body {
   position: relative;
   z-index: 2;
   margin: 0;
@@ -2236,8 +2239,8 @@ body.is-filosofia-open {
   background: #ffffff;
 }
 
-.asi-filosofia__manifesto,
-.asi-filosofia .asi-filosofia__manifesto {
+.asi-manifiesto__manifesto,
+.asi-manifiesto .asi-manifiesto__manifesto {
   margin: 0 0 16px !important;
   max-width: 18ch;
   font-size: clamp(1.7rem, 4vw, 2.45rem) !important;
@@ -2249,7 +2252,7 @@ body.is-filosofia-open {
   background: none !important;
 }
 
-.asi-filosofia__manifesto span {
+.asi-manifiesto__manifesto span {
   display: block;
   margin-top: 0.15em;
   color: #0097b2 !important;
@@ -2257,8 +2260,8 @@ body.is-filosofia-open {
   background: none !important;
 }
 
-.asi-filosofia__lead,
-.asi-filosofia .asi-filosofia__lead {
+.asi-manifiesto__lead,
+.asi-manifiesto .asi-manifiesto__lead {
   margin: 0 0 28px !important;
   max-width: 36em;
   font-size: clamp(1.02rem, 1.8vw, 1.18rem) !important;
@@ -2268,7 +2271,7 @@ body.is-filosofia-open {
   -webkit-text-fill-color: #3a5166 !important;
 }
 
-.asi-filosofia__pillars {
+.asi-manifiesto__pillars {
   list-style: none;
   margin: 0 0 36px;
   padding: 0;
@@ -2277,7 +2280,7 @@ body.is-filosofia-open {
   border-top: 1px solid rgba(15, 36, 64, 0.12);
 }
 
-.asi-filosofia__pillar {
+.asi-manifiesto__pillar {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 12px 16px;
@@ -2287,7 +2290,7 @@ body.is-filosofia-open {
   min-width: 0;
 }
 
-.asi-filosofia__pillar-num {
+.asi-manifiesto__pillar-num {
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -2295,7 +2298,7 @@ body.is-filosofia-open {
   padding-top: 4px;
 }
 
-.asi-filosofia__pillar strong {
+.asi-manifiesto__pillar strong {
   display: block;
   margin: 0 0 6px;
   font-size: clamp(1.1rem, 2vw, 1.28rem);
@@ -2305,8 +2308,8 @@ body.is-filosofia-open {
   -webkit-text-fill-color: #0f2440 !important;
 }
 
-.asi-filosofia__pillar p,
-.asi-filosofia .asi-filosofia__pillar p {
+.asi-manifiesto__pillar p,
+.asi-manifiesto .asi-manifiesto__pillar p {
   margin: 0 !important;
   max-width: none;
   font-size: 0.95rem !important;
@@ -2315,8 +2318,8 @@ body.is-filosofia-open {
   -webkit-text-fill-color: #4a6278 !important;
 }
 
-.asi-filosofia__punch,
-.asi-filosofia .asi-filosofia__punch {
+.asi-manifiesto__punch,
+.asi-manifiesto .asi-manifiesto__punch {
   display: block;
   margin: 8px 0 0 !important;
   padding: 26px 22px;
@@ -2329,8 +2332,8 @@ body.is-filosofia-open {
   text-align: center;
 }
 
-.asi-filosofia__punch p,
-.asi-filosofia .asi-filosofia__punch p {
+.asi-manifiesto__punch p,
+.asi-manifiesto .asi-manifiesto__punch p {
   margin: 0 !important;
   font-size: clamp(1.2rem, 2.8vw, 1.65rem) !important;
   font-weight: 800 !important;
@@ -2340,21 +2343,21 @@ body.is-filosofia-open {
   -webkit-text-fill-color: #ffffff !important;
 }
 
-[data-filo-reveal] {
+[data-mani-reveal] {
   opacity: 0;
   transform: translate3d(0, 14px, 0);
 }
 
-.asi-filosofia.is-open [data-filo-reveal] {
+.asi-manifiesto.is-open [data-mani-reveal] {
   animation: asi-filo-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.asi-filosofia.is-open .asi-filosofia__manifesto { animation-delay: 0.06s; }
-.asi-filosofia.is-open .asi-filosofia__lead { animation-delay: 0.12s; }
-.asi-filosofia.is-open .asi-filosofia__pillar:nth-child(1) { animation-delay: 0.18s; }
-.asi-filosofia.is-open .asi-filosofia__pillar:nth-child(2) { animation-delay: 0.24s; }
-.asi-filosofia.is-open .asi-filosofia__pillar:nth-child(3) { animation-delay: 0.3s; }
-.asi-filosofia.is-open .asi-filosofia__punch { animation-delay: 0.38s; }
+.asi-manifiesto.is-open .asi-manifiesto__manifesto { animation-delay: 0.06s; }
+.asi-manifiesto.is-open .asi-manifiesto__lead { animation-delay: 0.12s; }
+.asi-manifiesto.is-open .asi-manifiesto__pillar:nth-child(1) { animation-delay: 0.18s; }
+.asi-manifiesto.is-open .asi-manifiesto__pillar:nth-child(2) { animation-delay: 0.24s; }
+.asi-manifiesto.is-open .asi-manifiesto__pillar:nth-child(3) { animation-delay: 0.3s; }
+.asi-manifiesto.is-open .asi-manifiesto__punch { animation-delay: 0.38s; }
 
 @keyframes asi-filo-rise {
   from {
@@ -2367,19 +2370,19 @@ body.is-filosofia-open {
   }
 }
 
-.asi-filosofia.is-open .asi-filosofia__hero-copy {
+.asi-manifiesto.is-open .asi-manifiesto__hero-copy {
   animation: asi-filo-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
 }
 
 @media (min-width: 720px) {
-  .asi-filosofia__pillars {
+  .asi-manifiesto__pillars {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0 8px;
     border-top: 0;
     align-items: start;
   }
 
-  .asi-filosofia__pillar {
+  .asi-manifiesto__pillar {
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 4px 16px 4px 0;
@@ -2387,20 +2390,20 @@ body.is-filosofia-open {
     border-right: 1px solid rgba(15, 36, 64, 0.12);
   }
 
-  .asi-filosofia__pillar:last-child {
+  .asi-manifiesto__pillar:last-child {
     border-right: 0;
     padding-right: 0;
   }
 
-  .asi-filosofia__pillar:not(:first-child) {
+  .asi-manifiesto__pillar:not(:first-child) {
     padding-left: 16px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .asi-filosofia.is-open .asi-filosofia__hero img,
-  .asi-filosofia.is-open .asi-filosofia__hero-copy,
-  .asi-filosofia.is-open [data-filo-reveal] {
+  .asi-manifiesto.is-open .asi-manifiesto__hero img,
+  .asi-manifiesto.is-open .asi-manifiesto__hero-copy,
+  .asi-manifiesto.is-open [data-mani-reveal] {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

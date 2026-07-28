@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="quienes-asi.css?v=58">
+  <link rel="stylesheet" href="quienes-asi.css?v=59">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-quienes-somos page-asi-somos" data-page="quienes-somos">
@@ -85,12 +85,19 @@
             <h3 class="asi-card__title">¿Dónde estamos ubicados?</h3>
           </a>
 
-          <a class="asi-card" href="ser-yaavser.html">
+          <button
+            type="button"
+            class="asi-card asi-card--vision"
+            data-vision-open
+            aria-haspopup="dialog"
+            aria-controls="asi-vision-modal"
+          >
             <figure class="asi-card__media">
-              <img src="assets/yaavser/cliente-satisfecho.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <img src="assets/valores/mision.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <span class="asi-card__hint">Ver visión</span>
             </figure>
             <h3 class="asi-card__title">Visión</h3>
-          </a>
+          </button>
 
           <a class="asi-card" href="index.html#servicios-preview">
             <figure class="asi-card__media">
@@ -422,12 +429,12 @@
     </div>
   </dialog>
 
-  <dialog class="asi-filosofia" id="asi-filosofia-modal" aria-labelledby="asi-filosofia-modal-title">
-    <button type="button" class="asi-filosofia__close" data-filosofia-close aria-label="Cerrar filosofía">
+  <dialog class="asi-manifiesto" id="asi-filosofia-modal" aria-labelledby="asi-filosofia-modal-title">
+    <button type="button" class="asi-manifiesto__close" data-filosofia-close aria-label="Cerrar filosofía">
       <span aria-hidden="true">×</span>
     </button>
-    <div class="asi-filosofia__sheet">
-      <div class="asi-filosofia__hero">
+    <div class="asi-manifiesto__sheet">
+      <div class="asi-manifiesto__hero">
         <img
           src="assets/valores/filosofia.jpg?v=2"
           alt=""
@@ -436,42 +443,42 @@
           loading="lazy"
           decoding="async"
         >
-        <div class="asi-filosofia__hero-veil" aria-hidden="true"></div>
-        <div class="asi-filosofia__hero-copy">
-          <p class="asi-filosofia__kicker">Grupo Comercial YAAVS</p>
-          <h2 id="asi-filosofia-modal-title" class="asi-filosofia__title">Filosofía</h2>
-          <p class="asi-filosofia__tagline">Tu tienda, tu impulso, nuestra misión</p>
+        <div class="asi-manifiesto__hero-veil" aria-hidden="true"></div>
+        <div class="asi-manifiesto__hero-copy">
+          <p class="asi-manifiesto__kicker">Grupo Comercial YAAVS</p>
+          <h2 id="asi-filosofia-modal-title" class="asi-manifiesto__title">Filosofía</h2>
+          <p class="asi-manifiesto__tagline">Tu tienda, tu impulso, nuestra misión</p>
         </div>
       </div>
 
-      <div class="asi-filosofia__body">
-        <p class="asi-filosofia__manifesto" data-filo-reveal>
+      <div class="asi-manifiesto__body">
+        <p class="asi-manifiesto__manifesto" data-mani-reveal>
           No solo distribuimos telecom.
           <span>Acompañamos a quien vende.</span>
         </p>
 
-        <p class="asi-filosofia__lead" data-filo-reveal>
+        <p class="asi-manifiesto__lead" data-mani-reveal>
           Llevamos herramientas, presencia comercial y beneficios
           que se sienten en el mostrador —para que cada punto de venta crezca de verdad.
         </p>
 
-        <ul class="asi-filosofia__pillars" aria-label="Pilares de nuestra filosofía">
-          <li class="asi-filosofia__pillar" data-filo-reveal>
-            <span class="asi-filosofia__pillar-num" aria-hidden="true">01</span>
+        <ul class="asi-manifiesto__pillars" aria-label="Pilares de nuestra filosofía">
+          <li class="asi-manifiesto__pillar" data-mani-reveal>
+            <span class="asi-manifiesto__pillar-num" aria-hidden="true">01</span>
             <div>
               <strong>Estar cerca</strong>
               <p>Red nacional, trato humano y soporte que responde cuando el negocio lo necesita.</p>
             </div>
           </li>
-          <li class="asi-filosofia__pillar" data-filo-reveal>
-            <span class="asi-filosofia__pillar-num" aria-hidden="true">02</span>
+          <li class="asi-manifiesto__pillar" data-mani-reveal>
+            <span class="asi-manifiesto__pillar-num" aria-hidden="true">02</span>
             <div>
               <strong>Cumplir</strong>
               <p>Promesas claras. Respaldo real. Confianza que se construye en cada recarga y activación.</p>
             </div>
           </li>
-          <li class="asi-filosofia__pillar" data-filo-reveal>
-            <span class="asi-filosofia__pillar-num" aria-hidden="true">03</span>
+          <li class="asi-manifiesto__pillar" data-mani-reveal>
+            <span class="asi-manifiesto__pillar-num" aria-hidden="true">03</span>
             <div>
               <strong>Impulsar</strong>
               <p>Creemos en el retail mexicano: que cada Yaavser venda más con una red que empuja.</p>
@@ -479,8 +486,72 @@
           </li>
         </ul>
 
-        <blockquote class="asi-filosofia__punch" data-filo-reveal>
+        <blockquote class="asi-manifiesto__punch" data-mani-reveal>
           <p>Impulsamos negocios.<br>Construimos red.<br>Crecemos juntos.</p>
+        </blockquote>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="asi-manifiesto asi-manifiesto--vision" id="asi-vision-modal" aria-labelledby="asi-vision-modal-title">
+    <button type="button" class="asi-manifiesto__close" data-vision-close aria-label="Cerrar visión">
+      <span aria-hidden="true">×</span>
+    </button>
+    <div class="asi-manifiesto__sheet">
+      <div class="asi-manifiesto__hero">
+        <img
+          src="assets/valores/mision.jpg"
+          alt=""
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="asi-manifiesto__hero-veil" aria-hidden="true"></div>
+        <div class="asi-manifiesto__hero-copy">
+          <p class="asi-manifiesto__kicker">Hacia dónde vamos</p>
+          <h2 id="asi-vision-modal-title" class="asi-manifiesto__title">Visión</h2>
+          <p class="asi-manifiesto__tagline">La red que mira más lejos</p>
+        </div>
+      </div>
+
+      <div class="asi-manifiesto__body">
+        <p class="asi-manifiesto__manifesto" data-mani-reveal>
+          Ser el aliado número uno
+          <span>del punto de venta en México.</span>
+        </p>
+
+        <p class="asi-manifiesto__lead" data-mani-reveal>
+          Queremos que cada tienda del país tenga chips, recargas, tecnología y respaldo
+          para vender más —con una red nacional que empuja, no que solo abastece.
+        </p>
+
+        <ul class="asi-manifiesto__pillars" aria-label="Pilares de nuestra visión">
+          <li class="asi-manifiesto__pillar" data-mani-reveal>
+            <span class="asi-manifiesto__pillar-num" aria-hidden="true">01</span>
+            <div>
+              <strong>Cobertura nacional</strong>
+              <p>Llegar más lejos: más estados, más colonias y más mostradores conectados a YAAVS.</p>
+            </div>
+          </li>
+          <li class="asi-manifiesto__pillar" data-mani-reveal>
+            <span class="asi-manifiesto__pillar-num" aria-hidden="true">02</span>
+            <div>
+              <strong>Socios que crecen</strong>
+              <p>Que cada Yaavser gane más con herramientas, comisiones claras y acompañamiento real.</p>
+            </div>
+          </li>
+          <li class="asi-manifiesto__pillar" data-mani-reveal>
+            <span class="asi-manifiesto__pillar-num" aria-hidden="true">03</span>
+            <div>
+              <strong>Liderazgo telecom</strong>
+              <p>Ser la referencia del retail mexicano en distribución multi-operador y valor agregado.</p>
+            </div>
+          </li>
+        </ul>
+
+        <blockquote class="asi-manifiesto__punch" data-mani-reveal>
+          <p>Conectar México.<br>Impulsar tiendas.<br>Liderar la red.</p>
         </blockquote>
       </div>
     </div>
@@ -492,7 +563,7 @@
   <script src="js/main.js" defer></script>
   <script src="js/quienes-historia.js?v=3" defer></script>
   <script src="js/quienes-valores.js?v=3" defer></script>
-  <script src="js/quienes-filosofia.js?v=2" defer></script>
+  <script src="js/quienes-filosofia.js?v=3" defer></script>
   <script src="js/quienes-cards.js?v=1" defer></script>
 </body>
 </html>
