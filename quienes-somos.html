@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="quienes-asi.css?v=56">
+  <link rel="stylesheet" href="quienes-asi.css?v=57">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-quienes-somos page-asi-somos" data-page="quienes-somos">
@@ -115,7 +115,7 @@
 
           <button
             type="button"
-            class="asi-card"
+            class="asi-card asi-card--filosofia"
             data-filosofia-open
             aria-haspopup="dialog"
             aria-controls="asi-filosofia-modal"
@@ -423,17 +423,10 @@
   </dialog>
 
   <dialog class="asi-filosofia" id="asi-filosofia-modal" aria-labelledby="asi-filosofia-modal-title">
+    <button type="button" class="asi-filosofia__close" data-filosofia-close aria-label="Cerrar filosofía">
+      <span aria-hidden="true">×</span>
+    </button>
     <div class="asi-filosofia__sheet">
-      <header class="asi-filosofia__top">
-        <div>
-          <p class="asi-filosofia__kicker">Nuestra forma de trabajar</p>
-          <h2 id="asi-filosofia-modal-title" class="asi-filosofia__title">Filosofía</h2>
-        </div>
-        <button type="button" class="asi-filosofia__close" data-filosofia-close aria-label="Cerrar filosofía">
-          <span aria-hidden="true">×</span>
-        </button>
-      </header>
-
       <div class="asi-filosofia__hero">
         <img
           src="assets/valores/filosofia.jpg?v=2"
@@ -443,26 +436,52 @@
           loading="lazy"
           decoding="async"
         >
+        <div class="asi-filosofia__hero-veil" aria-hidden="true"></div>
         <div class="asi-filosofia__hero-copy">
-          <p>Grupo Comercial YAAVS</p>
-          <strong>Tu tienda, tu impulso, nuestra misión</strong>
+          <p class="asi-filosofia__kicker">Grupo Comercial YAAVS</p>
+          <h2 id="asi-filosofia-modal-title" class="asi-filosofia__title">Filosofía</h2>
+          <p class="asi-filosofia__tagline">Tu tienda, tu impulso, nuestra misión</p>
         </div>
-        <div class="asi-filosofia__hero-fade" aria-hidden="true"></div>
       </div>
 
       <div class="asi-filosofia__body">
-        <p class="asi-filosofia__lead">
-          No solo distribuimos telecom: <strong>acompañamos a cada punto de venta</strong>
-          para que crezca con herramientas, presencia comercial y beneficios que se sienten en el mostrador.
+        <p class="asi-filosofia__manifesto" data-filo-reveal>
+          No solo distribuimos telecom.
+          <span>Acompañamos a quien vende.</span>
         </p>
-        <p>
-          Creemos en el <strong>retail mexicano</strong>, en las tiendas de barrio y en el poder de una red que impulsa.
-          Nuestra filosofía es simple: estar cerca, cumplir lo que prometemos y hacer que cada Yaavser venda más
-          con respaldo real.
+
+        <p class="asi-filosofia__lead" data-filo-reveal>
+          Llevamos herramientas, presencia comercial y beneficios
+          que se sienten en el mostrador —para que cada punto de venta crezca de verdad.
         </p>
-        <p class="asi-filosofia__punch">
-          Impulsamos negocios. Construimos red. Crecemos juntos.
-        </p>
+
+        <ul class="asi-filosofia__pillars" aria-label="Pilares de nuestra filosofía">
+          <li class="asi-filosofia__pillar" data-filo-reveal>
+            <span class="asi-filosofia__pillar-num" aria-hidden="true">01</span>
+            <div>
+              <strong>Estar cerca</strong>
+              <p>Red nacional, trato humano y soporte que responde cuando el negocio lo necesita.</p>
+            </div>
+          </li>
+          <li class="asi-filosofia__pillar" data-filo-reveal>
+            <span class="asi-filosofia__pillar-num" aria-hidden="true">02</span>
+            <div>
+              <strong>Cumplir</strong>
+              <p>Promesas claras. Respaldo real. Confianza que se construye en cada recarga y activación.</p>
+            </div>
+          </li>
+          <li class="asi-filosofia__pillar" data-filo-reveal>
+            <span class="asi-filosofia__pillar-num" aria-hidden="true">03</span>
+            <div>
+              <strong>Impulsar</strong>
+              <p>Creemos en el retail mexicano: que cada Yaavser venda más con una red que empuja.</p>
+            </div>
+          </li>
+        </ul>
+
+        <blockquote class="asi-filosofia__punch" data-filo-reveal>
+          <p>Impulsamos negocios.<br>Construimos red.<br>Crecemos juntos.</p>
+        </blockquote>
       </div>
     </div>
   </dialog>
@@ -473,7 +492,7 @@
   <script src="js/main.js" defer></script>
   <script src="js/quienes-historia.js?v=3" defer></script>
   <script src="js/quienes-valores.js?v=3" defer></script>
-  <script src="js/quienes-filosofia.js?v=1" defer></script>
+  <script src="js/quienes-filosofia.js?v=2" defer></script>
   <script src="js/quienes-cards.js?v=1" defer></script>
 </body>
 </html>
