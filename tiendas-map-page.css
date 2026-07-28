@@ -880,6 +880,29 @@ body.theme-cluster.page-tiendas-map .tiendas-map__street-open {
   text-decoration: none;
 }
 
+body.theme-cluster.page-tiendas-map .tiendas-map__street-open--tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(126, 200, 255, 0.35);
+  background: rgba(8, 16, 30, 0.72);
+  color: #9fd4ff;
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__street-open--tool:hover {
+  border-color: rgba(245, 197, 24, 0.55);
+  color: #fff;
+}
+
+/* Un solo mapa: ocultar Street View embebido */
+body.theme-cluster.page-tiendas-map.is-stores-fixed .tiendas-map__streetview,
+body.theme-cluster.page-tiendas-map.is-stores-fixed .tiendas-map__street-head {
+  display: none !important;
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__streetview {
   min-height: clamp(320px, 48vh, 560px);
 }

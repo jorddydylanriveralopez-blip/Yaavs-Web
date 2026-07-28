@@ -125,11 +125,6 @@
     return `https://www.google.com/maps/dir/?${params.toString()}`;
   }
 
-  function streetViewEmbedUrl(lat, lng, heading) {
-    const h = Number.isFinite(heading) ? heading : 0;
-    return `https://www.google.com/maps?hl=es&layer=c&cbll=${lat},${lng}&cbp=12,${h},,0,0&output=embed`;
-  }
-
   function streetViewOpenUrl(lat, lng) {
     return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
   }
@@ -137,9 +132,13 @@
   /* ─── BAIT / AT&T con lista fija YAAVS ─── */
   if (carrier.stores && carrier.stores.length) {
     document.body.classList.add("is-stores-fixed");
-    if (frameEl) frameEl.hidden = false;
+    if (frameEl) {
+      frameEl.hidden = true;
+      frameEl.removeAttribute("src");
+    }
     if (mapHostEl) mapHostEl.hidden = false;
     if (navPanelEl) navPanelEl.hidden = false;
+    document.querySelector(".tiendas-map__street-head")?.setAttribute("hidden", "");
 
     let leafletMap = null;
     let markersById = {};
@@ -178,17 +177,18 @@
     }
 
     function showStreetView(lat, lng, label) {
+      /* Un solo mapa: Street View abre en pestaña, no un segundo iframe */
       if (frameEl) {
-        frameEl.hidden = false;
-        frameEl.src = streetViewEmbedUrl(lat, lng);
+        frameEl.hidden = true;
+        frameEl.removeAttribute("src");
       }
       if (streetOpenEl) {
         streetOpenEl.href = streetViewOpenUrl(lat, lng);
       }
       if (label) {
-        setStatus(`Street View: ${label}. Arrastra la personita para mirar otra calle.`);
+        setStatus(`${label}: toca Street View para ver la calle en 360°.`);
       } else {
-        setStatus("Street View actualizado. Mueve la personita para explorar.");
+        setStatus("Personita lista. Toca Street View para ver la calle.");
       }
     }
 
@@ -230,7 +230,6 @@
 
         pegmanMarker.on("drag", () => {
           const pos = pegmanMarker.getLatLng();
-          /* preview ligero no recarga iframe en cada pixel; solo al soltar */
           if (streetOpenEl) streetOpenEl.href = streetViewOpenUrl(pos.lat, pos.lng);
         });
 
@@ -241,7 +240,7 @@
           showStreetView(pos.lat, pos.lng);
           if (pegmanHintEl) {
             pegmanHintEl.innerHTML =
-              "Listo: abajo ves la calle en 360°. Sigue arrastrando la personita para explorar.";
+              "Listo. Toca <strong>Street View</strong> arriba para ver la calle en 360°.";
           }
         });
       } else {
@@ -347,11 +346,11 @@
 
     function initLeaflet() {
       if (!mapHostEl || typeof window.L === "undefined") {
+        if (mapHostEl) mapHostEl.hidden = true;
         if (frameEl) {
           frameEl.hidden = false;
-          syncGoogleStreet(carrier.stores[0]);
+          frameEl.src = mapsEmbedUrl(`${carrier.stores[0].lat},${carrier.stores[0].lng}`, 15);
         }
-        if (mapHostEl) mapHostEl.hidden = true;
         focusStore(carrier.stores[0]);
         return;
       }
