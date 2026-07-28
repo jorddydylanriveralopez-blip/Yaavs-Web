@@ -4285,10 +4285,10 @@ body.page-home {
 /* Tarjeta intro — acordeón horizontal móvil */
 @media (max-width: 900px) {
   .page-home .hx-ops__card--intro {
-    border-color: rgba(0, 229, 255, 0.35);
+    border-color: rgba(0, 188, 212, 0.28);
     box-shadow:
-      0 12px 32px rgba(5, 11, 46, 0.35),
-      inset 0 0 0 1px rgba(0, 229, 255, 0.16);
+      0 12px 32px rgba(10, 31, 68, 0.32),
+      inset 0 0 0 1px rgba(0, 188, 212, 0.12);
   }
 
   .page-home .hx-ops__card--intro .hx-ops__intro-photo {
