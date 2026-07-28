@@ -184,7 +184,7 @@
     video.setAttribute("playsinline", "");
     video.setAttribute("muted", "");
     video.setAttribute("autoplay", "");
-    video.setAttribute("preload", i === 0 ? "auto" : "metadata");
+    video.setAttribute("preload", i === 0 || i === 1 ? "auto" : "metadata");
     if (slide.src || slide.srcMobile) video.poster = getSlideDisplaySrc(slide);
     video.setAttribute("aria-label", slide.alt || "Banner YAAVS");
 
