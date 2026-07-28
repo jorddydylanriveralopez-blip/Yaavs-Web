@@ -696,7 +696,9 @@ body.theme-cluster.page-asi-somos::before {
 
   .asi-card:hover .asi-card__hint {
     transform: translateY(-2px) scale(1.04);
-    background: rgba(0, 151, 178, 0.95);
+    background: #0097b2 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 }
 
@@ -855,13 +857,14 @@ button.asi-card {
   z-index: 2;
   padding: 7px 12px;
   border-radius: 999px;
-  background: rgba(0, 48, 135, 0.88);
-  color: #fff;
+  background: #003087;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   font-size: clamp(0.66rem, 1.8vw, 0.72rem);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
