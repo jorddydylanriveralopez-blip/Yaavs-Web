@@ -6264,9 +6264,11 @@ body.page-home.hx-band--dark .site-footer .footer {
   position: relative;
   min-height: clamp(420px, 62vw, 640px);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: clamp(56px, 8vw, 96px) 0 clamp(52px, 7vw, 88px);
   overflow: hidden;
+  text-align: center;
 }
 
 .page-home .hx-somos__photo {
@@ -6298,19 +6300,17 @@ body.page-home.hx-band--dark .site-footer .footer {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(
-      105deg,
-      rgba(4, 16, 31, 0.94) 0%,
-      rgba(4, 16, 31, 0.88) 34%,
-      rgba(4, 16, 31, 0.55) 62%,
-      rgba(4, 16, 31, 0.32) 100%
+    radial-gradient(
+      ellipse 78% 72% at 50% 48%,
+      rgba(4, 16, 31, 0.42) 0%,
+      rgba(4, 16, 31, 0.72) 55%,
+      rgba(4, 16, 31, 0.9) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(4, 16, 31, 0.4) 0%,
-      transparent 26%,
-      transparent 48%,
-      rgba(4, 16, 31, 0.82) 100%
+      rgba(4, 16, 31, 0.55) 0%,
+      rgba(4, 16, 31, 0.35) 35%,
+      rgba(4, 16, 31, 0.78) 100%
     );
 }
 
@@ -6319,24 +6319,25 @@ body.page-home.hx-band--dark .site-footer .footer {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.28;
   background-image:
     linear-gradient(rgba(0, 212, 238, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 212, 238, 0.08) 1px, transparent 1px);
   background-size: 52px 52px;
-  mask-image: radial-gradient(ellipse 65% 70% at 28% 60%, #000 12%, transparent 72%);
-  -webkit-mask-image: radial-gradient(ellipse 65% 70% at 28% 60%, #000 12%, transparent 72%);
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 15%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 15%, transparent 75%);
 }
 
 .page-home .hx-somos__signals {
   position: absolute;
-  right: clamp(4%, 8vw, 12%);
-  top: 42%;
-  width: min(38vw, 340px);
-  height: min(38vw, 340px);
+  left: 50%;
+  top: 46%;
+  width: min(52vw, 420px);
+  height: min(52vw, 420px);
   z-index: 1;
   pointer-events: none;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
 }
 
 .page-home .hx-somos__ring {
@@ -6368,13 +6369,16 @@ body.page-home.hx-band--dark .site-footer .footer {
 .page-home .hx-somos__panel {
   position: relative;
   z-index: 3;
-  max-width: min(640px, 100%);
-  margin: 0;
-  margin-right: auto;
+  max-width: min(720px, 100%);
+  margin: 0 auto;
   opacity: 1 !important;
   transform: none !important;
   visibility: visible !important;
   color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .page-home .hx-somos__brand {
@@ -6393,6 +6397,7 @@ body.page-home.hx-band--dark .site-footer .footer {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: center;
   gap: 0.18em 0.28em;
   font-size: clamp(1.65rem, 3.8vw, 2.55rem);
   font-weight: 700;
@@ -6416,8 +6421,8 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 .page-home .hx-somos__punch {
-  margin: 0 0 10px;
-  max-width: 24em;
+  margin: 0 auto 10px;
+  max-width: 26em;
   font-size: clamp(1.12rem, 2.1vw, 1.38rem);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -6427,8 +6432,8 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 .page-home .hx-somos__lead {
-  margin: 0 0 clamp(24px, 3.5vw, 32px);
-  max-width: 28em;
+  margin: 0 auto clamp(24px, 3.5vw, 32px);
+  max-width: 30em;
   font-size: clamp(0.95rem, 1.35vw, 1.05rem);
   line-height: 1.55;
   font-weight: 500;
@@ -6439,6 +6444,7 @@ body.page-home.hx-band--dark .site-footer .footer {
 .page-home .hx-somos__cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   text-decoration: none;
   color: #04101f;
@@ -6506,25 +6512,24 @@ body.page-home.hx-band--dark .site-footer .footer {
 @media (max-width: 760px) {
   .page-home .hx-somos__stage {
     min-height: clamp(480px, 118vw, 620px);
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
     padding: 48px 0 44px;
   }
 
   .page-home .hx-somos__veil {
     background:
-      linear-gradient(
-        180deg,
-        rgba(4, 16, 31, 0.35) 0%,
-        rgba(4, 16, 31, 0.55) 28%,
-        rgba(4, 16, 31, 0.88) 62%,
-        rgba(4, 16, 31, 0.96) 100%
+      radial-gradient(
+        ellipse 90% 80% at 50% 48%,
+        rgba(4, 16, 31, 0.48) 0%,
+        rgba(4, 16, 31, 0.82) 60%,
+        rgba(4, 16, 31, 0.94) 100%
       );
   }
 
   .page-home .hx-somos__signals {
-    top: 22%;
-    right: -8%;
-    opacity: 0.55;
+    top: 42%;
+    opacity: 0.4;
   }
 
   .page-home .hx-somos__brand {
