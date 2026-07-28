@@ -45,12 +45,11 @@
       id: "att",
       name: "AT&T",
       logo: "assets/operadores/att-carriers-color.svg",
-      queryTerm: "tiendas AT&T Mexico",
-      lead: "Consulta tiendas AT&T disponibles en toda la República.",
-      title: "Mapa de tiendas AT&T en tiempo real",
-      brandSub: "Puntos de venta en toda la República Mexicana",
+      lead: "Solo PDVs AT&T / Pospago YAAVS del directorio oficial. Elige una y usa GPS para ir.",
+      title: "Sucursales AT&T YAAVS",
+      brandSub: `${(window.YAAVS_ATT_STORES || []).length} PDVs del directorio Pospago YAAVS`,
       themeColor: "#00a8e0",
-      stores: null,
+      stores: window.YAAVS_ATT_STORES || [],
     },
   };
 
@@ -135,7 +134,7 @@
     return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
   }
 
-  /* ─── BAIT: mapa interactivo + GPS ─── */
+  /* ─── BAIT / AT&T con lista fija YAAVS ─── */
   if (carrier.stores && carrier.stores.length) {
     document.body.classList.add("is-stores-fixed");
     if (frameEl) frameEl.hidden = false;
@@ -151,6 +150,11 @@
     let pegmanDragging = false;
     let activeId = carrier.stores[0].id;
 
+    function storeMapsUrl(store) {
+      if (store.mapsLink) return store.mapsLink;
+      return mapsSearchUrl(store.address || `${store.lat},${store.lng}`);
+    }
+
     function activeStore() {
       return carrier.stores.find((s) => s.id === activeId) || carrier.stores[0];
     }
@@ -164,7 +168,7 @@
         navGoEl.setAttribute("aria-label", `Ir a ${store.name} con GPS`);
       }
       if (navOpenEl) {
-        navOpenEl.href = mapsSearchUrl(store.address);
+        navOpenEl.href = storeMapsUrl(store);
       }
     }
 
@@ -265,9 +269,10 @@
                 <span class="tiendas-map__store-name">${store.name}</span>
                 <span class="tiendas-map__store-city">${store.city}</span>
                 <span class="tiendas-map__store-address">${store.address}</span>
+                ${store.hours ? `<span class="tiendas-map__store-hours">${store.hours}</span>` : ""}
               </div>
               <div class="tiendas-map__store-actions">
-                <a class="tiendas-map__store-link" href="${mapsSearchUrl(store.address)}" target="_blank" rel="noopener noreferrer">Ver en Maps</a>
+                <a class="tiendas-map__store-link" href="${storeMapsUrl(store)}" target="_blank" rel="noopener noreferrer">Ver en Maps</a>
                 <a class="tiendas-map__store-go" href="${mapsDirectionsUrl(store, userOrigin)}" target="_blank" rel="noopener noreferrer">Ir allá</a>
               </div>
             </article>
@@ -318,11 +323,14 @@
 
     function fitAllStores() {
       if (!leafletMap) return;
+      const maxZoom = carrier.stores.length > 6 ? 6 : 7;
       leafletMap.fitBounds(
         carrier.stores.map((s) => [s.lat, s.lng]),
-        { padding: [56, 56], maxZoom: 7 }
+        { padding: [56, 56], maxZoom }
       );
-      setStatus("Vista de las 3 sucursales. Acerca el zoom para ver calles.");
+      setStatus(
+        `Vista de las ${carrier.stores.length} sucursales ${carrier.name} YAAVS. Acerca el zoom para ver calles.`
+      );
     }
 
     function waitForLeaflet(cb, tries) {
@@ -539,7 +547,7 @@
       }
       if (!matches.length) {
         renderStoreList([]);
-        setStatus("No hay sucursales YAAVS con ese criterio. Prueba Coacalco, Puebla o Xalapa.");
+        setStatus(`No hay sucursales ${carrier.name} YAAVS con ese criterio. Prueba otra ciudad o nombre.`);
         return;
       }
       renderStoreList(matches);
@@ -585,12 +593,17 @@
       );
     });
 
-    if (queryEl) queryEl.placeholder = "Ej. Coacalco, Puebla o Xalapa";
+    if (queryEl) {
+      queryEl.placeholder =
+        carrier.id === "att"
+          ? "Ej. Aguascalientes, León o Durango"
+          : "Ej. Coacalco, Puebla o Xalapa";
+    }
     setStatus("Haz zoom, elige un pin o toca Ir allá para GPS.");
     return;
   }
 
-  /* ─── AT&T u otros: búsqueda abierta ─── */
+  /* ─── Fallback: búsqueda abierta (carriers sin lista fija) ─── */
   if (!frameEl) return;
   if (mapHostEl) mapHostEl.hidden = true;
   if (storesEl) storesEl.hidden = true;
@@ -603,7 +616,7 @@
     setStatus(statusText || `Mostrando resultados para: ${query}`);
   }
 
-  updateMap(carrier.queryTerm, `Mostrando ${carrier.name} en todo México.`);
+  updateMap(carrier.queryTerm || carrier.name, `Mostrando ${carrier.name} en todo México.`);
 
   formEl.addEventListener("submit", (event) => {
     event.preventDefault();

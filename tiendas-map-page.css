@@ -687,6 +687,25 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store-address {
   -webkit-text-fill-color: #d7e6f2;
 }
 
+body.theme-cluster.page-tiendas-map .tiendas-map__store-hours {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #9ec8e0 !important;
+  -webkit-text-fill-color: #9ec8e0;
+}
+
+/* AT&T: muchas PDVs — lista scrolleable */
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__stores {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-height: min(52vh, 520px);
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 168, 224, 0.55) transparent;
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__store-actions {
   display: flex;
   flex-wrap: wrap;
@@ -987,6 +1006,11 @@ body.theme-cluster.page-tiendas-map .leaflet-marker-icon.is-active-marker {
 @media (max-width: 900px) {
   body.theme-cluster.page-tiendas-map .tiendas-map__stores {
     grid-template-columns: 1fr;
+  }
+
+  body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__stores {
+    grid-template-columns: 1fr;
+    max-height: min(42vh, 420px);
   }
 }
 
