@@ -83,8 +83,9 @@
   const zoomOutBtn = document.getElementById("carrier-map-zoom-out");
   const fitAllBtn = document.getElementById("carrier-map-fit-all");
   const pegmanResetBtn = document.getElementById("carrier-pegman-reset");
-  const streetOpenEl = document.getElementById("carrier-street-open");
+  const streetToggleBtn = document.getElementById("carrier-street-toggle");
   const pegmanHintEl = document.getElementById("carrier-pegman-hint");
+  const mapCanvasEl = document.getElementById("carrier-map-canvas");
 
   if (!formEl || !queryEl) return;
 
@@ -125,8 +126,9 @@
     return `https://www.google.com/maps/dir/?${params.toString()}`;
   }
 
-  function streetViewOpenUrl(lat, lng) {
-    return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`;
+  function streetViewEmbedUrl(lat, lng, heading) {
+    const h = Number.isFinite(heading) ? heading : 0;
+    return `https://www.google.com/maps?hl=es&layer=c&cbll=${lat},${lng}&cbp=12,${h},,0,0&output=embed`;
   }
 
   /* ─── BAIT / AT&T con lista fija YAAVS ─── */
@@ -138,7 +140,6 @@
     }
     if (mapHostEl) mapHostEl.hidden = false;
     if (navPanelEl) navPanelEl.hidden = false;
-    document.querySelector(".tiendas-map__street-head")?.setAttribute("hidden", "");
 
     let leafletMap = null;
     let markersById = {};
@@ -147,6 +148,11 @@
     let userOrigin = null;
     let pegmanMarker = null;
     let pegmanDragging = false;
+    let streetMode = false;
+    let streetPoint = {
+      lat: carrier.stores[0].lat,
+      lng: carrier.stores[0].lng,
+    };
     let activeId = carrier.stores[0].id;
 
     function storeMapsUrl(store) {
@@ -171,24 +177,51 @@
       }
     }
 
-    function syncGoogleStreet(store) {
-      if (!store) return;
-      showStreetView(store.lat, store.lng, store.name);
+    function setStreetPoint(lat, lng) {
+      streetPoint = { lat, lng };
+    }
+
+    function showMapMode() {
+      streetMode = false;
+      document.body.classList.remove("is-street-mode");
+      mapCanvasEl?.classList.remove("is-street-mode");
+      if (frameEl) {
+        frameEl.hidden = true;
+      }
+      if (mapHostEl) mapHostEl.hidden = false;
+      if (streetToggleBtn) streetToggleBtn.textContent = "Street View";
+      if (leafletMap) {
+        window.setTimeout(() => leafletMap.invalidateSize(), 80);
+      }
     }
 
     function showStreetView(lat, lng, label) {
-      /* Un solo mapa: Street View abre en pestaña, no un segundo iframe */
+      setStreetPoint(lat, lng);
+      streetMode = true;
+      document.body.classList.add("is-street-mode");
+      mapCanvasEl?.classList.add("is-street-mode");
+      if (mapHostEl) mapHostEl.hidden = true;
       if (frameEl) {
-        frameEl.hidden = true;
-        frameEl.removeAttribute("src");
+        frameEl.hidden = false;
+        frameEl.src = streetViewEmbedUrl(lat, lng);
+        frameEl.title = label ? `Street View · ${label}` : "Street View";
       }
-      if (streetOpenEl) {
-        streetOpenEl.href = streetViewOpenUrl(lat, lng);
-      }
+      if (streetToggleBtn) streetToggleBtn.textContent = "Ver mapa";
       if (label) {
-        setStatus(`${label}: toca Street View para ver la calle en 360°.`);
+        setStatus(`Street View de ${label}. Toca “Ver mapa” para volver.`);
       } else {
-        setStatus("Personita lista. Toca Street View para ver la calle.");
+        setStatus("Street View listo. Toca “Ver mapa” para volver.");
+      }
+      if (pegmanHintEl) {
+        pegmanHintEl.innerHTML =
+          "Estás en <strong>Street View</strong> en este mismo mapa. Toca <strong>Ver mapa</strong> para regresar.";
+      }
+    }
+
+    function prepareStreetPoint(lat, lng) {
+      setStreetPoint(lat, lng);
+      if (streetMode && frameEl && !frameEl.hidden) {
+        frameEl.src = streetViewEmbedUrl(lat, lng);
       }
     }
 
@@ -208,8 +241,9 @@
     }
 
     function placePegman(lat, lng, opts) {
+      prepareStreetPoint(lat, lng);
       if (!leafletMap || typeof window.L === "undefined") {
-        showStreetView(lat, lng);
+        if (opts?.enterStreet) showStreetView(lat, lng, opts?.label);
         return;
       }
       if (!pegmanMarker) {
@@ -225,12 +259,13 @@
         pegmanMarker.on("dragstart", () => {
           pegmanDragging = true;
           mapHostEl?.classList.add("is-pegman-dragging");
+          if (streetMode) showMapMode();
           setStatus("Suelta la personita sobre la calle...");
         });
 
         pegmanMarker.on("drag", () => {
           const pos = pegmanMarker.getLatLng();
-          if (streetOpenEl) streetOpenEl.href = streetViewOpenUrl(pos.lat, pos.lng);
+          prepareStreetPoint(pos.lat, pos.lng);
         });
 
         pegmanMarker.on("dragend", () => {
@@ -238,19 +273,15 @@
           mapHostEl?.classList.remove("is-pegman-dragging");
           const pos = pegmanMarker.getLatLng();
           showStreetView(pos.lat, pos.lng);
-          if (pegmanHintEl) {
-            pegmanHintEl.innerHTML =
-              "Listo. Toca <strong>Street View</strong> arriba para ver la calle en 360°.";
-          }
         });
       } else {
         pegmanMarker.setLatLng([lat, lng]);
       }
 
-      if (!opts?.silentStreet) {
+      if (opts?.enterStreet) {
         showStreetView(lat, lng, opts?.label);
       }
-      if (opts?.pan !== false) {
+      if (opts?.pan !== false && !streetMode) {
         const zoom = Math.max(leafletMap.getZoom(), opts?.zoom || 17);
         leafletMap.setView([lat, lng], zoom, { animate: true });
       }
@@ -299,28 +330,34 @@
       });
       renderStoreList(filtered);
       updateNavPanel(store);
-      syncGoogleStreet(store);
+      prepareStreetPoint(store.lat, store.lng);
       highlightMarker(store.id);
 
-      if (leafletMap && markersById[store.id]) {
+      if (streetMode && !opts?.keepStreet) {
+        showMapMode();
+      }
+
+      if (leafletMap && markersById[store.id] && !streetMode) {
         const zoom = opts?.zoom == null ? Math.max(leafletMap.getZoom(), 15) : opts.zoom;
         leafletMap.setView([store.lat, store.lng], zoom, { animate: true });
         markersById[store.id].openPopup();
       }
 
-      /* Coloca la personita junto a la sucursal para Street View */
+      /* Coloca la personita junto a la sucursal (sin abrir Street View aún) */
       if (!pegmanDragging) {
         placePegman(store.lat, store.lng, {
           label: store.name,
           zoom: opts?.zoom == null ? 17 : Math.max(opts.zoom, 16),
           pan: false,
+          enterStreet: false,
         });
       }
 
-      setStatus(`Seleccionada: ${store.name}. Arrastra la personita para ver la calle.`);
+      setStatus(`Seleccionada: ${store.name}. Arrastra la personita para ver la calle aquí.`);
     }
 
     function fitAllStores() {
+      if (streetMode) showMapMode();
       if (!leafletMap) return;
       const maxZoom = carrier.stores.length > 6 ? 6 : 7;
       leafletMap.fitBounds(
@@ -492,17 +529,30 @@
     });
 
     zoomInBtn?.addEventListener("click", () => {
+      if (streetMode) showMapMode();
       if (leafletMap) leafletMap.zoomIn();
     });
     zoomOutBtn?.addEventListener("click", () => {
+      if (streetMode) showMapMode();
       if (leafletMap) leafletMap.zoomOut();
     });
     fitAllBtn?.addEventListener("click", () => fitAllStores());
     pegmanResetBtn?.addEventListener("click", () => {
       const store = activeStore();
       if (!store) return;
-      placePegman(store.lat, store.lng, { label: store.name, zoom: 18 });
-      setStatus(`Personita en ${store.name}. Arrástrala por la calle.`);
+      if (streetMode) showMapMode();
+      placePegman(store.lat, store.lng, { label: store.name, zoom: 18, enterStreet: false });
+      setStatus(`Personita en ${store.name}. Arrástrala por la calle para Street View.`);
+    });
+    streetToggleBtn?.addEventListener("click", () => {
+      if (streetMode) {
+        showMapMode();
+        setStatus("Volviste al mapa. Arrastra la personita para Street View.");
+        return;
+      }
+      const pos = pegmanMarker ? pegmanMarker.getLatLng() : streetPoint;
+      const store = activeStore();
+      showStreetView(pos.lat, pos.lng, store?.name);
     });
 
     navGoEl?.addEventListener("click", (event) => {
