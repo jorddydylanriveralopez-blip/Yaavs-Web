@@ -21,6 +21,18 @@
   background: transparent;
 }
 
+/* Sin iconos flotantes (SIM / eSIM) — layout editorial limpio */
+.page-anuncios .site-floats {
+  display: none !important;
+}
+
+/* Header fixed: no reservar hueco en el flujo */
+.page-anuncios #site-header {
+  height: 0;
+  min-height: 0;
+  overflow: visible;
+}
+
 /* ─── Hero ─── */
 .anuncios-hero {
   position: relative;
