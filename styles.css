@@ -1598,6 +1598,23 @@ body.page-intro-active .nav-menu-hint {
   z-index: 0;
 }
 
+.hero-banner__boot-poster {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.hero-banner__boot-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .hero-banner__promo {
   position: absolute;
   inset: 0;
@@ -1609,6 +1626,10 @@ body.page-intro-active .nav-menu-hint {
     max(20px, var(--pad-x))
     max(108px, calc(88px + var(--safe-bottom)));
   pointer-events: none;
+}
+
+.hero-banner__promo .hero-promo--boot .hero-promo__cta {
+  pointer-events: auto;
 }
 
 #servicios-preview {

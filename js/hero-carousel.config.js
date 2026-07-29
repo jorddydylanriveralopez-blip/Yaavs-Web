@@ -81,7 +81,7 @@ window.YAAVS_HERO_CAROUSEL = {
         title: "Conviértete en",
         accent: "socio comercial",
         lead: "",
-        cta: "Dando click aquí",
+        cta: "Únete como socio",
         href: "#yaavser-lead",
         openLead: true,
       },

@@ -19,8 +19,8 @@
     document.dispatchEvent(new CustomEvent("yaavs:intro-done"));
   }
 
+  /* Visitas siguientes / reduced motion: entra directo, sin bloquear el contenido */
   if (reducedMotion || seenIntro) {
-    if (!reducedMotion) document.body.classList.add("page-enter-pending");
     finishIntro();
     return;
   }
@@ -33,9 +33,8 @@
     intro.classList.add("is-revealing");
     document.body.classList.remove("page-intro-active");
     document.body.classList.add("page-intro-done");
-    if (!reducedMotion) document.body.classList.add("page-enter-pending");
     document.dispatchEvent(new CustomEvent("yaavs:intro-done"));
-  }, 800);
+  }, 520);
 
-  window.setTimeout(() => intro.remove(), 1450);
+  window.setTimeout(() => intro.remove(), 980);
 })();

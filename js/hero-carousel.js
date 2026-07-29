@@ -184,14 +184,18 @@
     video.setAttribute("playsinline", "");
     video.setAttribute("muted", "");
     video.setAttribute("autoplay", "");
-    video.setAttribute("preload", i === 0 || i === 1 ? "auto" : "metadata");
+    video.setAttribute("preload", i === 0 ? "auto" : "none");
     if (slide.src || slide.srcMobile) video.poster = getSlideDisplaySrc(slide);
     video.setAttribute("aria-label", slide.alt || "Banner YAAVS");
 
-    const source = document.createElement("source");
-    source.src = getSlideVideoSrc(slide);
-    source.type = "video/mp4";
-    video.appendChild(source);
+    if (i === 0) {
+      const source = document.createElement("source");
+      source.src = getSlideVideoSrc(slide);
+      source.type = "video/mp4";
+      video.appendChild(source);
+    } else {
+      video.dataset.videoSrc = getSlideVideoSrc(slide) || "";
+    }
     media.appendChild(video);
 
     wrap.appendChild(media);
@@ -538,6 +542,21 @@
     });
   }
 
+  function ensureBannerVideoSource(video, desiredSrc) {
+    if (!video || !desiredSrc) return;
+    let source = video.querySelector("source");
+    if (!source) {
+      source = document.createElement("source");
+      source.type = "video/mp4";
+      video.appendChild(source);
+    }
+    if (source.getAttribute("src") !== desiredSrc) {
+      source.src = desiredSrc;
+      video.dataset.videoSrc = desiredSrc;
+      video.load();
+    }
+  }
+
   function syncBannerVideos() {
     tracks.forEach((track) => {
       track.querySelectorAll(".hero-carousel__slide").forEach((slideEl, i) => {
@@ -546,10 +565,10 @@
         if (!video || !slide) return;
 
         const desiredSrc = getSlideVideoSrc(slide);
-        const source = video.querySelector("source");
-        if (desiredSrc && source && source.getAttribute("src") !== desiredSrc) {
-          source.src = desiredSrc;
-          video.load();
+        if (desiredSrc && (i === index || i === (index + 1) % slides.length)) {
+          ensureBannerVideoSource(video, desiredSrc);
+          if (i === index) video.preload = "auto";
+          else video.preload = "metadata";
         }
 
         if (isActiveVideoBanner(slide) && !video.dataset.endedBound) {

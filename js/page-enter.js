@@ -24,8 +24,9 @@
     const main = document.getElementById("contenido");
     if (!main) return [];
 
+    /* Home: entra al instante — el hero ya es el foco */
     if (body.classList.contains("page-home")) {
-      return [...main.querySelectorAll(":scope > section")];
+      return [];
     }
 
     if (body.classList.contains("page-tiendas-map")) {

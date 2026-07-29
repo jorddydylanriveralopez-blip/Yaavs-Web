@@ -311,12 +311,7 @@
     loadPartial("partials/page-cta.html", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
-    await ensureSonic();
-    mountSiteFloats();
     mountNavOverlay();
-    await mountSocialDock();
-    await mountChatbot();
-    initSocialFloatScroll();
     setActiveNav();
     initHeaderLogo();
     initNavToggle();
@@ -326,10 +321,38 @@
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     document.dispatchEvent(new CustomEvent("yaavs:layout-ready"));
     initPageEnter();
-    initCookies();
-    initPwa();
-    initYaavsGame();
+
+    const scheduleIdle = window.requestIdleCallback
+      ? (cb) => window.requestIdleCallback(cb, { timeout: 1800 })
+      : (cb) => window.setTimeout(cb, 900);
+
+    scheduleIdle(async () => {
+      mountSiteFloats();
+      await mountSocialDock();
+      await mountChatbot();
+      initSocialFloatScroll();
+      initCookies();
+      initPwa();
+      initYaavsGame();
+    });
+
+    /* Sonic solo tras interacción o idle tardío */
+    const armSonic = () => {
+      void ensureSonic();
+      window.removeEventListener("pointerdown", armSonic);
+      window.removeEventListener("keydown", armSonic);
+    };
+    window.addEventListener("pointerdown", armSonic, { once: true, passive: true });
+    window.addEventListener("keydown", armSonic, { once: true });
+    scheduleIdle(() => void ensureSonic());
   });
+
+  /* Arranca page-enter lo antes posible (sin esperar header/footer) */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initPageEnter(), { once: true });
+  } else {
+    initPageEnter();
+  }
 
   function initPageEnter() {
     const finish = () => {
@@ -344,7 +367,7 @@
       return;
     }
     const s = document.createElement("script");
-    s.src = "js/page-enter.js?v=6";
+    s.src = "js/page-enter.js?v=7";
     s.dataset.pageEnter = "true";
     s.onload = () => window.YaavsPageEnter?.play();
     s.onerror = finish;

@@ -16,16 +16,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202">
-  <link rel="stylesheet" href="decorations.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=204">
   <link rel="stylesheet" href="theme-light.css?v=7">
-  <link rel="stylesheet" href="theme-day-night.css?v=4">
-  <link rel="stylesheet" href="home-experience.css?v=202">
-  <link rel="stylesheet" href="home-corporate.css?v=229">
+  <link rel="stylesheet" href="theme-day-night.css?v=4" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="home-experience.css?v=203">
+  <link rel="stylesheet" href="home-corporate.css?v=230">
+  <link rel="stylesheet" href="decorations.css?v=8" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-wow.css?v=3" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="yaavser-lead.css?v=1" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="testimonios-historias.css?v=3" media="print" onload="this.media='all'">
   <noscript>
+    <link rel="stylesheet" href="theme-day-night.css?v=4">
+    <link rel="stylesheet" href="decorations.css?v=8">
     <link rel="stylesheet" href="home-wow.css?v=3">
     <link rel="stylesheet" href="yaavser-lead.css?v=1">
     <link rel="stylesheet" href="testimonios-historias.css?v=3">
@@ -33,7 +35,6 @@
   <script src="js/yaavs-theme.js?v=2"></script>
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-horizontal-poster.jpg" media="(min-width: 769px)" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/intro/city-night.jpg" fetchpriority="high">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
 </head>
 <body class="theme-cluster page-home page-bg--photo page-intro-active" data-page="inicio">
@@ -46,7 +47,7 @@
         alt=""
         width="1920"
         height="1280"
-        fetchpriority="high"
+        loading="lazy"
         decoding="async"
       >
       <div class="page-intro__veil"></div>
@@ -99,9 +100,34 @@
     </div>
 
     <section class="hero-banner hero-banner--align-left" id="inicio-banner" aria-label="Banner principal">
-      <div class="hero-banner__visual" data-hero-carousel role="presentation" aria-hidden="true"></div>
+      <div class="hero-banner__visual" data-hero-carousel role="presentation" aria-hidden="true">
+        <picture class="hero-banner__boot-poster">
+          <source media="(max-width: 768px)" srcset="assets/hero-telecom/banners/banner-vertical-poster.jpg">
+          <img
+            src="assets/hero-telecom/banners/banner-horizontal-poster.jpg"
+            alt=""
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </picture>
+      </div>
       <div class="hero-banner__shade" aria-hidden="true"></div>
-      <div class="hero-banner__promo" data-hero-promo-mount aria-live="polite"></div>
+      <div class="hero-banner__promo" data-hero-promo-mount aria-live="polite">
+        <div class="hero-promo hero-promo--billboard hero-promo--boot">
+          <article class="hero-promo__slide is-active is-revealing">
+            <div class="hero-promo__box">
+              <span class="hero-promo__scrim" aria-hidden="true"></span>
+              <div class="hero-promo__inner">
+                <h2 class="hero-promo__title">¿Quiénes <span class="hero-promo__accent">somos?</span></h2>
+                <p class="hero-promo__lead">Conoce la red que impulsa tu negocio en todo México.</p>
+                <a class="hero-promo__cta" href="quienes-somos.html"><span>Conócenos</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
 
     <section class="hero-particles" aria-label="Inicio">
       <h1 class="sr-only">Grupo YAAVS — empresa nacional de retail, distribución y soporte en México</h1>
@@ -511,7 +537,7 @@
             <div class="hx-rotul-carousel__viewport">
               <div class="hx-rotul-carousel__track" data-hx-rotul-track>
                 <figure class="hx-rotul-carousel__slide is-active" data-hx-rotul-slide>
-                  <img src="assets/rotulaciones/07.jpg" alt="Rotulación Todito Cel" width="1400" height="1400" loading="eager" decoding="async">
+                  <img src="assets/rotulaciones/07.jpg" alt="Rotulación Todito Cel" width="1400" height="1400" loading="lazy" decoding="async">
                   <figcaption>Todito Cel</figcaption>
                 </figure>
                 <figure class="hx-rotul-carousel__slide" data-hx-rotul-slide>
@@ -999,7 +1025,7 @@
               </h2>
               <div class="hx-yaavser-band__actions">
                 <button type="button" class="btn btn--primary hx-yaavser-band__cta" data-yaavser-lead-open>
-                  Dando click aquí
+                  Únete como socio
                 </button>
               </div>
             </div>
@@ -1059,7 +1085,7 @@
     </button>
   </div>
 
-  <script src="js/page-intro.js" defer></script>
+  <script src="js/page-intro.js?v=7" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const frame = document.querySelector("[data-tecamac-player]");
@@ -1100,9 +1126,9 @@
       });
     });
   </script>
-  <script src="js/hero-carousel.config.js?v=33" defer></script>
-  <script src="js/hero-carousel.js?v=14" defer></script>
-  <script src="js/layout.js?v=212" defer></script>
+  <script src="js/hero-carousel.config.js?v=35" defer></script>
+  <script src="js/hero-carousel.js?v=16" defer></script>
+  <script src="js/layout.js?v=24" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/home-wow.js?v=9" defer></script>
   <script src="js/yaavser-lead.config.js?v=1" defer></script>
@@ -1168,57 +1194,25 @@
         ]);
       });
 
-      /* Cargar deck pronto para que el tap móvil muestre video al instante */
-      void loadBatchOnce("home-deck", [
-        "js/deck-media.config.js?v=221",
-        "js/home-experience.js?v=222",
-      ]);
-
+      /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
-        "js/deck-media.config.js?v=221",
-        "js/home-experience.js?v=222",
-      ], "400px 0px");
+        "js/deck-media.config.js?v=222",
+        "js/home-experience.js?v=223",
+      ], "320px 0px");
 
-      /* Abrir modal de portabilidad desde hash sin esperar al scroll */
-      if (window.location.hash === "#porta-modal") {
+      const deckHashes = [
+        "#porta-modal",
+        "#rotulaciones-modal",
+        "#vinculaciones-modal",
+        "#esim-modal",
+        "#yaavshop-modal",
+        "#recargaklic-modal",
+        "#servicios-preview",
+      ];
+      if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
-          "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=222",
-        ]);
-      }
-
-      if (window.location.hash === "#rotulaciones-modal") {
-        void loadBatchOnce("home-deck", [
-          "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=222",
-        ]);
-      }
-
-      if (window.location.hash === "#vinculaciones-modal") {
-        void loadBatchOnce("home-deck", [
-          "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=222",
-        ]);
-      }
-
-      if (window.location.hash === "#esim-modal") {
-        void loadBatchOnce("home-deck", [
-          "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=222",
-        ]);
-      }
-
-      if (window.location.hash === "#yaavshop-modal") {
-        void loadBatchOnce("home-deck", [
-          "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=222",
-        ]);
-      }
-
-      if (window.location.hash === "#recargaklic-modal") {
-        void loadBatchOnce("home-deck", [
-          "js/deck-media.config.js?v=221",
-          "js/home-experience.js?v=222",
+          "js/deck-media.config.js?v=222",
+          "js/home-experience.js?v=223",
         ]);
       }
 
