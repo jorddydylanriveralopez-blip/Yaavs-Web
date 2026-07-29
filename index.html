@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- yaavs-cache: 20260729-v237 -->
+  <!-- yaavs-cache: 20260729-v238 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#2563b5">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,11 +25,10 @@
       var soft = lite || et === "3g" || (mobile && mem <= 4);
       window.YAAVS_PERF = { lite: lite, soft: soft, saveData: save, effectiveType: et, mobile: mobile };
       document.documentElement.dataset.yaavsPerf = lite ? "lite" : soft ? "soft" : "full";
-      /* Evita flash del intro: decidir antes del primer paint */
+      /* Solo saltar intro por accesibilidad / ahorro de datos extremo */
       try {
         var skipIntro =
-          lite ||
-          localStorage.getItem("yaavs-intro-seen") === "1" ||
+          save ||
           window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (skipIntro) document.documentElement.classList.add("yaavs-skip-intro");
       } catch (e) {}
@@ -42,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="styles.css?v=206">
+  <link rel="stylesheet" href="styles.css?v=207">
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="home-corporate.css?v=235">
   <link rel="stylesheet" href="theme-day-night.css?v=4" media="print" onload="this.media='all'">
@@ -127,36 +126,36 @@
     }
   </script>
   <div class="page-sparkles" aria-hidden="true"></div>
-  <div class="page-intro" id="page-intro" aria-hidden="true">
+  <div class="page-intro" id="page-intro" aria-hidden="true" role="presentation">
     <div class="page-intro__scene" aria-hidden="true">
-      <img
-        class="page-intro__photo"
-        data-src="assets/intro/city-night.jpg"
-        alt=""
-        width="1920"
-        height="1280"
-        decoding="async"
-      >
-      <div class="page-intro__veil"></div>
+      <div class="page-intro__aurora page-intro__aurora--a"></div>
+      <div class="page-intro__aurora page-intro__aurora--b"></div>
+      <div class="page-intro__grid"></div>
       <div class="page-intro__glow"></div>
     </div>
-    <div class="page-intro__curtain page-intro__curtain--top" aria-hidden="true"></div>
-    <div class="page-intro__curtain page-intro__curtain--bottom" aria-hidden="true"></div>
     <div class="page-intro__brand">
+      <div class="page-intro__orbits" aria-hidden="true">
+        <span class="page-intro__orbit page-intro__orbit--1"></span>
+        <span class="page-intro__orbit page-intro__orbit--2"></span>
+        <span class="page-intro__orbit page-intro__orbit--3"></span>
+      </div>
       <div class="page-intro__logo-wrap">
         <span class="page-intro__logo-glow" aria-hidden="true"></span>
+        <span class="page-intro__logo-beam" aria-hidden="true"></span>
         <img
           class="page-intro__logo"
-          src="assets/yaavs-logo.png"
-          alt=""
+          src="assets/yaavs-logo-white.png?v=2"
+          alt="YAAVS"
           width="346"
           height="82"
           fetchpriority="high"
+          decoding="async"
         >
       </div>
       <span class="page-intro__rule" aria-hidden="true"></span>
       <p class="page-intro__tagline">grupo yaavs · retail · méxico</p>
     </div>
+    <button type="button" class="page-intro__skip" data-intro-skip>Saltar</button>
   </div>
   <div id="site-header"></div>
 
@@ -1176,7 +1175,7 @@
     </button>
   </div>
 
-  <script src="js/page-intro.js?v=8" defer></script>
+  <script src="js/page-intro.js?v=9" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const frame = document.querySelector("[data-tecamac-player]");
@@ -1218,7 +1217,7 @@
     });
   </script>
   <script src="js/hero-carousel.config.js?v=35" defer></script>
-  <script src="js/hero-carousel.js?v=19" defer></script>
+  <script src="js/hero-carousel.js?v=20" defer></script>
   <script src="js/layout.js?v=26" defer></script>
   <script src="js/main.js?v=3" defer></script>
   <script>
