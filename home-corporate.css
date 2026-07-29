@@ -1442,10 +1442,7 @@ body.page-home {
 }
 
 .page-home .hx-ops__card > .hx-ops__card-ribbon {
-  position: absolute;
-  inset: auto;
-  top: 12px;
-  left: 12px;
+  display: none !important;
 }
 
 .page-home .hx-ops__card > .hx-ops__card-bg,
@@ -1938,8 +1935,8 @@ body.page-home {
   }
 
   .page-home .hx-ops__card:not(.is-active) .hx-ops__card--unefon .hx-ops__card-label .hx-ops__card-logo {
-    width: clamp(80px, 90%, 168px);
-    max-height: 56%;
+    width: clamp(118px, 98%, 220px);
+    max-height: 72%;
     transform: none;
     filter: none;
   }

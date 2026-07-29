@@ -914,19 +914,11 @@
 }
 
 .hx-ops__card-ribbon {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 4;
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.35);
-  transition: color 0.35s ease, opacity 0.35s ease;
+  display: none !important;
 }
 
 .hx-ops__card.is-active .hx-ops__card-ribbon {
-  opacity: 0;
+  display: none !important;
 }
 
 .hx-ops__card-label {
@@ -1004,12 +996,13 @@
 }
 
 .hx-ops__card--unefon .hx-ops__card-logo {
-  height: clamp(44px, 8vw, 120px);
-  max-width: min(72%, 168px);
+  height: clamp(56px, 10vw, 140px);
+  max-width: min(88%, 220px);
   filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.65));
 }
 .hx-ops__card--unefon:not(.is-active) .hx-ops__card-label .hx-ops__card-logo {
-  height: clamp(46px, 8.5vw, 112px);
+  height: clamp(58px, 10.5vw, 132px);
+  max-width: min(86%, 210px);
 }
 
 .hx-ops__card-name {
@@ -1837,16 +1830,7 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__grid .hx-ops__card .hx-ops__card-ribbon {
-    position: absolute;
-    top: clamp(8px, 2vw, 10px);
-    left: clamp(8px, 2vw, 10px);
-    transform: none;
-    z-index: 5;
-    display: block;
-    font-size: 0.56rem;
-    letter-spacing: 0.16em;
-    color: rgba(255, 255, 255, 0.68);
-    opacity: 1;
+    display: none !important;
   }
 
   .hx-ops__grid .hx-ops__card .hx-ops__card-label {
@@ -1882,8 +1866,8 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    width: clamp(88px, 56%, 140px) !important;
-    max-height: 56%;
+    width: clamp(118px, 78%, 196px) !important;
+    max-height: 70%;
     filter: none;
   }
 
@@ -2133,7 +2117,8 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    width: clamp(96px, 66%, 156px) !important;
+    width: clamp(124px, 82%, 200px) !important;
+    max-height: 72%;
   }
 
   .hx-ops__grid .hx-ops__card--bait .hx-ops__card-logo {
