@@ -159,12 +159,35 @@
     );
   }
 
+  function initHeroScrollHint() {
+    const hint = document.querySelector("[data-hero-scroll-hint]");
+    if (!hint) return;
+
+    const update = () => {
+      const scrolled = window.scrollY > Math.min(120, window.innerHeight * 0.12);
+      hint.classList.toggle("is-hidden", scrolled);
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+
+    hint.addEventListener("click", (event) => {
+      const href = hint.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   function boot() {
     initForms();
     initJobApply();
     initActivationOperatorContext();
     initReveal();
     initHeroParallax();
+    initHeroScrollHint();
   }
 
   if (document.getElementById("site-header")?.innerHTML.trim()) {
