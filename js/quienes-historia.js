@@ -118,11 +118,19 @@
     setActiveItem(next, { expand: Boolean(fromUser) });
     item.classList.add("is-visible");
     scrollingTo = true;
-    const top = Math.max(0, item.offsetTop - 88);
-    sheet.scrollTo({
-      top,
-      behavior: reduceMotion ? "auto" : "smooth",
-    });
+    const scrollToItem = () => {
+      const top = Math.max(0, item.offsetTop - 88);
+      sheet.scrollTo({
+        top,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    };
+    scrollToItem();
+    if (fromUser) {
+      window.requestAnimationFrame(() => {
+        window.setTimeout(scrollToItem, reduceMotion ? 0 : 80);
+      });
+    }
     window.setTimeout(() => {
       scrollingTo = false;
     }, reduceMotion ? 40 : 520);
@@ -223,10 +231,20 @@
   });
 
   items.forEach((item, index) => {
-    item.addEventListener("click", () => goTo(index, true));
+    item.addEventListener("click", () => {
+      if (index === activeIndex && item.classList.contains("is-expanded")) {
+        setActiveItem(index, { expand: false });
+        return;
+      }
+      goTo(index, true);
+    });
     item.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
+        if (index === activeIndex && item.classList.contains("is-expanded")) {
+          setActiveItem(index, { expand: false });
+          return;
+        }
         goTo(index, true);
       }
     });
