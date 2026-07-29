@@ -1025,55 +1025,66 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-historia__rail {
-    padding: 12px 12px 40px 18px;
+    padding: 8px 10px 28px 14px;
   }
 
   .asi-historia__line,
   .asi-historia__progress {
-    left: 26px;
+    left: 22px;
   }
 
   .asi-historia__item {
-    width: min(78%, 320px);
-    gap: 4px;
-    margin: 0 0 12px;
-    padding: 10px 12px 10px;
-    border-radius: 14px;
+    width: min(72%, 280px);
+    gap: 2px;
+    margin: 0 0 7px;
+    padding: 7px 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(15, 36, 64, 0.05);
   }
 
   .asi-historia__item:nth-child(odd) {
     margin-right: auto;
-    margin-left: 34px;
+    margin-left: 30px;
   }
 
   .asi-historia__item:nth-child(even) {
     margin-left: auto;
-    margin-right: 8px;
+    margin-right: 6px;
   }
 
   .asi-historia__item::before {
-    top: 18px;
+    top: 14px;
+    width: 11px;
+    height: 11px;
     left: auto;
-    right: -22px;
+    right: -18px;
   }
 
   .asi-historia__item:nth-child(even)::before {
     right: auto;
-    left: -22px;
+    left: -18px;
   }
 
   .asi-historia__item:nth-child(odd) .asi-historia__year-giant {
-    left: calc(100% + 18px);
+    left: calc(100% + 12px);
     right: auto;
     text-align: left;
-    font-size: clamp(2.4rem, 11vw, 3.4rem);
+    font-size: clamp(1.7rem, 8vw, 2.35rem);
   }
 
   .asi-historia__item:nth-child(even) .asi-historia__year-giant {
-    right: calc(100% + 18px);
+    right: calc(100% + 12px);
     left: auto;
     text-align: right;
-    font-size: clamp(2.4rem, 11vw, 3.4rem);
+    font-size: clamp(1.7rem, 8vw, 2.35rem);
+  }
+
+  .asi-historia__item.is-visible .asi-historia__year-giant {
+    opacity: 0.55;
+  }
+
+  .asi-historia__item.is-active .asi-historia__year-giant {
+    opacity: 0.85;
   }
 
   /* Compacto por defecto; al tap (.is-expanded) se amplía */
@@ -1081,7 +1092,7 @@ body.theme-cluster.page-asi-somos::before {
   .asi-historia__item.is-visible .asi-historia__media {
     max-height: 0;
     aspect-ratio: auto;
-    border-radius: 12px;
+    border-radius: 10px;
     clip-path: none !important;
     opacity: 0;
     margin: 0;
@@ -1095,47 +1106,56 @@ body.theme-cluster.page-asi-somos::before {
 
   .asi-historia__item.is-expanded .asi-historia__media,
   .asi-historia__item.is-expanded.is-visible .asi-historia__media {
-    max-height: 220px;
+    max-height: 160px;
     aspect-ratio: 16 / 10;
     opacity: 1;
-    margin: 0 0 4px;
+    margin: 0 0 2px;
     pointer-events: auto;
   }
 
   .asi-historia__item.is-expanded .asi-historia__media img {
     transform: scale(1);
   }
+
   .asi-historia__year,
   .asi-historia .asi-historia__year {
-    margin: 0 6px 4px 0 !important;
-    padding: 3px 8px !important;
-    font-size: 0.68rem !important;
+    margin: 0 5px 0 0 !important;
+    padding: 2px 7px !important;
+    font-size: 0.62rem !important;
+    min-height: 0;
+    transform: none !important;
+    opacity: 1 !important;
   }
 
   .asi-historia__tag,
   .asi-historia .asi-historia__tag {
-    font-size: 0.64rem !important;
-    letter-spacing: 0.12em;
+    display: none !important;
+  }
+
+  .asi-historia__item.is-expanded .asi-historia__tag {
+    display: inline !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.1em;
   }
 
   .asi-historia__item-title,
   .asi-historia h3.asi-historia__item-title {
-    margin: 0 !important;
-    font-size: 0.92rem !important;
-    line-height: 1.25 !important;
+    margin: 2px 0 0 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
   }
 
   .asi-historia__item.is-expanded .asi-historia__item-title {
-    margin: 0 0 6px !important;
-    font-size: 1.02rem !important;
+    margin: 2px 0 4px !important;
+    font-size: 0.92rem !important;
   }
 
   .asi-historia__item p,
   .asi-historia .asi-historia__item p {
     display: none !important;
     margin: 0 !important;
-    font-size: 0.88rem !important;
-    line-height: 1.45 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
   }
 
   .asi-historia__item.is-expanded p,
@@ -1144,15 +1164,20 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-historia__body {
-    padding: 0 2px;
+    padding: 0;
   }
 
   .asi-historia__item.is-expanded {
-    gap: 8px;
-    padding: 12px;
+    gap: 6px;
+    padding: 10px;
     box-shadow:
-      0 16px 36px rgba(0, 151, 178, 0.16),
+      0 12px 28px rgba(0, 151, 178, 0.14),
       0 0 0 1px rgba(0, 188, 212, 0.28);
+  }
+
+  .asi-historia__item.is-active:not(.is-expanded) {
+    transform: none;
+    box-shadow: 0 6px 16px rgba(0, 151, 178, 0.12);
   }
 
   .asi-valores__top {
