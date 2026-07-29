@@ -12,6 +12,7 @@
   const perf = window.YAAVS_PERF || {};
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const seenIntro = localStorage.getItem("yaavs-intro-seen") === "1";
+  const skipEarly = document.documentElement.classList.contains("yaavs-skip-intro");
 
   function finishIntro() {
     document.dispatchEvent(new CustomEvent("yaavs:intro-start"));
@@ -21,8 +22,8 @@
     document.dispatchEvent(new CustomEvent("yaavs:intro-done"));
   }
 
-  /* Visitas siguientes / reduced motion / lite: entra directo */
-  if (reducedMotion || seenIntro || perf.lite) {
+  /* Ya decidido en <head> o visitas siguientes: sin flash */
+  if (skipEarly || reducedMotion || seenIntro || perf.lite) {
     finishIntro();
     return;
   }

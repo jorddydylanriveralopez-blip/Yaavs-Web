@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- yaavs-cache: 20260729-v236 -->
+  <!-- yaavs-cache: 20260729-v237 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#2563b5">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,14 +25,26 @@
       var soft = lite || et === "3g" || (mobile && mem <= 4);
       window.YAAVS_PERF = { lite: lite, soft: soft, saveData: save, effectiveType: et, mobile: mobile };
       document.documentElement.dataset.yaavsPerf = lite ? "lite" : soft ? "soft" : "full";
+      /* Evita flash del intro: decidir antes del primer paint */
+      try {
+        var skipIntro =
+          lite ||
+          localStorage.getItem("yaavs-intro-seen") === "1" ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (skipIntro) document.documentElement.classList.add("yaavs-skip-intro");
+      } catch (e) {}
     })();
   </script>
+  <style>
+    html.yaavs-skip-intro #page-intro { display: none !important; }
+    html.yaavs-skip-intro body.page-intro-active { overflow: auto; }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=206">
   <link rel="stylesheet" href="theme-light.css?v=7">
-  <link rel="stylesheet" href="home-corporate.css?v=234">
+  <link rel="stylesheet" href="home-corporate.css?v=235">
   <link rel="stylesheet" href="theme-day-night.css?v=4" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=204" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="decorations.css?v=9" media="print" onload="this.media='all'">
@@ -107,6 +119,13 @@
   </style>
 </head>
 <body class="theme-cluster page-home page-bg--photo page-intro-active" data-page="inicio">
+  <script>
+    /* Quitar bloqueo del intro en el mismo tick si ya se vio */
+    if (document.documentElement.classList.contains("yaavs-skip-intro")) {
+      document.body.classList.remove("page-intro-active");
+      document.body.classList.add("page-intro-done");
+    }
+  </script>
   <div class="page-sparkles" aria-hidden="true"></div>
   <div class="page-intro" id="page-intro" aria-hidden="true">
     <div class="page-intro__scene" aria-hidden="true">
@@ -1201,7 +1220,7 @@
   <script src="js/hero-carousel.config.js?v=35" defer></script>
   <script src="js/hero-carousel.js?v=19" defer></script>
   <script src="js/layout.js?v=26" defer></script>
-  <script src="js/main.js?v=2" defer></script>
+  <script src="js/main.js?v=3" defer></script>
   <script>
     (function () {
       const doc = document;

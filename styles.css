@@ -1602,6 +1602,7 @@ body.page-intro-active .nav-menu-hint {
 .hero-banner__boot-poster {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -1614,6 +1615,23 @@ body.page-intro-active .nav-menu-hint {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.hero-banner__visual.hero-carousel-host {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-banner__visual > .hero-carousel.hero-carousel--over-boot {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.hero-banner__visual.is-carousel-ready > .hero-carousel.hero-carousel--over-boot {
+  opacity: 1;
 }
 
 .hero-banner__promo {

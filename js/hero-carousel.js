@@ -411,9 +411,30 @@
   let bgSyncRoot = null;
 
   const carouselRoot = buildTrack();
+  const bootPoster = mainHost.querySelector(".hero-banner__boot-poster");
   mainHost.classList.add("hero-carousel-host");
-  mainHost.replaceChildren(carouselRoot);
+
+  /* Mantener el poster de arranque debajo hasta que el carrusel esté listo (evita flash) */
+  if (bootPoster) {
+    carouselRoot.classList.add("hero-carousel--over-boot");
+    mainHost.appendChild(carouselRoot);
+  } else {
+    mainHost.replaceChildren(carouselRoot);
+    mainHost.classList.add("is-carousel-ready");
+  }
   tracks.push(carouselRoot.querySelector(".hero-carousel__track"));
+
+  function revealCarouselOverBoot() {
+    if (!bootPoster || mainHost.classList.contains("is-carousel-ready")) return;
+    mainHost.classList.add("is-carousel-ready");
+    window.setTimeout(() => {
+      try {
+        bootPoster.remove();
+      } catch (_) {
+        /* noop */
+      }
+    }, 320);
+  }
 
   if (bgHost && bgHost !== mainHost) {
     bgHost.classList.add("hero-carousel-host");
@@ -720,11 +741,24 @@
     videosArmed = true;
     syncBannerVideos();
     if (!reducedMotion) startTimer();
+    const activeVideo = getActiveBannerVideo();
+    if (activeVideo) {
+      const reveal = () => revealCarouselOverBoot();
+      if (activeVideo.readyState >= 2) reveal();
+      else {
+        activeVideo.addEventListener("loadeddata", reveal, { once: true });
+        activeVideo.addEventListener("playing", reveal, { once: true });
+        window.setTimeout(reveal, softNet ? 1400 : 900);
+      }
+    } else {
+      revealCarouselOverBoot();
+    }
   }
 
   function scheduleArmVideos() {
     if (preferLiteMedia) {
       videosArmed = true;
+      revealCarouselOverBoot();
       return;
     }
 
@@ -749,6 +783,8 @@
   }
 
   scheduleArmVideos();
+  /* Fallback: no dejar el poster eterno si el video falla */
+  window.setTimeout(revealCarouselOverBoot, softNet ? 2200 : 1600);
 
   function getActiveBannerVideo() {
     const slide = slides[index];
