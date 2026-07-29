@@ -863,9 +863,9 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-somos__hero {
-    margin: 0 auto 28px;
+    margin: 0 auto 32px;
     max-width: none;
-    padding: 22px 18px 24px;
+    padding: 24px 18px 26px;
     border-radius: 22px;
     background:
       linear-gradient(160deg, rgba(255, 255, 255, 0.94) 0%, rgba(240, 250, 253, 0.9) 100%);
@@ -1641,6 +1641,8 @@ body.is-historia-open {
 }
 
 .asi-historia__media {
+  position: relative;
+  z-index: 1;
   margin: 0;
   overflow: hidden;
   border-radius: 14px;
@@ -1703,6 +1705,42 @@ body.is-historia-open {
 .asi-historia__item.is-visible .asi-historia__year {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+.asi-historia__year-giant {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: 12px;
+  left: auto;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: clamp(3.2rem, 14vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  text-align: right;
+  color: rgba(0, 48, 135, 0.1);
+  -webkit-text-fill-color: rgba(0, 48, 135, 0.1);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition:
+    opacity 0.55s ease var(--asi-delay, 0ms),
+    color 0.3s ease;
+}
+
+.asi-historia__item.is-visible .asi-historia__year-giant {
+  opacity: 1;
+}
+
+.asi-historia__item.is-active .asi-historia__year-giant {
+  color: rgba(0, 151, 178, 0.2);
+  -webkit-text-fill-color: rgba(0, 151, 178, 0.2);
 }
 
 @keyframes asi-node-pulse {
@@ -1815,6 +1853,23 @@ body.is-historia-open {
     right: auto;
     left: -33px;
   }
+
+  /* Año gigante al lado contrario de la tarjeta */
+  .asi-historia__year-giant {
+    font-size: clamp(4.6rem, 7.5vw, 7.2rem);
+  }
+
+  .asi-historia__item:nth-child(odd) .asi-historia__year-giant {
+    left: calc(100% + 48px);
+    right: auto;
+    text-align: left;
+  }
+
+  .asi-historia__item:nth-child(even) .asi-historia__year-giant {
+    right: calc(100% + 48px);
+    left: auto;
+    text-align: right;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1823,7 +1878,8 @@ body.is-historia-open {
   .asi-historia__item,
   .asi-historia__media,
   .asi-historia__media img,
-  .asi-historia__year {
+  .asi-historia__year,
+  .asi-historia__year-giant {
     transition: none !important;
     animation: none !important;
   }
