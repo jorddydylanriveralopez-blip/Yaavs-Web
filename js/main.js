@@ -161,7 +161,8 @@
 
   function initHeroScrollHint() {
     const hint = document.querySelector("[data-hero-scroll-hint]");
-    if (!hint) return;
+    if (!hint || hint.dataset.bound === "1") return;
+    hint.dataset.bound = "1";
 
     /* No depender de layout-ready: mostrar ya en el hero */
     const update = () => {
