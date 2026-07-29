@@ -1593,8 +1593,6 @@ body.page-intro-active .nav-menu-hint {
   min-height: 100dvh;
   overflow: hidden;
   touch-action: pan-y;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 .hero-banner__visual {

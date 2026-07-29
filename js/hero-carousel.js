@@ -816,30 +816,31 @@
       }
     });
 
-    /* Swipe táctil: deslizar cambia de slide (móvil / stylus) */
-    const SWIPE_MIN_PX = 42;
-    let swipe = null;
+    /* Swipe táctil (touch events: más fiable en iOS que pointermove) */
+    const SWIPE_MIN_PX = 36;
+    let touchSwipe = null;
 
-    function isInteractiveTarget(target) {
-      return Boolean(
-        target &&
-          typeof target.closest === "function" &&
-          target.closest("a, button, input, textarea, select, label, [role='tab']")
-      );
+    function finishTouchSwipe(dx, dy) {
+      if (Math.abs(dx) < SWIPE_MIN_PX) return false;
+      if (Math.abs(dx) < Math.abs(dy) * 1.15) return false;
+      if (dx < 0) goTo(index + 1, 1);
+      else goTo(index - 1, -1);
+      window.YaavsSonic?.play?.();
+      return true;
     }
 
     banner.addEventListener(
-      "pointerdown",
+      "touchstart",
       (e) => {
-        if (e.pointerType === "mouse") return;
-        if (e.button != null && e.button !== 0) return;
-        if (isInteractiveTarget(e.target)) return;
-        swipe = {
-          id: e.pointerId,
-          x: e.clientX,
-          y: e.clientY,
-          locked: false,
-          swiped: false,
+        if (e.touches.length !== 1) {
+          touchSwipe = null;
+          return;
+        }
+        const t = e.touches[0];
+        touchSwipe = {
+          x: t.clientX,
+          y: t.clientY,
+          moved: false,
         };
         stopTimer();
       },
@@ -847,39 +848,45 @@
     );
 
     banner.addEventListener(
-      "pointermove",
+      "touchmove",
       (e) => {
-        if (!swipe || e.pointerId !== swipe.id || swipe.swiped) return;
-        const dx = e.clientX - swipe.x;
-        const dy = e.clientY - swipe.y;
-        if (!swipe.locked) {
-          if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
-          /* Si el gesto es más vertical, ceder el scroll de página */
-          if (Math.abs(dy) > Math.abs(dx)) {
-            swipe = null;
-            if (!reducedMotion) startTimer();
-            return;
-          }
-          swipe.locked = true;
+        if (!touchSwipe || e.touches.length !== 1) return;
+        const t = e.touches[0];
+        const dx = t.clientX - touchSwipe.x;
+        const dy = t.clientY - touchSwipe.y;
+        if (Math.abs(dx) > 12 || Math.abs(dy) > 12) touchSwipe.moved = true;
+        /* Horizontal dominante: cambiar ya durante el gesto */
+        if (touchSwipe.moved && Math.abs(dx) >= SWIPE_MIN_PX && Math.abs(dx) > Math.abs(dy) * 1.15) {
+          finishTouchSwipe(dx, dy);
+          touchSwipe = null;
         }
-        if (Math.abs(dx) < SWIPE_MIN_PX) return;
-        swipe.swiped = true;
-        if (dx < 0) goTo(index + 1, 1);
-        else goTo(index - 1, -1);
-        window.YaavsSonic?.play?.();
       },
       { passive: true }
     );
 
-    function endSwipe(e) {
-      if (!swipe) return;
-      if (e && e.pointerId != null && e.pointerId !== swipe.id) return;
-      swipe = null;
-      if (!reducedMotion && !document.hidden) startTimer();
-    }
+    banner.addEventListener(
+      "touchend",
+      (e) => {
+        if (!touchSwipe) {
+          if (!reducedMotion && !document.hidden) startTimer();
+          return;
+        }
+        const t = e.changedTouches[0];
+        if (t) finishTouchSwipe(t.clientX - touchSwipe.x, t.clientY - touchSwipe.y);
+        touchSwipe = null;
+        if (!reducedMotion && !document.hidden) startTimer();
+      },
+      { passive: true }
+    );
 
-    banner.addEventListener("pointerup", endSwipe, { passive: true });
-    banner.addEventListener("pointercancel", endSwipe, { passive: true });
+    banner.addEventListener(
+      "touchcancel",
+      () => {
+        touchSwipe = null;
+        if (!reducedMotion && !document.hidden) startTimer();
+      },
+      { passive: true }
+    );
   }
 
   if (!reducedMotion) startTimer();
