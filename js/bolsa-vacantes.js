@@ -98,6 +98,33 @@
       .replace(/"/g, "&quot;");
   }
 
+  function safeExternalUrl(url) {
+    const raw = String(url || "").trim();
+    if (!raw) return "";
+    try {
+      const parsed = new URL(raw);
+      if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return "";
+      return parsed.href;
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function externalLinkLabel(url) {
+    const host = (() => {
+      try {
+        return new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+      } catch (_) {
+        return "";
+      }
+    })();
+    if (host.includes("occ")) return "Ver en OCC →";
+    if (host.includes("computrabajo")) return "Ver en Computrabajo →";
+    if (host.includes("indeed")) return "Ver en Indeed →";
+    if (host.includes("linkedin")) return "Ver en LinkedIn →";
+    return "Ver publicación →";
+  }
+
   function renderOpenJobs() {
     if (!openGrid) return;
 
@@ -117,6 +144,10 @@
         const remaining = formatRemainingLabel(job.closesAt);
         const remainingClass =
           dayDiff(new Date(), parseDate(job.closesAt)) <= 7 ? " job-time__remaining" : "";
+        const externalUrl = safeExternalUrl(job.link || job.externalUrl);
+        const externalLink = externalUrl
+          ? `<a class="job-external" href="${escapeHtml(externalUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(externalLinkLabel(externalUrl))}</a>`
+          : "";
 
         return `
           <article class="glass-card job-card">
@@ -128,7 +159,10 @@
               <span class="job-time__sep" aria-hidden="true">·</span>
               <span class="job-time__remaining${remainingClass}">${remaining}</span>
             </div>
-            <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular →</a>
+            <div class="job-actions">
+              ${externalLink}
+              <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
+            </div>
           </article>`;
       })
       .join("");
