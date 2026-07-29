@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- yaavs-cache: 20260729-v234 -->
+  <!-- yaavs-cache: 20260729-v236 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#2563b5">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=206">
   <link rel="stylesheet" href="theme-light.css?v=7">
-  <link rel="stylesheet" href="home-corporate.css?v=233">
+  <link rel="stylesheet" href="home-corporate.css?v=234">
   <link rel="stylesheet" href="theme-day-night.css?v=4" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=204" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="decorations.css?v=9" media="print" onload="this.media='all'">
@@ -52,6 +52,59 @@
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-vertical-poster.jpg" media="(max-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-horizontal-poster.jpg" media="(min-width: 769px)" fetchpriority="high">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
+  <style>
+    /* Flecha bajar — visible aunque el CSS cacheado esté viejo */
+    .page-home .hero-scroll-hint {
+      position: fixed !important;
+      left: 50% !important;
+      bottom: max(22px, calc(16px + env(safe-area-inset-bottom, 0px))) !important;
+      z-index: 45 !important;
+      transform: translateX(-50%) !important;
+      display: inline-flex !important;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 12px 18px 10px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff !important;
+      background: rgba(0, 48, 135, 0.82) !important;
+      border: 1px solid rgba(92, 232, 247, 0.55) !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      pointer-events: auto !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .page-home .hero-scroll-hint__label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .page-home .hero-scroll-hint__chevron {
+      color: #5ce8f7 !important;
+      animation: yaavs-scroll-bounce 1.4s ease-in-out infinite;
+    }
+    .page-home .hero-scroll-hint.is-hidden,
+    body.page-home.page-intro-active .hero-scroll-hint {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    @keyframes yaavs-scroll-bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.65; }
+      50% { transform: translateY(7px); opacity: 1; }
+    }
+    @media (max-width: 768px) {
+      .page-home .hero-scroll-hint {
+        bottom: max(78px, calc(68px + env(safe-area-inset-bottom, 0px))) !important;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .page-home .hero-scroll-hint__chevron { animation: none; }
+    }
+  </style>
 </head>
 <body class="theme-cluster page-home page-bg--photo page-intro-active" data-page="inicio">
   <div class="page-sparkles" aria-hidden="true"></div>
@@ -147,8 +200,8 @@
       <a href="#quienes-preview" class="hero-scroll-hint" data-hero-scroll-hint aria-label="Desliza hacia abajo para seguir">
         <span class="hero-scroll-hint__label">Desliza</span>
         <span class="hero-scroll-hint__chevron" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
       </a>

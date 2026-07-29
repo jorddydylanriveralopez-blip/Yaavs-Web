@@ -2810,65 +2810,61 @@ body.page-home {
 
 /* Flecha para bajar desde el hero */
 .page-home .hero-scroll-hint {
-  position: absolute;
+  position: fixed;
   left: 50%;
-  bottom: max(18px, calc(14px + env(safe-area-inset-bottom, 0px)));
-  z-index: 8;
+  bottom: max(22px, calc(16px + env(safe-area-inset-bottom, 0px)));
+  z-index: 45;
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 10px 14px 8px;
+  gap: 2px;
+  padding: 12px 18px 10px;
   border-radius: 999px;
   text-decoration: none;
   color: #fff;
-  background: rgba(2, 10, 22, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+  background: rgba(0, 48, 135, 0.82);
+  border: 1px solid rgba(92, 232, 247, 0.55);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   pointer-events: auto;
 }
 
 .page-home .hero-scroll-hint__label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   line-height: 1;
-  opacity: 0.92;
+  opacity: 0.95;
 }
 
 .page-home .hero-scroll-hint__chevron {
   display: grid;
   place-items: center;
   color: #5ce8f7;
-  animation: hero-scroll-bounce 1.5s ease-in-out infinite;
+  animation: hero-scroll-bounce 1.4s ease-in-out infinite;
 }
 
 .page-home .hero-scroll-hint:hover,
 .page-home .hero-scroll-hint:focus-visible {
-  background: rgba(2, 10, 22, 0.62);
+  background: rgba(0, 48, 135, 0.94);
   outline: none;
 }
 
-.page-home .hero-scroll-hint.is-hidden {
+.page-home .hero-scroll-hint.is-hidden,
+body.page-home.page-intro-active .hero-scroll-hint {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%) translateY(10px);
+  transform: translateX(-50%) translateY(12px);
 }
 
 @keyframes hero-scroll-bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.55; }
-  50% { transform: translateY(6px); opacity: 1; }
-}
-
-body.page-intro-active .page-home .hero-scroll-hint {
-  opacity: 0;
-  visibility: hidden;
+  0%, 100% { transform: translateY(0); opacity: 0.65; }
+  50% { transform: translateY(7px); opacity: 1; }
 }
 
 @media (max-width: 768px) {
@@ -2890,7 +2886,7 @@ body.page-intro-active .page-home .hero-scroll-hint {
   }
 
   .page-home .hero-scroll-hint {
-    bottom: max(56px, calc(48px + env(safe-area-inset-bottom, 0px)));
+    bottom: max(78px, calc(68px + env(safe-area-inset-bottom, 0px)));
   }
 
   .page-home .hero-carousel__dots {

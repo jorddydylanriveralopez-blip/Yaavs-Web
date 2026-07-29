@@ -163,12 +163,17 @@
     const hint = document.querySelector("[data-hero-scroll-hint]");
     if (!hint) return;
 
+    /* No depender de layout-ready: mostrar ya en el hero */
     const update = () => {
-      const scrolled = window.scrollY > Math.min(120, window.innerHeight * 0.12);
+      const scrolled = window.scrollY > 80;
       hint.classList.toggle("is-hidden", scrolled);
     };
 
     window.addEventListener("scroll", update, { passive: true });
+    document.addEventListener("yaavs:intro-done", () => {
+      hint.classList.remove("is-hidden");
+      update();
+    });
     update();
 
     hint.addEventListener("click", (event) => {
@@ -187,6 +192,13 @@
     initActivationOperatorContext();
     initReveal();
     initHeroParallax();
+    initHeroScrollHint();
+  }
+
+  /* Flecha del hero: no esperar al header */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroScrollHint, { once: true });
+  } else {
     initHeroScrollHint();
   }
 
