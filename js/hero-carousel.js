@@ -815,6 +815,71 @@
         startTimer();
       }
     });
+
+    /* Swipe táctil: deslizar cambia de slide (móvil / stylus) */
+    const SWIPE_MIN_PX = 42;
+    let swipe = null;
+
+    function isInteractiveTarget(target) {
+      return Boolean(
+        target &&
+          typeof target.closest === "function" &&
+          target.closest("a, button, input, textarea, select, label, [role='tab']")
+      );
+    }
+
+    banner.addEventListener(
+      "pointerdown",
+      (e) => {
+        if (e.pointerType === "mouse") return;
+        if (e.button != null && e.button !== 0) return;
+        if (isInteractiveTarget(e.target)) return;
+        swipe = {
+          id: e.pointerId,
+          x: e.clientX,
+          y: e.clientY,
+          locked: false,
+          swiped: false,
+        };
+        stopTimer();
+      },
+      { passive: true }
+    );
+
+    banner.addEventListener(
+      "pointermove",
+      (e) => {
+        if (!swipe || e.pointerId !== swipe.id || swipe.swiped) return;
+        const dx = e.clientX - swipe.x;
+        const dy = e.clientY - swipe.y;
+        if (!swipe.locked) {
+          if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
+          /* Si el gesto es más vertical, ceder el scroll de página */
+          if (Math.abs(dy) > Math.abs(dx)) {
+            swipe = null;
+            if (!reducedMotion) startTimer();
+            return;
+          }
+          swipe.locked = true;
+        }
+        if (Math.abs(dx) < SWIPE_MIN_PX) return;
+        swipe.swiped = true;
+        if (dx < 0) goTo(index + 1, 1);
+        else goTo(index - 1, -1);
+        window.YaavsSonic?.play?.();
+      },
+      { passive: true }
+    );
+
+    function endSwipe(e) {
+      if (!swipe) return;
+      if (e && e.pointerId != null && e.pointerId !== swipe.id) return;
+      swipe = null;
+      if (!reducedMotion && !document.hidden) startTimer();
+    }
+
+    banner.addEventListener("pointerup", endSwipe, { passive: true });
+    banner.addEventListener("pointercancel", endSwipe, { passive: true });
   }
 
   if (!reducedMotion) startTimer();
