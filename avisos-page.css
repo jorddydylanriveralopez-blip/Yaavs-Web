@@ -80,8 +80,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(4, 12, 28, 0.88) 0%, rgba(4, 12, 28, 0.55) 48%, rgba(4, 12, 28, 0.28) 100%),
-    linear-gradient(180deg, rgba(4, 12, 28, 0.35) 0%, transparent 38%, rgba(4, 12, 28, 0.82) 100%);
+    linear-gradient(90deg, rgba(4, 12, 28, 0.92) 0%, rgba(4, 12, 28, 0.72) 42%, rgba(4, 12, 28, 0.35) 100%),
+    linear-gradient(180deg, rgba(4, 12, 28, 0.45) 0%, transparent 40%, rgba(4, 12, 28, 0.88) 100%);
   pointer-events: none;
 }
 
@@ -102,11 +102,16 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-top: calc(var(--header-h, 88px) + 28px);
-  padding-bottom: clamp(36px, 6vw, 64px);
+  max-width: none;
+  box-sizing: border-box;
+  padding:
+    calc(var(--header-h, 88px) + 28px)
+    max(28px, var(--pad-x, 16px), env(safe-area-inset-right, 0px))
+    clamp(36px, 6vw, 64px)
+    max(36px, calc(var(--pad-x, 16px) + 20px), env(safe-area-inset-left, 0px));
 }
 
-.anuncios-hero__breadcrumb {
+body.theme-cluster.page-anuncios .anuncios-hero__breadcrumb {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -114,21 +119,21 @@
   margin: 0 0 18px;
   font-size: 0.86rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.78);
 }
 
-.anuncios-hero__breadcrumb a {
+body.theme-cluster.page-anuncios .anuncios-hero__breadcrumb a {
   color: #5ce8f7;
   text-decoration: none;
   font-weight: 700;
 }
 
-.anuncios-hero__breadcrumb a:hover {
+body.theme-cluster.page-anuncios .anuncios-hero__breadcrumb a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.anuncios-hero__kicker {
+body.theme-cluster.page-anuncios .anuncios-hero__kicker {
   margin: 0 0 10px;
   font-size: 0.72rem;
   font-weight: 800;
@@ -137,7 +142,7 @@
   color: #5ce8f7;
 }
 
-.anuncios-hero__title {
+body.theme-cluster.page-anuncios .anuncios-hero__title {
   margin: 0 0 14px;
   max-width: 12ch;
   font-size: clamp(2.4rem, 7vw, 4rem);
@@ -146,21 +151,23 @@
   line-height: 0.95;
   text-transform: uppercase;
   color: #ffffff;
-  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  -webkit-text-fill-color: #ffffff;
+  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
-.anuncios-hero__title span {
+body.theme-cluster.page-anuncios .anuncios-hero__title span {
   display: block;
   color: #5ce8f7;
+  -webkit-text-fill-color: #5ce8f7;
 }
 
-.anuncios-hero__lead {
+body.theme-cluster.page-anuncios .anuncios-hero__lead {
   margin: 0;
   max-width: 28em;
   font-size: clamp(1.02rem, 2vw, 1.2rem);
   line-height: 1.45;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* ─── Feed ─── */
@@ -481,8 +488,11 @@
 
 @media (max-width: 720px) {
   .anuncios-hero__content {
-    padding-top: calc(var(--header-h, 72px) + 18px);
-    padding-bottom: 28px;
+    padding:
+      calc(var(--header-h, 72px) + 18px)
+      max(20px, var(--pad-x, 16px))
+      28px
+      max(28px, calc(var(--pad-x, 16px) + 12px));
   }
 
   .anuncios-feature__actions {
