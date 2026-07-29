@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="styles.css?v=207">
+  <link rel="stylesheet" href="styles.css?v=208">
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="home-corporate.css?v=235">
   <link rel="stylesheet" href="theme-day-night.css?v=4" media="print" onload="this.media='all'">
@@ -64,37 +64,35 @@
   <link rel="preload" as="image" href="assets/hero-telecom/banners/banner-horizontal-poster.jpg" media="(min-width: 769px)" fetchpriority="high">
   <link rel="icon" href="assets/favicon-yaavs.png?v=2" type="image/png">
   <style>
-    /* Flecha bajar — visible aunque el CSS cacheado esté viejo */
+    /* Flecha bajar — solo chevron, sin botón ni texto */
     .page-home .hero-scroll-hint {
       position: fixed !important;
       left: 50% !important;
       bottom: max(22px, calc(16px + env(safe-area-inset-bottom, 0px))) !important;
       z-index: 45 !important;
       transform: translateX(-50%) !important;
-      display: inline-flex !important;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 12px 18px 10px;
-      border-radius: 999px;
+      display: grid !important;
+      place-items: center;
+      padding: 0;
+      margin: 0;
+      border: 0 !important;
+      border-radius: 0;
+      background: transparent !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       text-decoration: none;
-      color: #fff !important;
-      background: rgba(0, 48, 135, 0.82) !important;
-      border: 1px solid rgba(92, 232, 247, 0.55) !important;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      color: #5ce8f7 !important;
       pointer-events: auto !important;
       opacity: 1 !important;
       visibility: visible !important;
     }
     .page-home .hero-scroll-hint__label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      line-height: 1;
+      display: none !important;
     }
     .page-home .hero-scroll-hint__chevron {
-      color: #5ce8f7 !important;
+      color: inherit !important;
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
       animation: yaavs-scroll-bounce 1.4s ease-in-out infinite;
     }
     .page-home .hero-scroll-hint.is-hidden,
@@ -104,8 +102,8 @@
       pointer-events: none !important;
     }
     @keyframes yaavs-scroll-bounce {
-      0%, 100% { transform: translateY(0); opacity: 0.65; }
-      50% { transform: translateY(7px); opacity: 1; }
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50% { transform: translateY(8px); opacity: 1; }
     }
     @media (max-width: 768px) {
       .page-home .hero-scroll-hint {
@@ -215,10 +213,9 @@
         </div>
       </div>
 
-      <a href="#quienes-preview" class="hero-scroll-hint" data-hero-scroll-hint aria-label="Desliza hacia abajo para seguir">
-        <span class="hero-scroll-hint__label">Desliza</span>
+      <a href="#quienes-preview" class="hero-scroll-hint" data-hero-scroll-hint aria-label="Bajar al contenido">
         <span class="hero-scroll-hint__chevron" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" aria-hidden="true">
             <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
@@ -1175,7 +1172,7 @@
     </button>
   </div>
 
-  <script src="js/page-intro.js?v=9" defer></script>
+  <script src="js/page-intro.js?v=10" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const frame = document.querySelector("[data-tecamac-player]");
