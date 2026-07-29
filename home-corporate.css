@@ -6629,3 +6629,33 @@ body.page-home.hx-band--dark .hx-somos {
     animation: none !important;
   }
 }
+
+/* Perfiles soft/lite: menos trabajo de pintura en la primera entrada */
+html[data-yaavs-perf="lite"] .page-home .home-page-floats,
+html[data-yaavs-perf="lite"] .page-home .hx-services__floats,
+html[data-yaavs-perf="lite"] .page-home .page-sparkles,
+html[data-yaavs-perf="lite"] .page-home .home-tech-backdrop__mesh,
+html[data-yaavs-perf="lite"] .page-home .home-tech-backdrop__grid,
+html[data-yaavs-perf="lite"] .page-home .home-tech-backdrop__glow,
+html[data-yaavs-perf="lite"] .page-home .wow-aurora,
+html[data-yaavs-perf="lite"] .page-home .wow-progress {
+  display: none !important;
+}
+
+html[data-yaavs-perf="lite"] .page-home .home-tech-backdrop__photo,
+html[data-yaavs-perf="soft"] .page-home .home-tech-backdrop__photo,
+html[data-yaavs-perf="lite"] .page-home .home-page-orb,
+html[data-yaavs-perf="lite"] .page-home .home-page-ring {
+  animation: none !important;
+}
+
+html[data-yaavs-perf="soft"] .page-home .home-page-floats,
+html[data-yaavs-perf="soft"] .page-home .hx-services__floats {
+  opacity: 0.45;
+}
+
+.page-home .tx-gallery--home,
+.page-home .hx-yaavser-band {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}

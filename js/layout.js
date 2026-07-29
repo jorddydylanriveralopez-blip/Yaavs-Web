@@ -323,17 +323,20 @@
     initPageEnter();
 
     const scheduleIdle = window.requestIdleCallback
-      ? (cb) => window.requestIdleCallback(cb, { timeout: 1800 })
-      : (cb) => window.setTimeout(cb, 900);
+      ? (cb) =>
+          window.requestIdleCallback(cb, {
+            timeout: window.YAAVS_PERF?.lite ? 4200 : window.YAAVS_PERF?.soft ? 2600 : 1800,
+          })
+      : (cb) => window.setTimeout(cb, window.YAAVS_PERF?.soft ? 1400 : 900);
 
     scheduleIdle(async () => {
-      mountSiteFloats();
+      if (!window.YAAVS_PERF?.lite) mountSiteFloats();
       await mountSocialDock();
       await mountChatbot();
       initSocialFloatScroll();
       initCookies();
       initPwa();
-      initYaavsGame();
+      if (!window.YAAVS_PERF?.lite) initYaavsGame();
     });
 
     /* Sonic solo tras interacción o idle tardío */
@@ -386,7 +389,7 @@
   function initPwa() {
     if (document.querySelector("script[data-yaavs-pwa]")) return;
     const s = document.createElement("script");
-    s.src = "js/pwa.js?v=1";
+    s.src = "js/pwa.js?v=2";
     s.defer = true;
     s.dataset.yaavsPwa = "true";
     document.body.appendChild(s);

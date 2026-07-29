@@ -1,5 +1,5 @@
 /* YAAVS PWA service worker */
-const CACHE_VERSION = "yaavs-pwa-v1";
+const CACHE_VERSION = "yaavs-pwa-v2";
 const PRECACHE = [
   "./",
   "./index.html",

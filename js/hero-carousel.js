@@ -9,9 +9,13 @@
   const hosts = document.querySelectorAll("[data-hero-carousel]");
   if (!hosts.length) return;
 
+  const perf = window.YAAVS_PERF || {};
+  const preferLiteMedia = Boolean(perf.lite);
+  const softNet = Boolean(perf.soft);
   const MOBILE_MQ = window.matchMedia("(max-width: 768px)");
   const slideDefaults = cfg.slideDefaults || {};
   let floatLayer = null;
+  let videosArmed = false;
 
   const slides = (cfg.images || [])
     .filter(Boolean)
@@ -158,6 +162,7 @@
   }
 
   function isActiveVideoBanner(slide) {
+    if (preferLiteMedia) return false;
     return Boolean(slide?.videoBanner && getSlideVideoSrc(slide));
   }
 
@@ -170,7 +175,10 @@
 
     if (slide.src || slide.srcMobile) {
       media.appendChild(
-        buildResponsiveImage(slide, i, { className: "hero-carousel__video-poster-img" })
+        buildResponsiveImage(slide, i, {
+          className: "hero-carousel__video-poster-img",
+          fetchPriority: i === 0 ? "high" : "low",
+        })
       );
     }
 
@@ -184,18 +192,11 @@
     video.setAttribute("playsinline", "");
     video.setAttribute("muted", "");
     video.setAttribute("autoplay", "");
-    video.setAttribute("preload", i === 0 ? "auto" : "none");
+    /* Fuente se adjunta al armar videos (tras intro / idle) para no competir con LCP */
+    video.setAttribute("preload", "none");
     if (slide.src || slide.srcMobile) video.poster = getSlideDisplaySrc(slide);
     video.setAttribute("aria-label", slide.alt || "Banner YAAVS");
-
-    if (i === 0) {
-      const source = document.createElement("source");
-      source.src = getSlideVideoSrc(slide);
-      source.type = "video/mp4";
-      video.appendChild(source);
-    } else {
-      video.dataset.videoSrc = getSlideVideoSrc(slide) || "";
-    }
+    video.dataset.videoSrc = getSlideVideoSrc(slide) || "";
     media.appendChild(video);
 
     wrap.appendChild(media);
@@ -292,7 +293,7 @@
       slideEl.className = "hero-carousel__slide" + (i === 0 ? " is-active" : "");
       if (slide.hidePromo) slideEl.classList.add("hero-carousel__slide--graphic");
       const videoSrc = getSlideVideoSrc(slide);
-      const useVideoBanner = Boolean(slide.videoBanner && videoSrc);
+      const useVideoBanner = !preferLiteMedia && Boolean(slide.videoBanner && videoSrc);
       if (slide.videoSlide || useVideoBanner) slideEl.classList.add("hero-carousel__slide--video");
       if (useVideoBanner) slideEl.classList.add("hero-carousel__slide--video-banner");
       slideEl.style.setProperty("--carousel-ms", `${transitionMs}ms`);
@@ -558,6 +559,8 @@
   }
 
   function syncBannerVideos() {
+    if (!videosArmed || preferLiteMedia) return;
+
     tracks.forEach((track) => {
       track.querySelectorAll(".hero-carousel__slide").forEach((slideEl, i) => {
         const slide = slides[i];
@@ -565,9 +568,13 @@
         if (!video || !slide) return;
 
         const desiredSrc = getSlideVideoSrc(slide);
-        if (desiredSrc && (i === index || i === (index + 1) % slides.length)) {
+        const nextIndex = (index + 1) % slides.length;
+        const shouldAttach =
+          desiredSrc && (i === index || (!softNet && i === nextIndex));
+
+        if (shouldAttach) {
           ensureBannerVideoSource(video, desiredSrc);
-          if (i === index) video.preload = "auto";
+          if (i === index) video.preload = softNet ? "metadata" : "auto";
           else video.preload = "metadata";
         }
 
@@ -577,6 +584,10 @@
         }
 
         if (i === index && (isActiveVideoBanner(slide) || slide.videoSlide)) {
+          if (document.hidden) {
+            video.pause();
+            return;
+          }
           video.muted = true;
           const play = video.play();
           if (play && typeof play.catch === "function") play.catch(() => {});
@@ -665,6 +676,9 @@
   }
 
   function goTo(next, directionHint) {
+    if (!videosArmed && !preferLiteMedia) {
+      videosArmed = true;
+    }
     const previousIndex = index;
     const normalizedDirection = directionHint === -1 ? -1 : 1;
     index = (next + slides.length) % slides.length;
@@ -700,6 +714,41 @@
   if (!reducedMotion && !slides[0]?.hidePromo && !slides[0]?.videoBanner) {
     document.body.classList.add("hero-carousel--kenburns");
   }
+
+  function armBannerVideos() {
+    if (videosArmed || preferLiteMedia) return;
+    videosArmed = true;
+    syncBannerVideos();
+    if (!reducedMotion) startTimer();
+  }
+
+  function scheduleArmVideos() {
+    if (preferLiteMedia) {
+      videosArmed = true;
+      return;
+    }
+
+    const run = () => armBannerVideos();
+    const introPending = document.body.classList.contains("page-intro-active");
+
+    if (introPending) {
+      document.addEventListener("yaavs:intro-done", run, { once: true });
+      window.setTimeout(run, softNet ? 900 : 1200);
+      return;
+    }
+
+    if (softNet) {
+      const idle = window.requestIdleCallback
+        ? (cb) => window.requestIdleCallback(cb, { timeout: 1600 })
+        : (cb) => window.setTimeout(cb, 700);
+      idle(run);
+      return;
+    }
+
+    window.setTimeout(run, 120);
+  }
+
+  scheduleArmVideos();
 
   function getActiveBannerVideo() {
     const slide = slides[index];
@@ -889,11 +938,25 @@
     );
   }
 
-  if (!reducedMotion) startTimer();
+  if (!reducedMotion && preferLiteMedia) startTimer();
 
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopTimer();
-    else startTimer();
+    if (document.hidden) {
+      stopTimer();
+      tracks.forEach((track) => {
+        track.querySelectorAll(".hero-carousel__video-el").forEach((video) => {
+          try {
+            video.pause();
+          } catch (_) {
+            /* noop */
+          }
+        });
+      });
+      return;
+    }
+    if (!videosArmed || reducedMotion) return;
+    syncBannerVideos();
+    startTimer();
   });
 
   let resizeTimer = 0;
