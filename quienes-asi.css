@@ -557,6 +557,136 @@ body.theme-cluster.page-asi-somos::before {
   font-weight: 800;
 }
 
+/* Franja de operadoras */
+.asi-carriers {
+  margin: 0 auto clamp(36px, 5.5vw, 56px);
+  max-width: 52rem;
+  text-align: center;
+}
+
+.asi-carriers__kicker {
+  margin: 0 0 14px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #007a96 !important;
+  -webkit-text-fill-color: #007a96;
+}
+
+.asi-carriers__row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+}
+
+.asi-carriers__item {
+  flex: 1 1 120px;
+  max-width: 160px;
+  min-height: 78px;
+  display: grid;
+  place-items: center;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 151, 178, 0.14);
+  box-shadow: 0 10px 28px rgba(15, 36, 64, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  animation: asi-carrier-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+
+.asi-carriers__item img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(15, 36, 64, 0.08));
+}
+
+.asi-carriers__item--movistar img {
+  height: 44px;
+}
+
+.asi-carriers__item--unefon img {
+  height: 28px;
+}
+
+.asi-carriers__item--att {
+  background: linear-gradient(180deg, rgba(0, 153, 255, 0.08) 0%, rgba(255, 255, 255, 0.94) 100%);
+}
+
+.asi-carriers__item--unefon {
+  background: linear-gradient(180deg, rgba(255, 196, 0, 0.16) 0%, rgba(255, 255, 255, 0.94) 100%);
+}
+
+.asi-carriers__item--bait {
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0.06) 0%, rgba(255, 255, 255, 0.94) 100%);
+}
+
+.asi-carriers__item--movistar {
+  background: linear-gradient(180deg, rgba(0, 200, 83, 0.1) 0%, rgba(255, 255, 255, 0.94) 100%);
+}
+
+.asi-carriers__item:hover,
+.asi-carriers__item:focus-within {
+  transform: translateY(-4px) scale(1.03);
+  border-color: rgba(0, 151, 178, 0.32);
+  box-shadow: 0 16px 36px rgba(15, 36, 64, 0.14);
+}
+
+@keyframes asi-carrier-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .asi-carriers__row {
+    gap: 10px;
+  }
+
+  .asi-carriers__item {
+    flex: 1 1 calc(50% - 10px);
+    max-width: none;
+    min-height: 72px;
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .asi-carriers__item img {
+    height: 32px;
+  }
+
+  .asi-carriers__item--movistar img {
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asi-carriers__item {
+    animation: none;
+  }
+
+  .asi-carriers__item:hover,
+  .asi-carriers__item:focus-within {
+    transform: none;
+  }
+}
+
 .asi-somos__section-title {
   position: relative;
   margin: 0 0 clamp(28px, 4vw, 40px);
