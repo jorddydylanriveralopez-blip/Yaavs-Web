@@ -34,7 +34,7 @@ Tipos:
 
 App ID en [`js/yaavs-onesignal.config.js`](../js/yaavs-onesignal.config.js). Service Worker: `OneSignalSDKWorker.js` en la raíz.
 
-Los tags se actualizan desde el perfil en [`cuenta.html`](../cuenta.html) o el prompt “Activar avisos”.
+Los tags se actualizan cuando el visitante usa el prompt “Activar avisos” (preferencias locales).
 
 ## 3. Vacantes
 
