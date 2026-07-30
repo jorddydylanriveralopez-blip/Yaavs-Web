@@ -6,23 +6,14 @@
 2. Entrega `entrega/yaavs-web-YYYYMMDD.zip`.  
 3. El receptor descomprime y usa la carpeta `sitio/`.
 
-## Opción B — Hostinger (FTP / File Manager)
+## Opción B — Hostinger (recomendado)
 
-1. Entra a `sitio/`.  
-2. Sube **todo el contenido** a `public_html` (o la carpeta del dominio).  
+1. El sitio se publica desde GitHub: push a `origin/main` y Hostinger sincroniza.  
+2. O sube por FTP / File Manager el **contenido** de `sitio/` a `public_html`.  
 3. Conserva `.htaccess` si el hosting es Apache.  
-4. No subas `docs/` ni este LEEME al hosting (solo `sitio/`).
+4. No subas `docs/` ni este LEEME al hosting (solo el sitio).
 
-## Opción C — Vercel
-
-```bash
-cd sitio
-npx vercel --prod --yes
-```
-
-O desde el repo original (ya vinculado): `npx vercel --prod --yes`.
-
-## Opción D — Netlify
+## Opción C — Netlify (alternativa)
 
 Usa `netlify.toml` dentro de `sitio/` o arrastra la carpeta `sitio/` al dashboard.
 

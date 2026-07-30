@@ -143,7 +143,7 @@ async function requestTopup({ productId, phone }) {
       amount: product.amount,
       phone: msisdn,
       message:
-        "Recarga de demostración. Configura TAECEL_KEY, TAECEL_NIP y TAECEL_API_BASE en Vercel (TAECEL_DEMO=0) para operar con saldo real.",
+        "Recarga de demostración. Configura TAECEL_KEY, TAECEL_NIP y TAECEL_API_BASE en el servidor (TAECEL_DEMO=0) para operar con saldo real.",
     };
   }
 

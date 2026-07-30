@@ -986,12 +986,6 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   transition: color 0.7s ease 0.18s;
 }
 
-.page-bolsa-trabajo .jobs-catalog-section .section-tag {
-  color: var(--accent-bright);
-  text-align: left;
-  transition: color 0.7s ease 0.12s;
-}
-
 .page-bolsa-trabajo .jobs-catalog-section .jobs-catalog-group__title {
   color: var(--accent-bright, #3d7db5);
   border-bottom-color: rgba(61, 125, 181, 0.28);

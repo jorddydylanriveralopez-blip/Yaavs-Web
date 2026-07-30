@@ -40,5 +40,4 @@
 | `sw.js` | Service worker |
 | `favicon.ico` | Favicon |
 | `.htaccess` | Reglas Apache (Hostinger) |
-| `vercel.json` | Deploy Vercel |
-| `netlify.toml` | Deploy Netlify |
+| `netlify.toml` | Deploy Netlify (alternativa) |

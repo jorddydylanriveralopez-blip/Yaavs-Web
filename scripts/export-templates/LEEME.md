@@ -1,6 +1,6 @@
 # Entrega YAAVS Web
 
-Paquete listo para exportar, revisar o subir a Hostinger / Vercel / Netlify.
+Paquete listo para exportar, revisar o subir a Hostinger / Netlify.
 
 ## Contenido
 
@@ -42,6 +42,6 @@ Genera de nuevo `entrega/yaavs-web/` y un ZIP fechado en `entrega/`.
 
 ## Importante
 
-- No incluye `.env`, `.git`, `.vercel` ni `version-anterior`.
-- Para Hostinger: sube el **contenido** de `sitio/` (no la carpeta `docs/`).
-- URL de referencia: https://yaavs-web.vercel.app  
+- No incluye `.env`, `.git` ni `version-anterior`.
+- Para Hostinger: sube el **contenido** de `sitio/` (no la carpeta `docs/`), o sincroniza desde GitHub `main`.
+- URL de referencia: https://royal-blue-gear-650111.hostingersite.com  
