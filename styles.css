@@ -659,6 +659,16 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   outline-offset: 3px;
 }
 
+@media (min-width: 769px) {
+  .hero-banner.hero-banner--hit-prev {
+    cursor: w-resize;
+  }
+
+  .hero-banner.hero-banner--hit-next {
+    cursor: e-resize;
+  }
+}
+
 /* Banner video autoplay — full-bleed, ligero velo (legibilidad sin apagar el video) */
 .hero-carousel__slide--video-banner .hero-carousel__video--banner {
   position: absolute;

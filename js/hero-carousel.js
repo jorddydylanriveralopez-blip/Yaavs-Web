@@ -901,6 +901,42 @@
       }
     });
 
+    /* PC: click izquierda = anterior, click derecha = siguiente */
+    const desktopNavMq = window.matchMedia("(min-width: 769px)");
+    const sideNavIgnore =
+      "a, button, input, textarea, select, label, .hero-promo__box, .hero-carousel__dots, .hero-scroll-hint, .hero-banner__slide-link, .site-header, .social-float, .yaavs-chatbot";
+
+    function clearSideHitCursor() {
+      banner.classList.remove("hero-banner--hit-prev", "hero-banner--hit-next");
+    }
+
+    function updateSideHitCursor(clientX, target) {
+      if (!desktopNavMq.matches || (target && target.closest(sideNavIgnore))) {
+        clearSideHitCursor();
+        return;
+      }
+      const rect = banner.getBoundingClientRect();
+      const mid = rect.left + rect.width * 0.5;
+      banner.classList.toggle("hero-banner--hit-prev", clientX < mid);
+      banner.classList.toggle("hero-banner--hit-next", clientX >= mid);
+    }
+
+    banner.addEventListener("mousemove", (e) => {
+      updateSideHitCursor(e.clientX, e.target);
+    });
+    banner.addEventListener("mouseleave", clearSideHitCursor);
+
+    banner.addEventListener("click", (e) => {
+      if (!desktopNavMq.matches) return;
+      if (e.target.closest(sideNavIgnore)) return;
+      const rect = banner.getBoundingClientRect();
+      const mid = rect.left + rect.width * 0.5;
+      if (e.clientX < mid) goTo(index - 1, -1);
+      else goTo(index + 1, 1);
+      startTimer();
+      window.YaavsSonic?.play?.();
+    });
+
     /* Swipe táctil (touch events: más fiable en iOS que pointermove) */
     const SWIPE_MIN_PX = 36;
     let touchSwipe = null;
