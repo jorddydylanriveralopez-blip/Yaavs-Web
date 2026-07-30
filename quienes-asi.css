@@ -878,10 +878,16 @@ body.theme-cluster.page-asi-somos::before {
   pointer-events: none;
 }
 
+.asi-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .asi-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
   transform: none;
@@ -1103,7 +1109,7 @@ body.theme-cluster.page-asi-somos::before {
   }
 
   .asi-card--historia .asi-card__media {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
     border-radius: 18px;
     box-shadow:
       0 0 0 1px rgba(0, 188, 212, 0.28),
@@ -1662,6 +1668,12 @@ body.is-historia-open {
   overflow: hidden;
   height: clamp(140px, 22vh, 200px);
   background: #0f2440;
+}
+
+.asi-historia__hero picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .asi-historia__hero img {
@@ -2360,6 +2372,12 @@ body.is-valores-open {
   background: #0f2440;
 }
 
+.asi-valores__hero picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .asi-valores__hero img {
   display: block;
   width: 100%;
@@ -2823,6 +2841,12 @@ body.is-manifiesto-open {
   overflow: hidden;
   background: #071526;
   isolation: isolate;
+}
+
+.asi-manifiesto__hero picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .asi-manifiesto__hero img {

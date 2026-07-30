@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=8">
-  <link rel="stylesheet" href="quienes-asi.css?v=72">
+  <link rel="stylesheet" href="quienes-asi.css?v=73">
   <link rel="icon" href="assets/favicon-yaavs.png?v=3" type="image/png">
 </head>
 <body class="theme-cluster page-quienes-somos page-asi-somos" data-page="quienes-somos">
@@ -94,7 +94,10 @@
             aria-controls="asi-historia"
           >
             <figure class="asi-card__media">
-              <img src="assets/quienes-historia.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/historia-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/historia.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
               <span class="asi-card__hint">Ver línea de tiempo</span>
             </figure>
             <h3 class="asi-card__title">Nuestra historia</h3>
@@ -102,7 +105,10 @@
 
           <a class="asi-card" href="tiendas.html">
             <figure class="asi-card__media">
-              <img src="assets/hero-telecom/hero-telecom-3.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/ubicados-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/ubicados.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
             </figure>
             <h3 class="asi-card__title">¿Dónde estamos ubicados?</h3>
           </a>
@@ -115,7 +121,10 @@
             aria-controls="asi-vision-modal"
           >
             <figure class="asi-card__media">
-              <img src="assets/valores/mision.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/vision-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/vision.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
               <span class="asi-card__hint">Ver visión</span>
             </figure>
             <h3 class="asi-card__title">Visión</h3>
@@ -123,7 +132,10 @@
 
           <a class="asi-card" href="index.html#servicios-preview">
             <figure class="asi-card__media">
-              <img src="assets/hero-telecom/hero-telecom-1-smartphone.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/servicios-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/servicios.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
             </figure>
             <h3 class="asi-card__title">Nuestros servicios</h3>
           </a>
@@ -136,7 +148,10 @@
             aria-controls="asi-valores-modal"
           >
             <figure class="asi-card__media">
-              <img src="assets/valores/valores.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/valores-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/valores.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
               <span class="asi-card__hint">Ver valores</span>
             </figure>
             <h3 class="asi-card__title">Valores</h3>
@@ -150,7 +165,10 @@
             aria-controls="asi-filosofia-modal"
           >
             <figure class="asi-card__media">
-              <img src="assets/valores/filosofia.jpg?v=2" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/filosofia-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/filosofia.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
               <span class="asi-card__hint">Ver filosofía</span>
             </figure>
             <h3 class="asi-card__title">Filosofía</h3>
@@ -166,7 +184,10 @@
 
           <a class="asi-card" href="contacto.html">
             <figure class="asi-card__media">
-              <img src="assets/hero-telecom/hero-telecom-2.jpg" alt="" width="720" height="480" loading="lazy" decoding="async">
+              <picture>
+                <source media="(max-width: 768px)" srcset="assets/quienes/cards/contactanos-mobile.jpg?v=1">
+                <img src="assets/quienes/cards/contactanos.jpg?v=1" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              </picture>
             </figure>
             <h3 class="asi-card__title">Contáctanos</h3>
           </a>
@@ -200,14 +221,17 @@
       </header>
 
       <div class="asi-historia__hero">
-        <img
-          src="assets/quienes-somos.png"
-          alt=""
-          width="720"
-          height="480"
-          loading="lazy"
-          decoding="async"
-        >
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/quienes/cards/historia-mobile.jpg?v=1">
+          <img
+            src="assets/quienes/cards/historia.jpg?v=1"
+            alt=""
+            width="1920"
+            height="1080"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
         <div class="asi-historia__hero-copy">
           <p>2014 — hoy</p>
           <strong>De un primer pedido a una red nacional</strong>
@@ -383,14 +407,17 @@
       </header>
 
       <div class="asi-valores__hero">
-        <img
-          src="assets/valores/valores.jpg"
-          alt=""
-          width="1600"
-          height="900"
-          loading="lazy"
-          decoding="async"
-        >
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/quienes/cards/valores-mobile.jpg?v=1">
+          <img
+            src="assets/quienes/cards/valores.jpg?v=1"
+            alt=""
+            width="1920"
+            height="1080"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
         <div class="asi-valores__hero-copy">
           <p>Grupo Comercial YAAVS</p>
           <strong>Nuestros valores</strong>
@@ -457,14 +484,17 @@
     </button>
     <div class="asi-manifiesto__sheet">
       <div class="asi-manifiesto__hero">
-        <img
-          src="assets/valores/filosofia.jpg?v=2"
-          alt=""
-          width="1600"
-          height="900"
-          loading="lazy"
-          decoding="async"
-        >
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/quienes/cards/filosofia-mobile.jpg?v=1">
+          <img
+            src="assets/quienes/cards/filosofia.jpg?v=1"
+            alt=""
+            width="1920"
+            height="1080"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
         <div class="asi-manifiesto__hero-veil" aria-hidden="true"></div>
         <div class="asi-manifiesto__hero-copy">
           <p class="asi-manifiesto__kicker">Grupo Comercial YAAVS</p>
@@ -521,14 +551,17 @@
     </button>
     <div class="asi-manifiesto__sheet">
       <div class="asi-manifiesto__hero">
-        <img
-          src="assets/valores/mision.jpg"
-          alt=""
-          width="1600"
-          height="900"
-          loading="lazy"
-          decoding="async"
-        >
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/quienes/cards/vision-mobile.jpg?v=1">
+          <img
+            src="assets/quienes/cards/vision.jpg?v=1"
+            alt=""
+            width="1920"
+            height="1080"
+            loading="lazy"
+            decoding="async"
+          >
+        </picture>
         <div class="asi-manifiesto__hero-veil" aria-hidden="true"></div>
         <div class="asi-manifiesto__hero-copy">
           <p class="asi-manifiesto__kicker">Hacia dónde vamos</p>
