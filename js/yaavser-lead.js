@@ -60,8 +60,8 @@
       <div class="yaavser-lead__panel" role="dialog" aria-modal="true" aria-labelledby="yaavser-lead-title">
         <span class="yaavser-lead__glow" aria-hidden="true"></span>
         <button type="button" class="yaavser-lead__close" data-yaavser-lead-close aria-label="Cerrar">&times;</button>
-        <p class="yaavser-lead__kicker">Socio comercial</p>
-        <h2 class="yaavser-lead__title" id="yaavser-lead-title">Conviértete en <span>Yaavser</span></h2>
+        <p class="yaavser-lead__kicker">Contestando este formulario</p>
+        <h2 class="yaavser-lead__title" id="yaavser-lead-title">Conviértete en <span>socio comercial</span></h2>
         <p class="yaavser-lead__lead">Déjanos tus datos y un ejecutivo te contacta para afiliar tu negocio a la red YAAVS.</p>
         <form class="yaavser-lead__form" id="yaavser-lead-form" novalidate>
           <label class="yaavser-lead__field">
