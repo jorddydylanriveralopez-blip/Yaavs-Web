@@ -1912,10 +1912,10 @@ body.page-home {
 
   .page-home .hx-ops__card:not(.is-active):not(.hx-ops__card--intro) .hx-ops__card-label .hx-ops__card-logo {
     display: block;
-    width: clamp(88px, 94%, 188px);
+    width: clamp(112px, 96%, 210px);
     height: auto !important;
-    max-width: 94%;
-    max-height: 54%;
+    max-width: 96%;
+    max-height: 74%;
     margin: auto;
     object-fit: contain;
     object-position: center;
@@ -1929,14 +1929,14 @@ body.page-home {
   }
 
   .page-home .hx-ops__card:not(.is-active) .hx-ops__card--movistar .hx-ops__card-label .hx-ops__card-logo {
-    width: clamp(92px, 96%, 196px);
-    max-height: 58%;
+    width: clamp(118px, 98%, 220px);
+    max-height: 78%;
     transform: none;
   }
 
   .page-home .hx-ops__card:not(.is-active) .hx-ops__card--unefon .hx-ops__card-label .hx-ops__card-logo {
-    width: clamp(118px, 98%, 220px);
-    max-height: 72%;
+    width: clamp(136px, 98%, 240px);
+    max-height: 86%;
     transform: none;
     filter: none;
   }
