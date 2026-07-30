@@ -366,11 +366,12 @@ body.page-intro-active {
 
 .page-intro__tagline {
   margin-top: 18px;
-  font-size: 0.64rem;
+  max-width: min(90vw, 28rem);
+  font-size: clamp(0.62rem, 1.6vw, 0.72rem);
   font-weight: 700;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(232, 244, 252, 0.72);
+  color: rgba(232, 244, 252, 0.78);
   opacity: 0;
   transform: translateY(10px);
 }
