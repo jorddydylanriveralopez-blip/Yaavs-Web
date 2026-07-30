@@ -1317,7 +1317,7 @@
       /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=222",
-        "js/home-experience.js?v=224",
+        "js/home-experience.js?v=225",
       ], perf.soft ? "180px 0px" : "320px 0px");
 
       const deckHashes = [
@@ -1332,7 +1332,7 @@
       if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=222",
-          "js/home-experience.js?v=224",
+          "js/home-experience.js?v=225",
         ]);
       }
 

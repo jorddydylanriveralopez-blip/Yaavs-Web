@@ -1972,7 +1972,14 @@
       if (!cols?.length) return;
       cols.forEach((col) => col.replaceChildren());
       const heights = cols.map(() => 0);
+      const midCol = cols.length >= 3 ? 1 : 0;
       items.forEach((item) => {
+        /* Soporte técnico: centrado bajo Pospago (columna mid) */
+        if (item.dataset.deckSvc === "soporte-tecnico" && cols.length >= 3) {
+          cols[midCol].appendChild(item);
+          heights[midCol] += masonryItemWeight(item);
+          return;
+        }
         let target = 0;
         for (let i = 1; i < heights.length; i += 1) {
           if (heights[i] < heights[target]) target = i;
