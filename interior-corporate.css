@@ -941,10 +941,22 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   text-align: left;
 }
 
+.page-bolsa-trabajo .jobs-catalog-section .jobs-section-head {
+  width: 100%;
+  max-width: none;
+  text-align: center;
+}
+
 .page-bolsa-trabajo .jobs-catalog-section .jobs-section-title {
   color: var(--ink);
   transition: color 0.7s ease 0.15s;
-  text-align: left;
+  text-align: center;
+}
+
+.page-bolsa-trabajo .jobs-catalog-section .section-tag {
+  color: var(--accent-bright);
+  text-align: center;
+  transition: color 0.7s ease 0.12s;
 }
 
 .page-bolsa-trabajo .jobs-catalog-section .jobs-section-title--hero {
@@ -953,7 +965,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.15;
-  text-align: left;
+  text-align: center;
   text-shadow: 0 2px 24px rgba(0, 188, 212, 0.35);
 }
 
