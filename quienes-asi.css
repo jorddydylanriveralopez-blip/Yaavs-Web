@@ -606,7 +606,7 @@ body.theme-cluster.page-asi-somos::before {
   min-height: 78px;
   display: grid;
   place-items: center;
-  padding: 14px 16px;
+  padding: 0;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(0, 151, 178, 0.14);
@@ -616,6 +616,22 @@ body.theme-cluster.page-asi-somos::before {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   animation: asi-carrier-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+  overflow: hidden;
+}
+
+.asi-carriers__link {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 78px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.asi-carriers__link:focus-visible {
+  box-shadow: inset 0 0 0 2px #0097b2;
 }
 
 .asi-carriers__item img {
@@ -685,8 +701,13 @@ body.theme-cluster.page-asi-somos::before {
     flex: 1 1 calc(50% - 10px);
     max-width: none;
     min-height: 72px;
-    padding: 12px 14px;
+    padding: 0;
     border-radius: 16px;
+  }
+
+  .asi-carriers__link {
+    min-height: 72px;
+    padding: 12px 14px;
   }
 
   .asi-carriers__item img {
