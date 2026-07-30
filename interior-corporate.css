@@ -98,7 +98,22 @@ body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--on-light
 
 body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .bento-dot,
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .bento-dot {
-  background: var(--ink);
+  background: var(--ink, #0f2440) !important;
+}
+
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento {
+  background: rgba(15, 36, 64, 0.06) !important;
+  border: 1px solid rgba(15, 36, 64, 0.28) !important;
+}
+
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento:hover,
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento:focus-visible {
+  background: rgba(0, 151, 178, 0.1) !important;
+  border-color: rgba(0, 151, 178, 0.45) !important;
+}
+
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
+  background: var(--accent, #0097b2) !important;
 }
 
 /* Menú hint — hereda pill corporativo global */

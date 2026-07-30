@@ -1325,10 +1325,19 @@ a:hover { opacity: 0.65; }
 .site-header.is-scrolled .bento-dot {
   width: 3.5px;
   height: 3.5px;
+  background: var(--ink, #0f2440);
+}
+
+/* Home: header oscuro al scroll → puntos claros */
+.page-home .site-header.is-scrolled .bento-dot {
   background: #fff !important;
 }
 
 .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
+  background: var(--accent, #0097b2);
+}
+
+.page-home .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
   background: #5ce8f7 !important;
 }
 
@@ -1643,8 +1652,8 @@ body.page-intro-active .nav-menu-hint {
   gap: 3.5px;
   grid-template-columns: repeat(3, 3.5px);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  background: rgba(15, 36, 64, 0.06) !important;
+  border: 1px solid rgba(15, 36, 64, 0.28) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -1652,9 +1661,21 @@ body.page-intro-active .nav-menu-hint {
 
 .site-header.is-scrolled .nav-bento:hover,
 .site-header.is-scrolled .nav-bento:focus-visible {
+  background: rgba(0, 151, 178, 0.1) !important;
+  border-color: rgba(0, 151, 178, 0.45) !important;
+  transform: none;
+}
+
+/* Home: header oscuro → chip claro */
+.page-home .site-header.is-scrolled .nav-bento {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+}
+
+.page-home .site-header.is-scrolled .nav-bento:hover,
+.page-home .site-header.is-scrolled .nav-bento:focus-visible {
   background: rgba(255, 255, 255, 0.14) !important;
   border-color: rgba(255, 255, 255, 0.62) !important;
-  transform: none;
 }
 
 .site-header.is-scrolled .nav-bento::before {
@@ -8271,11 +8292,16 @@ video {
   }
 
   .site-header.is-scrolled .nav-bento {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.42) !important;
+    background: rgba(15, 36, 64, 0.06) !important;
+    border: 1px solid rgba(15, 36, 64, 0.28) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
+  }
+
+  .page-home .site-header.is-scrolled .nav-bento {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.42) !important;
   }
 
   .bento-dot {
@@ -8283,6 +8309,10 @@ video {
   }
 
   .site-header.is-scrolled .bento-dot {
+    background: var(--ink, #0f2440) !important;
+  }
+
+  .page-home .site-header.is-scrolled .bento-dot {
     background: #fff !important;
   }
 }
