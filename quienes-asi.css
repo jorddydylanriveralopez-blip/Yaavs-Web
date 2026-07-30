@@ -616,6 +616,10 @@ body.theme-cluster.page-asi-somos::before {
   height: 44px;
 }
 
+.asi-carriers__item--bait img {
+  height: 48px;
+}
+
 .asi-carriers__item--unefon img {
   height: 28px;
 }
@@ -673,6 +677,10 @@ body.theme-cluster.page-asi-somos::before {
 
   .asi-carriers__item--movistar img {
     height: 38px;
+  }
+
+  .asi-carriers__item--bait img {
+    height: 42px;
   }
 }
 
