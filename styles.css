@@ -5141,8 +5141,21 @@ body.theme-cluster #contenido > .section {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
+  width: min(calc(100% - 2 * var(--pad-x)), 36rem);
+  max-width: none;
+  margin-inline: 0;
+  margin-left: max(var(--pad-x), clamp(16px, 3vw, 40px));
+  margin-right: auto;
   min-height: clamp(420px, 72vh, 720px);
   padding-bottom: clamp(40px, 7vw, 72px);
+  text-align: left;
+}
+
+.bolsa-hero-banner--tienda .bolsa-hero-banner__title,
+.bolsa-hero-banner--tienda .bolsa-hero-banner__lead {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .bolsa-hero-banner__title {
