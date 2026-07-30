@@ -49,6 +49,38 @@ body.theme-cluster.page-asi-somos::before {
   padding: 0 0 72px;
 }
 
+/* Destellos / partículas sobre fondo claro */
+.page-asi-somos .page-sparkles {
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.page-asi-somos .page-sparkles::before,
+.page-asi-somos .page-sparkles::after {
+  opacity: 0.7;
+}
+
+.page-asi-somos .page-sparkles::before {
+  background-image:
+    radial-gradient(circle, rgba(0, 151, 178, 0.95) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(0, 48, 135, 0.75) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 2px);
+}
+
+.page-asi-somos .page-sparkles::after {
+  background-image:
+    radial-gradient(circle, rgba(0, 188, 212, 0.9) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(37, 99, 181, 0.85) 0 1.5px, transparent 3px);
+}
+
+.page-asi-somos .page-sparkle {
+  background: #fff;
+  box-shadow:
+    0 0 10px 2px rgba(0, 151, 178, 0.7),
+    0 0 18px 4px rgba(0, 48, 135, 0.28);
+}
+
 /* Ambiente: foto lavada + grid + glows (sin vaciar el blanco) */
 .asi-ambient {
   position: absolute;
