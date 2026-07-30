@@ -1,14 +1,10 @@
 /**
  * OneSignal Web Push — configuración YAAVS
- *
- * 1. Crea una app en https://onesignal.com (plataforma Web)
- * 2. Pega tu App ID abajo
- * 3. En OneSignal → Settings → Platforms → Web → Site URL = tu dominio Hostinger
- * 4. Service Worker path: / (usamos sw.js en la raíz; ver docs/alertas-yaavs.md)
- * 5. Deja appId vacío "" para desactivar push hasta tener la cuenta lista
+ * Dashboard: Web de YAAVS
+ * No pegues el snippet HTML en las páginas: pwa.js ya carga el SDK.
  */
 window.YAAVS_ONESIGNAL = {
-  appId: "",
-  safariWebId: "",
+  appId: "12020da5-a7c3-4f88-a2a9-4e1e0aac6bcd",
+  safariWebId: "web.onesignal.auto.1150f274-be67-4412-813c-e6f1ba6adf3e",
   allowLocalhostAsSecureOrigin: false,
 };

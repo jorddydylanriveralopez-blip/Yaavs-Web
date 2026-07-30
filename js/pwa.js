@@ -224,7 +224,7 @@
       });
     };
 
-    loadScript("js/yaavs-onesignal.config.js?v=1")
+    loadScript("js/yaavs-onesignal.config.js?v=2")
       .then(boot)
       .catch(() => {});
   }
