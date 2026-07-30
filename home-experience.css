@@ -1793,7 +1793,7 @@ body.has-hx-ops-picker {
     position: relative;
     aspect-ratio: 1 / 0.9;
     height: auto !important;
-    min-height: clamp(108px, 28vw, 132px) !important;
+    min-height: clamp(124px, 32vw, 152px) !important;
     border-radius: clamp(12px, 3vw, 16px) !important;
     box-shadow: 0 10px 26px rgba(15, 36, 64, 0.16);
     cursor: pointer;
@@ -1849,10 +1849,10 @@ body.has-hx-ops-picker {
 
   .hx-ops__grid .hx-ops__card .hx-ops__card-logo {
     display: block;
-    width: clamp(92px, 58%, 148px) !important;
+    width: clamp(118px, 78%, 188px) !important;
     height: auto !important;
-    max-width: 82%;
-    max-height: 58%;
+    max-width: 90%;
+    max-height: 72%;
     margin: 0;
     object-fit: contain;
     object-position: center;
@@ -1861,19 +1861,19 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__grid .hx-ops__card--movistar .hx-ops__card-logo {
-    width: clamp(96px, 62%, 156px) !important;
-    max-height: 62%;
+    width: clamp(122px, 82%, 196px) !important;
+    max-height: 76%;
   }
 
   .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    width: clamp(118px, 78%, 196px) !important;
-    max-height: 70%;
+    width: clamp(138px, 88%, 220px) !important;
+    max-height: 82%;
     filter: none;
   }
 
   .hx-ops__grid .hx-ops__card--bait .hx-ops__card-logo {
-    width: clamp(100px, 64%, 160px) !important;
-    max-height: 48%;
+    width: clamp(124px, 84%, 200px) !important;
+    max-height: 62%;
   }
 
   .hx-ops__grid .hx-ops__card-name {
@@ -2106,24 +2106,24 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__grid .hx-ops__card-logo {
-    width: clamp(100px, 68%, 168px) !important;
-    max-width: 86%;
-    max-height: 62%;
+    width: clamp(126px, 84%, 200px) !important;
+    max-width: 92%;
+    max-height: 76%;
   }
 
   .hx-ops__grid .hx-ops__card--movistar .hx-ops__card-logo {
-    width: clamp(104px, 72%, 176px) !important;
-    max-height: 66%;
+    width: clamp(130px, 88%, 210px) !important;
+    max-height: 80%;
   }
 
   .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    width: clamp(124px, 82%, 200px) !important;
-    max-height: 72%;
+    width: clamp(146px, 92%, 230px) !important;
+    max-height: 86%;
   }
 
   .hx-ops__grid .hx-ops__card--bait .hx-ops__card-logo {
-    width: clamp(108px, 74%, 180px) !important;
-    max-height: 52%;
+    width: clamp(132px, 88%, 210px) !important;
+    max-height: 66%;
   }
 
   .hx-ops__grid .hx-ops__card-name {
