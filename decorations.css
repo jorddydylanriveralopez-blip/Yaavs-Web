@@ -2054,29 +2054,31 @@ body.yaavs-game-open {
   position: absolute;
   inset: 0;
   background-repeat: no-repeat;
-  opacity: 0.55;
+  opacity: 0.72;
 }
 
 .page-sparkles::before,
 .jobs-apply-sparkles::before {
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(90, 156, 196, 0.9) 0 1.5px, transparent 3px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.75) 0 1px, transparent 2px);
-  background-size: 280px 280px, 420px 420px, 360px 360px;
-  background-position: 12% 18%, 78% 24%, 45% 72%;
-  animation: page-sparkle-drift 18s ease-in-out infinite alternate;
+    radial-gradient(circle, rgba(255, 255, 255, 0.98) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(0, 188, 212, 0.95) 0 2px, transparent 4px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 1px, transparent 2.5px),
+    radial-gradient(circle, rgba(0, 151, 178, 0.8) 0 1.5px, transparent 3.5px);
+  background-size: 220px 220px, 340px 340px, 280px 280px, 400px 400px;
+  background-position: 12% 18%, 78% 24%, 45% 72%, 30% 50%;
+  animation: page-sparkle-drift 14s ease-in-out infinite alternate;
 }
 
 .page-sparkles::after,
 .jobs-apply-sparkles::after {
   background-image:
-    radial-gradient(circle, rgba(90, 156, 196, 0.85) 0 1px, transparent 2.5px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.8) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(61, 125, 181, 0.9) 0 1.5px, transparent 3px);
-  background-size: 320px 320px, 240px 240px, 400px 400px;
-  background-position: 88% 62%, 22% 48%, 62% 12%;
-  animation: page-sparkle-twinkle 4.5s ease-in-out infinite;
+    radial-gradient(circle, rgba(0, 212, 238, 0.9) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 2.5px),
+    radial-gradient(circle, rgba(61, 125, 181, 0.95) 0 2px, transparent 4px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px);
+  background-size: 260px 260px, 200px 200px, 360px 360px, 300px 300px;
+  background-position: 88% 62%, 22% 48%, 62% 12%, 50% 80%;
+  animation: page-sparkle-twinkle 3.2s ease-in-out infinite;
 }
 
 .page-sparkle {
@@ -2085,26 +2087,75 @@ body.yaavs-game-open {
   height: var(--sz, 3px);
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 8px 2px rgba(90, 156, 196, 0.65);
+  box-shadow: 0 0 10px 3px rgba(0, 188, 212, 0.75);
   opacity: 0;
-  animation: page-sparkle-pulse var(--dur, 3.2s) ease-in-out infinite;
+  animation: page-sparkle-pulse var(--dur, 2.6s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.page-sparkle--glow {
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, rgba(0, 212, 238, 0.85) 40%, transparent 72%);
+  box-shadow:
+    0 0 14px 4px rgba(0, 212, 238, 0.8),
+    0 0 28px 8px rgba(0, 151, 178, 0.35);
+  animation-name: page-sparkle-pulse-glow;
+}
+
+.page-sparkle--star {
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: translate(-50%, -50%);
+}
+
+.page-sparkle--star::before,
+.page-sparkle--star::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(0, 212, 238, 0.85);
+}
+
+.page-sparkle--star::before {
+  width: 2px;
+  height: var(--sz, 6px);
+  transform: translate(-50%, -50%);
+}
+
+.page-sparkle--star::after {
+  width: var(--sz, 6px);
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.page-sparkles--boost {
+  opacity: 1;
 }
 
 @keyframes page-sparkle-drift {
-  0% { transform: translateY(0); opacity: 0.35; }
-  100% { transform: translateY(-12px); opacity: 0.65; }
+  0% { transform: translate3d(0, 0, 0); opacity: 0.45; }
+  100% { transform: translate3d(0, -18px, 0); opacity: 0.9; }
 }
 
 @keyframes page-sparkle-twinkle {
-  0%, 100% { opacity: 0.25; }
-  50% { opacity: 0.7; }
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.95; }
 }
 
 @keyframes page-sparkle-pulse {
-  0%, 100% { opacity: 0; transform: scale(0.6); }
-  45% { opacity: 0.95; transform: scale(1); }
-  70% { opacity: 0.15; transform: scale(0.8); }
+  0%, 100% { opacity: 0; transform: scale(0.45); }
+  40% { opacity: 1; transform: scale(1.15); }
+  70% { opacity: 0.25; transform: scale(0.75); }
+}
+
+@keyframes page-sparkle-pulse-glow {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  35% { opacity: 0.95; transform: scale(1.25); }
+  65% { opacity: 0.35; transform: scale(0.85); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2114,7 +2165,7 @@ body.yaavs-game-open {
   .jobs-apply-sparkles::after,
   .page-sparkle {
     animation: none;
-    opacity: 0.35;
+    opacity: 0.4;
   }
 }
 
