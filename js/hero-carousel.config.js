@@ -56,7 +56,7 @@ window.YAAVS_HERO_CAROUSEL = {
       promo: {
         title: "Conoce",
         accent: "nuestros servicios",
-        lead: "Elige un servicio y te llevamos al sitio correspondiente.",
+        lead: "",
         cta: "Ver servicios",
         href: "#servicios-preview",
       },
