@@ -42,7 +42,7 @@
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(() => {});
+      navigator.serviceWorker.register("./OneSignalSDKWorker.js", { scope: "./" }).catch(() => {});
     });
   }
 
@@ -213,7 +213,7 @@
           await OneSignal.init({
             appId: cfg.appId,
             safari_web_id: cfg.safariWebId || undefined,
-            serviceWorkerPath: "sw.js",
+            serviceWorkerPath: "OneSignalSDKWorker.js",
             serviceWorkerParam: { scope: "./" },
             allowLocalhostAsSecureOrigin: !!cfg.allowLocalhostAsSecureOrigin,
             notifyButton: { enable: false },

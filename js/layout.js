@@ -440,7 +440,7 @@
   function initPwa() {
     if (document.querySelector("script[data-yaavs-pwa]")) return;
     const s = document.createElement("script");
-    s.src = "js/pwa.js?v=3";
+    s.src = "js/pwa.js?v=5";
     s.defer = true;
     s.dataset.yaavsPwa = "true";
     document.body.appendChild(s);
