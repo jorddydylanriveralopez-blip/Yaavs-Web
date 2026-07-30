@@ -565,13 +565,28 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-carriers__kicker {
-  margin: 0 0 14px;
-  font-size: 0.68rem;
+  position: relative;
+  display: inline-block;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   font-weight: 800;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #007a96 !important;
-  -webkit-text-fill-color: #007a96;
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
+}
+
+.asi-carriers__kicker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2.4em;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00bcd4 0%, #0097b2 55%, #003087 100%);
+  transform: translateX(-50%);
 }
 
 .asi-carriers__row {

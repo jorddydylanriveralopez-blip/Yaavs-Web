@@ -6520,13 +6520,28 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 .page-home .hx-somos__carriers-kicker {
-  margin: 0 0 12px;
-  font-size: 0.62rem;
+  position: relative;
+  display: inline-block;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(10, 39, 68, 0.55) !important;
-  -webkit-text-fill-color: rgba(10, 39, 68, 0.55);
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087;
+}
+
+.page-home .hx-somos__carriers-kicker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2.4em;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00bcd4 0%, #0097b2 55%, #003087 100%);
+  transform: translateX(-50%);
 }
 
 .page-home .hx-somos__carriers-row {
