@@ -1,6 +1,6 @@
 /**
- * Intro YAAVS — logo animado de entrada, luego la home normal.
- * Se puede saltar con el botón o clic. Respeta reduced-motion / save-data.
+ * Intro YAAVS — logo animado solo la primera vez que entran.
+ * Luego se guarda en localStorage y no vuelve a mostrarse.
  */
 (function () {
   if (!document.body.classList.contains("page-home")) return;
@@ -8,15 +8,25 @@
   const intro = document.getElementById("page-intro");
   if (!intro) return;
 
+  const INTRO_KEY = "yaavs-intro-seen";
   const perf = window.YAAVS_PERF || {};
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const skipEarly = document.documentElement.classList.contains("yaavs-skip-intro");
+
+  function markIntroSeen() {
+    try {
+      localStorage.setItem(INTRO_KEY, "1");
+    } catch (_) {
+      /* noop */
+    }
+  }
 
   let finished = false;
 
   function finishIntro() {
     if (finished) return;
     finished = true;
+    markIntroSeen();
     document.dispatchEvent(new CustomEvent("yaavs:intro-start"));
     document.body.classList.remove("page-intro-active");
     document.body.classList.add("page-intro-done");

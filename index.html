@@ -25,11 +25,12 @@
       var soft = lite || et === "3g" || (mobile && mem <= 4);
       window.YAAVS_PERF = { lite: lite, soft: soft, saveData: save, effectiveType: et, mobile: mobile };
       document.documentElement.dataset.yaavsPerf = lite ? "lite" : soft ? "soft" : "full";
-      /* Solo saltar intro por accesibilidad / ahorro de datos extremo */
+      /* Solo saltar intro por accesibilidad / ahorro / ya vista una vez */
       try {
         var skipIntro =
           save ||
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          localStorage.getItem("yaavs-intro-seen") === "1";
         if (skipIntro) document.documentElement.classList.add("yaavs-skip-intro");
       } catch (e) {}
     })();
@@ -1222,8 +1223,8 @@
     </div>
   </dialog>
 
-  <script src="js/page-intro.js?v=11" defer></script>
-  <script src="js/promo-popup.js?v=1" defer></script>
+  <script src="js/page-intro.js?v=12" defer></script>
+  <script src="js/promo-popup.js?v=2" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const frame = document.querySelector("[data-tecamac-player]");

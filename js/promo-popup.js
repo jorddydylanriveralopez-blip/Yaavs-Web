@@ -1,5 +1,5 @@
 /**
- * Promo popup de entrada (home) — se muestra una vez por sesión tras el intro.
+ * Promo popup de entrada (home) — se muestra en cada carga/recarga tras el intro.
  */
 (function () {
   if (!document.body.classList.contains("page-home")) return;
@@ -7,34 +7,17 @@
   const dialog = document.getElementById("yaavs-promo-popup");
   if (!dialog) return;
 
-  const STORAGE_KEY = "yaavs-promo-p3";
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let opened = false;
   let closing = false;
-
-  function alreadySeen() {
-    try {
-      return sessionStorage.getItem(STORAGE_KEY) === "1";
-    } catch (_) {
-      return false;
-    }
-  }
-
-  function markSeen() {
-    try {
-      sessionStorage.setItem(STORAGE_KEY, "1");
-    } catch (_) {
-      /* noop */
-    }
-  }
 
   function lockScroll(lock) {
     document.body.classList.toggle("is-promo-open", lock);
   }
 
   function openPromo() {
-    if (opened || alreadySeen()) return;
+    if (opened) return;
     opened = true;
     lockScroll(true);
     dialog.classList.add("is-open");
@@ -56,7 +39,6 @@
   function closePromo() {
     if (!opened || closing) return;
     closing = true;
-    markSeen();
     dialog.classList.add("is-closing");
     dialog.classList.remove("is-open");
 
@@ -80,7 +62,6 @@
   }
 
   function scheduleOpen() {
-    if (alreadySeen()) return;
     const delay = reducedMotion ? 120 : 480;
     window.setTimeout(openPromo, delay);
   }
