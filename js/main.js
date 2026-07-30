@@ -187,9 +187,40 @@
     });
   }
 
+  function initContactWhatsApp() {
+    const form = document.getElementById("contact-form");
+    const btn = document.getElementById("contact-whatsapp-btn");
+    if (!form || !btn) return;
+
+    const base = "https://wa.me/525522331210?text=";
+
+    function buildMessage() {
+      const data = new FormData(form);
+      const nombre = String(data.get("nombre") || "").trim();
+      const asunto = String(data.get("asunto") || "").trim();
+      const mensaje = String(data.get("mensaje") || "").trim();
+      const ubicacion = String(data.get("ubicacion") || "").trim();
+      const parts = ["Hola, quiero información de YAAVS."];
+      if (nombre) parts.push(`Me llamo ${nombre}.`);
+      if (asunto) parts.push(`Asunto: ${asunto}.`);
+      if (ubicacion) parts.push(`Ubicación: ${ubicacion}.`);
+      if (mensaje) parts.push(mensaje);
+      return parts.join(" ");
+    }
+
+    function syncHref() {
+      btn.href = base + encodeURIComponent(buildMessage());
+    }
+
+    form.addEventListener("input", syncHref);
+    form.addEventListener("change", syncHref);
+    syncHref();
+  }
+
   function boot() {
     initForms();
     initJobApply();
+    initContactWhatsApp();
     initActivationOperatorContext();
     initReveal();
     initHeroParallax();

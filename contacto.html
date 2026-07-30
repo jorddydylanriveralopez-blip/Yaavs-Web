@@ -32,12 +32,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=211">
+  <link rel="stylesheet" href="styles.css?v=212">
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css?v=7">
   <link rel="stylesheet" href="theme-day-night.css?v=4">
   <link rel="stylesheet" href="interior-corporate.css?v=9">
-  <link rel="stylesheet" href="interior-light.css?v=7">
+  <link rel="stylesheet" href="interior-light.css?v=8">
   <link rel="icon" href="assets/favicon-yaavs.png?v=3" type="image/png">
 </head>
 <body class="theme-cluster page-contacto" data-page="contacto">
@@ -103,7 +103,13 @@
           </li>
           <li class="glass-card contact-card">
             <span>WhatsApp</span>
-            <a href="https://wa.me/525522331210" target="_blank" rel="noopener noreferrer">Enviar mensaje</a>
+            <a
+              href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-yaavs-track="whatsapp_click"
+              data-yaavs-track-label="contacto_card_whatsapp"
+            >Enviar mensaje</a>
           </li>
         </ul>
         <form class="glass-card contact-form contact-form--full" id="contact-form" novalidate>
@@ -168,7 +174,18 @@
             <span>He leído el <a href="aviso-privacidad.html">aviso de privacidad</a> y autorizo el uso de mis datos para atender mi solicitud.</span>
           </label>
 
-          <button type="submit" class="btn btn--primary btn--lg">Enviar mensaje</button>
+          <div class="contact-form__actions">
+            <button type="submit" class="btn btn--primary btn--lg">Enviar mensaje</button>
+            <a
+              href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS"
+              class="btn btn--line btn--lg"
+              id="contact-whatsapp-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-yaavs-track="whatsapp_click"
+              data-yaavs-track-label="contacto_form_whatsapp"
+            >Continuar por WhatsApp</a>
+          </div>
           <p class="form-hint contact-form__note">
             Al enviar se abrirá tu cliente de correo con los datos listos. También puedes escribirnos directo a
             <a href="mailto:Hola@yaavs.com.mx">Hola@yaavs.com.mx</a>.
@@ -180,8 +197,8 @@
   </main>
 
   <div id="site-footer"></div>
-  <script src="js/layout.js?v=33" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/layout.js?v=34" defer></script>
+  <script src="js/main.js?v=2" defer></script>
   <script src="js/interior-banners.config.js"></script>
   <script src="js/interior-banner.js"></script>
 </body>

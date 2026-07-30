@@ -1334,6 +1334,14 @@ body.theme-cluster.page-quienes-somos .valores-carousel .valores-carousel__stat-
   line-height: 1.5;
 }
 
+.page-contacto .contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
 .page-contacto .contact-form__note a {
   color: #0097b2;
 }

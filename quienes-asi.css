@@ -539,6 +539,18 @@ body.theme-cluster.page-asi-somos::before {
   text-shadow: none;
 }
 
+.asi-somos__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.asi-somos__cta .btn {
+  min-height: 44px;
+}
+
 .asi-somos__lead {
   margin: 0 auto;
   max-width: 34em;

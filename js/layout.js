@@ -355,10 +355,10 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=20", headerMount),
-    loadPartial("partials/footer.html?v=16", footerMount),
+    loadPartial("partials/header.html?v=21", headerMount),
+    loadPartial("partials/footer.html?v=17", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
-    loadPartial("partials/page-cta.html", ctaMount),
+    loadPartial("partials/page-cta.html?v=2", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
     mountNavOverlay();
@@ -385,6 +385,7 @@
       await mountChatbot();
       initSocialFloatScroll();
       initCookies();
+      initAnalytics();
       initPwa();
       initAlerts();
       if (!window.YAAVS_PERF?.lite) initYaavsGame();
@@ -434,6 +435,15 @@
     s.src = "js/cookies.js?v=1";
     s.defer = true;
     s.dataset.yaavsCookies = "true";
+    document.body.appendChild(s);
+  }
+
+  function initAnalytics() {
+    if (document.querySelector("script[data-yaavs-analytics]")) return;
+    const s = document.createElement("script");
+    s.src = "js/yaavs-analytics.js?v=1";
+    s.defer = true;
+    s.dataset.yaavsAnalytics = "true";
     document.body.appendChild(s);
   }
 

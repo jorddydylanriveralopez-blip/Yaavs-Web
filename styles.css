@@ -7320,7 +7320,16 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.65;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
+}
+
+.page-cta-band__proof {
+  margin: 0 0 28px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink, #0f2440);
+  opacity: 0.78;
 }
 
 .page-cta-band__actions {
