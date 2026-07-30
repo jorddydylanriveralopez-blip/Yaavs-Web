@@ -5158,8 +5158,14 @@ body.theme-cluster #contenido > .section {
   margin-right: auto;
 }
 
+.bolsa-hero-banner--tienda .bolsa-hero-banner__title {
+  max-width: none;
+  width: max-content;
+  max-width: min(100%, 14em);
+}
+
 .bolsa-hero-banner__title {
-  max-width: 16ch;
+  max-width: 12em;
   margin-bottom: 16px;
   font-size: clamp(1.85rem, 5.2vw, 3.25rem);
   font-weight: 700;
@@ -5167,6 +5173,10 @@ body.theme-cluster #contenido > .section {
   text-transform: none;
   line-height: 1.08;
   color: #fff;
+}
+
+.bolsa-hero-banner__title .bolsa-hero-banner__yaavs {
+  display: block;
 }
 
 .bolsa-hero-banner__yaavs,
