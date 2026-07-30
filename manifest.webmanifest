@@ -40,15 +40,21 @@
       "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Contacto",
-      "short_name": "Contacto",
-      "url": "./contacto.html?source=pwa",
+      "name": "Noticias Yaavs",
+      "short_name": "Noticias",
+      "url": "./avisos.html?source=pwa",
       "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Conoce nuestras tiendas",
-      "short_name": "Tiendas",
-      "url": "./tiendas.html?source=pwa",
+      "name": "Únete al equipo",
+      "short_name": "Vacantes",
+      "url": "./bolsa-trabajo.html?source=pwa",
+      "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "url": "./contacto.html?source=pwa",
       "icons": [{ "src": "assets/pwa/icon-192.png", "sizes": "192x192" }]
     }
   ]

@@ -355,7 +355,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=17", headerMount),
+    loadPartial("partials/header.html?v=18", headerMount),
     loadPartial("partials/footer.html?v=16", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html", ctaMount),
@@ -386,6 +386,7 @@
       initSocialFloatScroll();
       initCookies();
       initPwa();
+      initAlerts();
       if (!window.YAAVS_PERF?.lite) initYaavsGame();
     });
 
@@ -439,9 +440,18 @@
   function initPwa() {
     if (document.querySelector("script[data-yaavs-pwa]")) return;
     const s = document.createElement("script");
-    s.src = "js/pwa.js?v=2";
+    s.src = "js/pwa.js?v=3";
     s.defer = true;
     s.dataset.yaavsPwa = "true";
+    document.body.appendChild(s);
+  }
+
+  function initAlerts() {
+    if (document.querySelector("script[data-yaavs-alerts]")) return;
+    const s = document.createElement("script");
+    s.src = "js/yaavs-alerts.js?v=1";
+    s.defer = true;
+    s.dataset.yaavsAlerts = "true";
     document.body.appendChild(s);
   }
 

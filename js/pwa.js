@@ -5,7 +5,7 @@
     if (!document.querySelector('link[rel="manifest"]')) {
       const manifest = document.createElement("link");
       manifest.rel = "manifest";
-      manifest.href = "manifest.webmanifest?v=1";
+      manifest.href = "manifest.webmanifest?v=2";
       document.head.appendChild(manifest);
     }
 
@@ -183,7 +183,54 @@
     });
   }
 
+  function loadScript(src, attrs) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        resolve();
+        return;
+      }
+      const s = document.createElement("script");
+      s.src = src;
+      s.defer = true;
+      if (attrs) Object.entries(attrs).forEach(([k, v]) => s.setAttribute(k, v));
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error(src));
+      document.head.appendChild(s);
+    });
+  }
+
+  function initOneSignal() {
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+    const boot = async () => {
+      const cfg = window.YAAVS_ONESIGNAL || {};
+      if (!cfg.appId) return;
+
+      await loadScript("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js");
+
+      window.OneSignalDeferred.push(async (OneSignal) => {
+        try {
+          await OneSignal.init({
+            appId: cfg.appId,
+            safari_web_id: cfg.safariWebId || undefined,
+            serviceWorkerPath: "sw.js",
+            serviceWorkerParam: { scope: "./" },
+            allowLocalhostAsSecureOrigin: !!cfg.allowLocalhostAsSecureOrigin,
+            notifyButton: { enable: false },
+          });
+        } catch (_) {
+          /* noop */
+        }
+      });
+    };
+
+    loadScript("js/yaavs-onesignal.config.js?v=1")
+      .then(boot)
+      .catch(() => {});
+  }
+
   injectHeadTags();
   registerServiceWorker();
   setupInstallPrompt();
+  initOneSignal();
 })();
