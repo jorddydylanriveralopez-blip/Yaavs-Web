@@ -13,10 +13,18 @@
   transition: opacity 0.28s ease, visibility 0.28s ease;
 }
 
+.yaavser-lead[hidden] {
+  display: none !important;
+}
+
 .yaavser-lead.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+.yaavser-lead.is-open[hidden] {
+  display: grid !important;
 }
 
 .yaavser-lead__backdrop {

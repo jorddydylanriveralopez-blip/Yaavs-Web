@@ -231,6 +231,9 @@
     const t = e.target;
     if (!isLeadTrigger(t)) return;
     e.preventDefault();
+    if (location.hash === "#yaavser-lead") {
+      history.replaceState(null, "", location.pathname + location.search);
+    }
     open();
   });
 
@@ -238,8 +241,9 @@
     if (e.key === "Escape" && root?.classList.contains("is-open")) close();
   });
 
+  /* Nunca autoabrir por hash: solo con clic en el CTA */
   if (location.hash === "#yaavser-lead") {
-    window.setTimeout(open, 200);
+    history.replaceState(null, "", location.pathname + location.search);
   }
 
   window.YaavsYaavserLead = { open, close };
