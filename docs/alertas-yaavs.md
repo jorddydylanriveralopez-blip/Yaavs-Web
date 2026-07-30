@@ -1,10 +1,10 @@
 # Alertas YAAVS — cómo publicar
 
-Cuando subas un blog, una promo o una vacante, haz **dos cosas**: el feed in-app y el push al teléfono.
+Los avisos llegan al **teléfono** (OneSignal). Ya no hay campanita in-app; el JSON sirve como bitácora / copy de referencia al crear el push.
 
-## 1. Feed in-app (campanita)
+## 1. Registro de aviso (opcional)
 
-Edita [`data/yaavs-alerts.json`](../data/yaavs-alerts.json) y agrega un item **arriba** de la lista (o con `createdAt` reciente):
+Edita [`data/yaavs-alerts.json`](../data/yaavs-alerts.json) y agrega un item arriba:
 
 ```json
 {
@@ -25,36 +25,30 @@ Tipos:
 | `blog` | Nueva nota en Noticias Yaavs | `avisos.html` |
 | `vacante` | Nueva vacante: {puesto} | `bolsa-trabajo.html#catalogo-vacantes` |
 
-- `id` debe ser **único** (si lo reusas, quien ya lo vio no lo vuelve a marcar como nuevo).
-- Sube `version` o el `?v=` del fetch en `js/yaavs-alerts.js` si Hostinger cachea el JSON.
-- Commit + push a `main`.
-
 ## 2. Push al teléfono (OneSignal)
 
-1. Crea cuenta en [OneSignal](https://onesignal.com) → Web.
-2. Site URL = tu dominio Hostinger (ej. `https://….hostingersite.com`).
-3. Service Worker path = `OneSignalSDKWorker.js` (ya está en la raíz; no subas el zip a mano).
-4. Copia el **App ID** en [`js/yaavs-onesignal.config.js`](../js/yaavs-onesignal.config.js) → `appId`.
-5. En el Dashboard → **Messages → New Push**:
-   - Mismo título y cuerpo que el item del JSON.
-   - Launch URL = la misma `url` del item.
-   - Opcional: segmenta por tags `interest_promo` / `interest_blog` / `interest_vacante` (`1` = quiere recibir).
+1. Dashboard OneSignal → **Messages → New Push**
+2. Mismo título y cuerpo que el item del JSON
+3. Launch URL = la misma `url`
+4. Opcional: segmenta por tags `interest_promo` / `interest_blog` / `interest_vacante` (`1` = quiere recibir)
 
-Plantillas útiles en OneSignal: **Promo**, **Blog**, **Vacante**.
+App ID en [`js/yaavs-onesignal.config.js`](../js/yaavs-onesignal.config.js). Service Worker: `OneSignalSDKWorker.js` en la raíz.
+
+Los tags se actualizan desde el perfil en [`cuenta.html`](../cuenta.html) o el prompt “Activar avisos”.
 
 ## 3. Vacantes
 
-Además del alert `type: "vacante"`, actualiza `OPEN_JOBS` / catálogo en [`js/bolsa-vacantes.js`](../js/bolsa-vacantes.js). En bolsa, si hay vacantes no leídas, aparece el aviso *“Hay vacantes nuevas — ve tus notificaciones”*.
+Además del alert `type: "vacante"`, actualiza el catálogo en [`js/bolsa-vacantes.js`](../js/bolsa-vacantes.js).
 
 ## 4. Permisos
 
-- El usuario activa avisos desde el prompt o abriendo la campanita.
+- Prompt suave en el sitio, o botón **Activar avisos** en Cuenta.
 - **Android Chrome**: push con permiso.
-- **iOS**: requiere agregar YAAVS a la pantalla de inicio (PWA) + permiso.
+- **iOS**: PWA en pantalla de inicio + permiso.
 
-## Checklist rápido
+## Checklist
 
-- [ ] Contenido publicado (HTML / imagen promo / vacante)
-- [ ] Item nuevo en `data/yaavs-alerts.json`
-- [ ] Push enviado en OneSignal (mismo copy + URL)
+- [ ] Contenido publicado
+- [ ] Item en `data/yaavs-alerts.json` (opcional)
+- [ ] Push en OneSignal (copy + URL + tags)
 - [ ] Push a `origin/main`

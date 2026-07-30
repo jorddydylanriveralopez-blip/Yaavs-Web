@@ -355,12 +355,13 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=18", headerMount),
+    loadPartial("partials/header.html?v=19", headerMount),
     loadPartial("partials/footer.html?v=16", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
+    ensureCuentaStyles();
     mountNavOverlay();
     setActiveNav();
     initHeaderLogo();
@@ -387,6 +388,7 @@
       initCookies();
       initPwa();
       initAlerts();
+      initAuth();
       if (!window.YAAVS_PERF?.lite) initYaavsGame();
     });
 
@@ -449,10 +451,46 @@
   function initAlerts() {
     if (document.querySelector("script[data-yaavs-alerts]")) return;
     const s = document.createElement("script");
-    s.src = "js/yaavs-alerts.js?v=1";
+    s.src = "js/yaavs-alerts.js?v=2";
     s.defer = true;
     s.dataset.yaavsAlerts = "true";
     document.body.appendChild(s);
+  }
+
+  function ensureCuentaStyles() {
+    if (document.querySelector("link[data-cuenta-css]")) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "cuenta-page.css?v=1";
+    link.dataset.cuentaCss = "true";
+    document.head.appendChild(link);
+  }
+
+  function initAuth() {
+    if (document.querySelector("script[data-yaavs-auth]")) return;
+
+    const loadAuth = () => {
+      if (document.querySelector("script[data-yaavs-auth]")) return;
+      const s = document.createElement("script");
+      s.src = "js/yaavs-auth.js?v=1";
+      s.defer = true;
+      s.dataset.yaavsAuth = "true";
+      document.body.appendChild(s);
+    };
+
+    const existingCfg = document.querySelector("script[data-yaavs-supabase-config]");
+    if (existingCfg) {
+      if (window.YAAVS_SUPABASE) loadAuth();
+      else existingCfg.addEventListener("load", loadAuth, { once: true });
+      return;
+    }
+
+    const cfg = document.createElement("script");
+    cfg.src = "js/yaavs-supabase.config.js?v=1";
+    cfg.dataset.yaavsSupabaseConfig = "true";
+    cfg.onload = loadAuth;
+    cfg.onerror = loadAuth;
+    document.body.appendChild(cfg);
   }
 
   function initYaavsGame() {
