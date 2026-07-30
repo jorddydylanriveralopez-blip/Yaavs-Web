@@ -8662,13 +8662,9 @@ body.hx-svc-panel-open [data-wa-float] {
   text-underline-offset: 3px;
 }
 
-/* Destellos visibles en home — debajo del contenido para no bloquear taps */
+/* Destellos desactivados en home */
 .page-home .page-sparkles {
-  display: block;
-  z-index: 2;
-  opacity: 1;
-  mix-blend-mode: screen;
-  pointer-events: none !important;
+  display: none !important;
 }
 
 .page-home .page-sparkles *,
