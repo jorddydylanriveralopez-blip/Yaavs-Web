@@ -621,12 +621,13 @@ body.theme-cluster.page-asi-somos::before {
 }
 
 .asi-carriers__item--unefon img {
-  height: 68px;
-  max-width: 92%;
+  height: 80px;
+  max-width: 96%;
 }
 
 .asi-carriers__item--unefon {
-  padding: 8px 10px;
+  padding: 4px 8px;
+  min-height: 88px;
   background: linear-gradient(180deg, rgba(255, 196, 0, 0.16) 0%, rgba(255, 255, 255, 0.94) 100%);
 }
 
@@ -683,6 +684,14 @@ body.theme-cluster.page-asi-somos::before {
 
   .asi-carriers__item--bait img {
     height: 42px;
+  }
+
+  .asi-carriers__item--unefon {
+    padding: 4px 6px;
+  }
+
+  .asi-carriers__item--unefon img {
+    height: 68px;
   }
 }
 
