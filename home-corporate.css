@@ -1935,8 +1935,8 @@ body.page-home {
   }
 
   .page-home .hx-ops__card:not(.is-active) .hx-ops__card--unefon .hx-ops__card-label .hx-ops__card-logo {
-    width: clamp(136px, 98%, 240px);
-    max-height: 86%;
+    width: clamp(150px, 99%, 255px);
+    max-height: 92%;
     transform: none;
     filter: none;
   }

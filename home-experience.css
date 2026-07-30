@@ -1866,8 +1866,8 @@ body.has-hx-ops-picker {
   }
 
   .hx-ops__grid .hx-ops__card--unefon .hx-ops__card-logo {
-    width: clamp(138px, 88%, 220px) !important;
-    max-height: 82%;
+    width: clamp(152px, 94%, 240px) !important;
+    max-height: 90%;
     filter: none;
   }
 
