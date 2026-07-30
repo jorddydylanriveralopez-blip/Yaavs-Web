@@ -56,6 +56,13 @@
     const mainNav = document.getElementById("main-nav");
     if (!navToggle || !mainNav) return;
 
+    let closeTimer = null;
+    const hoverNavMq = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    function canHoverNav() {
+      return hoverNavMq.matches;
+    }
+
     function setMenuOpen(open) {
       navToggle.setAttribute("aria-expanded", String(open));
       navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
@@ -63,27 +70,70 @@
       document.body.classList.toggle("nav-open", open);
     }
 
+    function clearCloseTimer() {
+      if (!closeTimer) return;
+      window.clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+
+    function scheduleClose() {
+      clearCloseTimer();
+      closeTimer = window.setTimeout(() => {
+        setMenuOpen(false);
+        closeTimer = null;
+      }, 200);
+    }
+
     navToggle.addEventListener("click", (e) => {
       e.stopPropagation();
+      clearCloseTimer();
       const open = navToggle.getAttribute("aria-expanded") !== "true";
       setMenuOpen(open);
+    });
+
+    /* Desktop: hover en hamburguesa abre; salir del menú cierra */
+    navToggle.addEventListener("mouseenter", () => {
+      if (!canHoverNav()) return;
+      clearCloseTimer();
+      setMenuOpen(true);
+    });
+
+    navToggle.addEventListener("mouseleave", () => {
+      if (!canHoverNav()) return;
+      scheduleClose();
+    });
+
+    mainNav.addEventListener("mouseenter", () => {
+      if (!canHoverNav()) return;
+      clearCloseTimer();
+      setMenuOpen(true);
+    });
+
+    mainNav.addEventListener("mouseleave", () => {
+      if (!canHoverNav()) return;
+      scheduleClose();
     });
 
     /* Clic fuera del panel (backdrop / página) cierra el menú */
     document.addEventListener("click", (e) => {
       if (!document.body.classList.contains("nav-open")) return;
       if (mainNav.contains(e.target) || navToggle.contains(e.target)) return;
+      clearCloseTimer();
       setMenuOpen(false);
     });
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && mainNav.classList.contains("is-open")) {
+        clearCloseTimer();
         setMenuOpen(false);
       }
     });
 
     mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => setMenuOpen(false));
+      link.addEventListener("click", () => {
+        clearCloseTimer();
+        setMenuOpen(false);
+      });
     });
   }
 
