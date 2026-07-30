@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /offline.html
+Disallow: /api/
+Disallow: /partials/
+Disallow: /scripts/
+
+Sitemap: https://royal-blue-gear-650111.hostingersite.com/sitemap.xml
