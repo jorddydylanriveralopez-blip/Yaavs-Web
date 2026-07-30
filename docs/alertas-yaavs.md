@@ -33,7 +33,7 @@ Tipos:
 
 1. Crea cuenta en [OneSignal](https://onesignal.com) → Web.
 2. Site URL = tu dominio Hostinger (ej. `https://….hostingersite.com`).
-3. Service Worker path = `sw.js` (raíz del sitio).
+3. Service Worker path = `OneSignalSDKWorker.js` (ya está en la raíz; no subas el zip a mano).
 4. Copia el **App ID** en [`js/yaavs-onesignal.config.js`](../js/yaavs-onesignal.config.js) → `appId`.
 5. En el Dashboard → **Messages → New Push**:
    - Mismo título y cuerpo que el item del JSON.
