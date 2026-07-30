@@ -6504,11 +6504,13 @@ body.page-home.hx-band--dark .site-footer .footer {
 .page-home .hx-somos__lead {
   margin: 0 auto clamp(18px, 2.8vw, 24px);
   max-width: 32em;
-  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+  font-size: clamp(1rem, 1.45vw, 1.12rem);
   line-height: 1.55;
-  font-weight: 500;
-  color: rgba(10, 39, 68, 0.78) !important;
-  -webkit-text-fill-color: rgba(10, 39, 68, 0.78);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #0a2744 !important;
+  -webkit-text-fill-color: #0a2744;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .page-home .hx-somos__carriers {
@@ -6680,6 +6682,20 @@ body.page-home.hx-band--dark .site-footer .footer {
   .page-home .hx-somos__cta-label {
     padding: 13px 18px 13px 20px;
     font-size: 0.9rem;
+  }
+
+  .page-home .hx-somos__carrier {
+    flex: 1 1 calc(50% - 10px);
+    max-width: none;
+    min-height: 58px;
+  }
+
+  .page-home .hx-somos__carrier--unefon {
+    min-height: 68px;
+  }
+
+  .page-home .hx-somos__carrier--unefon img {
+    height: 56px;
   }
 }
 
