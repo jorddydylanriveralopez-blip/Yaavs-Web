@@ -7899,6 +7899,10 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 @media (prefers-reduced-motion: reduce) {
   .yaavbot__fab-icon,
+  .yaavbot__robot-antenna,
+  .yaavbot__robot-dot,
+  .yaavbot__robot-eye,
+  .yaavbot__robot-mouth,
   .yaavbot__hint {
     animation: none;
   }
@@ -8225,12 +8229,13 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab-icon {
-    width: 96px;
-    height: 148px;
+    width: 78px;
+    height: 78px;
   }
 
   .yaavbot__robot {
-    width: 94px;
+    width: 74px;
+    height: 74px;
   }
 
   .yaavbot__fab-label {
@@ -8310,12 +8315,13 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab-icon {
-    width: 90px;
-    height: 140px;
+    width: 74px;
+    height: 74px;
   }
 
   .yaavbot__robot {
-    width: 88px;
+    width: 70px;
+    height: 70px;
   }
 
   .yaavbot__panel {
