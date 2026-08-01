@@ -66,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=214">
   <link rel="stylesheet" href="theme-light.css?v=8">
-  <link rel="stylesheet" href="home-corporate.css?v=245">
+  <link rel="stylesheet" href="home-corporate.css?v=246">
   <link rel="stylesheet" href="promo-popup.css?v=1">
   <link rel="stylesheet" href="theme-day-night.css?v=5" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=210" media="print" onload="this.media='all'">
@@ -1366,7 +1366,7 @@
       /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=222",
-        "js/home-experience.js?v=226",
+        "js/home-experience.js?v=227",
       ], perf.soft ? "180px 0px" : "320px 0px");
 
       const deckHashes = [
@@ -1381,7 +1381,7 @@
       if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=222",
-          "js/home-experience.js?v=226",
+          "js/home-experience.js?v=227",
         ]);
       }
 

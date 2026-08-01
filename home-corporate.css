@@ -5709,23 +5709,8 @@ body.page-home.page-intro-active .hero-scroll-hint {
 
   .page-home .hx-svc-deck__item::before,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    z-index: 4;
-    background: linear-gradient(
-      90deg,
-      var(--deck-accent),
-      color-mix(in srgb, var(--deck-accent) 40%, #fff) 55%,
-      color-mix(in srgb, var(--deck-accent) 70%, transparent)
-    );
-    border-radius: var(--mob-card-r) var(--mob-card-r) 0 0;
-    box-shadow: 0 0 14px color-mix(in srgb, var(--deck-accent) 55%, transparent);
-    pointer-events: none;
-    transition: box-shadow 0.2s ease, height 0.2s ease;
+    content: none;
+    display: none;
   }
 
   .page-home .hx-svc-deck__item::after {
@@ -5735,18 +5720,8 @@ body.page-home.page-intro-active .hero-scroll-hint {
   .page-home .hx-svc-deck__item:active,
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:active {
     transform: scale(0.97) !important;
-    border-color: color-mix(in srgb, var(--deck-accent) 55%, rgba(15, 36, 64, 0.2));
-    box-shadow:
-      0 2px 12px rgba(15, 36, 64, 0.16),
-      0 0 0 1.5px color-mix(in srgb, var(--deck-accent) 50%, transparent);
-  }
-
-  .page-home .hx-svc-deck__item:active::before,
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:active::before {
-    height: 6px;
-    box-shadow:
-      0 0 18px color-mix(in srgb, var(--deck-accent) 75%, transparent),
-      0 0 28px color-mix(in srgb, var(--deck-accent) 40%, transparent);
+    border-color: rgba(15, 36, 64, 0.16);
+    box-shadow: 0 2px 12px rgba(15, 36, 64, 0.16);
   }
 
   .page-home .hx-svc-deck__bg {

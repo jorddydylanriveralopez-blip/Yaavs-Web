@@ -5,10 +5,88 @@
   const root = document.getElementById("home-experience");
   if (!root) return;
 
-  /* Touch / sin hover: 1er tap = video preview, 2º tap = destino (antes que los modales) */
+  /* Touch: long-press = preview video (estilo YouTube); tap corto = acción inmediata */
   const deckHoverMq = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const DECK_LONG_PRESS_MS = 420;
   let runMobileDeckPreview = null;
+  let stopAllDeckMedia = null;
   let pendingMobileDeckPreview = null;
+  let deckLongPressTimer = null;
+  let deckLongPressItem = null;
+  let deckLongPressOrigin = null;
+  let deckLongPressFired = false;
+
+  function clearDeckLongPressTimer() {
+    if (deckLongPressTimer) {
+      window.clearTimeout(deckLongPressTimer);
+      deckLongPressTimer = null;
+    }
+  }
+
+  function resetDeckLongPress() {
+    clearDeckLongPressTimer();
+    deckLongPressItem = null;
+    deckLongPressOrigin = null;
+  }
+
+  document.addEventListener(
+    "pointerdown",
+    (event) => {
+      if (deckHoverMq.matches || reduced) return;
+      if (event.button != null && event.button !== 0) return;
+      const item = event.target.closest?.(".hx-svc-deck__item");
+      if (!item || !root.contains(item)) return;
+      if (item.closest('[role="dialog"]')) return;
+
+      deckLongPressFired = false;
+      deckLongPressItem = item;
+      deckLongPressOrigin = { x: event.clientX, y: event.clientY };
+      clearDeckLongPressTimer();
+      deckLongPressTimer = window.setTimeout(() => {
+        deckLongPressTimer = null;
+        deckLongPressFired = true;
+        if (typeof runMobileDeckPreview === "function") {
+          runMobileDeckPreview(item);
+        } else {
+          pendingMobileDeckPreview = item;
+        }
+        try {
+          navigator.vibrate?.(10);
+        } catch (_) {
+          /* noop */
+        }
+      }, DECK_LONG_PRESS_MS);
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "pointermove",
+    (event) => {
+      if (!deckLongPressItem || !deckLongPressOrigin || deckLongPressFired) return;
+      const dx = Math.abs(event.clientX - deckLongPressOrigin.x);
+      const dy = Math.abs(event.clientY - deckLongPressOrigin.y);
+      if (dx > 12 || dy > 12) resetDeckLongPress();
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "pointerup",
+    () => {
+      clearDeckLongPressTimer();
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "pointercancel",
+    () => {
+      resetDeckLongPress();
+      deckLongPressFired = false;
+    },
+    { passive: true }
+  );
 
   document.addEventListener(
     "click",
@@ -17,23 +95,29 @@
       const item = event.target.closest?.(".hx-svc-deck__item");
       if (!item || !root.contains(item)) return;
       if (item.closest('[role="dialog"]')) return;
-      if (item.classList.contains("is-deck-preview")) {
-        /* Yaavsta u otros bloqueados: no navegar en el 2º tap */
-        if (item.classList.contains("is-deck-locked") || item.getAttribute("aria-disabled") === "true") {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-        }
+
+      /* Tras long-press: no abrir modal / no navegar en el mismo gesto */
+      if (deckLongPressFired && item === deckLongPressItem) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        deckLongPressFired = false;
+        deckLongPressItem = null;
+        deckLongPressOrigin = null;
         return;
       }
 
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      if (typeof runMobileDeckPreview === "function") {
-        runMobileDeckPreview(item);
-      } else {
-        /* No marcar preview hasta que el deck esté listo: si no, el 2º tap navega sin video */
-        pendingMobileDeckPreview = item;
+      if (item.classList.contains("is-deck-locked") || item.getAttribute("aria-disabled") === "true") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        resetDeckLongPress();
+        deckLongPressFired = false;
+        return;
       }
+
+      /* Tap corto: detener preview y dejar que el click abra modal / enlace */
+      if (typeof stopAllDeckMedia === "function") stopAllDeckMedia();
+      resetDeckLongPress();
+      deckLongPressFired = false;
     },
     true
   );
@@ -471,14 +555,6 @@
         '[data-hx-porta-open], [data-deck-svc="portabilidad"]'
       );
       if (!item || item.closest(".hx-porta-modal")) return;
-      /* Touch: 1er tap = video; 2º tap = modal */
-      if (
-        !deckHoverMq.matches &&
-        item.classList.contains("hx-svc-deck__item") &&
-        !item.classList.contains("is-deck-preview")
-      ) {
-        return;
-      }
       event.preventDefault();
       if (portaModal.classList.contains("is-open")) return;
       openPortaModal();
@@ -577,13 +653,6 @@
         '[data-hx-rk-open], [data-deck-svc="recargaklic"]'
       );
       if (!item || item.closest("[data-hx-rk-modal]")) return;
-      if (
-        !deckHoverMq.matches &&
-        item.classList.contains("hx-svc-deck__item") &&
-        !item.classList.contains("is-deck-preview")
-      ) {
-        return;
-      }
       event.preventDefault();
 
       if (isAndroidUa()) {
@@ -1015,13 +1084,6 @@
           '[data-hx-rotul-open], [data-deck-svc="rotulaciones"]'
         );
         if (!item || item.closest(".hx-rotul-modal")) return;
-        if (
-          !deckHoverMq.matches &&
-          item.classList.contains("hx-svc-deck__item") &&
-          !item.classList.contains("is-deck-preview")
-        ) {
-          return;
-        }
         event.preventDefault();
         if (!rotulModal.classList.contains("is-open")) openRotulModal();
       },
@@ -1115,13 +1177,6 @@
           '[data-hx-vinc-open], [data-deck-svc="vinculaciones"]'
         );
         if (!item || item.closest(".hx-vinc-modal")) return;
-        if (
-          !deckHoverMq.matches &&
-          item.classList.contains("hx-svc-deck__item") &&
-          !item.classList.contains("is-deck-preview")
-        ) {
-          return;
-        }
         event.preventDefault();
         if (!vincModal.classList.contains("is-open")) openVincModal();
       },
@@ -1215,13 +1270,6 @@
           '[data-hx-esim-open], [data-deck-svc="esims"]'
         );
         if (!item || item.closest(".hx-esim-modal")) return;
-        if (
-          !deckHoverMq.matches &&
-          item.classList.contains("hx-svc-deck__item") &&
-          !item.classList.contains("is-deck-preview")
-        ) {
-          return;
-        }
         event.preventDefault();
         if (!esimModal.classList.contains("is-open")) openEsimModal();
       },
