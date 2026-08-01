@@ -5598,48 +5598,27 @@ body.page-home.page-intro-active .hero-scroll-hint {
     display: none;
   }
 
-  /* Masonry móvil — columnas con desfase tipo Pinterest */
+  /* Mosaico lineal — grilla 3 columnas, sin desfase */
   .page-home .hx-svc-deck-masonry {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(8px, 2.2vw, 10px);
-    width: 100%;
-  }
-
-  .page-home .hx-svc-deck-masonry__cols {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(8px, 2.2vw, 10px);
-    align-items: start;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .page-home .hx-svc-deck-masonry__cols {
+    display: contents;
   }
 
   .page-home .hx-svc-deck-masonry__col {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(8px, 2.2vw, 10px);
-    min-width: 0;
+    display: contents;
   }
 
-  /* Desfase tipo Pinterest — mismas tarjetas, ritmo visual */
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"] {
-    padding-top: 0;
-  }
-
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] {
-    padding-top: clamp(28px, 8vw, 48px);
-  }
-
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"],
+  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"],
   .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] {
-    padding-top: clamp(14px, 4vw, 26px);
-  }
-
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="left"] .hx-svc-deck__item:nth-child(even),
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="right"] .hx-svc-deck__item:nth-child(odd) {
-    margin-top: clamp(8px, 2.2vw, 14px);
-  }
-
-  .page-home .hx-svc-deck-masonry__col[data-masonry-col="mid"] .hx-svc-deck__item:nth-child(even) {
-    margin-top: clamp(4px, 1.2vw, 8px);
+    padding-top: 0;
   }
 
   .page-home .hx-svc-deck-masonry .hx-svc-deck__item:active {
@@ -5660,7 +5639,7 @@ body.page-home.page-intro-active .hero-scroll-hint {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0;
+    margin: 0 !important;
     min-width: 0;
     overflow: hidden;
     opacity: 1;
@@ -5670,7 +5649,7 @@ body.page-home.page-intro-active .hero-scroll-hint {
     -webkit-tap-highlight-color: rgba(0, 188, 212, 0.25);
     transform: none;
     contain: none;
-    aspect-ratio: auto;
+    aspect-ratio: 1 / 1;
     background: #0a1630;
     color: #0f2440;
     border: 1px solid rgba(15, 36, 64, 0.1);

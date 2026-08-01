@@ -1926,6 +1926,7 @@
 
     let masonryReady = false;
     let masonryEl = null;
+    let masonryBalanceTimer = null;
 
     function teardownMobileMasonry() {
       if (!masonryReady) return;
@@ -1944,60 +1945,6 @@
       if (deckMorePanel) deckMorePanel.hidden = false;
     }
 
-    let masonryBalanceTimer = null;
-
-    function getMasonryCols() {
-      if (!masonryEl) return [];
-      return [
-        masonryEl.querySelector('[data-masonry-col="left"]'),
-        masonryEl.querySelector('[data-masonry-col="mid"]'),
-        masonryEl.querySelector('[data-masonry-col="right"]'),
-      ].filter(Boolean);
-    }
-
-    function masonryItemWeight(item) {
-      const type = item.dataset.masonry;
-      if (type === "tall") return 1.35;
-      if (type === "med") return 1.15;
-      if (type === "short") return 1;
-      const raw = item.style.getPropertyValue("--masonry-ratio").trim();
-      const parts = raw.split("/").map((part) => Number(part.trim()));
-      if (parts.length === 2 && parts[0] > 0 && parts[1] > 0) {
-        return parts[1] / parts[0];
-      }
-      return 1.1;
-    }
-
-    function distributeMasonryColumns(items, cols) {
-      if (!cols?.length) return;
-      cols.forEach((col) => col.replaceChildren());
-      const heights = cols.map(() => 0);
-      const midCol = cols.length >= 3 ? 1 : 0;
-      items.forEach((item) => {
-        /* Soporte técnico: centrado bajo Pospago (columna mid) */
-        if (item.dataset.deckSvc === "soporte-tecnico" && cols.length >= 3) {
-          cols[midCol].appendChild(item);
-          heights[midCol] += masonryItemWeight(item);
-          return;
-        }
-        let target = 0;
-        for (let i = 1; i < heights.length; i += 1) {
-          if (heights[i] < heights[target]) target = i;
-        }
-        cols[target].appendChild(item);
-        heights[target] += masonryItemWeight(item);
-      });
-    }
-
-    function appendToShortestMasonryCol(item, cols) {
-      if (!cols?.length) return;
-      let target = cols[0];
-      cols.forEach((col) => {
-        if (col.children.length < target.children.length) target = col;
-      });
-      target.appendChild(item);
-    }
-
     function layoutMobileMasonry() {
       if (deckDesktopMq.matches || !deckLayout) {
         teardownMobileMasonry();
@@ -2007,34 +1954,21 @@
       if (!masonryEl) {
         masonryEl = document.createElement("div");
         masonryEl.className = "hx-svc-deck-masonry";
-
-        const colsWrap = document.createElement("div");
-        colsWrap.className = "hx-svc-deck-masonry__cols";
-
-        ["left", "mid", "right"].forEach((name) => {
-          const col = document.createElement("div");
-          col.className = "hx-svc-deck-masonry__col";
-          col.dataset.masonryCol = name;
-          col.setAttribute("role", "presentation");
-          colsWrap.appendChild(col);
-        });
-        masonryEl.appendChild(colsWrap);
-
+        masonryEl.setAttribute("role", "list");
         deckLayout.insertBefore(masonryEl, deckRoot);
         deckRoot.hidden = true;
         if (deckMorePanel) deckMorePanel.hidden = true;
         deckLayout.classList.add("is-deck-masonry-mob");
         masonryReady = true;
-      } else {
-        /* Migrar de 2 a 3 columnas si hace falta */
-        const colsWrap = masonryEl.querySelector(".hx-svc-deck-masonry__cols");
-        if (colsWrap && !masonryEl.querySelector('[data-masonry-col="mid"]')) {
-          const mid = document.createElement("div");
-          mid.className = "hx-svc-deck-masonry__col";
-          mid.dataset.masonryCol = "mid";
-          const right = colsWrap.querySelector('[data-masonry-col="right"]');
-          colsWrap.insertBefore(mid, right || null);
-        }
+      }
+
+      /* Migrar desde layout de columnas (desfasado) → mosaico lineal */
+      const legacyCols = masonryEl.querySelector(".hx-svc-deck-masonry__cols");
+      if (legacyCols) {
+        [...legacyCols.querySelectorAll(".hx-svc-deck__item")].forEach((item) => {
+          masonryEl.appendChild(item);
+        });
+        legacyCols.remove();
       }
 
       if (deckMorePanel) {
@@ -2045,20 +1979,11 @@
       const sorted = [...getDeckItems()].sort(
         (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
       );
-      const cols = getMasonryCols();
-
-      masonryEl.querySelector(':scope > .hx-svc-deck__item')?.remove();
-      cols.forEach((col) => col.replaceChildren());
 
       sorted.forEach((item) => {
         item.removeAttribute("role");
         if (deckLive) item.classList.add("is-deck-in");
-      });
-      distributeMasonryColumns(sorted, cols);
-
-      getDeckItems().forEach((item) => {
-        if (cols.some((col) => col.contains(item))) return;
-        appendToShortestMasonryCol(item, cols);
+        masonryEl.appendChild(item);
       });
     }
 
@@ -2067,22 +1992,12 @@
       if (masonryBalanceTimer) cancelAnimationFrame(masonryBalanceTimer);
       masonryBalanceTimer = requestAnimationFrame(() => {
         masonryBalanceTimer = null;
-        const sorted = [...getDeckItems()].sort(
-          (a, b) => Number(a.style.getPropertyValue("--deck-i") || 0) - Number(b.style.getPropertyValue("--deck-i") || 0)
-        );
-        const cols = getMasonryCols();
-        if (cols.length < 3) return;
-        distributeMasonryColumns(sorted, cols);
-        getDeckItems().forEach((item) => {
-          if (cols.some((col) => col.contains(item))) return;
-          appendToShortestMasonryCol(item, cols);
-        });
+        layoutMobileMasonry();
       });
     }
 
     function initMobileMasonry() {
       layoutMobileMasonry();
-      /* Una sola distribución fija: no rebalancear (evita que se muevan bajo el dedo) */
       getDeckItems().forEach((item) => ensureDeckIcon(item));
     }
 
