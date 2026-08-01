@@ -7721,51 +7721,73 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px 12px 14px;
-  border: 2px solid rgba(90, 156, 196, 0.55);
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(4, 18, 28, 0.95));
-  color: #fff;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.45),
-    0 0 28px rgba(90, 156, 196, 0.22);
+  justify-content: center;
+  gap: 0;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #00d4ee;
+  box-shadow: none;
   cursor: pointer;
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+  transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
   -webkit-tap-highlight-color: transparent;
 }
 
 .yaavbot__fab:hover,
 .yaavbot__fab:focus-visible {
-  transform: translateY(-2px);
-  border-color: var(--accent-bright);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.5),
-    0 0 36px rgba(90, 156, 196, 0.35);
+  transform: translateY(-3px) scale(1.06);
+  border-color: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 10px 22px rgba(0, 188, 212, 0.45));
 }
 
 .yaavbot__fab:focus-visible {
   outline: 2px solid var(--accent-bright);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 .yaavbot__fab-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: linear-gradient(120deg, var(--accent-bright), var(--yaavs-cyan));
-  color: #001018;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.22) inset,
-    0 0 18px rgba(0, 212, 238, 0.35);
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
   animation: yaavbot-icon-pulse 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 8px 18px rgba(0, 18, 36, 0.35));
 }
 
 .yaavbot__robot {
+  width: 58px;
+  height: 58px;
   overflow: visible;
+  color: #0a1630;
+}
+
+.yaavbot__robot-head {
+  fill: #00d4ee !important;
+  fill-opacity: 1 !important;
+  stroke: #0a1630 !important;
+}
+
+.yaavbot__robot-eye {
+  fill: #041018 !important;
+}
+
+.yaavbot__robot-antenna path,
+.yaavbot__robot-mouth,
+.yaavbot__robot > path {
+  stroke: #0a1630 !important;
+}
+
+.yaavbot__robot-dot {
+  fill: #5ce8f7 !important;
 }
 
 .yaavbot__robot-antenna {
@@ -7793,16 +7815,12 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 @keyframes yaavbot-icon-pulse {
   0%, 100% {
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.22) inset,
-      0 0 14px rgba(0, 212, 238, 0.28);
     transform: scale(1);
+    filter: drop-shadow(0 8px 16px rgba(0, 188, 212, 0.28));
   }
   50% {
-    box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.3) inset,
-      0 0 22px rgba(0, 212, 238, 0.5);
-    transform: scale(1.04);
+    transform: scale(1.05);
+    filter: drop-shadow(0 12px 24px rgba(0, 212, 238, 0.48));
   }
 }
 
@@ -7837,10 +7855,15 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 }
 
 .yaavbot__fab-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .yaavbot__panel {
@@ -7931,7 +7954,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 }
 
 .yaavbot.is-open .yaavbot__fab {
-  border-color: rgba(90, 156, 196, 0.75);
+  border-color: transparent;
 }
 
 .yaavbot__fab-icon-min[hidden],
@@ -8139,12 +8162,32 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab {
-    padding: 10px 14px 10px 10px;
-    gap: 8px;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    gap: 0;
+  }
+
+  .yaavbot__fab-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .yaavbot__robot {
+    width: 52px;
+    height: 52px;
   }
 
   .yaavbot__fab-label {
-    font-size: 0.64rem;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .yaavbot__panel {
