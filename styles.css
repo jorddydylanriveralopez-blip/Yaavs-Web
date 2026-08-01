@@ -40,7 +40,7 @@
   --font: "Montserrat", system-ui, sans-serif;
   --max: 1280px;
   /* Header RSNL-style: alto arriba, compacto al scroll */
-  --header-h: 118px;
+  --header-h: 72px;
   --header-h-scrolled: 68px;
   --header-pad-y: 28px;
   --header-pad-x: max(var(--pad-x), 40px);
@@ -1228,12 +1228,12 @@ a:hover { opacity: 0.65; }
   padding-inline: 0;
 }
 
-/* Header — glass + shrink al scroll (efecto tipo RSNL Creative) */
+/* Header — transparente al tope; compacto al scroll (sin glass) */
 .site-header {
-  --header-bar-h: 112px;
-  --header-pad-y: 20px;
-  --header-pad-x: max(var(--pad-x), 40px);
-  --logo-h: 64px;
+  --header-bar-h: 64px;
+  --header-pad-y: 8px;
+  --header-pad-x: max(var(--pad-x), 24px);
+  --logo-h: 40px;
   position: fixed;
   top: 0;
   left: 0;
@@ -1241,37 +1241,21 @@ a:hover { opacity: 0.65; }
   z-index: 1000;
   isolation: isolate;
   padding-top: var(--safe-top);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.88) 0%,
-      rgba(255, 255, 255, 0.72) 100%
-    );
-  backdrop-filter: blur(18px) saturate(1.15);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
-  border-bottom: 1px solid rgba(0, 188, 212, 0.18);
-  box-shadow:
-    0 8px 32px rgba(15, 36, 64, 0.06),
-    0 1px 0 rgba(255, 255, 255, 0.85) inset;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
   transition:
     background var(--header-ease),
-    backdrop-filter var(--header-ease),
     border-color var(--header-ease),
     box-shadow var(--header-ease),
     padding var(--header-ease);
 }
 
 .site-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 42% 120% at 8% 0%, rgba(0, 188, 212, 0.1) 0%, transparent 68%),
-    radial-gradient(ellipse 36% 120% at 92% 0%, rgba(37, 99, 181, 0.08) 0%, transparent 70%);
-  z-index: 0;
-  opacity: 1;
-  transition: opacity var(--header-ease);
+  content: none;
+  display: none;
 }
 
 .site-header::after {
@@ -1280,11 +1264,11 @@ a:hover { opacity: 0.65; }
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
+  height: 0;
+  opacity: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, #0097b2 0%, #00bcd4 48%, #00d4ee 100%);
-  opacity: 0.9;
   z-index: 0;
+  transition: height var(--header-ease), opacity var(--header-ease);
 }
 
 .site-header .header-inner {
@@ -1294,32 +1278,34 @@ a:hover { opacity: 0.65; }
   width: 100%;
 }
 
-.site-header.is-scrolled {
-  --header-bar-h: 56px;
-  --header-pad-y: 6px;
-  --header-pad-x: max(var(--pad-x), 20px);
-  --logo-h: 34px;
-  /* Barra oscura al scroll para que el logo blanco se lea (estilo RSNL) */
-  background: rgba(8, 18, 36, 0.94);
-  backdrop-filter: blur(22px) saturate(1.2);
-  -webkit-backdrop-filter: blur(22px) saturate(1.2);
-  border-bottom-color: rgba(0, 188, 212, 0.35);
-  box-shadow:
-    0 10px 18px rgba(0, 0, 0, 0.28),
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
-}
-
-.site-header.is-scrolled::before {
-  opacity: 0.35;
-  background:
-    radial-gradient(ellipse 42% 120% at 8% 0%, rgba(0, 188, 212, 0.16) 0%, transparent 68%),
-    radial-gradient(ellipse 36% 120% at 92% 0%, rgba(37, 99, 181, 0.12) 0%, transparent 70%);
-}
-
+.site-header .logo,
 .site-header .logo.logo--white,
-.site-header.is-scrolled .logo.logo--white {
-  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.35)) !important;
-  --logo-filter: none;
+.site-header .logo.logo--on-light {
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.28)) !important;
+}
+
+.site-header.is-scrolled {
+  --header-bar-h: 48px;
+  --header-pad-y: 4px;
+  --header-pad-x: max(var(--pad-x), 16px);
+  --logo-h: 28px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: rgba(0, 151, 178, 0.22);
+  box-shadow: 0 4px 16px rgba(15, 36, 64, 0.08);
+}
+
+.site-header.is-scrolled::after {
+  height: 2px;
+  opacity: 0.85;
+  background: linear-gradient(90deg, #0097b2 0%, #00bcd4 48%, #00d4ee 100%);
+}
+
+.site-header.is-scrolled .logo,
+.site-header.is-scrolled .logo.logo--white,
+.site-header.is-scrolled .logo.logo--on-light {
+  filter: none !important;
 }
 
 .site-header.is-scrolled .bento-dot {
@@ -1329,6 +1315,12 @@ a:hover { opacity: 0.65; }
 }
 
 /* Home: header oscuro al scroll → puntos claros */
+.page-home .site-header.is-scrolled {
+  background: rgba(8, 18, 36, 0.92);
+  border-bottom-color: rgba(0, 188, 212, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
 .page-home .site-header.is-scrolled .bento-dot {
   background: #fff !important;
 }
@@ -1438,13 +1430,13 @@ a:hover { opacity: 0.65; }
 
 @media (min-width: 1280px) {
   .site-header {
-    --header-bar-h: 120px;
-    --logo-h: 70px;
+    --header-bar-h: 68px;
+    --logo-h: 42px;
   }
 
   .site-header.is-scrolled {
-    --header-bar-h: 58px;
-    --logo-h: 34px;
+    --header-bar-h: 48px;
+    --logo-h: 28px;
   }
 }
 
@@ -6341,20 +6333,20 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 /* Responsive — tablet, móvil, touch, landscape */
 @media (max-width: 1024px) {
   :root {
-    --header-h: 100px;
-    --header-h-scrolled: 54px;
+    --header-h: 64px;
+    --header-h-scrolled: 48px;
   }
 
   .site-header {
-    --header-bar-h: 96px;
-    --logo-h: 52px;
-    --header-pad-y: 14px;
+    --header-bar-h: 58px;
+    --logo-h: 34px;
+    --header-pad-y: 6px;
   }
 
   .site-header.is-scrolled {
-    --header-bar-h: 52px;
-    --logo-h: 30px;
-    --header-pad-y: 6px;
+    --header-bar-h: 46px;
+    --logo-h: 26px;
+    --header-pad-y: 4px;
   }
 
   .header-inner {
@@ -6459,21 +6451,21 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 @media (max-width: 768px) {
   :root {
-    --header-h: 88px;
-    --header-h-scrolled: 50px;
+    --header-h: 60px;
+    --header-h-scrolled: 46px;
     --pad-x: 20px;
   }
 
   .site-header {
-    --header-bar-h: 84px;
-    --logo-h: 44px;
-    --header-pad-y: 12px;
-    --header-pad-x: 16px;
+    --header-bar-h: 56px;
+    --logo-h: 32px;
+    --header-pad-y: 6px;
+    --header-pad-x: 14px;
   }
 
   .site-header.is-scrolled {
-    --header-bar-h: 48px;
-    --logo-h: 26px;
+    --header-bar-h: 44px;
+    --logo-h: 24px;
     --header-pad-y: 4px;
     --header-pad-x: 12px;
   }
