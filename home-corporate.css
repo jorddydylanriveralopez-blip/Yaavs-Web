@@ -5607,6 +5607,15 @@ body.page-home.page-intro-active .hero-scroll-hint {
     align-items: stretch;
   }
 
+  /* Última tarjeta sola: centrada en la fila */
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-deck-svc="soporte-tecnico"] {
+    grid-column: 2;
+  }
+
+  .page-home .hx-svc-deck-layout:not(.is-deck-masonry-mob) [data-hx-svc-deck-more] .hx-svc-deck__item[data-deck-svc="soporte-tecnico"] {
+    grid-column: 2;
+  }
+
   .page-home .hx-svc-deck-masonry__cols {
     display: contents;
   }
