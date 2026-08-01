@@ -58,10 +58,10 @@
     const isMin = state === "minimized";
 
     fab.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    fab.setAttribute("aria-label", isOpen ? "Minimizar YaavBot" : "Abrir YaavBot");
+    fab.setAttribute("aria-label", isOpen ? "Minimizar Vaavsti" : "Abrir Vaavsti");
 
     if (fabLabel) {
-      fabLabel.textContent = isMin ? "YaavBot · Minimizado" : "YaavBot · IA";
+      fabLabel.textContent = isMin ? "Vaavsti · Minimizado" : "Vaavsti";
     }
 
     if (fabIconOpen) fabIconOpen.hidden = isOpen;
