@@ -7817,11 +7817,11 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 @keyframes yaavbot-icon-pulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 8px 16px rgba(0, 188, 212, 0.28));
+    filter: drop-shadow(0 10px 20px rgba(15, 36, 64, 0.22));
   }
   50% {
-    transform: scale(1.05);
-    filter: drop-shadow(0 12px 24px rgba(0, 212, 238, 0.48));
+    transform: scale(1.06);
+    filter: drop-shadow(0 14px 28px rgba(47, 143, 184, 0.38));
   }
 }
 
@@ -8163,20 +8163,20 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab {
-    width: 58px;
-    height: 58px;
+    width: 78px;
+    height: 78px;
     padding: 0;
     gap: 0;
   }
 
   .yaavbot__fab-icon {
-    width: 58px;
-    height: 58px;
+    width: 78px;
+    height: 78px;
   }
 
   .yaavbot__robot {
-    width: 52px;
-    height: 52px;
+    width: 72px;
+    height: 72px;
   }
 
   .yaavbot__fab-label {
@@ -8239,8 +8239,8 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab {
-    width: 56px;
-    height: 56px;
+    width: 74px;
+    height: 74px;
     padding: 0;
     justify-content: center;
     border-radius: 50%;
@@ -8249,13 +8249,13 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab-icon {
-    width: 56px;
-    height: 56px;
+    width: 74px;
+    height: 74px;
   }
 
   .yaavbot__robot {
-    width: 50px;
-    height: 50px;
+    width: 68px;
+    height: 68px;
   }
 
   .yaavbot__panel {
