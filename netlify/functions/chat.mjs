@@ -1,5 +1,5 @@
-/** YaavBot — proxy OpenAI (Netlify Functions) */
-const SYSTEM = `Eres YaavBot, asistente virtual de YAAVS (Grupo Comercial YAAVS), distribuidor #1 de telecomunicaciones en México.
+/** Vaavsti — proxy OpenAI (Netlify Functions) */
+const SYSTEM = `Eres Vaavsti, asistente virtual de YAAVS (Grupo Comercial YAAVS), distribuidor #1 de telecomunicaciones en México.
 
 Responde siempre en español, tono cercano y profesional, mensajes cortos (máximo 3 párrafos breves).
 

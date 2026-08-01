@@ -112,7 +112,7 @@
       return "Contáctanos:\n· Tel. **55 22 33 12 10**\n· **Hola@yaavs.com.mx**\n· WhatsApp: **https://wa.me/525522331210**\nTambién puedes usar el formulario en **contacto.html**.";
     }
     if (/hola|buenas|hey|qué tal/.test(q)) {
-      return "¡Hola! Soy YaavBot de YAAVS. ¿Te interesa ser **Yaavser**, usar **RecargaKlic** o conocer nuestros servicios de telecom?";
+      return "¡Hola! Soy Vaavsti de YAAVS. ¿Te interesa ser **socio comercial**, usar **RecargaKlic** o conocer nuestros servicios de telecom?";
     }
 
     return "Gracias por escribir. Para una respuesta más precisa, cuéntame si buscas **Yaavser**, **RecargaKlic**, **servicios** o **contacto**. También puedes escribirnos al **55 22 33 12 10** o por WhatsApp.";
