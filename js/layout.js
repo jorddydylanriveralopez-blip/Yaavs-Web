@@ -358,7 +358,7 @@
     loadPartial("partials/header.html?v=21", headerMount),
     loadPartial("partials/footer.html?v=17", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
-    loadPartial("partials/page-cta.html?v=2", ctaMount),
+    loadPartial("partials/page-cta.html?v=3", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
     mountNavOverlay();

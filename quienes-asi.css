@@ -551,6 +551,36 @@ body.theme-cluster.page-asi-somos::before {
   min-height: 44px;
 }
 
+.asi-somos__cta .btn--primary {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.asi-somos__cta .btn--line {
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087 !important;
+  border-color: rgba(0, 48, 135, 0.35) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* CTA final legible sobre fondo claro */
+.page-asi-somos .page-cta-band {
+  background: linear-gradient(180deg, #eef7fb 0%, #f8fcfe 100%);
+  border-top: 1px solid rgba(0, 151, 178, 0.22);
+}
+
+.page-asi-somos .page-cta-band__title,
+.page-asi-somos .page-cta-band__text,
+.page-asi-somos .page-cta-band__eyebrow,
+.page-asi-somos .page-cta-band__proof {
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440 !important;
+}
+
+.page-asi-somos .page-cta-band__text {
+  opacity: 0.88;
+}
+
 .asi-somos__lead {
   margin: 0 auto;
   max-width: 34em;

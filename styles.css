@@ -7304,7 +7304,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #003087;
   margin-bottom: 16px;
 }
 
@@ -7314,13 +7314,15 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 16px;
+  color: #0f2440;
 }
 
 .page-cta-band__text {
-  color: var(--muted);
+  color: #0f2440;
   font-size: 1.05rem;
   line-height: 1.65;
   margin-bottom: 12px;
+  opacity: 0.82;
 }
 
 .page-cta-band__proof {
@@ -7328,8 +7330,8 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--ink, #0f2440);
-  opacity: 0.78;
+  color: #0f2440;
+  opacity: 0.9;
 }
 
 .page-cta-band__actions {

@@ -391,8 +391,25 @@ body.theme-cluster:not(.page-home) .form-title {
 }
 
 .page-cta-band h2,
-.page-cta-band p {
-  color: var(--ink);
+.page-cta-band p,
+.page-cta-band .page-cta-band__title,
+.page-cta-band .page-cta-band__text,
+.page-cta-band .page-cta-band__eyebrow,
+.page-cta-band .page-cta-band__proof {
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440 !important;
+  opacity: 1;
+}
+
+.page-cta-band .page-cta-band__text {
+  opacity: 0.85;
+}
+
+.page-cta-band .btn--line {
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087 !important;
+  border-color: rgba(0, 48, 135, 0.35) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Hero banners interiores — billboard: imagen visible + texto legible */

@@ -28,7 +28,7 @@
       });
     }
 
-    handleFormSubmit(yaavserForm, "form-status", "Solicitud Yaavser - ");
+    handleFormSubmit(yaavserForm, "form-status", "Solicitud socio comercial - ");
     handleFormSubmit(contactForm, "contact-status", "Contacto YAAVS - ");
   }
 

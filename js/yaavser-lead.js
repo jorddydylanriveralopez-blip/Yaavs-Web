@@ -183,7 +183,7 @@
       `Teléfono: ${data.telefono}`,
     ].join("\n");
     window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
-      "Solicitud Yaavser - " + data.nombre
+      "Solicitud socio comercial - " + data.nombre
     )}&body=${encodeURIComponent(body)}`;
   }
 
