@@ -7830,11 +7830,11 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 .yaavbot__robot-eye {
   transform-box: fill-box;
   transform-origin: center;
-  animation: yaavbot-eyes 2.6s ease-in-out infinite;
+  animation: yaavbot-eyes 3.2s ease-in-out infinite;
 }
 
 .yaavbot__robot-eye--r {
-  animation-delay: 0.12s;
+  animation-delay: 0.08s;
 }
 
 .yaavbot__robot-mouth {
@@ -7882,13 +7882,15 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 }
 
 @keyframes yaavbot-eyes {
-  0%, 100% {
-    opacity: 0.92;
-    filter: drop-shadow(0 0 2px rgba(122, 215, 255, 0.4));
-  }
-  50% {
+  0%, 38%, 48%, 100% {
+    transform: scaleY(1);
     opacity: 1;
-    filter: drop-shadow(0 0 7px rgba(122, 215, 255, 0.85));
+    filter: drop-shadow(0 0 3px rgba(122, 215, 255, 0.55));
+  }
+  43% {
+    transform: scaleY(0.12);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 1px rgba(122, 215, 255, 0.25));
   }
 }
 
