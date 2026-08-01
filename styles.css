@@ -7801,43 +7801,43 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 88px;
-  height: 88px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   background: transparent;
   color: inherit;
   box-shadow: none;
   animation: yaavbot-icon-pulse 2.8s ease-in-out infinite;
-  filter: drop-shadow(0 10px 22px rgba(15, 36, 64, 0.28));
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
 }
 
 .yaavbot__robot {
-  width: 88px;
-  height: 88px;
+  width: 92px;
+  height: 92px;
   overflow: visible;
 }
 
 .yaavbot__robot-head {
-  filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.85));
+  filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.12));
 }
 
 .yaavbot__robot-eye {
   transform-box: fill-box;
   transform-origin: center;
-  animation: yaavbot-eyes 2.4s ease-in-out infinite;
+  animation: yaavbot-eyes 2.6s ease-in-out infinite;
 }
 
 .yaavbot__robot-eye--r {
-  animation-delay: 0.15s;
+  animation-delay: 0.12s;
 }
 
 .yaavbot__robot-antenna {
-  transform-origin: 32px 16px;
-  animation: yaavbot-antenna 2s ease-in-out infinite;
+  transform-origin: 32px 18px;
+  animation: yaavbot-antenna 2.1s ease-in-out infinite;
 }
 
 .yaavbot__robot-dot {
-  animation: yaavbot-dot 1.5s ease-in-out infinite;
+  animation: yaavbot-dot 1.6s ease-in-out infinite;
 }
 
 .yaavbot__robot-mouth {
@@ -7847,11 +7847,11 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 @keyframes yaavbot-icon-pulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 10px 20px rgba(15, 36, 64, 0.22));
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
   }
   50% {
     transform: scale(1.05);
-    filter: drop-shadow(0 14px 28px rgba(47, 143, 184, 0.32));
+    filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.5));
   }
 }
 
@@ -7861,35 +7861,23 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 }
 
 @keyframes yaavbot-antenna {
-  0%, 100% { transform: rotate(-6deg); }
-  50% { transform: rotate(6deg); }
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
 }
 
 @keyframes yaavbot-dot {
-  0%, 100% {
-    opacity: 0.75;
-    filter: drop-shadow(0 0 2px rgba(62, 200, 232, 0.4));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(62, 200, 232, 0.85));
-  }
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
 }
 
 @keyframes yaavbot-eyes {
-  0%, 100% {
-    opacity: 0.92;
-    filter: drop-shadow(0 0 2px rgba(26, 167, 200, 0.35));
-  }
-  50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(122, 240, 255, 0.75));
-  }
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 1; }
 }
 
 @keyframes yaavbot-mouth {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(0.8px); }
+  50% { transform: translateY(0.7px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
