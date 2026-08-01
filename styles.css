@@ -7719,15 +7719,18 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 .yaavbot__fab {
   pointer-events: auto;
+  position: relative;
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0;
-  width: 88px;
-  height: 88px;
+  justify-content: flex-end;
+  gap: 8px;
+  width: auto;
+  min-width: 88px;
+  height: auto;
   padding: 0;
   border: none;
-  border-radius: 50%;
+  border-radius: 0;
   background: transparent;
   color: #fff;
   box-shadow: none;
@@ -7736,12 +7739,57 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   -webkit-tap-highlight-color: transparent;
 }
 
+.yaavbot__hint {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 11.5rem;
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(47, 143, 184, 0.28);
+  background: #fff;
+  color: #0f2440;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow:
+    0 8px 20px rgba(15, 36, 64, 0.14),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  animation: yaavbot-hint-pop 2.8s ease-in-out infinite;
+}
+
+.yaavbot__hint::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-right: 1px solid rgba(47, 143, 184, 0.28);
+  border-bottom: 1px solid rgba(47, 143, 184, 0.28);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.yaavbot.is-open .yaavbot__hint,
+.yaavbot.is-minimized .yaavbot__hint {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px) scale(0.96);
+}
+
 .yaavbot__fab:hover,
 .yaavbot__fab:focus-visible {
-  transform: translateY(-4px) scale(1.08);
+  transform: translateY(-4px) scale(1.05);
   border-color: transparent;
   box-shadow: none;
-  filter: drop-shadow(0 14px 28px rgba(0, 120, 160, 0.35));
+  filter: drop-shadow(0 14px 28px rgba(0, 120, 160, 0.28));
 }
 
 .yaavbot__fab:focus-visible {
