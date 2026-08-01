@@ -5647,6 +5647,9 @@ body.page-home.page-intro-active .hero-scroll-hint {
     cursor: pointer;
     touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(0, 188, 212, 0.25);
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
     transform: none;
     contain: none;
     aspect-ratio: 1 / 1;

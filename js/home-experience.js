@@ -2221,6 +2221,14 @@
       playDeckMedia(item);
     };
 
+    stopAllDeckMedia = () => {
+      getDeckItems().forEach((el) => {
+        if (el.classList.contains("is-deck-preview") || el.classList.contains("is-deck-expanded")) {
+          stopDeckMedia(el);
+        }
+      });
+    };
+
     if (pendingMobileDeckPreview) {
       const queued = pendingMobileDeckPreview;
       pendingMobileDeckPreview = null;
