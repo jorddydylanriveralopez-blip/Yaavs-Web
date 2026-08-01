@@ -7801,45 +7801,68 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 112px;
-  height: 168px;
-  border-radius: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
   background: transparent;
-  color: #0f2440;
+  color: #0a1628;
   box-shadow: none;
   animation: yaavbot-icon-pulse 2.8s ease-in-out infinite;
-  filter: drop-shadow(0 12px 22px rgba(0, 40, 80, 0.28));
+  filter: drop-shadow(0 10px 22px rgba(30, 100, 170, 0.35));
 }
 
 .yaavbot__robot {
+  width: 84px;
+  height: 84px;
+  overflow: visible;
   display: block;
-  width: 110px;
-  height: auto;
-  max-width: none;
-  object-fit: contain;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
+}
+
+.yaavbot__robot-antenna {
+  transform-origin: 32px 16px;
+  animation: yaavbot-antenna 1.9s ease-in-out infinite;
+}
+
+.yaavbot__robot-dot {
+  animation: yaavbot-dot 1.4s ease-in-out infinite;
+}
+
+.yaavbot__robot-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: yaavbot-eyes 2.6s ease-in-out infinite;
+}
+
+.yaavbot__robot-eye--r {
+  animation-delay: 0.12s;
+}
+
+.yaavbot__robot-mouth {
+  animation: yaavbot-mouth 2.6s ease-in-out infinite;
 }
 
 .yaavbot.is-open .yaavbot__fab-icon {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  color: #0f2440;
-  box-shadow: 0 8px 20px rgba(15, 36, 64, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 18px rgba(15, 36, 64, 0.16);
   animation: none;
+  filter: none;
+}
+
+.yaavbot.is-open .yaavbot__robot {
+  display: none;
 }
 
 @keyframes yaavbot-icon-pulse {
   0%, 100% {
-    transform: scale(1) translateY(0);
-    filter: drop-shadow(0 10px 18px rgba(0, 40, 80, 0.24));
+    transform: scale(1);
+    filter: drop-shadow(0 10px 18px rgba(30, 100, 170, 0.3));
   }
   50% {
-    transform: scale(1.04) translateY(-3px);
-    filter: drop-shadow(0 16px 26px rgba(0, 80, 140, 0.32));
+    transform: scale(1.05);
+    filter: drop-shadow(0 14px 26px rgba(30, 120, 190, 0.42));
   }
 }
 
@@ -7848,13 +7871,34 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   50% { transform: translateY(-3px); }
 }
 
+@keyframes yaavbot-antenna {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+@keyframes yaavbot-dot {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes yaavbot-eyes {
+  0%, 100% {
+    opacity: 0.92;
+    filter: drop-shadow(0 0 2px rgba(122, 215, 255, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgba(122, 215, 255, 0.85));
+  }
+}
+
+@keyframes yaavbot-mouth {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.7px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .yaavbot__fab-icon,
-  .yaavbot__robot-antenna,
-  .yaavbot__robot-dot,
-  .yaavbot__robot-eye,
-  .yaavbot__robot-mouth,
-  .yaavbot__robot-blush,
   .yaavbot__hint {
     animation: none;
   }
@@ -8181,13 +8225,12 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab-icon {
-    width: 86px;
-    height: 86px;
+    width: 96px;
+    height: 148px;
   }
 
   .yaavbot__robot {
-    width: 82px;
-    height: 82px;
+    width: 94px;
   }
 
   .yaavbot__fab-label {
@@ -8267,13 +8310,12 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot__fab-icon {
-    width: 82px;
-    height: 82px;
+    width: 90px;
+    height: 140px;
   }
 
   .yaavbot__robot {
-    width: 78px;
-    height: 78px;
+    width: 88px;
   }
 
   .yaavbot__panel {
