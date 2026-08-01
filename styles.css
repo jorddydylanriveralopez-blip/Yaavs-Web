@@ -7801,8 +7801,8 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 88px;
-  height: 88px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   background: transparent;
   color: #0a1628;
@@ -7812,8 +7812,8 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 }
 
 .yaavbot__robot {
-  width: 84px;
-  height: 84px;
+  width: 88px;
+  height: 88px;
   overflow: visible;
   display: block;
 }
