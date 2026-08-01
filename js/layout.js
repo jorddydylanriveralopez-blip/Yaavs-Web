@@ -356,7 +356,7 @@
 
   Promise.all([
     loadPartial("partials/header.html?v=21", headerMount),
-    loadPartial("partials/footer.html?v=17", footerMount),
+    loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=3", ctaMount),
   ]).then(async () => {
