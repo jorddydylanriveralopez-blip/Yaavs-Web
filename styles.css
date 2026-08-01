@@ -7723,13 +7723,13 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   align-items: center;
   justify-content: center;
   gap: 0;
-  width: 64px;
-  height: 64px;
+  width: 88px;
+  height: 88px;
   padding: 0;
   border: none;
   border-radius: 50%;
   background: transparent;
-  color: #00d4ee;
+  color: #fff;
   box-shadow: none;
   cursor: pointer;
   transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
@@ -7738,56 +7738,57 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 .yaavbot__fab:hover,
 .yaavbot__fab:focus-visible {
-  transform: translateY(-3px) scale(1.06);
+  transform: translateY(-4px) scale(1.08);
   border-color: transparent;
   box-shadow: none;
-  filter: drop-shadow(0 10px 22px rgba(0, 188, 212, 0.45));
+  filter: drop-shadow(0 14px 28px rgba(0, 120, 160, 0.35));
 }
 
 .yaavbot__fab:focus-visible {
   outline: 2px solid var(--accent-bright);
-  outline-offset: 4px;
+  outline-offset: 5px;
 }
 
 .yaavbot__fab-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   background: transparent;
   color: inherit;
   box-shadow: none;
   animation: yaavbot-icon-pulse 2.8s ease-in-out infinite;
-  filter: drop-shadow(0 8px 18px rgba(0, 18, 36, 0.35));
+  filter: drop-shadow(0 10px 22px rgba(15, 36, 64, 0.28));
 }
 
 .yaavbot__robot {
-  width: 58px;
-  height: 58px;
+  width: 82px;
+  height: 82px;
   overflow: visible;
-  color: #0a1630;
+  color: #0a4a6e;
 }
 
 .yaavbot__robot-head {
-  fill: #00d4ee !important;
+  fill: #ffffff !important;
   fill-opacity: 1 !important;
-  stroke: #0a1630 !important;
+  stroke: #2f8fb8 !important;
+  stroke-width: 1.55 !important;
 }
 
 .yaavbot__robot-eye {
-  fill: #041018 !important;
+  fill: #1a8bb8 !important;
 }
 
 .yaavbot__robot-antenna path,
 .yaavbot__robot-mouth,
 .yaavbot__robot > path {
-  stroke: #0a1630 !important;
+  stroke: #2f8fb8 !important;
 }
 
 .yaavbot__robot-dot {
-  fill: #5ce8f7 !important;
+  fill: #3ec8e8 !important;
 }
 
 .yaavbot__robot-antenna {
