@@ -77,9 +77,8 @@ body.theme-cluster:not(.page-home) .site-header .header-inner {
   z-index: 2;
 }
 
-/* Al tope (sobre hero oscuro): logo blanco + menú visible como en inicio */
-body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo.logo--white,
-body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo:not(.logo--on-light) {
+/* Al tope (sobre hero oscuro): logo blanco real + sombra legible */
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo.logo--white {
   --logo-filter: none;
   filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55)) !important;
   opacity: 1 !important;
@@ -88,18 +87,13 @@ body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo:not(.log
 body.theme-cluster:not(.page-home) .site-header .logo.logo--on-light {
   --logo-filter: none;
   filter: none !important;
+  opacity: 1 !important;
 }
 
-/* Al scroll (barra blanca): logo oscuro legible */
-body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--white,
-body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo:not(.logo--on-light) {
+/* Al scroll (barra blanca): logo a color / oscuro */
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--white {
   --logo-filter: brightness(0) saturate(100%);
   filter: brightness(0) saturate(100%) !important;
-}
-
-body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--on-light {
-  --logo-filter: none;
-  filter: none !important;
 }
 
 body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .nav-bento {

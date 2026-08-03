@@ -30,25 +30,40 @@
     });
   }
 
-  /** Home: logo blanco siempre. Interiores: logo a color (header claro). */
-  function initHeaderLogo() {
+  /** Páginas con header claro desde el tope → logo a color. */
+  function usesLightHeaderLogo() {
+    return document.body.classList.contains("page-tiendas")
+      || document.body.classList.contains("page-tiendas-map")
+      || document.body.classList.contains("page-terminos")
+      || document.body.classList.contains("page-privacidad");
+  }
+
+  /** Home y subpáginas con hero oscuro: logo blanco. Al scroll en interiores: logo a color. */
+  function applyHeaderLogo(forceLight) {
     const img = document.querySelector(".site-header .logo");
     if (!img) return;
 
     const picture = img.closest("picture");
     picture?.querySelectorAll("source").forEach((source) => source.remove());
 
-    if (document.body.classList.contains("page-home")) {
-      img.src = "assets/yaavs-logo-white.png?v=2";
-      img.classList.add("logo--white");
-      img.classList.remove("logo--on-light");
-    } else {
+    const useLight = forceLight === true
+      || (forceLight !== false && usesLightHeaderLogo());
+
+    if (useLight) {
       img.src = "assets/yaavs-logo-on-light.png?v=3";
       img.classList.add("logo--on-light");
       img.classList.remove("logo--white");
+    } else {
+      img.src = "assets/yaavs-logo-white.png?v=2";
+      img.classList.add("logo--white");
+      img.classList.remove("logo--on-light");
     }
-    img.style.setProperty("--logo-filter", "none");
-    img.style.filter = "none";
+    img.style.removeProperty("--logo-filter");
+    img.style.removeProperty("filter");
+  }
+
+  function initHeaderLogo() {
+    applyHeaderLogo(usesLightHeaderLogo() ? true : false);
   }
 
   function initNavToggle() {
@@ -155,6 +170,9 @@
       return Math.max(28, Math.min(48, banner.offsetHeight * 0.04));
     }
 
+    const swapLogoOnScroll =
+      !document.body.classList.contains("page-home") && !usesLightHeaderLogo();
+
     let ticking = false;
     function onScroll() {
       if (ticking) return;
@@ -163,6 +181,7 @@
         const scrolled = window.scrollY > getThreshold();
         header.classList.toggle("is-scrolled", scrolled);
         document.body.classList.toggle("header-scrolled", scrolled);
+        if (swapLogoOnScroll) applyHeaderLogo(scrolled);
         ticking = false;
       });
     }
