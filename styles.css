@@ -7943,7 +7943,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   right: 0;
   bottom: calc(100% + 14px);
   width: min(380px, calc(100vw - 32px));
-  max-height: min(560px, calc(100dvh - var(--header-h) - 120px));
+  max-height: min(520px, calc(100dvh - 120px));
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(90, 156, 196, 0.4);
@@ -7960,6 +7960,30 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   animation: yaavbot-panel-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Abierto: fijo al viewport para que no se corte el header */
+.yaavbot.is-open .yaavbot__panel {
+  position: fixed;
+  right: max(16px, var(--safe-right, 0px));
+  bottom: max(72px, calc(var(--safe-bottom, 0px) + 60px));
+  left: auto;
+  top: auto;
+  width: min(380px, calc(100vw - 32px));
+  max-height: calc(
+    100dvh
+    - max(72px, calc(var(--safe-bottom, 0px) + 60px))
+    - max(12px, env(safe-area-inset-top, 0px))
+    - 16px
+  );
+}
+
+.yaavbot__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
 @keyframes yaavbot-panel-in {
   from { opacity: 0; transform: translateY(12px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -7970,6 +7994,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-shrink: 0;
   padding: 14px 16px;
   border-bottom: 1px solid rgba(90, 156, 196, 0.18);
   background: linear-gradient(180deg, rgba(90, 156, 196, 0.08), transparent);
@@ -8078,9 +8103,9 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 }
 
 .yaavbot__messages {
-  flex: 1;
-  min-height: 220px;
-  max-height: min(360px, 48dvh);
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
   overflow-y: auto;
   padding: 14px 14px 8px;
   display: flex;
@@ -8151,6 +8176,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   flex-wrap: wrap;
   gap: 8px;
   padding: 0 14px 10px;
+  flex-shrink: 0;
 }
 
 .yaavbot__chip {
