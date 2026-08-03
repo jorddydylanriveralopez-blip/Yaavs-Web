@@ -7982,20 +7982,25 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   animation: yaavbot-panel-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Abierto: fijo al viewport para que no se corte el header */
+/* Abierto: fijo al viewport; FAB oculto → panel más cerca del borde */
 .yaavbot.is-open .yaavbot__panel {
   position: fixed;
   right: max(16px, var(--safe-right, 0px));
-  bottom: max(72px, calc(var(--safe-bottom, 0px) + 60px));
   left: auto;
   top: auto;
+  bottom: max(20px, calc(var(--safe-bottom, 0px) + 16px));
   width: min(380px, calc(100vw - 32px));
   max-height: calc(
     100dvh
-    - max(72px, calc(var(--safe-bottom, 0px) + 60px))
+    - max(20px, calc(var(--safe-bottom, 0px) + 16px))
     - max(12px, env(safe-area-inset-top, 0px))
     - 16px
   );
+}
+
+.yaavbot.is-open.is-minimized .yaavbot__panel {
+  bottom: max(78px, calc(var(--safe-bottom, 0px) + 64px));
+  max-height: none;
 }
 
 .yaavbot__body {
@@ -8072,8 +8077,11 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   opacity: 0.92;
 }
 
-.yaavbot.is-open .yaavbot__fab {
-  border-color: transparent;
+/* Panel abierto: ocultar FAB (ya hay minimizar/cerrar) — evita el círculo sobre el send */
+.yaavbot.is-open:not(.is-minimized) .yaavbot__fab {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .yaavbot__fab-icon-min[hidden],
@@ -8334,8 +8342,12 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot.is-open .yaavbot__fab {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
     background: rgba(255, 255, 255, 0.96);
     color: #0f2440;
+    border: 1px solid rgba(255, 255, 255, 0.55);
   }
 
   .yaavbot.is-open .yaavbot__fab-icon {
@@ -8346,7 +8358,7 @@ body.page-intro-active .yaavbot {
   }
 
   .yaavbot.is-open .yaavbot__fab-icon-chat {
-    display: none;
+    display: none !important;
   }
 
   .yaavbot__fab-label {
@@ -8370,14 +8382,18 @@ body.page-intro-active .yaavbot {
   .yaavbot.is-open .yaavbot__panel {
     position: fixed;
     right: max(12px, var(--safe-right, 0px));
-    bottom: max(68px, calc(var(--safe-bottom, 0px) + 56px));
+    bottom: max(16px, calc(var(--safe-bottom, 0px) + 12px));
     width: min(320px, calc(100vw - 24px));
     max-height: calc(
       100dvh
-      - max(68px, calc(var(--safe-bottom, 0px) + 56px))
+      - max(16px, calc(var(--safe-bottom, 0px) + 12px))
       - max(10px, env(safe-area-inset-top, 0px))
       - 12px
     );
+  }
+
+  .yaavbot.is-open.is-minimized .yaavbot__panel {
+    bottom: max(72px, calc(var(--safe-bottom, 0px) + 60px));
   }
 
   .yaavbot__messages {
@@ -8438,14 +8454,18 @@ body.page-intro-active .yaavbot {
   .yaavbot.is-open .yaavbot__panel {
     position: fixed;
     right: max(10px, var(--safe-right, 0px));
-    bottom: max(64px, calc(var(--safe-bottom, 0px) + 54px));
+    bottom: max(14px, calc(var(--safe-bottom, 0px) + 10px));
     width: min(300px, calc(100vw - 16px));
     max-height: calc(
       100dvh
-      - max(64px, calc(var(--safe-bottom, 0px) + 54px))
+      - max(14px, calc(var(--safe-bottom, 0px) + 10px))
       - max(8px, env(safe-area-inset-top, 0px))
       - 10px
     );
+  }
+
+  .yaavbot.is-open.is-minimized .yaavbot__panel {
+    bottom: max(70px, calc(var(--safe-bottom, 0px) + 58px));
   }
 
   .yaavbot.is-minimized .yaavbot__panel {

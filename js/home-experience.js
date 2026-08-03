@@ -1963,6 +1963,8 @@
   const deckMoreLabel = deckWrap?.querySelector("[data-hx-deck-more-label]");
   const deckDesktopMq = window.matchMedia("(min-width: 769px)");
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
+  /* Videos del deck solo tablet/desktop — en celular solo iconos (más rápido) */
+  const deckVideosEnabled = () => deckDesktopMq.matches;
 
   if (deckSection && deckRoot) {
     const getDeckItems = () => [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
@@ -2209,6 +2211,8 @@
     }
 
     runMobileDeckPreview = (item) => {
+      /* Celular: sin videos en servicios */
+      if (!deckVideosEnabled()) return;
       deckItems = getDeckItems();
       deckItems.forEach((el) => {
         if (el === item) return;
@@ -2263,6 +2267,8 @@
       if (!cfg) return;
 
       ensureDeckIcon(item);
+      /* Celular: solo iconos, sin crear <video> ni descargar mp4 */
+      if (!deckVideosEnabled()) return;
       if (item.querySelector(".hx-svc-deck__media")) return;
 
       const mediaEl = document.createElement("span");
