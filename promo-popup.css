@@ -34,7 +34,7 @@ body.is-promo-open {
 
 .yaavs-promo::backdrop {
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(180, 20, 30, 0.45), transparent 55%),
+    radial-gradient(ellipse at 50% 40%, rgba(0, 151, 178, 0.28), transparent 55%),
     rgba(6, 12, 24, 0.78);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);

@@ -2316,7 +2316,7 @@
       let loaded = false;
       const handlers = {
         loadVideo() {
-          if (cfg.gif || !cfg.mp4) return null;
+          if (!deckVideosEnabled() || cfg.gif || !cfg.mp4) return null;
           if (!loaded) {
             video.src = cfg.mp4;
             video.load();
@@ -2325,7 +2325,7 @@
           return video;
         },
         enter() {
-          if (!deckHoverMq.matches) return;
+          if (!deckVideosEnabled() || !deckHoverMq.matches) return;
           playDeckMedia(item);
         },
         leave(event) {
