@@ -8320,12 +8320,19 @@ body.hx-svc-panel-open [data-wa-float] {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 18px;
-    width: min(94%, 620px);
-    padding: clamp(80px, 12vh, 140px) clamp(24px, 3vw, 44px) clamp(32px, 5vh, 56px) clamp(32px, 3.5vw, 60px);
+    gap: clamp(10px, 1.6vh, 18px);
+    width: min(100%, 100%);
+    max-width: 100%;
+    box-sizing: border-box;
+    padding:
+      clamp(28px, 6vh, 72px)
+      clamp(16px, 2.2vw, 36px)
+      clamp(24px, 4vh, 48px)
+      clamp(18px, 2.4vw, 44px);
     pointer-events: none;
-    background: linear-gradient(90deg, rgba(2, 8, 18, 0.85) 0%, rgba(2, 8, 18, 0.55) 55%, transparent 100%);
+    background: linear-gradient(90deg, rgba(2, 8, 18, 0.55) 0%, rgba(2, 8, 18, 0.22) 48%, transparent 78%);
     transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: visible;
   }
 
   /* Gana a `.page-home .hx-ops__card > *` de home-corporate.css */
@@ -8338,6 +8345,7 @@ body.hx-svc-panel-open [data-wa-float] {
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero,
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-kicker,
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-title,
+  .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-line:not(.hx-services__cyan),
   .page-home .hx-ops__card.hx-ops__card--intro > .hx-ops__intro-hero .hx-ops__intro-hero-desc {
     color: #fff;
     -webkit-text-fill-color: #fff;
@@ -8371,11 +8379,21 @@ body.hx-svc-panel-open [data-wa-float] {
 
   .hx-ops__intro-hero-title {
     margin: 0;
-    font-size: clamp(2.4rem, 3.6vw, 3.8rem);
+    width: 100%;
+    max-width: min(100%, 18ch);
+    font-size: clamp(1.35rem, 0.85rem + 2.1vw, 2.75rem);
     font-weight: 700;
-    line-height: 1.04;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
     color: #fff;
     text-shadow: 0 6px 34px rgba(0, 0, 0, 0.55);
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+
+  .hx-ops__intro-hero-line {
+    display: block;
+    max-width: 100%;
   }
 
   .hx-ops__intro-hero-title .hx-services__cyan {
@@ -8398,6 +8416,28 @@ body.hx-svc-panel-open [data-wa-float] {
   /* El panel central duplicaría el mensaje: fuera en desktop */
   .hx-ops__card--intro .hx-ops__card-body {
     display: none;
+  }
+}
+
+/* Laptops / pantallas angostas: título más compacto para que no se corte */
+@media (min-width: 901px) and (max-width: 1280px) {
+  .hx-ops__intro-hero-title {
+    font-size: clamp(1.2rem, 0.7rem + 1.7vw, 2.05rem);
+    max-width: min(100%, 16ch);
+  }
+
+  .hx-ops__intro-hero {
+    padding-inline: clamp(14px, 1.8vw, 28px);
+  }
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  .hx-ops__intro-hero {
+    padding-block: clamp(18px, 4vh, 40px);
+  }
+
+  .hx-ops__intro-hero-title {
+    font-size: clamp(1.15rem, 0.65rem + 1.5vw, 1.9rem);
   }
 }
 
@@ -8455,11 +8495,17 @@ body.hx-svc-panel-open [data-wa-float] {
 
   .hx-ops__intro-hero-title {
     margin: 0;
-    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(0.95rem, 3.6vw, 1.2rem);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.18;
     color: #fff;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .hx-ops__intro-hero-line {
+    display: block;
   }
 
   .hx-ops__intro-hero-title .hx-services__cyan {
