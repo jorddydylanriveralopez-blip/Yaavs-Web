@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css?v=11">
   <link rel="stylesheet" href="theme-day-night.css?v=5">
-  <link rel="stylesheet" href="interior-corporate.css?v=21">
+  <link rel="stylesheet" href="interior-corporate.css?v=22">
   <link rel="stylesheet" href="interior-light.css?v=8">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
@@ -79,7 +79,13 @@
         <header class="jobs-section-head">
           <p class="section-tag">Convocatorias</p>
           <h2 class="jobs-section-title jobs-section-title--hero">VACANTES EN YAAVS</h2>
-          <p class="jobs-section-lead">Toca una vacante abierta para ver requisitos y contactar por WhatsApp.</p>
+          <p class="jobs-section-lead">
+            <span class="jobs-open-pill" id="jobs-open-count-wrap" hidden>
+              <strong id="jobs-open-count">0</strong>
+              <span>abiertas ahora</span>
+            </span>
+            Toca una vacante para ver sueldo, requisitos, flyer y postular por WhatsApp o en OCC / Indeed / Facebook.
+          </p>
         </header>
         <div class="jobs-catalog-groups" id="jobs-catalog-list"></div>
       </div>
@@ -182,7 +188,7 @@
   <div id="site-footer"></div>
   <script src="js/layout.js?v=40" defer></script>
   <script src="js/main.js?v=5" defer></script>
-  <script src="js/bolsa-vacantes.js?v=7"></script>
+  <script src="js/bolsa-vacantes.js?v=8"></script>
   <script src="js/interior-banners.config.js?v=2"></script>
   <script src="js/interior-banner.js"></script>
 </body>

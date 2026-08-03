@@ -933,8 +933,14 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   align-items: stretch;
   gap: 0;
   padding: 0;
-  border: 1px solid var(--border-on-light);
-  background: var(--surface-soft);
+  border: 1px solid rgba(61, 125, 181, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .page-bolsa-trabajo .jobs-catalog__row {
@@ -942,7 +948,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px 20px;
+  padding: 18px 20px;
 }
 
 .page-bolsa-trabajo .jobs-catalog__item.is-openable {
@@ -951,8 +957,16 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 
 .page-bolsa-trabajo .jobs-catalog__item.is-openable:hover,
 .page-bolsa-trabajo .jobs-catalog__item.is-openable:focus-visible {
-  border-color: rgba(61, 125, 181, 0.55);
+  border-color: rgba(37, 99, 181, 0.55);
+  box-shadow: 0 14px 36px rgba(15, 36, 64, 0.16);
   outline: none;
+  transform: translateY(-2px);
+}
+
+.page-bolsa-trabajo .jobs-catalog__item.is-expanded {
+  border-color: rgba(37, 99, 181, 0.45);
+  box-shadow: 0 18px 44px rgba(15, 36, 64, 0.2);
+  transform: none;
 }
 
 .page-bolsa-trabajo .jobs-catalog__main {
@@ -964,7 +978,9 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 
 .page-bolsa-trabajo .jobs-catalog__title {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
 }
 
 .page-bolsa-trabajo .jobs-catalog__area {
@@ -972,20 +988,64 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   font-size: 0.82rem;
 }
 
-.page-bolsa-trabajo .jobs-catalog__status {
+.page-bolsa-trabajo .jobs-catalog__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
   flex-shrink: 0;
-  font-size: 0.68rem;
-  font-weight: 700;
+}
+
+.page-bolsa-trabajo .jobs-catalog__platform-hint {
+  font-size: 0.62rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 6px 10px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #0b3d91;
+  background: rgba(37, 99, 181, 0.1);
+}
+
+.page-bolsa-trabajo .jobs-catalog__status {
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 11px;
+  border-radius: 999px;
   border: 1px solid rgba(61, 125, 181, 0.35);
   color: var(--accent-bright);
+  background: rgba(61, 125, 181, 0.06);
+}
+
+.page-bolsa-trabajo .jobs-catalog__chevron {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(37, 99, 181, 0.7);
+  border-bottom: 2px solid rgba(37, 99, 181, 0.7);
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+  margin-left: 2px;
+}
+
+.page-bolsa-trabajo .jobs-catalog__item.is-expanded .jobs-catalog__chevron {
+  transform: rotate(225deg);
 }
 
 .page-bolsa-trabajo .jobs-catalog__detail {
-  padding: 0 20px 18px;
-  border-top: 1px solid rgba(61, 125, 181, 0.22);
+  padding: 0 20px 20px;
+  border-top: 1px solid rgba(61, 125, 181, 0.16);
+  background:
+    linear-gradient(180deg, rgba(236, 246, 255, 0.65) 0%, rgba(255, 255, 255, 0.2) 48%);
+  animation: jobsDetailIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes jobsDetailIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .page-bolsa-trabajo .jobs-catalog__detail-grid {
@@ -995,17 +1055,22 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .page-bolsa-trabajo .jobs-catalog__detail-grid.has-photo {
-  grid-template-columns: minmax(0, 1fr) minmax(180px, 42%);
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 40%);
   align-items: start;
   gap: clamp(16px, 3vw, 28px);
 }
 
 .page-bolsa-trabajo .jobs-catalog__photo {
+  position: sticky;
+  top: 88px;
   margin: 14px 0 0;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   background: #e8f2fb;
-  box-shadow: 0 12px 28px rgba(15, 36, 64, 0.14);
+  box-shadow:
+    0 18px 40px rgba(15, 36, 64, 0.18),
+    0 0 0 1px rgba(37, 99, 181, 0.12);
+  transform: rotate(0.4deg);
 }
 
 .page-bolsa-trabajo .jobs-catalog__photo img {
@@ -1017,16 +1082,42 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   object-position: center top;
 }
 
-.page-bolsa-trabajo .jobs-catalog__desc,
-.page-bolsa-trabajo .jobs-catalog__location {
+.page-bolsa-trabajo .jobs-catalog__desc {
   margin: 14px 0 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.55;
+  color: #31445c;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.page-bolsa-trabajo .jobs-catalog__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.page-bolsa-trabajo .jobs-catalog__chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: #1e3a5f;
+  background: rgba(37, 99, 181, 0.08);
+  border: 1px solid rgba(37, 99, 181, 0.14);
+}
+
+.page-bolsa-trabajo .jobs-catalog__chip--salary {
+  color: #0a5c3a;
+  background: rgba(34, 160, 107, 0.12);
+  border-color: rgba(34, 160, 107, 0.22);
 }
 
 .page-bolsa-trabajo .jobs-catalog__specs {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .page-bolsa-trabajo .jobs-catalog__specs h4 {
@@ -1041,7 +1132,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 .page-bolsa-trabajo .jobs-catalog__specs-list {
   margin: 0;
   padding: 0 0 0 1.1rem;
-  max-height: 260px;
+  max-height: 240px;
   overflow: auto;
   color: var(--ink);
   font-size: 0.86rem;
@@ -1055,9 +1146,69 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 .page-bolsa-trabajo .jobs-catalog__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 14px;
+  gap: 10px;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 18px;
+}
+
+.page-bolsa-trabajo .job-platform {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: #2563b5;
+  box-shadow: 0 8px 18px rgba(37, 99, 181, 0.28);
+}
+
+.page-bolsa-trabajo .job-platform--occ {
+  background: linear-gradient(135deg, #ff6a00 0%, #e45700 100%);
+  box-shadow: 0 8px 18px rgba(228, 87, 0, 0.28);
+}
+
+.page-bolsa-trabajo .job-platform--indeed {
+  background: linear-gradient(135deg, #2557a7 0%, #163a78 100%);
+}
+
+.page-bolsa-trabajo .job-platform--facebook {
+  background: linear-gradient(135deg, #1877f2 0%, #0f5fd0 100%);
+}
+
+.page-bolsa-trabajo .job-platform:hover,
+.page-bolsa-trabajo .job-platform:focus-visible {
+  filter: brightness(1.05);
+  outline: none;
+}
+
+.page-bolsa-trabajo .jobs-open-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7ec8ff;
+  background: rgba(126, 200, 255, 0.12);
+  border: 1px solid rgba(126, 200, 255, 0.28);
+}
+
+.page-bolsa-trabajo .jobs-open-pill strong {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.page-bolsa-trabajo .jobs-catalog__item.is-closed .jobs-catalog__status {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  background: transparent;
 }
 
 @media (max-width: 760px) {
@@ -1066,13 +1217,19 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   }
 
   .page-bolsa-trabajo .jobs-catalog__photo {
+    position: static;
     order: -1;
-    max-width: 320px;
+    max-width: 340px;
     margin-inline: auto;
+    transform: none;
   }
 
   .page-bolsa-trabajo .jobs-catalog__photo img {
     aspect-ratio: 3 / 4;
+  }
+
+  .page-bolsa-trabajo .jobs-catalog__badges {
+    max-width: 46%;
   }
 }
 

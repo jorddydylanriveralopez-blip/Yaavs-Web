@@ -4,65 +4,96 @@
   const WA_RRHH = "525643873796";
   const WA_EMBAJADOR = "525643129691";
 
-  /** Vacantes activas — flyers RRHH YAAVS (jul 2026) */
+  /** Vacantes activas — plantilla RRHH + flyers (ago 2026) */
   const OPEN_JOBS = [
     {
       id: "soporte-tecnico",
       title: "Soporte técnico",
-      pills: ["Tiempo completo", "Por incapacidad", "RRHH"],
+      pills: ["Por incapacidad", "TI", "Presencial"],
       description:
-        "Te estamos buscando por incapacidad. Analiza requerimientos, da soporte a usuarios internos y garantiza la operación tecnológica de YAAVS.",
+        "Analista de soporte TI por incapacidad. Atiende incidencias de hardware, software y redes, da seguimiento a tickets y respalda la operación tecnológica.",
       requirements: [
+        "Edad 25 a 35 años · experiencia deseable de 1 año.",
+        "Atención y servicio a clientes, excelente actitud y presentación.",
         "Analizar requerimientos tecnológicos y de negocio para proponer soluciones eficientes.",
         "Dar soporte técnico a usuarios internos y resolver incidencias de hardware, software y redes.",
         "Monitorear el desempeño de sistemas, aplicaciones y equipos tecnológicos.",
+        "Elaborar documentación técnica, procedimientos y manuales de usuario.",
         "Gestionar y dar seguimiento a tickets de soporte y solicitudes de servicio.",
         "Apoyar en la administración de bases de datos, servidores y plataformas empresariales.",
         "Identificar riesgos tecnológicos y proponer medidas preventivas y correctivas.",
         "Garantizar el cumplimiento de políticas de seguridad informática y protección de datos.",
+        "Generar reportes e indicadores relacionados con la operación de TI.",
       ],
-      location: "YAAVS",
+      benefits: [
+        "Comedor gratuito",
+        "Uniformes gratuitos",
+        "Prestaciones de ley",
+        "Vacaciones adicionales o permisos con goce de sueldo",
+        "Seguro de gastos menores",
+        "Póliza de cobertura por defunción",
+        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
+      ],
+      salary: "$11,000 – $12,000 mensuales",
+      schedule: "Lun–vie 9:00–18:00 · Sáb 10:00–14:00",
+      location: "Ojo de Agua, Tecámac, Edo. Méx. C.P. 55770",
       contactName: "RRHH",
       whatsapp: WA_RRHH,
       image: "assets/bolsa/vacantes/soporte-tecnico.jpg",
+      link: "https://www.facebook.com/share/p/1D7zSfZd9p/",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
     {
-      id: "coordinador-trade-marketing",
-      title: "Coordinador de Trade Marketing",
-      pills: ["Tiempo completo", "Marketing", "RRHH"],
+      id: "desarrollador-web",
+      title: "Desarrollador web",
+      pills: ["Tiempo completo", "TI", "Presencial"],
       description:
-        "Coordina la estrategia de trade marketing con foco en inteligencia comercial, planeación y ejecución en campo.",
+        "Desarrollo presencial en Tecámac Ojo de Agua. Experiencia comprobable desde 1 año en software con dominio de C#, SQL Server y ASP.NET.",
       requirements: [
-        "Excel avanzado",
-        "Power BI",
-        "Paquetería Office",
-        "ERP",
-        "CRM",
-        "Simpliroute o GoSpotCheck (plataformas de levantamiento de campo)",
-        "Inteligencia comercial",
-        "Planeación comercial",
-        "Visual merchandising",
-        "Administración de proyectos",
-        "Monitorear tendencias del mercado, comportamiento del consumidor y actividades de la competencia",
+        "Ingeniería en Sistemas, Informática o carrera afín.",
+        "Experiencia comprobable a partir de 1 año en desarrollo de software.",
+        "Dominio de C#",
+        "SQL Server",
+        "Procedimientos almacenados",
+        "Triggers",
+        "ASP.NET Framework",
+        "Notación JSON",
+        "HTML",
+        "jQuery Framework",
       ],
-      location: "YAAVS",
+      benefits: [
+        "Prestaciones de ley",
+        "Aumentos salariales",
+        "Bebidas gratis",
+        "Descuentos y precios preferenciales",
+        "Estacionamiento de la empresa",
+        "Horarios flexibles",
+        "Servicio de comedor con descuento",
+        "Teléfono de la empresa",
+        "Uniformes gratuitos",
+      ],
+      salary: "$12,000 – $18,000 según conocimientos y prueba",
+      schedule: "Turno de 8 horas",
+      location: "Tecámac Ojo de Agua, Edo. Méx.",
       contactName: "RRHH",
       whatsapp: WA_RRHH,
-      image: "assets/bolsa/vacantes/coordinador-trade-marketing.jpg",
+      image: "assets/bolsa/vacantes/desarrollador-web.jpg",
+      link: "https://mx.indeed.com/viewjob?jk=44bbcbc68b38ca20&from=shareddesktop_copy",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
     {
       id: "especialista-mineria-datos-bi",
       title: "Especialista en minería de datos / Business Intelligence",
-      pills: ["Tiempo completo", "100% oficina", "Tecámac"],
+      pills: ["Tiempo completo", "BI", "100% oficina"],
       description:
-        "Perfil analítico para extracción, manipulación y visualización de información de negocio. Horario: lun–vie 9:00–18:00 y sáb 9:00–13:00.",
+        "Análisis de información para dar visibilidad a la operación: tableros y dashboards para ventas, con toma de decisiones basada en datos.",
       requirements: [
         "Licenciatura orientada a minería de datos, actuaría o finanzas.",
-        "Trabajo 100% oficina · Zona de trabajo: Ojo de Agua, Tecámac, Estado de México.",
+        "Disponibilidad de lunes a sábado · trabajo 100% oficina.",
         "Capacidad analítica y conocimiento en lenguajes de programación.",
         "Experiencia experta en manejo de bases de datos.",
         "Extracción, manipulación y análisis de información.",
@@ -75,67 +106,6 @@
       ],
       benefits: [
         "Prestaciones de ley",
-        "Comedor gratuito",
-        "Capacitación constante",
-        "Seguro de gastos menores",
-        "Póliza de cobertura por defunción",
-        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
-        "Atención psicológica",
-        "Asesoría nutricional",
-      ],
-      location: "Ojo de Agua, Tecámac, Edo. Méx.",
-      contactName: "Recursos Humanos",
-      whatsapp: WA_RRHH,
-      image: "assets/bolsa/vacantes/especialista-mineria-datos-bi.jpg",
-      publishedAt: "2026-07-29",
-      closesAt: "2026-12-31",
-    },
-    {
-      id: "analista-planeacion-financiera",
-      title: "Analista de planeación financiera",
-      pills: ["Tiempo completo", "Finanzas", "Tecámac"],
-      description:
-        "Elabora reportes financieros, apoya el presupuesto anual y analiza costos, gastos y márgenes. Zona de trabajo: Tecámac Ojo de Agua.",
-      requirements: [
-        "Elaborar y actualizar reportes financieros mensuales (estado de resultados, flujo de efectivo y análisis de variaciones).",
-        "Apoyar en la elaboración y seguimiento del presupuesto anual, identificando desviaciones.",
-        "Apoyar en la evaluación financiera de proyectos (rentabilidad, punto de equilibrio y análisis preliminares).",
-        "Mantener bases de datos financieras actualizadas y organizadas.",
-        "Realizar análisis de costos, gastos y márgenes para detectar áreas de mejora.",
-        "Conocimiento en interpretación de estados financieros (Resultados, Balance y Flujo de Efectivo).",
-        "Fundamentos de análisis financiero, presupuestación y contabilidad general.",
-        "Elaboración de proyecciones financieras básicas.",
-        "Excel intermedio-avanzado (fórmulas financieras, tablas dinámicas, bases de datos).",
-        "Indicadores financieros (rentabilidad, liquidez y punto de equilibrio).",
-        "Principios de planeación financiera.",
-        "Conocimiento básico en evaluación de proyectos (VPN, TIR, Payback).",
-      ],
-      location: "Tecámac Ojo de Agua",
-      contactName: "Leesly Rosas",
-      whatsapp: WA_RRHH,
-      image: "assets/bolsa/vacantes/analista-planeacion-financiera.jpg",
-      publishedAt: "2026-07-29",
-      closesAt: "2026-12-31",
-    },
-    {
-      id: "desarrollador-web",
-      title: "Desarrollador web",
-      pills: ["Tiempo completo", "Tecnología", "Tecámac"],
-      description:
-        "Se solicita desarrollador web con 2 años de experiencia comprobable. Zona de trabajo: Tecámac Ojo de Agua.",
-      requirements: [
-        "2 años de experiencia comprobable.",
-        "Dominio de C#",
-        "SQL Server",
-        "LINQ",
-        "Triggers",
-        "Manejo de .NET / .NET Core",
-        "Procedimientos almacenados",
-        "Nociones de ITIL",
-        "Familiaridad con metodologías y herramientas de soporte (mesa de ayuda, tickets)",
-      ],
-      benefits: [
-        "Aumentos salariales",
         "Bebidas gratis",
         "Descuentos y precios preferenciales",
         "Estacionamiento de la empresa",
@@ -148,10 +118,51 @@
         "Atención psicológica",
         "Asesoría nutricional",
       ],
-      location: "Tecámac Ojo de Agua",
+      salary: "$30,000 – $35,000 mensuales",
+      schedule: "Lun–vie 9:00–18:00 · Sáb 10:00–14:00",
+      location: "Ojo de Agua, Tecámac, Edo. Méx. C.P. 55770",
+      contactName: "Recursos Humanos",
+      whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/especialista-mineria-datos-bi.jpg",
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "coordinador-trade-marketing",
+      title: "Coordinador de Trade Marketing",
+      pills: ["Tiempo completo", "Marketing", "Centro"],
+      description:
+        "Coordina trade marketing en zona centro: insights, ejecución en PDV, materiales POP y planes de crecimiento con socios comerciales.",
+      requirements: [
+        "Licenciatura en Mercadotecnia, Comunicación o afín concluida.",
+        "30–40 años · experiencia mínima de 4 años en el área.",
+        "Excel avanzado, Power BI, Office, ERP y CRM.",
+        "Simpliroute o GoSpotCheck (levantamiento de campo).",
+        "Inteligencia y planeación comercial, visual merchandising y administración de proyectos.",
+        "Monitorear tendencias del mercado, consumidor y competencia.",
+        "Levantamiento de información de clientes e insights por región.",
+        "Diseñar e implementar estrategias de trade por unidad de negocio.",
+        "Coordinar producción, distribución e inventarios de materiales promocionales.",
+        "Seguimiento a ejecución en punto de venta y análisis post-mortem.",
+        "Gestión de presupuesto y disponibilidad para viajar (auto de empresa).",
+      ],
+      benefits: [
+        "Prestaciones de ley",
+        "Comedor gratuito",
+        "Seguro de gastos menores",
+        "Póliza de cobertura por defunción",
+        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
+        "Automóvil de la empresa y apoyo de combustible",
+      ],
+      salary: "$18,500 – $20,000 mensuales",
+      schedule: "Lun–vie 9:00–18:00 · Sáb 10:00–14:00",
+      location: "Ojo de Agua, Tecámac, Edo. Méx. C.P. 55770",
       contactName: "RRHH",
       whatsapp: WA_RRHH,
-      image: "assets/bolsa/vacantes/desarrollador-web.jpg",
+      image: "assets/bolsa/vacantes/coordinador-trade-marketing.jpg",
+      link: "https://www.occ.com.mx/empleo/oferta/21233080",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -184,61 +195,123 @@
       closesAt: "2026-12-31",
     },
     {
-      id: "gerente-contabilidad-financiero",
-      title: "Gerente de contabilidad financiero",
-      pills: ["Tiempo completo", "Finanzas", "Lun–Sáb"],
+      id: "analista-planeacion-financiera",
+      title: "Analista de planeación financiera",
+      pills: ["Tiempo completo", "Finanzas", "Presencial"],
       description:
-        "Liderazgo contable-financiero: estados financieros, conciliaciones, impuestos y controles. Licenciatura en Contabilidad o Finanzas con 5 años de experiencia corporativa.",
+        "Licenciatura en Finanzas, Economía o Administración (indispensable) con 3 años de experiencia. Reportes, presupuesto y análisis de márgenes.",
       requirements: [
-        "Licenciatura en Contabilidad o Finanzas.",
-        "5 años de experiencia en contabilidad corporativa.",
-        "Conocimiento en elaboración de estados financieros y dominio de Excel.",
-        "Disponibilidad de lunes a sábado.",
-        "Elaboración de estados financieros (Balance, Resultados, Flujo de Efectivo y cambios en la situación financiera).",
-        "Conciliación de cuentas, seguimiento y resolución.",
-        "Registro de operaciones diarias.",
-        "Revisión y autorización de ajustes contables (provisiones, amortizaciones, depreciaciones y conciliaciones bancarias).",
-        "Presentación de declaraciones fiscales mensuales y anuales.",
-        "Documentar procedimientos y controles contables.",
+        "Lic. en Finanzas, Economía o Administración · 3 años de experiencia.",
+        "Elaborar y actualizar reportes financieros mensuales (resultados, flujo y variaciones).",
+        "Apoyar el presupuesto anual, identificando desviaciones.",
+        "Evaluación financiera de proyectos (rentabilidad, punto de equilibrio).",
+        "Mantener bases de datos financieras actualizadas.",
+        "Análisis de costos, gastos y márgenes.",
+        "Interpretación de estados financieros (Resultados, Balance y Flujo).",
+        "Excel intermedio-avanzado (fórmulas financieras, tablas dinámicas).",
+        "Indicadores financieros, planeación financiera y evaluación básica (VPN, TIR, Payback).",
       ],
       benefits: [
-        "Descuentos en +6,000 establecimientos",
-        "Descuentos con +4,000 proveedores médicos",
-        "Atención psicológica",
-        "Asesoría nutricional",
-        "Pago semanal",
         "Prestaciones de ley",
+        "Teléfono de la empresa",
+        "Uniformes gratuitos",
+        "Vacaciones adicionales o permisos con goce de sueldo",
         "Seguro de gastos menores",
         "Póliza de cobertura por defunción",
+        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
       ],
-      location: "YAAVS",
+      salary: "$15,000 – $17,000 libres mensuales",
+      schedule: "Lun–vie 9:00–18:00 · Sáb 10:00–14:00",
+      location: "Ojo de Agua, Tecámac, Edo. Méx. C.P. 55770",
+      contactName: "Leesly Rosas",
+      whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/analista-planeacion-financiera.jpg",
+      link: "https://mx.indeed.com/viewjob?jk=80d4c7eef3bb1c31&from=shareddesktop_copy",
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "gerente-contabilidad-financiero",
+      title: "Gerente de contabilidad financiero",
+      pills: ["Tiempo completo", "Contabilidad", "Lun–Sáb"],
+      description:
+        "Liderazgo contable: estados financieros, conciliaciones, cierres mensuales e inventarios. Preferible experiencia en telecom.",
+      requirements: [
+        "Licenciatura en Contabilidad o Finanzas.",
+        "Experiencia en contabilidad de empresas medianas o grandes.",
+        "Experiencia en telecomunicaciones (preferible).",
+        "Conocimiento en elaboración de estados financieros y Excel.",
+        "Disponibilidad de lunes a sábado.",
+        "Registro de operaciones diarias y cierres mensuales.",
+        "Revisión y aprobación de ajustes contables (provisiones, amortizaciones, depreciaciones y conciliaciones).",
+        "Elaboración de estados financieros (Balance, Resultados, Flujo y cambios en la situación financiera).",
+        "Documentar procedimientos y controles contables.",
+        "Control de inventarios y inventario físico anual.",
+      ],
+      benefits: [
+        "Prestaciones de ley",
+        "Bebidas gratis",
+        "Descuentos y precios preferenciales",
+        "Estacionamiento de la empresa",
+        "Horarios flexibles",
+        "Servicio de comedor con descuento",
+        "Teléfono de la empresa",
+        "Seguro de gastos menores",
+        "Póliza de cobertura por defunción",
+        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
+      ],
+      salary: "$30,000 – $35,000 mensuales",
+      schedule: "Lun–vie 9:00–18:00 · Sáb 10:00–14:00",
+      location: "Ojo de Agua, Tecámac, Edo. Méx.",
       contactName: "Leesly Rosas",
       whatsapp: WA_RRHH,
       image: "assets/bolsa/vacantes/gerente-contabilidad-financiero.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
+    {
+      id: "asesor-ventas-att",
+      title: "Asesor de ventas AT&T",
+      pills: ["Tiempo completo", "Ventas", "Negocios"],
+      description:
+        "Asesoría y venta de soluciones AT&T con respaldo YAAVS. Acompañas a puntos de venta y cierras oportunidades en el canal retail.",
+      requirements: [
+        "Orientación a resultados y cierre comercial.",
+        "Disponibilidad para visitar y acompañar puntos de venta.",
+        "Conocimiento deseable del portafolio telecom / AT&T.",
+      ],
+      location: "Negocios / canal retail",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      link: "https://www.occ.com.mx/empleo/oferta/ejemplo-asesor-att",
+      publishedAt: "2026-05-12",
+      closesAt: "2026-08-15",
+    },
   ];
 
-  /** Catálogo de puestos agrupados por área */
   const DEPARTMENT_ORDER = [
     "Tecnología",
     "Marketing",
     "Finanzas",
+    "Contabilidad",
     "Ventas",
     "Operaciones",
     "Administración",
   ];
 
   const CATALOG = [
-    { title: "Soporte técnico", department: "Tecnología", detail: "Por incapacidad", open: true, jobId: "soporte-tecnico" },
+    { title: "Soporte técnico", department: "Tecnología", detail: "Por incapacidad · Tecámac", open: true, jobId: "soporte-tecnico" },
     { title: "Desarrollador web", department: "Tecnología", detail: "Tecámac Ojo de Agua", open: true, jobId: "desarrollador-web" },
-    { title: "Especialista en minería de datos / BI", department: "Tecnología", detail: "Tecámac", open: true, jobId: "especialista-mineria-datos-bi" },
-    { title: "Coordinador de Trade Marketing", department: "Marketing", detail: "Trade / campo", open: true, jobId: "coordinador-trade-marketing" },
-    { title: "Embajador de marca", department: "Marketing", detail: "Activaciones", open: true, jobId: "embajador-de-marca" },
-    { title: "Analista de planeación financiera", department: "Finanzas", detail: "Tecámac", open: true, jobId: "analista-planeacion-financiera" },
-    { title: "Gerente de contabilidad financiero", department: "Finanzas", detail: "Lun–Sáb", open: true, jobId: "gerente-contabilidad-financiero" },
-    { title: "Asesor de ventas AT&T", department: "Ventas", detail: "Negocios", open: false },
+    { title: "Especialista en minería de datos / BI", department: "Tecnología", detail: "100% oficina · Tecámac", open: true, jobId: "especialista-mineria-datos-bi" },
+    { title: "Coordinador de Trade Marketing", department: "Marketing", detail: "Zona centro · Tecámac", open: true, jobId: "coordinador-trade-marketing" },
+    { title: "Embajador de marca", department: "Marketing", detail: "Activaciones · campo", open: true, jobId: "embajador-de-marca" },
+    { title: "Analista de planeación financiera", department: "Finanzas", detail: "Tecámac Ojo de Agua", open: true, jobId: "analista-planeacion-financiera" },
+    { title: "Gerente de contabilidad financiero", department: "Contabilidad", detail: "Tecámac · Lun–Sáb", open: true, jobId: "gerente-contabilidad-financiero" },
+    { title: "Asesor de ventas AT&T", department: "Ventas", detail: "Negocios / retail", open: true, jobId: "asesor-ventas-att" },
     { title: "Ejecutivo de ventas a detalle", department: "Ventas", detail: "Nuevo León", open: false },
     { title: "Ejecutivo de ventas campo", department: "Ventas", detail: "Campo", open: false },
     { title: "Coordinador de rotulación", department: "Operaciones", detail: "Imagen en PDV", open: false },
@@ -253,11 +326,14 @@
 
   const catalogList = document.getElementById("jobs-catalog-list");
   const applyForm = document.getElementById("jobs-apply-form");
+  const openCountEl = document.getElementById("jobs-open-count");
+  const openCountWrap = document.getElementById("jobs-open-count-wrap");
 
   const MS_DAY = 86400000;
 
   function parseDate(iso) {
-    const [y, m, d] = iso.split("-").map(Number);
+    const [y, m, d] = String(iso || "").split("-").map(Number);
+    if (!y || !m || !d) return null;
     return new Date(y, m - 1, d);
   }
 
@@ -269,19 +345,11 @@
     return Math.round((startOfDay(to) - startOfDay(from)) / MS_DAY);
   }
 
-  function formatPublishedLabel(publishedAt) {
-    const days = dayDiff(parseDate(publishedAt), new Date());
-    if (days <= 0) return "Publicada hoy";
-    if (days === 1) return "Publicada hace 1 día";
-    return `Publicada hace ${days} días`;
-  }
-
-  function formatRemainingLabel(closesAt) {
-    const days = dayDiff(new Date(), parseDate(closesAt));
-    if (days < 0) return "Convocatoria cerrada";
-    if (days === 0) return "Cierra hoy";
-    if (days === 1) return "Cierra en 1 día";
-    return `Cierra en ${days} días`;
+  function isJobActive(job) {
+    if (!job) return false;
+    const closes = parseDate(job.closesAt);
+    if (!closes) return true;
+    return dayDiff(new Date(), closes) >= 0;
   }
 
   function escapeHtml(str) {
@@ -312,11 +380,27 @@
         return "";
       }
     })();
-    if (host.includes("occ")) return "Ver en OCC →";
-    if (host.includes("computrabajo")) return "Ver en Computrabajo →";
-    if (host.includes("indeed")) return "Ver en Indeed →";
-    if (host.includes("linkedin")) return "Ver en LinkedIn →";
-    return "Ver publicación →";
+    if (host.includes("occ")) return "Ver en OCC";
+    if (host.includes("computrabajo")) return "Ver en Computrabajo";
+    if (host.includes("indeed")) return "Ver en Indeed";
+    if (host.includes("linkedin")) return "Ver en LinkedIn";
+    if (host.includes("facebook") || host.includes("fb.com")) return "Ver en Facebook";
+    return "Ver publicación";
+  }
+
+  function externalLinkTone(url) {
+    const host = (() => {
+      try {
+        return new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+      } catch (_) {
+        return "";
+      }
+    })();
+    if (host.includes("occ")) return "occ";
+    if (host.includes("indeed")) return "indeed";
+    if (host.includes("facebook") || host.includes("fb.com")) return "facebook";
+    if (host.includes("linkedin")) return "linkedin";
+    return "external";
   }
 
   function formatWhatsAppDisplay(digits) {
@@ -344,6 +428,15 @@
       .join("")}</ul>`;
   }
 
+  function renderMetaChips(job) {
+    const chips = [];
+    if (job.salary) chips.push(`<span class="jobs-catalog__chip jobs-catalog__chip--salary">${escapeHtml(job.salary)}</span>`);
+    if (job.schedule) chips.push(`<span class="jobs-catalog__chip">${escapeHtml(job.schedule)}</span>`);
+    if (job.location) chips.push(`<span class="jobs-catalog__chip">${escapeHtml(job.location)}</span>`);
+    if (!chips.length) return "";
+    return `<div class="jobs-catalog__chips">${chips.join("")}</div>`;
+  }
+
   function renderJobDetail(job) {
     if (!job) return "";
     const wa = whatsappHref(job);
@@ -353,8 +446,10 @@
     const waLink = wa
       ? `<a class="job-whatsapp" href="${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(waLabel)}</a>`
       : "";
-    const location = job.location
-      ? `<p class="jobs-catalog__location"><strong>Zona:</strong> ${escapeHtml(job.location)}</p>`
+    const externalUrl = safeExternalUrl(job.link || job.externalUrl);
+    const tone = externalLinkTone(externalUrl);
+    const platformLink = externalUrl
+      ? `<a class="job-platform job-platform--${tone}" href="${escapeHtml(externalUrl)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="job_platform_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(externalLinkLabel(externalUrl))} →</a>`
       : "";
     const reqs = job.requirements?.length
       ? `<div class="jobs-catalog__specs"><h4>Requisitos / perfil</h4>${renderList(job.requirements, "jobs-catalog__specs-list")}</div>`
@@ -367,7 +462,7 @@
       : "";
     const photo = job.image
       ? `<figure class="jobs-catalog__photo">
-          <img src="${escapeHtml(job.image)}?v=1" alt="Flyer vacante ${escapeHtml(job.title)}" width="720" height="900" loading="lazy" decoding="async">
+          <img src="${escapeHtml(job.image)}?v=2" alt="Flyer vacante ${escapeHtml(job.title)}" width="720" height="900" loading="lazy" decoding="async">
         </figure>`
       : "";
 
@@ -376,11 +471,12 @@
         <div class="jobs-catalog__detail-grid${photo ? " has-photo" : ""}">
           <div class="jobs-catalog__copy">
             ${desc}
-            ${location}
+            ${renderMetaChips(job)}
             ${reqs}
             ${benefits}
             <div class="jobs-catalog__actions">
               ${waLink}
+              ${platformLink}
               <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
             </div>
           </div>
@@ -400,6 +496,16 @@
   function renderCatalog() {
     if (!catalogList) return;
 
+    const activeOpen = CATALOG.filter((item) => {
+      if (!item.open || !item.jobId) return false;
+      return isJobActive(OPEN_BY_ID[item.jobId]);
+    }).length;
+
+    if (openCountEl) {
+      openCountEl.textContent = String(activeOpen);
+      openCountEl.hidden = activeOpen < 1;
+    }
+
     const grouped = CATALOG.reduce((acc, item) => {
       if (!acc[item.department]) acc[item.department] = [];
       acc[item.department].push(item);
@@ -411,12 +517,17 @@
         const slug = deptSlug(dept);
         const items = grouped[dept]
           .map((item) => {
-            const closed = !item.open;
             const job = item.jobId ? OPEN_BY_ID[item.jobId] : null;
-            const isOpenDetail = Boolean(job && !closed);
+            const stillOpen = Boolean(item.open && job && isJobActive(job));
+            const closed = !stillOpen;
+            const isOpenDetail = Boolean(job && stillOpen);
+            const hasPlatform = Boolean(isOpenDetail && safeExternalUrl(job.link || job.externalUrl));
             const rowAttrs = isOpenDetail
-              ? ` class="jobs-catalog__item is-openable" tabindex="0" role="button" aria-expanded="false" data-job-toggle="${escapeHtml(item.jobId)}"`
+              ? ` class="jobs-catalog__item is-openable${hasPlatform ? " has-platform" : ""}" tabindex="0" role="button" aria-expanded="false" data-job-toggle="${escapeHtml(item.jobId)}"`
               : ` class="jobs-catalog__item${closed ? " is-closed" : ""}"`;
+            const platformHint = hasPlatform
+              ? `<span class="jobs-catalog__platform-hint">${escapeHtml(externalLinkLabel(job.link))}</span>`
+              : "";
             return `
               <li${rowAttrs}>
                 <div class="jobs-catalog__row">
@@ -424,7 +535,11 @@
                     <span class="jobs-catalog__title">${escapeHtml(item.title)}</span>
                     <span class="jobs-catalog__area">${escapeHtml(item.detail)}</span>
                   </div>
-                  <span class="jobs-catalog__status">${item.open ? "Vacante abierta" : "Sin vacante activa"}</span>
+                  <div class="jobs-catalog__badges">
+                    ${platformHint}
+                    <span class="jobs-catalog__status">${stillOpen ? "Vacante abierta" : "Sin vacante activa"}</span>
+                    ${isOpenDetail ? `<span class="jobs-catalog__chevron" aria-hidden="true"></span>` : ""}
+                  </div>
                 </div>
                 ${isOpenDetail ? renderJobDetail(job) : ""}
               </li>`;
@@ -449,9 +564,21 @@
       const toggle = () => {
         const detail = row.querySelector(".jobs-catalog__detail");
         if (!detail) return;
-        const open = row.classList.toggle("is-expanded");
-        detail.hidden = !open;
-        row.setAttribute("aria-expanded", open ? "true" : "false");
+        const willOpen = !row.classList.contains("is-expanded");
+
+        if (willOpen) {
+          catalogList.querySelectorAll(".jobs-catalog__item.is-expanded").forEach((other) => {
+            if (other === row) return;
+            other.classList.remove("is-expanded");
+            other.setAttribute("aria-expanded", "false");
+            const otherDetail = other.querySelector(".jobs-catalog__detail");
+            if (otherDetail) otherDetail.hidden = true;
+          });
+        }
+
+        row.classList.toggle("is-expanded", willOpen);
+        detail.hidden = !willOpen;
+        row.setAttribute("aria-expanded", willOpen ? "true" : "false");
       };
 
       row.addEventListener("click", (e) => {
