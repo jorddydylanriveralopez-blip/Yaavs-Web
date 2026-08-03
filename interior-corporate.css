@@ -988,6 +988,35 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   border-top: 1px solid rgba(61, 125, 181, 0.22);
 }
 
+.page-bolsa-trabajo .jobs-catalog__detail-grid {
+  display: grid;
+  gap: 18px;
+  padding-top: 4px;
+}
+
+.page-bolsa-trabajo .jobs-catalog__detail-grid.has-photo {
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 42%);
+  align-items: start;
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.page-bolsa-trabajo .jobs-catalog__photo {
+  margin: 14px 0 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #e8f2fb;
+  box-shadow: 0 12px 28px rgba(15, 36, 64, 0.14);
+}
+
+.page-bolsa-trabajo .jobs-catalog__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .page-bolsa-trabajo .jobs-catalog__desc,
 .page-bolsa-trabajo .jobs-catalog__location {
   margin: 14px 0 0;
@@ -1012,7 +1041,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 .page-bolsa-trabajo .jobs-catalog__specs-list {
   margin: 0;
   padding: 0 0 0 1.1rem;
-  max-height: 220px;
+  max-height: 260px;
   overflow: auto;
   color: var(--ink);
   font-size: 0.86rem;
@@ -1029,6 +1058,22 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   gap: 10px 14px;
   align-items: center;
   margin-top: 16px;
+}
+
+@media (max-width: 760px) {
+  .page-bolsa-trabajo .jobs-catalog__detail-grid.has-photo {
+    grid-template-columns: 1fr;
+  }
+
+  .page-bolsa-trabajo .jobs-catalog__photo {
+    order: -1;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .page-bolsa-trabajo .jobs-catalog__photo img {
+    aspect-ratio: 3 / 4;
+  }
 }
 
 .page-bolsa-trabajo .jobs-catalog__item.is-closed .jobs-catalog__status {

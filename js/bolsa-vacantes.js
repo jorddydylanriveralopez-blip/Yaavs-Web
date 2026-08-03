@@ -24,6 +24,7 @@
       location: "YAAVS",
       contactName: "RRHH",
       whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/soporte-tecnico.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -49,6 +50,7 @@
       location: "YAAVS",
       contactName: "RRHH",
       whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/coordinador-trade-marketing.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -84,6 +86,7 @@
       location: "Ojo de Agua, Tecámac, Edo. Méx.",
       contactName: "Recursos Humanos",
       whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/especialista-mineria-datos-bi.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -110,6 +113,7 @@
       location: "Tecámac Ojo de Agua",
       contactName: "Leesly Rosas",
       whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/analista-planeacion-financiera.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -147,6 +151,7 @@
       location: "Tecámac Ojo de Agua",
       contactName: "RRHH",
       whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/desarrollador-web.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -174,6 +179,7 @@
       location: "Ojo de Agua, Tecámac (actividades CDMX / Edo. Méx.)",
       contactName: "Reclutamiento",
       whatsapp: WA_EMBAJADOR,
+      image: "assets/bolsa/vacantes/embajador-de-marca.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -208,6 +214,7 @@
       location: "YAAVS",
       contactName: "Leesly Rosas",
       whatsapp: WA_RRHH,
+      image: "assets/bolsa/vacantes/gerente-contabilidad-financiero.jpg",
       publishedAt: "2026-07-29",
       closesAt: "2026-12-31",
     },
@@ -358,16 +365,26 @@
     const desc = job.description
       ? `<p class="jobs-catalog__desc">${escapeHtml(job.description)}</p>`
       : "";
+    const photo = job.image
+      ? `<figure class="jobs-catalog__photo">
+          <img src="${escapeHtml(job.image)}?v=1" alt="Flyer vacante ${escapeHtml(job.title)}" width="720" height="900" loading="lazy" decoding="async">
+        </figure>`
+      : "";
 
     return `
       <div class="jobs-catalog__detail" id="vacante-${escapeHtml(job.id)}" hidden>
-        ${desc}
-        ${location}
-        ${reqs}
-        ${benefits}
-        <div class="jobs-catalog__actions">
-          ${waLink}
-          <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
+        <div class="jobs-catalog__detail-grid${photo ? " has-photo" : ""}">
+          <div class="jobs-catalog__copy">
+            ${desc}
+            ${location}
+            ${reqs}
+            ${benefits}
+            <div class="jobs-catalog__actions">
+              ${waLink}
+              <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
+            </div>
+          </div>
+          ${photo}
         </div>
       </div>`;
   }
