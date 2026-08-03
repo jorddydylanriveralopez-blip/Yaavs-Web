@@ -23,7 +23,12 @@
 }
 
 body.theme-cluster:not(.page-home) .site-header {
-  background: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 12, 28, 0.78) 0%,
+    rgba(4, 12, 28, 0.42) 55%,
+    rgba(4, 12, 28, 0) 100%
+  );
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
@@ -72,18 +77,49 @@ body.theme-cluster:not(.page-home) .site-header .header-inner {
   z-index: 2;
 }
 
-body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo:not(.logo--on-light),
-body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo:not(.logo--on-light) {
-  --logo-filter: brightness(0);
+/* Al tope (sobre hero oscuro): logo blanco + menú visible como en inicio */
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo.logo--white,
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .logo:not(.logo--on-light) {
+  --logo-filter: none;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55)) !important;
+  opacity: 1 !important;
 }
 
-body.theme-cluster:not(.page-home) .site-header .logo.logo--on-light,
+body.theme-cluster:not(.page-home) .site-header .logo.logo--on-light {
+  --logo-filter: none;
+  filter: none !important;
+}
+
+/* Al scroll (barra blanca): logo oscuro legible */
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--white,
+body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo:not(.logo--on-light) {
+  --logo-filter: brightness(0) saturate(100%);
+  filter: brightness(0) saturate(100%) !important;
+}
+
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--on-light {
   --logo-filter: none;
   filter: none !important;
 }
 
-body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .bento-dot,
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .nav-bento {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(232, 247, 251, 0.92) 100%) !important;
+  border: 1px solid rgba(0, 188, 212, 0.28) !important;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .bento-dot {
+  background: #0f2440 !important;
+}
+
+body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .header-wa {
+  box-shadow:
+    0 6px 18px rgba(37, 211, 102, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .bento-dot {
   background: var(--ink, #0f2440) !important;
 }
@@ -101,6 +137,26 @@ body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento:focus-vis
 
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
   background: var(--accent, #0097b2) !important;
+}
+
+/* Páginas sin hero oscuro: barra clara desde el inicio */
+body.theme-cluster.page-terminos .site-header:not(.is-scrolled),
+body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom-color: rgba(0, 151, 178, 0.18);
+  box-shadow: 0 4px 16px rgba(15, 36, 64, 0.06);
+}
+
+body.theme-cluster.page-terminos .site-header:not(.is-scrolled) .logo.logo--white,
+body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) .logo.logo--white {
+  filter: brightness(0) saturate(100%) !important;
+}
+
+body.theme-cluster.page-terminos .site-header:not(.is-scrolled) .nav-bento,
+body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) .nav-bento {
+  background: rgba(15, 36, 64, 0.06) !important;
+  border: 1px solid rgba(15, 36, 64, 0.28) !important;
+  box-shadow: none;
 }
 
 /* Menú hint — hereda pill corporativo global */
