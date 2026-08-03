@@ -1,12 +1,76 @@
-<section class="page-cta-band" aria-label="Llamada a la acción">
+<section class="page-cta-band" aria-label="Únete como socio comercial" id="unete-socio">
   <div class="container page-cta-band__inner">
     <p class="page-cta-band__eyebrow">Red YAAVS</p>
     <h2 class="page-cta-band__title">Conviértete en socio comercial</h2>
-    <p class="page-cta-band__text">Únete a la red líder en distribución de SIM's. Te acompañamos con ejecutivo en tu zona, material y capacitación.</p>
+    <p class="page-cta-band__text">Únete a la red líder en distribución de SIMs. Déjanos tus datos y un ejecutivo te contacta.</p>
     <p class="page-cta-band__proof">+16,000 puntos · 22 estados · +10 años</p>
+
+    <form class="page-cta-band__form yaavser-lead__form" data-yaavser-lead-form novalidate data-form-started="">
+      <label class="hp-field" aria-hidden="true">
+        <span>No completar</span>
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </label>
+      <div class="page-cta-band__form-grid">
+        <label class="yaavser-lead__field">
+          <span>Nombre</span>
+          <input type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
+        </label>
+        <label class="yaavser-lead__field">
+          <span>Nombre del negocio</span>
+          <input type="text" name="negocio" required autocomplete="organization" placeholder="Nombre de tu tienda o negocio">
+        </label>
+        <label class="yaavser-lead__field">
+          <span>Estado</span>
+          <select name="estado" required>
+            <option value="" disabled selected>Selecciona tu estado</option>
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Estado de México">Estado de México</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+          </select>
+        </label>
+        <label class="yaavser-lead__field">
+          <span>Correo electrónico</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="correo@ejemplo.com">
+        </label>
+        <label class="yaavser-lead__field page-cta-band__field--wide">
+          <span>Teléfono</span>
+          <input type="tel" name="telefono" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos">
+        </label>
+      </div>
+      <button type="submit" class="yaavser-lead__submit" data-yaavs-track="cta_click" data-yaavs-track-label="page_cta_form_submit">Enviar solicitud</button>
+      <p class="yaavser-lead__status" data-yaavser-lead-status role="status" aria-live="polite"></p>
+    </form>
+
     <div class="page-cta-band__actions">
-      <a href="ser-yaavser.html" class="btn btn--primary" data-yaavs-track="cta_click" data-yaavs-track-label="page_cta_socio">Quiero ser socio comercial</a>
-      <a href="contacto.html" class="btn btn--line" data-yaavs-track="cta_click" data-yaavs-track-label="page_cta_contacto">Contactar a YAAVS</a>
       <a
         href="https://wa.me/525522331210?text=Hola%2C%20quiero%20ser%20socio%20comercial"
         class="btn btn--line"
@@ -15,6 +79,7 @@
         data-yaavs-track="whatsapp_click"
         data-yaavs-track-label="page_cta_whatsapp"
       >WhatsApp</a>
+      <a href="contacto.html" class="btn btn--line" data-yaavs-track="cta_click" data-yaavs-track-label="page_cta_contacto">Contactar a YAAVS</a>
     </div>
   </div>
 </section>

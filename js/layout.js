@@ -375,11 +375,51 @@
     document.head.appendChild(link);
   }
 
+  function ensureYaavserLeadStyles() {
+    if (
+      document.querySelector('link[data-yaavser-lead-css]') ||
+      document.querySelector('link[href*="yaavser-lead.css"]')
+    ) {
+      return;
+    }
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "yaavser-lead.css?v=3";
+    link.dataset.yaavserLeadCss = "true";
+    document.head.appendChild(link);
+  }
+
+  function loadScriptOnce(src, datasetKey) {
+    const bare = src.split("?")[0];
+    if (
+      document.querySelector(`script[${datasetKey}]`) ||
+      document.querySelector(`script[src^="${bare}"]`)
+    ) {
+      return Promise.resolve();
+    }
+    return new Promise((resolve) => {
+      const s = document.createElement("script");
+      s.src = src;
+      s.defer = true;
+      s.setAttribute(datasetKey, "true");
+      s.onload = () => resolve();
+      s.onerror = () => resolve();
+      document.body.appendChild(s);
+    });
+  }
+
+  async function initYaavserLead() {
+    ensureYaavserLeadStyles();
+    await loadScriptOnce("js/yaavser-lead.config.js?v=1", "data-yaavser-lead-config");
+    await loadScriptOnce("js/yaavser-lead.js?v=6", "data-yaavser-lead-main");
+    window.YaavsYaavserLead?.bindForms?.();
+  }
+
   Promise.all([
     loadPartial("partials/header.html?v=21", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
-    loadPartial("partials/page-cta.html?v=3", ctaMount),
+    loadPartial("partials/page-cta.html?v=4", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
     mountNavOverlay();
@@ -392,6 +432,7 @@
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     document.dispatchEvent(new CustomEvent("yaavs:layout-ready"));
     initPageEnter();
+    void initYaavserLead();
 
     const scheduleIdle = window.requestIdleCallback
       ? (cb) =>

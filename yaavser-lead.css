@@ -203,6 +203,53 @@
   color: #b91c1c;
 }
 
+/* Formulario inline en banda CTA (todas las páginas) */
+.page-cta-band__form {
+  width: min(100%, 720px);
+  margin: 22px auto 0;
+  padding: 22px 20px 18px;
+  border-radius: 22px;
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.96) 0%, rgba(236, 245, 255, 0.94) 100%);
+  border: 1px solid rgba(37, 99, 181, 0.16);
+  box-shadow:
+    0 18px 40px rgba(15, 36, 64, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-align: left;
+}
+
+.page-cta-band__form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.page-cta-band__field--wide {
+  grid-column: 1 / -1;
+}
+
+.page-cta-band__form .yaavser-lead__submit {
+  width: 100%;
+}
+
+.page-cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .page-cta-band__form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-cta-band__field--wide {
+    grid-column: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .yaavser-lead,
   .yaavser-lead__panel,

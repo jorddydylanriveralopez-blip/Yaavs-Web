@@ -13,6 +13,7 @@
 
     function handleFormSubmit(form, statusId, subjectPrefix) {
       if (!form) return;
+      if (form.hasAttribute("data-yaavser-lead-form")) return;
       if (!form.dataset.formStarted) {
         form.dataset.formStarted = String(Date.now());
       }

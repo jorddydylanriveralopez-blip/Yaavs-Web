@@ -36,15 +36,141 @@
 
   const cfg = window.YAAVS_YAAVSER_LEAD || {};
   let root = null;
-  let form = null;
-  let statusEl = null;
-  let submitBtn = null;
   let lastFocus = null;
 
   function stateOptions() {
-    return STATES.map(
-      (s) => `<option value="${s}">${s}</option>`
-    ).join("");
+    return STATES.map((s) => `<option value="${s}">${s}</option>`).join("");
+  }
+
+  function payloadFromForm(fd) {
+    return {
+      nombre: String(fd.get("nombre") || "").trim(),
+      negocio: String(fd.get("negocio") || "").trim(),
+      estado: String(fd.get("estado") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      telefono: String(fd.get("telefono") || "").trim(),
+      website: String(fd.get("website") || "").trim(),
+    };
+  }
+
+  function isBotSubmission(formEl, fd) {
+    if (String(fd.get("website") || "").trim()) return true;
+    const started = Number(formEl?.dataset.formStarted || 0);
+    if (started && Date.now() - started < 1200) return true;
+    return false;
+  }
+
+  async function sendToSheets(data) {
+    const endpoint = String(cfg.endpoint || "").trim();
+    if (!endpoint) {
+      throw new Error("ENDPOINT_MISSING");
+    }
+
+    const res = await fetch(endpoint, {
+      method: "POST",
+      redirect: "follow",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok && res.type !== "opaque") {
+      let message = "No se pudo guardar en Sheets";
+      try {
+        const json = await res.json();
+        if (json && json.error) message = json.error;
+      } catch (_) {
+        /* ignore */
+      }
+      throw new Error(message);
+    }
+  }
+
+  function mailtoFallback(data) {
+    const body = [
+      `Nombre: ${data.nombre}`,
+      `Negocio: ${data.negocio}`,
+      `Estado: ${data.estado}`,
+      `Email: ${data.email}`,
+      `Teléfono: ${data.telefono}`,
+    ].join("\n");
+    window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
+      "Solicitud socio comercial - " + data.nombre
+    )}&body=${encodeURIComponent(body)}`;
+  }
+
+  function setStatus(statusEl, msg, kind) {
+    if (!statusEl) return;
+    statusEl.textContent = msg || "";
+    statusEl.classList.toggle("is-success", kind === "success");
+    statusEl.classList.toggle("is-error", kind === "error");
+  }
+
+  function bindForm(formEl, options) {
+    if (!formEl || formEl.dataset.yaavserLeadBound === "1") return;
+    formEl.dataset.yaavserLeadBound = "1";
+    if (!formEl.dataset.formStarted) {
+      formEl.dataset.formStarted = String(Date.now());
+    }
+
+    const statusEl =
+      formEl.querySelector("[data-yaavser-lead-status]") ||
+      options?.statusEl ||
+      null;
+    const submitBtn =
+      formEl.querySelector('[type="submit"]') || options?.submitBtn || null;
+    const closeOnSuccess = Boolean(options?.closeOnSuccess);
+
+    formEl.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(formEl);
+      if (isBotSubmission(formEl, fd)) {
+        setStatus(statusEl, "¡Listo! Recibimos tu solicitud. Pronto te contactamos.", "success");
+        formEl.reset();
+        formEl.dataset.formStarted = String(Date.now());
+        if (closeOnSuccess) window.setTimeout(close, 1200);
+        return;
+      }
+      if (!formEl.checkValidity()) {
+        formEl.reportValidity();
+        return;
+      }
+
+      const data = payloadFromForm(fd);
+      delete data.website;
+      setStatus(statusEl, "Enviando…", null);
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        await sendToSheets(data);
+        setStatus(statusEl, "¡Listo! Recibimos tu solicitud. Pronto te contactamos.", "success");
+        formEl.reset();
+        formEl.dataset.formStarted = String(Date.now());
+        if (closeOnSuccess) window.setTimeout(close, 1600);
+      } catch (err) {
+        if (err && err.message === "ENDPOINT_MISSING") {
+          mailtoFallback(data);
+          setStatus(
+            statusEl,
+            "Se abrió tu correo. Completa el envío o escríbenos a Hola@yaavs.com.mx",
+            "error"
+          );
+        } else {
+          setStatus(
+            statusEl,
+            "No pudimos enviar ahora. Intenta de nuevo o escríbenos a Hola@yaavs.com.mx",
+            "error"
+          );
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  }
+
+  function bindInlineForms() {
+    document.querySelectorAll("form[data-yaavser-lead-form]").forEach((formEl) => {
+      bindForm(formEl, { closeOnSuccess: false });
+    });
   }
 
   function ensureModal() {
@@ -63,7 +189,7 @@
         <p class="yaavser-lead__kicker">Contestando este formulario</p>
         <h2 class="yaavser-lead__title" id="yaavser-lead-title">Conviértete en <span>socio comercial</span></h2>
         <p class="yaavser-lead__lead">Déjanos tus datos y un ejecutivo te contacta para afiliar tu negocio a la red YAAVS.</p>
-        <form class="yaavser-lead__form" id="yaavser-lead-form" novalidate data-form-started="">
+        <form class="yaavser-lead__form" id="yaavser-lead-form" data-yaavser-lead-form novalidate data-form-started="">
           <label class="hp-field" aria-hidden="true">
             <span>No completar</span>
             <input type="text" name="website" tabindex="-1" autocomplete="off">
@@ -92,41 +218,32 @@
             <input type="tel" name="telefono" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos">
           </label>
           <button type="submit" class="yaavser-lead__submit">Enviar solicitud</button>
-          <p class="yaavser-lead__status" id="yaavser-lead-status" role="status" aria-live="polite"></p>
+          <p class="yaavser-lead__status" data-yaavser-lead-status role="status" aria-live="polite"></p>
         </form>
       </div>
     `;
 
     document.body.appendChild(root);
-    form = root.querySelector("#yaavser-lead-form");
-    statusEl = root.querySelector("#yaavser-lead-status");
-    submitBtn = root.querySelector(".yaavser-lead__submit");
+    const modalForm = root.querySelector("#yaavser-lead-form");
+    bindForm(modalForm, { closeOnSuccess: true });
 
     root.addEventListener("click", (e) => {
       if (e.target.closest("[data-yaavser-lead-close]")) close();
     });
 
-    form.addEventListener("submit", onSubmit);
     return root;
-  }
-
-  function setStatus(msg, kind) {
-    if (!statusEl) return;
-    statusEl.textContent = msg || "";
-    statusEl.classList.toggle("is-success", kind === "success");
-    statusEl.classList.toggle("is-error", kind === "error");
   }
 
   function open() {
     ensureModal();
-    if (form) form.dataset.formStarted = String(Date.now());
+    const modalForm = root.querySelector("#yaavser-lead-form");
+    if (modalForm) modalForm.dataset.formStarted = String(Date.now());
     lastFocus = document.activeElement;
     root.hidden = false;
     root.setAttribute("aria-hidden", "false");
     requestAnimationFrame(() => root.classList.add("is-open"));
     document.documentElement.classList.add("yaavser-lead-open");
-    const first = root.querySelector('input[name="nombre"]');
-    first?.focus();
+    root.querySelector('input[name="nombre"]')?.focus();
   }
 
   function close() {
@@ -142,108 +259,6 @@
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  function payloadFromForm(fd) {
-    return {
-      nombre: String(fd.get("nombre") || "").trim(),
-      negocio: String(fd.get("negocio") || "").trim(),
-      estado: String(fd.get("estado") || "").trim(),
-      email: String(fd.get("email") || "").trim(),
-      telefono: String(fd.get("telefono") || "").trim(),
-      website: String(fd.get("website") || "").trim(),
-    };
-  }
-
-  function isBotSubmission(fd) {
-    if (String(fd.get("website") || "").trim()) return true;
-    const started = Number(form?.dataset.formStarted || 0);
-    if (started && Date.now() - started < 1200) return true;
-    return false;
-  }
-
-  async function sendToSheets(data) {
-    const endpoint = String(cfg.endpoint || "").trim();
-    if (!endpoint) {
-      throw new Error("ENDPOINT_MISSING");
-    }
-
-    /* Apps Script no soporta preflight CORS: text/plain + redirect follow. */
-    const res = await fetch(endpoint, {
-      method: "POST",
-      redirect: "follow",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(data),
-    });
-
-    /* Tras el redirect de Google a menudo no hay JSON legible; si hay red OK, asumimos éxito. */
-    if (!res.ok && res.type !== "opaque") {
-      let message = "No se pudo guardar en Sheets";
-      try {
-        const json = await res.json();
-        if (json && json.error) message = json.error;
-      } catch (_) {
-        /* ignore */
-      }
-      throw new Error(message);
-    }
-  }
-
-  function mailtoFallback(data) {
-    const body = [
-      `Nombre: ${data.nombre}`,
-      `Negocio: ${data.negocio}`,
-      `Estado: ${data.estado}`,
-      `Email: ${data.email}`,
-      `Teléfono: ${data.telefono}`,
-    ].join("\n");
-    window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
-      "Solicitud socio comercial - " + data.nombre
-    )}&body=${encodeURIComponent(body)}`;
-  }
-
-  async function onSubmit(e) {
-    e.preventDefault();
-    const fd = new FormData(form);
-    if (isBotSubmission(fd)) {
-      setStatus("¡Listo! Recibimos tu solicitud. Pronto te contactamos.", "success");
-      form.reset();
-      form.dataset.formStarted = String(Date.now());
-      window.setTimeout(close, 1200);
-      return;
-    }
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    const data = payloadFromForm(fd);
-    delete data.website;
-    setStatus("Enviando…", null);
-    if (submitBtn) submitBtn.disabled = true;
-
-    try {
-      await sendToSheets(data);
-      setStatus("¡Listo! Recibimos tu solicitud. Pronto te contactamos.", "success");
-      form.reset();
-      form.dataset.formStarted = String(Date.now());
-      window.setTimeout(close, 1600);
-    } catch (err) {
-      if (err && err.message === "ENDPOINT_MISSING") {
-        mailtoFallback(data);
-        setStatus(
-          "Se abrió tu correo. Para guardar directo en Sheets, configura el endpoint de Apps Script.",
-          "error"
-        );
-      } else {
-        setStatus(
-          "No pudimos enviar ahora. Intenta de nuevo o escríbenos a Hola@yaavs.com.mx",
-          "error"
-        );
-      }
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
-  }
-
   function isLeadTrigger(el) {
     if (!el) return false;
     if (el.matches?.('[href="#yaavser-lead"], [data-yaavser-lead-open]')) return true;
@@ -251,8 +266,7 @@
   }
 
   document.addEventListener("click", (e) => {
-    const t = e.target;
-    if (!isLeadTrigger(t)) return;
+    if (!isLeadTrigger(e.target)) return;
     e.preventDefault();
     if (location.hash === "#yaavser-lead") {
       history.replaceState(null, "", location.pathname + location.search);
@@ -264,10 +278,12 @@
     if (e.key === "Escape" && root?.classList.contains("is-open")) close();
   });
 
-  /* Nunca autoabrir por hash: solo con clic en el CTA */
   if (location.hash === "#yaavser-lead") {
     history.replaceState(null, "", location.pathname + location.search);
   }
 
-  window.YaavsYaavserLead = { open, close };
+  bindInlineForms();
+  document.addEventListener("yaavs:layout-ready", bindInlineForms);
+
+  window.YaavsYaavserLead = { open, close, bindForms: bindInlineForms };
 })();
