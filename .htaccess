@@ -1,5 +1,42 @@
-# Hostinger / Apache — HTML siempre fresco; CSS/JS con bust por ?v=
+# Hostinger / Apache — cache + protección básica del sitio
+Options -Indexes
+
+# Bloquear rutas y archivos sensibles
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Ocultar historial git, env, configs y carpetas internas
+  RewriteRule (^|/)\.git - [F,L]
+  RewriteRule (^|/)\.env - [F,L]
+  RewriteRule (^|/)\.cursor - [F,L]
+  RewriteRule (^|/)\.vercel - [F,L]
+  RewriteRule (^|/)node_modules/ - [F,L]
+  RewriteRule (^|/)agent-transcripts/ - [F,L]
+  RewriteRule \.(bak|sql|sqlite|pem|key|log|ini)$ - [F,L,NC]
+</IfModule>
+
+<FilesMatch "(^\.env|\.htpasswd|composer\.(json|lock)|package(-lock)?\.json|\.DS_Store)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
 <IfModule mod_headers.c>
+  # Cabeceras anti-abuso / anti-clickjacking / anti-MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set X-XSS-Protection "0"
+
+  # CSP equilibrada (fonts, OneSignal, Leaflet/Carto, Maps, YouTube, analytics)
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube-nocookie.com https://www.youtube.com; form-action 'self' https: mailto:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; font-src 'self' data: https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; script-src 'self' 'unsafe-inline' https://cdn.onesignal.com https://onesignal.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https: wss://*.onesignal.com; worker-src 'self' blob: https://cdn.onesignal.com; upgrade-insecure-requests"
+
   <FilesMatch "\.(html?)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
@@ -13,4 +50,10 @@
   <FilesMatch "\.(mp4|webm|jpg|jpeg|png|webp|gif|svg|woff2?)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
+</IfModule>
+
+# Reducir fingerprinting de servidor cuando el host lo permite
+<IfModule mod_headers.c>
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
 </IfModule>

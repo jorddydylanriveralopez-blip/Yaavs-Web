@@ -63,7 +63,11 @@
         <p class="yaavser-lead__kicker">Contestando este formulario</p>
         <h2 class="yaavser-lead__title" id="yaavser-lead-title">Conviértete en <span>socio comercial</span></h2>
         <p class="yaavser-lead__lead">Déjanos tus datos y un ejecutivo te contacta para afiliar tu negocio a la red YAAVS.</p>
-        <form class="yaavser-lead__form" id="yaavser-lead-form" novalidate>
+        <form class="yaavser-lead__form" id="yaavser-lead-form" novalidate data-form-started="">
+          <label class="hp-field" aria-hidden="true">
+            <span>No completar</span>
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
           <label class="yaavser-lead__field">
             <span>Nombre</span>
             <input type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
@@ -115,6 +119,7 @@
 
   function open() {
     ensureModal();
+    if (form) form.dataset.formStarted = String(Date.now());
     lastFocus = document.activeElement;
     root.hidden = false;
     root.setAttribute("aria-hidden", "false");
@@ -144,7 +149,15 @@
       estado: String(fd.get("estado") || "").trim(),
       email: String(fd.get("email") || "").trim(),
       telefono: String(fd.get("telefono") || "").trim(),
+      website: String(fd.get("website") || "").trim(),
     };
+  }
+
+  function isBotSubmission(fd) {
+    if (String(fd.get("website") || "").trim()) return true;
+    const started = Number(form?.dataset.formStarted || 0);
+    if (started && Date.now() - started < 1200) return true;
+    return false;
   }
 
   async function sendToSheets(data) {
@@ -189,12 +202,21 @@
 
   async function onSubmit(e) {
     e.preventDefault();
+    const fd = new FormData(form);
+    if (isBotSubmission(fd)) {
+      setStatus("¡Listo! Recibimos tu solicitud. Pronto te contactamos.", "success");
+      form.reset();
+      form.dataset.formStarted = String(Date.now());
+      window.setTimeout(close, 1200);
+      return;
+    }
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    const data = payloadFromForm(new FormData(form));
+    const data = payloadFromForm(fd);
+    delete data.website;
     setStatus("Enviando…", null);
     if (submitBtn) submitBtn.disabled = true;
 
@@ -202,6 +224,7 @@
       await sendToSheets(data);
       setStatus("¡Listo! Recibimos tu solicitud. Pronto te contactamos.", "success");
       form.reset();
+      form.dataset.formStarted = String(Date.now());
       window.setTimeout(close, 1600);
     } catch (err) {
       if (err && err.message === "ENDPOINT_MISSING") {

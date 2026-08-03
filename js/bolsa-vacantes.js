@@ -265,6 +265,7 @@
     const lines = [];
 
     for (const [key, value] of data.entries()) {
+      if (key === "website" || key === "hp_url") continue;
       if (value instanceof File) {
         if (!value.size) continue;
         lines.push(
@@ -293,12 +294,24 @@
 
     applyForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      const data = new FormData(applyForm);
+      const honey = String(data.get("website") || "").trim();
+      const started = Number(applyForm.dataset.formStarted || 0);
+      if (honey || (started && Date.now() - started < 1200)) {
+        if (statusEl) {
+          statusEl.hidden = false;
+          statusEl.textContent = "Solicitud recibida. Gracias.";
+          statusEl.classList.add("is-success");
+        }
+        applyForm.reset();
+        applyForm.dataset.formStarted = String(Date.now());
+        return;
+      }
       if (!applyForm.checkValidity()) {
         applyForm.reportValidity();
         return;
       }
 
-      const data = new FormData(applyForm);
       const body = buildMailBody(data);
 
       window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
@@ -313,12 +326,17 @@
       }
 
       applyForm.reset();
+      applyForm.dataset.formStarted = String(Date.now());
       applyForm.querySelectorAll(".field--file.is-filled").forEach((el) => el.classList.remove("is-filled"));
       applyForm.querySelectorAll("[data-file-label]").forEach((el) => {
         if (el.dataset.fileLabel === "cv") el.textContent = "Selecciona tu CV";
         if (el.dataset.fileLabel === "portafolio") el.textContent = "PDF, ZIP o imágenes";
       });
     });
+
+    if (!applyForm.dataset.formStarted) {
+      applyForm.dataset.formStarted = String(Date.now());
+    }
   }
 
   function prefillFromQuery() {

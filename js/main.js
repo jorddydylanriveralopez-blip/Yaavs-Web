@@ -3,17 +3,39 @@
     const yaavserForm = document.getElementById("yaavser-form");
     const contactForm = document.getElementById("contact-form");
 
+    function isBotSubmission(form, data) {
+      const honey = String(data.get("website") || data.get("hp_url") || "").trim();
+      if (honey) return true;
+      const started = Number(form.dataset.formStarted || 0);
+      if (started && Date.now() - started < 1200) return true;
+      return false;
+    }
+
     function handleFormSubmit(form, statusId, subjectPrefix) {
       if (!form) return;
+      if (!form.dataset.formStarted) {
+        form.dataset.formStarted = String(Date.now());
+      }
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         const status = document.getElementById(statusId);
         const data = new FormData(form);
+        if (isBotSubmission(form, data)) {
+          if (status) {
+            status.textContent = "Solicitud recibida. Gracias.";
+            status.classList.add("is-success");
+          }
+          form.reset();
+          form.dataset.formStarted = String(Date.now());
+          return;
+        }
         if (!form.checkValidity()) {
           form.reportValidity();
           return;
         }
+        const skip = new Set(["website", "hp_url"]);
         const body = Array.from(data.entries())
+          .filter(([k]) => !skip.has(k))
           .map(([k, v]) => `${k}: ${v}`)
           .join("\n");
         window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
@@ -25,6 +47,7 @@
           status.classList.add("is-success");
         }
         form.reset();
+        form.dataset.formStarted = String(Date.now());
       });
     }
 

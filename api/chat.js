@@ -1,4 +1,11 @@
 /** Asistente YAAVS — proxy OpenAI (endpoint serverless /api/chat) */
+const {
+  clientIp,
+  rateLimit,
+  corsOrigin,
+  sanitizeMessages,
+} = require("./_security");
+
 const SYSTEM = `Eres Vaavsti, asistente virtual de YAAVS (Grupo Comercial YAAVS), distribuidor #1 de telecomunicaciones en México.
 
 Responde siempre en español, tono cercano y profesional, mensajes cortos (máximo 3 párrafos breves).
@@ -14,10 +21,19 @@ Información clave:
 
 Si no sabes algo específico, invita a contactar por WhatsApp o al formulario de contacto. No inventes precios ni promociones no confirmadas.`;
 
-module.exports = async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+function setCors(req, res) {
+  const origin = corsOrigin(req);
+  if (origin) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+  }
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+}
+
+module.exports = async function handler(req, res) {
+  setCors(req, res);
 
   if (req.method === "OPTIONS") {
     return res.status(204).end();
@@ -25,6 +41,13 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "method_not_allowed" });
+  }
+
+  const ip = clientIp(req);
+  const limit = rateLimit(ip, 20, 60_000);
+  res.setHeader("X-RateLimit-Remaining", String(limit.remaining));
+  if (!limit.ok) {
+    return res.status(429).json({ error: "rate_limited", fallback: true });
   }
 
   const apiKey = process.env.OPENAI_API_KEY;
@@ -39,16 +62,12 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: "invalid_json" });
   }
 
-  const messages = Array.isArray(body?.messages) ? body.messages : [];
-  if (!messages.length) {
-    return res.status(400).json({ error: "messages_required" });
+  const raw = JSON.stringify(body || {});
+  if (raw.length > 40_000) {
+    return res.status(413).json({ error: "payload_too_large" });
   }
 
-  const sanitized = messages
-    .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
-    .slice(-12)
-    .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
-
+  const sanitized = sanitizeMessages(body?.messages);
   if (!sanitized.length) {
     return res.status(400).json({ error: "messages_required" });
   }

@@ -25,6 +25,12 @@ function doGet() {
 function doPost(e) {
   try {
     var data = parseBody_(e);
+
+    // Honeypot: bots suelen rellenar "website"
+    if (String(data.website || data.hp_url || "").trim()) {
+      return json_({ ok: true });
+    }
+
     var nombre = String(data.nombre || "").trim();
     var negocio = String(data.negocio || "").trim();
     var estado = String(data.estado || "").trim();
