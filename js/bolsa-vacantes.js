@@ -462,7 +462,10 @@
       : "";
     const photo = job.image
       ? `<figure class="jobs-catalog__photo">
-          <img src="${escapeHtml(job.image)}?v=2" alt="Flyer vacante ${escapeHtml(job.title)}" width="720" height="900" loading="lazy" decoding="async">
+          <button type="button" class="jobs-catalog__photo-btn" data-flyer-src="${escapeHtml(job.image)}?v=2" data-flyer-alt="Flyer vacante ${escapeHtml(job.title)}" aria-label="Ampliar flyer de ${escapeHtml(job.title)}">
+            <img src="${escapeHtml(job.image)}?v=2" alt="Flyer vacante ${escapeHtml(job.title)}" width="720" height="900" loading="lazy" decoding="async">
+            <span class="jobs-catalog__photo-hint">Clic para ampliar</span>
+          </button>
         </figure>`
       : "";
 
@@ -503,7 +506,9 @@
 
     if (openCountEl) {
       openCountEl.textContent = String(activeOpen);
-      openCountEl.hidden = activeOpen < 1;
+    }
+    if (openCountWrap) {
+      openCountWrap.hidden = activeOpen < 1;
     }
 
     const grouped = CATALOG.reduce((acc, item) => {
@@ -555,6 +560,54 @@
       .join("");
 
     bindCatalogToggles();
+    bindFlyerLightbox();
+  }
+
+  function ensureFlyerLightbox() {
+    let dialog = document.getElementById("jobs-flyer-lightbox");
+    if (dialog) return dialog;
+
+    dialog = document.createElement("dialog");
+    dialog.id = "jobs-flyer-lightbox";
+    dialog.className = "jobs-flyer-lightbox";
+    dialog.setAttribute("aria-label", "Flyer de vacante ampliado");
+    dialog.innerHTML = `
+      <form method="dialog" class="jobs-flyer-lightbox__bar">
+        <p class="jobs-flyer-lightbox__title" id="jobs-flyer-lightbox-title">Flyer de vacante</p>
+        <button type="submit" class="jobs-flyer-lightbox__close" aria-label="Cerrar">Cerrar</button>
+      </form>
+      <div class="jobs-flyer-lightbox__stage">
+        <img id="jobs-flyer-lightbox-img" src="" alt="" width="1080" height="1350">
+      </div>`;
+    document.body.appendChild(dialog);
+
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    return dialog;
+  }
+
+  function bindFlyerLightbox() {
+    if (!catalogList) return;
+    const dialog = ensureFlyerLightbox();
+    const img = dialog.querySelector("#jobs-flyer-lightbox-img");
+    const title = dialog.querySelector("#jobs-flyer-lightbox-title");
+
+    catalogList.querySelectorAll("[data-flyer-src]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const src = btn.getAttribute("data-flyer-src");
+        const alt = btn.getAttribute("data-flyer-alt") || "Flyer de vacante";
+        if (!src || !img) return;
+        img.src = src;
+        img.alt = alt;
+        if (title) title.textContent = alt;
+        if (typeof dialog.showModal === "function") dialog.showModal();
+        else dialog.setAttribute("open", "");
+      });
+    });
   }
 
   function bindCatalogToggles() {

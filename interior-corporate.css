@@ -1066,20 +1066,57 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   margin: 14px 0 0;
   border-radius: 16px;
   overflow: hidden;
-  background: #e8f2fb;
+  background:
+    linear-gradient(160deg, #eef6ff 0%, #f7fbff 55%, #e8f2fb 100%);
   box-shadow:
     0 18px 40px rgba(15, 36, 64, 0.18),
     0 0 0 1px rgba(37, 99, 181, 0.12);
-  transform: rotate(0.4deg);
+}
+
+.page-bolsa-trabajo .jobs-catalog__photo-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  text-align: center;
+}
+
+.page-bolsa-trabajo .jobs-catalog__photo-btn:focus-visible {
+  outline: 2px solid #2563b5;
+  outline-offset: 2px;
 }
 
 .page-bolsa-trabajo .jobs-catalog__photo img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center top;
+  max-height: min(68vh, 560px);
+  object-fit: contain;
+  object-position: center center;
+  background: transparent;
+}
+
+.page-bolsa-trabajo .jobs-catalog__photo-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(15, 36, 64, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+  opacity: 0.92;
 }
 
 .page-bolsa-trabajo .jobs-catalog__desc {
