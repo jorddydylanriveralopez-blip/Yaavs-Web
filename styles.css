@@ -8229,31 +8229,75 @@ body.page-intro-active .yaavbot {
 
 @media (max-width: 768px) {
   .yaavbot {
-    right: max(10px, var(--safe-right));
-    bottom: max(16px, calc(var(--safe-bottom) + 8px));
+    right: max(12px, var(--safe-right));
+    bottom: max(14px, calc(var(--safe-bottom) + 8px));
   }
 
+  /* Celular: botón chat discreto (sin robot ni globo) */
   .yaavbot__fab {
-    width: auto;
-    height: auto;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
     padding: 0;
-    gap: 6px;
+    gap: 0;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #4eb8ef 0%, #2563b5 100%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 8px 20px rgba(15, 36, 64, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    color: #fff;
+  }
+
+  .yaavbot__fab:hover,
+  .yaavbot__fab:focus-visible {
+    transform: translateY(-2px) scale(1.04);
+    filter: none;
+    box-shadow:
+      0 10px 24px rgba(15, 36, 64, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
   .yaavbot__hint {
-    max-width: 9.8rem;
-    padding: 7px 10px;
-    font-size: 0.66rem;
+    display: none !important;
+  }
+
+  .yaavbot__robot,
+  .yaavbot__fab-icon-open {
+    display: none !important;
   }
 
   .yaavbot__fab-icon {
-    width: 102px;
-    height: 102px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: none;
+    animation: none;
+    filter: none;
+    color: #fff;
   }
 
-  .yaavbot__robot {
-    width: 96px;
-    height: 96px;
+  .yaavbot__fab-icon-chat {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  .yaavbot.is-open .yaavbot__fab {
+    background: rgba(255, 255, 255, 0.96);
+    color: #0f2440;
+  }
+
+  .yaavbot.is-open .yaavbot__fab-icon {
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .yaavbot.is-open .yaavbot__fab-icon-chat {
+    display: none;
   }
 
   .yaavbot__fab-label {
@@ -8303,43 +8347,21 @@ body.page-intro-active .yaavbot {
 }
 
 @media (max-width: 480px) {
-  .yaavbot__fab-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
   .yaavbot__fab {
-    width: auto;
-    height: auto;
-    padding: 0;
-    justify-content: flex-end;
-    border-radius: 0;
-    background: transparent;
-    border: none;
-    gap: 6px;
-  }
-
-  .yaavbot__hint {
-    max-width: 9.2rem;
-    font-size: 0.64rem;
-    padding: 6px 9px;
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
   }
 
   .yaavbot__fab-icon {
-    width: 96px;
-    height: 96px;
+    width: 46px;
+    height: 46px;
   }
 
-  .yaavbot__robot {
-    width: 90px;
-    height: 90px;
+  .yaavbot__hint,
+  .yaavbot__robot,
+  .yaavbot__fab-icon-open {
+    display: none !important;
   }
 
   .yaavbot__panel {
