@@ -295,7 +295,7 @@
     mount.hidden = true;
     document.body.appendChild(mount);
 
-    await loadPartial("partials/yaavs-chatbot.html", mount);
+    await loadPartial("partials/yaavs-chatbot.html?v=2", mount);
 
     const bot = mount.querySelector("[data-yaavbot]");
     if (!bot) {
