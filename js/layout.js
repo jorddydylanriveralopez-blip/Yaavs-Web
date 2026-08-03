@@ -35,7 +35,9 @@
     return document.body.classList.contains("page-tiendas")
       || document.body.classList.contains("page-tiendas-map")
       || document.body.classList.contains("page-terminos")
-      || document.body.classList.contains("page-privacidad");
+      || document.body.classList.contains("page-privacidad")
+      || document.body.classList.contains("page-quienes-somos")
+      || document.body.classList.contains("page-asi-somos");
   }
 
   /** Home y subpáginas con hero oscuro: logo blanco. Al scroll en interiores: logo a color. */

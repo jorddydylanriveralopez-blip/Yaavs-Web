@@ -42,6 +42,61 @@ body.theme-cluster.page-asi-somos::before {
   overflow: visible;
 }
 
+/* Solo Quiénes somos: header glass (no barra blanca sólida) */
+body.theme-cluster.page-quienes-somos .site-header,
+body.theme-cluster.page-asi-somos .site-header,
+[data-yaavs-theme="day"] body.theme-cluster.page-quienes-somos .site-header,
+[data-yaavs-theme="day"] body.theme-cluster.page-asi-somos .site-header {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0.16) 55%,
+      rgba(200, 238, 248, 0.2) 100%
+    ) !important;
+  backdrop-filter: blur(28px) saturate(1.85) brightness(1.08) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.85) brightness(1.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow:
+    0 10px 28px rgba(15, 36, 64, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+}
+
+body.theme-cluster.page-quienes-somos .site-header.is-scrolled,
+body.theme-cluster.page-asi-somos .site-header.is-scrolled,
+[data-yaavs-theme="day"] body.theme-cluster.page-quienes-somos .site-header.is-scrolled,
+[data-yaavs-theme="day"] body.theme-cluster.page-asi-somos .site-header.is-scrolled {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.62) 0%,
+      rgba(245, 252, 254, 0.48) 100%
+    ) !important;
+  backdrop-filter: blur(32px) saturate(1.7) brightness(1.06) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(1.7) brightness(1.06) !important;
+  border-bottom-color: rgba(0, 188, 212, 0.28) !important;
+  box-shadow:
+    0 10px 26px rgba(15, 36, 64, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Glass frosty → logo a color (legible sobre el cristal) */
+body.theme-cluster.page-quienes-somos .site-header .logo.logo--white,
+body.theme-cluster.page-asi-somos .site-header .logo.logo--white,
+[data-yaavs-theme="day"] body.theme-cluster.page-quienes-somos .site-header .logo.logo--white,
+[data-yaavs-theme="day"] body.theme-cluster.page-asi-somos .site-header .logo.logo--white {
+  --logo-filter: brightness(0) saturate(100%);
+  filter: brightness(0) saturate(100%) drop-shadow(0 1px 6px rgba(255, 255, 255, 0.35)) !important;
+}
+
+body.theme-cluster.page-quienes-somos .site-header .logo.logo--on-light,
+body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
+[data-yaavs-theme="day"] body.theme-cluster.page-quienes-somos .site-header .logo.logo--on-light,
+[data-yaavs-theme="day"] body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light {
+  --logo-filter: none;
+  filter: none !important;
+}
+
 .asi-somos {
   position: relative;
   z-index: 1;
