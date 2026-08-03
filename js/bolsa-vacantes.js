@@ -1,57 +1,241 @@
 (function () {
   if (!document.body.classList.contains("page-bolsa-trabajo")) return;
 
-  /** Vacantes activas — fuente: yaavs.com.mx/trabaja-con-nosotros */
+  const WA_RRHH = "525643873796";
+  const WA_EMBAJADOR = "525643129691";
+
+  /** Vacantes activas — flyers RRHH YAAVS (jul 2026) */
   const OPEN_JOBS = [
     {
-      id: "asesor-ventas-att",
-      title: "Asesor de ventas AT&T",
-      pills: ["Tiempo completo", "Negocios"],
+      id: "soporte-tecnico",
+      title: "Soporte técnico",
+      pills: ["Tiempo completo", "Por incapacidad", "RRHH"],
       description:
-        "Asesoría y venta de soluciones AT&T con respaldo YAAVS. Acompañas a puntos de venta y cierras oportunidades en el canal retail.",
-      publishedAt: "2026-05-12",
-      closesAt: "2026-07-15",
+        "Te estamos buscando por incapacidad. Analiza requerimientos, da soporte a usuarios internos y garantiza la operación tecnológica de YAAVS.",
+      requirements: [
+        "Analizar requerimientos tecnológicos y de negocio para proponer soluciones eficientes.",
+        "Dar soporte técnico a usuarios internos y resolver incidencias de hardware, software y redes.",
+        "Monitorear el desempeño de sistemas, aplicaciones y equipos tecnológicos.",
+        "Gestionar y dar seguimiento a tickets de soporte y solicitudes de servicio.",
+        "Apoyar en la administración de bases de datos, servidores y plataformas empresariales.",
+        "Identificar riesgos tecnológicos y proponer medidas preventivas y correctivas.",
+        "Garantizar el cumplimiento de políticas de seguridad informática y protección de datos.",
+      ],
+      location: "YAAVS",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
     },
     {
-      id: "ejecutivo-ventas-detalle",
-      title: "Ejecutivo de ventas a detalle",
-      pills: ["Tiempo completo", "Nuevo León"],
+      id: "coordinador-trade-marketing",
+      title: "Coordinador de Trade Marketing",
+      pills: ["Tiempo completo", "Marketing", "RRHH"],
       description:
-        "Desarrollo de clientes y venta en mostrador en la zona de Nuevo León. Experiencia en telecom o retail es un plus.",
-      publishedAt: "2026-05-18",
-      closesAt: "2026-07-10",
+        "Coordina la estrategia de trade marketing con foco en inteligencia comercial, planeación y ejecución en campo.",
+      requirements: [
+        "Excel avanzado",
+        "Power BI",
+        "Paquetería Office",
+        "ERP",
+        "CRM",
+        "Simpliroute o GoSpotCheck (plataformas de levantamiento de campo)",
+        "Inteligencia comercial",
+        "Planeación comercial",
+        "Visual merchandising",
+        "Administración de proyectos",
+        "Monitorear tendencias del mercado, comportamiento del consumidor y actividades de la competencia",
+      ],
+      location: "YAAVS",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
     },
     {
-      id: "guardia-seguridad",
-      title: "Guardia de seguridad",
-      pills: ["Tiempo completo", "Ojo de agua"],
+      id: "especialista-mineria-datos-bi",
+      title: "Especialista en minería de datos / Business Intelligence",
+      pills: ["Tiempo completo", "100% oficina", "Tecámac"],
       description:
-        "Resguardo de instalaciones YAAVS en la zona de Ojo de agua. Horarios rotativos; se valoran certificaciones vigentes.",
-      publishedAt: "2026-05-22",
-      closesAt: "2026-06-30",
+        "Perfil analítico para extracción, manipulación y visualización de información de negocio. Horario: lun–vie 9:00–18:00 y sáb 9:00–13:00.",
+      requirements: [
+        "Licenciatura orientada a minería de datos, actuaría o finanzas.",
+        "Trabajo 100% oficina · Zona de trabajo: Ojo de Agua, Tecámac, Estado de México.",
+        "Capacidad analítica y conocimiento en lenguajes de programación.",
+        "Experiencia experta en manejo de bases de datos.",
+        "Extracción, manipulación y análisis de información.",
+        "Manejo experto de Power BI y manejo de Access.",
+        "Python.",
+        "Generación de reportes y dashboards a alto nivel.",
+        "Creación de presentaciones en PowerPoint.",
+        "Entendimiento, manejo y creación de KPIs.",
+        "Facilidad de palabra y proyecciones de la información del negocio.",
+      ],
+      benefits: [
+        "Prestaciones de ley",
+        "Comedor gratuito",
+        "Capacitación constante",
+        "Seguro de gastos menores",
+        "Póliza de cobertura por defunción",
+        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
+      ],
+      location: "Ojo de Agua, Tecámac, Edo. Méx.",
+      contactName: "Recursos Humanos",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "analista-planeacion-financiera",
+      title: "Analista de planeación financiera",
+      pills: ["Tiempo completo", "Finanzas", "Tecámac"],
+      description:
+        "Elabora reportes financieros, apoya el presupuesto anual y analiza costos, gastos y márgenes. Zona de trabajo: Tecámac Ojo de Agua.",
+      requirements: [
+        "Elaborar y actualizar reportes financieros mensuales (estado de resultados, flujo de efectivo y análisis de variaciones).",
+        "Apoyar en la elaboración y seguimiento del presupuesto anual, identificando desviaciones.",
+        "Apoyar en la evaluación financiera de proyectos (rentabilidad, punto de equilibrio y análisis preliminares).",
+        "Mantener bases de datos financieras actualizadas y organizadas.",
+        "Realizar análisis de costos, gastos y márgenes para detectar áreas de mejora.",
+        "Conocimiento en interpretación de estados financieros (Resultados, Balance y Flujo de Efectivo).",
+        "Fundamentos de análisis financiero, presupuestación y contabilidad general.",
+        "Elaboración de proyecciones financieras básicas.",
+        "Excel intermedio-avanzado (fórmulas financieras, tablas dinámicas, bases de datos).",
+        "Indicadores financieros (rentabilidad, liquidez y punto de equilibrio).",
+        "Principios de planeación financiera.",
+        "Conocimiento básico en evaluación de proyectos (VPN, TIR, Payback).",
+      ],
+      location: "Tecámac Ojo de Agua",
+      contactName: "Leesly Rosas",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "desarrollador-web",
+      title: "Desarrollador web",
+      pills: ["Tiempo completo", "Tecnología", "Tecámac"],
+      description:
+        "Se solicita desarrollador web con 2 años de experiencia comprobable. Zona de trabajo: Tecámac Ojo de Agua.",
+      requirements: [
+        "2 años de experiencia comprobable.",
+        "Dominio de C#",
+        "SQL Server",
+        "LINQ",
+        "Triggers",
+        "Manejo de .NET / .NET Core",
+        "Procedimientos almacenados",
+        "Nociones de ITIL",
+        "Familiaridad con metodologías y herramientas de soporte (mesa de ayuda, tickets)",
+      ],
+      benefits: [
+        "Aumentos salariales",
+        "Bebidas gratis",
+        "Descuentos y precios preferenciales",
+        "Estacionamiento de la empresa",
+        "Horarios flexibles",
+        "Servicio de comedor con descuento",
+        "Teléfono de la empresa",
+        "Seguro de gastos menores",
+        "Póliza de cobertura por defunción",
+        "Descuentos en +6,000 establecimientos y +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
+      ],
+      location: "Tecámac Ojo de Agua",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "embajador-de-marca",
+      title: "Embajador de marca",
+      pills: ["Campo / activaciones", "Ojo de Agua", "Lun–Dom"],
+      description:
+        "Promotor/animador para impulsar la marca y las ventas en zonas estratégicas. Ideal si tienes experiencia como botarguero, animador de eventos, activaciones o perifoneo.",
+      requirements: [
+        "Representar marcas telecom (Telcel, AT&T, Movistar, BAIT, Unefon, Virgin Mobile).",
+        "Conectar con clientes potenciales y crear experiencias memorables.",
+        "Experiencia deseable: botarguero, animador de eventos, activaciones de marca, perifoneo y afines.",
+        "Disponibilidad para laborar en Ojo de Agua, Tecámac, con actividades en CDMX y Estado de México.",
+        "Horario: lunes a domingo con descanso rolado.",
+      ],
+      benefits: [
+        "Sueldo mensual (pagos quincenales)",
+        "Prestaciones de ley",
+        "Uniformes sin costo",
+        "Estabilidad laboral",
+        "Oportunidad de crecimiento",
+        "Auto utilitario",
+      ],
+      location: "Ojo de Agua, Tecámac (actividades CDMX / Edo. Méx.)",
+      contactName: "Reclutamiento",
+      whatsapp: WA_EMBAJADOR,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "gerente-contabilidad-financiero",
+      title: "Gerente de contabilidad financiero",
+      pills: ["Tiempo completo", "Finanzas", "Lun–Sáb"],
+      description:
+        "Liderazgo contable-financiero: estados financieros, conciliaciones, impuestos y controles. Licenciatura en Contabilidad o Finanzas con 5 años de experiencia corporativa.",
+      requirements: [
+        "Licenciatura en Contabilidad o Finanzas.",
+        "5 años de experiencia en contabilidad corporativa.",
+        "Conocimiento en elaboración de estados financieros y dominio de Excel.",
+        "Disponibilidad de lunes a sábado.",
+        "Elaboración de estados financieros (Balance, Resultados, Flujo de Efectivo y cambios en la situación financiera).",
+        "Conciliación de cuentas, seguimiento y resolución.",
+        "Registro de operaciones diarias.",
+        "Revisión y autorización de ajustes contables (provisiones, amortizaciones, depreciaciones y conciliaciones bancarias).",
+        "Presentación de declaraciones fiscales mensuales y anuales.",
+        "Documentar procedimientos y controles contables.",
+      ],
+      benefits: [
+        "Descuentos en +6,000 establecimientos",
+        "Descuentos con +4,000 proveedores médicos",
+        "Atención psicológica",
+        "Asesoría nutricional",
+        "Pago semanal",
+        "Prestaciones de ley",
+        "Seguro de gastos menores",
+        "Póliza de cobertura por defunción",
+      ],
+      location: "YAAVS",
+      contactName: "Leesly Rosas",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-07-29",
+      closesAt: "2026-12-31",
     },
   ];
 
   /** Catálogo de puestos agrupados por área */
   const DEPARTMENT_ORDER = [
-    "Ventas",
+    "Tecnología",
     "Marketing",
-    "Compras",
+    "Finanzas",
+    "Ventas",
     "Operaciones",
-    "Servicio",
     "Administración",
   ];
 
   const CATALOG = [
-    { title: "Asesor de ventas AT&T", department: "Ventas", detail: "Negocios", open: true },
-    { title: "Ejecutivo de ventas a detalle", department: "Ventas", detail: "Nuevo León", open: true },
+    { title: "Soporte técnico", department: "Tecnología", detail: "Por incapacidad", open: true },
+    { title: "Desarrollador web", department: "Tecnología", detail: "Tecámac Ojo de Agua", open: true },
+    { title: "Especialista en minería de datos / BI", department: "Tecnología", detail: "Tecámac", open: true },
+    { title: "Coordinador de Trade Marketing", department: "Marketing", detail: "Trade / campo", open: true },
+    { title: "Embajador de marca", department: "Marketing", detail: "Activaciones", open: true },
+    { title: "Analista de planeación financiera", department: "Finanzas", detail: "Tecámac", open: true },
+    { title: "Gerente de contabilidad financiero", department: "Finanzas", detail: "Lun–Sáb", open: true },
+    { title: "Asesor de ventas AT&T", department: "Ventas", detail: "Negocios", open: false },
+    { title: "Ejecutivo de ventas a detalle", department: "Ventas", detail: "Nuevo León", open: false },
     { title: "Ejecutivo de ventas campo", department: "Ventas", detail: "Campo", open: false },
-    { title: "Promotor de marca", department: "Marketing", detail: "Promotoria", open: false },
-    { title: "Auxiliar de compras", department: "Compras", detail: "Abastecimiento", open: false },
-    { title: "Guardia de seguridad", department: "Operaciones", detail: "Ojo de agua", open: true },
     { title: "Coordinador de rotulación", department: "Operaciones", detail: "Imagen en PDV", open: false },
     { title: "Coordinador de operaciones", department: "Operaciones", detail: "Logística", open: false },
-    { title: "Atención a clientes", department: "Servicio", detail: "Call center", open: false },
     { title: "Auxiliar administrativo", department: "Administración", detail: "Oficina central", open: false },
   ];
 
@@ -125,6 +309,31 @@
     return "Ver publicación →";
   }
 
+  function formatWhatsAppDisplay(digits) {
+    const d = String(digits || "").replace(/\D/g, "");
+    if (d.length === 12 && d.startsWith("52")) {
+      return `${d.slice(2, 4)} ${d.slice(4, 8)} ${d.slice(8)}`;
+    }
+    return d;
+  }
+
+  function whatsappHref(job) {
+    const phone = String(job.whatsapp || "").replace(/\D/g, "");
+    if (!phone) return "";
+    const to = job.contactName ? ` a ${job.contactName}` : "";
+    const text = encodeURIComponent(
+      `Hola${to}, quiero postularme a la vacante de ${job.title} en YAAVS. Les envío mi CV.`
+    );
+    return `https://wa.me/${phone}?text=${text}`;
+  }
+
+  function renderList(items, className) {
+    if (!items?.length) return "";
+    return `<ul class="${className}">${items
+      .map((item) => `<li>${escapeHtml(item)}</li>`)
+      .join("")}</ul>`;
+  }
+
   function renderOpenJobs() {
     if (!openGrid) return;
 
@@ -140,7 +349,9 @@
 
     openGrid.innerHTML = active
       .map((job) => {
-        const pills = job.pills.map((p) => `<span class="job-pill">${escapeHtml(p)}</span>`).join("");
+        const pills = (job.pills || [])
+          .map((p) => `<span class="job-pill">${escapeHtml(p)}</span>`)
+          .join("");
         const remaining = formatRemainingLabel(job.closesAt);
         const remainingClass =
           dayDiff(new Date(), parseDate(job.closesAt)) <= 7 ? " job-time__remaining" : "";
@@ -148,18 +359,38 @@
         const externalLink = externalUrl
           ? `<a class="job-external" href="${escapeHtml(externalUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(externalLinkLabel(externalUrl))}</a>`
           : "";
+        const wa = whatsappHref(job);
+        const waLabel = job.contactName
+          ? `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)} · ${job.contactName}`
+          : `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)}`;
+        const waLink = wa
+          ? `<a class="job-whatsapp" href="${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(waLabel)}</a>`
+          : "";
+        const location = job.location
+          ? `<p class="job-location"><strong>Zona:</strong> ${escapeHtml(job.location)}</p>`
+          : "";
+        const reqs = job.requirements?.length
+          ? `<div class="job-specs"><h4>Requisitos / perfil</h4>${renderList(job.requirements, "job-specs__list")}</div>`
+          : "";
+        const benefits = job.benefits?.length
+          ? `<div class="job-specs job-specs--benefits"><h4>Ofrecemos</h4>${renderList(job.benefits, "job-specs__list")}</div>`
+          : "";
 
         return `
-          <article class="glass-card job-card">
+          <article class="glass-card job-card" id="vacante-${escapeHtml(job.id)}">
             <div class="job-meta">${pills}</div>
             <h3>${escapeHtml(job.title)}</h3>
             <p>${escapeHtml(job.description)}</p>
+            ${location}
+            ${reqs}
+            ${benefits}
             <div class="job-time">
               <span class="job-time__published">${formatPublishedLabel(job.publishedAt)}</span>
               <span class="job-time__sep" aria-hidden="true">·</span>
               <span class="job-time__remaining${remainingClass}">${remaining}</span>
             </div>
             <div class="job-actions">
+              ${waLink}
               ${externalLink}
               <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
             </div>
@@ -353,7 +584,6 @@
   bindApplyForm();
   prefillFromQuery();
 
-  /* Al bajar: el catálogo pasa de fondo claro a imagen oscura */
   const catalogScene = document.querySelector(".jobs-catalog-section");
   if (catalogScene) {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

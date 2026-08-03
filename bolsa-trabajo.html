@@ -32,11 +32,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=240">
+  <link rel="stylesheet" href="styles.css?v=241">
   <link rel="stylesheet" href="decorations.css">
   <link rel="stylesheet" href="theme-light.css?v=11">
   <link rel="stylesheet" href="theme-day-night.css?v=5">
-  <link rel="stylesheet" href="interior-corporate.css?v=18">
+  <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=8">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
@@ -58,7 +58,21 @@
         <p class="avisos-hero-banner__lead bolsa-hero-banner__lead">
           Vacantes en ventas, operaciones y servicio en la red #1 de telecom en México.
         </p>
-        <a href="#catalogo-vacantes" class="bolsa-hero-banner__cta">Ver vacantes</a>
+        <a href="#vacantes-abiertas" class="bolsa-hero-banner__cta">Ver vacantes</a>
+      </div>
+    </section>
+
+    <section class="section section--jobs-open" id="vacantes-abiertas" aria-label="Vacantes abiertas YAAVS">
+      <div class="container">
+        <header class="jobs-section-head">
+          <p class="section-tag">Convocatorias activas</p>
+          <h2 class="jobs-section-title">Vacantes abiertas</h2>
+          <p class="jobs-apply-lead" style="max-width:42rem;margin:0.75rem auto 0;text-align:center;opacity:0.85">
+            Revisa el perfil, envía tu CV por WhatsApp al contacto de cada vacante o completa el formulario de postulación.
+          </p>
+        </header>
+        <p class="jobs-open-empty" id="jobs-open-empty" hidden>Por ahora no hay convocatorias abiertas. Déjanos tu CV en el formulario y te contactamos.</p>
+        <div class="jobs-grid" id="jobs-open-grid"></div>
       </div>
     </section>
 
@@ -181,7 +195,7 @@
   <div id="site-footer"></div>
   <script src="js/layout.js?v=40" defer></script>
   <script src="js/main.js?v=5" defer></script>
-  <script src="js/bolsa-vacantes.js?v=4"></script>
+  <script src="js/bolsa-vacantes.js?v=5"></script>
   <script src="js/interior-banners.config.js?v=2"></script>
   <script src="js/interior-banner.js"></script>
 </body>

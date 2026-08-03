@@ -827,6 +827,16 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   border-color: var(--border-on-light);
 }
 
+.page-bolsa-trabajo .job-card .job-specs__list {
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.page-bolsa-trabajo .section--jobs-open .jobs-section-head {
+  text-align: center;
+}
+
 .page-bolsa-trabajo .job-card h3 {
   color: var(--ink);
 }
