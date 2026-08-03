@@ -62,11 +62,12 @@ window.YAAVS_HERO_CAROUSEL = {
       },
     },
     {
+      /* Desktop: 3.mp4 · Móvil: 3.5.mp4 */
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/socio-comercial-firefly.mp4",
-      videoSrcMobile: "assets/hero-telecom/banners/socio-comercial-mobile.mp4",
-      src: "assets/hero-telecom/banners/socio-comercial-firefly-poster.jpg",
-      srcMobile: "assets/hero-telecom/banners/socio-comercial-mobile-poster.jpg",
+      videoSrc: "assets/hero-telecom/banners/3.mp4",
+      videoSrcMobile: "assets/hero-telecom/banners/3.5.mp4",
+      src: "assets/hero-telecom/banners/3-poster.jpg",
+      srcMobile: "assets/hero-telecom/banners/3.5-poster.jpg",
       width: 1920,
       height: 1080,
       widthMobile: 1080,
