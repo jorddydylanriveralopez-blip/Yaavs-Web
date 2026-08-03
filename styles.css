@@ -7790,10 +7790,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 .yaavbot.is-open .yaavbot__hint,
 .yaavbot.is-minimized .yaavbot__hint {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(4px) scale(0.96);
+  display: none !important;
 }
 
 .yaavbot__fab:hover,
@@ -7857,18 +7854,43 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   display: none;
 }
 
+/* Abierto: un solo botón compacto (sin doble círculo / sin tapar el send) */
+.yaavbot.is-open .yaavbot__fab {
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  padding: 0;
+  gap: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 18px rgba(15, 36, 64, 0.2);
+  color: #0f2440;
+  filter: none;
+  transform: none;
+}
+
+.yaavbot.is-open .yaavbot__fab:hover,
+.yaavbot.is-open .yaavbot__fab:focus-visible {
+  transform: translateY(-2px) scale(1.04);
+  filter: none;
+}
+
 .yaavbot.is-open .yaavbot__fab-icon {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 18px rgba(15, 36, 64, 0.16);
+  background: transparent;
+  box-shadow: none;
   animation: none;
   filter: none;
+  color: inherit;
 }
 
-.yaavbot.is-open .yaavbot__robot {
-  display: none;
+.yaavbot.is-open .yaavbot__robot,
+.yaavbot.is-open .yaavbot__fab-icon-open,
+.yaavbot.is-open .yaavbot__fab-icon-chat {
+  display: none !important;
 }
 
 @keyframes yaavbot-icon-pulse {
