@@ -224,13 +224,13 @@
   ];
 
   const CATALOG = [
-    { title: "Soporte técnico", department: "Tecnología", detail: "Por incapacidad", open: true },
-    { title: "Desarrollador web", department: "Tecnología", detail: "Tecámac Ojo de Agua", open: true },
-    { title: "Especialista en minería de datos / BI", department: "Tecnología", detail: "Tecámac", open: true },
-    { title: "Coordinador de Trade Marketing", department: "Marketing", detail: "Trade / campo", open: true },
-    { title: "Embajador de marca", department: "Marketing", detail: "Activaciones", open: true },
-    { title: "Analista de planeación financiera", department: "Finanzas", detail: "Tecámac", open: true },
-    { title: "Gerente de contabilidad financiero", department: "Finanzas", detail: "Lun–Sáb", open: true },
+    { title: "Soporte técnico", department: "Tecnología", detail: "Por incapacidad", open: true, jobId: "soporte-tecnico" },
+    { title: "Desarrollador web", department: "Tecnología", detail: "Tecámac Ojo de Agua", open: true, jobId: "desarrollador-web" },
+    { title: "Especialista en minería de datos / BI", department: "Tecnología", detail: "Tecámac", open: true, jobId: "especialista-mineria-datos-bi" },
+    { title: "Coordinador de Trade Marketing", department: "Marketing", detail: "Trade / campo", open: true, jobId: "coordinador-trade-marketing" },
+    { title: "Embajador de marca", department: "Marketing", detail: "Activaciones", open: true, jobId: "embajador-de-marca" },
+    { title: "Analista de planeación financiera", department: "Finanzas", detail: "Tecámac", open: true, jobId: "analista-planeacion-financiera" },
+    { title: "Gerente de contabilidad financiero", department: "Finanzas", detail: "Lun–Sáb", open: true, jobId: "gerente-contabilidad-financiero" },
     { title: "Asesor de ventas AT&T", department: "Ventas", detail: "Negocios", open: false },
     { title: "Ejecutivo de ventas a detalle", department: "Ventas", detail: "Nuevo León", open: false },
     { title: "Ejecutivo de ventas campo", department: "Ventas", detail: "Campo", open: false },
@@ -239,8 +239,11 @@
     { title: "Auxiliar administrativo", department: "Administración", detail: "Oficina central", open: false },
   ];
 
-  const openGrid = document.getElementById("jobs-open-grid");
-  const openEmpty = document.getElementById("jobs-open-empty");
+  const OPEN_BY_ID = OPEN_JOBS.reduce((acc, job) => {
+    acc[job.id] = job;
+    return acc;
+  }, {});
+
   const catalogList = document.getElementById("jobs-catalog-list");
   const applyForm = document.getElementById("jobs-apply-form");
 
@@ -334,69 +337,39 @@
       .join("")}</ul>`;
   }
 
-  function renderOpenJobs() {
-    if (!openGrid) return;
+  function renderJobDetail(job) {
+    if (!job) return "";
+    const wa = whatsappHref(job);
+    const waLabel = job.contactName
+      ? `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)} · ${job.contactName}`
+      : `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)}`;
+    const waLink = wa
+      ? `<a class="job-whatsapp" href="${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(waLabel)}</a>`
+      : "";
+    const location = job.location
+      ? `<p class="jobs-catalog__location"><strong>Zona:</strong> ${escapeHtml(job.location)}</p>`
+      : "";
+    const reqs = job.requirements?.length
+      ? `<div class="jobs-catalog__specs"><h4>Requisitos / perfil</h4>${renderList(job.requirements, "jobs-catalog__specs-list")}</div>`
+      : "";
+    const benefits = job.benefits?.length
+      ? `<div class="jobs-catalog__specs"><h4>Ofrecemos</h4>${renderList(job.benefits, "jobs-catalog__specs-list")}</div>`
+      : "";
+    const desc = job.description
+      ? `<p class="jobs-catalog__desc">${escapeHtml(job.description)}</p>`
+      : "";
 
-    const active = OPEN_JOBS.filter((job) => dayDiff(new Date(), parseDate(job.closesAt)) >= 0);
-
-    if (!active.length) {
-      openGrid.innerHTML = "";
-      if (openEmpty) openEmpty.hidden = false;
-      return;
-    }
-
-    if (openEmpty) openEmpty.hidden = true;
-
-    openGrid.innerHTML = active
-      .map((job) => {
-        const pills = (job.pills || [])
-          .map((p) => `<span class="job-pill">${escapeHtml(p)}</span>`)
-          .join("");
-        const remaining = formatRemainingLabel(job.closesAt);
-        const remainingClass =
-          dayDiff(new Date(), parseDate(job.closesAt)) <= 7 ? " job-time__remaining" : "";
-        const externalUrl = safeExternalUrl(job.link || job.externalUrl);
-        const externalLink = externalUrl
-          ? `<a class="job-external" href="${escapeHtml(externalUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(externalLinkLabel(externalUrl))}</a>`
-          : "";
-        const wa = whatsappHref(job);
-        const waLabel = job.contactName
-          ? `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)} · ${job.contactName}`
-          : `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)}`;
-        const waLink = wa
-          ? `<a class="job-whatsapp" href="${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(waLabel)}</a>`
-          : "";
-        const location = job.location
-          ? `<p class="job-location"><strong>Zona:</strong> ${escapeHtml(job.location)}</p>`
-          : "";
-        const reqs = job.requirements?.length
-          ? `<div class="job-specs"><h4>Requisitos / perfil</h4>${renderList(job.requirements, "job-specs__list")}</div>`
-          : "";
-        const benefits = job.benefits?.length
-          ? `<div class="job-specs job-specs--benefits"><h4>Ofrecemos</h4>${renderList(job.benefits, "job-specs__list")}</div>`
-          : "";
-
-        return `
-          <article class="glass-card job-card" id="vacante-${escapeHtml(job.id)}">
-            <div class="job-meta">${pills}</div>
-            <h3>${escapeHtml(job.title)}</h3>
-            <p>${escapeHtml(job.description)}</p>
-            ${location}
-            ${reqs}
-            ${benefits}
-            <div class="job-time">
-              <span class="job-time__published">${formatPublishedLabel(job.publishedAt)}</span>
-              <span class="job-time__sep" aria-hidden="true">·</span>
-              <span class="job-time__remaining${remainingClass}">${remaining}</span>
-            </div>
-            <div class="job-actions">
-              ${waLink}
-              ${externalLink}
-              <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
-            </div>
-          </article>`;
-      })
-      .join("");
+    return `
+      <div class="jobs-catalog__detail" id="vacante-${escapeHtml(job.id)}" hidden>
+        ${desc}
+        ${location}
+        ${reqs}
+        ${benefits}
+        <div class="jobs-catalog__actions">
+          ${waLink}
+          <a href="#postular" class="job-apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
+        </div>
+      </div>`;
   }
 
   function deptSlug(dept) {
@@ -422,13 +395,21 @@
         const items = grouped[dept]
           .map((item) => {
             const closed = !item.open;
+            const job = item.jobId ? OPEN_BY_ID[item.jobId] : null;
+            const isOpenDetail = Boolean(job && !closed);
+            const rowAttrs = isOpenDetail
+              ? ` class="jobs-catalog__item is-openable" tabindex="0" role="button" aria-expanded="false" data-job-toggle="${escapeHtml(item.jobId)}"`
+              : ` class="jobs-catalog__item${closed ? " is-closed" : ""}"`;
             return `
-              <li class="jobs-catalog__item${closed ? " is-closed" : ""}">
-                <div class="jobs-catalog__main">
-                  <span class="jobs-catalog__title">${escapeHtml(item.title)}</span>
-                  <span class="jobs-catalog__area">${escapeHtml(item.detail)}</span>
+              <li${rowAttrs}>
+                <div class="jobs-catalog__row">
+                  <div class="jobs-catalog__main">
+                    <span class="jobs-catalog__title">${escapeHtml(item.title)}</span>
+                    <span class="jobs-catalog__area">${escapeHtml(item.detail)}</span>
+                  </div>
+                  <span class="jobs-catalog__status">${item.open ? "Vacante abierta" : "Sin vacante activa"}</span>
                 </div>
-                <span class="jobs-catalog__status">${item.open ? "Vacante abierta" : "Sin vacante activa"}</span>
+                ${isOpenDetail ? renderJobDetail(job) : ""}
               </li>`;
           })
           .join("");
@@ -440,6 +421,34 @@
           </section>`;
       })
       .join("");
+
+    bindCatalogToggles();
+  }
+
+  function bindCatalogToggles() {
+    if (!catalogList) return;
+
+    catalogList.querySelectorAll("[data-job-toggle]").forEach((row) => {
+      const toggle = () => {
+        const detail = row.querySelector(".jobs-catalog__detail");
+        if (!detail) return;
+        const open = row.classList.toggle("is-expanded");
+        detail.hidden = !open;
+        row.setAttribute("aria-expanded", open ? "true" : "false");
+      };
+
+      row.addEventListener("click", (e) => {
+        if (e.target.closest("a")) return;
+        toggle();
+      });
+
+      row.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        if (e.target.closest("a")) return;
+        e.preventDefault();
+        toggle();
+      });
+    });
   }
 
   function bindApplyLinks() {
@@ -577,7 +586,6 @@
     if (field) field.value = decodeURIComponent(vacante.replace(/\+/g, " "));
   }
 
-  renderOpenJobs();
   renderCatalog();
   bindApplyLinks();
   bindFileInputs();
