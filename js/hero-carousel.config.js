@@ -37,12 +37,12 @@ window.YAAVS_HERO_CAROUSEL = {
       },
     },
     {
-      /* Desktop: servicios .mp4 · Móvil: servicios vertical.mp4 */
+      /* Desktop: servicios horizontal · Móvil: servicios vertical */
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/2.mp4",
-      videoSrcMobile: "assets/hero-telecom/banners/2.5.mp4",
-      src: "assets/hero-telecom/banners/2-poster.jpg",
-      srcMobile: "assets/hero-telecom/banners/2.5-poster.jpg",
+      videoSrc: "assets/hero-telecom/banners/servicios-h-20260804.mp4",
+      videoSrcMobile: "assets/hero-telecom/banners/servicios-v-20260804.mp4",
+      src: "assets/hero-telecom/banners/servicios-h-20260804-poster.jpg",
+      srcMobile: "assets/hero-telecom/banners/servicios-v-20260804-poster.jpg",
       width: 1920,
       height: 1080,
       widthMobile: 1080,
