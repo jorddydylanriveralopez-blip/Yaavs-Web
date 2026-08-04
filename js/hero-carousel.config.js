@@ -37,21 +37,21 @@ window.YAAVS_HERO_CAROUSEL = {
       },
     },
     {
-      /* Desktop/móvil: Assets Website 2.mp4 */
+      /* Desktop: servicios .mp4 · Móvil: servicios vertical.mp4 */
       videoBanner: true,
       videoSrc: "assets/hero-telecom/banners/2.mp4",
-      videoSrcMobile: "assets/hero-telecom/banners/2.mp4",
+      videoSrcMobile: "assets/hero-telecom/banners/2.5.mp4",
       src: "assets/hero-telecom/banners/2-poster.jpg",
-      srcMobile: "assets/hero-telecom/banners/2-poster.jpg",
+      srcMobile: "assets/hero-telecom/banners/2.5-poster.jpg",
       width: 1920,
       height: 1080,
-      widthMobile: 1920,
-      heightMobile: 1080,
+      widthMobile: 1080,
+      heightMobile: 1920,
       objectFit: "cover",
       objectPosition: "center center",
       objectFitMobile: "cover",
       objectPositionMobile: "center center",
-      alt: "YAAVS — distribución nacional de SIMs y telecom en México.",
+      alt: "YAAVS — conoce nuestros servicios.",
       duration: 0,
       promo: {
         title: "Conoce",
