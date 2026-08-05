@@ -4,7 +4,7 @@ window.YAAVS_CHATBOT = {
   subtitle: "Tu guía en YAAVS",
   placeholder: "Pregúntame lo que necesites…",
   welcome:
-    "¡Hola! Soy **Vaavsti** 👋 Te ayudo como si estuviéramos en la misma oficina: si te perdiste en el sitio, si quieres ser **socio comercial**, **recargar**, ubicar **tiendas** o ver **vacantes**, dime y te llevo al lugar exacto.",
+    "¡Hola! Soy **Vaavsti** 👋 Si te perdiste, te llevo. Prueba: [Ser socio](ser-yaavser.html), [Recargar](recargar.html), [Tiendas](tiendas.html) o [Vacantes](bolsa-trabajo.html).",
   quickReplies: [
     "Estoy perdido, ¿me orientas?",
     "¿Cómo ser socio comercial?",

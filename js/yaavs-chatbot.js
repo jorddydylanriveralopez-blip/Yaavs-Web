@@ -26,6 +26,28 @@
   let busy = false;
   let state = "closed";
 
+  const PAGE_LABELS = {
+    "index.html": "Ir al inicio",
+    "quienes-somos.html": "¿Quiénes somos?",
+    "servicios.html": "Ver servicios",
+    "prepago.html": "Ver prepago",
+    "postpago.html": "Ver postpago",
+    "activar-chip.html": "Activar chip",
+    "recargar.html": "Recargar tiempo aire",
+    "ser-yaavser.html": "Ser socio comercial",
+    "tiendas.html": "Ver tiendas",
+    "tiendas-mapa.html": "Abrir mapa de tiendas",
+    "bolsa-trabajo.html": "Ver vacantes",
+    "contacto.html": "Ir a contacto",
+    "avisos.html": "Ver avisos",
+    "avisos-privacidad.html": "Aviso de privacidad",
+    "aviso-de-privacidad.html": "Aviso de privacidad",
+    "terminos-condiciones.html": "Términos y condiciones",
+    "testimonios.html": "Ver testimonios",
+  };
+
+  const SAFE_PAGES = new Set(Object.keys(PAGE_LABELS));
+
   function escapeHtml(str) {
     return String(str)
       .replace(/&/g, "&amp;")
@@ -34,8 +56,70 @@
       .replace(/"/g, "&quot;");
   }
 
+  function normalizeHref(raw) {
+    const href = String(raw || "").trim();
+    if (!href) return "";
+    if (/^https?:\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:")) {
+      return href;
+    }
+    const path = href.replace(/^\.\//, "").split(/[?#]/)[0];
+    if (SAFE_PAGES.has(path)) return path;
+    if (/^[a-z0-9][\w./-]*\.html$/i.test(path) && !path.includes("..")) return path;
+    if (href.startsWith("#")) return href;
+    return "";
+  }
+
+  function collectPageActions(text) {
+    const found = [];
+    const seen = new Set();
+    const re = /(?:\[([^\]]+)\]\(([^)]+)\)|(https?:\/\/[^\s)<]+)|((?:[\w./-]+\.html)(?:#[\w-]*)?))/gi;
+    let match;
+    while ((match = re.exec(text))) {
+      const mdLabel = match[1];
+      const raw = match[2] || match[3] || match[4] || "";
+      const href = normalizeHref(raw);
+      if (!href || seen.has(href)) continue;
+      if (!SAFE_PAGES.has(href.split("#")[0]) && !/^https?:\/\//i.test(href)) continue;
+      seen.add(href);
+      const page = href.split("#")[0];
+      const label =
+        (mdLabel && mdLabel.trim()) ||
+        PAGE_LABELS[page] ||
+        (/^https?:\/\/wa\.me\//i.test(href) ? "Abrir WhatsApp" : "Abrir enlace");
+      found.push({ href, label });
+    }
+    return found.slice(0, 4);
+  }
+
   function formatText(text) {
     let safe = escapeHtml(text);
+
+    // Markdown links [label](url)
+    safe = safe.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+      const href = normalizeHref(url);
+      if (!href) return escapeHtml(label);
+      const external = /^https?:\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:");
+      const attrs = external
+        ? ` target="_blank" rel="noopener noreferrer"`
+        : "";
+      return `<a class="yaavbot__link" href="${escapeHtml(href)}"${attrs}>${escapeHtml(label)}</a>`;
+    });
+
+    // Bare URLs
+    safe = safe.replace(/(^|[\s>])(https?:\/\/[^\s<]+)/g, (_, lead, url) => {
+      const clean = url.replace(/[.,;:!?)]+$/, "");
+      const trail = url.slice(clean.length);
+      return `${lead}<a class="yaavbot__link" href="${escapeHtml(clean)}" target="_blank" rel="noopener noreferrer">${escapeHtml(clean)}</a>${trail}`;
+    });
+
+    // Bare site pages like ser-yaavser.html
+    safe = safe.replace(/(^|[\s>(])((?:[\w./-]+\.html)(?:#[\w-]*)?)/gi, (_, lead, page) => {
+      const href = normalizeHref(page);
+      if (!href || !SAFE_PAGES.has(href.split("#")[0])) return `${lead}${page}`;
+      const label = PAGE_LABELS[href.split("#")[0]] || page;
+      return `${lead}<a class="yaavbot__link" href="${escapeHtml(href)}" title="${escapeHtml(label)}">${escapeHtml(page)}</a>`;
+    });
+
     safe = safe.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     safe = safe.replace(/\n/g, "<br>");
     return safe;
@@ -44,7 +128,32 @@
   function appendMessage(role, text) {
     const item = document.createElement("div");
     item.className = `yaavbot__msg yaavbot__msg--${role}`;
-    item.innerHTML = `<div class="yaavbot__bubble">${formatText(text)}</div>`;
+
+    const bubble = document.createElement("div");
+    bubble.className = "yaavbot__bubble";
+    bubble.innerHTML = formatText(text);
+    item.appendChild(bubble);
+
+    if (role === "bot") {
+      const actions = collectPageActions(text);
+      if (actions.length) {
+        const row = document.createElement("div");
+        row.className = "yaavbot__actions";
+        actions.forEach(({ href, label }) => {
+          const btn = document.createElement("a");
+          btn.className = "yaavbot__action";
+          btn.href = href;
+          btn.textContent = label;
+          if (/^https?:\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:")) {
+            btn.target = "_blank";
+            btn.rel = "noopener noreferrer";
+          }
+          row.appendChild(btn);
+        });
+        item.appendChild(row);
+      }
+    }
+
     messagesEl.appendChild(item);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
@@ -97,40 +206,40 @@
     const q = text.toLowerCase();
 
     if (/perd|no encuentro|dónde|donde|orient|mapa del sitio|ayuda|naveg/.test(q)) {
-      return "Tranqui, te oriento 🧭 ¿Qué buscas?\n· **Socio comercial** → **ser-yaavser.html**\n· **Recargar** → **recargar.html**\n· **Servicios / chip** → **servicios.html** o **activar-chip.html**\n· **Tiendas** → **tiendas.html** / **tiendas-mapa.html**\n· **Vacantes** → **bolsa-trabajo.html**\n· **Quiénes somos** → **quienes-somos.html**\nDime cuál y te detallo el siguiente paso.";
+      return "Tranqui, te oriento 🧭 ¿Qué buscas?\n· Socio comercial → [Ser socio](ser-yaavser.html)\n· Recargar → [Recargar tiempo aire](recargar.html)\n· Servicios / chip → [Servicios](servicios.html) o [Activar chip](activar-chip.html)\n· Tiendas → [Tiendas](tiendas.html) / [Mapa](tiendas-mapa.html)\n· Vacantes → [Bolsa de trabajo](bolsa-trabajo.html)\n· Quiénes somos → [Quiénes somos](quienes-somos.html)\nDime cuál y te detallo el siguiente paso.";
     }
     if (/vacante|empleo|bolsa|trabajo|rrhh|postul/.test(q)) {
-      return "Las vacantes abiertas están en **bolsa-trabajo.html**: toca una vacante abierta para ver requisitos y mandar CV por WhatsApp. Si no ves la que buscas, déjanos tu postulación en esa misma página.";
+      return "Las vacantes abiertas están aquí: [Ver vacantes](bolsa-trabajo.html). Toca una vacante abierta para ver requisitos y mandar CV por WhatsApp.";
     }
     if (/tienda|mapa|ubicaci[oó]n|cerca/.test(q)) {
-      return "Para ubicar puntos YAAVS: **tiendas.html** o el mapa en **tiendas-mapa.html**. Si me dices ciudad o colonia, te indico por dónde empezar.";
+      return "Para ubicar puntos YAAVS entra a [Tiendas](tiendas.html) o al [mapa de tiendas](tiendas-mapa.html). Si me dices ciudad o colonia, te indico por dónde empezar.";
     }
     if (/yaavser|afili|socio|punto de venta/.test(q)) {
-      return "Si quieres sumarte como **socio comercial (Yaavser)**, el camino es **ser-yaavser.html**: visita comercial, rotulación y respaldo en tu local. ¿Te paso también el WhatsApp para agendar?";
+      return "Si quieres sumarte como socio comercial (Yaavser), ve directo aquí: [Ser socio comercial](ser-yaavser.html). ¿Te paso también el [WhatsApp](https://wa.me/525522331210) para agendar?";
     }
     if (/recargaklic|recarga|tiempo.?aire/.test(q)) {
-      return "Para **recargar tiempo aire** en el sitio entra a **recargar.html**. Si hablas de operación en tienda / **RecargaKlic**, también te puedo orientar: ¿lo necesitas para tu negocio o como cliente final?";
+      return "Para recargar tiempo aire en el sitio: [Recargar ahora](recargar.html). Si es para tu negocio / RecargaKlic, dime y te oriento.";
     }
     if (/activar|chip|sim/.test(q)) {
-      return "Para **activar un chip / SIM**, ve a **activar-chip.html**. YAAVS es **líder distribuidor de SIMs en México** (multi-operador). Si te trabas en el proceso, escríbeme qué pantalla estás viendo.";
+      return "Para activar un chip / SIM: [Activar chip](activar-chip.html). YAAVS es líder distribuidor de SIMs en México (multi-operador).";
     }
     if (/telcel|movistar|at&t|unefon|bait|operador|compañ/.test(q)) {
-      return "Trabajamos **multi-operador** (Telcel, AT&T, Movistar, Unefon, BAIT y más). El panorama de servicios está en **servicios.html**; prepago y postpago tienen su propia página si quieres ir directo.";
+      return "Trabajamos multi-operador (Telcel, AT&T, Movistar, Unefon, BAIT y más). Mira el panorama en [Servicios](servicios.html), o ve a [Prepago](prepago.html) / [Postpago](postpago.html).";
     }
     if (/portabilidad|porta/.test(q)) {
-      return "Sí hacemos **portabilidad** (el cliente cambia de compañía y se queda con su número). Revisa **servicios.html** o **postpago.html**, y si prefieres hablar con alguien: WhatsApp **https://wa.me/525522331210**.";
+      return "Sí hacemos portabilidad. Revisa [Servicios](servicios.html) o [Postpago](postpago.html), o escríbenos por [WhatsApp](https://wa.me/525522331210).";
     }
     if (/qui[eé]nes|somos|empresa|historia/.test(q)) {
-      return "Somos **líder distribuidor de SIMs en México**, con conectividad a +16,000 negocios. La historia y el equipo están en **quienes-somos.html**.";
+      return "Somos líder distribuidor de SIMs en México, con conectividad a +16,000 negocios. Conócenos aquí: [Quiénes somos](quienes-somos.html).";
     }
     if (/contact|whatsapp|tel[eé]fono|correo|mail|llamar/.test(q)) {
-      return "Con gusto 📲\n· Tel. **55 22 33 12 10**\n· **Hola@yaavs.com.mx**\n· WhatsApp: **https://wa.me/525522331210**\nTambién puedes usar el formulario en **contacto.html**.";
+      return "Con gusto 📲\n· Tel. **55 22 33 12 10**\n· **Hola@yaavs.com.mx**\n· [WhatsApp](https://wa.me/525522331210)\n· Formulario: [Contacto](contacto.html)";
     }
     if (/hola|buenas|hey|qu[eé] tal|buenos d[ií]as|buenas tardes/.test(q)) {
-      return "¡Hola! Qué gusto. Soy **Vaavsti**, de YAAVS. ¿Vienes por **socio comercial**, **recargas**, **tiendas**, **vacantes**… o solo estás explorando y quieres que te arme una ruta rápida?";
+      return "¡Hola! Qué gusto. Soy **Vaavsti**, de YAAVS. ¿Vienes por socio comercial, recargas, tiendas, vacantes… o solo estás explorando?\nPuedes empezar en [Ser socio](ser-yaavser.html), [Recargar](recargar.html) o [Vacantes](bolsa-trabajo.html).";
     }
 
-    return "Gracias por escribir. Para afinar: ¿buscas **socio comercial**, **recarga**, **servicios/chip**, **tiendas**, **vacantes** o **contacto**? Si estás perdido en la web, dime “estoy perdido” y te guío paso a paso.";
+    return "Gracias por escribir. ¿Buscas socio comercial, recarga, servicios/chip, tiendas, vacantes o contacto?\nAtajos: [Ser socio](ser-yaavser.html) · [Recargar](recargar.html) · [Tiendas](tiendas.html) · [Vacantes](bolsa-trabajo.html) · [Contacto](contacto.html)";
   }
 
   async function askAI(text) {
@@ -179,7 +288,7 @@
     const reply = await askAI(msg);
     typing.remove();
     appendMessage("bot", reply);
-    setStatus("Asistente YAAVS · IA");
+    setStatus(cfg.subtitle || "Tu guía en YAAVS");
     busy = false;
     form.querySelector("button[type=submit]")?.removeAttribute("disabled");
     if (state === "open") input.focus();

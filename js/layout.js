@@ -309,7 +309,7 @@
     if (!document.querySelector("script[data-yaavbot-config]")) {
       await new Promise((resolve) => {
         const cfg = document.createElement("script");
-        cfg.src = "js/yaavs-chatbot.config.js?v=5";
+        cfg.src = "js/yaavs-chatbot.config.js?v=6";
         cfg.dataset.yaavbotConfig = "true";
         cfg.onload = resolve;
         cfg.onerror = resolve;
@@ -320,7 +320,7 @@
     if (!document.querySelector("script[data-yaavbot-main]")) {
       await new Promise((resolve) => {
         const main = document.createElement("script");
-        main.src = "js/yaavs-chatbot.js?v=5";
+        main.src = "js/yaavs-chatbot.js?v=6";
         main.dataset.yaavbotMain = "true";
         main.onload = resolve;
         main.onerror = resolve;
