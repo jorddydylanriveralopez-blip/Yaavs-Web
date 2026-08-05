@@ -31,7 +31,7 @@ window.YAAVS_HERO_CAROUSEL = {
       promo: {
         title: "¿Quiénes",
         accent: "somos?",
-        lead: "Líder distribuidor de SIMs. Conectividad a +16,000 negocios en México.",
+        lead: "Líder distribuidor de SIMs en México. Conectividad a +16,000 negocios e emprendimientos en todo el país.",
         cta: "Conócenos",
         href: "quienes-somos.html",
       },
