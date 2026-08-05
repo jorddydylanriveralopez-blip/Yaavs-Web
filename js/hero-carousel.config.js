@@ -13,11 +13,12 @@ window.YAAVS_HERO_CAROUSEL = {
   },
   images: [
     {
+      /* Desktop: VIDEO DYLAN PAGINA WEB · Móvil: vertical .mp4 */
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/dili-dili-dili.mp4",
-      videoSrcMobile: "assets/hero-telecom/banners/dili-dili-dili.mp4",
-      src: "assets/hero-telecom/banners/quienes-map-poster.jpg",
-      srcMobile: "assets/hero-telecom/banners/quienes-map-poster-vertical.jpg",
+      videoSrc: "assets/hero-telecom/banners/dylan-h-20260805.mp4",
+      videoSrcMobile: "assets/hero-telecom/banners/dylan-v-20260805.mp4",
+      src: "assets/hero-telecom/banners/dylan-h-20260805-poster.jpg",
+      srcMobile: "assets/hero-telecom/banners/dylan-v-20260805-poster.jpg",
       width: 1920,
       height: 1080,
       widthMobile: 1080,
