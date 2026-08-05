@@ -14,7 +14,7 @@ const PRECACHE = [
   "./assets/yaavs-logo-white.png?v=2",
   "./assets/favicon-yaavs.png",
   "./styles.css?v=242",
-  "./js/layout.js?v=42",
+  "./js/layout.js?v=43",
   "./js/pwa.js?v=6",
   /* Shell partials — menu/footer must work offline */
   "./partials/header.html?v=21",

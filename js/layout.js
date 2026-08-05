@@ -209,6 +209,40 @@
     onScroll();
   }
 
+  const FALLBACK_PARTIALS = {
+    "partials/header.html": `<header class="site-header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-link logo-link--compact" aria-label="YAAVS inicio">
+      <img src="assets/yaavs-logo-white.png" alt="YAAVS" class="logo logo--sm logo--white" width="160" height="56">
+    </a>
+    <div class="header-menu">
+      <a class="header-wa" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_whatsapp">
+        <span class="header-wa__icon" aria-hidden="true"></span>
+      </a>
+      <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
+        <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
+        <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
+      </button>
+    </div>
+    <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
+      <a href="index.html" data-page="inicio">Inicio</a>
+      <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
+      <a href="tiendas.html" data-page="tiendas">Conoce nuestras tiendas</a>
+      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
+      <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
+      <a href="avisos.html" data-page="avisos">Noticias Yaavs</a>
+      <a href="contacto.html" data-page="contacto">Contacto</a>
+    </nav>
+  </div>
+</header>`,
+  };
+
+  function fallbackPartial(url) {
+    const bare = String(url || "").split("?")[0].replace(/^\.\//, "");
+    return FALLBACK_PARTIALS[bare] || "";
+  }
+
   async function loadPartial(url, mount) {
     if (!mount) return;
 
@@ -237,8 +271,14 @@
       } catch (_) {
         /* fall through */
       }
-      mount.innerHTML =
-        '<p class="layout-error">No se pudo cargar el menú. Abre el sitio con un servidor local (Live Server).</p>';
+
+      const embedded = fallbackPartial(url);
+      if (embedded) {
+        mount.innerHTML = embedded;
+        return;
+      }
+
+      mount.innerHTML = "";
     }
   }
 
