@@ -7,21 +7,7 @@ const {
   corsOrigin,
   sanitizeMessages,
 } = require("../../api/_security.js");
-
-const SYSTEM = `Eres Vaavsti, asistente virtual de YAAVS (Grupo Comercial YAAVS), distribuidor #1 de telecomunicaciones en México.
-
-Responde siempre en español, tono cercano y profesional, mensajes cortos (máximo 3 párrafos breves).
-
-Información clave:
-- YAAVS distribuye SIM, recargas, tiempo aire y servicios multi-operador (Telcel, AT&T, Movistar, Unefon).
-- Programa Yaavser: afiliación para tiendas con visita comercial, rotulación y respaldo comercial.
-- App RecargaKlic: activaciones y recargas desde el celular del punto de venta.
-- Servicios: portabilidad, activaciones, liberaciones, tiempo aire.
-- +10,000 puntos de venta en México.
-- Contacto: 55 22 33 12 10, Hola@yaavs.com.mx, WhatsApp https://wa.me/525522331210
-- Páginas: ser-yaavser.html, activar-chip.html, servicios.html, contacto.html
-
-Si no sabes algo específico, invita a contactar por WhatsApp o al formulario de contacto. No inventes precios ni promociones no confirmadas.`;
+const SYSTEM = require("../../api/vaavsti-prompt.js");
 
 function clientIp(req) {
   const xf = req.headers.get("x-forwarded-for");
@@ -106,8 +92,8 @@ export default async (req) => {
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL || "gpt-4o-mini",
         messages: [{ role: "system", content: SYSTEM }, ...sanitized],
-        max_tokens: 450,
-        temperature: 0.65,
+        max_tokens: 520,
+        temperature: 0.78,
       }),
     });
 

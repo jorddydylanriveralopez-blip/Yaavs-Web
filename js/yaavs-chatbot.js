@@ -50,7 +50,7 @@
   }
 
   function setStatus(text) {
-    if (statusEl) statusEl.textContent = text || "Asistente YAAVS · IA";
+    if (statusEl) statusEl.textContent = text || cfg.subtitle || "Tu guía en YAAVS";
   }
 
   function syncFabUi() {
@@ -96,26 +96,41 @@
   function localReply(text) {
     const q = text.toLowerCase();
 
-    if (/yaavser|afili|tienda|punto de venta/.test(q)) {
-      return "El programa **Yaavser** es la afiliación a la red YAAVS: visita comercial, rotulación, producto y respaldo en tu local. Más de 10,000 tiendas en México ya forman parte. Conoce el proceso en **ser-yaavser.html** o escríbenos por WhatsApp.";
+    if (/perd|no encuentro|dónde|donde|orient|mapa del sitio|ayuda|naveg/.test(q)) {
+      return "Tranqui, te oriento 🧭 ¿Qué buscas?\n· **Socio comercial** → **ser-yaavser.html**\n· **Recargar** → **recargar.html**\n· **Servicios / chip** → **servicios.html** o **activar-chip.html**\n· **Tiendas** → **tiendas.html** / **tiendas-mapa.html**\n· **Vacantes** → **bolsa-trabajo.html**\n· **Quiénes somos** → **quienes-somos.html**\nDime cuál y te detallo el siguiente paso.";
     }
-    if (/recargaklic|recarga|tiempo.?aire|activar|chip|sim/.test(q)) {
-      return "**RecargaKlic** activa SIMs y opera en mostrador. Para **recargar tiempo aire en el sitio**, entra a **recargar.html** (TAECEL). Si necesitas apoyo, escribe por WhatsApp.";
+    if (/vacante|empleo|bolsa|trabajo|rrhh|postul/.test(q)) {
+      return "Las vacantes abiertas están en **bolsa-trabajo.html**: toca una vacante abierta para ver requisitos y mandar CV por WhatsApp. Si no ves la que buscas, déjanos tu postulación en esa misma página.";
     }
-    if (/telcel|movistar|at&t|unefon|operador|compañ/.test(q)) {
-      return "YAAVS es **multi-operador**: puedes vender Telcel, AT&T, Movistar, Unefon y más desde un solo distribuidor. Revisa todos los servicios en **servicios.html**.";
+    if (/tienda|mapa|ubicaci[oó]n|cerca/.test(q)) {
+      return "Para ubicar puntos YAAVS: **tiendas.html** o el mapa en **tiendas-mapa.html**. Si me dices ciudad o colonia, te indico por dónde empezar.";
+    }
+    if (/yaavser|afili|socio|punto de venta/.test(q)) {
+      return "Si quieres sumarte como **socio comercial (Yaavser)**, el camino es **ser-yaavser.html**: visita comercial, rotulación y respaldo en tu local. ¿Te paso también el WhatsApp para agendar?";
+    }
+    if (/recargaklic|recarga|tiempo.?aire/.test(q)) {
+      return "Para **recargar tiempo aire** en el sitio entra a **recargar.html**. Si hablas de operación en tienda / **RecargaKlic**, también te puedo orientar: ¿lo necesitas para tu negocio o como cliente final?";
+    }
+    if (/activar|chip|sim/.test(q)) {
+      return "Para **activar un chip / SIM**, ve a **activar-chip.html**. YAAVS es **líder distribuidor de SIMs en México** (multi-operador). Si te trabas en el proceso, escríbeme qué pantalla estás viendo.";
+    }
+    if (/telcel|movistar|at&t|unefon|bait|operador|compañ/.test(q)) {
+      return "Trabajamos **multi-operador** (Telcel, AT&T, Movistar, Unefon, BAIT y más). El panorama de servicios está en **servicios.html**; prepago y postpago tienen su propia página si quieres ir directo.";
     }
     if (/portabilidad|porta/.test(q)) {
-      return "Hacemos **portabilidad** para que tus clientes cambien de compañía conservando su número, con respaldo de ejecutivo en tu zona. Detalle en la sección Servicios del sitio.";
+      return "Sí hacemos **portabilidad** (el cliente cambia de compañía y se queda con su número). Revisa **servicios.html** o **postpago.html**, y si prefieres hablar con alguien: WhatsApp **https://wa.me/525522331210**.";
+    }
+    if (/qui[eé]nes|somos|empresa|historia/.test(q)) {
+      return "Somos **líder distribuidor de SIMs en México**, con conectividad a +16,000 negocios. La historia y el equipo están en **quienes-somos.html**.";
     }
     if (/contact|whatsapp|tel[eé]fono|correo|mail|llamar/.test(q)) {
-      return "Contáctanos:\n· Tel. **55 22 33 12 10**\n· **Hola@yaavs.com.mx**\n· WhatsApp: **https://wa.me/525522331210**\nTambién puedes usar el formulario en **contacto.html**.";
+      return "Con gusto 📲\n· Tel. **55 22 33 12 10**\n· **Hola@yaavs.com.mx**\n· WhatsApp: **https://wa.me/525522331210**\nTambién puedes usar el formulario en **contacto.html**.";
     }
-    if (/hola|buenas|hey|qué tal/.test(q)) {
-      return "¡Hola! Soy Vaavsti de YAAVS. ¿Te interesa ser **socio comercial**, usar **RecargaKlic** o conocer nuestros servicios de telecom?";
+    if (/hola|buenas|hey|qu[eé] tal|buenos d[ií]as|buenas tardes/.test(q)) {
+      return "¡Hola! Qué gusto. Soy **Vaavsti**, de YAAVS. ¿Vienes por **socio comercial**, **recargas**, **tiendas**, **vacantes**… o solo estás explorando y quieres que te arme una ruta rápida?";
     }
 
-    return "Gracias por escribir. Para una respuesta más precisa, cuéntame si buscas **Yaavser**, **RecargaKlic**, **servicios** o **contacto**. También puedes escribirnos al **55 22 33 12 10** o por WhatsApp.";
+    return "Gracias por escribir. Para afinar: ¿buscas **socio comercial**, **recarga**, **servicios/chip**, **tiendas**, **vacantes** o **contacto**? Si estás perdido en la web, dime “estoy perdido” y te guío paso a paso.";
   }
 
   async function askAI(text) {

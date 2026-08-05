@@ -295,7 +295,7 @@
     mount.hidden = true;
     document.body.appendChild(mount);
 
-    await loadPartial("partials/yaavs-chatbot.html?v=2", mount);
+    await loadPartial("partials/yaavs-chatbot.html?v=3", mount);
 
     const bot = mount.querySelector("[data-yaavbot]");
     if (!bot) {
@@ -309,7 +309,7 @@
     if (!document.querySelector("script[data-yaavbot-config]")) {
       await new Promise((resolve) => {
         const cfg = document.createElement("script");
-        cfg.src = "js/yaavs-chatbot.config.js";
+        cfg.src = "js/yaavs-chatbot.config.js?v=5";
         cfg.dataset.yaavbotConfig = "true";
         cfg.onload = resolve;
         cfg.onerror = resolve;
@@ -320,7 +320,7 @@
     if (!document.querySelector("script[data-yaavbot-main]")) {
       await new Promise((resolve) => {
         const main = document.createElement("script");
-        main.src = "js/yaavs-chatbot.js";
+        main.src = "js/yaavs-chatbot.js?v=5";
         main.dataset.yaavbotMain = "true";
         main.onload = resolve;
         main.onerror = resolve;
