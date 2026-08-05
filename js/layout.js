@@ -211,11 +211,32 @@
 
   async function loadPartial(url, mount) {
     if (!mount) return;
+
+    async function fromCache() {
+      if (!("caches" in window)) return "";
+      const candidates = [url, url.split("?")[0], `./${url.replace(/^\.\//, "")}`];
+      for (const key of candidates) {
+        let hit = await caches.match(key);
+        if (!hit) hit = await caches.match(key, { ignoreSearch: true });
+        if (hit) return hit.text();
+      }
+      return "";
+    }
+
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: "no-cache" });
       if (!res.ok) throw new Error(res.statusText);
       mount.innerHTML = await res.text();
     } catch {
+      try {
+        const cachedHtml = await fromCache();
+        if (cachedHtml) {
+          mount.innerHTML = cachedHtml;
+          return;
+        }
+      } catch (_) {
+        /* fall through */
+      }
       mount.innerHTML =
         '<p class="layout-error">No se pudo cargar el menú. Abre el sitio con un servidor local (Live Server).</p>';
     }
@@ -512,7 +533,7 @@
   function initPwa() {
     if (document.querySelector("script[data-yaavs-pwa]")) return;
     const s = document.createElement("script");
-    s.src = "js/pwa.js?v=5";
+    s.src = "js/pwa.js?v=6";
     s.defer = true;
     s.dataset.yaavsPwa = "true";
     document.body.appendChild(s);
