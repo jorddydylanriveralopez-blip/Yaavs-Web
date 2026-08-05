@@ -635,13 +635,13 @@
       };
 
       row.addEventListener("click", (e) => {
-        if (e.target.closest("a")) return;
+        if (e.target.closest("a, button, [data-flyer-src]")) return;
         toggle();
       });
 
       row.addEventListener("keydown", (e) => {
         if (e.key !== "Enter" && e.key !== " ") return;
-        if (e.target.closest("a")) return;
+        if (e.target.closest("a, button, [data-flyer-src]")) return;
         e.preventDefault();
         toggle();
       });

@@ -1229,8 +1229,9 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 .page-bolsa-trabajo .jobs-open-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  margin: 0 0 10px;
+  margin: 0 auto 10px;
   padding: 6px 12px;
   border-radius: 999px;
   font-size: 0.78rem;
@@ -1452,21 +1453,6 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   text-align: center;
   max-width: 40rem;
   margin-inline: auto;
-}
-
-.page-bolsa-trabajo .jobs-open-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  margin: 0 auto 10px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #7ec8ff;
-  background: rgba(126, 200, 255, 0.12);
-  border: 1px solid rgba(126, 200, 255, 0.28);
 }
 
 .page-bolsa-trabajo .jobs-catalog-section .jobs-catalog-group__title {
