@@ -236,6 +236,75 @@
     </nav>
   </div>
 </header>`,
+    "partials/footer.html": `<div class="site-floats" aria-hidden="true">
+  <img class="site-float site-float--sim" src="assets/floats/float-sim.svg" alt="" width="72" height="92" loading="lazy" decoding="async">
+  <img class="site-float site-float--chip" src="assets/floats/float-chip.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+  <img class="site-float site-float--phone" src="assets/floats/float-phone.svg" alt="" width="48" height="82" loading="lazy" decoding="async">
+  <img class="site-float site-float--signal" src="assets/floats/float-signal.svg" alt="" width="56" height="56" loading="lazy" decoding="async">
+  <img class="site-float site-float--esim" src="assets/floats/float-esim.svg" alt="" width="64" height="48" loading="lazy" decoding="async">
+  <img class="site-float site-float--phones" src="assets/floats/float-phones.svg" alt="" width="100" height="72" loading="lazy" decoding="async">
+  <img class="site-float site-float--sim-r" src="assets/floats/float-sim.svg" alt="" width="64" height="82" loading="lazy" decoding="async">
+  <img class="site-float site-float--chip-r" src="assets/floats/float-chip.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
+  <img class="site-float site-float--phone-r" src="assets/floats/float-phone.svg" alt="" width="40" height="70" loading="lazy" decoding="async">
+  <img class="site-float site-float--signal-r" src="assets/floats/float-signal.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+</div>
+<footer class="site-footer">
+  <div class="site-footer__glow" aria-hidden="true"></div>
+  <div class="site-footer__mesh" aria-hidden="true"></div>
+  <div class="container site-footer__inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand__logo-link" aria-label="YAAVS — Inicio">
+          <img src="assets/yaavs-logo.png" alt="YAAVS" class="footer-logo" width="140" height="32">
+        </a>
+        <p class="footer-tagline">Distribución masiva de telecomunicaciones en México. Red nacional de socios comerciales con respaldo.</p>
+        <div class="footer-cta-row">
+          <a href="contacto.html" class="footer-cta footer-cta--primary">Escríbenos</a>
+          <a href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" class="footer-cta footer-cta--ghost" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="footer_cta_whatsapp">WhatsApp</a>
+        </div>
+        <div class="footer-social" aria-label="Redes sociales">
+          <a class="footer-social__btn" href="https://www.facebook.com/yaavsmx" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+          <a class="footer-social__btn" href="https://instagram.com/yaavsmx" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></a>
+          <a class="footer-social__btn" href="https://www.linkedin.com/company/grupocomercialyaavs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M6.5 9H3v12h3.5V9zM4.8 3C3.5 3 2.5 4 2.5 5.3S3.5 7.6 4.8 7.6 7 6.6 7 5.3 6 3 4.8 3zM21 15.4c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3.1 1.7V9H10.5v12H14v-6.4c0-1.7.8-2.8 2.3-2.8 1.4 0 2.1 1 2.1 2.8V21H22v-5.6z"/></svg></a>
+          <a class="footer-social__btn" href="https://www.tiktok.com/@yaavsmx" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M16.5 3c.5 2.2 1.9 3.8 4 4.2v3c-1.4 0-2.7-.4-4-1.1v5.5A5.9 5.9 0 1 1 10 9.1v3.1a2.9 2.9 0 1 0 2.5 2.9V3h4z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <nav class="footer-col" aria-label="Explorar">
+          <p class="footer-heading">Explorar</p>
+          <a href="index.html">Inicio</a>
+          <a href="quienes-somos.html">¿Quiénes somos?</a>
+          <a href="servicios.html">Nuestros servicios</a>
+          <a href="tiendas.html">Conoce nuestras tiendas</a>
+          <a href="bolsa-trabajo.html">Únete a nuestro equipo</a>
+          <a href="index.html#testimonios-home">Clientes satisfechos</a>
+          <a href="avisos.html">Noticias Yaavs</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <div class="footer-col">
+          <p class="footer-heading">Contacto</p>
+          <a href="tel:+525522331210">55 22 33 12 10</a>
+          <a href="mailto:Hola@yaavs.com.mx">Hola@yaavs.com.mx</a>
+          <a href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="footer_link_whatsapp">WhatsApp</a>
+          <a href="contacto.html">Formulario</a>
+        </div>
+        <nav class="footer-col" aria-label="Legal">
+          <p class="footer-heading">Legal</p>
+          <a href="terminos-condiciones.html">Términos y condiciones</a>
+          <a href="aviso-privacidad.html">Aviso de privacidad</a>
+          <a href="https://ganayaavs.com" target="_blank" rel="noopener noreferrer">Gana YAAVS</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="year"></span> Grupo Comercial YAAVS · México</p>
+      <details class="footer-legal">
+        <summary>Bases del sorteo Gana YAAVS</summary>
+        <p class="footer-legal-note">Consulta las bases completas en <a href="https://ganayaavs.com" target="_blank" rel="noopener noreferrer">ganayaavs.com</a>.</p>
+      </details>
+    </div>
+  </div>
+</footer>`,
   };
 
   function fallbackPartial(url) {
