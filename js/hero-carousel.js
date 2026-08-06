@@ -10,7 +10,8 @@
   if (!hosts.length) return;
 
   const perf = window.YAAVS_PERF || {};
-  const preferLiteMedia = Boolean(perf.lite);
+  /* Solo apagar video banners con ahorro de datos extremo — no por 3G genérico */
+  const preferLiteMedia = Boolean(perf.saveData && perf.lite);
   const softNet = Boolean(perf.soft);
   const MOBILE_MQ = window.matchMedia("(max-width: 768px)");
   const slideDefaults = cfg.slideDefaults || {};
@@ -157,18 +158,17 @@
   }
 
   function getSlideVideoSrc(slide) {
-    if (isMobileViewport()) return slide.videoSrcMobile || "";
-    return slide.videoSrc || "";
+    if (isMobileViewport()) return slide.videoSrcMobile || slide.videoSrc || "";
+    return slide.videoSrc || slide.videoSrcMobile || "";
   }
 
   function isActiveVideoBanner(slide) {
-    if (preferLiteMedia) return false;
     return Boolean(slide?.videoBanner && getSlideVideoSrc(slide));
   }
 
   function buildVideoBannerContent(slide, i) {
     const wrap = document.createElement("div");
-    wrap.className = "hero-carousel__video hero-carousel__video--banner is-playing";
+    wrap.className = "hero-carousel__video hero-carousel__video--banner";
 
     const media = document.createElement("div");
     media.className = "hero-carousel__video-media";
@@ -192,11 +192,23 @@
     video.setAttribute("playsinline", "");
     video.setAttribute("muted", "");
     video.setAttribute("autoplay", "");
-    /* Fuente se adjunta al armar videos (tras intro / idle) para no competir con LCP */
-    video.setAttribute("preload", "none");
+    video.setAttribute("preload", i === 0 ? "auto" : "metadata");
     if (slide.src || slide.srcMobile) video.poster = getSlideDisplaySrc(slide);
     video.setAttribute("aria-label", slide.alt || "Banner YAAVS");
-    video.dataset.videoSrc = getSlideVideoSrc(slide) || "";
+    const videoSrc = getSlideVideoSrc(slide);
+    video.dataset.videoSrc = videoSrc || "";
+    if (videoSrc) {
+      const source = document.createElement("source");
+      source.src = videoSrc;
+      source.type = "video/mp4";
+      video.appendChild(source);
+    }
+    video.addEventListener("playing", () => {
+      wrap.classList.add("is-playing");
+    });
+    video.addEventListener("error", () => {
+      wrap.classList.remove("is-playing");
+    });
     media.appendChild(video);
 
     wrap.appendChild(media);
@@ -293,7 +305,7 @@
       slideEl.className = "hero-carousel__slide" + (i === 0 ? " is-active" : "");
       if (slide.hidePromo) slideEl.classList.add("hero-carousel__slide--graphic");
       const videoSrc = getSlideVideoSrc(slide);
-      const useVideoBanner = !preferLiteMedia && Boolean(slide.videoBanner && videoSrc);
+      const useVideoBanner = Boolean(slide.videoBanner && videoSrc);
       if (slide.videoSlide || useVideoBanner) slideEl.classList.add("hero-carousel__slide--video");
       if (useVideoBanner) slideEl.classList.add("hero-carousel__slide--video-banner");
       slideEl.style.setProperty("--carousel-ms", `${transitionMs}ms`);
@@ -580,22 +592,23 @@
   }
 
   function syncBannerVideos() {
-    if (!videosArmed || preferLiteMedia) return;
+    if (!videosArmed) return;
 
     tracks.forEach((track) => {
       track.querySelectorAll(".hero-carousel__slide").forEach((slideEl, i) => {
         const slide = slides[i];
         const video = slideEl.querySelector(".hero-carousel__video-el");
+        const wrap = slideEl.querySelector(".hero-carousel__video");
         if (!video || !slide) return;
 
         const desiredSrc = getSlideVideoSrc(slide);
         const nextIndex = (index + 1) % slides.length;
         const shouldAttach =
-          desiredSrc && (i === index || (!softNet && i === nextIndex));
+          desiredSrc && (i === index || (!softNet && i === nextIndex) || i === 0);
 
         if (shouldAttach) {
           ensureBannerVideoSource(video, desiredSrc);
-          if (i === index) video.preload = softNet ? "metadata" : "auto";
+          if (i === index || i === 0) video.preload = softNet ? "metadata" : "auto";
           else video.preload = "metadata";
         }
 
@@ -611,8 +624,11 @@
           }
           video.muted = true;
           const play = video.play();
-          if (play && typeof play.catch === "function") play.catch(() => {});
-          slideEl.querySelector(".hero-carousel__video")?.classList.add("is-playing");
+          if (play && typeof play.catch === "function") {
+            play.catch(() => {
+              wrap?.classList.remove("is-playing");
+            });
+          }
         } else {
           video.pause();
           try {
@@ -620,11 +636,7 @@
           } catch (_) {
             /* noop */
           }
-          if (isActiveVideoBanner(slide)) {
-            slideEl.querySelector(".hero-carousel__video")?.classList.add("is-playing");
-          } else {
-            slideEl.querySelector(".hero-carousel__video")?.classList.remove("is-playing");
-          }
+          wrap?.classList.remove("is-playing");
         }
       });
     });
@@ -737,7 +749,7 @@
   }
 
   function armBannerVideos() {
-    if (videosArmed || preferLiteMedia) return;
+    if (videosArmed) return;
     videosArmed = true;
     syncBannerVideos();
     if (!reducedMotion) startTimer();
@@ -756,12 +768,6 @@
   }
 
   function scheduleArmVideos() {
-    if (preferLiteMedia) {
-      videosArmed = true;
-      revealCarouselOverBoot();
-      return;
-    }
-
     const run = () => armBannerVideos();
     const introPending = document.body.classList.contains("page-intro-active");
 
