@@ -63,9 +63,8 @@
   /* Solo el año activo se ve; anterior y siguiente ocultos */
   function setActiveItem(index, { expand = false } = {}) {
     const next = Math.max(0, Math.min(index, items.length - 1));
-    const forceExpand = isMobile() || expand;
     if (next === activeIndex) {
-      items[next]?.classList.toggle("is-expanded", forceExpand);
+      items[next]?.classList.toggle("is-expanded", expand);
       updatePager();
       return;
     }
@@ -74,7 +73,7 @@
       const on = i === activeIndex;
       item.classList.toggle("is-active", on);
       item.classList.toggle("is-visible", on);
-      item.classList.toggle("is-expanded", on && forceExpand);
+      item.classList.toggle("is-expanded", on && expand);
       item.classList.toggle("is-away", !on);
       item.setAttribute("aria-current", on ? "true" : "false");
       item.setAttribute("aria-hidden", on ? "false" : "true");
@@ -97,7 +96,7 @@
         best = i;
       }
     });
-    if (best !== activeIndex) setActiveItem(best, { expand: isMobile() });
+    if (best !== activeIndex) setActiveItem(best, { expand: false });
   }
 
   function goTo(index, fromUser) {
@@ -105,7 +104,7 @@
     const item = items[next];
     if (!item || !sheet) return;
 
-    setActiveItem(next, { expand: Boolean(fromUser) || isMobile() });
+    setActiveItem(next, { expand: Boolean(fromUser) });
     scrollingTo = true;
     const scrollToItem = () => {
       const itemTop = offsetInSheet(item);
@@ -152,7 +151,7 @@
     if (track) {
       requestAnimationFrame(() => track.classList.add("is-drawn"));
     }
-    setActiveItem(0, { expand: isMobile() });
+    setActiveItem(0, { expand: false });
     updateProgress();
   }
 
