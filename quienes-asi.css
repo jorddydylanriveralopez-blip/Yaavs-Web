@@ -1275,6 +1275,19 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__top {
     padding: 14px 14px 12px;
     padding-top: calc(12px + env(safe-area-inset-top, 0px));
+    justify-content: center;
+    text-align: center;
+  }
+
+  .asi-historia__top > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .asi-historia__close {
+    position: absolute;
+    right: 12px;
+    top: calc(10px + env(safe-area-inset-top, 0px));
   }
 
   /* Mobile: un año por pantalla, hints en flujo (no overlay) */
@@ -1993,7 +2006,9 @@ body.is-historia-open {
 }
 
 .asi-historia__pager,
-.asi-historia__fab-nav {
+.asi-historia__fab-nav,
+.asi-historia__fab-bottom,
+.asi-historia__swipe-hint--up {
   display: none;
 }
 
