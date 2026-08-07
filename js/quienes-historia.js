@@ -229,8 +229,8 @@
 
   items.forEach((item, index) => {
     item.addEventListener("click", () => {
-      if (index === activeIndex && item.classList.contains("is-expanded") && !isMobile()) {
-        setActiveItem(index, { expand: false });
+      if (index === activeIndex) {
+        setActiveItem(index, { expand: !item.classList.contains("is-expanded") });
         return;
       }
       goTo(index, true);
@@ -238,8 +238,8 @@
     item.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        if (index === activeIndex && item.classList.contains("is-expanded") && !isMobile()) {
-          setActiveItem(index, { expand: false });
+        if (index === activeIndex) {
+          setActiveItem(index, { expand: !item.classList.contains("is-expanded") });
           return;
         }
         goTo(index, true);
@@ -259,6 +259,6 @@
   mqMobile.addEventListener("change", () => {
     if (!dialog.classList.contains("is-open")) return;
     dialog.classList.remove("is-mobile-pager");
-    setActiveItem(Math.max(activeIndex, 0), { expand: isMobile() });
+    setActiveItem(Math.max(activeIndex, 0), { expand: false });
   });
 })();
