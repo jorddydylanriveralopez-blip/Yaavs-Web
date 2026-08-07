@@ -23,13 +23,7 @@
       const year = item.querySelector(".asi-historia__year")?.textContent?.trim();
       if (year) item.dataset.year = year;
     }
-    if (!item.querySelector(".asi-historia__year-giant") && item.dataset.year) {
-      const giant = document.createElement("span");
-      giant.className = "asi-historia__year-giant";
-      giant.setAttribute("aria-hidden", "true");
-      giant.textContent = item.dataset.year;
-      item.appendChild(giant);
-    }
+    /* Ya no se muestran pastillas ni años gigantes en la línea */
   });
 
   function updateProgress() {
