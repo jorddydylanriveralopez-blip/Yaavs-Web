@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-light.css?v=11">
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
-  <link rel="stylesheet" href="quienes-asi.css?v=84">
+  <link rel="stylesheet" href="quienes-asi.css?v=86">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -246,9 +246,15 @@
         </button>
       </header>
 
-      <button type="button" class="asi-historia__nav-btn asi-historia__nav-btn--up" data-historia-prev aria-label="Año anterior">
-        <span aria-hidden="true">▲</span>
-      </button>
+      <nav class="asi-historia__fab-nav" data-historia-pager aria-label="Navegar años">
+        <button type="button" class="asi-historia__nav-btn asi-historia__nav-btn--up" data-historia-prev aria-label="Año anterior">
+          <span aria-hidden="true">▲</span>
+        </button>
+        <p class="asi-historia__status" data-historia-status>1 / 12</p>
+        <button type="button" class="asi-historia__nav-btn asi-historia__nav-btn--down" data-historia-next aria-label="Año siguiente">
+          <span aria-hidden="true">▼</span>
+        </button>
+      </nav>
 
       <div class="asi-historia__hero">
         <picture>
@@ -394,13 +400,6 @@
           </div>
         </li>
       </ol>
-      </div>
-
-      <div class="asi-historia__pager" data-historia-pager>
-        <p class="asi-historia__status" data-historia-status>1 / 12</p>
-        <button type="button" class="asi-historia__nav-btn asi-historia__nav-btn--down" data-historia-next aria-label="Año siguiente">
-          <span aria-hidden="true">▼</span>
-        </button>
       </div>
     </div>
   </dialog>
@@ -627,7 +626,7 @@
   <script src="js/page-enter.js?v=6" defer data-page-enter="true"></script>
   <script src="js/layout.js?v=45" defer></script>
   <script src="js/main.js?v=6" defer></script>
-  <script src="js/quienes-historia.js?v=9" defer></script>
+  <script src="js/quienes-historia.js?v=10" defer></script>
   <script src="js/quienes-valores.js?v=3" defer></script>
   <script src="js/quienes-filosofia.js?v=3" defer></script>
   <script src="js/quienes-cards.js?v=1" defer></script>
