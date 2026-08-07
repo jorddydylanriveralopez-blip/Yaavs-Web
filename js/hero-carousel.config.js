@@ -13,14 +13,14 @@ window.YAAVS_HERO_CAROUSEL = {
   },
   images: [
     {
-      /* Desktop: VIDEO DYLAN PAGINA WEB · Móvil: VIDEO VERTICAL ECHELE ECHELE */
+      /* Desktop: ANIMACION MAPA PAGINA WEB · Móvil: VIDEO VERTICAL ECHELE ECHELE */
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/dylan-h-20260805.mp4",
+      videoSrc: "assets/hero-telecom/banners/mapa-h-20260807.mp4",
       videoSrcMobile: "assets/hero-telecom/banners/echele-v-20260806.mp4",
-      src: "assets/hero-telecom/banners/dylan-h-20260805-poster.jpg",
+      src: "assets/hero-telecom/banners/mapa-h-20260807-poster.jpg",
       srcMobile: "assets/hero-telecom/banners/echele-v-20260806-poster.jpg",
-      width: 1920,
-      height: 1080,
+      width: 1280,
+      height: 720,
       widthMobile: 1080,
       heightMobile: 1920,
       objectFit: "cover",

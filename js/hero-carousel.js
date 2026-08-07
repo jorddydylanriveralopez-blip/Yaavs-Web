@@ -188,16 +188,18 @@
     /* No loop: el carrusel avanza cuando el video termina (evento "ended") */
     video.loop = false;
     video.playsInline = true;
-    video.autoplay = true;
+    video.autoplay = i === 0 && !preferLiteMedia;
     video.setAttribute("playsinline", "");
     video.setAttribute("muted", "");
-    video.setAttribute("autoplay", "");
-    video.setAttribute("preload", i === 0 ? "auto" : "metadata");
+    if (i === 0 && !preferLiteMedia) video.setAttribute("autoplay", "");
+    /* Solo el slide activo pide bytes; el resto espera a syncBannerVideos */
+    video.setAttribute("preload", i === 0 && !preferLiteMedia && !softNet ? "auto" : "none");
     if (slide.src || slide.srcMobile) video.poster = getSlideDisplaySrc(slide);
     video.setAttribute("aria-label", slide.alt || "Banner YAAVS");
     const videoSrc = getSlideVideoSrc(slide);
     video.dataset.videoSrc = videoSrc || "";
-    if (videoSrc) {
+    /* Adjuntar <source> solo en el primer slide (LCP). El resto se arma bajo demanda. */
+    if (videoSrc && i === 0 && !preferLiteMedia) {
       const source = document.createElement("source");
       source.src = videoSrc;
       source.type = "video/mp4";
@@ -587,12 +589,48 @@
     if (source.getAttribute("src") !== desiredSrc) {
       source.src = desiredSrc;
       video.dataset.videoSrc = desiredSrc;
-      video.load();
+      try {
+        video.load();
+      } catch (_) {
+        /* noop */
+      }
     }
+  }
+
+  function detachBannerVideoSource(video) {
+    if (!video) return;
+    const source = video.querySelector("source");
+    if (!source || !source.getAttribute("src")) return;
+    source.removeAttribute("src");
+    try {
+      video.removeAttribute("src");
+      video.load();
+    } catch (_) {
+      /* noop */
+    }
+    video.dataset.videoSrc = "";
   }
 
   function syncBannerVideos() {
     if (!videosArmed) return;
+
+    /* Ahorro de datos: solo posters, sin bytes de video */
+    if (preferLiteMedia) {
+      tracks.forEach((track) => {
+        track.querySelectorAll(".hero-carousel__video-el").forEach((video) => {
+          try {
+            video.pause();
+          } catch (_) {
+            /* noop */
+          }
+          detachBannerVideoSource(video);
+          video.closest(".hero-carousel__video")?.classList.remove("is-playing");
+        });
+      });
+      return;
+    }
+
+    const nextIndex = (index + 1) % slides.length;
 
     tracks.forEach((track) => {
       track.querySelectorAll(".hero-carousel__slide").forEach((slideEl, i) => {
@@ -602,14 +640,22 @@
         if (!video || !slide) return;
 
         const desiredSrc = getSlideVideoSrc(slide);
-        const nextIndex = (index + 1) % slides.length;
-        const shouldAttach =
-          desiredSrc && (i === index || (!softNet && i === nextIndex) || i === 0);
+        const isActive = i === index;
+        const isPrefetch = !softNet && i === nextIndex && nextIndex !== index;
+        const shouldAttach = Boolean(desiredSrc && (isActive || isPrefetch));
 
         if (shouldAttach) {
           ensureBannerVideoSource(video, desiredSrc);
-          if (i === index || i === 0) video.preload = softNet ? "metadata" : "auto";
-          else video.preload = "metadata";
+          video.preload = isActive ? (softNet ? "metadata" : "auto") : "metadata";
+        } else if (desiredSrc && video.querySelector("source")?.getAttribute("src")) {
+          /* Liberar decoders de slides lejanos (cuello de botella en móvil) */
+          try {
+            video.pause();
+          } catch (_) {
+            /* noop */
+          }
+          detachBannerVideoSource(video);
+          wrap?.classList.remove("is-playing");
         }
 
         if (isActiveVideoBanner(slide) && !video.dataset.endedBound) {
@@ -617,7 +663,7 @@
           video.addEventListener("ended", () => handleBannerVideoEnded(i));
         }
 
-        if (i === index && (isActiveVideoBanner(slide) || slide.videoSlide)) {
+        if (isActive && (isActiveVideoBanner(slide) || slide.videoSlide)) {
           if (document.hidden) {
             video.pause();
             return;
@@ -629,13 +675,8 @@
               wrap?.classList.remove("is-playing");
             });
           }
-        } else {
+        } else if (!video.paused) {
           video.pause();
-          try {
-            video.currentTime = 0;
-          } catch (_) {
-            /* noop */
-          }
           wrap?.classList.remove("is-playing");
         }
       });
@@ -720,6 +761,20 @@
       dot.classList.toggle("is-active", i === index);
       dot.setAttribute("aria-selected", i === index ? "true" : "false");
     });
+    /* Reinicia el video entrante (sin tocar currentTime en cada resize/sync) */
+    if (previousIndex !== index) {
+      tracks.forEach((track) => {
+        const video = track.querySelectorAll(".hero-carousel__slide")[index]?.querySelector(
+          ".hero-carousel__video-el"
+        );
+        if (!video) return;
+        try {
+          if (video.currentTime > 0.05) video.currentTime = 0;
+        } catch (_) {
+          /* noop */
+        }
+      });
+    }
     syncSlideUi();
     syncPromo();
     kickProgress();
