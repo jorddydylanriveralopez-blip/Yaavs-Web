@@ -1277,132 +1277,169 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     padding-top: calc(12px + env(safe-area-inset-top, 0px));
   }
 
-  .asi-historia__hero {
-    margin: 10px 12px 8px;
-    height: clamp(160px, 28vh, 220px);
-    border-radius: 16px;
+  /* Mobile: un año por pantalla, tipo carrusel */
+  .asi-historia__sheet {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
-  .asi-historia__controls {
-    top: calc(64px + env(safe-area-inset-top, 0px));
-    margin: 0 12px;
-    padding: 8px 10px;
-    gap: 10px;
+  .asi-historia__hero {
+    display: none;
+  }
+
+  .asi-historia__controls,
+  .asi-historia__years {
+    display: none !important;
+  }
+
+  .asi-historia__pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 12px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(15, 36, 64, 0.08);
+    background: rgba(255, 255, 255, 0.96);
   }
 
   .asi-historia__status {
-    font-size: 0.76rem !important;
+    margin: 0 !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em;
+    color: #003087 !important;
+    -webkit-text-fill-color: #003087 !important;
   }
 
   .asi-historia__nav-btn {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 0;
+    background: linear-gradient(135deg, #0097b2 0%, #00bcd4 100%);
+    color: #ffffff;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
   }
 
-  .asi-historia__years {
-    top: calc(120px + env(safe-area-inset-top, 0px));
-    margin: 8px 12px 2px;
-    gap: 6px;
-    padding-bottom: 8px;
+  .asi-historia__nav-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
   }
 
-  .asi-historia__year-btn {
-    min-width: 54px;
-    padding: 10px 12px;
-    font-size: 0.76rem;
-  }
-
-  .asi-historia__rail {
-    padding: 8px 10px 28px 14px;
+  .asi-historia__track {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .asi-historia__line,
   .asi-historia__progress {
-    left: 22px;
+    display: none !important;
   }
 
-  .asi-historia__item {
-    width: min(72%, 280px);
-    gap: 2px;
-    margin: 0 0 clamp(56px, 16vh, 110px);
-    padding: 7px 10px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(15, 36, 64, 0.05);
+  .asi-historia__rail {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    padding: 12px 18px 8px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .asi-historia__item:nth-child(odd) {
-    margin-right: auto;
-    margin-left: 30px;
+  .asi-historia__item,
+  .asi-historia__item:nth-child(odd),
+  .asi-historia__item:nth-child(even),
+  .asi-historia__item[data-side="left"],
+  .asi-historia__item[data-side="right"] {
+    position: absolute;
+    inset: 12px 18px auto;
+    width: auto !important;
+    max-width: none;
+    margin: 0 !important;
+    padding: 16px 16px 18px !important;
+    gap: 10px;
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(15, 36, 64, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(28px, 0, 0) scale(0.96);
+    transition:
+      opacity 0.35s ease,
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "year"
+      "media"
+      "body";
   }
 
-  .asi-historia__item:nth-child(even) {
-    margin-left: auto;
-    margin-right: 6px;
+  .asi-historia__item.is-visible,
+  .asi-historia__item.is-active,
+  .asi-historia__item.is-active:not(.is-expanded) {
+    position: relative;
+    inset: auto;
+    width: 100% !important;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    z-index: 2;
+    box-shadow:
+      0 18px 42px rgba(0, 151, 178, 0.16),
+      0 0 0 1px rgba(0, 188, 212, 0.22);
   }
 
   .asi-historia__item::before {
-    top: 14px;
-    width: 11px;
-    height: 11px;
-    left: auto;
-    right: -18px;
+    display: none !important;
   }
 
-  .asi-historia__item:nth-child(even)::before {
-    right: auto;
-    left: -18px;
-  }
-
-  .asi-historia__item:nth-child(odd) .asi-historia__year-giant {
-    left: calc(100% + 12px);
-    right: auto;
-    text-align: left;
-    font-size: clamp(1.7rem, 8vw, 2.35rem);
-  }
-
-  .asi-historia__item:nth-child(even) .asi-historia__year-giant {
-    right: calc(100% + 12px);
-    left: auto;
-    text-align: right;
-    font-size: clamp(1.7rem, 8vw, 2.35rem);
-  }
-
+  .asi-historia__year-giant,
+  .asi-historia__item:nth-child(odd) .asi-historia__year-giant,
+  .asi-historia__item:nth-child(even) .asi-historia__year-giant,
   .asi-historia__item.is-visible .asi-historia__year-giant,
   .asi-historia__item.is-active .asi-historia__year-giant {
-    opacity: 1;
-  }
-
-  /* Al hacer scroll (.is-visible): año + caja + imagen juntos */
-  .asi-historia__media,
-  .asi-historia__item.is-visible .asi-historia__media {
-    max-height: 0;
-    aspect-ratio: auto;
-    border-radius: 10px;
-    clip-path: none !important;
-    opacity: 0;
-    margin: 0;
-    overflow: hidden;
-    pointer-events: none;
-    transform: translate3d(0, 16px, 0);
-    transition:
-      max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.4s ease,
-      margin 0.35s ease,
-      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .asi-historia__item.is-visible .asi-historia__media {
-    max-height: 148px;
-    aspect-ratio: 16 / 10;
-    opacity: 1;
+    position: static !important;
+    grid-area: year;
+    display: block;
+    width: 100%;
     margin: 0 0 4px;
-    pointer-events: auto;
-    transform: none;
+    padding: 0;
+    text-align: center !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    font-size: clamp(2.8rem, 16vw, 4.2rem) !important;
+    line-height: 0.9;
+    opacity: 1 !important;
+    filter: drop-shadow(0 8px 18px rgba(0, 48, 135, 0.14));
   }
 
+  .asi-historia__media,
+  .asi-historia__item.is-visible .asi-historia__media,
   .asi-historia__item.is-expanded .asi-historia__media,
   .asi-historia__item.is-expanded.is-visible .asi-historia__media {
-    max-height: 180px;
+    grid-area: media;
+    max-height: none !important;
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    clip-path: none !important;
+    opacity: 1 !important;
+    margin: 0 0 8px !important;
+    overflow: hidden;
+    pointer-events: auto;
+    transform: none !important;
   }
 
   .asi-historia__item.is-visible .asi-historia__media img,
@@ -1415,57 +1452,43 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     display: none !important;
   }
 
-  .asi-historia__tag,
-  .asi-historia .asi-historia__tag {
-    display: none !important;
+  .asi-historia__body {
+    grid-area: body;
+    padding: 0;
   }
 
+  .asi-historia__tag,
+  .asi-historia .asi-historia__tag,
   .asi-historia__item.is-expanded .asi-historia__tag {
-    display: inline !important;
-    font-size: 0.58rem !important;
+    display: inline-flex !important;
+    margin-bottom: 6px !important;
+    font-size: 0.66rem !important;
     letter-spacing: 0.1em;
   }
 
   .asi-historia__item-title,
-  .asi-historia h3.asi-historia__item-title {
-    margin: 2px 0 0 !important;
-    font-size: 0.8rem !important;
-    line-height: 1.2 !important;
-  }
-
+  .asi-historia h3.asi-historia__item-title,
   .asi-historia__item.is-expanded .asi-historia__item-title {
-    margin: 2px 0 4px !important;
-    font-size: 0.92rem !important;
+    margin: 0 0 8px !important;
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
   }
 
   .asi-historia__item p,
-  .asi-historia .asi-historia__item p {
-    display: none !important;
-    margin: 0 !important;
-    font-size: 0.82rem !important;
-    line-height: 1.4 !important;
-  }
-
+  .asi-historia .asi-historia__item p,
   .asi-historia__item.is-expanded p,
   .asi-historia .asi-historia__item.is-expanded p {
     display: block !important;
-  }
-
-  .asi-historia__body {
-    padding: 0;
+    margin: 0 !important;
+    font-size: 0.92rem !important;
+    line-height: 1.45 !important;
+    color: #4a6278 !important;
+    -webkit-text-fill-color: #4a6278 !important;
   }
 
   .asi-historia__item.is-expanded {
-    gap: 6px;
-    padding: 10px;
-    box-shadow:
-      0 12px 28px rgba(0, 151, 178, 0.14),
-      0 0 0 1px rgba(0, 188, 212, 0.28);
-  }
-
-  .asi-historia__item.is-active:not(.is-expanded) {
-    transform: none;
-    box-shadow: 0 6px 16px rgba(0, 151, 178, 0.12);
+    gap: 10px;
+    padding: 16px 16px 18px;
   }
 
   .asi-valores__top {
@@ -1824,7 +1847,7 @@ body.is-historia-open {
   position: sticky;
   top: 72px;
   z-index: 4;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -1836,6 +1859,10 @@ body.is-historia-open {
   box-shadow: 0 10px 28px rgba(15, 36, 64, 0.08);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+.asi-historia__pager {
+  display: none;
 }
 
 .asi-historia__status {
