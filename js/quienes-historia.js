@@ -12,18 +12,24 @@
   const items = Array.from(dialog.querySelectorAll(".asi-historia__item"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let lastFocus = null;
-  let activeIndex = 0;
+  let activeIndex = -1;
   let scrollingTo = false;
 
   items.forEach((item, index) => {
-    item.style.setProperty("--asi-delay", `${Math.min(index * 55, 360)}ms`);
+    item.style.setProperty("--asi-delay", "0ms");
     item.dataset.side = index % 2 === 0 ? "left" : "right";
     item.dataset.index = String(index);
     if (!item.dataset.year) {
       const year = item.querySelector(".asi-historia__year")?.textContent?.trim();
       if (year) item.dataset.year = year;
     }
-    /* Ya no se muestran pastillas ni años gigantes en la línea */
+    if (item.dataset.year && !item.querySelector(".asi-historia__year-giant")) {
+      const giant = document.createElement("span");
+      giant.className = "asi-historia__year-giant";
+      giant.setAttribute("aria-hidden", "true");
+      giant.textContent = item.dataset.year;
+      item.appendChild(giant);
+    }
   });
 
   function updateProgress() {
@@ -33,23 +39,32 @@
     progress.style.transform = `scaleY(${Math.max(ratio, 0.04)})`;
   }
 
+  /* Solo el año activo se ve en grande; anterior y siguiente quedan ocultos */
   function setActiveItem(index, { expand = false } = {}) {
-    activeIndex = Math.max(0, Math.min(index, items.length - 1));
+    const next = Math.max(0, Math.min(index, items.length - 1));
+    if (next === activeIndex && !expand) {
+      items[next]?.classList.toggle("is-expanded", expand);
+      return;
+    }
+    activeIndex = next;
     items.forEach((item, i) => {
       const on = i === activeIndex;
       item.classList.toggle("is-active", on);
+      item.classList.toggle("is-visible", on);
       item.classList.toggle("is-expanded", on && expand);
       item.setAttribute("aria-current", on ? "true" : "false");
+      item.setAttribute("aria-hidden", on ? "false" : "true");
     });
   }
 
   function syncActiveFromScroll() {
     if (!sheet || !items.length || scrollingTo) return;
-    const mid = sheet.scrollTop + sheet.clientHeight * 0.36;
+    const mid = sheet.scrollTop + sheet.clientHeight * 0.42;
     let best = 0;
     let bestDist = Infinity;
     items.forEach((item, i) => {
-      const dist = Math.abs(item.offsetTop - mid);
+      const center = item.offsetTop + item.offsetHeight * 0.5;
+      const dist = Math.abs(center - mid);
       if (dist < bestDist) {
         bestDist = dist;
         best = i;
@@ -63,10 +78,12 @@
     const item = items[next];
     if (!item || !sheet) return;
     setActiveItem(next, { expand: Boolean(fromUser) });
-    item.classList.add("is-visible");
     scrollingTo = true;
     const scrollToItem = () => {
-      const top = Math.max(0, item.offsetTop - 72);
+      const top = Math.max(
+        0,
+        item.offsetTop - Math.max(48, (sheet.clientHeight - item.offsetHeight) * 0.35)
+      );
       sheet.scrollTo({
         top,
         behavior: reduceMotion ? "auto" : "smooth",
@@ -80,33 +97,26 @@
     }
     window.setTimeout(() => {
       scrollingTo = false;
+      syncActiveFromScroll();
     }, reduceMotion ? 40 : 520);
     if (fromUser) item.focus({ preventScroll: true });
   }
 
   function resetReveal() {
-    items.forEach((item) =>
-      item.classList.remove("is-visible", "is-active", "is-expanded")
-    );
+    activeIndex = -1;
+    items.forEach((item) => {
+      item.classList.remove("is-visible", "is-active", "is-expanded");
+      item.setAttribute("aria-hidden", "true");
+      item.removeAttribute("aria-current");
+    });
     if (progress) progress.style.transform = "scaleY(0.04)";
     if (track) track.classList.remove("is-drawn");
-    activeIndex = 0;
   }
 
   function kickReveal() {
     if (track) {
       requestAnimationFrame(() => track.classList.add("is-drawn"));
     }
-    if (reduceMotion) {
-      items.forEach((item) => item.classList.add("is-visible"));
-      updateProgress();
-      setActiveItem(0);
-      return;
-    }
-    /* Primeros hitos al abrir; el resto aparece al hacer scroll */
-    items.slice(0, 1).forEach((item, i) => {
-      window.setTimeout(() => item.classList.add("is-visible"), 100 + i * 80);
-    });
     updateProgress();
     setActiveItem(0);
   }
@@ -200,20 +210,4 @@
     },
     { passive: true }
   );
-
-  /* Año + imagen + texto aparecen juntos al llegar con el scroll */
-  if ("IntersectionObserver" in window && items.length) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-        });
-      },
-      { root: sheet || null, threshold: 0.28, rootMargin: "0px 0px -12% 0px" }
-    );
-    items.forEach((item) => io.observe(item));
-  } else {
-    items.forEach((item) => item.classList.add("is-visible"));
-  }
 })();
