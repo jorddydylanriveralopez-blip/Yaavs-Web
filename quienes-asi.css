@@ -1305,9 +1305,9 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     justify-content: space-between;
     pointer-events: none;
     padding:
-      calc(72px + env(safe-area-inset-top, 0px))
+      calc(70px + env(safe-area-inset-top, 0px))
       16px
-      calc(18px + env(safe-area-inset-bottom, 0px));
+      calc(14px + env(safe-area-inset-bottom, 0px));
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1315,19 +1315,30 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     gap: 0;
   }
 
+  .asi-historia__fab-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    pointer-events: none;
+  }
+
   .asi-historia__status {
-    position: absolute;
-    left: 50%;
-    bottom: calc(64px + env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%);
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
     margin: 0 !important;
-    padding: 5px 10px;
+    padding: 4px 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     border: 1px solid rgba(0, 188, 212, 0.2);
     font-size: 0.7rem !important;
     font-weight: 800 !important;
     letter-spacing: 0.02em;
+    text-align: center;
     color: #003087 !important;
     -webkit-text-fill-color: #003087 !important;
     pointer-events: none;
@@ -1340,13 +1351,14 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     align-items: center;
     justify-content: center;
     gap: 2px;
-    margin: 0;
+    margin: 0 auto;
     padding: 8px 14px;
     border: 0;
     border-radius: 18px;
     background: transparent;
     color: #0097b2;
     cursor: pointer;
+    text-align: center;
     -webkit-tap-highlight-color: transparent;
   }
 
