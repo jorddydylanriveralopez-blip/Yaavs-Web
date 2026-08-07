@@ -1293,7 +1293,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     display: block;
     overflow: auto;
     overscroll-behavior: contain;
-    scroll-snap-type: y proximity;
+    scroll-snap-type: none;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -1332,7 +1332,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     z-index: 2;
     list-style: none;
     margin: 0;
-    padding: 12px 12px 36px;
+    padding: 12px 12px 45vh;
     display: block;
   }
 
@@ -1357,7 +1357,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     justify-content: initial;
     flex-direction: initial;
     transform: translate3d(0, 18px, 0) scale(0.96);
-    scroll-snap-align: center;
+    scroll-snap-align: none;
   }
 
   .asi-historia__item:nth-child(odd),
@@ -1758,7 +1758,7 @@ body.is-historia-open {
   height: 100%;
   overflow: auto;
   overscroll-behavior: contain;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: none;
   scroll-padding-top: 88px;
   scroll-padding-bottom: 48px;
   background:
@@ -2056,7 +2056,7 @@ body.is-historia-open {
   z-index: 2;
   list-style: none;
   margin: 0;
-  padding: 18px 20px 40px 28px;
+  padding: 18px 20px 42vh 28px;
 }
 
 .asi-historia__item {
@@ -2075,7 +2075,7 @@ body.is-historia-open {
   transform: translate3d(0, 28px, 0) scale(0.92);
   pointer-events: none;
   cursor: pointer;
-  scroll-snap-align: center;
+  scroll-snap-align: none;
   transition:
     opacity 0.28s ease,
     visibility 0s linear 0.28s,

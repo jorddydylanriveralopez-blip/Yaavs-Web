@@ -38,6 +38,13 @@
     }
   });
 
+  function offsetInSheet(el) {
+    if (!sheet || !el) return 0;
+    const sheetRect = sheet.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    return elRect.top - sheetRect.top + sheet.scrollTop;
+  }
+
   function updateProgress() {
     if (!sheet || !progress) return;
     const max = Math.max(sheet.scrollHeight - sheet.clientHeight, 1);
@@ -77,11 +84,13 @@
 
   function syncActiveFromScroll() {
     if (!sheet || !items.length || scrollingTo) return;
-    const mid = sheet.scrollTop + sheet.clientHeight * 0.42;
+    const sheetRect = sheet.getBoundingClientRect();
+    const mid = sheetRect.top + sheet.clientHeight * 0.45;
     let best = 0;
     let bestDist = Infinity;
     items.forEach((item, i) => {
-      const center = item.offsetTop + item.offsetHeight * 0.5;
+      const rect = item.getBoundingClientRect();
+      const center = rect.top + rect.height * 0.5;
       const dist = Math.abs(center - mid);
       if (dist < bestDist) {
         bestDist = dist;
@@ -99,9 +108,13 @@
     setActiveItem(next, { expand: Boolean(fromUser) || isMobile() });
     scrollingTo = true;
     const scrollToItem = () => {
+      const itemTop = offsetInSheet(item);
       const top = Math.max(
         0,
-        item.offsetTop - Math.max(48, (sheet.clientHeight - item.offsetHeight) * 0.35)
+        Math.min(
+          itemTop - Math.max(56, (sheet.clientHeight - item.offsetHeight) * 0.32),
+          sheet.scrollHeight - sheet.clientHeight
+        )
       );
       sheet.scrollTo({
         top,
@@ -117,7 +130,8 @@
     window.setTimeout(() => {
       scrollingTo = false;
       syncActiveFromScroll();
-    }, reduceMotion ? 40 : 520);
+      updateProgress();
+    }, reduceMotion ? 40 : 560);
     if (fromUser) item.focus({ preventScroll: true });
   }
 
