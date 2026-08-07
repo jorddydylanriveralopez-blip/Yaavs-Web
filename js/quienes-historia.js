@@ -20,8 +20,6 @@
   let lastFocus = null;
   let activeIndex = -1;
   let scrollingTo = false;
-  let touchStartX = 0;
-  let touchStartY = 0;
 
   items.forEach((item, index) => {
     item.style.setProperty("--asi-delay", "0ms");
@@ -42,11 +40,6 @@
 
   function updateProgress() {
     if (!sheet || !progress) return;
-    if (isMobile()) {
-      const ratio = items.length > 1 ? (activeIndex + 1) / items.length : 1;
-      progress.style.transform = `scaleY(${Math.max(ratio, 0.04)})`;
-      return;
-    }
     const max = Math.max(sheet.scrollHeight - sheet.clientHeight, 1);
     const ratio = Math.min(Math.max(sheet.scrollTop / max, 0), 1);
     progress.style.transform = `scaleY(${Math.max(ratio, 0.04)})`;
@@ -58,10 +51,9 @@
     }
     if (prevBtn) prevBtn.disabled = activeIndex <= 0;
     if (nextBtn) nextBtn.disabled = activeIndex >= items.length - 1;
-    updateProgress();
   }
 
-  /* Solo el año activo se ve; el anterior y el siguiente quedan ocultos al instante */
+  /* Solo el año activo se ve; anterior y siguiente ocultos */
   function setActiveItem(index, { expand = false } = {}) {
     const next = Math.max(0, Math.min(index, items.length - 1));
     const forceExpand = isMobile() || expand;
@@ -84,7 +76,7 @@
   }
 
   function syncActiveFromScroll() {
-    if (isMobile() || !sheet || !items.length || scrollingTo) return;
+    if (!sheet || !items.length || scrollingTo) return;
     const mid = sheet.scrollTop + sheet.clientHeight * 0.42;
     let best = 0;
     let bestDist = Infinity;
@@ -96,7 +88,7 @@
         best = i;
       }
     });
-    if (best !== activeIndex) setActiveItem(best);
+    if (best !== activeIndex) setActiveItem(best, { expand: isMobile() });
   }
 
   function goTo(index, fromUser) {
@@ -104,13 +96,7 @@
     const item = items[next];
     if (!item || !sheet) return;
 
-    if (isMobile()) {
-      setActiveItem(next, { expand: true });
-      if (fromUser) item.focus({ preventScroll: true });
-      return;
-    }
-
-    setActiveItem(next, { expand: Boolean(fromUser) });
+    setActiveItem(next, { expand: Boolean(fromUser) || isMobile() });
     scrollingTo = true;
     const scrollToItem = () => {
       const top = Math.max(
@@ -153,6 +139,7 @@
       requestAnimationFrame(() => track.classList.add("is-drawn"));
     }
     setActiveItem(0, { expand: isMobile() });
+    updateProgress();
   }
 
   function openHistoria() {
@@ -165,7 +152,7 @@
     }
     document.body.classList.add("is-historia-open");
     dialog.classList.add("is-open");
-    dialog.classList.toggle("is-mobile-pager", isMobile());
+    dialog.classList.remove("is-mobile-pager");
     if (sheet) sheet.scrollTop = 0;
     closeBtn?.focus();
     window.setTimeout(kickReveal, 40);
@@ -229,8 +216,7 @@
 
   items.forEach((item, index) => {
     item.addEventListener("click", () => {
-      if (isMobile()) return;
-      if (index === activeIndex && item.classList.contains("is-expanded")) {
+      if (index === activeIndex && item.classList.contains("is-expanded") && !isMobile()) {
         setActiveItem(index, { expand: false });
         return;
       }
@@ -239,11 +225,7 @@
     item.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        if (isMobile()) {
-          goTo(index, true);
-          return;
-        }
-        if (index === activeIndex && item.classList.contains("is-expanded")) {
+        if (index === activeIndex && item.classList.contains("is-expanded") && !isMobile()) {
           setActiveItem(index, { expand: false });
           return;
         }
@@ -252,42 +234,18 @@
     });
   });
 
-  track?.addEventListener(
-    "touchstart",
-    (event) => {
-      if (!isMobile() || !event.changedTouches?.[0]) return;
-      touchStartX = event.changedTouches[0].screenX;
-      touchStartY = event.changedTouches[0].screenY;
-    },
-    { passive: true }
-  );
-
-  track?.addEventListener(
-    "touchend",
-    (event) => {
-      if (!isMobile() || !event.changedTouches?.[0]) return;
-      const dx = event.changedTouches[0].screenX - touchStartX;
-      const dy = event.changedTouches[0].screenY - touchStartY;
-      /* Deslizar arriba = siguiente año; abajo = anterior */
-      if (Math.abs(dy) < 40 || Math.abs(dy) < Math.abs(dx)) return;
-      if (dy < 0) goTo(activeIndex + 1, true);
-      else goTo(activeIndex - 1, true);
-    },
-    { passive: true }
-  );
-
   sheet?.addEventListener(
     "scroll",
     () => {
       updateProgress();
-      if (!isMobile()) syncActiveFromScroll();
+      syncActiveFromScroll();
     },
     { passive: true }
   );
 
   mqMobile.addEventListener("change", () => {
     if (!dialog.classList.contains("is-open")) return;
-    dialog.classList.toggle("is-mobile-pager", isMobile());
+    dialog.classList.remove("is-mobile-pager");
     setActiveItem(Math.max(activeIndex, 0), { expand: isMobile() });
   });
 })();

@@ -1911,7 +1911,7 @@ body.is-historia-open {
 .asi-historia__fab-nav,
 .asi-historia__fab-bottom,
 .asi-historia__swipe-hint--up {
-  display: none;
+  display: none !important;
 }
 
 .asi-historia__nav-btn--up {
