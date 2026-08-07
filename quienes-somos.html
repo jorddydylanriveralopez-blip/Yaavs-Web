@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-light.css?v=11">
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
-  <link rel="stylesheet" href="quienes-asi.css?v=89">
+  <link rel="stylesheet" href="quienes-asi.css?v=90">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -246,19 +246,10 @@
         </button>
       </header>
 
-      <nav class="asi-historia__fab-nav" data-historia-pager aria-label="Navegar años">
-        <button type="button" class="asi-historia__swipe-hint asi-historia__swipe-hint--up" data-historia-prev aria-label="Año anterior">
-          <span class="asi-historia__swipe-arrow" aria-hidden="true">▲</span>
-          <span class="asi-historia__swipe-label">Desliza</span>
-        </button>
-        <div class="asi-historia__fab-bottom">
-          <p class="asi-historia__status" data-historia-status>1 / 12</p>
-          <button type="button" class="asi-historia__swipe-hint asi-historia__swipe-hint--down" data-historia-next aria-label="Año siguiente">
-            <span class="asi-historia__swipe-label">Desliza</span>
-            <span class="asi-historia__swipe-arrow" aria-hidden="true">▼</span>
-          </button>
-        </div>
-      </nav>
+      <button type="button" class="asi-historia__swipe-hint asi-historia__swipe-hint--up" data-historia-prev aria-label="Año anterior">
+        <span class="asi-historia__swipe-arrow" aria-hidden="true">▲</span>
+        <span class="asi-historia__swipe-label">Desliza</span>
+      </button>
 
       <div class="asi-historia__hero">
         <picture>
@@ -404,6 +395,14 @@
           </div>
         </li>
       </ol>
+      </div>
+
+      <div class="asi-historia__fab-bottom" data-historia-pager>
+        <p class="asi-historia__status" data-historia-status>1 / 12</p>
+        <button type="button" class="asi-historia__swipe-hint asi-historia__swipe-hint--down" data-historia-next aria-label="Año siguiente">
+          <span class="asi-historia__swipe-label">Desliza</span>
+          <span class="asi-historia__swipe-arrow" aria-hidden="true">▼</span>
+        </button>
       </div>
     </div>
   </dialog>

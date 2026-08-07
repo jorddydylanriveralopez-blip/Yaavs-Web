@@ -1277,7 +1277,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     padding-top: calc(12px + env(safe-area-inset-top, 0px));
   }
 
-  /* Mobile: un año por pantalla, tipo carrusel */
+  /* Mobile: un año por pantalla, hints en flujo (no overlay) */
   .asi-historia__sheet {
     position: relative;
     display: flex;
@@ -1286,45 +1286,54 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   }
 
   .asi-historia__hero {
-    display: none;
+    display: none !important;
   }
 
   .asi-historia__controls,
   .asi-historia__years,
-  .asi-historia__pager {
+  .asi-historia__pager,
+  .asi-historia__fab-nav {
     display: none !important;
   }
 
-  .asi-historia__fab-nav {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
+  .asi-historia__swipe-hint--up,
+  .asi-historia__fab-bottom {
     display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    pointer-events: none;
-    padding:
-      calc(92px + env(safe-area-inset-top, 0px))
-      16px
-      calc(28px + env(safe-area-inset-bottom, 0px));
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    transform: none;
-    gap: 0;
   }
 
-  .asi-historia__fab-bottom {
-    display: flex;
+  .asi-historia__swipe-hint--up {
+    position: relative;
+    z-index: 5;
+    flex: 0 0 auto;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 2px;
     width: 100%;
-    margin-bottom: 6px;
-    transform: translateY(-10px);
-    pointer-events: none;
+    margin: 0;
+    padding: 6px 12px 8px;
+    border: 0;
+    background: #ffffff;
+    color: #0097b2;
+    cursor: pointer;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .asi-historia__fab-bottom {
+    position: relative;
+    z-index: 5;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    margin: 0;
+    padding: 6px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: #ffffff;
+    border-top: 1px solid rgba(15, 36, 64, 0.06);
+    pointer-events: auto;
   }
 
   .asi-historia__status {
@@ -1332,18 +1341,17 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     left: auto !important;
     bottom: auto !important;
     transform: none !important;
-    margin: 0 !important;
-    padding: 4px 10px;
+    margin: 0 0 2px !important;
+    padding: 3px 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(0, 188, 212, 0.2);
-    font-size: 0.7rem !important;
+    background: rgba(0, 188, 212, 0.08);
+    border: 1px solid rgba(0, 188, 212, 0.18);
+    font-size: 0.68rem !important;
     font-weight: 800 !important;
     letter-spacing: 0.02em;
     text-align: center;
     color: #003087 !important;
     -webkit-text-fill-color: #003087 !important;
-    pointer-events: none;
   }
 
   .asi-historia__swipe-hint {
@@ -1354,7 +1362,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     justify-content: center;
     gap: 2px;
     margin: 0 auto;
-    padding: 8px 14px;
+    padding: 4px 12px;
     border: 0;
     border-radius: 18px;
     background: transparent;
@@ -1364,33 +1372,23 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     -webkit-tap-highlight-color: transparent;
   }
 
-  .asi-historia__swipe-hint--up {
-    margin-top: 10px;
-    transform: translateY(8px);
-  }
-
-  .asi-historia__swipe-hint--down {
-    transform: translateY(-4px);
-  }
-
   .asi-historia__swipe-arrow {
     display: block;
-    font-size: clamp(1.7rem, 8vw, 2.35rem);
+    font-size: 1.45rem;
     font-weight: 800;
     line-height: 1;
     color: #00bcd4;
-    text-shadow: 0 8px 18px rgba(0, 151, 178, 0.28);
   }
 
   .asi-historia__swipe-hint--down .asi-historia__swipe-arrow {
-    font-size: clamp(2rem, 9vw, 2.7rem);
+    font-size: 1.7rem;
   }
 
   .asi-historia__swipe-label {
     display: block;
-    font-size: 0.78rem;
+    font-size: 0.68rem;
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #007a96;
   }
@@ -1429,7 +1427,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
       opacity: 0.55;
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       opacity: 1;
     }
   }
@@ -1441,7 +1439,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
       opacity: 0.55;
     }
     50% {
-      transform: translateY(10px);
+      transform: translateY(8px);
       opacity: 1;
     }
   }
@@ -1462,6 +1460,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     padding: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .asi-historia__line,
@@ -1474,11 +1473,13 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     flex: 1 1 auto;
     min-height: 0;
     margin: 0;
-    padding: 88px 18px 96px;
+    padding: 4px 14px 8px;
     list-style: none;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .asi-historia__item,
@@ -1487,26 +1488,30 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__item[data-side="left"],
   .asi-historia__item[data-side="right"] {
     position: absolute;
-    inset: 12px 18px auto;
-    width: auto !important;
+    inset: 0;
+    width: 100% !important;
     max-width: none;
+    max-height: 100%;
     margin: 0 !important;
-    padding: 16px 16px 18px !important;
-    gap: 10px;
-    border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(15, 36, 64, 0.12);
+    padding: 12px 14px 14px !important;
+    gap: 8px;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(15, 36, 64, 0.1);
     opacity: 0;
     pointer-events: none;
-    transform: translate3d(0, 28px, 0) scale(0.96);
+    transform: translate3d(0, 18px, 0) scale(0.98);
     transition:
       opacity 0.35s ease,
       transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr);
     grid-template-areas:
       "year"
       "media"
       "body";
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .asi-historia__item.is-visible,
@@ -1515,12 +1520,14 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     position: relative;
     inset: auto;
     width: 100% !important;
+    height: auto;
+    max-height: 100%;
     opacity: 1;
     pointer-events: auto;
     transform: none;
     z-index: 2;
     box-shadow:
-      0 18px 42px rgba(0, 151, 178, 0.16),
+      0 14px 32px rgba(0, 151, 178, 0.14),
       0 0 0 1px rgba(0, 188, 212, 0.22);
   }
 
@@ -1537,17 +1544,17 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     grid-area: year;
     display: block;
     width: 100%;
-    margin: 0 0 4px;
+    margin: 0 0 2px;
     padding: 0;
     text-align: center !important;
     left: auto !important;
     right: auto !important;
     top: auto !important;
     transform: none !important;
-    font-size: clamp(2.8rem, 16vw, 4.2rem) !important;
-    line-height: 0.9;
+    font-size: clamp(2rem, 10vw, 2.75rem) !important;
+    line-height: 0.92;
     opacity: 1 !important;
-    filter: drop-shadow(0 8px 18px rgba(0, 48, 135, 0.14));
+    filter: drop-shadow(0 6px 14px rgba(0, 48, 135, 0.12));
   }
 
   .asi-historia__media,
@@ -1555,12 +1562,12 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__item.is-expanded .asi-historia__media,
   .asi-historia__item.is-expanded.is-visible .asi-historia__media {
     grid-area: media;
-    max-height: none !important;
+    max-height: min(28vh, 180px) !important;
     aspect-ratio: 16 / 10;
-    border-radius: 14px;
+    border-radius: 12px;
     clip-path: none !important;
     opacity: 1 !important;
-    margin: 0 0 8px !important;
+    margin: 0 0 6px !important;
     overflow: hidden;
     pointer-events: auto;
     transform: none !important;
