@@ -2186,13 +2186,15 @@ body.is-historia-open {
   background: linear-gradient(180deg, #ffffff 0%, #f7fbfd 100%);
   box-shadow: 0 10px 28px rgba(15, 36, 64, 0.06);
   opacity: 0;
+  visibility: hidden;
   transform: translate3d(0, 28px, 0) scale(0.92);
   pointer-events: none;
   cursor: pointer;
   scroll-snap-align: center;
   transition:
-    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.28s ease,
+    visibility 0s linear 0.28s,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     background 0.3s ease;
@@ -2207,11 +2209,42 @@ body.is-historia-open {
   transform: translate3d(22px, 24px, 0) scale(0.96);
 }
 
+/* Fuera de foco: se oculta al instante para no despistar */
+.asi-historia__item.is-away,
+.asi-historia__item:not(.is-active):not(.is-visible) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition:
+    opacity 0.12s ease,
+    visibility 0s linear 0.12s,
+    transform 0.2s ease !important;
+}
+
 .asi-historia__item.is-visible,
 .asi-historia__item.is-active {
   opacity: 1;
+  visibility: visible;
   transform: translate3d(0, 0, 0) scale(1.04);
   pointer-events: auto;
+  transition:
+    opacity 0.32s ease,
+    visibility 0s linear 0s,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.3s ease;
+}
+
+.asi-historia__item.is-away .asi-historia__media,
+.asi-historia__item.is-away .asi-historia__body,
+.asi-historia__item.is-away .asi-historia__year-giant,
+.asi-historia__item:not(.is-active):not(.is-visible) .asi-historia__media,
+.asi-historia__item:not(.is-active):not(.is-visible) .asi-historia__body,
+.asi-historia__item:not(.is-active):not(.is-visible) .asi-historia__year-giant {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
 }
 
 .asi-historia__item .asi-historia__media,

@@ -61,7 +61,7 @@
     updateProgress();
   }
 
-  /* Solo el año activo se ve; en mobile es un slide a la vez */
+  /* Solo el año activo se ve; el anterior y el siguiente quedan ocultos al instante */
   function setActiveItem(index, { expand = false } = {}) {
     const next = Math.max(0, Math.min(index, items.length - 1));
     const forceExpand = isMobile() || expand;
@@ -76,6 +76,7 @@
       item.classList.toggle("is-active", on);
       item.classList.toggle("is-visible", on);
       item.classList.toggle("is-expanded", on && forceExpand);
+      item.classList.toggle("is-away", !on);
       item.setAttribute("aria-current", on ? "true" : "false");
       item.setAttribute("aria-hidden", on ? "false" : "true");
     });
@@ -138,6 +139,7 @@
     activeIndex = -1;
     items.forEach((item) => {
       item.classList.remove("is-visible", "is-active", "is-expanded");
+      item.classList.add("is-away");
       item.setAttribute("aria-hidden", "true");
       item.removeAttribute("aria-current");
     });
