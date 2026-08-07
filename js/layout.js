@@ -514,7 +514,7 @@
     }
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "yaavser-lead.css?v=3";
+    link.href = "yaavser-lead.css?v=5";
     link.dataset.yaavserLeadCss = "true";
     document.head.appendChild(link);
   }
@@ -541,7 +541,7 @@
   async function initYaavserLead() {
     ensureYaavserLeadStyles();
     await loadScriptOnce("js/yaavser-lead.config.js?v=1", "data-yaavser-lead-config");
-    await loadScriptOnce("js/yaavser-lead.js?v=6", "data-yaavser-lead-main");
+    await loadScriptOnce("js/yaavser-lead.js?v=8", "data-yaavser-lead-main");
     window.YaavsYaavserLead?.bindForms?.();
   }
 
@@ -549,7 +549,7 @@
     loadPartial("partials/header.html?v=21", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
-    loadPartial("partials/page-cta.html?v=4", ctaMount),
+    loadPartial("partials/page-cta.html?v=5", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
     mountNavOverlay();

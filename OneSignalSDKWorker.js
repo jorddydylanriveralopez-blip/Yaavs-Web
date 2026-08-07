@@ -14,13 +14,13 @@ const PRECACHE = [
   "./assets/yaavs-logo-white.png?v=2",
   "./assets/favicon-yaavs.png",
   "./styles.css?v=242",
-  "./js/layout.js?v=44",
+  "./js/layout.js?v=45",
   "./js/pwa.js?v=6",
   /* Shell partials — menu/footer must work offline */
   "./partials/header.html?v=21",
   "./partials/footer.html?v=18",
   "./partials/trust-strip.html",
-  "./partials/page-cta.html?v=4",
+  "./partials/page-cta.html?v=5",
   "./partials/social-float.html",
   "./partials/yaavs-chatbot.html?v=3",
   /* Main nav destinations */

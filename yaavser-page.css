@@ -232,6 +232,12 @@
   z-index: 2;
 }
 
+.yaavser-join__cta {
+  display: flex;
+  justify-content: center;
+  margin: 28px 0 8px;
+}
+
 .yaavser-join__next {
   margin-top: 28px;
   padding: 18px 20px;

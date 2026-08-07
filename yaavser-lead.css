@@ -260,6 +260,21 @@
   margin-top: 18px;
 }
 
+.page-cta-band__primary {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.page-cta-band__lead-btn {
+  min-width: min(100%, 280px);
+}
+
+/* En home ya está la banda con video + “Únete como socio” */
+.page-home #page-cta {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .page-cta-band__form-grid {
     grid-template-columns: 1fr;

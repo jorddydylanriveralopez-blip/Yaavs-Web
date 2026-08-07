@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="theme-light.css?v=11">
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
-  <link rel="stylesheet" href="yaavser-page.css?v=2">
+  <link rel="stylesheet" href="yaavser-page.css?v=8">
   <link rel="stylesheet" href="interior-light.css?v=8">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
@@ -65,9 +65,9 @@
         <p class="avisos-hero-banner__lead">
           Producto, visitas en tu tienda, rotulación, eventos y RecargaKlic — el respaldo que tu competencia no da.
         </p>
-        <a href="#afiliate" class="scroll-hint scroll-hint--yaavser" aria-label="Ir al formulario de afiliación">
+        <a href="#solicitud" class="scroll-hint scroll-hint--yaavser" aria-label="Ir a unirte como socio">
           <span class="scroll-hint-line"></span>
-          <span class="scroll-hint-label">Afiliarme</span>
+          <span class="scroll-hint-label">Únete como socio</span>
         </a>
       </div>
       <div class="avisos-hero-banner__rule" aria-hidden="true"></div>
@@ -217,63 +217,17 @@
             <p>RecargaKlic activo, capacitación y beneficios listos para vender.</p>
           </article>
         </div>
-        <form class="glass-card contact-form" id="yaavser-form" data-yaavser-lead-form novalidate data-form-started="">
-          <h3 class="form-title">Solicitud para ser socio comercial</h3>
-          <div class="form-grid">
-            <label class="hp-field" aria-hidden="true">
-              <span>No completar</span>
-              <input type="text" name="website" tabindex="-1" autocomplete="off">
-            </label>
-            <label class="field"><span>Nombre</span><input type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre completo"></label>
-            <label class="field"><span>Nombre del negocio</span><input type="text" name="negocio" required autocomplete="organization" placeholder="Nombre de tu tienda o negocio"></label>
-            <label class="field">
-              <span>Estado</span>
-              <select name="estado" required>
-                <option value="" disabled selected>Selecciona tu estado</option>
-                <option value="Aguascalientes">Aguascalientes</option>
-                <option value="Baja California">Baja California</option>
-                <option value="Baja California Sur">Baja California Sur</option>
-                <option value="Campeche">Campeche</option>
-                <option value="Chiapas">Chiapas</option>
-                <option value="Chihuahua">Chihuahua</option>
-                <option value="Ciudad de México">Ciudad de México</option>
-                <option value="Coahuila">Coahuila</option>
-                <option value="Colima">Colima</option>
-                <option value="Durango">Durango</option>
-                <option value="Estado de México">Estado de México</option>
-                <option value="Guanajuato">Guanajuato</option>
-                <option value="Guerrero">Guerrero</option>
-                <option value="Hidalgo">Hidalgo</option>
-                <option value="Jalisco">Jalisco</option>
-                <option value="Michoacán">Michoacán</option>
-                <option value="Morelos">Morelos</option>
-                <option value="Nayarit">Nayarit</option>
-                <option value="Nuevo León">Nuevo León</option>
-                <option value="Oaxaca">Oaxaca</option>
-                <option value="Puebla">Puebla</option>
-                <option value="Querétaro">Querétaro</option>
-                <option value="Quintana Roo">Quintana Roo</option>
-                <option value="San Luis Potosí">San Luis Potosí</option>
-                <option value="Sinaloa">Sinaloa</option>
-                <option value="Sonora">Sonora</option>
-                <option value="Tabasco">Tabasco</option>
-                <option value="Tamaulipas">Tamaulipas</option>
-                <option value="Tlaxcala">Tlaxcala</option>
-                <option value="Veracruz">Veracruz</option>
-                <option value="Yucatán">Yucatán</option>
-                <option value="Zacatecas">Zacatecas</option>
-              </select>
-            </label>
-            <label class="field"><span>Correo electrónico</span><input type="email" name="email" required autocomplete="email" placeholder="correo@ejemplo.com"></label>
-            <label class="field field--full"><span>Teléfono</span><input type="tel" name="telefono" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos"></label>
-          </div>
-          <label class="field field--check field--full">
-            <input type="checkbox" name="privacidad" required value="Aceptado">
-            <span>He leído el <a href="aviso-privacidad.html">aviso de privacidad</a> y autorizo el uso de mis datos para atender mi solicitud.</span>
-          </label>
-          <button type="submit" class="btn btn--primary btn--lg">Enviar solicitud</button>
-          <p class="form-hint" data-yaavser-lead-status id="form-status" role="status" aria-live="polite"></p>
-        </form>
+        <div class="yaavser-join__cta">
+          <button
+            type="button"
+            class="btn btn--primary btn--lg"
+            data-yaavser-lead-open
+            data-yaavs-track="yaavser_lead_open"
+            data-yaavs-track-label="ser_yaavser_lead"
+          >
+            Únete como socio
+          </button>
+        </div>
         <div class="yaavser-join__next">
           <p>¿Prefieres hablar ahora?</p>
           <div class="yaavser-join__next-actions">
@@ -293,7 +247,7 @@
   </main>
 
   <div id="site-footer"></div>
-  <script src="js/layout.js?v=44" defer></script>
+  <script src="js/layout.js?v=45" defer></script>
   <script src="js/main.js?v=6" defer></script>
   <script src="js/interior-banners.config.js"></script>
   <script src="js/interior-banner.js"></script>
