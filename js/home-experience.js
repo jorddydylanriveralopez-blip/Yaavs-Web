@@ -147,23 +147,40 @@
   }
 
   /* Contadores animados */
-  function resetCount(el) {
-    el._hxCountGen = (el._hxCountGen || 0) + 1;
+  function formatCountValue(el, value) {
     const suffix = el.dataset.hxSuffix || "";
+    const prefix = el.dataset.hxPrefix || "";
     const format = el.dataset.hxFormat || "";
     if (format === "k") {
+      return `+${Math.round(value / 1000)}k`;
+    }
+    return prefix + Number(value).toLocaleString("es-MX") + suffix;
+  }
+
+  function snapCountFinal(el) {
+    el._hxCountGen = (el._hxCountGen || 0) + 1;
+    const target = Number(el.dataset.hxCount);
+    if (Number.isFinite(target)) {
+      el.textContent = formatCountValue(el, target);
+      return;
+    }
+    el.textContent = "0";
+  }
+
+  function zeroCount(el) {
+    el._hxCountGen = (el._hxCountGen || 0) + 1;
+    if (el.dataset.hxFormat === "k") {
       el.textContent = "+0k";
+    } else if (el.dataset.hxPrefix) {
+      el.textContent = `${el.dataset.hxPrefix}0`;
     } else {
-      el.textContent = "0" + suffix;
+      el.textContent = `0${el.dataset.hxSuffix || ""}`;
     }
   }
 
   function animateCount(el) {
     const target = Number(el.dataset.hxCount);
     if (!Number.isFinite(target)) return;
-    const suffix = el.dataset.hxSuffix || "";
-    const prefix = el.dataset.hxPrefix || "";
-    const format = el.dataset.hxFormat || "";
     const duration = reduced ? 0 : 1800;
     const start = performance.now();
     const gen = (el._hxCountGen = (el._hxCountGen || 0) + 1);
@@ -173,11 +190,7 @@
       const t = duration ? Math.min(1, (now - start) / duration) : 1;
       const eased = 1 - Math.pow(1 - t, 3);
       const value = Math.round(target * eased);
-      if (format === "k") {
-        el.textContent = `+${Math.round(value / 1000)}k`;
-      } else {
-        el.textContent = prefix + value.toLocaleString("es-MX") + suffix;
-      }
+      el.textContent = formatCountValue(el, value);
       if (t < 1) requestAnimationFrame(tick);
     }
 
@@ -213,7 +226,8 @@
     function hidePulse() {
       pulse.classList.remove("is-live");
       pulseItems.forEach((el) => el.classList.remove("is-visible"));
-      pulseCounts.forEach(resetCount);
+      /* Deja la cifra real visible si el script se corta o sale del viewport */
+      pulseCounts.forEach(snapCountFinal);
       if (multiNum) multiNum.classList.remove("is-popping");
     }
 
@@ -226,7 +240,7 @@
         el.classList.add("is-visible");
       });
       pulseCounts.forEach((el, i) => {
-        resetCount(el);
+        zeroCount(el);
         window.setTimeout(
           () => animateCount(el),
           reduced ? 0 : 180 + i * 120

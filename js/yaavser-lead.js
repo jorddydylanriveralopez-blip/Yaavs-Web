@@ -217,6 +217,10 @@
             <span>Teléfono</span>
             <input type="tel" name="telefono" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos">
           </label>
+          <label class="yaavser-lead__check">
+            <input type="checkbox" name="privacidad" required value="Aceptado">
+            <span>He leído el <a href="aviso-privacidad.html">aviso de privacidad</a> y autorizo el uso de mis datos para atender mi solicitud.</span>
+          </label>
           <button type="submit" class="yaavser-lead__submit">Enviar solicitud</button>
           <p class="yaavser-lead__status" data-yaavser-lead-status role="status" aria-live="polite"></p>
         </form>

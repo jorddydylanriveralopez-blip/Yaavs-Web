@@ -167,10 +167,10 @@
     const isMin = state === "minimized";
 
     fab.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    fab.setAttribute("aria-label", isOpen ? "Minimizar Vaavsti" : "Abrir Vaavsti");
+    fab.setAttribute("aria-label", isOpen ? "Minimizar Yaavsti" : "Abrir Yaavsti");
 
     if (fabLabel) {
-      fabLabel.textContent = isMin ? "Vaavsti · Minimizado" : "Vaavsti";
+      fabLabel.textContent = isMin ? "Yaavsti · Minimizado" : "Yaavsti";
     }
 
     if (fabIconOpen) fabIconOpen.hidden = isOpen;
@@ -236,7 +236,7 @@
       return "Con gusto 📲\n· Tel. **55 22 33 12 10**\n· **Hola@yaavs.com.mx**\n· [WhatsApp](https://wa.me/525522331210)\n· Formulario: [Contacto](contacto.html)";
     }
     if (/hola|buenas|hey|qu[eé] tal|buenos d[ií]as|buenas tardes/.test(q)) {
-      return "¡Hola! Qué gusto. Soy **Vaavsti**, de YAAVS. ¿Vienes por socio comercial, recargas, tiendas, vacantes… o solo estás explorando?\nPuedes empezar en [Ser socio](ser-yaavser.html), [Recargar](recargar.html) o [Vacantes](bolsa-trabajo.html).";
+      return "¡Hola! Qué gusto. Soy **Yaavsti**, de YAAVS. ¿Vienes por socio comercial, recargas, tiendas, vacantes… o solo estás explorando?\nPuedes empezar en [Ser socio](ser-yaavser.html), [Recargar](recargar.html) o [Vacantes](bolsa-trabajo.html).";
     }
 
     return "Gracias por escribir. ¿Buscas socio comercial, recarga, servicios/chip, tiendas, vacantes o contacto?\nAtajos: [Ser socio](ser-yaavser.html) · [Recargar](recargar.html) · [Tiendas](tiendas.html) · [Vacantes](bolsa-trabajo.html) · [Contacto](contacto.html)";

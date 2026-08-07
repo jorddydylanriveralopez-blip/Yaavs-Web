@@ -6,4 +6,7 @@ Disallow: /api/
 Disallow: /partials/
 Disallow: /scripts/
 
-Sitemap: https://royal-blue-gear-650111.hostingersite.com/sitemap.xml
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://www.yaavs.com.mx/sitemap.xml

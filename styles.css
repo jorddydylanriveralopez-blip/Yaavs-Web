@@ -5396,6 +5396,10 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   margin-bottom: 16px;
 }
 
+.activate-icon svg {
+  display: block;
+}
+
 .section-header--center {
   text-align: center;
   max-width: 36rem;

@@ -1,10 +1,10 @@
 window.YAAVS_CHATBOT = {
   apiUrl: "/api/chat",
-  title: "Vaavsti",
+  title: "Yaavsti",
   subtitle: "Tu guía en YAAVS",
   placeholder: "Pregúntame lo que necesites…",
   welcome:
-    "¡Hola! Soy **Vaavsti** 👋 Si te perdiste, te llevo. Prueba: [Ser socio](ser-yaavser.html), [Recargar](recargar.html), [Tiendas](tiendas.html) o [Vacantes](bolsa-trabajo.html).",
+    "¡Hola! Soy **Yaavsti** 👋 Si te perdiste, te llevo. Prueba: [Ser socio](ser-yaavser.html), [Recargar](recargar.html), [Tiendas](tiendas.html) o [Vacantes](bolsa-trabajo.html).",
   quickReplies: [
     "Estoy perdido, ¿me orientas?",
     "¿Cómo ser socio comercial?",

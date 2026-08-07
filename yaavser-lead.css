@@ -162,6 +162,26 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 181, 0.18);
 }
 
+.yaavser-lead__check {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  margin: 4px 0 10px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: rgba(11, 27, 51, 0.78);
+}
+
+.yaavser-lead__check input {
+  margin-top: 0.2rem;
+  flex: 0 0 auto;
+}
+
+.yaavser-lead__check a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
 .yaavser-lead__submit {
   margin-top: 6px;
   border: 0;

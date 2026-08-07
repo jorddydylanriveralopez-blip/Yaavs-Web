@@ -1064,6 +1064,20 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch-grid {
   margin-inline: auto;
 }
 
+body.theme-cluster.page-tiendas-map .tiendas-map__switch-note {
+  max-width: 42rem;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(244, 251, 255, 0.72);
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__switch-note a {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__switch a {
   display: inline-flex;
   align-items: center;

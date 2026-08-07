@@ -44,4 +44,4 @@ Genera de nuevo `entrega/yaavs-web/` y un ZIP fechado en `entrega/`.
 
 - No incluye `.env`, `.git` ni `version-anterior`.
 - Para Hostinger: sube el **contenido** de `sitio/` (no la carpeta `docs/`), o sincroniza desde GitHub `main`.
-- URL de referencia: https://royal-blue-gear-650111.hostingersite.com  
+- URL de referencia: https://www.yaavs.com.mx  

@@ -163,6 +163,9 @@ Disallow: /api/
 Disallow: /partials/
 Disallow: /scripts/
 
+User-agent: Googlebot
+Allow: /
+
 Sitemap: {ORIGIN}/sitemap.xml
 """,
         encoding="utf-8",

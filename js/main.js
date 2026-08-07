@@ -34,18 +34,23 @@
           form.reportValidity();
           return;
         }
-        const skip = new Set(["website", "hp_url"]);
+        const skip = new Set(["website", "hp_url", "privacidad"]);
         const body = Array.from(data.entries())
           .filter(([k]) => !skip.has(k))
           .map(([k, v]) => `${k}: ${v}`)
           .join("\n");
-        window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
-          subjectPrefix
-        )}&body=${encodeURIComponent(body)}`;
+        /* WhatsApp: funciona en celular sin app de correo */
+        const waText = encodeURIComponent(`Contacto YAAVS\n\n${body}`);
+        const waUrl = `https://wa.me/525522331210?text=${waText}`;
+        const opened = window.open(waUrl, "_blank", "noopener,noreferrer");
+        if (!opened) {
+          window.location.href = waUrl;
+        }
         if (status) {
           status.textContent =
-            "Se abrió tu cliente de correo. Si no aparece, escríbenos a Hola@yaavs.com.mx";
+            "Listo: abrimos WhatsApp con tu mensaje. Si no aparece, usa el botón Continuar por WhatsApp o escribe a Hola@yaavs.com.mx.";
           status.classList.add("is-success");
+          status.classList.remove("is-error");
         }
         form.reset();
         form.dataset.formStarted = String(Date.now());

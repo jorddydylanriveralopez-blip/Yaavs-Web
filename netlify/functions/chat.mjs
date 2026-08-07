@@ -1,4 +1,4 @@
-/** Vaavsti — proxy OpenAI (Netlify Functions) */
+/** Yaavsti — proxy OpenAI (Netlify Functions) */
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
