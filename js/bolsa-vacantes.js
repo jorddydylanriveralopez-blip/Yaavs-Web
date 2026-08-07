@@ -291,6 +291,42 @@
       publishedAt: "2026-05-12",
       closesAt: "2026-08-15",
     },
+    {
+      id: "ejecutivo-ventas-pospago-slp-munoz",
+      title: "Ejecutivo de ventas pospago",
+      pills: ["Foránea", "Pospago", "Tiempo completo"],
+      description:
+        "Ejecutivo de ventas pospago en San Luis Potosí (Muñoz o El Dorado). Atención comercial en punto de venta y cierre de líneas pospago.",
+      location: "San Luis Potosí · Muñoz / El Dorado",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-08-04",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "ejecutivo-ventas-pospago-slp-rio-verde",
+      title: "Ejecutivo de ventas pospago",
+      pills: ["Foránea", "Pospago", "Tiempo completo"],
+      description:
+        "Ejecutivo de ventas pospago en Río Verde, San Luis Potosí. Atención comercial en punto de venta y cierre de líneas pospago.",
+      location: "Río Verde, San Luis Potosí",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-08-06",
+      closesAt: "2026-12-31",
+    },
+    {
+      id: "ejecutivo-ventas-pospago-ags",
+      title: "Ejecutivo de ventas pospago",
+      pills: ["Foránea", "Pospago", "Tiempo completo"],
+      description:
+        "Ejecutivo de ventas pospago en Aguascalientes (Haciendas, Plaza Patria, Santa Anita). Atención comercial en punto de venta y cierre de líneas pospago.",
+      location: "Aguascalientes · Haciendas / Plaza Patria / Santa Anita",
+      contactName: "RRHH",
+      whatsapp: WA_RRHH,
+      publishedAt: "2026-08-03",
+      closesAt: "2026-12-31",
+    },
   ];
 
   const DEPARTMENT_ORDER = [
@@ -299,6 +335,7 @@
     "Finanzas",
     "Contabilidad",
     "Ventas",
+    "Foráneas",
     "Operaciones",
     "Administración",
   ];
@@ -314,6 +351,27 @@
     { title: "Asesor de ventas AT&T", department: "Ventas", detail: "Negocios / retail", open: true, jobId: "asesor-ventas-att" },
     { title: "Ejecutivo de ventas a detalle", department: "Ventas", detail: "Nuevo León", open: false },
     { title: "Ejecutivo de ventas campo", department: "Ventas", detail: "Campo", open: false },
+    {
+      title: "Ejecutivo de ventas pospago",
+      department: "Foráneas",
+      detail: "SLP · Muñoz / El Dorado",
+      open: true,
+      jobId: "ejecutivo-ventas-pospago-slp-munoz",
+    },
+    {
+      title: "Ejecutivo de ventas pospago",
+      department: "Foráneas",
+      detail: "SLP · Río Verde",
+      open: true,
+      jobId: "ejecutivo-ventas-pospago-slp-rio-verde",
+    },
+    {
+      title: "Ejecutivo de ventas pospago",
+      department: "Foráneas",
+      detail: "Aguascalientes · Haciendas / Plaza Patria / Santa Anita",
+      open: true,
+      jobId: "ejecutivo-ventas-pospago-ags",
+    },
     { title: "Coordinador de rotulación", department: "Operaciones", detail: "Imagen en PDV", open: false },
     { title: "Coordinador de operaciones", department: "Operaciones", detail: "Logística", open: false },
     { title: "Auxiliar administrativo", department: "Administración", detail: "Oficina central", open: false },
