@@ -6137,6 +6137,34 @@ body.page-home.page-intro-active .hero-scroll-hint {
     display: none;
   }
 
+  /* Pospago / Yaavsta: “Próximamente” visible en móvil */
+  .page-home .hx-svc-deck__item.is-deck-locked .hx-svc-deck__body {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .page-home .hx-svc-deck__item.is-deck-locked .hx-svc-deck__cta {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f2440;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-shadow: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  }
+
+  .page-home .hx-svc-deck__item.is-deck-locked .hx-svc-deck__desc {
+    display: none !important;
+  }
+
   /* Hero legacy — ya no se usa; todas las tiles son iguales */
   .page-home .hx-svc-deck-masonry > .hx-svc-deck__item[data-masonry="hero"] {
     position: relative;

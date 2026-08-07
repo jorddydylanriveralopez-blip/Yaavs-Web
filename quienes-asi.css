@@ -1375,7 +1375,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     opacity: 0.85;
   }
 
-  /* Compacto por defecto; al tap (.is-expanded) se amplía */
+  /* Al hacer scroll (.is-visible): año + caja + imagen juntos */
   .asi-historia__media,
   .asi-historia__item.is-visible .asi-historia__media {
     max-height: 0;
@@ -1386,21 +1386,29 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     margin: 0;
     overflow: hidden;
     pointer-events: none;
+    transform: translate3d(0, 16px, 0);
     transition:
-      max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.28s ease,
-      margin 0.28s ease;
+      max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.4s ease,
+      margin 0.35s ease,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .asi-historia__item.is-visible .asi-historia__media {
+    max-height: 148px;
+    aspect-ratio: 16 / 10;
+    opacity: 1;
+    margin: 0 0 4px;
+    pointer-events: auto;
+    transform: none;
   }
 
   .asi-historia__item.is-expanded .asi-historia__media,
   .asi-historia__item.is-expanded.is-visible .asi-historia__media {
-    max-height: 160px;
-    aspect-ratio: 16 / 10;
-    opacity: 1;
-    margin: 0 0 2px;
-    pointer-events: auto;
+    max-height: 180px;
   }
 
+  .asi-historia__item.is-visible .asi-historia__media img,
   .asi-historia__item.is-expanded .asi-historia__media img {
     transform: scale(1);
   }
@@ -2010,6 +2018,34 @@ body.is-historia-open {
 .asi-historia__item.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
+}
+
+.asi-historia__item .asi-historia__media,
+.asi-historia__item .asi-historia__body,
+.asi-historia__item .asi-historia__year-giant {
+  opacity: 0;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--asi-delay, 0ms) + 40ms),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--asi-delay, 0ms) + 40ms);
+}
+
+.asi-historia__item .asi-historia__media {
+  transform: translate3d(0, 18px, 0) scale(0.96);
+}
+
+.asi-historia__item .asi-historia__body {
+  transform: translate3d(0, 14px, 0);
+}
+
+.asi-historia__item .asi-historia__year-giant {
+  transform: translate3d(-12px, 0, 0);
+}
+
+.asi-historia__item.is-visible .asi-historia__media,
+.asi-historia__item.is-visible .asi-historia__body,
+.asi-historia__item.is-visible .asi-historia__year-giant {
+  opacity: 1;
+  transform: none;
 }
 
 .asi-historia__item.is-active {

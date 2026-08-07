@@ -66,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=243">
   <link rel="stylesheet" href="theme-light.css?v=11">
-  <link rel="stylesheet" href="home-corporate.css?v=20260805c">
+  <link rel="stylesheet" href="home-corporate.css?v=20260807a">
   <link rel="stylesheet" href="promo-popup.css?v=3">
   <link rel="stylesheet" href="theme-day-night.css?v=5" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=211" media="print" onload="this.media='all'">
@@ -500,7 +500,7 @@
         <div class="hx-porta-modal__sheet">
           <button type="button" class="hx-porta-modal__close" data-hx-porta-close aria-label="Cerrar">&times;</button>
           <p class="hx-porta-modal__kicker">Portabilidad</p>
-          <h3 class="hx-porta-modal__title" id="porta-modal-title">Elige en qué compañía gustas hacer la portabilidad</h3>
+          <h3 class="hx-porta-modal__title" id="porta-modal-title">Elige en qué compañía quieres hacer la portabilidad</h3>
           <p class="hx-porta-modal__desc">Te llevamos al sitio oficial de cada compañía para iniciar tu trámite conservando tu número.</p>
           <div class="hx-porta-modal__options">
             <a class="hx-porta-modal__option" href="https://www.att.com.mx/cambiate-ahora/" target="_blank" rel="noopener noreferrer" aria-label="AT&amp;T — ir a portabilidad">
@@ -1160,7 +1160,7 @@
           <div class="hx-yaavser-band__media" aria-hidden="true">
             <img
               class="hx-yaavser-band__fallback"
-              src="assets/hero-telecom/banners/socio-comercial-firefly-poster.jpg"
+              src="assets/hero-telecom/banners/3-poster.jpg"
               alt=""
               width="1920"
               height="1080"
@@ -1174,9 +1174,10 @@
               loop
               playsinline
               preload="metadata"
-              poster="assets/hero-telecom/banners/socio-comercial-firefly-poster.jpg"
+              poster="assets/hero-telecom/banners/3-poster.jpg"
             >
-              <source src="assets/hero-telecom/banners/socio-comercial-firefly.mp4" type="video/mp4">
+              <source src="assets/hero-telecom/banners/3.5.mp4" type="video/mp4" media="(max-width: 768px)">
+              <source src="assets/hero-telecom/banners/3.mp4" type="video/mp4">
             </video>
           </div>
           <div class="hx-yaavser-band__veil" aria-hidden="true"></div>
@@ -1429,7 +1430,7 @@
       /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=222",
-        "js/home-experience.js?v=230",
+        "js/home-experience.js?v=231",
       ], perf.soft ? "180px 0px" : "320px 0px");
 
       const deckHashes = [
@@ -1444,7 +1445,7 @@
       if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=222",
-          "js/home-experience.js?v=230",
+          "js/home-experience.js?v=231",
         ]);
       }
 

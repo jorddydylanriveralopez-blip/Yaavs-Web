@@ -9,19 +9,14 @@
   const track = dialog.querySelector(".asi-historia__track");
   const progress = dialog.querySelector(".asi-historia__progress");
   const closeBtn = dialog.querySelector("[data-historia-close]");
-  const yearsNav = dialog.querySelector("[data-historia-years]");
-  const statusEl = dialog.querySelector("[data-historia-status]");
-  const prevBtn = dialog.querySelector("[data-historia-prev]");
-  const nextBtn = dialog.querySelector("[data-historia-next]");
   const items = Array.from(dialog.querySelectorAll(".asi-historia__item"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let lastFocus = null;
   let activeIndex = 0;
   let scrollingTo = false;
-  let yearButtons = [];
 
   items.forEach((item, index) => {
-    item.style.setProperty("--asi-delay", `${Math.min(index * 70, 420)}ms`);
+    item.style.setProperty("--asi-delay", `${Math.min(index * 55, 360)}ms`);
     item.dataset.side = index % 2 === 0 ? "left" : "right";
     item.dataset.index = String(index);
     if (!item.dataset.year) {
@@ -36,44 +31,6 @@
       item.appendChild(giant);
     }
   });
-
-  function buildYearNav() {
-    if (!yearsNav || !items.length) return;
-    yearsNav.innerHTML = "";
-    yearButtons = items.map((item, index) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "asi-historia__year-btn";
-      btn.textContent = item.dataset.year || String(2014 + index);
-      btn.setAttribute("aria-label", `Ir a ${btn.textContent}`);
-      btn.addEventListener("click", () => goTo(index, true));
-      yearsNav.appendChild(btn);
-      return btn;
-    });
-  }
-
-  function updateStatus(index) {
-    const item = items[index];
-    if (!statusEl || !item) return;
-    const year = item.dataset.year || "";
-    statusEl.textContent = `${index + 1} / ${items.length}${year ? ` · ${year}` : ""}`;
-  }
-
-  function updateYearButtons(index) {
-    yearButtons.forEach((btn, i) => {
-      btn.classList.toggle("is-active", i === index);
-      btn.setAttribute("aria-current", i === index ? "true" : "false");
-    });
-    const activeBtn = yearButtons[index];
-    if (activeBtn && yearsNav) {
-      const left =
-        activeBtn.offsetLeft - yearsNav.clientWidth / 2 + activeBtn.offsetWidth / 2;
-      yearsNav.scrollTo({
-        left: Math.max(0, left),
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
-    }
-  }
 
   function updateProgress() {
     if (!sheet || !progress) return;
@@ -90,10 +47,6 @@
       item.classList.toggle("is-expanded", on && expand);
       item.setAttribute("aria-current", on ? "true" : "false");
     });
-    updateStatus(activeIndex);
-    updateYearButtons(activeIndex);
-    if (prevBtn) prevBtn.disabled = activeIndex <= 0;
-    if (nextBtn) nextBtn.disabled = activeIndex >= items.length - 1;
   }
 
   function syncActiveFromScroll() {
@@ -119,7 +72,7 @@
     item.classList.add("is-visible");
     scrollingTo = true;
     const scrollToItem = () => {
-      const top = Math.max(0, item.offsetTop - 88);
+      const top = Math.max(0, item.offsetTop - 72);
       sheet.scrollTo({
         top,
         behavior: reduceMotion ? "auto" : "smooth",
@@ -144,8 +97,6 @@
     if (progress) progress.style.transform = "scaleY(0.04)";
     if (track) track.classList.remove("is-drawn");
     activeIndex = 0;
-    updateStatus(0);
-    updateYearButtons(0);
   }
 
   function kickReveal() {
@@ -158,8 +109,9 @@
       setActiveItem(0);
       return;
     }
-    items.slice(0, 2).forEach((item, i) => {
-      window.setTimeout(() => item.classList.add("is-visible"), 120 + i * 90);
+    /* Primeros hitos al abrir; el resto aparece al hacer scroll */
+    items.slice(0, 1).forEach((item, i) => {
+      window.setTimeout(() => item.classList.add("is-visible"), 100 + i * 80);
     });
     updateProgress();
     setActiveItem(0);
@@ -191,8 +143,6 @@
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  buildYearNav();
-
   openers.forEach((el) => {
     el.addEventListener("click", (event) => {
       event.preventDefault();
@@ -201,8 +151,6 @@
   });
 
   closeBtn?.addEventListener("click", closeHistoria);
-  prevBtn?.addEventListener("click", () => goTo(activeIndex - 1, true));
-  nextBtn?.addEventListener("click", () => goTo(activeIndex + 1, true));
 
   dialog.addEventListener("cancel", (event) => {
     event.preventDefault();
@@ -259,14 +207,16 @@
     { passive: true }
   );
 
+  /* Año + imagen + texto aparecen juntos al llegar con el scroll */
   if ("IntersectionObserver" in window && items.length) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
         });
       },
-      { root: sheet || null, threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { root: sheet || null, threshold: 0.28, rootMargin: "0px 0px -12% 0px" }
     );
     items.forEach((item) => io.observe(item));
   } else {

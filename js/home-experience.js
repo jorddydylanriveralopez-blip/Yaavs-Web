@@ -2444,4 +2444,37 @@
   document.body.classList.remove("hx-band--dark");
   document.documentElement.classList.remove("hx-band--dark");
   document.body.dataset.hxBand = "light";
+
+  /* Video “socio comercial” = mismo del slide 3 del carrusel */
+  (function syncYaavserBandVideo() {
+    const video = root.querySelector(".hx-yaavser-band__video");
+    if (!video) return;
+    const desktop = "assets/hero-telecom/banners/3.mp4";
+    const mobile = "assets/hero-telecom/banners/3.5.mp4";
+    const poster = "assets/hero-telecom/banners/3-poster.jpg";
+    const mq = window.matchMedia("(max-width: 768px)");
+
+    function apply() {
+      const next = mq.matches ? mobile : desktop;
+      const source = video.querySelector("source") || document.createElement("source");
+      if (!source.parentNode) {
+        source.type = "video/mp4";
+        video.appendChild(source);
+      }
+      if (source.getAttribute("src") !== next) {
+        source.src = next;
+        video.poster = poster;
+        try {
+          video.load();
+          video.play()?.catch?.(() => {});
+        } catch (_) {
+          /* noop */
+        }
+      }
+    }
+
+    apply();
+    if (typeof mq.addEventListener === "function") mq.addEventListener("change", apply);
+    else if (typeof mq.addListener === "function") mq.addListener(apply);
+  })();
 })();
