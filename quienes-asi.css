@@ -1486,10 +1486,10 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     flex: 1 1 auto;
     min-height: 0;
     margin: 0;
-    padding: 4px 14px 8px;
+    padding: 8px 16px;
     list-style: none;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -1505,8 +1505,8 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     width: 100% !important;
     max-width: none;
     max-height: 100%;
-    margin: 0 !important;
-    padding: 12px 14px 14px !important;
+    margin: 0 auto !important;
+    padding: 14px 16px 16px !important;
     gap: 8px;
     border-radius: 18px;
     box-shadow: 0 12px 28px rgba(15, 36, 64, 0.1);
@@ -1516,13 +1516,11 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     transition:
       opacity 0.35s ease,
       transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr);
-    grid-template-areas:
-      "year"
-      "media"
-      "body";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -1535,6 +1533,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     width: 100% !important;
     height: auto;
     max-height: 100%;
+    margin: auto !important;
     opacity: 1;
     pointer-events: auto;
     transform: none;
@@ -1554,10 +1553,9 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__item.is-visible .asi-historia__year-giant,
   .asi-historia__item.is-active .asi-historia__year-giant {
     position: static !important;
-    grid-area: year;
     display: block;
     width: 100%;
-    margin: 0 0 2px;
+    margin: 0 0 6px;
     padding: 0;
     text-align: center !important;
     left: auto !important;
@@ -1568,22 +1566,24 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     line-height: 0.92;
     opacity: 1 !important;
     filter: drop-shadow(0 6px 14px rgba(0, 48, 135, 0.12));
+    order: 1;
   }
 
   .asi-historia__media,
   .asi-historia__item.is-visible .asi-historia__media,
   .asi-historia__item.is-expanded .asi-historia__media,
   .asi-historia__item.is-expanded.is-visible .asi-historia__media {
-    grid-area: media;
-    max-height: min(28vh, 180px) !important;
+    width: 100%;
+    max-height: min(26vh, 168px) !important;
     aspect-ratio: 16 / 10;
     border-radius: 12px;
     clip-path: none !important;
     opacity: 1 !important;
-    margin: 0 0 6px !important;
+    margin: 0 0 8px !important;
     overflow: hidden;
     pointer-events: auto;
     transform: none !important;
+    order: 2;
   }
 
   .asi-historia__item.is-visible .asi-historia__media img,
@@ -1599,15 +1599,21 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__body {
     grid-area: body;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .asi-historia__tag,
   .asi-historia .asi-historia__tag,
   .asi-historia__item.is-expanded .asi-historia__tag {
     display: inline-flex !important;
-    margin-bottom: 6px !important;
+    justify-content: center;
+    margin: 0 auto 6px !important;
     font-size: 0.66rem !important;
     letter-spacing: 0.1em;
+    text-align: center;
   }
 
   .asi-historia__item-title,
@@ -1616,6 +1622,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     margin: 0 0 8px !important;
     font-size: 1.05rem !important;
     line-height: 1.25 !important;
+    text-align: center !important;
   }
 
   .asi-historia__item p,
@@ -1623,9 +1630,11 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__item.is-expanded p,
   .asi-historia .asi-historia__item.is-expanded p {
     display: block !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
+    max-width: 34ch;
     font-size: 0.92rem !important;
     line-height: 1.45 !important;
+    text-align: center !important;
     color: #4a6278 !important;
     -webkit-text-fill-color: #4a6278 !important;
   }
