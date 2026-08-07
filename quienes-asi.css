@@ -1597,12 +1597,15 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   }
 
   .asi-historia__body {
-    grid-area: body;
+    grid-area: unset;
+    width: 100%;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    text-align: center !important;
+    order: 3;
   }
 
   .asi-historia__tag,
@@ -1610,15 +1613,18 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__item.is-expanded .asi-historia__tag {
     display: inline-flex !important;
     justify-content: center;
+    align-self: center;
     margin: 0 auto 6px !important;
     font-size: 0.66rem !important;
     letter-spacing: 0.1em;
-    text-align: center;
+    text-align: center !important;
   }
 
   .asi-historia__item-title,
   .asi-historia h3.asi-historia__item-title,
-  .asi-historia__item.is-expanded .asi-historia__item-title {
+  .asi-historia__item.is-expanded .asi-historia__item-title,
+  .asi-historia .asi-historia__item-title {
+    width: 100%;
     margin: 0 0 8px !important;
     font-size: 1.05rem !important;
     line-height: 1.25 !important;
@@ -1628,8 +1634,10 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   .asi-historia__item p,
   .asi-historia .asi-historia__item p,
   .asi-historia__item.is-expanded p,
-  .asi-historia .asi-historia__item.is-expanded p {
+  .asi-historia .asi-historia__item.is-expanded p,
+  .asi-historia__body p {
     display: block !important;
+    width: 100%;
     margin: 0 auto !important;
     max-width: 34ch;
     font-size: 0.92rem !important;
