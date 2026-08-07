@@ -1305,9 +1305,9 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     justify-content: space-between;
     pointer-events: none;
     padding:
-      calc(70px + env(safe-area-inset-top, 0px))
+      calc(92px + env(safe-area-inset-top, 0px))
       16px
-      calc(14px + env(safe-area-inset-bottom, 0px));
+      calc(28px + env(safe-area-inset-bottom, 0px));
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1322,6 +1322,8 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     justify-content: center;
     gap: 4px;
     width: 100%;
+    margin-bottom: 6px;
+    transform: translateY(-10px);
     pointer-events: none;
   }
 
@@ -1360,6 +1362,15 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     cursor: pointer;
     text-align: center;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .asi-historia__swipe-hint--up {
+    margin-top: 10px;
+    transform: translateY(8px);
+  }
+
+  .asi-historia__swipe-hint--down {
+    transform: translateY(-4px);
   }
 
   .asi-historia__swipe-arrow {
@@ -1463,7 +1474,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
     flex: 1 1 auto;
     min-height: 0;
     margin: 0;
-    padding: 64px 18px 78px;
+    padding: 88px 18px 96px;
     list-style: none;
     display: flex;
     align-items: center;
