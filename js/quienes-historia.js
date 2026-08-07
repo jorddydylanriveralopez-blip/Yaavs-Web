@@ -266,8 +266,9 @@
       if (!isMobile() || !event.changedTouches?.[0]) return;
       const dx = event.changedTouches[0].screenX - touchStartX;
       const dy = event.changedTouches[0].screenY - touchStartY;
-      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
-      if (dx < 0) goTo(activeIndex + 1, true);
+      /* Deslizar arriba = siguiente año; abajo = anterior */
+      if (Math.abs(dy) < 40 || Math.abs(dy) < Math.abs(dx)) return;
+      if (dy < 0) goTo(activeIndex + 1, true);
       else goTo(activeIndex - 1, true);
     },
     { passive: true }

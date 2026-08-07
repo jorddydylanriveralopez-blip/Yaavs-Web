@@ -246,6 +246,10 @@
         </button>
       </header>
 
+      <button type="button" class="asi-historia__nav-btn asi-historia__nav-btn--up" data-historia-prev aria-label="Año anterior">
+        <span aria-hidden="true">▲</span>
+      </button>
+
       <div class="asi-historia__hero">
         <picture>
           <source media="(max-width: 768px)" srcset="assets/quienes/cards/historia-mobile.jpg?v=1">
@@ -393,9 +397,10 @@
       </div>
 
       <div class="asi-historia__pager" data-historia-pager>
-        <button type="button" class="asi-historia__nav-btn" data-historia-prev aria-label="Año anterior">‹</button>
         <p class="asi-historia__status" data-historia-status>1 / 12</p>
-        <button type="button" class="asi-historia__nav-btn" data-historia-next aria-label="Año siguiente">›</button>
+        <button type="button" class="asi-historia__nav-btn asi-historia__nav-btn--down" data-historia-next aria-label="Año siguiente">
+          <span aria-hidden="true">▼</span>
+        </button>
       </div>
     </div>
   </dialog>
@@ -622,7 +627,7 @@
   <script src="js/page-enter.js?v=6" defer data-page-enter="true"></script>
   <script src="js/layout.js?v=45" defer></script>
   <script src="js/main.js?v=6" defer></script>
-  <script src="js/quienes-historia.js?v=8" defer></script>
+  <script src="js/quienes-historia.js?v=9" defer></script>
   <script src="js/quienes-valores.js?v=3" defer></script>
   <script src="js/quienes-filosofia.js?v=3" defer></script>
   <script src="js/quienes-cards.js?v=1" defer></script>
