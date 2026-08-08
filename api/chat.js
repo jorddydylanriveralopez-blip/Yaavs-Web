@@ -30,7 +30,7 @@ module.exports = async function handler(req, res) {
   }
 
   const ip = clientIp(req);
-  const limit = rateLimit(ip, 20, 60_000);
+  const limit = rateLimit(ip, 12, 60_000);
   res.setHeader("X-RateLimit-Remaining", String(limit.remaining));
   if (!limit.ok) {
     return res.status(429).json({ error: "rate_limited", fallback: true });

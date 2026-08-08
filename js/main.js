@@ -11,6 +11,14 @@
       return false;
     }
 
+    function cleanField(value) {
+      return String(value || "")
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
+        .replace(/[<>]/g, "")
+        .trim()
+        .slice(0, 2000);
+    }
+
     function handleFormSubmit(form, statusId, subjectPrefix) {
       if (!form) return;
       if (form.hasAttribute("data-yaavser-lead-form")) return;
@@ -37,8 +45,9 @@
         const skip = new Set(["website", "hp_url", "privacidad"]);
         const body = Array.from(data.entries())
           .filter(([k]) => !skip.has(k))
-          .map(([k, v]) => `${k}: ${v}`)
-          .join("\n");
+          .map(([k, v]) => `${cleanField(k)}: ${cleanField(v)}`)
+          .join("\n")
+          .slice(0, 3500);
         /* WhatsApp: funciona en celular sin app de correo */
         const waText = encodeURIComponent(`Contacto YAAVS\n\n${body}`);
         const waUrl = `https://wa.me/525522331210?text=${waText}`;

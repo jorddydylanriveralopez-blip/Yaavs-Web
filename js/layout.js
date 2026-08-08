@@ -312,12 +312,37 @@
     return FALLBACK_PARTIALS[bare] || "";
   }
 
+  const ALLOWED_PARTIALS = new Set([
+    "partials/header.html",
+    "partials/footer.html",
+    "partials/trust-strip.html",
+    "partials/page-cta.html",
+    "partials/social-float.html",
+    "partials/yaavs-chatbot.html",
+    "partials/site-floats.html",
+  ]);
+
+  function safePartialUrl(url) {
+    const raw = String(url || "").trim();
+    if (!raw || raw.includes("..") || /^https?:\/\//i.test(raw) || raw.startsWith("//")) {
+      return "";
+    }
+    const bare = raw.split("?")[0].replace(/^\.\//, "");
+    if (!ALLOWED_PARTIALS.has(bare)) return "";
+    return raw;
+  }
+
   async function loadPartial(url, mount) {
     if (!mount) return;
+    const safeUrl = safePartialUrl(url);
+    if (!safeUrl) {
+      mount.innerHTML = "";
+      return;
+    }
 
     async function fromCache() {
       if (!("caches" in window)) return "";
-      const candidates = [url, url.split("?")[0], `./${url.replace(/^\.\//, "")}`];
+      const candidates = [safeUrl, safeUrl.split("?")[0], `./${safeUrl.replace(/^\.\//, "")}`];
       for (const key of candidates) {
         let hit = await caches.match(key);
         if (!hit) hit = await caches.match(key, { ignoreSearch: true });
@@ -327,7 +352,7 @@
     }
 
     try {
-      const res = await fetch(url, { cache: "no-cache" });
+      const res = await fetch(safeUrl, { cache: "no-cache", credentials: "same-origin" });
       if (!res.ok) throw new Error(res.statusText);
       mount.innerHTML = await res.text();
     } catch {
@@ -341,7 +366,7 @@
         /* fall through */
       }
 
-      const embedded = fallbackPartial(url);
+      const embedded = fallbackPartial(safeUrl);
       if (embedded) {
         mount.innerHTML = embedded;
         return;

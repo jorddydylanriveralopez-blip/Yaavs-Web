@@ -4,7 +4,7 @@
  */
 
 const ALLOWED_ORIGIN_RE =
-  /^(https?:\/\/(localhost(:\d+)?|127\.0\.0\.1(:\d+)?|([a-z0-9-]+\.)*yaavs\.com\.mx|([a-z0-9-]+\.)*yaavs\.com|royal-blue-gear-650111\.hostingersite\.com))$/i;
+  /^(https?:\/\/(localhost(:\d+)?|127\.0\.0\.1(:\d+)?|([a-z0-9-]+\.)*yaavs\.com\.mx|([a-z0-9-]+\.)*yaavs\.com|([a-z0-9-]+\.)*vercel\.app|([a-z0-9-]+\.)*hostingersite\.com))$/i;
 
 const buckets = new Map();
 
@@ -14,7 +14,7 @@ function clientIp(req) {
   return req.headers?.["x-real-ip"] || req.socket?.remoteAddress || "unknown";
 }
 
-function rateLimit(ip, limit = 20, windowMs = 60_000) {
+function rateLimit(ip, limit = 12, windowMs = 60_000) {
   const now = Date.now();
   let entry = buckets.get(ip);
   if (!entry || now > entry.reset) {
