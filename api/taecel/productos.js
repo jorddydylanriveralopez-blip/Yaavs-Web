@@ -1,5 +1,6 @@
 /** Catálogo de productos / montos TAECEL */
 const { cors, fetchProducts, getCredentials } = require("./_client");
+const { clientIp, rateLimit } = require("../_security");
 
 module.exports = async function handler(req, res) {
   cors(res, "GET, OPTIONS");
@@ -10,6 +11,11 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "GET") {
     return res.status(405).json({ error: "method_not_allowed" });
+  }
+
+  const limit = rateLimit(clientIp(req), 40, 60_000);
+  if (!limit.ok) {
+    return res.status(429).json({ error: "rate_limited" });
   }
 
   try {
