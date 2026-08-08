@@ -33,12 +33,14 @@
   overflow: visible;
 }
 
-/* ─── Hero ─── */
+/* ─── Hero (banner panorámico HD ~4.3:1) ─── */
 .anuncios-hero {
   position: relative;
   isolation: isolate;
-  min-height: clamp(320px, 52vh, 520px);
-  min-height: clamp(320px, 52svh, 520px);
+  aspect-ratio: 2241 / 518;
+  width: 100%;
+  min-height: clamp(200px, 24vw, 420px);
+  max-height: min(42svh, 460px);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -56,21 +58,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 58% center;
-  transform: scale(1.04);
+  object-position: center center;
+  transform: none;
 }
 
 .page-anuncios.is-anuncios-ready .anuncios-hero__media img {
-  animation: anuncios-hero-zoom 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: anuncios-hero-fade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes anuncios-hero-zoom {
+@keyframes anuncios-hero-fade {
   from {
-    transform: scale(1.12);
-    filter: brightness(0.75);
+    opacity: 0.72;
+    filter: brightness(0.85);
   }
   to {
-    transform: scale(1.04);
+    opacity: 1;
     filter: brightness(1);
   }
 }
@@ -478,7 +480,8 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   }
 
   .anuncios-hero {
-    min-height: clamp(280px, 48svh, 400px);
+    min-height: clamp(180px, 42vw, 280px);
+    max-height: min(38svh, 320px);
   }
 
   .anuncios-hero__media img {

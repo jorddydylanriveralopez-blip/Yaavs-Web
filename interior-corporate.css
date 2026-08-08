@@ -455,6 +455,13 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner {
   min-height: clamp(400px, 65vh, 640px);
 }
 
+/* Bolsa: banner panorámico HD — no forzar altura de billboard alto */
+body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner.avisos-hero-banner {
+  min-height: clamp(240px, 36vw, 560px);
+  aspect-ratio: 2242 / 714;
+  max-height: min(58svh, 620px);
+}
+
 body.theme-cluster:not(.page-home) .avisos-hero-banner__media {
   opacity: 1;
 }

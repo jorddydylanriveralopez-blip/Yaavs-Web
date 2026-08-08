@@ -3,8 +3,8 @@
  */
 window.YAAVS_PAGE_BANNERS = {
   avisos: {
-    poster: "assets/avisos/noticias-banner-20260808.jpg",
-    images: ["assets/avisos/noticias-banner-20260808.jpg"],
+    poster: "assets/avisos/noticias-banner-20260808@2x.jpg",
+    images: ["assets/avisos/noticias-banner-20260808@2x.jpg"],
   },
   "quienes-somos": {
     images: ["assets/hero-banner-1.jpg", "assets/hero-banner-2.jpg", "assets/hero-banner-5.jpg"],
@@ -17,8 +17,8 @@ window.YAAVS_PAGE_BANNERS = {
     interval: 5500,
   },
   "bolsa-trabajo": {
-    images: ["assets/bolsa/bolsa-hero-equipo-20260808.jpg"],
-    poster: "assets/bolsa/bolsa-hero-equipo-20260808.jpg",
+    images: ["assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg"],
+    poster: "assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg",
     interval: 6000,
   },
   "ser-yaavser": {
