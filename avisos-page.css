@@ -56,7 +56,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: 58% center;
   transform: scale(1.04);
 }
 
@@ -479,6 +479,10 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
 
   .anuncios-hero {
     min-height: clamp(280px, 48svh, 400px);
+  }
+
+  .anuncios-hero__media img {
+    object-position: 62% center;
   }
 
   .anuncios-hero__title {
