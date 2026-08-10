@@ -43,11 +43,11 @@
   }
 
   function explode(x, y) {
-    const count = 34 + Math.floor(Math.random() * 18);
+    const count = 38 + Math.floor(Math.random() * 20);
     const color = FX_COLORS[Math.floor(Math.random() * FX_COLORS.length)];
     for (let i = 0; i < count; i += 1) {
       const angle = (Math.PI * 2 * i) / count + Math.random() * 0.25;
-      const speed = 1.6 + Math.random() * 3.8;
+      const speed = 3.2 + Math.random() * 5.5;
       fxParticles.push({
         x,
         y,
@@ -55,9 +55,9 @@
         vy: Math.sin(angle) * speed,
         radius: 1.4 + Math.random() * 2.2,
         life: 0,
-        ttl: 900 + Math.random() * 700,
+        ttl: 650 + Math.random() * 450,
         color,
-        trail: Math.random() > 0.55,
+        trail: Math.random() > 0.45,
       });
     }
   }
@@ -68,8 +68,8 @@
     fxRockets.push({
       x,
       y: fxH + 10,
-      vx: (Math.random() - 0.5) * 0.8,
-      vy: -(6.2 + Math.random() * 2.4),
+      vx: (Math.random() - 0.5) * 1.4,
+      vy: -(14 + Math.random() * 5.5),
       targetY,
       color: FX_COLORS[Math.floor(Math.random() * FX_COLORS.length)],
     });
@@ -80,26 +80,27 @@
     if (!fxLast) fxLast = now;
     const delta = Math.min(32, now - fxLast);
     fxLast = now;
+    const step = delta / 12;
 
     fxCtx.clearRect(0, 0, fxW, fxH);
 
     fxRockets = fxRockets.filter((rocket) => {
-      rocket.x += rocket.vx * (delta / 16);
-      rocket.y += rocket.vy * (delta / 16);
-      rocket.vy += 0.045 * (delta / 16);
+      rocket.x += rocket.vx * step;
+      rocket.y += rocket.vy * step;
+      rocket.vy += 0.08 * step;
 
       fxCtx.beginPath();
       fxCtx.strokeStyle = rocket.color;
       fxCtx.globalAlpha = 0.85;
-      fxCtx.lineWidth = 2;
+      fxCtx.lineWidth = 2.4;
       fxCtx.moveTo(rocket.x, rocket.y);
-      fxCtx.lineTo(rocket.x - rocket.vx * 3, rocket.y - rocket.vy * 3);
+      fxCtx.lineTo(rocket.x - rocket.vx * 2.2, rocket.y - rocket.vy * 2.2);
       fxCtx.stroke();
 
       fxCtx.beginPath();
       fxCtx.fillStyle = "#fff";
       fxCtx.globalAlpha = 1;
-      fxCtx.arc(rocket.x, rocket.y, 2.2, 0, Math.PI * 2);
+      fxCtx.arc(rocket.x, rocket.y, 2.4, 0, Math.PI * 2);
       fxCtx.fill();
 
       if (rocket.y <= rocket.targetY || rocket.vy >= -0.4) {
@@ -112,20 +113,20 @@
     fxParticles = fxParticles.filter((p) => {
       p.life += delta;
       if (p.life >= p.ttl) return false;
-      p.x += p.vx * (delta / 16);
-      p.y += p.vy * (delta / 16);
-      p.vy += 0.045 * (delta / 16);
-      p.vx *= 0.99;
-      p.vy *= 0.99;
+      p.x += p.vx * step;
+      p.y += p.vy * step;
+      p.vy += 0.07 * step;
+      p.vx *= 0.985;
+      p.vy *= 0.985;
       const alpha = 1 - p.life / p.ttl;
 
       if (p.trail) {
         fxCtx.beginPath();
         fxCtx.strokeStyle = p.color;
-        fxCtx.globalAlpha = alpha * 0.35;
-        fxCtx.lineWidth = 1;
+        fxCtx.globalAlpha = alpha * 0.4;
+        fxCtx.lineWidth = 1.2;
         fxCtx.moveTo(p.x, p.y);
-        fxCtx.lineTo(p.x - p.vx * 2.5, p.y - p.vy * 2.5);
+        fxCtx.lineTo(p.x - p.vx * 2.2, p.y - p.vy * 2.2);
         fxCtx.stroke();
       }
 
@@ -154,13 +155,13 @@
     fxParticles = [];
     fxRockets = [];
     fxLast = 0;
-    fxUntil = performance.now() + 4800;
-    const bursts = window.matchMedia("(max-width: 720px)").matches ? 6 : 9;
+    fxUntil = performance.now() + 4200;
+    const bursts = window.matchMedia("(max-width: 720px)").matches ? 7 : 11;
     for (let i = 0; i < bursts; i += 1) {
       window.setTimeout(() => {
         if (!opened || closing) return;
         launchRocket();
-      }, 80 + i * 220);
+      }, 30 + i * 110);
     }
     if (!fxRaf) fxRaf = window.requestAnimationFrame(tickFx);
   }
