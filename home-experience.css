@@ -71,11 +71,14 @@
 }
 
 .hx-pulse__mesh {
-  opacity: 0.35;
+  opacity: 0.12;
   background:
-    radial-gradient(circle at 20% 50%, rgba(90, 156, 196, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 80% 50%, rgba(0, 100, 160, 0.1) 0%, transparent 38%),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(90, 156, 196, 0.04) 40px);
+    radial-gradient(circle at 20% 50%, rgba(90, 156, 196, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(0, 100, 160, 0.06) 0%, transparent 38%);
+}
+
+.hx-pulse__scan {
+  display: none;
 }
 
 .hx-pulse__scan::after {
@@ -127,24 +130,38 @@
 .hx-pulse__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 3vw, 32px);
-  margin-bottom: clamp(28px, 4vw, 40px);
+  gap: 0;
+  margin-bottom: 0;
+  max-width: 56rem;
+  margin-inline: auto;
+  align-items: stretch;
 }
 
 .hx-pulse__stat {
-  padding: clamp(24px, 3.5vw, 32px);
-  border: 1px solid var(--border-accent);
-  border-top: 3px solid #00bcd4;
-  border-radius: 10px;
-  background: var(--surface);
-  box-shadow: 0 8px 28px rgba(15, 36, 64, 0.07);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  position: relative;
+  padding: clamp(12px, 2vw, 20px) clamp(16px, 2.5vw, 28px);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.hx-pulse__stat + .hx-pulse__stat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 1px;
+  background: rgba(0, 151, 178, 0.28);
 }
 
 .hx-pulse__stat:hover {
-  border-color: rgba(90, 156, 196, 0.45);
-  box-shadow: 0 0 40px rgba(90, 156, 196, 0.12);
-  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.92;
 }
 
 /* Pulse — reveal re-activable al scroll */
@@ -170,18 +187,13 @@
 
 @keyframes hx-pulse-stat-flash {
   0% {
-    border-color: rgba(90, 156, 196, 0.2);
-    box-shadow: 0 0 0 rgba(90, 156, 196, 0);
+    opacity: 0.65;
   }
   45% {
-    border-color: rgba(90, 156, 196, 0.65);
-    box-shadow: 0 0 52px rgba(90, 156, 196, 0.32);
-    transform: translateY(-6px) scale(1.02);
+    opacity: 1;
   }
   100% {
-    border-color: rgba(90, 156, 196, 0.2);
-    box-shadow: 0 0 0 rgba(90, 156, 196, 0);
-    transform: translateY(0) scale(1);
+    opacity: 1;
   }
 }
 
@@ -7389,9 +7401,9 @@ body.hx-svc-panel-open [data-wa-float] {
   }
 
   .hx-pulse__stats {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 420px;
-    margin-inline: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+    margin-inline: 0;
   }
 }
 

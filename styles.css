@@ -2300,16 +2300,12 @@ body.page-home.hero-slide--graphic.hero-carousel--kenburns .hero-banner__visual 
 }
 
 .hero-promo__scrim {
-  display: none;
-}
-
-body.page-home.hero-slide--light-bg .hero-promo__scrim {
   display: block;
   position: absolute;
   left: max(-28px, calc(var(--pad-x) * -1.1));
-  top: -22%;
-  bottom: -22%;
-  width: min(80vw, 860px);
+  top: -18%;
+  bottom: -18%;
+  width: min(72vw, 720px);
   z-index: 0;
   pointer-events: none;
   border: none;
@@ -2319,12 +2315,20 @@ body.page-home.hero-slide--light-bg .hero-promo__scrim {
   -webkit-backdrop-filter: none;
   background: linear-gradient(
     90deg,
-    rgba(0, 10, 28, 0.9) 0%,
-    rgba(0, 12, 30, 0.78) 24%,
-    rgba(0, 14, 34, 0.52) 44%,
-    rgba(0, 0, 0, 0.2) 58%,
-    rgba(0, 0, 0, 0.06) 68%,
-    transparent 82%
+    rgba(2, 10, 24, 0.72) 0%,
+    rgba(2, 12, 28, 0.48) 38%,
+    rgba(2, 12, 28, 0.18) 62%,
+    transparent 88%
+  );
+}
+
+body.page-home.hero-slide--light-bg .hero-promo__scrim {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 10, 28, 0.88) 0%,
+    rgba(0, 12, 30, 0.7) 28%,
+    rgba(0, 14, 34, 0.4) 52%,
+    transparent 80%
   );
 }
 
@@ -2334,31 +2338,14 @@ body.page-home.hero-slide--light-bg .hero-promo__scrim {
 }
 
 .hero-promo__rail {
-  position: absolute;
-  left: 0;
-  top: 0.12em;
-  bottom: 0.12em;
-  width: 3px;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    var(--accent-bright) 18%,
-    var(--yaavs-cyan) 50%,
-    var(--accent-bright) 82%,
-    transparent 100%
-  );
-  box-shadow:
-    0 0 18px rgba(90, 156, 196, 0.65),
-    0 0 40px rgba(90, 156, 196, 0.25);
-  z-index: 1;
-  pointer-events: none;
+  display: none;
 }
 
 .hero-promo__inner {
   position: relative;
   z-index: 2;
-  padding: clamp(8px, 1.5vw, 12px) 0 clamp(8px, 1.5vw, 12px) clamp(22px, 3.2vw, 36px);
-  max-width: 20em;
+  padding: clamp(8px, 1.5vw, 12px) 0;
+  max-width: 22em;
 }
 
 .hero-promo__eyebrow {
@@ -2395,17 +2382,16 @@ body.page-home.hero-slide--light-bg .hero-promo__scrim {
 }
 
 .hero-promo__title {
-  margin: 0 0 clamp(16px, 2.4vw, 22px);
-  font-size: clamp(2.15rem, 6.8vw, 4.35rem);
+  margin: 0 0 clamp(12px, 1.8vw, 16px);
+  font-size: clamp(1.85rem, 5.2vw, 3.35rem);
   font-weight: 800;
-  line-height: 0.94;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-transform: none;
   color: #fff;
   text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.88),
-    0 8px 28px rgba(0, 0, 0, 0.65),
-    0 0 40px rgba(0, 0, 0, 0.35);
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .hero-promo__accent {
@@ -2416,18 +2402,18 @@ body.page-home.hero-slide--light-bg .hero-promo__scrim {
   background-clip: unset;
   filter: none;
   text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.88),
-    0 8px 28px rgba(0, 0, 0, 0.65);
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .hero-promo__lead {
-  margin: 0 0 clamp(22px, 3vw, 30px);
-  font-size: clamp(0.98rem, 1.85vw, 1.12rem);
+  margin: 0 0 clamp(18px, 2.6vw, 26px);
+  font-size: clamp(0.95rem, 1.7vw, 1.08rem);
   font-weight: 500;
-  line-height: 1.55;
-  color: #fff;
-  max-width: 32ch;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 34ch;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .hero-promo__cta {
