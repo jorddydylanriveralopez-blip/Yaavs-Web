@@ -9570,29 +9570,21 @@ body.page-home.hx-band--dark .hx-raffle {
   outline: none;
 }
 
-.hx-prepago-modal__kicker {
-  margin: 0 0 8px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #0097b2;
-}
-
 .hx-prepago-modal__title {
-  margin: 0 0 8px;
-  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  margin: 0 0 clamp(16px, 2.2vw, 22px);
+  padding-right: 44px;
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
   font-weight: 800;
   letter-spacing: -0.03em;
+  line-height: 1.15;
   color: #0f2440;
 }
 
-.hx-prepago-modal__desc {
-  margin: 0 0 clamp(18px, 2.5vw, 26px);
-  max-width: 38em;
-  font-size: 0.98rem;
-  line-height: 1.5;
-  color: #3a5268;
+.hx-prepago-modal__accent {
+  display: inline-block;
+  color: #0097b2;
+  background: linear-gradient(180deg, transparent 62%, rgba(0, 229, 255, 0.28) 62%);
+  padding: 0 0.06em;
 }
 
 .hx-prepago-modal__grid {
