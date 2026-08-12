@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var CACHE = "20260812h";
+  var CACHE = "20260812j";
 
   var CLIENTS = [
     {
@@ -100,6 +100,8 @@
 
     var track = root.querySelector("[data-tx-clients-track]");
     var viewport = root.querySelector("[data-tx-clients-viewport]");
+    var prevBtn = root.querySelector("[data-tx-clients-prev]");
+    var nextBtn = root.querySelector("[data-tx-clients-next]");
     if (!track || !viewport) return;
 
     function makeCard(client, index, duplicate) {
@@ -139,7 +141,91 @@
       track.appendChild(makeCard(client, index, true));
     });
 
-    root.classList.add("is-marquee");
+    root.classList.add("is-marquee", "is-js-marquee");
+
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      root.classList.add("is-static");
+      root.classList.remove("is-js-marquee");
+    }
+
+    var offset = 0;
+    var halfWidth = 0;
+    var step = 0;
+    var rafId = 0;
+    var lastTs = 0;
+    var speed = 42; /* px/s */
+    var hovering = false;
+    var lbOpen = false;
+    var resumeTimer = 0;
+    var manualHoldMs = 6500;
+
+    function measure() {
+      var firstCards = track.querySelectorAll(".tx-clients__card");
+      if (!firstCards.length) return;
+      var style = window.getComputedStyle(track);
+      var gap = parseFloat(style.gap || style.columnGap) || 0;
+      step = firstCards[0].getBoundingClientRect().width + gap;
+      halfWidth = track.scrollWidth / 2;
+      if (halfWidth > 0) {
+        while (offset <= -halfWidth) offset += halfWidth;
+        while (offset > 0) offset -= halfWidth;
+      }
+      track.style.transform = "translate3d(" + offset + "px, 0, 0)";
+    }
+
+    function normalizeOffset() {
+      if (halfWidth <= 0) return;
+      while (offset <= -halfWidth) offset += halfWidth;
+      while (offset > 0) offset -= halfWidth;
+    }
+
+    function paint() {
+      normalizeOffset();
+      track.style.transform = "translate3d(" + offset + "px, 0, 0)";
+    }
+
+    function canAuto() {
+      return (
+        !reducedMotion &&
+        !hovering &&
+        !lbOpen &&
+        !root.classList.contains("is-manual") &&
+        halfWidth > 0
+      );
+    }
+
+    function tick(ts) {
+      if (!lastTs) lastTs = ts;
+      var delta = ts - lastTs;
+      lastTs = ts;
+      if (canAuto()) {
+        offset -= (speed * delta) / 1000;
+        paint();
+      }
+      rafId = window.requestAnimationFrame(tick);
+    }
+
+    function startAuto() {
+      if (reducedMotion || rafId) return;
+      lastTs = 0;
+      rafId = window.requestAnimationFrame(tick);
+    }
+
+    function holdManual() {
+      root.classList.add("is-manual", "is-paused");
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(function () {
+        root.classList.remove("is-manual", "is-paused");
+      }, manualHoldMs);
+    }
+
+    function nudge(direction) {
+      if (reducedMotion || step <= 0) return;
+      holdManual();
+      offset += direction * step;
+      paint();
+    }
 
     var lbIndex = 0;
     var dialog = ensureLightbox();
@@ -149,7 +235,6 @@
     var lbRole = dialog.querySelector("[data-tx-lb-role]");
     var lbStars = dialog.querySelector("[data-tx-lb-stars]");
     var lbCount = dialog.querySelector("[data-tx-lb-count]");
-    var lbOpen = false;
 
     function paintLightbox(i) {
       var client = CLIENTS[i];
@@ -196,6 +281,24 @@
       openLightbox(Number(card.getAttribute("data-tx-client-index")) || 0);
     });
 
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        nudge(1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        nudge(-1);
+      });
+    }
+
+    root.addEventListener("mouseenter", function () {
+      hovering = true;
+    });
+    root.addEventListener("mouseleave", function () {
+      hovering = false;
+    });
+
     dialog.querySelector("[data-tx-lb-close]").addEventListener("click", closeLightbox);
     dialog.querySelector("[data-tx-lb-prev]").addEventListener("click", lbPrev);
     dialog.querySelector("[data-tx-lb-next]").addEventListener("click", lbNext);
@@ -211,20 +314,70 @@
     });
 
     document.addEventListener("keydown", function (event) {
-      if (!lbOpen) return;
+      if (lbOpen) {
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          lbPrev();
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          lbNext();
+        }
+        if (event.key === "Escape") closeLightbox();
+        return;
+      }
+
+      if (!root.matches(":hover") && document.activeElement !== prevBtn && document.activeElement !== nextBtn) {
+        return;
+      }
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        lbPrev();
+        nudge(1);
       }
       if (event.key === "ArrowRight") {
         event.preventDefault();
-        lbNext();
+        nudge(-1);
       }
-      if (event.key === "Escape") closeLightbox();
     });
 
-    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) root.classList.add("is-static");
+    var touchStartX = 0;
+    var touchDelta = 0;
+    viewport.addEventListener(
+      "touchstart",
+      function (event) {
+        touchStartX = event.changedTouches[0].clientX;
+        touchDelta = 0;
+        hovering = true;
+      },
+      { passive: true }
+    );
+    viewport.addEventListener(
+      "touchmove",
+      function (event) {
+        touchDelta = event.changedTouches[0].clientX - touchStartX;
+      },
+      { passive: true }
+    );
+    viewport.addEventListener(
+      "touchend",
+      function () {
+        hovering = false;
+        if (Math.abs(touchDelta) > 48) {
+          if (touchDelta < 0) nudge(-1);
+          else nudge(1);
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", function () {
+      measure();
+    });
+
+    window.requestAnimationFrame(function () {
+      measure();
+      startAuto();
+    });
   }
 
   function boot() {

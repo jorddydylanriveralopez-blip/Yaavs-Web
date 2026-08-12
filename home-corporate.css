@@ -3170,14 +3170,18 @@ body.page-home.page-intro-active .hero-scroll-hint {
   will-change: transform;
 }
 
-.page-home .tx-clients.is-marquee .tx-clients__track {
+.page-home .tx-clients.is-marquee:not(.is-js-marquee) .tx-clients__track {
   animation: tx-clients-marquee 42s linear infinite;
 }
 
-.page-home .tx-clients.is-marquee:hover .tx-clients__track,
-.page-home .tx-clients.is-paused .tx-clients__track,
-html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee .tx-clients__track {
+.page-home .tx-clients.is-marquee:not(.is-js-marquee):hover .tx-clients__track,
+.page-home .tx-clients.is-paused:not(.is-js-marquee) .tx-clients__track,
+html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee) .tx-clients__track {
   animation-play-state: paused;
+}
+
+.page-home .tx-clients.is-js-marquee .tx-clients__track {
+  animation: none;
 }
 
 @keyframes tx-clients-marquee {
@@ -3256,15 +3260,41 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee .tx-clients__track 
 }
 
 .page-home .tx-clients__nav {
-  display: none;
+  position: absolute;
+  top: 44%;
+  z-index: 5;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 151, 178, 0.35);
+  background: rgba(255, 255, 255, 0.94);
+  color: #003087;
+  font-size: 1.85rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(15, 36, 64, 0.16);
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.page-home .tx-clients__nav--prev { left: max(10px, 1.2vw); }
+.page-home .tx-clients__nav--next { right: max(10px, 1.2vw); }
+
+.page-home .tx-clients__nav:hover,
+.page-home .tx-clients__nav:focus-visible {
+  background: #fff;
+  transform: translateY(-50%) scale(1.06);
+  outline: none;
 }
 
 .page-home .tx-clients__hint {
-  margin: 4px auto 0;
+  margin: 8px auto 0;
   text-align: center;
   font-size: 0.82rem;
   font-weight: 600;
   color: #3a5268;
+  max-width: 42rem;
+  padding-inline: 16px;
 }
 
 .tx-clients-lb {
@@ -3453,16 +3483,28 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee .tx-clients__track 
     animation-duration: 34s;
   }
 
+  .tx-clients-lb {
+    width: min(100vw - 20px, 520px);
+    max-height: min(92vh, 820px);
+  }
+
   .tx-clients-lb__shell {
     grid-template-columns: 1fr;
+    max-height: min(92vh, 820px);
   }
 
   .tx-clients-lb__media {
-    min-height: min(52vh, 420px);
+    min-height: min(46vh, 380px);
+    max-height: min(46vh, 380px);
   }
 
   .tx-clients-lb__nav {
-    top: 28%;
+    top: 24%;
+  }
+
+  .tx-clients-lb__nav:hover,
+  .tx-clients-lb__nav:focus-visible {
+    transform: translateY(-50%) scale(1.05);
   }
 }
 
