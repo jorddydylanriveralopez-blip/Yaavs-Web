@@ -1304,6 +1304,80 @@
   const yaavstaModal = root.querySelector("[data-hx-yaavsta-modal]");
   if (prepagoModal) {
     let prepagoLastFocus = null;
+    const YAAVSTA_ANDROID =
+      "https://play.google.com/store/apps/details?id=mx.com.yaavsta.yaavsta";
+    const YAAVSTA_IOS = "https://apps.apple.com/mx/app/yaavsta/id6759346556";
+
+    function isAndroidUa() {
+      return /android/i.test(navigator.userAgent || "");
+    }
+
+    function isIosUa() {
+      return /iPad|iPhone|iPod/i.test(navigator.userAgent || "");
+    }
+
+    function stopPrepagoVideos() {
+      prepagoModal.querySelectorAll(".hx-prepago-modal__video").forEach((video) => {
+        try {
+          video.pause();
+          video.currentTime = 0;
+        } catch (_) {
+          /* noop */
+        }
+        video.closest(".hx-prepago-modal__card")?.classList.remove("is-video-on");
+      });
+    }
+
+    function playPrepagoCardVideo(card) {
+      const video = card.querySelector(".hx-prepago-modal__video");
+      if (!video) return;
+      const src = video.getAttribute("data-src");
+      if (src && !video.getAttribute("src")) {
+        video.src = src;
+        video.load();
+      }
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      const show = () => card.classList.add("is-video-on");
+      video.play()
+        .then(() => {
+          if (video.readyState >= 2) show();
+          else {
+            const onReady = () => {
+              video.removeEventListener("loadeddata", onReady);
+              video.removeEventListener("playing", onReady);
+              show();
+            };
+            video.addEventListener("loadeddata", onReady);
+            video.addEventListener("playing", onReady);
+          }
+        })
+        .catch(() => {
+          card.classList.remove("is-video-on");
+        });
+    }
+
+    function stopPrepagoCardVideo(card) {
+      const video = card.querySelector(".hx-prepago-modal__video");
+      card.classList.remove("is-video-on");
+      if (!video) return;
+      try {
+        video.pause();
+        video.currentTime = 0;
+      } catch (_) {
+        /* noop */
+      }
+    }
+
+    prepagoModal.querySelectorAll(".hx-prepago-modal__card").forEach((card) => {
+      card.addEventListener("mouseenter", () => playPrepagoCardVideo(card));
+      card.addEventListener("mouseleave", () => stopPrepagoCardVideo(card));
+      card.addEventListener("focusin", () => playPrepagoCardVideo(card));
+      card.addEventListener("focusout", () => stopPrepagoCardVideo(card));
+    });
 
     function openPrepagoModal() {
       prepagoLastFocus = document.activeElement;
@@ -1324,6 +1398,7 @@
 
     function closePrepagoModal() {
       if (!prepagoModal.classList.contains("is-open") && prepagoModal.hidden) return;
+      stopPrepagoVideos();
       prepagoModal.classList.remove("is-open");
       prepagoModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("hx-svc-panel-open");
@@ -1340,6 +1415,14 @@
 
     function openYaavstaModal() {
       if (!yaavstaModal) return;
+      if (isAndroidUa()) {
+        window.open(YAAVSTA_ANDROID, "_blank", "noopener,noreferrer");
+        return;
+      }
+      if (isIosUa()) {
+        window.open(YAAVSTA_IOS, "_blank", "noopener,noreferrer");
+        return;
+      }
       yaavstaModal.hidden = false;
       yaavstaModal.removeAttribute("hidden");
       yaavstaModal.setAttribute("aria-hidden", "false");
@@ -1376,6 +1459,7 @@
     function launchPrepagoService(id) {
       const hash = PREPAGO_TARGETS[id];
       if (!hash) return;
+      stopPrepagoVideos();
       closePrepagoModal();
       closeYaavstaModal();
       window.setTimeout(() => {
@@ -1401,10 +1485,7 @@
     });
 
     yaavstaModal?.querySelectorAll("[data-hx-yaavsta-close]").forEach((el) => {
-      el.addEventListener("click", (event) => {
-        if (el.hasAttribute("data-hx-prepago-go")) return;
-        closeYaavstaModal();
-      });
+      el.addEventListener("click", closeYaavstaModal);
     });
 
     document.addEventListener("keydown", (e) => {
@@ -1423,9 +1504,16 @@
         if (go) {
           event.preventDefault();
           event.stopPropagation();
-          const id = go.getAttribute("data-hx-prepago-go");
-          if (go.closest("[data-hx-yaavsta-modal]")) closeYaavstaModal();
-          launchPrepagoService(id);
+          launchPrepagoService(go.getAttribute("data-hx-prepago-go"));
+          return;
+        }
+
+        const yaavstaOpen = event.target.closest?.(
+          '[data-hx-yaavsta-open], [data-deck-svc="tiempo-aire"]'
+        );
+        if (yaavstaOpen && !yaavstaOpen.closest("[data-hx-yaavsta-modal]") && !yaavstaOpen.closest("[data-hx-prepago-modal]")) {
+          event.preventDefault();
+          openYaavstaModal();
           return;
         }
 
