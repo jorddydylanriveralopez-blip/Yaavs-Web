@@ -5961,6 +5961,7 @@ body.hx-svc-panel-open .social-float {
 .hx-yaavshop-modal,
 .hx-vinc-modal,
 .hx-esim-modal,
+.hx-prepago-modal,
 .hx-svc-panel {
   z-index: 12000;
 }
@@ -9721,11 +9722,7 @@ body.page-home.hx-band--dark .hx-raffle {
   .hx-prepago-modal {
     align-items: center;
     justify-content: center;
-    padding:
-      max(16px, env(safe-area-inset-top, 0px))
-      max(16px, env(safe-area-inset-right, 0px))
-      max(16px, env(safe-area-inset-bottom, 0px))
-      max(16px, env(safe-area-inset-left, 0px));
+    padding: 16px;
   }
 
   .hx-prepago-modal__backdrop {
@@ -9733,12 +9730,13 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__sheet {
-    width: min(100%, 340px);
-    max-height: min(72dvh, 460px);
+    width: min(92vw, 420px);
+    max-width: calc(100vw - 32px);
+    max-height: min(84dvh, 560px);
     height: auto;
-    margin: 0 auto;
-    padding: 18px 14px 14px;
-    border-radius: 20px;
+    margin: 0;
+    padding: 22px 16px 16px;
+    border-radius: 22px;
     border: 1px solid rgba(255, 255, 255, 0.78);
     box-shadow:
       0 24px 56px rgba(4, 20, 36, 0.34),
@@ -9759,43 +9757,43 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__close {
-    top: 8px;
-    right: 8px;
-    width: 36px;
-    height: 36px;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid rgba(12, 48, 72, 0.1);
     box-shadow: 0 4px 12px rgba(8, 40, 64, 0.1);
   }
 
   .hx-prepago-modal__title {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     padding-right: 0;
-    font-size: clamp(1.45rem, 7vw, 1.85rem);
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
     line-height: 1.08;
     text-align: center;
   }
 
   .hx-prepago-modal__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    gap: 10px;
     margin-top: 0;
   }
 
   .hx-prepago-modal__card {
     aspect-ratio: 1 / 1;
     max-width: none;
-    border-radius: 12px;
+    border-radius: 14px;
     box-shadow:
       0 8px 16px rgba(8, 28, 48, 0.16),
       0 0 0 1px rgba(0, 188, 212, 0.18);
   }
 
   .hx-prepago-modal__card-label {
-    left: 6px;
-    right: 6px;
-    bottom: 6px;
-    font-size: 0.58rem;
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+    font-size: clamp(0.62rem, 2.8vw, 0.72rem);
     line-height: 1.05;
     border-bottom-width: 1.5px;
     padding-bottom: 1px;
@@ -9816,25 +9814,26 @@ body.page-home.hx-band--dark .hx-raffle {
 
 @media (max-width: 720px) and (max-height: 640px) {
   .hx-prepago-modal__sheet {
-    width: min(100%, 300px);
-    padding: 14px 12px 12px;
+    width: min(90vw, 380px);
+    max-width: calc(100vw - 28px);
+    padding: 16px 14px 14px;
   }
 
   .hx-prepago-modal__title {
-    margin-bottom: 10px;
-    font-size: clamp(1.28rem, 6.4vw, 1.55rem);
+    margin-bottom: 12px;
+    font-size: clamp(1.35rem, 6.4vw, 1.7rem);
   }
 
   .hx-prepago-modal__grid {
-    gap: 6px;
+    gap: 8px;
   }
 
   .hx-prepago-modal__card {
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   .hx-prepago-modal__card-label {
-    font-size: 0.52rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -9871,23 +9870,24 @@ body.page-home.hx-band--dark .hx-raffle {
 
 @media (max-width: 380px) {
   .hx-prepago-modal__sheet {
-    width: min(100%, 300px);
-    padding: 16px 12px 12px;
+    width: min(94vw, 360px);
+    max-width: calc(100vw - 24px);
+    padding: 18px 12px 12px;
   }
 
   .hx-prepago-modal__grid {
-    gap: 6px;
+    gap: 8px;
   }
 
   .hx-prepago-modal__card {
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   .hx-prepago-modal__card-label {
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-    font-size: 0.54rem;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    font-size: 0.58rem;
   }
 }
 
