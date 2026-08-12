@@ -3135,15 +3135,15 @@ body.page-home.page-intro-active .hero-scroll-hint {
 /* ─── Carrusel clientes satisfechos + lightbox ─── */
 .page-home .tx-clients {
   position: relative;
-  width: min(1180px, calc(100% - 24px));
-  margin: clamp(8px, 1.5vw, 18px) auto 0;
+  width: min(1320px, calc(100% - 20px));
+  margin: clamp(10px, 1.8vw, 22px) auto 0;
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
     "prev viewport next"
     "hint hint hint";
   align-items: center;
-  gap: 10px 8px;
+  gap: 12px 10px;
 }
 
 .page-home .tx-clients__viewport {

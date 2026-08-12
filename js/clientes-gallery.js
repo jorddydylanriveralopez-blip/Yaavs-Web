@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var CACHE = "20260812f";
+  var CACHE = "20260812g";
 
   var CLIENTS = [
     {
@@ -10,14 +10,6 @@
       role: "Punto de venta · CDMX",
       quote:
         "Excelente atención y siempre hay stock. Con YAAVS siento respaldo real para mi negocio.",
-      stars: 5,
-    },
-    {
-      src: "assets/testimonios/clientes-02.jpg?v=" + CACHE,
-      name: "Andrea Ruiz",
-      role: "Socia comercial · Estado de México",
-      quote:
-        "Me encanta ser parte de la red. El soporte es rápido, claro y siempre hay alguien para ayudarte.",
       stars: 5,
     },
     {
