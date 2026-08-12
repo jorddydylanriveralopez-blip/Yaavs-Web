@@ -6563,19 +6563,18 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 .page-home .hx-somos::before {
-  content: "YAAVS";
+  content: "";
   position: absolute;
   left: 50%;
   top: 46%;
   z-index: 0;
+  width: min(78vw, 760px);
+  aspect-ratio: 248 / 87;
+  height: auto;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  font-size: clamp(6rem, 22vw, 14rem);
-  font-weight: 900;
-  letter-spacing: -0.07em;
-  line-height: 1;
-  color: rgba(0, 48, 135, 0.055);
-  white-space: nowrap;
+  background: url("assets/yaavs-logo-on-light.png") center / contain no-repeat;
+  opacity: 0.09;
   user-select: none;
 }
 
@@ -6862,8 +6861,8 @@ body.page-home.hx-band--dark .site-footer .footer {
   }
 
   .page-home .hx-somos::before {
-    font-size: clamp(5.5rem, 28vw, 8rem);
-    opacity: 0.9;
+    width: min(88vw, 420px);
+    opacity: 0.08;
   }
 
   .page-home .hx-somos__brand {
