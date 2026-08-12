@@ -80,8 +80,8 @@ window.YAAVS_HERO_CAROUSEL = {
       alt: "Conviértete en socio comercial — red nacional YAAVS.",
       duration: 0,
       promo: {
-        title: "Únete a la",
-        accent: "red YAAVS",
+        title: "Conviértete en",
+        accent: "socio comercial",
         lead: "Más de 16,000 puntos de venta con respaldo comercial en todo México.",
         cta: "Únete como socio",
         href: "#",
