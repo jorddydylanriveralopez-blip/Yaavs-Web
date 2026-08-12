@@ -1012,45 +1012,13 @@
           <span class="tx-gallery__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="tx-gallery__marquee tx-gallery__marquee--shots" aria-hidden="true">
-          <div class="tx-gallery__shots-track">
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-01.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-02.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-03.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-04.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-05.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-06.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-01.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-02.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-03.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-04.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-05.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
-            <figure class="tx-gallery__shot">
-              <img src="assets/testimonios/clientes-06.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
-            </figure>
+        <div class="tx-clients" data-tx-clients>
+          <button type="button" class="tx-clients__nav tx-clients__nav--prev" data-tx-clients-prev aria-label="Ver clientes anteriores">‹</button>
+          <div class="tx-clients__viewport" data-tx-clients-viewport>
+            <div class="tx-clients__track" data-tx-clients-track></div>
           </div>
+          <button type="button" class="tx-clients__nav tx-clients__nav--next" data-tx-clients-next aria-label="Ver más clientes">›</button>
+          <p class="tx-clients__hint">Toca una foto para ver la reseña</p>
         </div>
 
         <div class="tx-gallery__feature-video is-visible">
@@ -1065,22 +1033,22 @@
               <img class="tx-gallery__feature-float tx-gallery__feature-float--chip" src="assets/floats/float-chip.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
               <img class="tx-gallery__feature-float tx-gallery__feature-float--phone" src="assets/floats/float-phone.svg" alt="" width="48" height="72" loading="lazy" decoding="async">
               <figure class="tx-gallery__feature-card tx-gallery__feature-card--1">
-                <img src="assets/testimonios/clientes-01.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
+                <img src="assets/testimonios/clientes-01.jpg?v=20260812f" alt="" width="941" height="1672" loading="lazy" decoding="async">
               </figure>
               <figure class="tx-gallery__feature-card tx-gallery__feature-card--2">
-                <img src="assets/testimonios/clientes-02.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
+                <img src="assets/testimonios/clientes-02.jpg?v=20260812f" alt="" width="941" height="1672" loading="lazy" decoding="async">
               </figure>
               <figure class="tx-gallery__feature-card tx-gallery__feature-card--3">
-                <img src="assets/testimonios/clientes-03.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
+                <img src="assets/testimonios/clientes-03.jpg?v=20260812f" alt="" width="941" height="1672" loading="lazy" decoding="async">
               </figure>
               <figure class="tx-gallery__feature-card tx-gallery__feature-card--4">
-                <img src="assets/testimonios/clientes-04.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
+                <img src="assets/testimonios/clientes-04.jpg?v=20260812f" alt="" width="941" height="1672" loading="lazy" decoding="async">
               </figure>
               <figure class="tx-gallery__feature-card tx-gallery__feature-card--5">
-                <img src="assets/testimonios/clientes-05.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
+                <img src="assets/testimonios/clientes-05.jpg?v=20260812f" alt="" width="941" height="1672" loading="lazy" decoding="async">
               </figure>
               <figure class="tx-gallery__feature-card tx-gallery__feature-card--6">
-                <img src="assets/testimonios/clientes-06.jpg?v=20260812e" alt="" width="941" height="1672" loading="lazy" decoding="async">
+                <img src="assets/testimonios/clientes-06.jpg?v=20260812f" alt="" width="941" height="1672" loading="lazy" decoding="async">
               </figure>
             </aside>
 
@@ -1405,6 +1373,7 @@
       loadWhenVisible("#servicios-preview", "home-wow", ["js/home-wow.js?v=9"], "400px 0px");
       /* yaavser-lead lo monta layout.js en todas las páginas */
       loadWhenVisible("#testimonios-home, .tx-gallery--home", "testimonios", [
+        "js/clientes-gallery.js?v=20260812f",
         "js/testimonios-historias.js?v=3",
       ], "320px 0px");
 
