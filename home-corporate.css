@@ -6548,22 +6548,50 @@ body.page-home.hx-band--dark .site-footer .footer {
   color: inherit;
 }
 
-/* ─── Intro Quiénes somos — banda limpia sin ilustración ─── */
+/* ─── Intro Quiénes somos — atmósfera suave Yaavs ─── */
 .page-home .hx-somos {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: 0;
   border: none;
-  background: #f4f7fb;
+  background:
+    radial-gradient(ellipse 88% 70% at 18% 12%, rgba(0, 188, 212, 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 60% at 88% 78%, rgba(0, 48, 135, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 52% 48%, rgba(255, 255, 255, 0.55) 0%, transparent 70%),
+    linear-gradient(165deg, #e8f6fa 0%, #eef4fb 42%, #e4edf7 100%);
+}
+
+.page-home .hx-somos::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: soft-light;
+}
+
+.page-home .hx-somos::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, transparent 18%, transparent 82%, rgba(244, 247, 251, 0.7) 100%),
+    radial-gradient(ellipse 48% 36% at 50% 42%, rgba(0, 151, 178, 0.08) 0%, transparent 72%);
 }
 
 .page-home .hx-somos__stage {
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(48px, 6vw, 80px) 0 clamp(44px, 5.5vw, 72px);
+  padding: clamp(52px, 6.5vw, 88px) 0 clamp(48px, 6vw, 80px);
   overflow: hidden;
   text-align: center;
 }
@@ -6659,7 +6687,6 @@ body.page-home.hx-band--dark .site-footer .footer {
   letter-spacing: -0.015em;
   color: #0a2744 !important;
   -webkit-text-fill-color: #0a2744;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .page-home .hx-somos__carriers {
