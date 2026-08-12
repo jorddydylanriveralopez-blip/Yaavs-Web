@@ -69,7 +69,7 @@
   <link rel="stylesheet" href="home-corporate.css?v=20260812l">
   <link rel="stylesheet" href="promo-popup.css?v=4">
   <link rel="stylesheet" href="theme-day-night.css?v=5" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="home-experience.css?v=212" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="home-experience.css?v=213" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="decorations.css?v=13" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-wow.css?v=3" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="yaavser-lead.css?v=5" media="print" onload="this.media='all'">
@@ -77,7 +77,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="theme-day-night.css?v=5">
-    <link rel="stylesheet" href="home-experience.css?v=212">
+    <link rel="stylesheet" href="home-experience.css?v=213">
     <link rel="stylesheet" href="decorations.css?v=13">
     <link rel="stylesheet" href="home-wow.css?v=3">
     <link rel="stylesheet" href="yaavser-lead.css?v=5">
@@ -424,7 +424,7 @@
             </span>
           </a>
 
-          <div class="hx-svc-deck__item is-deck-locked" data-deck-svc="prepago" data-masonry="short" data-accent="cyan" style="--deck-i: 7; --masonry-ratio: 1 / 1" aria-disabled="true" title="Próximamente">
+          <a href="#prepago-modal" class="hx-svc-deck__item" data-deck-svc="prepago" data-hx-prepago-open data-masonry="short" data-accent="cyan" style="--deck-i: 7; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="prepago-modal">
             <span class="hx-svc-deck__bg" aria-hidden="true">
               <img src="assets/servicios/icons/prepago.png?v=1" alt="" width="1081" height="1081" loading="lazy" decoding="async">
             </span>
@@ -433,9 +433,9 @@
             <span class="hx-svc-deck__body">
               <span class="hx-svc-deck__title">Prepago</span>
               <span class="hx-svc-deck__desc">Activaciones y productos prepago con respaldo comercial YAAVS.</span>
-              <span class="hx-svc-deck__cta">Próximamente</span>
+              <span class="hx-svc-deck__cta">Ver servicios →</span>
             </span>
-          </div>
+          </a>
 
           <div class="hx-svc-deck__item is-deck-locked" data-deck-svc="postpago" data-masonry="short" data-accent="navy" style="--deck-i: 8; --masonry-ratio: 1 / 1" aria-disabled="true" title="Próximamente">
             <span class="hx-svc-deck__bg" aria-hidden="true">
@@ -790,6 +790,76 @@
                 <a class="btn btn--primary hx-esim-modal__cta" href="https://mibait.com/e-sim" target="_blank" rel="noopener noreferrer">Ir a eSIM BAIT →</a>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-prepago-modal" id="prepago-modal" data-hx-prepago-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="prepago-modal-title">
+        <div class="hx-prepago-modal__backdrop" data-hx-prepago-close aria-hidden="true"></div>
+        <div class="hx-prepago-modal__sheet">
+          <button type="button" class="hx-prepago-modal__close" data-hx-prepago-close aria-label="Cerrar">&times;</button>
+          <p class="hx-prepago-modal__kicker">Servicios prepago</p>
+          <h3 class="hx-prepago-modal__title" id="prepago-modal-title">Elige un servicio YAAVS</h3>
+          <p class="hx-prepago-modal__desc">Toca un cuadrito para ver el detalle y cómo usarlo en tu punto de venta.</p>
+          <div class="hx-prepago-modal__grid" role="list">
+            <button type="button" class="hx-prepago-modal__card" data-hx-prepago-go="recargaklic" role="listitem">
+              <span class="hx-prepago-modal__card-bg" aria-hidden="true">
+                <img src="assets/servicios/icons/recargaklic.png?v=5" alt="" width="400" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="hx-prepago-modal__card-label">RecargaKlic</span>
+            </button>
+            <button type="button" class="hx-prepago-modal__card" data-hx-prepago-go="vinculaciones" role="listitem">
+              <span class="hx-prepago-modal__card-bg" aria-hidden="true">
+                <img src="assets/servicios/icons/vinculaciones.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="hx-prepago-modal__card-label">Vinculaciones</span>
+            </button>
+            <button type="button" class="hx-prepago-modal__card" data-hx-prepago-go="portabilidad" role="listitem">
+              <span class="hx-prepago-modal__card-bg" aria-hidden="true">
+                <img src="assets/servicios/icons/portabilidad.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="hx-prepago-modal__card-label">Portabilidad</span>
+            </button>
+            <button type="button" class="hx-prepago-modal__card" data-hx-prepago-go="esims" role="listitem">
+              <span class="hx-prepago-modal__card-bg" aria-hidden="true">
+                <img src="assets/servicios/icons/esim.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="hx-prepago-modal__card-label">eSIMs</span>
+            </button>
+            <button type="button" class="hx-prepago-modal__card" data-hx-prepago-go="tiempo-aire" role="listitem">
+              <span class="hx-prepago-modal__card-bg" aria-hidden="true">
+                <img src="assets/servicios/icons/yaavsta.png?v=1" alt="" width="400" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="hx-prepago-modal__card-label">Yaavsta</span>
+            </button>
+            <button type="button" class="hx-prepago-modal__card" data-hx-prepago-go="rotulaciones" role="listitem">
+              <span class="hx-prepago-modal__card-bg" aria-hidden="true">
+                <img src="assets/servicios/icons/rotulaciones.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+              </span>
+              <span class="hx-prepago-modal__card-label">Rotulaciones</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hx-act-modal hx-yaavsta-modal" id="yaavsta-modal" data-hx-yaavsta-modal hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="yaavsta-modal-title">
+        <div class="hx-act-modal__backdrop" data-hx-yaavsta-close aria-hidden="true"></div>
+        <div class="hx-act-modal__sheet">
+          <button type="button" class="hx-act-modal__close" data-hx-yaavsta-close aria-label="Cerrar">&times;</button>
+          <p class="hx-act-modal__kicker">Yaavsta</p>
+          <h3 class="hx-act-modal__title" id="yaavsta-modal-title">Recargas multi-compañía</h3>
+          <p class="hx-act-modal__desc">Recargas de Telcel, AT&amp;T, Movistar, Unefon y más desde un solo punto de venta, con comisión al instante.</p>
+          <ol class="hx-yaavsta-modal__steps">
+            <li>Abre RecargaKlic y entra al módulo de tiempo aire o recargas.</li>
+            <li>Elige la compañía y el monto que solicita el cliente.</li>
+            <li>Ingresa el número a recargar y confirma la operación.</li>
+            <li>Entrega ticket o comprobante; el saldo se refleja al instante.</li>
+          </ol>
+          <div class="hx-act-modal__options hx-rk-modal__options">
+            <button type="button" class="hx-act-modal__option hx-rk-modal__option" data-hx-prepago-go="recargaklic" data-hx-yaavsta-close>
+              <span class="hx-rk-modal__store-name">Abrir RecargaKlic</span>
+              <span class="hx-act-modal__option-cta">Ver descarga →</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1392,7 +1462,7 @@
       /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=223",
-        "js/home-experience.js?v=231",
+        "js/home-experience.js?v=232",
       ], perf.soft ? "180px 0px" : "320px 0px");
 
       const deckHashes = [
@@ -1402,12 +1472,14 @@
         "#esim-modal",
         "#yaavshop-modal",
         "#recargaklic-modal",
+        "#prepago-modal",
+        "#yaavsta-modal",
         "#servicios-preview",
       ];
       if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=223",
-          "js/home-experience.js?v=231",
+          "js/home-experience.js?v=232",
         ]);
       }
 

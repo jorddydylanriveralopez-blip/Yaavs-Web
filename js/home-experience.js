@@ -1299,6 +1299,160 @@
     });
   }
 
+  /* Hub Prepago — cuadritos que abren cada servicio */
+  const prepagoModal = root.querySelector("[data-hx-prepago-modal]");
+  const yaavstaModal = root.querySelector("[data-hx-yaavsta-modal]");
+  if (prepagoModal) {
+    let prepagoLastFocus = null;
+
+    function openPrepagoModal() {
+      prepagoLastFocus = document.activeElement;
+      prepagoModal.hidden = false;
+      prepagoModal.removeAttribute("hidden");
+      prepagoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("hx-svc-panel-open");
+      prepagoModal.classList.add("is-open");
+      try {
+        window.YaavsSonic?.play?.();
+      } catch (_) {
+        /* noop */
+      }
+      window.requestAnimationFrame(() => {
+        prepagoModal.querySelector(".hx-prepago-modal__close")?.focus?.();
+      });
+    }
+
+    function closePrepagoModal() {
+      if (!prepagoModal.classList.contains("is-open") && prepagoModal.hidden) return;
+      prepagoModal.classList.remove("is-open");
+      prepagoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!prepagoModal.classList.contains("is-open")) {
+          prepagoModal.hidden = true;
+          prepagoModal.setAttribute("hidden", "");
+        }
+      }, 320);
+      if (prepagoLastFocus && typeof prepagoLastFocus.focus === "function") {
+        prepagoLastFocus.focus();
+      }
+    }
+
+    function openYaavstaModal() {
+      if (!yaavstaModal) return;
+      yaavstaModal.hidden = false;
+      yaavstaModal.removeAttribute("hidden");
+      yaavstaModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("hx-svc-panel-open");
+      yaavstaModal.classList.add("is-open");
+      window.requestAnimationFrame(() => {
+        yaavstaModal.querySelector(".hx-act-modal__close")?.focus?.();
+      });
+    }
+
+    function closeYaavstaModal() {
+      if (!yaavstaModal) return;
+      if (!yaavstaModal.classList.contains("is-open") && yaavstaModal.hidden) return;
+      yaavstaModal.classList.remove("is-open");
+      yaavstaModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("hx-svc-panel-open");
+      window.setTimeout(() => {
+        if (!yaavstaModal.classList.contains("is-open")) {
+          yaavstaModal.hidden = true;
+          yaavstaModal.setAttribute("hidden", "");
+        }
+      }, 320);
+    }
+
+    const PREPAGO_TARGETS = {
+      recargaklic: "#recargaklic-modal",
+      vinculaciones: "#vinculaciones-modal",
+      portabilidad: "#porta-modal",
+      esims: "#esim-modal",
+      rotulaciones: "#rotulaciones-modal",
+      "tiempo-aire": "#yaavsta-modal",
+    };
+
+    function launchPrepagoService(id) {
+      const hash = PREPAGO_TARGETS[id];
+      if (!hash) return;
+      closePrepagoModal();
+      closeYaavstaModal();
+      window.setTimeout(() => {
+        if (id === "tiempo-aire") {
+          openYaavstaModal();
+          return;
+        }
+        const deckItem = root.querySelector(`[data-deck-svc="${id}"]`);
+        if (deckItem && !deckItem.classList.contains("is-deck-locked")) {
+          deckItem.click();
+          return;
+        }
+        if (window.location.hash === hash) {
+          window.dispatchEvent(new Event("hashchange"));
+        } else {
+          window.location.hash = hash;
+        }
+      }, 220);
+    }
+
+    prepagoModal.querySelectorAll("[data-hx-prepago-close]").forEach((el) => {
+      el.addEventListener("click", closePrepagoModal);
+    });
+
+    yaavstaModal?.querySelectorAll("[data-hx-yaavsta-close]").forEach((el) => {
+      el.addEventListener("click", (event) => {
+        if (el.hasAttribute("data-hx-prepago-go")) return;
+        closeYaavstaModal();
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (yaavstaModal?.classList.contains("is-open")) {
+        closeYaavstaModal();
+        return;
+      }
+      if (prepagoModal.classList.contains("is-open")) closePrepagoModal();
+    });
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const go = event.target.closest?.("[data-hx-prepago-go]");
+        if (go) {
+          event.preventDefault();
+          event.stopPropagation();
+          const id = go.getAttribute("data-hx-prepago-go");
+          if (go.closest("[data-hx-yaavsta-modal]")) closeYaavstaModal();
+          launchPrepagoService(id);
+          return;
+        }
+
+        const openBtn = event.target.closest?.(
+          '[data-hx-prepago-open], [data-deck-svc="prepago"]'
+        );
+        if (!openBtn || openBtn.closest("[data-hx-prepago-modal]")) return;
+        if (openBtn.classList.contains("is-deck-locked")) return;
+        event.preventDefault();
+        if (!prepagoModal.classList.contains("is-open")) openPrepagoModal();
+      },
+      true
+    );
+
+    if (window.location.hash === "#prepago-modal") {
+      window.requestAnimationFrame(openPrepagoModal);
+    }
+    if (window.location.hash === "#yaavsta-modal") {
+      window.requestAnimationFrame(openYaavstaModal);
+    }
+
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#prepago-modal") openPrepagoModal();
+      if (window.location.hash === "#yaavsta-modal") openYaavstaModal();
+    });
+  }
+
   if (panel) {
     panel.querySelectorAll("[data-hx-svc-panel-close]").forEach((el) => {
       el.addEventListener("click", closeServicePanel);
