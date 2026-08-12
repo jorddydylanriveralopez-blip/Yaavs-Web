@@ -5947,8 +5947,12 @@ body.hx-svc-panel-open .site-header {
 
 body.hx-svc-panel-open .wa-float,
 body.hx-svc-panel-open .yaavbot-fab,
-body.hx-svc-panel-open [data-wa-float] {
+body.hx-svc-panel-open [data-wa-float],
+body.hx-svc-panel-open .social-float {
   z-index: 1 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .hx-porta-modal,
@@ -9766,9 +9770,10 @@ body.page-home.hx-band--dark .hx-raffle {
 
   .hx-prepago-modal__title {
     margin: 0 0 14px;
-    padding-right: 40px;
+    padding-right: 0;
     font-size: clamp(1.45rem, 7vw, 1.85rem);
     line-height: 1.08;
+    text-align: center;
   }
 
   .hx-prepago-modal__grid {
