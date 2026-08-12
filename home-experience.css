@@ -9572,11 +9572,13 @@ body.page-home.hx-band--dark .hx-raffle {
 
 .hx-prepago-modal__title {
   margin: 0 0 clamp(18px, 2.4vw, 26px);
-  padding-right: 48px;
+  padding-right: 0;
   font-size: clamp(1.85rem, 4.2vw, 2.65rem);
   font-weight: 900;
-  letter-spacing: -0.045em;
+  letter-spacing: 0.04em;
   line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
   color: #0a1f36;
 }
 
@@ -9763,10 +9765,10 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__title {
-    margin: 0 0 12px;
-    padding-right: 36px;
-    font-size: 1.05rem;
-    line-height: 1.2;
+    margin: 0 0 14px;
+    padding-right: 40px;
+    font-size: clamp(1.45rem, 7vw, 1.85rem);
+    line-height: 1.08;
   }
 
   .hx-prepago-modal__grid {
@@ -9814,8 +9816,8 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__title {
-    margin-bottom: 8px;
-    font-size: 0.98rem;
+    margin-bottom: 10px;
+    font-size: clamp(1.28rem, 6.4vw, 1.55rem);
   }
 
   .hx-prepago-modal__grid {
