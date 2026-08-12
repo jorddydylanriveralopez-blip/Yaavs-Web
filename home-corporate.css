@@ -3134,36 +3134,61 @@ body.page-home.page-intro-active .hero-scroll-hint {
 
 /* ─── Carrusel clientes satisfechos + lightbox ─── */
 .page-home .tx-clients {
+  --tx-clients-gap: clamp(14px, 1.8vw, 22px);
   position: relative;
-  width: min(1320px, calc(100% - 20px));
-  margin: clamp(10px, 1.8vw, 22px) auto 0;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas:
-    "prev viewport next"
-    "hint hint hint";
-  align-items: center;
-  gap: 12px 10px;
+  width: 100vw;
+  margin: clamp(12px, 2vw, 28px) 0 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: block;
 }
 
 .page-home .tx-clients__viewport {
-  grid-area: viewport;
   overflow: hidden;
-  border-radius: 22px;
-  padding: 6px 2px 10px;
+  padding: 10px 0 14px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
 }
 
 .page-home .tx-clients__track {
   display: flex;
-  gap: clamp(12px, 1.6vw, 20px);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  gap: var(--tx-clients-gap);
+  width: max-content;
+  padding-inline: clamp(16px, 3vw, 36px);
   will-change: transform;
+}
+
+.page-home .tx-clients.is-marquee .tx-clients__track {
+  animation: tx-clients-marquee 42s linear infinite;
+}
+
+.page-home .tx-clients.is-marquee:hover .tx-clients__track,
+.page-home .tx-clients.is-paused .tx-clients__track,
+html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee .tx-clients__track {
+  animation-play-state: paused;
+}
+
+@keyframes tx-clients-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(calc(-50% - var(--tx-clients-gap) / 2), 0, 0); }
 }
 
 .page-home .tx-clients__card {
   position: relative;
   flex: none;
-  width: clamp(210px, 24vw, 280px);
+  width: clamp(250px, 28vw, 340px);
   aspect-ratio: 3 / 4;
   margin: 0;
   padding: 0;
@@ -3231,37 +3256,11 @@ body.page-home.page-intro-active .hero-scroll-hint {
 }
 
 .page-home .tx-clients__nav {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 151, 178, 0.35);
-  background: rgba(255, 255, 255, 0.92);
-  color: #003087;
-  font-size: 1.7rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(15, 36, 64, 0.12);
-  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
-}
-
-.page-home .tx-clients__nav--prev { grid-area: prev; }
-.page-home .tx-clients__nav--next { grid-area: next; }
-
-.page-home .tx-clients__nav:hover:not(:disabled),
-.page-home .tx-clients__nav:focus-visible:not(:disabled) {
-  background: #fff;
-  transform: scale(1.05);
-  outline: none;
-}
-
-.page-home .tx-clients__nav:disabled {
-  opacity: 0.35;
-  cursor: default;
+  display: none;
 }
 
 .page-home .tx-clients__hint {
-  grid-area: hint;
-  margin: 0;
+  margin: 4px auto 0;
   text-align: center;
   font-size: 0.82rem;
   font-weight: 600;
@@ -3416,22 +3415,12 @@ body.page-home.page-intro-active .hero-scroll-hint {
 }
 
 @media (max-width: 820px) {
-  .page-home .tx-clients {
-    width: 100%;
-    grid-template-columns: 1fr auto auto;
-    grid-template-areas:
-      "viewport viewport viewport"
-      "hint prev next";
-    padding-inline: 12px;
-  }
-
   .page-home .tx-clients__card {
-    width: clamp(190px, 58vw, 240px);
+    width: clamp(230px, 66vw, 300px);
   }
 
-  .page-home .tx-clients__hint {
-    text-align: left;
-    align-self: center;
+  .page-home .tx-clients.is-marquee .tx-clients__track {
+    animation-duration: 34s;
   }
 
   .tx-clients-lb__shell {
@@ -3448,7 +3437,21 @@ body.page-home.page-intro-active .hero-scroll-hint {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-home .tx-clients__track,
+  .page-home .tx-clients.is-marquee .tx-clients__track,
+  .page-home .tx-clients.is-static .tx-clients__track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .page-home .tx-clients.is-static .tx-clients__card[aria-hidden="true"],
+  .page-home .tx-clients.is-marquee.is-static .tx-clients__card[aria-hidden="true"] {
+    display: none;
+  }
+
   .page-home .tx-clients__card,
   .page-home .tx-clients__card img {
     transition: none;

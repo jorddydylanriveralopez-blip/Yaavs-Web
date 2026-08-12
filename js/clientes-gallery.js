@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var CACHE = "20260812g";
+  var CACHE = "20260812h";
 
   var CLIENTS = [
     {
@@ -100,15 +100,17 @@
 
     var track = root.querySelector("[data-tx-clients-track]");
     var viewport = root.querySelector("[data-tx-clients-viewport]");
-    var prevBtn = root.querySelector("[data-tx-clients-prev]");
-    var nextBtn = root.querySelector("[data-tx-clients-next]");
     if (!track || !viewport) return;
 
-    CLIENTS.forEach(function (client, index) {
+    function makeCard(client, index, duplicate) {
       var card = document.createElement("button");
       card.type = "button";
       card.className = "tx-clients__card";
       card.setAttribute("data-tx-client-index", String(index));
+      if (duplicate) {
+        card.setAttribute("tabindex", "-1");
+        card.setAttribute("aria-hidden", "true");
+      }
       card.setAttribute(
         "aria-label",
         "Ver reseña de " + client.name + ", " + client.stars + " estrellas"
@@ -117,7 +119,7 @@
         '<img src="' +
         client.src +
         '" alt="' +
-        client.name +
+        (duplicate ? "" : client.name) +
         '" width="941" height="1672" loading="lazy" decoding="async">' +
         '<span class="tx-clients__card-meta">' +
         '<span class="tx-clients__card-stars" aria-hidden="true">' +
@@ -127,13 +129,18 @@
         client.name +
         "</span>" +
         "</span>";
-      track.appendChild(card);
+      return card;
+    }
+
+    CLIENTS.forEach(function (client, index) {
+      track.appendChild(makeCard(client, index, false));
+    });
+    CLIENTS.forEach(function (client, index) {
+      track.appendChild(makeCard(client, index, true));
     });
 
-    var cards = Array.prototype.slice.call(
-      track.querySelectorAll("[data-tx-client-index]")
-    );
-    var carouselIndex = 0;
+    root.classList.add("is-marquee");
+
     var lbIndex = 0;
     var dialog = ensureLightbox();
     var lbImg = dialog.querySelector(".tx-clients-lb__img");
@@ -143,30 +150,6 @@
     var lbStars = dialog.querySelector("[data-tx-lb-stars]");
     var lbCount = dialog.querySelector("[data-tx-lb-count]");
     var lbOpen = false;
-
-    function cardStep() {
-      if (!cards.length) return 0;
-      var style = window.getComputedStyle(track);
-      var gap = parseFloat(style.gap || style.columnGap) || 0;
-      return cards[0].getBoundingClientRect().width + gap;
-    }
-
-    function maxIndex() {
-      var visible = Math.max(
-        1,
-        Math.round(viewport.clientWidth / Math.max(cardStep(), 1))
-      );
-      return Math.max(0, cards.length - visible);
-    }
-
-    function goTo(nextIndex, animate) {
-      carouselIndex = Math.max(0, Math.min(maxIndex(), nextIndex));
-      track.style.transition = animate === false ? "none" : "";
-      track.style.transform =
-        "translate3d(" + -carouselIndex * cardStep() + "px, 0, 0)";
-      if (prevBtn) prevBtn.disabled = carouselIndex <= 0;
-      if (nextBtn) nextBtn.disabled = carouselIndex >= maxIndex();
-    }
 
     function paintLightbox(i) {
       var client = CLIENTS[i];
@@ -184,6 +167,7 @@
       lbIndex = Math.max(0, Math.min(CLIENTS.length - 1, i));
       paintLightbox(lbIndex);
       lbOpen = true;
+      root.classList.add("is-paused");
       if (typeof dialog.showModal === "function") dialog.showModal();
       else dialog.setAttribute("open", "");
       document.documentElement.classList.add("is-tx-clients-lb-open");
@@ -191,6 +175,7 @@
 
     function closeLightbox() {
       lbOpen = false;
+      root.classList.remove("is-paused");
       if (dialog.open) dialog.close();
       document.documentElement.classList.remove("is-tx-clients-lb-open");
     }
@@ -205,22 +190,11 @@
       paintLightbox(lbIndex);
     }
 
-    cards.forEach(function (card) {
-      card.addEventListener("click", function () {
-        openLightbox(Number(card.getAttribute("data-tx-client-index")) || 0);
-      });
+    track.addEventListener("click", function (event) {
+      var card = event.target.closest("[data-tx-client-index]");
+      if (!card || !track.contains(card)) return;
+      openLightbox(Number(card.getAttribute("data-tx-client-index")) || 0);
     });
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", function () {
-        goTo(carouselIndex - 1);
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener("click", function () {
-        goTo(carouselIndex + 1);
-      });
-    }
 
     dialog.querySelector("[data-tx-lb-close]").addEventListener("click", closeLightbox);
     dialog.querySelector("[data-tx-lb-prev]").addEventListener("click", lbPrev);
@@ -232,6 +206,7 @@
 
     dialog.addEventListener("close", function () {
       lbOpen = false;
+      root.classList.remove("is-paused");
       document.documentElement.classList.remove("is-tx-clients-lb-open");
     });
 
@@ -248,43 +223,8 @@
       if (event.key === "Escape") closeLightbox();
     });
 
-    var touchStartX = 0;
-    var touchDelta = 0;
-    viewport.addEventListener(
-      "touchstart",
-      function (event) {
-        touchStartX = event.changedTouches[0].clientX;
-        touchDelta = 0;
-      },
-      { passive: true }
-    );
-    viewport.addEventListener(
-      "touchmove",
-      function (event) {
-        touchDelta = event.changedTouches[0].clientX - touchStartX;
-      },
-      { passive: true }
-    );
-    viewport.addEventListener(
-      "touchend",
-      function () {
-        if (Math.abs(touchDelta) > 48) {
-          if (touchDelta < 0) goTo(carouselIndex + 1);
-          else goTo(carouselIndex - 1);
-        }
-      },
-      { passive: true }
-    );
-
-    var resizeTimer;
-    window.addEventListener("resize", function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
-        goTo(carouselIndex, false);
-      }, 120);
-    });
-
-    goTo(0, false);
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) root.classList.add("is-static");
   }
 
   function boot() {
