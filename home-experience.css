@@ -9571,20 +9571,20 @@ body.page-home.hx-band--dark .hx-raffle {
 }
 
 .hx-prepago-modal__title {
-  margin: 0 0 clamp(16px, 2.2vw, 22px);
-  padding-right: 44px;
-  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  color: #0f2440;
+  margin: 0 0 clamp(18px, 2.4vw, 26px);
+  padding-right: 48px;
+  font-size: clamp(1.85rem, 4.2vw, 2.65rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  color: #0a1f36;
 }
 
 .hx-prepago-modal__accent {
   display: inline-block;
-  color: #0097b2;
-  background: linear-gradient(180deg, transparent 62%, rgba(0, 229, 255, 0.28) 62%);
-  padding: 0 0.06em;
+  color: #00a8c4;
+  background: linear-gradient(180deg, transparent 58%, rgba(0, 229, 255, 0.34) 58%);
+  padding: 0 0.04em;
 }
 
 .hx-prepago-modal__grid {
@@ -9762,22 +9762,11 @@ body.page-home.hx-band--dark .hx-raffle {
     box-shadow: 0 4px 12px rgba(8, 40, 64, 0.1);
   }
 
-  .hx-prepago-modal__kicker {
-    margin: 0 0 4px;
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
-  }
-
   .hx-prepago-modal__title {
-    max-width: 11.5em;
-    padding-right: 36px;
     margin: 0 0 12px;
+    padding-right: 36px;
     font-size: 1.05rem;
     line-height: 1.2;
-  }
-
-  .hx-prepago-modal__desc {
-    display: none;
   }
 
   .hx-prepago-modal__grid {
