@@ -3270,7 +3270,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 
 .page-home .tx-clients__nav {
   position: absolute;
-  top: 44%;
+  top: calc(44% + 36px);
   z-index: 5;
   transform: translateY(-50%);
   width: 48px;
@@ -3297,13 +3297,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 }
 
 .page-home .tx-clients__hint {
-  margin: 8px auto 0;
-  text-align: center;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #3a5268;
-  max-width: 42rem;
-  padding-inline: 16px;
+  display: none;
 }
 
 .tx-clients-lb {
