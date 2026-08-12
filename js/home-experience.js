@@ -1372,11 +1372,30 @@
       }
     }
 
+    const prepagoHoverMq = window.matchMedia("(hover: hover) and (pointer: fine)");
     prepagoModal.querySelectorAll(".hx-prepago-modal__card").forEach((card) => {
-      card.addEventListener("mouseenter", () => playPrepagoCardVideo(card));
-      card.addEventListener("mouseleave", () => stopPrepagoCardVideo(card));
+      card.addEventListener("mouseenter", () => {
+        if (!prepagoHoverMq.matches) return;
+        playPrepagoCardVideo(card);
+      });
+      card.addEventListener("mouseleave", () => {
+        if (!prepagoHoverMq.matches) return;
+        stopPrepagoCardVideo(card);
+      });
       card.addEventListener("focusin", () => playPrepagoCardVideo(card));
       card.addEventListener("focusout", () => stopPrepagoCardVideo(card));
+      card.addEventListener(
+        "touchstart",
+        () => {
+          if (prepagoHoverMq.matches) return;
+          card.classList.add("is-pressed");
+          playPrepagoCardVideo(card);
+        },
+        { passive: true }
+      );
+      const clearTouchPress = () => card.classList.remove("is-pressed");
+      card.addEventListener("touchend", clearTouchPress, { passive: true });
+      card.addEventListener("touchcancel", clearTouchPress, { passive: true });
     });
 
     function openPrepagoModal() {
