@@ -56,6 +56,6 @@ window.YAAVS_DECK_MEDIA = {
   prepago: {
     icon: "assets/servicios/icons/prepago.png?v=1",
     poster: "assets/servicios/icons/prepago.png?v=1",
-    mp4: "",
+    mp4: "assets/servicios/videos/recargaklic.mp4",
   },
 };

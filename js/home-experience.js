@@ -2242,8 +2242,13 @@
     : [];
   const deckDesktopMq = window.matchMedia("(min-width: 769px)");
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
-  /* Videos del deck solo tablet/desktop — en celular solo iconos (más rápido) */
+  /* Videos del deck: desktop siempre; en móvil solo Prepago/Pospago del catálogo */
+  const deckMobileAutoVideoIds = new Set(["prepago", "postpago"]);
   const deckVideosEnabled = () => deckDesktopMq.matches;
+  const shouldMobileAutoVideo = (item) =>
+    deckGroupsMode &&
+    !deckDesktopMq.matches &&
+    deckMobileAutoVideoIds.has(item.getAttribute("data-deck-svc"));
 
   if (deckSection && deckRoot) {
     const getDeckItems = () => [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
@@ -2401,8 +2406,13 @@
       }
       if (!handlers) return;
 
-      item.classList.add("is-deck-expanded");
-      deckItems.forEach((el) => el.classList.toggle("is-active", el === item));
+      const autoMobileVideo = shouldMobileAutoVideo(item);
+      if (!autoMobileVideo) {
+        item.classList.add("is-deck-expanded");
+        deckItems.forEach((el) => el.classList.toggle("is-active", el === item));
+      } else {
+        item.classList.add("is-deck-expanded");
+      }
 
       const video = handlers.loadVideo();
       if (!video) {
@@ -2546,10 +2556,18 @@
       const cfg = deckMediaCfg[id];
       if (!cfg) return;
 
-      ensureDeckIcon(item);
-      /* Celular: solo iconos, sin crear <video> ni descargar mp4 */
-      if (!deckVideosEnabled()) return;
+      const autoMobileVideo = shouldMobileAutoVideo(item);
+      if (autoMobileVideo) {
+        item.querySelector(".hx-svc-deck__icon")?.remove();
+        item.classList.add("is-deck-mobile-video");
+      } else {
+        ensureDeckIcon(item);
+      }
+
+      /* Celular: solo Prepago/Pospago montan <video>; el resto queda en icono */
+      if (!deckVideosEnabled() && !autoMobileVideo) return;
       if (item.querySelector(".hx-svc-deck__media")) return;
+      if (!cfg.mp4 && !cfg.gif) return;
 
       const mediaEl = document.createElement("span");
       mediaEl.className = "hx-svc-deck__media";
@@ -2565,7 +2583,7 @@
       video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
-      video.preload = cfg.mp4 ? "metadata" : "none";
+      video.preload = cfg.mp4 ? (autoMobileVideo ? "auto" : "metadata") : "none";
       /* Sin poster del <video>: evita flash de foto distinta al icono antes del primer frame. */
       if (cfg.mp4) video.removeAttribute("poster");
       else if (cfg.poster) video.poster = cfg.poster;
@@ -2596,7 +2614,7 @@
       let loaded = false;
       const handlers = {
         loadVideo() {
-          if (!deckVideosEnabled() || cfg.gif || !cfg.mp4) return null;
+          if ((!deckVideosEnabled() && !autoMobileVideo) || cfg.gif || !cfg.mp4) return null;
           if (!loaded) {
             video.src = cfg.mp4;
             video.load();
@@ -2611,6 +2629,7 @@
         leave(event) {
           if (event?.type === "focusout" && item.contains(event.relatedTarget)) return;
           if (!deckHoverMq.matches && item.classList.contains("is-deck-preview")) return;
+          if (autoMobileVideo) return;
           stopDeckMedia(item);
         },
       };
@@ -2621,6 +2640,10 @@
       item.addEventListener("focusin", handlers.enter);
       item.addEventListener("focusout", handlers.leave);
       item.addEventListener("pointerenter", handlers.enter);
+
+      if (autoMobileVideo) {
+        window.requestAnimationFrame(() => playDeckMedia(item));
+      }
     }
 
     function setMoreOpen(open) {
@@ -2694,7 +2717,13 @@
           btn.setAttribute("aria-selected", String(on));
         });
         groups.forEach((group) => {
-          group.classList.toggle("is-active", group.getAttribute("data-hx-svc-group") === id);
+          const on = group.getAttribute("data-hx-svc-group") === id;
+          group.classList.toggle("is-active", on);
+          if (on && (id === "prepago" || id === "postpago")) {
+            group.querySelectorAll(".hx-svc-deck__item.is-deck-mobile-video").forEach((item) => {
+              playDeckMedia(item);
+            });
+          }
         });
       }
 

@@ -5140,13 +5140,52 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   }
 
   .page-home .hx-svc-group[data-hx-svc-group="extra"] .hx-svc-deck {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 10px;
   }
 
   .page-home .hx-svc-group[data-hx-svc-group="extra"] .hx-svc-deck__item {
     aspect-ratio: 16 / 9;
     min-height: 112px;
+    width: 100%;
+    max-width: none;
+    grid-column: auto !important;
+  }
+
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] [data-hx-svc-deck-more],
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group .hx-svc-deck {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] [data-hx-svc-deck-more] .hx-svc-deck__item[data-deck-svc="soporte-tecnico"] {
+    grid-column: auto !important;
+  }
+
+  /* Prepago / Pospago en móvil: solo video, sin icono ni fondo estático */
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="prepago"] .hx-svc-deck__icon,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="pospago"] .hx-svc-deck__icon,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="prepago"] .hx-svc-deck__bg,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="pospago"] .hx-svc-deck__bg {
+    display: none !important;
+  }
+
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="prepago"] .hx-svc-deck__media,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="pospago"] .hx-svc-deck__media {
+    display: block !important;
+    opacity: 1 !important;
+    z-index: 2;
+    pointer-events: none !important;
+  }
+
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="prepago"] .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__video,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="pospago"] .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__video {
+    opacity: 1 !important;
+  }
+
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="prepago"] .hx-svc-deck__item.is-deck-mobile-video,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-group[data-hx-svc-group="pospago"] .hx-svc-deck__item.is-deck-mobile-video {
+    background: #04101f;
   }
 }
 
