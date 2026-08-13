@@ -4927,6 +4927,12 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   isolation: isolate;
 }
 
+.page-home .hx-svc-deck-wrap[data-hx-deck-groups] {
+  width: 100%;
+  max-width: none;
+  padding-inline: clamp(12px, 2vw, 28px);
+}
+
 .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-deck-layout {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
