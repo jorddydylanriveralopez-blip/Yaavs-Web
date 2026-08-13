@@ -66,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=246">
   <link rel="stylesheet" href="theme-light.css?v=11">
-  <link rel="stylesheet" href="home-corporate.css?v=20260813d">
+  <link rel="stylesheet" href="home-corporate.css?v=20260813e">
   <link rel="stylesheet" href="promo-popup.css?v=4">
   <link rel="stylesheet" href="theme-day-night.css?v=5" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=223" media="print" onload="this.media='all'">
@@ -328,8 +328,13 @@
         </header>
 
         <div class="hx-svc-deck-wrap" data-hx-deck-wrap data-hx-deck-groups>
+          <div class="hx-svc-catalog-tabs" data-hx-svc-tabs role="tablist" aria-label="Categorías de servicios">
+            <button type="button" class="hx-svc-catalog-tabs__btn is-active" data-hx-svc-tab="prepago" role="tab" aria-selected="true" aria-controls="svc-panel-prepago" id="svc-tab-prepago">Prepago</button>
+            <button type="button" class="hx-svc-catalog-tabs__btn" data-hx-svc-tab="pospago" role="tab" aria-selected="false" aria-controls="svc-panel-pospago" id="svc-tab-pospago">Pospago</button>
+            <button type="button" class="hx-svc-catalog-tabs__btn" data-hx-svc-tab="extra" role="tab" aria-selected="false" aria-controls="svc-panel-extra" id="svc-tab-extra">Extra</button>
+          </div>
           <div class="hx-svc-deck-layout" data-hx-deck-layout>
-            <div class="hx-svc-group" data-hx-svc-group="prepago">
+            <div class="hx-svc-group is-active" data-hx-svc-group="prepago" id="svc-panel-prepago" role="tabpanel" aria-labelledby="svc-tab-prepago">
               <h3 class="hx-svc-group__title">Prepago</h3>
               <p class="hx-svc-group__hint">Recargas, eSIM, portabilidad y más</p>
               <div class="hx-svc-deck" data-hx-svc-deck>
@@ -348,7 +353,7 @@
               </div>
             </div>
 
-            <div class="hx-svc-group" data-hx-svc-group="pospago">
+            <div class="hx-svc-group" data-hx-svc-group="pospago" id="svc-panel-pospago" role="tabpanel" aria-labelledby="svc-tab-pospago">
               <h3 class="hx-svc-group__title">Pospago</h3>
               <p class="hx-svc-group__hint">Planes con respaldo comercial</p>
               <div class="hx-svc-deck">
@@ -367,7 +372,7 @@
               </div>
             </div>
 
-            <div class="hx-svc-group" data-hx-svc-group="extra">
+            <div class="hx-svc-group" data-hx-svc-group="extra" id="svc-panel-extra" role="tabpanel" aria-labelledby="svc-tab-extra">
               <h3 class="hx-svc-group__title">Extra</h3>
               <p class="hx-svc-group__hint">Herramientas para tu punto de venta</p>
               <div class="hx-svc-deck" data-hx-svc-deck-more>
@@ -1416,7 +1421,7 @@
       /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=224",
-        "js/home-experience.js?v=236",
+        "js/home-experience.js?v=237",
       ], perf.soft ? "180px 0px" : "320px 0px");
 
       const deckHashes = [
@@ -1433,7 +1438,7 @@
       if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=224",
-          "js/home-experience.js?v=236",
+          "js/home-experience.js?v=237",
         ]);
       }
 

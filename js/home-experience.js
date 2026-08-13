@@ -2682,6 +2682,31 @@
       }
     }
 
+    if (deckGroupsMode) {
+      const tabsRoot = deckWrap.querySelector("[data-hx-svc-tabs]");
+      const tabBtns = tabsRoot ? [...tabsRoot.querySelectorAll("[data-hx-svc-tab]")] : [];
+      const groups = [...deckWrap.querySelectorAll("[data-hx-svc-group]")];
+
+      function setCatalogTab(id) {
+        tabBtns.forEach((btn) => {
+          const on = btn.getAttribute("data-hx-svc-tab") === id;
+          btn.classList.toggle("is-active", on);
+          btn.setAttribute("aria-selected", String(on));
+        });
+        groups.forEach((group) => {
+          group.classList.toggle("is-active", group.getAttribute("data-hx-svc-group") === id);
+        });
+      }
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setCatalogTab(btn.getAttribute("data-hx-svc-tab"));
+        });
+      });
+
+      setCatalogTab("prepago");
+    }
+
     if ("IntersectionObserver" in window) {
       const deckObs = new IntersectionObserver(
         (entries) => {
