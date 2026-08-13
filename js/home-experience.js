@@ -2243,7 +2243,13 @@
   const deckDesktopMq = window.matchMedia("(min-width: 769px)");
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
   /* Videos del deck: desktop siempre; en móvil solo Prepago/Pospago del catálogo */
-  const deckMobileAutoVideoIds = new Set(["prepago", "postpago"]);
+  const deckMobileAutoVideoIds = new Set([
+    "prepago",
+    "postpago",
+    "yaashop",
+    "academia-yaavs",
+    "soporte-tecnico",
+  ]);
   const deckVideosEnabled = () => deckDesktopMq.matches;
   const shouldMobileAutoVideo = (item) =>
     deckGroupsMode &&
@@ -2719,7 +2725,7 @@
         groups.forEach((group) => {
           const on = group.getAttribute("data-hx-svc-group") === id;
           group.classList.toggle("is-active", on);
-          if (on && (id === "prepago" || id === "postpago")) {
+          if (on) {
             group.querySelectorAll(".hx-svc-deck__item.is-deck-mobile-video").forEach((item) => {
               playDeckMedia(item);
             });
