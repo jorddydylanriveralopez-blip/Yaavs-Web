@@ -4933,8 +4933,8 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   gap: clamp(14px, 1.8vw, 22px);
   align-items: stretch;
   width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 .page-home .hx-svc-group {
