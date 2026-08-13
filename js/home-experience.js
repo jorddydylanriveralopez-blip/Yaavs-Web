@@ -2244,7 +2244,6 @@
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
   /* Videos del deck: desktop siempre; en móvil solo Prepago/Pospago del catálogo */
   const deckMobileAutoVideoIds = new Set([
-    "prepago",
     "postpago",
     "yaashop",
     "academia-yaavs",
@@ -2255,6 +2254,8 @@
     deckGroupsMode &&
     !deckDesktopMq.matches &&
     deckMobileAutoVideoIds.has(item.getAttribute("data-deck-svc"));
+  const shouldKeepMobileCaption = (item) =>
+    item.getAttribute("data-deck-svc") === "soporte-tecnico";
 
   if (deckSection && deckRoot) {
     const getDeckItems = () => [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
