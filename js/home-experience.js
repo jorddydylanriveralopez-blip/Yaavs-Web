@@ -2242,7 +2242,7 @@
     : [];
   const deckDesktopMq = window.matchMedia("(min-width: 769px)");
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
-  /* Videos del deck: desktop siempre; en móvil solo Prepago/Pospago del catálogo */
+  /* Videos del deck: desktop siempre; en móvil autoplay salvo Prepago (icono) */
   const deckMobileAutoVideoIds = new Set([
     "postpago",
     "yaashop",
@@ -2254,8 +2254,6 @@
     deckGroupsMode &&
     !deckDesktopMq.matches &&
     deckMobileAutoVideoIds.has(item.getAttribute("data-deck-svc"));
-  const shouldKeepMobileCaption = (item) =>
-    item.getAttribute("data-deck-svc") === "soporte-tecnico";
 
   if (deckSection && deckRoot) {
     const getDeckItems = () => [...deckWrap.querySelectorAll(".hx-svc-deck__item")];
