@@ -6446,23 +6446,29 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   .page-home .hx-services--deck .hx-services__head {
     position: relative;
     z-index: 1;
-    margin-bottom: clamp(16px, 4vw, 24px);
+    margin-bottom: clamp(18px, 4.5vw, 28px);
     padding-inline: var(--pad-x);
   }
 
-  .page-home .hx-services--deck .hx-services__head h2 {
-    font-size: clamp(1.58rem, 7.4vw, 2.1rem);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.12;
-    filter: drop-shadow(0 3px 18px rgba(0, 188, 212, 0.28));
+  .page-home .hx-services--deck .hx-services__title {
+    font-size: clamp(2.35rem, 13vw, 3.4rem);
+    letter-spacing: -0.05em;
+    filter: drop-shadow(0 8px 22px rgba(0, 188, 212, 0.26));
   }
 
-  .page-home .hx-services--deck .hx-services__head h2::after {
-    width: min(220px, 52vw);
+  .page-home .hx-services--deck .hx-services__title-kicker {
+    font-size: 0.3em;
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+  }
+
+  .page-home .hx-services--deck .hx-services__title::after {
+    width: min(140px, 46vw);
     height: 3.5px;
-    margin-top: clamp(10px, 2.5vw, 14px);
-    box-shadow: 0 0 22px rgba(0, 212, 238, 0.4);
+    margin-top: 0.32em;
+    box-shadow:
+      0 0 16px rgba(0, 229, 255, 0.5),
+      0 0 28px rgba(0, 188, 212, 0.28);
   }
 
   .page-home .hx-services--deck .hx-services__hint {
