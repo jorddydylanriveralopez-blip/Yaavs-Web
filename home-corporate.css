@@ -3691,6 +3691,12 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   padding-block: clamp(12px, 2vw, 28px);
 }
 
+.page-home .tx-gallery__feature-stage--solo {
+  grid-template-columns: 1fr;
+  min-height: 0;
+  gap: 0;
+}
+
 .page-home .tx-gallery__feature-center {
   position: relative;
   z-index: 5;
@@ -3698,6 +3704,10 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   place-items: center;
   width: 100%;
   min-height: min(58vh, 540px);
+}
+
+.page-home .tx-gallery__feature-stage--solo .tx-gallery__feature-center {
+  min-height: 0;
 }
 
 .page-home .tx-gallery__feature-deco {
