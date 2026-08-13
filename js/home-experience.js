@@ -2236,6 +2236,10 @@
   const deckMorePanel = deckWrap?.querySelector("[data-hx-deck-more-panel]");
   const deckMoreToggle = deckWrap?.querySelector("[data-hx-deck-more-toggle]");
   const deckMoreLabel = deckWrap?.querySelector("[data-hx-deck-more-label]");
+  const deckGroupsMode = Boolean(deckWrap?.hasAttribute("data-hx-deck-groups"));
+  const deckGroupDecks = deckWrap
+    ? [...deckWrap.querySelectorAll(".hx-svc-group .hx-svc-deck")]
+    : [];
   const deckDesktopMq = window.matchMedia("(min-width: 769px)");
   const deckMediaCfg = window.YAAVS_DECK_MEDIA || {};
   /* Videos del deck solo tablet/desktop — en celular solo iconos (más rápido) */
@@ -2359,8 +2363,9 @@
     function teardownDeckSquare() {
       if (!squareReady) return;
       squareReady = false;
-      deckRoot.classList.remove("hx-svc-deck--square");
+      deckRoot?.classList.remove("hx-svc-deck--square");
       deckMoreRoot?.classList.remove("hx-svc-deck--square");
+      deckGroupDecks.forEach((deck) => deck.classList.remove("hx-svc-deck--square"));
       deckSection.classList.remove("hx-services--deck-square");
       deckLayout?.classList.remove("is-deck-more-open");
       if (deckMorePanel) deckMorePanel.setAttribute("aria-hidden", "false");
@@ -2629,14 +2634,20 @@
     function initDeckSquare() {
       if (!deckDesktopMq.matches || squareReady) return;
       squareReady = true;
-      deckRoot.classList.add("hx-svc-deck--square");
-      deckMoreRoot?.classList.add("hx-svc-deck--square");
+      if (deckGroupsMode) {
+        deckGroupDecks.forEach((deck) => deck.classList.add("hx-svc-deck--square"));
+      } else {
+        deckRoot?.classList.add("hx-svc-deck--square");
+        deckMoreRoot?.classList.add("hx-svc-deck--square");
+      }
       deckSection.classList.add("hx-services--deck-square");
+      deckItems = getDeckItems();
       deckItems.forEach((item) => setupDeckItemMedia(item));
-      setMoreOpen(true);
+      if (!deckGroupsMode) setMoreOpen(true);
     }
 
     function initMobileDeckIcons() {
+      deckItems = getDeckItems();
       getDeckItems().forEach((item) => {
         ensureDeckIcon(item);
         setupDeckItemMedia(item);
@@ -2644,6 +2655,20 @@
     }
 
     function syncDeckLayout() {
+      if (deckGroupsMode) {
+        teardownMobileMasonry();
+        if (deckDesktopMq.matches) {
+          initDeckSquare();
+        } else {
+          teardownDeckSquare();
+          initMobileDeckIcons();
+          if (deckLive) {
+            getDeckItems().forEach((item) => item.classList.add("is-deck-in"));
+          }
+        }
+        return;
+      }
+
       if (deckDesktopMq.matches) {
         teardownMobileMasonry();
         initDeckSquare();
