@@ -5200,21 +5200,12 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
     background: #04101f;
   }
 
-  .page-home .hx-svc-deck__soon {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 6;
-    padding: 7px 12px;
-    border-radius: 999px;
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #041828;
-    background: linear-gradient(135deg, #00e5ff 0%, #7cf0ff 100%);
-    box-shadow: 0 8px 18px rgba(0, 188, 212, 0.35);
-    pointer-events: none;
+  /* Sin franja blanca de título en cards con video (Yaavshop, Academia, Pospago, etc.) */
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-deck__item.is-deck-mobile-video .hx-svc-deck__body,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-deck__item[data-deck-svc="yaashop"] .hx-svc-deck__body,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-deck__item[data-deck-svc="academia-yaavs"] .hx-svc-deck__body,
+  .page-home .hx-svc-deck-wrap[data-hx-deck-groups] .hx-svc-deck__item[data-deck-svc="postpago"] .hx-svc-deck__body {
+    display: none !important;
   }
 }
 
