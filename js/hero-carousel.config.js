@@ -15,9 +15,9 @@ window.YAAVS_HERO_CAROUSEL = {
     {
       /* Desktop: ANIMACION MAPA PAGINA WEB · Móvil: VIDEO VERTICAL ECHELE ECHELE */
       videoBanner: true,
-      videoSrc: "assets/hero-telecom/banners/mapa-h-20260814.mp4",
+      videoSrc: "assets/hero-telecom/banners/mapa-h-20260814b.mp4",
       videoSrcMobile: "assets/hero-telecom/banners/echele-v-20260806.mp4",
-      src: "assets/hero-telecom/banners/mapa-h-20260814-poster.jpg",
+      src: "assets/hero-telecom/banners/mapa-h-20260814b-poster.jpg",
       srcMobile: "assets/hero-telecom/banners/echele-v-20260806-poster.jpg",
       width: 1280,
       height: 720,
