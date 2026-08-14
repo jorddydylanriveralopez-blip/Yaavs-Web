@@ -99,7 +99,12 @@
     root.dataset.txClientsReady = "1";
 
     var track = root.querySelector("[data-tx-clients-track]");
+    var trackB = root.querySelector("[data-tx-clients-track-b]");
     var viewport = root.querySelector("[data-tx-clients-viewport]");
+    var viewports = root.querySelectorAll("[data-tx-clients-viewport]");
+    var stage = root.querySelector(".tx-clients__stage");
+    var leftRail = root.querySelector(".tx-clients__rail--left");
+    var feature = root.querySelector(".tx-clients__feature");
     var prevBtn = root.querySelector("[data-tx-clients-prev]");
     var nextBtn = root.querySelector("[data-tx-clients-next]");
     if (!track || !viewport) return;
@@ -140,6 +145,11 @@
     CLIENTS.forEach(function (client, index) {
       track.appendChild(makeCard(client, index, true));
     });
+    if (trackB) {
+      Array.from(track.children).forEach(function (node) {
+        trackB.appendChild(node.cloneNode(true));
+      });
+    }
 
     root.classList.add("is-marquee", "is-js-marquee");
 
@@ -160,6 +170,19 @@
     var resumeTimer = 0;
     var manualHoldMs = 6500;
 
+    function holeWidth() {
+      if (!leftRail || !feature) return 0;
+      var gap = stage ? parseFloat(window.getComputedStyle(stage).columnGap) || 0 : 0;
+      return leftRail.getBoundingClientRect().width + feature.getBoundingClientRect().width + gap;
+    }
+
+    function paintTracks() {
+      track.style.transform = "translate3d(" + offset + "px, 0, 0)";
+      if (trackB) {
+        trackB.style.transform = "translate3d(" + (offset - holeWidth()) + "px, 0, 0)";
+      }
+    }
+
     function measure() {
       var firstCards = track.querySelectorAll(".tx-clients__card");
       if (!firstCards.length) return;
@@ -171,7 +194,7 @@
         while (offset <= -halfWidth) offset += halfWidth;
         while (offset > 0) offset -= halfWidth;
       }
-      track.style.transform = "translate3d(" + offset + "px, 0, 0)";
+      paintTracks();
     }
 
     function normalizeOffset() {
@@ -182,7 +205,7 @@
 
     function paint() {
       normalizeOffset();
-      track.style.transform = "translate3d(" + offset + "px, 0, 0)";
+      paintTracks();
     }
 
     function canAuto() {
@@ -275,9 +298,9 @@
       paintLightbox(lbIndex);
     }
 
-    track.addEventListener("click", function (event) {
+    root.addEventListener("click", function (event) {
       var card = event.target.closest("[data-tx-client-index]");
-      if (!card || !track.contains(card)) return;
+      if (!card || !root.contains(card) || card.closest(".tx-clients__feature")) return;
       openLightbox(Number(card.getAttribute("data-tx-client-index")) || 0);
     });
 
@@ -292,11 +315,13 @@
       });
     }
 
-    viewport.addEventListener("mouseenter", function () {
-      hovering = true;
-    });
-    viewport.addEventListener("mouseleave", function () {
-      hovering = false;
+    viewports.forEach(function (vp) {
+      vp.addEventListener("mouseenter", function () {
+        hovering = true;
+      });
+      vp.addEventListener("mouseleave", function () {
+        hovering = false;
+      });
     });
 
     dialog.querySelector("[data-tx-lb-close]").addEventListener("click", closeLightbox);
@@ -342,7 +367,8 @@
 
     var touchStartX = 0;
     var touchDelta = 0;
-    viewport.addEventListener(
+    var touchTarget = stage || viewport;
+    touchTarget.addEventListener(
       "touchstart",
       function (event) {
         touchStartX = event.changedTouches[0].clientX;
@@ -351,14 +377,14 @@
       },
       { passive: true }
     );
-    viewport.addEventListener(
+    touchTarget.addEventListener(
       "touchmove",
       function (event) {
         touchDelta = event.changedTouches[0].clientX - touchStartX;
       },
       { passive: true }
     );
-    viewport.addEventListener(
+    touchTarget.addEventListener(
       "touchend",
       function () {
         hovering = false;
