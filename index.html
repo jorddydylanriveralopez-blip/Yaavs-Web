@@ -66,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=246">
   <link rel="stylesheet" href="theme-light.css?v=11">
-  <link rel="stylesheet" href="home-corporate.css?v=20260814a">
+  <link rel="stylesheet" href="home-corporate.css?v=20260814b">
   <link rel="stylesheet" href="promo-popup.css?v=4">
   <link rel="stylesheet" href="theme-day-night.css?v=5" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=223" media="print" onload="this.media='all'">
@@ -1055,17 +1055,12 @@
             </h2>
             <span class="tx-gallery__rule" aria-hidden="true"></span>
           </div>
-          <button type="button" class="tx-clients__nav tx-clients__nav--prev" data-tx-clients-prev aria-label="Ver clientes anteriores">‹</button>
-          <div class="tx-clients__viewport" data-tx-clients-viewport>
-            <div class="tx-clients__track" data-tx-clients-track></div>
-          </div>
-          <button type="button" class="tx-clients__nav tx-clients__nav--next" data-tx-clients-next aria-label="Ver siguientes clientes">›</button>
-          <p class="tx-clients__hint">Usa las flechas para avanzar a mano · Toca una foto para ver la reseña</p>
-        </div>
-
-        <div class="tx-gallery__feature-video is-visible">
-          <div class="tx-gallery__feature-stage tx-gallery__feature-stage--solo">
-            <div class="tx-gallery__feature-center">
+          <div class="tx-clients__stage">
+            <button type="button" class="tx-clients__nav tx-clients__nav--prev" data-tx-clients-prev aria-label="Ver clientes anteriores">‹</button>
+            <div class="tx-clients__viewport" data-tx-clients-viewport>
+              <div class="tx-clients__track" data-tx-clients-track></div>
+            </div>
+            <div class="tx-clients__feature">
               <div class="tx-gallery__feature-video-frame" data-tecamac-player>
                 <video
                   class="tx-gallery__feature-video-el"
@@ -1082,7 +1077,9 @@
                 </button>
               </div>
             </div>
+            <button type="button" class="tx-clients__nav tx-clients__nav--next" data-tx-clients-next aria-label="Ver siguientes clientes">›</button>
           </div>
+          <p class="tx-clients__hint">Usa las flechas para avanzar a mano · Toca una foto para ver la reseña</p>
         </div>
 
         <p class="tx-gallery__more container">
@@ -1366,7 +1363,7 @@
       loadWhenVisible("#servicios-preview", "home-wow", ["js/home-wow.js?v=9"], "400px 0px");
       /* yaavser-lead lo monta layout.js en todas las páginas */
       loadWhenVisible("#testimonios-home, .tx-gallery--home", "testimonios", [
-        "js/clientes-gallery.js?v=20260812j",
+        "js/clientes-gallery.js?v=20260814a",
         "js/testimonios-historias.js?v=3",
       ], "320px 0px");
 

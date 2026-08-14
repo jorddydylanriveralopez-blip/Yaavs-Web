@@ -292,10 +292,10 @@
       });
     }
 
-    root.addEventListener("mouseenter", function () {
+    viewport.addEventListener("mouseenter", function () {
       hovering = true;
     });
-    root.addEventListener("mouseleave", function () {
+    viewport.addEventListener("mouseleave", function () {
       hovering = false;
     });
 
