@@ -9534,11 +9534,11 @@ body.page-home.hx-band--dark .hx-raffle {
 .hx-prepago-modal__sheet {
   position: relative;
   z-index: 1;
-  width: min(100%, 820px);
-  max-height: min(90dvh, 780px);
+  width: min(96vw, 1040px);
+  max-height: min(94dvh, 980px);
   overflow-y: auto;
-  padding: clamp(24px, 4vw, 36px);
-  border-radius: 22px;
+  padding: clamp(28px, 3.2vw, 44px);
+  border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.95) 0%, rgba(236, 246, 252, 0.92) 100%);
   box-shadow:
@@ -9598,6 +9598,15 @@ body.page-home.hx-band--dark .hx-raffle {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(12px, 1.8vw, 18px);
+}
+
+@media (min-width: 721px) {
+  .hx-prepago-modal__card {
+    max-height: min(260px, 24dvh);
+    width: 100%;
+    justify-self: center;
+    aspect-ratio: 1;
+  }
 }
 
 .hx-prepago-modal__grid > :last-child:nth-child(3n + 1) {
