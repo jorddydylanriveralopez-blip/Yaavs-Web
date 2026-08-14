@@ -953,6 +953,29 @@
 
     banner.appendChild(dots);
 
+    function makeArrow(dir, label) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className =
+        "hero-carousel__arrow hero-carousel__arrow--" + (dir < 0 ? "prev" : "next");
+      btn.setAttribute("aria-label", label);
+      btn.innerHTML =
+        dir < 0
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5 9 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5 15 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(index + dir, dir);
+        startTimer();
+        window.YaavsSonic?.play?.();
+      });
+      return btn;
+    }
+
+    banner.appendChild(makeArrow(-1, "Banner anterior"));
+    banner.appendChild(makeArrow(1, "Banner siguiente"));
+
     banner.addEventListener("mouseenter", stopTimer);
     banner.addEventListener("mouseleave", () => {
       if (!reducedMotion) startTimer();
@@ -973,7 +996,7 @@
 
     /* Click en la imagen/video = mismo destino que el botón del slide */
     const ctaClickIgnore =
-      "a:not(.hero-banner__slide-link), button, input, textarea, select, label, .hero-carousel__dots, .hero-scroll-hint, .site-header, .social-float, .yaavs-chatbot";
+      "a:not(.hero-banner__slide-link), button, input, textarea, select, label, .hero-carousel__dots, .hero-carousel__arrow, .hero-scroll-hint, .site-header, .social-float, .yaavs-chatbot";
     let suppressBannerClick = false;
 
     function followActivePromoCta() {

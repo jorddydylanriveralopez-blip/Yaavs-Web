@@ -660,6 +660,58 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   outline-offset: 3px;
 }
 
+.hero-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 212, 238, 0.4);
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 151, 178, 0.78) 0%, rgba(0, 188, 212, 0.62) 100%);
+  color: #fff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  backdrop-filter: blur(8px);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 10px 22px rgba(0, 151, 178, 0.22),
+    0 0 18px rgba(0, 212, 238, 0.18);
+}
+
+.hero-carousel__arrow--prev {
+  left: max(12px, var(--pad-x));
+}
+
+.hero-carousel__arrow--next {
+  right: max(12px, var(--pad-x));
+}
+
+.hero-carousel__arrow svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.hero-carousel__arrow:hover,
+.hero-carousel__arrow:focus-visible {
+  border-color: rgba(0, 212, 238, 0.75);
+  color: #fff;
+  outline: none;
+  box-shadow:
+    0 12px 26px rgba(0, 151, 178, 0.3),
+    0 0 22px rgba(0, 212, 238, 0.35);
+}
+
+.hero-carousel__arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 @media (min-width: 769px) {
   .hero-banner.hero-banner--hit-prev {
     cursor: w-resize;
@@ -667,6 +719,18 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
 
   .hero-banner.hero-banner--hit-next {
     cursor: e-resize;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-carousel__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-carousel__arrow svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
