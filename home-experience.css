@@ -9534,18 +9534,16 @@ body.page-home.hx-band--dark .hx-raffle {
 .hx-prepago-modal__sheet {
   position: relative;
   z-index: 1;
-  width: min(96vw, 1040px);
-  max-height: min(94dvh, 980px);
+  width: min(94vw, 980px);
+  max-height: min(92dvh, 860px);
   overflow-y: auto;
-  padding: clamp(28px, 3.2vw, 44px);
-  border-radius: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.95) 0%, rgba(236, 246, 252, 0.92) 100%);
+  padding: clamp(26px, 3vw, 36px) clamp(22px, 3vw, 36px) clamp(22px, 2.6vw, 32px);
+  border-radius: 28px;
+  border: 1px solid rgba(15, 36, 64, 0.08);
+  background: #ffffff;
   box-shadow:
-    0 28px 64px rgba(8, 40, 64, 0.24),
-    0 0 0 1px rgba(53, 195, 243, 0.12);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0 32px 80px rgba(8, 28, 48, 0.28),
+    0 0 0 1px rgba(0, 188, 212, 0.08);
   transform: translateY(24px) scale(0.96);
   transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -9576,9 +9574,9 @@ body.page-home.hx-band--dark .hx-raffle {
 }
 
 .hx-prepago-modal__title {
-  margin: 0 0 clamp(18px, 2.4vw, 26px);
+  margin: 0 0 6px;
   padding-right: 0;
-  font-size: clamp(1.85rem, 4.2vw, 2.65rem);
+  font-size: clamp(1.7rem, 3.6vw, 2.35rem);
   font-weight: 900;
   letter-spacing: 0.04em;
   line-height: 1.05;
@@ -9589,40 +9587,49 @@ body.page-home.hx-band--dark .hx-raffle {
 
 .hx-prepago-modal__accent {
   display: inline-block;
-  color: #00a8c4;
-  background: linear-gradient(180deg, transparent 58%, rgba(0, 229, 255, 0.34) 58%);
+  color: #0097b2;
   padding: 0 0.04em;
 }
 
-.hx-prepago-modal__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.8vw, 18px);
+.hx-prepago-modal__kicker {
+  margin: 0 0 clamp(18px, 2.4vw, 24px);
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(15, 36, 64, 0.48);
 }
 
-.hx-prepago-modal__grid > :last-child:nth-child(3n + 1) {
-  grid-column: 2;
+.hx-prepago-modal__grid {
+  --hx-prepago-gap: clamp(12px, 1.6vw, 16px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--hx-prepago-gap);
 }
 
 .hx-prepago-modal__card {
   position: relative;
   isolation: isolate;
+  flex: 0 0 calc((100% - (3 * var(--hx-prepago-gap))) / 4);
+  width: calc((100% - (3 * var(--hx-prepago-gap))) / 4);
+  max-width: calc((100% - (3 * var(--hx-prepago-gap))) / 4);
   aspect-ratio: 1;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: clamp(18px, 2.2vw, 26px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 22px;
   overflow: hidden;
   cursor: pointer;
-  background: #04101f;
+  background: #061526;
   box-shadow:
-    0 18px 40px rgba(8, 28, 48, 0.22),
-    0 0 0 1px rgba(0, 188, 212, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    0 16px 34px rgba(8, 28, 48, 0.2),
+    0 0 0 1px rgba(0, 188, 212, 0.16);
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease,
+    border-color 0.32s ease;
 }
 
 .hx-prepago-modal__card-bg {
@@ -9682,27 +9689,41 @@ body.page-home.hx-band--dark .hx-raffle {
 
 .hx-prepago-modal__card-label {
   position: absolute;
-  left: 14px;
-  bottom: 14px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
   z-index: 2;
-  font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.1em;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 999px;
+  font-size: clamp(0.72rem, 1.15vw, 0.86rem);
   font-weight: 800;
   letter-spacing: 0.01em;
+  line-height: 1.15;
+  text-align: center;
   color: #fff;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
-  border-bottom: 2px solid #00e5ff;
-  padding-bottom: 3px;
+  background: rgba(4, 16, 31, 0.78);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
 .hx-prepago-modal__card:hover,
 .hx-prepago-modal__card:focus-visible {
-  transform: translateY(-8px) scale(1.03);
+  transform: translateY(-6px) scale(1.03);
   border-color: rgba(0, 229, 255, 0.7);
   box-shadow:
-    0 28px 56px rgba(8, 28, 48, 0.32),
-    0 0 0 1px rgba(0, 229, 255, 0.55),
-    0 0 42px rgba(0, 188, 212, 0.28);
+    0 24px 48px rgba(8, 28, 48, 0.3),
+    0 0 0 1px rgba(0, 229, 255, 0.5),
+    0 0 28px rgba(0, 188, 212, 0.22);
   outline: none;
+}
+
+.hx-prepago-modal__card:hover .hx-prepago-modal__card-label,
+.hx-prepago-modal__card:focus-visible .hx-prepago-modal__card-label {
+  background: #0097b2;
 }
 
 .hx-prepago-modal__card:hover .hx-prepago-modal__card-bg img,
@@ -9771,37 +9792,41 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__title {
-    margin: 0 0 16px;
+    margin: 0 0 4px;
     padding-right: 0;
-    font-size: clamp(1.55rem, 7.2vw, 2rem);
+    font-size: clamp(1.45rem, 6.8vw, 1.85rem);
     line-height: 1.08;
     text-align: center;
   }
 
+  .hx-prepago-modal__kicker {
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+  }
+
   .hx-prepago-modal__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    margin-top: 0;
+    --hx-prepago-gap: 10px;
   }
 
   .hx-prepago-modal__card {
+    flex: 0 0 calc((100% - (2 * var(--hx-prepago-gap))) / 3);
+    width: calc((100% - (2 * var(--hx-prepago-gap))) / 3);
+    max-width: calc((100% - (2 * var(--hx-prepago-gap))) / 3);
     aspect-ratio: 1 / 1;
-    max-width: none;
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow:
       0 8px 16px rgba(8, 28, 48, 0.16),
       0 0 0 1px rgba(0, 188, 212, 0.18);
   }
 
   .hx-prepago-modal__card-label {
-    left: 7px;
-    right: 7px;
-    bottom: 7px;
-    font-size: clamp(0.62rem, 2.8vw, 0.72rem);
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    min-height: 1.9em;
+    padding: 5px 6px;
+    font-size: clamp(0.58rem, 2.5vw, 0.68rem);
     line-height: 1.05;
-    border-bottom-width: 1.5px;
-    padding-bottom: 1px;
-    letter-spacing: 0;
   }
 
   .hx-prepago-modal__card-bg::after {
@@ -9829,7 +9854,7 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__grid {
-    gap: 8px;
+    --hx-prepago-gap: 8px;
   }
 
   .hx-prepago-modal__card {
@@ -9891,7 +9916,8 @@ body.page-home.hx-band--dark .hx-raffle {
     left: 6px;
     right: 6px;
     bottom: 6px;
-    font-size: 0.58rem;
+    min-height: 1.8em;
+    font-size: 0.56rem;
   }
 }
 
