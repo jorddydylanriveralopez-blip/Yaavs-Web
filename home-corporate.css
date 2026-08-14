@@ -3694,7 +3694,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 .page-home .tx-gallery__feature-stage--solo {
   grid-template-columns: 1fr;
   justify-items: center;
-  min-height: min(72vh, 680px);
+  min-height: 0;
   gap: 0;
 }
 
@@ -3708,7 +3708,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 }
 
 .page-home .tx-gallery__feature-stage--solo .tx-gallery__feature-center {
-  min-height: min(62vh, 580px);
+  min-height: 0;
   justify-self: center;
   width: 100%;
   max-width: min(420px, 100%);
@@ -4151,7 +4151,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 0;
-    min-height: min(70vh, 620px);
+    min-height: 0;
   }
 
   .page-home .tx-gallery__feature-copy,
@@ -4166,34 +4166,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   }
 
   .page-home .tx-gallery__feature-deco {
-    display: block;
-  }
-
-  .page-home .tx-gallery__feature-card--1,
-  .page-home .tx-gallery__feature-card--2,
-  .page-home .tx-gallery__feature-card--3,
-  .page-home .tx-gallery__feature-card--4 {
-    width: clamp(88px, 22vw, 130px);
-  }
-
-  .page-home .tx-gallery__feature-card--1 {
-    top: 6%;
-    left: 0;
-  }
-
-  .page-home .tx-gallery__feature-card--2 {
-    bottom: 8%;
-    left: 2%;
-  }
-
-  .page-home .tx-gallery__feature-card--3 {
-    top: 4%;
-    right: 0;
-  }
-
-  .page-home .tx-gallery__feature-card--4 {
-    bottom: 6%;
-    right: 2%;
+    display: none;
   }
 
   .page-home .tx-gallery__feature-video-frame {
@@ -4206,14 +4179,6 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   .page-home .tx-gallery__feature-stage--solo {
     min-height: 0;
     padding-block: 8px;
-  }
-
-  .page-home .tx-gallery__feature-card--1,
-  .page-home .tx-gallery__feature-card--2,
-  .page-home .tx-gallery__feature-card--3,
-  .page-home .tx-gallery__feature-card--4 {
-    width: clamp(72px, 20vw, 104px);
-    opacity: 0.9;
   }
 
   .page-home .tx-gallery__feature-video-frame {
