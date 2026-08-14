@@ -9600,15 +9600,6 @@ body.page-home.hx-band--dark .hx-raffle {
   gap: clamp(12px, 1.8vw, 18px);
 }
 
-@media (min-width: 721px) {
-  .hx-prepago-modal__card {
-    max-height: min(260px, 24dvh);
-    width: 100%;
-    justify-self: center;
-    aspect-ratio: 1;
-  }
-}
-
 .hx-prepago-modal__grid > :last-child:nth-child(3n + 1) {
   grid-column: 2;
 }
