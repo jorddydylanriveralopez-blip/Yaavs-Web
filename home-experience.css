@@ -9600,6 +9600,10 @@ body.page-home.hx-band--dark .hx-raffle {
   gap: clamp(12px, 1.8vw, 18px);
 }
 
+.hx-prepago-modal__grid > :last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
 .hx-prepago-modal__card {
   position: relative;
   isolation: isolate;

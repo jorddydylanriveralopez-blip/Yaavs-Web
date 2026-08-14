@@ -1476,6 +1476,12 @@
     };
 
     function launchPrepagoService(id) {
+      if (id === "soporte-tecnico") {
+        stopPrepagoVideos();
+        closePrepagoModal();
+        window.open("https://wa.me/525522331210", "_blank", "noopener,noreferrer");
+        return;
+      }
       const hash = PREPAGO_TARGETS[id];
       if (!hash) return;
       stopPrepagoVideos();
@@ -2247,7 +2253,6 @@
     "postpago",
     "yaashop",
     "academia-yaavs",
-    "soporte-tecnico",
   ]);
   const deckVideosEnabled = () => deckDesktopMq.matches;
   const shouldMobileAutoVideo = (item) =>
