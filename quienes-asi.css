@@ -8,10 +8,7 @@
   --ink-soft: rgba(15, 36, 64, 0.58);
   --muted: rgba(15, 36, 64, 0.62);
   --caption: rgba(15, 36, 64, 0.45);
-  background:
-    radial-gradient(ellipse 70% 48% at 12% 22%, rgba(0, 188, 212, 0.12) 0%, transparent 58%),
-    radial-gradient(ellipse 58% 42% at 88% 68%, rgba(37, 99, 181, 0.1) 0%, transparent 60%),
-    linear-gradient(180deg, #f8fcfe 0%, #f0f8fb 46%, #e4f2f8 100%) !important;
+  background: #ffffff !important;
   color: #0f2440 !important;
   scroll-padding-top: calc(var(--header-h, 88px) + 12px);
 }
@@ -47,37 +44,22 @@ body.theme-cluster.page-quienes-somos .site-header,
 body.theme-cluster.page-asi-somos .site-header,
 [data-yaavs-theme="day"] body.theme-cluster.page-quienes-somos .site-header,
 [data-yaavs-theme="day"] body.theme-cluster.page-asi-somos .site-header {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.42) 0%,
-      rgba(255, 255, 255, 0.16) 55%,
-      rgba(200, 238, 248, 0.2) 100%
-    ) !important;
-  backdrop-filter: blur(28px) saturate(1.85) brightness(1.08) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(1.85) brightness(1.08) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35) !important;
-  box-shadow:
-    0 10px 28px rgba(15, 36, 64, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(15, 36, 64, 0.08) !important;
+  box-shadow: 0 8px 20px rgba(15, 36, 64, 0.06) !important;
 }
 
 body.theme-cluster.page-quienes-somos .site-header.is-scrolled,
 body.theme-cluster.page-asi-somos .site-header.is-scrolled,
 [data-yaavs-theme="day"] body.theme-cluster.page-quienes-somos .site-header.is-scrolled,
 [data-yaavs-theme="day"] body.theme-cluster.page-asi-somos .site-header.is-scrolled {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.62) 0%,
-      rgba(245, 252, 254, 0.48) 100%
-    ) !important;
-  backdrop-filter: blur(32px) saturate(1.7) brightness(1.06) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(1.7) brightness(1.06) !important;
-  border-bottom-color: rgba(0, 188, 212, 0.28) !important;
-  box-shadow:
-    0 10px 26px rgba(15, 36, 64, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65) !important;
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom-color: rgba(15, 36, 64, 0.1) !important;
+  box-shadow: 0 8px 20px rgba(15, 36, 64, 0.08) !important;
 }
 
 /* Glass frosty → logo a color (legible sobre el cristal) */
@@ -104,7 +86,12 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   padding: 0 0 72px;
 }
 
-/* Ambiente: foto lavada + grid + glows (sin vaciar el blanco) */
+/* Ambiente desactivado: página más limpia y ligera */
+.asi-ambient,
+.asi-floats {
+  display: none !important;
+}
+
 .asi-ambient {
   position: absolute;
   inset: 0;
@@ -620,8 +607,8 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 
 /* CTA final legible sobre fondo claro */
 .page-asi-somos .page-cta-band {
-  background: linear-gradient(180deg, #eef7fb 0%, #f8fcfe 100%);
-  border-top: 1px solid rgba(0, 151, 178, 0.22);
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 36, 64, 0.08);
 }
 
 .page-asi-somos .page-cta-band__title,

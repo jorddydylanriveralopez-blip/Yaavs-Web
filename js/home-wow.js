@@ -35,19 +35,7 @@
   );
   updateProgress();
 
-  /* ── Auroras de fondo en secciones clave ── */
-  if (!reduceMotion) {
-    ["#servicios-preview", "#carriers"].forEach(function (sel) {
-      var section = document.querySelector(sel);
-      if (!section || section.querySelector(".wow-aurora")) return;
-      var aurora = document.createElement("div");
-      aurora.className = "wow-aurora";
-      aurora.setAttribute("aria-hidden", "true");
-      var position = window.getComputedStyle(section).position;
-      if (position === "static") section.style.position = "relative";
-      section.prepend(aurora);
-    });
-  }
+  /* ── Auroras desactivadas para una home más ligera ── */
 
   /* ── Glare (destello) en tarjetas de servicios ── */
   if (!reduceMotion && canHover) {

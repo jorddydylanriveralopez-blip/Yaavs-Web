@@ -22,20 +22,12 @@
 /* ─── Shimmer de gradiente en acentos de títulos ─── */
 .hx-services__cyan,
 .hx-testimonials__accent {
-  background: linear-gradient(
-    100deg,
-    #2563b5 0%,
-    #3b82d4 30%,
-    #8fc6ff 48%,
-    #3b82d4 62%,
-    #2563b5 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: wow-shimmer 4.5s ease-in-out infinite;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #0097b2;
+  color: #0097b2;
+  animation: none;
 }
 
 @keyframes wow-shimmer {
@@ -165,25 +157,11 @@
   will-change: transform;
 }
 
-/* ─── Aurora: blobs de luz animados detrás de las secciones ─── */
-.wow-aurora {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
+/* ─── Aurora: desactivada ─── */
+.wow-aurora,
 .wow-aurora::before,
 .wow-aurora::after {
-  content: "";
-  position: absolute;
-  width: clamp(280px, 36vw, 520px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(64px);
-  opacity: 0.42;
-  contain: layout paint;
+  display: none !important;
 }
 
 .wow-aurora::before {

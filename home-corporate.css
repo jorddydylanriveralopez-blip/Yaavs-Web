@@ -1158,11 +1158,9 @@ body.page-home {
 /* Operadores */
 .page-home .hx-ops {
   --hx-ops-view-h: calc(100dvh - var(--header-h, 88px));
-  border-top-color: rgba(0, 188, 212, 0.16);
+  border-top-color: rgba(15, 36, 64, 0.08);
   padding: clamp(8px, 1.2vh, 14px) 0 clamp(10px, 1.5vh, 16px);
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 188, 212, 0.07) 0%, transparent 62%),
-    linear-gradient(180deg, #f8fdfe 0%, #ffffff 45%, #f5fcfe 100%);
+  background: #ffffff;
 }
 
 .page-home .hx-ops__head {
@@ -1902,12 +1900,9 @@ body.page-home {
   border-top: 1px solid rgba(0, 188, 212, 0.14);
 }
 
-.page-home .hx-pulse__mesh {
-  opacity: 0.45;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.1) 0%, transparent 42%),
-    radial-gradient(circle at 80% 50%, rgba(37, 99, 181, 0.08) 0%, transparent 40%),
-    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0, 188, 212, 0.04) 40px);
+.page-home .hx-pulse__mesh,
+.page-home .hx-pulse__scan {
+  display: none;
 }
 
 .page-home .hx-pulse__scan::after {
@@ -2193,17 +2188,10 @@ body.page-home {
   border-radius: 999px;
 }
 
-/* Servicios — degradado turquesa + título visible sobre blanco */
+/* Servicios — fondo plano */
 .page-home .hx-services {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #f5fcfe 18%,
-    #e8f7fb 42%,
-    #d4eef6 68%,
-    #eef8fc 100%
-  );
-  border-block: 1px solid rgba(0, 188, 212, 0.16);
+  background: #ffffff;
+  border-block: 1px solid rgba(15, 36, 64, 0.08);
   position: relative;
   overflow: hidden;
   padding: clamp(32px, 5vw, 56px) 0 0;
@@ -2223,15 +2211,8 @@ body.page-home {
 }
 
 .page-home .hx-services::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 85% 55% at 50% -8%, rgba(0, 212, 238, 0.2) 0%, transparent 58%),
-    radial-gradient(ellipse 45% 35% at 8% 85%, rgba(37, 99, 181, 0.07) 0%, transparent 52%),
-    radial-gradient(ellipse 45% 35% at 92% 78%, rgba(0, 188, 212, 0.1) 0%, transparent 50%);
+  content: none;
+  display: none;
 }
 
 .page-home .hx-services > *:not(.hx-svc-panel) {
@@ -2987,54 +2968,20 @@ body.page-home.page-intro-active .hero-scroll-hint {
   isolation: isolate;
   overflow: hidden;
   padding-block: clamp(64px, 9vw, 104px);
-  background:
-    radial-gradient(ellipse 72% 48% at 50% 0%, rgba(0, 188, 212, 0.18) 0%, transparent 62%),
-    radial-gradient(ellipse 42% 38% at 6% 78%, rgba(0, 151, 178, 0.12) 0%, transparent 58%),
-    radial-gradient(ellipse 38% 34% at 94% 72%, rgba(0, 229, 255, 0.1) 0%, transparent 55%),
-    linear-gradient(180deg, #dff3f8 0%, #f4fbfd 42%, #e8f6fa 100%);
-  border-block: 1px solid rgba(0, 188, 212, 0.2);
+  background: #ffffff;
+  border-block: 1px solid rgba(15, 36, 64, 0.08);
 }
 
-.page-home .tx-gallery--home::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 55% 40% at 50% 58%, rgba(0, 188, 212, 0.16) 0%, transparent 70%),
-    repeating-linear-gradient(
-      -14deg,
-      transparent 0,
-      transparent 22px,
-      rgba(0, 151, 178, 0.035) 22px,
-      rgba(0, 151, 178, 0.035) 23px
-    );
-}
-
+.page-home .tx-gallery--home::before,
 .page-home .tx-gallery--home::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 56%;
-  z-index: 0;
-  width: min(980px, 92vw);
-  height: clamp(160px, 28vw, 280px);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(0, 212, 238, 0.28) 0%, transparent 68%);
-  filter: blur(28px);
-  animation: tx-gallery-glow-breathe 5.2s ease-in-out infinite;
+  content: none;
+  display: none;
+  animation: none;
 }
 
 .page-home .tx-gallery--home > * {
   position: relative;
   z-index: 1;
-}
-
-@keyframes tx-gallery-glow-breathe {
-  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.92); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
 }
 
 .page-home .tx-gallery--home .tx-gallery__head--hero {
@@ -4936,7 +4883,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   background: none;
   -webkit-text-fill-color: unset;
   color: #071828;
-  filter: drop-shadow(0 10px 28px rgba(0, 188, 212, 0.18));
+  filter: none;
 }
 
 .page-home .hx-services--deck .hx-services__title-kicker {
@@ -4946,47 +4893,32 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   letter-spacing: 0.34em;
   line-height: 1;
   text-indent: 0.34em;
-  background: linear-gradient(90deg, #0097b2 0%, #00e5ff 55%, #7cf0ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.35));
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #0097b2;
+  color: #0097b2;
+  filter: none;
 }
 
 .page-home .hx-services--deck .hx-services__title-main {
   display: block;
-  background: linear-gradient(
-    180deg,
-    #0a1f36 0%,
-    #123a5c 42%,
-    #0c6f8a 78%,
-    #00bcd4 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #071828;
+  color: #071828;
 }
 
 .page-home .hx-services--deck .hx-services__title::after {
   content: "";
   display: block;
   width: min(180px, 42vw);
-  height: 4px;
+  height: 3px;
   margin: 0.28em auto 0;
   border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #00e5ff 18%,
-    #ffffff 50%,
-    #00bcd4 82%,
-    transparent
-  );
-  box-shadow:
-    0 0 18px rgba(0, 229, 255, 0.55),
-    0 0 36px rgba(0, 188, 212, 0.28);
+  background: #0097b2;
+  box-shadow: none;
 }
 
 .page-home .hx-svc-deck__peek {
@@ -6465,7 +6397,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   .page-home .hx-services--deck .hx-services__title {
     font-size: clamp(2.35rem, 13vw, 3.4rem);
     letter-spacing: -0.05em;
-    filter: drop-shadow(0 8px 22px rgba(0, 188, 212, 0.26));
+    filter: none;
   }
 
   .page-home .hx-services--deck .hx-services__title-kicker {
@@ -6476,11 +6408,9 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 
   .page-home .hx-services--deck .hx-services__title::after {
     width: min(140px, 46vw);
-    height: 3.5px;
+    height: 3px;
     margin-top: 0.32em;
-    box-shadow:
-      0 0 16px rgba(0, 229, 255, 0.5),
-      0 0 28px rgba(0, 188, 212, 0.28);
+    box-shadow: none;
   }
 
   .page-home .hx-services--deck .hx-services__hint {
@@ -7366,39 +7296,13 @@ body.page-home.hx-band--dark .site-footer .footer {
   overflow: hidden;
   padding: 0;
   border: none;
-  background:
-    radial-gradient(ellipse 90% 75% at 12% 8%, rgba(0, 212, 238, 0.28) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 70% at 92% 88%, rgba(0, 48, 135, 0.22) 0%, transparent 58%),
-    radial-gradient(ellipse 50% 42% at 50% 40%, rgba(255, 255, 255, 0.42) 0%, transparent 68%),
-    linear-gradient(155deg, #d7f3f8 0%, #e3eef9 38%, #cfe0f2 72%, #d8ebf4 100%);
+  background: #ffffff;
 }
 
-.page-home .hx-somos::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 46%;
-  z-index: 0;
-  width: min(78vw, 760px);
-  aspect-ratio: 248 / 87;
-  height: auto;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  background: url("assets/yaavs-logo-on-light.png") center / contain no-repeat;
-  opacity: 0.09;
-  user-select: none;
-}
-
+.page-home .hx-somos::before,
 .page-home .hx-somos::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.28;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  mix-blend-mode: soft-light;
+  content: none;
+  display: none;
 }
 
 .page-home .hx-somos__stage {
@@ -7436,18 +7340,8 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 .page-home .hx-somos__panel::before {
-  content: "";
-  position: absolute;
-  inset: -12% -8%;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: 40% / 36%;
-  background: radial-gradient(
-    ellipse 70% 60% at 50% 48%,
-    rgba(255, 255, 255, 0.72) 0%,
-    rgba(255, 255, 255, 0.28) 48%,
-    transparent 72%
-  );
+  content: none;
+  display: none;
 }
 
 .page-home .hx-somos__kicker {
@@ -7492,11 +7386,9 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 .page-home .hx-somos__title-b {
-  background: linear-gradient(135deg, #00bcd4 0%, #0097b2 45%, #003087 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  color: #0097b2 !important;
+  -webkit-text-fill-color: #0097b2;
 }
 
 .page-home .hx-somos__punch {
@@ -7705,11 +7597,7 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 body.page-home.hx-band--dark .hx-somos {
-  background:
-    radial-gradient(ellipse 90% 75% at 12% 8%, rgba(0, 212, 238, 0.28) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 70% at 92% 88%, rgba(0, 48, 135, 0.22) 0%, transparent 58%),
-    radial-gradient(ellipse 50% 42% at 50% 40%, rgba(255, 255, 255, 0.42) 0%, transparent 68%),
-    linear-gradient(155deg, #d7f3f8 0%, #e3eef9 38%, #cfe0f2 72%, #d8ebf4 100%);
+  background: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -7735,8 +7623,10 @@ body.page-home.hx-band--dark .hx-somos {
 }
 
 /* Perfiles soft/lite: menos trabajo de pintura en la primera entrada */
-html[data-yaavs-perf="lite"] .page-home .home-page-floats,
-html[data-yaavs-perf="lite"] .page-home .hx-services__floats,
+.page-home .home-page-floats,
+.page-home .hx-services__floats {
+  display: none !important;
+}
 html[data-yaavs-perf="lite"] .page-home .page-sparkles,
 html[data-yaavs-perf="lite"] .page-home .home-tech-backdrop__mesh,
 html[data-yaavs-perf="lite"] .page-home .home-tech-backdrop__grid,
