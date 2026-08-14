@@ -9905,7 +9905,7 @@ body.page-home.hx-band--dark .hx-raffle {
   }
 
   .hx-prepago-modal__grid {
-    gap: 8px;
+    --hx-prepago-gap: 8px;
   }
 
   .hx-prepago-modal__card {
