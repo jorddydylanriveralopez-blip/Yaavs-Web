@@ -2189,10 +2189,14 @@ body.page-home.hero-slide--graphic.hero-slide--light-shade .hero-banner__shade {
     linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0%, transparent 24%);
 }
 
+.hero-banner.hero-banner--cta-click {
+  cursor: pointer;
+}
+
 .hero-banner__slide-link {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 2;
   display: block;
   cursor: pointer;
   background: transparent;

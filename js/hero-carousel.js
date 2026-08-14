@@ -469,14 +469,18 @@
   const heroBanner = document.querySelector(".hero-banner");
   let bannerLink = null;
 
+  function slideHasCta(slide) {
+    const promo = slide?.promo;
+    return Boolean(promo && promo.cta && (promo.href || promo.openLead));
+  }
+
   function ensureBannerLink() {
     if (!heroBanner || bannerLink) return;
     bannerLink = document.createElement("a");
     bannerLink.className = "hero-banner__slide-link";
-    bannerLink.target = "_blank";
-    bannerLink.rel = "noopener noreferrer";
     bannerLink.hidden = true;
     bannerLink.tabIndex = -1;
+    bannerLink.setAttribute("aria-hidden", "true");
     const anchor = heroBanner.querySelector(".hero-particles");
     if (anchor) heroBanner.insertBefore(bannerLink, anchor);
     else heroBanner.appendChild(bannerLink);
@@ -486,17 +490,22 @@
     ensureBannerLink();
     if (!bannerLink) return;
     const current = slides[index];
-    const href = current?.href;
-    if (current?.hidePromo && href) {
+    const promo = current?.promo;
+    const href = promo?.openLead || promo?.href === "#yaavser-lead" ? "#yaavser-lead" : promo?.href;
+    if (slideHasCta(current) && href) {
       bannerLink.href = href;
-      bannerLink.setAttribute("aria-label", current.alt || "Abrir enlace");
       bannerLink.hidden = false;
-      bannerLink.tabIndex = 0;
+      if (promo.openLead || promo.href === "#yaavser-lead") {
+        bannerLink.setAttribute("data-yaavser-lead-open", "");
+      } else {
+        bannerLink.removeAttribute("data-yaavser-lead-open");
+      }
     } else {
       bannerLink.hidden = true;
-      bannerLink.tabIndex = -1;
       bannerLink.removeAttribute("href");
+      bannerLink.removeAttribute("data-yaavser-lead-open");
     }
+    heroBanner?.classList.toggle("hero-banner--cta-click", slideHasCta(current));
   }
 
   const promoMount = document.querySelector("[data-hero-promo-mount]");
@@ -962,40 +971,32 @@
       }
     });
 
-    /* PC: click izquierda = anterior, click derecha = siguiente */
-    const desktopNavMq = window.matchMedia("(min-width: 769px)");
-    const sideNavIgnore =
-      "a, button, input, textarea, select, label, .hero-promo__box, .hero-carousel__dots, .hero-scroll-hint, .hero-banner__slide-link, .site-header, .social-float, .yaavs-chatbot";
+    /* Click en la imagen/video = mismo destino que el botón del slide */
+    const ctaClickIgnore =
+      "a:not(.hero-banner__slide-link), button, input, textarea, select, label, .hero-carousel__dots, .hero-scroll-hint, .site-header, .social-float, .yaavs-chatbot";
+    let suppressBannerClick = false;
 
-    function clearSideHitCursor() {
-      banner.classList.remove("hero-banner--hit-prev", "hero-banner--hit-next");
-    }
-
-    function updateSideHitCursor(clientX, target) {
-      if (!desktopNavMq.matches || (target && target.closest(sideNavIgnore))) {
-        clearSideHitCursor();
+    function followActivePromoCta() {
+      const cta = promoRoot?.querySelector(".hero-promo__slide.is-active .hero-promo__cta");
+      if (cta) {
+        cta.click();
         return;
       }
-      const rect = banner.getBoundingClientRect();
-      const mid = rect.left + rect.width * 0.5;
-      banner.classList.toggle("hero-banner--hit-prev", clientX < mid);
-      banner.classList.toggle("hero-banner--hit-next", clientX >= mid);
+      if (bannerLink && !bannerLink.hidden && bannerLink.href) bannerLink.click();
     }
 
-    banner.addEventListener("mousemove", (e) => {
-      updateSideHitCursor(e.clientX, e.target);
-    });
-    banner.addEventListener("mouseleave", clearSideHitCursor);
-
     banner.addEventListener("click", (e) => {
-      if (!desktopNavMq.matches) return;
-      if (e.target.closest(sideNavIgnore)) return;
-      const rect = banner.getBoundingClientRect();
-      const mid = rect.left + rect.width * 0.5;
-      if (e.clientX < mid) goTo(index - 1, -1);
-      else goTo(index + 1, 1);
-      startTimer();
-      window.YaavsSonic?.play?.();
+      if (suppressBannerClick) {
+        suppressBannerClick = false;
+        e.preventDefault();
+        return;
+      }
+      if (e.target.closest(ctaClickIgnore)) return;
+      /* El overlay ya tiene el href / lead del slide activo */
+      if (e.target.closest(".hero-banner__slide-link")) return;
+      if (!slideHasCta(slides[index])) return;
+      e.preventDefault();
+      followActivePromoCta();
     });
 
     /* Swipe táctil (touch events: más fiable en iOS que pointermove) */
@@ -1008,12 +1009,14 @@
       if (dx < 0) goTo(index + 1, 1);
       else goTo(index - 1, -1);
       window.YaavsSonic?.play?.();
+      suppressBannerClick = true;
       return true;
     }
 
     banner.addEventListener(
       "touchstart",
       (e) => {
+        suppressBannerClick = false;
         if (e.touches.length !== 1) {
           touchSwipe = null;
           return;
