@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=17">
+  <link rel="stylesheet" href="pospago.css?v=18">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -128,17 +128,17 @@
       <div class="pospago-plans__inner">
         <header class="pospago-plans__head">
           <h2 class="pospago-plans__title">Planes Pospago</h2>
-          <p class="pospago-plans__intro">Más gigas, más libertad. Premium, Simple Plus y Lite se ven todos aquí, con renta y portabilidad a la vista.</p>
+          <p class="pospago-plans__intro">Más gigas, más libertad. Elige Premium, Simple Plus o Lite para ver solo esos planes.</p>
         </header>
 
         <div class="pospago-catalog" data-pospago-catalog>
-          <nav class="pospago-catalog__jump" aria-label="Ir a una familia de planes">
-            <a class="pospago-catalog__tab is-active" href="#pospago-panel-premium">Premium</a>
-            <a class="pospago-catalog__tab" href="#pospago-panel-simple">Simple Plus</a>
-            <a class="pospago-catalog__tab" href="#pospago-panel-lite">Lite</a>
-          </nav>
+          <div class="pospago-catalog__jump" role="tablist" aria-label="Familias de planes">
+            <button type="button" class="pospago-catalog__tab is-active" role="tab" id="pospago-tab-premium" aria-selected="true" aria-controls="pospago-panel-premium" data-pospago-tab="premium">Premium</button>
+            <button type="button" class="pospago-catalog__tab" role="tab" id="pospago-tab-simple" aria-selected="false" aria-controls="pospago-panel-simple" data-pospago-tab="simple">Simple Plus</button>
+            <button type="button" class="pospago-catalog__tab" role="tab" id="pospago-tab-lite" aria-selected="false" aria-controls="pospago-panel-lite" data-pospago-tab="lite">Lite</button>
+          </div>
 
-          <section class="pospago-catalog__panel" id="pospago-panel-premium" data-pospago-panel="premium">
+          <section class="pospago-catalog__panel is-active" id="pospago-panel-premium" data-pospago-panel="premium" role="tabpanel" aria-labelledby="pospago-tab-premium">
             <div class="pospago-catalog__banner">
               <p class="pospago-catalog__family">AT&amp;T Premium · planes con equipo</p>
               <ul class="pospago-catalog__perks">
@@ -305,7 +305,7 @@
             <p class="pospago-catalog__legal">También meses sin intereses con bancos participantes. Consulta términos en att.com.</p>
           </section>
 
-          <section class="pospago-catalog__panel" id="pospago-panel-simple" data-pospago-panel="simple">
+          <section class="pospago-catalog__panel" id="pospago-panel-simple" data-pospago-panel="simple" role="tabpanel" aria-labelledby="pospago-tab-simple" hidden>
             <div class="pospago-catalog__banner">
               <p class="pospago-catalog__family">AT&amp;T Simple Plus</p>
               <ul class="pospago-catalog__perks">
@@ -389,7 +389,7 @@
             <p class="pospago-catalog__legal">Meses sin intereses con bancos participantes. Consulta términos en att.com.</p>
           </section>
 
-          <section class="pospago-catalog__panel" id="pospago-panel-lite" data-pospago-panel="lite">
+          <section class="pospago-catalog__panel" id="pospago-panel-lite" data-pospago-panel="lite" role="tabpanel" aria-labelledby="pospago-tab-lite" hidden>
             <div class="pospago-catalog__banner">
               <p class="pospago-catalog__family">AT&amp;T Lite · planes sin equipo</p>
               <ul class="pospago-catalog__perks">
@@ -538,6 +538,6 @@
   <script src="js/layout.js?v=46" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/pospago-coverflow.js?v=6" defer></script>
-  <script src="js/pospago-plans.js?v=3" defer></script>
+  <script src="js/pospago-plans.js?v=4" defer></script>
 </body>
 </html>

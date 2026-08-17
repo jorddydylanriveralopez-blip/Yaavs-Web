@@ -394,14 +394,19 @@ body.theme-cluster.page-postpago .pospago-plans__intro {
 .pospago-catalog__tab {
   display: grid;
   place-items: center;
+  margin: 0;
   padding: 11px 8px;
+  border: 0;
   border-radius: 999px;
+  background: transparent;
   color: rgba(255, 255, 255, 0.7);
+  font: inherit;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .pospago-catalog__tab.is-active {
@@ -410,12 +415,17 @@ body.theme-cluster.page-postpago .pospago-plans__intro {
 }
 
 .pospago-catalog__panel {
+  display: none;
   scroll-margin-top: calc(var(--header-h, 72px) + 72px);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   padding: 20px 18px 18px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: #0c0b14;
+}
+
+.pospago-catalog__panel.is-active:not([hidden]) {
+  display: block;
 }
 
 .pospago-catalog__banner {
