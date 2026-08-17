@@ -1,44 +1,15 @@
 /**
- * Tiendas en la página pospago: sucursales BAIT integradas.
+ * Tiendas en la página pospago: sucursales AT&T integradas.
  */
 (function () {
   const root = document.querySelector("[data-pospago-stores]");
   if (!root) return;
 
-  const baitStores = [
-    {
-      id: "coacalco",
-      name: "Plaza Coacalco",
-      city: "San Francisco Coacalco, Méx.",
-      address:
-        "Av. José López Portillo #220, San Lorenzo Tetlixtac, C.P. 55714, San Francisco Coacalco, Méx.",
-      lat: 19.6266167,
-      lng: -99.0821072,
-    },
-    {
-      id: "puebla",
-      name: "Plaza Loreto",
-      city: "Puebla, Pue.",
-      address:
-        "Cal. Ignacio Zaragoza #266, Loc. 10D, dentro de Plaza Loreto, Col. Los Pinos, C.P. 72240, Puebla, Pue.",
-      lat: 19.0655554,
-      lng: -98.1766463,
-    },
-    {
-      id: "xalapa",
-      name: "Xalapa Centro",
-      city: "Xalapa, Ver.",
-      address: "C. Pípila #88 Loc. D, Col. Francisco Sarabia, C.P. 91048, Xalapa, Ver.",
-      lat: 19.5414326,
-      lng: -96.912911,
-    },
-  ];
-
   const carriers = {
-    bait: {
-      id: "bait",
-      name: "BAIT",
-      title: "Sucursales BAIT",
+    att: {
+      id: "att",
+      name: "AT&T",
+      title: "Sucursales AT&T",
     },
   };
 
@@ -55,7 +26,7 @@
   let carrierId = "";
 
   function storesFor() {
-    return baitStores;
+    return window.YAAVS_ATT_STORES || [];
   }
 
   function setStatus(text) {
@@ -108,7 +79,7 @@
   function markerIcon(active) {
     return window.L.divIcon({
       className: "pospago-stores__pin" + (active ? " is-active" : ""),
-      html: `<span style="background:#ffcb05"></span>`,
+      html: `<span style="background:#d96df2"></span>`,
       iconSize: [22, 22],
       iconAnchor: [11, 11],
     });
@@ -241,9 +212,5 @@
     if (store) focusStore(store, true);
   });
 
-  openCarrier("bait");
-
-  if (location.hash === "#conoce-tiendas") {
-    window.setTimeout(() => root.scrollIntoView({ behavior: "smooth", block: "start" }), 180);
-  }
+  openCarrier("att");
 })();
