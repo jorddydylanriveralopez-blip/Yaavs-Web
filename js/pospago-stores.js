@@ -13,6 +13,7 @@
     },
   };
 
+  const DEFAULT_PDV_IMAGE = "assets/rotulaciones/dili-01.jpg";
   const stage = root.querySelector("[data-store-stage]");
   const listEl = root.querySelector("[data-store-list]");
   const mapHost = root.querySelector("[data-store-map]");
@@ -25,6 +26,7 @@
   let activeId = "";
   let carrierId = "";
   let activePopup = null;
+  let mapReady = false;
 
   function storesFor() {
     return window.YAAVS_ATT_STORES || [];
@@ -51,23 +53,14 @@
     return `https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}&travelmode=driving`;
   }
 
-  function streetViewEmbedUrl(lat, lng) {
-    return (
-      "https://www.google.com/maps?hl=es" +
-      `&layer=c&cbll=${lat},${lng}` +
-      "&cbp=12,0,0,0,0" +
-      "&output=svembed"
-    );
+  function storeThumbSrc(store) {
+    return store.image || store.photo || DEFAULT_PDV_IMAGE;
   }
 
   function storeThumbHtml(store) {
     const name = escapeHtml(store.name);
-    const image = store.image || store.photo || "";
-    const media = image
-      ? `<img src="${escapeHtml(image)}" alt="Punto de venta ${name}" width="132" height="84" loading="lazy" decoding="async">`
-      : `<iframe src="${streetViewEmbedUrl(store.lat, store.lng)}" title="Vista ${name}" width="132" height="84" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
-
-    return `<div class="pospago-stores__map-pop">${media}<span>${name}</span></div>`;
+    const src = escapeHtml(storeThumbSrc(store));
+    return `<div class="pospago-stores__map-pop"><img src="${src}" alt="Punto de venta ${name}" width="132" height="84" loading="lazy" decoding="async"><span>${name}</span></div>`;
   }
 
   function showMapPopup(store) {
@@ -135,6 +128,15 @@
     });
   }
 
+  function refreshMapSize() {
+    if (!map) return;
+    map.invalidateSize({ pan: false });
+    const list = filteredStores();
+    if (!list.length) return;
+    const bounds = list.map((store) => [store.lat, store.lng]);
+    map.fitBounds(bounds, { padding: [28, 28], maxZoom: 12 });
+  }
+
   function focusStore(store, pan) {
     if (!store) return;
     activeId = store.id;
@@ -146,7 +148,7 @@
       map.setView([store.lat, store.lng], Math.max(map.getZoom(), 14), { animate: true });
     }
     setStatus(`${store.name} · ${store.city}`);
-    showMapPopup(store);
+    window.setTimeout(() => showMapPopup(store), 80);
   }
 
   function drawMap() {
@@ -154,34 +156,48 @@
       setStatus("Cargando mapa…");
       return;
     }
+
     const list = filteredStores();
+    if (!list.length) {
+      setStatus("No se encontraron sucursales AT&T.");
+      return;
+    }
+
     if (!map) {
       map = window.L.map(mapHost, { scrollWheelZoom: false, zoomControl: true });
       window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap",
         maxZoom: 19,
       }).addTo(map);
+      mapReady = true;
     }
+
     if (activePopup) {
       map.closePopup(activePopup);
       activePopup = null;
     }
+
     markers.forEach((item) => map.removeLayer(item.marker));
     markers = [];
-    const bounds = [];
+
     list.forEach((store) => {
       const marker = window.L.marker([store.lat, store.lng], { icon: markerIcon(store.id === activeId) })
         .addTo(map)
         .on("click", () => focusStore(store));
       markers.push({ store, marker });
-      bounds.push([store.lat, store.lng]);
     });
-    if (bounds.length) {
-      map.fitBounds(bounds, { padding: [28, 28], maxZoom: 12 });
-      window.setTimeout(() => map.invalidateSize(), 80);
+
+    refreshMapSize();
+
+    const active = list.find((store) => store.id === activeId) || list[0];
+    if (active) {
+      activeId = active.id;
+      renderList();
+      window.setTimeout(() => {
+        refreshMapSize();
+        showMapPopup(active);
+      }, 160);
     }
-    const active = list.find((store) => store.id === activeId);
-    if (active) window.setTimeout(() => showMapPopup(active), 120);
   }
 
   function openCarrier(id, { scroll } = { scroll: false }) {
@@ -198,30 +214,35 @@
     }
     if (titleEl) titleEl.textContent = carrier.title;
     renderList();
-    whenLeaflet(() => {
+
+    if (!list.length) {
+      setStatus("No se pudieron cargar las sucursales. Recarga la página.");
+      return;
+    }
+
+    whenReady(() => {
       drawMap();
-      const first = list[0];
-      if (first) focusStore(first, false);
-      window.setTimeout(() => map?.invalidateSize(), 120);
-      window.setTimeout(() => map?.invalidateSize(), 480);
+      window.setTimeout(refreshMapSize, 120);
+      window.setTimeout(refreshMapSize, 480);
+      window.setTimeout(refreshMapSize, 1200);
     });
+
     if (scroll) root.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function whenLeaflet(cb) {
-    if (window.L) {
-      cb();
-      return;
-    }
-    let n = 0;
+  function whenReady(cb) {
+    let waits = 0;
     const t = window.setInterval(() => {
-      n += 1;
-      if (window.L) {
+      waits += 1;
+      const hasLeaflet = typeof window.L !== "undefined";
+      const hasStores = storesFor().length > 0;
+      if (hasLeaflet && hasStores) {
         window.clearInterval(t);
         cb();
-      } else if (n > 80) {
+      } else if (waits > 100) {
         window.clearInterval(t);
-        setStatus("No se pudo cargar el mapa. Recarga la página.");
+        if (!hasStores) setStatus("No se pudieron cargar las sucursales. Recarga la página.");
+        else setStatus("No se pudo cargar el mapa. Recarga la página.");
       }
     }, 80);
   }
@@ -230,7 +251,7 @@
     const list = filteredStores();
     activeId = list[0]?.id || "";
     renderList();
-    drawMap();
+    if (mapReady) drawMap();
   });
 
   root.querySelector("[data-store-geo]")?.addEventListener("click", () => {
@@ -267,6 +288,31 @@
     if (!btn) return;
     const store = storesFor().find((s) => s.id === btn.getAttribute("data-store-focus"));
     if (store) focusStore(store, true);
+  });
+
+  if (typeof ResizeObserver !== "undefined" && mapHost) {
+    const ro = new ResizeObserver(() => {
+      if (mapReady) refreshMapSize();
+    });
+    ro.observe(mapHost);
+  }
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || !mapReady) return;
+          refreshMapSize();
+        });
+      },
+      { threshold: 0.2 }
+    );
+    io.observe(root);
+  }
+
+  window.addEventListener("load", () => {
+    if (mapReady) refreshMapSize();
+    else openCarrier("att");
   });
 
   openCarrier("att");
