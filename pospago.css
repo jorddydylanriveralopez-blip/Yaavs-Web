@@ -477,12 +477,46 @@ body.theme-cluster.page-postpago .pospago-catalog__family {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.pospago-rrss {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pospago-rrss li {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.pospago-rrss img {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+body.theme-cluster.page-postpago .pospago-rrss__cap {
+  margin: 6px 0 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.5) !important;
+}
+
 .pospago-rate {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 168px;
+  min-height: 198px;
   padding: 16px 14px 14px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
