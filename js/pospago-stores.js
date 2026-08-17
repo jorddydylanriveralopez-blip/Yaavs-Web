@@ -60,6 +60,10 @@
     return name;
   }
 
+  function mapsDirUrl(store) {
+    return `https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}&travelmode=driving`;
+  }
+
   function storeThumbSrc(store) {
     return store.image || store.photo || DEFAULT_PDV_IMAGE;
   }
