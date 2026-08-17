@@ -20,6 +20,10 @@
   const statusEl = root.querySelector("[data-store-status]");
   const titleEl = root.querySelector("[data-store-title]");
   const countEl = root.querySelector("[data-store-count]");
+  const previewEl = root.querySelector("[data-store-preview]");
+  const previewImgEl = root.querySelector("[data-store-preview-img]");
+  const previewStreetEl = root.querySelector("[data-store-preview-street]");
+  const previewCaptionEl = root.querySelector("[data-store-preview-caption]");
   let map = null;
   let markers = [];
   let activeId = "";
@@ -40,6 +44,60 @@
 
   function mapsDirUrl(store) {
     return `https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}&travelmode=driving`;
+  }
+
+  function streetViewEmbedUrl(lat, lng) {
+    return (
+      "https://www.google.com/maps?hl=es" +
+      `&layer=c&cbll=${lat},${lng}` +
+      "&cbp=12,0,0,0,0" +
+      "&output=svembed"
+    );
+  }
+
+  function updatePreview(store) {
+    if (!previewEl || !store) return;
+
+    const image = store.image || store.photo || "";
+    const usePhoto = Boolean(image);
+    const caption = usePhoto
+      ? `${store.name} · Punto de venta YAAVS`
+      : `${store.name} · Vista exterior del PDV (Street View)`;
+
+    if (previewCaptionEl) previewCaptionEl.textContent = caption;
+
+    if (previewImgEl) {
+      if (usePhoto) {
+        previewImgEl.src = image;
+        previewImgEl.alt = `Punto de venta ${store.name}, ${store.city}`;
+        previewImgEl.hidden = false;
+      } else {
+        previewImgEl.hidden = true;
+        previewImgEl.removeAttribute("src");
+      }
+    }
+
+    if (previewStreetEl) {
+      if (usePhoto) {
+        previewStreetEl.hidden = true;
+        previewStreetEl.removeAttribute("src");
+      } else {
+        previewStreetEl.hidden = false;
+        previewStreetEl.src = streetViewEmbedUrl(store.lat, store.lng);
+      }
+    }
+
+    previewEl.hidden = false;
+    root.classList.add("has-store-preview");
+    window.setTimeout(() => map?.invalidateSize(), 120);
+  }
+
+  function hidePreview() {
+    if (!previewEl) return;
+    previewEl.hidden = true;
+    root.classList.remove("has-store-preview");
+    if (previewStreetEl) previewStreetEl.removeAttribute("src");
+    window.setTimeout(() => map?.invalidateSize(), 120);
   }
 
   function filteredStores() {
@@ -96,6 +154,7 @@
       map.setView([store.lat, store.lng], Math.max(map.getZoom(), 14), { animate: true });
     }
     setStatus(`${store.name} · ${store.city}`);
+    updatePreview(store);
   }
 
   function drawMap() {
@@ -174,6 +233,8 @@
     activeId = list[0]?.id || "";
     renderList();
     drawMap();
+    if (list[0]) updatePreview(list[0]);
+    else hidePreview();
   });
 
   root.querySelector("[data-store-geo]")?.addEventListener("click", () => {
