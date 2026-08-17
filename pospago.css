@@ -81,6 +81,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   width: 100%;
   height: min(640px, 42vw);
   min-height: 280px;
+  isolation: isolate;
 }
 
 .pospago-coverflow {
@@ -90,6 +91,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   margin: 0;
   perspective: 1600px;
   transform-style: preserve-3d;
+  isolation: isolate;
 }
 
 .pospago-card {
@@ -1756,6 +1758,8 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  isolation: isolate;
+  transform: translateZ(0);
   animation: pospago-map-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 

@@ -26,12 +26,20 @@
     return d;
   }
 
+  function cardLayoutWidth() {
+    const card = cards[0];
+    return card.offsetWidth || Math.round(parseFloat(getComputedStyle(card).width)) || 0;
+  }
+
+  let lastLayoutWidth = 0;
+
   function layout() {
-    const width = cards[0].getBoundingClientRect().width || cards[0].offsetWidth;
+    const width = cardLayoutWidth();
     if (width < 48) {
       window.requestAnimationFrame(layout);
       return;
     }
+    lastLayoutWidth = width;
     const mobile = window.matchMedia("(max-width: 768px)").matches;
     const rotate = mobile ? 28 : 52;
     const depth = mobile ? 70 : 100;
@@ -143,9 +151,23 @@
     { passive: true }
   );
 
-  window.addEventListener("resize", layout);
-  if (typeof ResizeObserver === "function") {
-    new ResizeObserver(layout).observe(root);
+  function relayoutIfNeeded() {
+    const width = cardLayoutWidth();
+    if (width < 48) return;
+    if (lastLayoutWidth && Math.abs(width - lastLayoutWidth) < 2) return;
+    layout();
+  }
+
+  let resizeTick = 0;
+  function onViewportChange() {
+    window.cancelAnimationFrame(resizeTick);
+    resizeTick = window.requestAnimationFrame(relayoutIfNeeded);
+  }
+
+  window.addEventListener("resize", onViewportChange);
+  const frame = root.parentElement;
+  if (typeof ResizeObserver === "function" && frame) {
+    new ResizeObserver(onViewportChange).observe(frame);
   }
   window.requestAnimationFrame(layout);
   startTimer();
