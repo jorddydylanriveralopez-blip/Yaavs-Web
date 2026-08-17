@@ -1118,20 +1118,213 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
   }
 }
 
-@media (max-width: 560px) {
+@media (hover: none) {
+  .pospago-rate:hover,
+  .pospago-rate:focus-visible {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .pospago-plans {
+    padding: 36px 0 56px;
+  }
+
+  .pospago-plans__inner {
+    width: 100%;
+  }
+
+  .pospago-plans__head {
+    margin-bottom: 18px;
+    padding: 0 16px;
+  }
+
+  body.theme-cluster.page-postpago .pospago-plans__title {
+    font-size: 1.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  body.theme-cluster.page-postpago .pospago-plans__intro {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .pospago-float:nth-child(n + 3) {
+    display: none;
+  }
+
+  .pospago-float {
+    opacity: 0.14;
+    width: 34px !important;
+  }
+
   .pospago-catalog__jump {
-    top: calc(var(--header-h, 64px) + 8px);
+    top: calc(var(--header-h, 64px) + 6px);
+    width: calc(100% - 24px);
+    margin: 0 12px 16px;
+    padding: 4px;
+    background: rgba(17, 16, 24, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .pospago-catalog__tab {
+    padding: 11px 4px;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+  }
+
+  .pospago-catalog__stage {
+    margin: 0 12px;
+    padding: 16px 0 12px;
+    border-radius: 20px;
   }
 
   .pospago-catalog__banner {
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 0 16px 14px;
+    text-align: left;
+  }
+
+  body.theme-cluster.page-postpago .pospago-catalog__family {
+    font-size: 0.78rem;
+  }
+
+  .pospago-catalog__perks {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pospago-catalog__perks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pospago-catalog__perks li {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: 0.68rem;
   }
 
   .pospago-rate-grid--premium,
   .pospago-rate-grid--simple,
   .pospago-rate-grid--lite {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    padding: 8px 16px 10px;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .pospago-rate-grid--premium::-webkit-scrollbar,
+  .pospago-rate-grid--simple::-webkit-scrollbar,
+  .pospago-rate-grid--lite::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pospago-rate {
+    flex: 0 0 78%;
+    max-width: 320px;
+    min-height: 198px;
+    scroll-snap-align: start;
+    padding: 18px 16px 12px;
+  }
+
+  .pospago-rate__summary {
+    min-height: 176px;
+  }
+
+  body.theme-cluster.page-postpago .pospago-rate__data {
+    font-size: 2.15rem;
+  }
+
+  body.theme-cluster.page-postpago .pospago-rate__price {
+    font-size: 1.28rem;
+  }
+
+  .pospago-pick {
+    top: 10px;
+    right: 10px;
+    filter: none;
+    animation: none;
+  }
+
+  .pospago-pick__arrow {
+    display: none;
+  }
+
+  .pospago-pick__text {
+    padding: 5px 10px 6px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transform: none;
+  }
+
+  .pospago-rate.is-star .pospago-rate__name {
+    padding-right: 92px;
+  }
+
+  body.theme-cluster.page-postpago .pospago-catalog__legal::before {
+    content: "Desliza para ver más planes";
+    display: block;
+    margin: 0 0 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.42);
+    text-align: center;
+  }
+
+  body.theme-cluster.page-postpago .pospago-catalog__legal {
+    margin: 12px 16px 0;
+    font-size: 0.68rem;
+  }
+
+  .pospago-catalog__actions {
+    margin: 18px 16px 0;
+  }
+
+  body.theme-cluster.page-postpago .pospago-catalog__cta {
+    width: 100%;
+    padding: 15px 22px;
+  }
+
+  .pospago-modal {
+    place-items: end stretch;
+    padding: 0;
+  }
+
+  .pospago-modal__sheet {
+    width: 100%;
+    max-width: none;
+    max-height: min(90dvh, 740px);
+    border-radius: 22px 22px 0 0;
+    padding: 22px 18px max(22px, env(safe-area-inset-bottom));
+  }
+
+  .pospago-modal__close {
+    width: 44px;
+    height: 44px;
+  }
+
+  body.theme-cluster.page-postpago .pospago-modal__data {
+    font-size: 2rem;
   }
 }
 

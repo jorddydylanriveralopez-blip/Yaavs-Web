@@ -36,6 +36,18 @@
     if (syncHash && history.replaceState) {
       history.replaceState(null, "", `#pospago-panel-${id}`);
     }
+
+    const active = panels.find((panel) => panel.getAttribute("data-pospago-panel") === id);
+    if (active) window.requestAnimationFrame(() => scrollFeaturedIntoView(active));
+  }
+
+  function scrollFeaturedIntoView(panel) {
+    if (!window.matchMedia("(max-width: 720px)").matches) return;
+    const grid = panel.querySelector(".pospago-rate-grid");
+    const star = panel.querySelector(".pospago-rate.is-star") || panel.querySelector(".pospago-rate");
+    if (!grid || !star) return;
+    const left = star.offsetLeft - 12;
+    grid.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
   }
 
   tabs.forEach((tab) => {
