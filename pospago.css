@@ -2011,8 +2011,14 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 .pospago-stores__status {
   width: 100%;
   margin: 0;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.theme-cluster.page-postpago .pospago-stores__status {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 .pospago-stores__layout {

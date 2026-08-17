@@ -49,8 +49,15 @@
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address || `${store.lat},${store.lng}`)}`;
   }
 
-  function mapsDirUrl(store) {
-    return `https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}&travelmode=driving`;
+  function storeStatusLabel(store) {
+    const name = store.name || "";
+    const city = (store.city || "").trim();
+    if (city && city.toUpperCase() !== name.toUpperCase()) {
+      return `${name} · ${city}`;
+    }
+    const stateMatch = (store.address || "").match(/,\s*([A-ZÁÉÍÓÚÑ\s]+)\s*$/i);
+    if (stateMatch) return `${name} · ${stateMatch[1].trim()}`;
+    return name;
   }
 
   function storeThumbSrc(store) {
@@ -147,7 +154,7 @@
     if (pan !== false && map) {
       map.setView([store.lat, store.lng], Math.max(map.getZoom(), 14), { animate: true });
     }
-    setStatus(`${store.name} · ${store.city}`);
+    setStatus(storeStatusLabel(store));
     window.setTimeout(() => showMapPopup(store), 80);
   }
 
