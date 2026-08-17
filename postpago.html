@@ -29,14 +29,14 @@
   <!-- /yaavs-seo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=243">
   <link rel="stylesheet" href="decorations.css">
-  <link rel="stylesheet" href="theme-light.css?v=11">
+  <link rel="stylesheet" href="theme-light.css?v=12">
   <link rel="stylesheet" href="theme-day-night.css?v=5">
-  <link rel="stylesheet" href="interior-corporate.css?v=19">
+  <link rel="stylesheet" href="interior-corporate.css?v=20">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=27">
+  <link rel="stylesheet" href="pospago.css?v=28">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -303,7 +303,13 @@
               </article>
               <article class="pospago-rate is-star" data-pospago-rate style="--i: 4">
                 <div class="pospago-rate__summary">
-                <span class="pospago-rate__chip">Popular</span>
+                <span class="pospago-pick" aria-hidden="true">
+                  <span class="pospago-pick__text">Te conviene</span>
+                  <svg class="pospago-pick__arrow" viewBox="0 0 48 52" fill="none">
+                    <path d="M34 4C16 8 8 20 14 38" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                    <path d="M6 30l8 10 12-14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
                 <p class="pospago-rate__name">AT&amp;T Plata</p>
                 <p class="pospago-rate__data">25 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:46%"></span></span>
@@ -553,7 +559,13 @@
               </article>
               <article class="pospago-rate is-star" data-pospago-rate style="--i: 2">
                 <div class="pospago-rate__summary">
-                <span class="pospago-rate__chip">Popular</span>
+                <span class="pospago-pick" aria-hidden="true">
+                  <span class="pospago-pick__text">Te conviene</span>
+                  <svg class="pospago-pick__arrow" viewBox="0 0 48 52" fill="none">
+                    <path d="M34 4C16 8 8 20 14 38" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                    <path d="M6 30l8 10 12-14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">8 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:67%"></span></span>
@@ -698,7 +710,13 @@
               </article>
               <article class="pospago-rate is-star" data-pospago-rate style="--i: 2">
                 <div class="pospago-rate__summary">
-                <span class="pospago-rate__chip">Popular</span>
+                <span class="pospago-pick" aria-hidden="true">
+                  <span class="pospago-pick__text">Te conviene</span>
+                  <svg class="pospago-pick__arrow" viewBox="0 0 48 52" fill="none">
+                    <path d="M34 4C16 8 8 20 14 38" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+                    <path d="M6 30l8 10 12-14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
                 <p class="pospago-rate__name">AT&amp;T Lite 2</p>
                 <p class="pospago-rate__data">20 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:22%"></span></span>
@@ -863,7 +881,7 @@
   </div>
 
   <div id="site-footer"></div>
-  <script src="js/layout.js?v=47" defer></script>
+  <script src="js/layout.js?v=48" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/pospago-coverflow.js?v=6" defer></script>
   <script src="js/pospago-plans.js?v=11" defer></script>

@@ -91,7 +91,7 @@ body.theme-cluster:not(.page-home) .site-header .logo.logo--on-light {
 }
 
 /* Al scroll (barra blanca): logo a color / oscuro */
-body.theme-cluster:not(.page-home) .site-header.is-scrolled .logo.logo--white {
+body.theme-cluster:not(.page-home):not(.page-postpago) .site-header.is-scrolled .logo.logo--white {
   --logo-filter: brightness(0) saturate(100%);
   filter: brightness(0) saturate(100%) !important;
 }

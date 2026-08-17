@@ -48,7 +48,9 @@
     const picture = img.closest("picture");
     picture?.querySelectorAll("source").forEach((source) => source.remove());
 
-    const useLight = forceLight === true
+    const useLight = document.body.classList.contains("page-postpago")
+      ? false
+      : forceLight === true
       || (forceLight !== false && usesLightHeaderLogo());
 
     if (useLight) {
