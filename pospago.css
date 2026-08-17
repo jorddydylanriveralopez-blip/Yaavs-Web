@@ -28,22 +28,27 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  height: min(580px, 38vw);
+  height: min(640px, 42vw);
   min-height: 280px;
 }
 
 .pospago-coverflow {
   position: relative;
-  width: min(980px, 52vw);
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  perspective: 1400px;
+  margin: 0;
+  perspective: 1600px;
   transform-style: preserve-3d;
 }
 
 .pospago-card {
+  --pospago-card-w: min(1120px, 58vw);
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--pospago-card-w);
+  margin-left: calc(var(--pospago-card-w) / -2);
   border-radius: 16px;
   overflow: hidden;
   background: #0b1a44 center / cover no-repeat;
@@ -224,11 +229,8 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
     height: min(520px, 118vw);
   }
 
-  .pospago-coverflow {
-    width: min(100%, calc(100vw - 28px));
-  }
-
   .pospago-card {
+    --pospago-card-w: min(100%, calc(100vw - 36px));
     border-radius: 16px;
   }
 
