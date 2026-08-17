@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=14">
+  <link rel="stylesheet" href="pospago.css?v=15">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -128,17 +128,17 @@
       <div class="pospago-plans__inner">
         <header class="pospago-plans__head">
           <h2 class="pospago-plans__title">Planes Pospago</h2>
-          <p class="pospago-plans__intro">Más gigas, más libertad. Elige familia, compara gigas y renta, y en Lite cambia a precio de portabilidad.</p>
+          <p class="pospago-plans__intro">Más gigas, más libertad. Premium, Simple Plus y Lite se ven todos aquí, con renta y portabilidad a la vista.</p>
         </header>
 
         <div class="pospago-catalog" data-pospago-catalog>
-          <div class="pospago-catalog__tabs" role="tablist" aria-label="Familias de planes">
-            <button type="button" class="pospago-catalog__tab is-active" role="tab" aria-selected="true" aria-controls="pospago-panel-premium" id="pospago-tab-premium" data-pospago-tab="premium">Premium</button>
-            <button type="button" class="pospago-catalog__tab" role="tab" aria-selected="false" aria-controls="pospago-panel-simple" id="pospago-tab-simple" data-pospago-tab="simple">Simple Plus</button>
-            <button type="button" class="pospago-catalog__tab" role="tab" aria-selected="false" aria-controls="pospago-panel-lite" id="pospago-tab-lite" data-pospago-tab="lite">Lite</button>
-          </div>
+          <nav class="pospago-catalog__jump" aria-label="Ir a una familia de planes">
+            <a class="pospago-catalog__tab is-active" href="#pospago-panel-premium">Premium</a>
+            <a class="pospago-catalog__tab" href="#pospago-panel-simple">Simple Plus</a>
+            <a class="pospago-catalog__tab" href="#pospago-panel-lite">Lite</a>
+          </nav>
 
-          <div class="pospago-catalog__panel is-active" id="pospago-panel-premium" role="tabpanel" data-pospago-panel="premium" aria-labelledby="pospago-tab-premium">
+          <section class="pospago-catalog__panel" id="pospago-panel-premium" data-pospago-panel="premium">
             <div class="pospago-catalog__banner">
               <p class="pospago-catalog__family">AT&amp;T Premium · planes con equipo</p>
               <ul class="pospago-catalog__perks">
@@ -149,62 +149,63 @@
               </ul>
             </div>
             <div class="pospago-rate-grid pospago-rate-grid--premium">
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 0">
                 <p class="pospago-rate__name">AT&amp;T Azul</p>
                 <p class="pospago-rate__data">4 GB</p>
                 <p class="pospago-rate__price">$279<span> / mes</span></p>
                 <p class="pospago-rate__note">Add on Control incluido</p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 1">
                 <p class="pospago-rate__name">AT&amp;T Azul 1</p>
                 <p class="pospago-rate__data">5 GB</p>
                 <p class="pospago-rate__price">$330<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 2">
                 <p class="pospago-rate__name">AT&amp;T Azul 2</p>
                 <p class="pospago-rate__data">8 GB</p>
                 <p class="pospago-rate__price">$435<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 3">
                 <p class="pospago-rate__name">AT&amp;T Azul 3</p>
                 <p class="pospago-rate__data">14 GB</p>
                 <p class="pospago-rate__price">$550<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate is-star" data-pospago-rate style="--i: 4">
+                <span class="pospago-rate__chip">Popular</span>
                 <p class="pospago-rate__name">AT&amp;T Plata</p>
                 <p class="pospago-rate__data">25 GB</p>
                 <p class="pospago-rate__price">$650<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 5">
                 <p class="pospago-rate__name">AT&amp;T Oro</p>
                 <p class="pospago-rate__data">32 GB</p>
                 <p class="pospago-rate__price">$725<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 6">
                 <p class="pospago-rate__name">AT&amp;T Black</p>
                 <p class="pospago-rate__data">42 GB</p>
                 <p class="pospago-rate__price">$825<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 7">
                 <p class="pospago-rate__name">AT&amp;T Platino</p>
                 <p class="pospago-rate__data">50 GB</p>
                 <p class="pospago-rate__price">$1,035<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 8">
                 <p class="pospago-rate__name">AT&amp;T Diamante</p>
                 <p class="pospago-rate__data">55 GB</p>
                 <p class="pospago-rate__price">$1,300<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 9">
                 <p class="pospago-rate__name">AT&amp;T Titanio</p>
                 <p class="pospago-rate__data">42 GB</p>
                 <p class="pospago-rate__price">$1,599<span> / mes</span></p>
               </article>
             </div>
             <p class="pospago-catalog__legal">También meses sin intereses con bancos participantes. Consulta términos en att.com.</p>
-          </div>
+          </section>
 
-          <div class="pospago-catalog__panel" id="pospago-panel-simple" role="tabpanel" data-pospago-panel="simple" aria-labelledby="pospago-tab-simple" hidden>
+          <section class="pospago-catalog__panel" id="pospago-panel-simple" data-pospago-panel="simple">
             <div class="pospago-catalog__banner">
               <p class="pospago-catalog__family">AT&amp;T Simple Plus</p>
               <ul class="pospago-catalog__perks">
@@ -215,25 +216,26 @@
               </ul>
             </div>
             <div class="pospago-rate-grid pospago-rate-grid--simple">
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 0">
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">3 GB</p>
                 <p class="pospago-rate__split">1.5 GB + 1.5 GB promo</p>
                 <p class="pospago-rate__price">$299<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 1">
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">5 GB</p>
                 <p class="pospago-rate__split">2.5 GB + 2.5 GB promo</p>
                 <p class="pospago-rate__price">$399<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate is-star" data-pospago-rate style="--i: 2">
+                <span class="pospago-rate__chip">Popular</span>
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">8 GB</p>
                 <p class="pospago-rate__split">4 GB + 4 GB promo</p>
                 <p class="pospago-rate__price">$599<span> / mes</span></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 3">
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">12 GB</p>
                 <p class="pospago-rate__split">6 GB + 6 GB promo</p>
@@ -241,9 +243,9 @@
               </article>
             </div>
             <p class="pospago-catalog__legal">Meses sin intereses con bancos participantes. Consulta términos en att.com.</p>
-          </div>
+          </section>
 
-          <div class="pospago-catalog__panel" id="pospago-panel-lite" role="tabpanel" data-pospago-panel="lite" aria-labelledby="pospago-tab-lite" hidden>
+          <section class="pospago-catalog__panel" id="pospago-panel-lite" data-pospago-panel="lite">
             <div class="pospago-catalog__banner">
               <p class="pospago-catalog__family">AT&amp;T Lite · planes sin equipo</p>
               <ul class="pospago-catalog__perks">
@@ -252,64 +254,55 @@
                 <li>Redes sociales a elegir</li>
                 <li>Add on Control $50</li>
               </ul>
-              <div class="pospago-toggle" role="group" aria-label="Tipo de renta Lite">
-                <button type="button" class="pospago-toggle__btn is-active" data-pospago-price="base">Renta regular</button>
-                <button type="button" class="pospago-toggle__btn" data-pospago-price="porta">Portabilidad</button>
-              </div>
             </div>
             <div class="pospago-rate-grid pospago-rate-grid--lite">
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 0">
                 <p class="pospago-rate__name">AT&amp;T Lite</p>
                 <p class="pospago-rate__data">4 GB</p>
                 <p class="pospago-rate__split">3 redes a elegir</p>
-                <p class="pospago-rate__price pospago-rate__price--base">$299<span> / mes</span></p>
-                <p class="pospago-rate__price pospago-rate__price--porta">$270<span> / mes</span></p>
-                <p class="pospago-rate__note pospago-rate__note--base">Add on Control incluido</p>
-                <p class="pospago-rate__note pospago-rate__note--porta">10% de descuento · Add on incluido</p>
+                <p class="pospago-rate__price">$299<span> / mes</span></p>
+                <p class="pospago-rate__porta">Portabilidad <strong>$270</strong> <em>−10%</em></p>
+                <p class="pospago-rate__note">Add on Control incluido</p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 1">
                 <p class="pospago-rate__name">AT&amp;T Lite 1</p>
                 <p class="pospago-rate__data">12 GB</p>
                 <p class="pospago-rate__split">6 redes a elegir</p>
-                <p class="pospago-rate__price pospago-rate__price--base">$349<span> / mes</span></p>
-                <p class="pospago-rate__price pospago-rate__price--porta">$315<span> / mes</span></p>
-                <p class="pospago-rate__note pospago-rate__note--porta">10% de descuento</p>
+                <p class="pospago-rate__price">$349<span> / mes</span></p>
+                <p class="pospago-rate__porta">Portabilidad <strong>$315</strong> <em>−10%</em></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate is-star" data-pospago-rate style="--i: 2">
+                <span class="pospago-rate__chip">Popular</span>
                 <p class="pospago-rate__name">AT&amp;T Lite 2</p>
                 <p class="pospago-rate__data">20 GB</p>
                 <p class="pospago-rate__split">6 redes a elegir</p>
-                <p class="pospago-rate__price pospago-rate__price--base">$449<span> / mes</span></p>
-                <p class="pospago-rate__price pospago-rate__price--porta">$360<span> / mes</span></p>
-                <p class="pospago-rate__note pospago-rate__note--porta">20% de descuento</p>
+                <p class="pospago-rate__price">$449<span> / mes</span></p>
+                <p class="pospago-rate__porta">Portabilidad <strong>$360</strong> <em>−20%</em></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 3">
                 <p class="pospago-rate__name">AT&amp;T Lite 3</p>
                 <p class="pospago-rate__data">30 GB</p>
                 <p class="pospago-rate__split">6 redes a elegir</p>
-                <p class="pospago-rate__price pospago-rate__price--base">$549<span> / mes</span></p>
-                <p class="pospago-rate__price pospago-rate__price--porta">$440<span> / mes</span></p>
-                <p class="pospago-rate__note pospago-rate__note--porta">20% de descuento</p>
+                <p class="pospago-rate__price">$549<span> / mes</span></p>
+                <p class="pospago-rate__porta">Portabilidad <strong>$440</strong> <em>−20%</em></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 4">
                 <p class="pospago-rate__name">AT&amp;T Lite 4</p>
                 <p class="pospago-rate__data">50 GB</p>
                 <p class="pospago-rate__split">6 redes a elegir</p>
-                <p class="pospago-rate__price pospago-rate__price--base">$669<span> / mes</span></p>
-                <p class="pospago-rate__price pospago-rate__price--porta">$502<span> / mes</span></p>
-                <p class="pospago-rate__note pospago-rate__note--porta">25% de descuento</p>
+                <p class="pospago-rate__price">$669<span> / mes</span></p>
+                <p class="pospago-rate__porta">Portabilidad <strong>$502</strong> <em>−25%</em></p>
               </article>
-              <article class="pospago-rate" data-pospago-rate>
+              <article class="pospago-rate" data-pospago-rate style="--i: 5">
                 <p class="pospago-rate__name">AT&amp;T Lite 5</p>
                 <p class="pospago-rate__data">120 GB</p>
                 <p class="pospago-rate__split">6 redes a elegir</p>
-                <p class="pospago-rate__price pospago-rate__price--base">$999<span> / mes</span></p>
-                <p class="pospago-rate__price pospago-rate__price--porta">$750<span> / mes</span></p>
-                <p class="pospago-rate__note pospago-rate__note--porta">25% de descuento</p>
+                <p class="pospago-rate__price">$999<span> / mes</span></p>
+                <p class="pospago-rate__porta">Portabilidad <strong>$750</strong> <em>−25%</em></p>
               </article>
             </div>
             <p class="pospago-catalog__legal">Portabilidad: 10%, 20% o 25% de descuento en la renta mensual, según el plan. Consulta cobertura y términos en att.com.</p>
-          </div>
+          </section>
 
           <a class="pospago-catalog__cta" href="contacto.html">Quiero vender estos planes</a>
         </div>
@@ -323,6 +316,6 @@
   <script src="js/layout.js?v=46" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/pospago-coverflow.js?v=6" defer></script>
-  <script src="js/pospago-plans.js?v=1" defer></script>
+  <script src="js/pospago-plans.js?v=2" defer></script>
 </body>
 </html>

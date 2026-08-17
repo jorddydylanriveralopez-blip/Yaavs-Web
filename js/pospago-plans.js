@@ -1,45 +1,64 @@
 /**
- * Catálogo de planes pospago: familias, selección y precio de portabilidad.
+ * Catálogo pospago: revela tarjetas, resalta familia visible y selecciona un plan.
  */
 (function () {
   const root = document.querySelector("[data-pospago-catalog]");
   if (!root) return;
 
-  const tabs = Array.from(root.querySelectorAll("[data-pospago-tab]"));
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cards = Array.from(root.querySelectorAll("[data-pospago-rate]"));
   const panels = Array.from(root.querySelectorAll("[data-pospago-panel]"));
-  const priceBtns = Array.from(root.querySelectorAll("[data-pospago-price]"));
+  const jumps = Array.from(root.querySelectorAll(".pospago-catalog__jump a"));
 
-  function setTab(id) {
-    tabs.forEach((tab) => {
-      const on = tab.getAttribute("data-pospago-tab") === id;
-      tab.classList.toggle("is-active", on);
-      tab.setAttribute("aria-selected", String(on));
-    });
-    panels.forEach((panel) => {
-      const on = panel.getAttribute("data-pospago-panel") === id;
-      panel.classList.toggle("is-active", on);
-      panel.hidden = !on;
-    });
-  }
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => setTab(tab.getAttribute("data-pospago-tab")));
-  });
-
-  priceBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const porta = btn.getAttribute("data-pospago-price") === "porta";
-      root.classList.toggle("is-porta", porta);
-      priceBtns.forEach((el) => el.classList.toggle("is-active", el === btn));
-    });
-  });
-
-  root.querySelectorAll("[data-pospago-rate]").forEach((card) => {
+  cards.forEach((card) => {
     card.tabIndex = 0;
     card.addEventListener("keydown", (e) => {
       if (e.key !== "Enter" && e.key !== " ") return;
       e.preventDefault();
       card.click();
+    });
+  });
+
+  if (!reduced && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+    cards.forEach((card) => io.observe(card));
+  } else {
+    cards.forEach((card) => card.classList.add("is-in"));
+  }
+
+  function setJump(id) {
+    jumps.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+    });
+  }
+
+  if ("IntersectionObserver" in window && panels.length) {
+    const navIo = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        setJump(visible.target.id);
+      },
+      { threshold: [0.25, 0.45, 0.7], rootMargin: "-20% 0px -45% 0px" }
+    );
+    panels.forEach((panel) => navIo.observe(panel));
+  }
+
+  jumps.forEach((link) => {
+    link.addEventListener("click", () => {
+      const id = (link.getAttribute("href") || "").slice(1);
+      if (id) setJump(id);
     });
   });
 

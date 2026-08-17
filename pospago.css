@@ -340,28 +340,31 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
   50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
 }
 
-/* Planes Pospago — catálogo con datos AT&T */
+/* Planes Pospago — catálogo completo con animación */
 .pospago-plans {
   position: relative;
+  overflow: visible;
   scroll-margin-top: calc(var(--header-h, 72px) + 12px);
-  padding: clamp(56px, 8vw, 96px) max(20px, var(--pad-x, 24px));
-  background: #05010a;
+  padding: clamp(56px, 8vw, 108px) max(16px, var(--pad-x, 24px)) clamp(72px, 10vw, 120px);
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(14, 62, 163, 0.22), transparent 58%),
+    #05010a;
   color: #fff;
 }
 
 .pospago-plans__inner {
-  width: min(1180px, 100%);
+  width: min(1280px, 100%);
   margin: 0 auto;
 }
 
 .pospago-plans__head {
   text-align: center;
-  margin-bottom: clamp(28px, 4vw, 40px);
+  margin-bottom: clamp(24px, 4vw, 36px);
 }
 
 body.theme-cluster.page-postpago .pospago-plans__title {
   margin: 0 0 10px;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
   font-weight: 800;
   letter-spacing: 0.02em;
   color: #fff !important;
@@ -370,37 +373,42 @@ body.theme-cluster.page-postpago .pospago-plans__title {
 
 body.theme-cluster.page-postpago .pospago-plans__intro {
   margin: 0 auto;
-  max-width: 40rem;
+  max-width: 42rem;
   font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.78) !important;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.78);
 }
 
-.pospago-catalog__tabs {
+.pospago-catalog__jump {
+  position: sticky;
+  top: calc(var(--header-h, 72px) + 10px);
+  z-index: 8;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
   width: min(560px, 100%);
-  margin: 0 auto 28px;
+  margin: 0 auto 36px;
   padding: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 6, 16, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .pospago-catalog__tab {
+  display: grid;
+  place-items: center;
   margin: 0;
   padding: 12px 10px;
-  border: 0;
   border-radius: 999px;
-  background: transparent;
   color: rgba(255, 255, 255, 0.72);
-  font: inherit;
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .pospago-catalog__tab.is-active {
@@ -408,13 +416,21 @@ body.theme-cluster.page-postpago .pospago-plans__intro {
   color: #05010a;
 }
 
-.pospago-catalog__tab:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
+.pospago-catalog__tab:hover {
+  color: #fff;
 }
 
-.pospago-catalog__panel[hidden] {
-  display: none;
+.pospago-catalog__tab.is-active:hover {
+  color: #05010a;
+}
+
+.pospago-catalog__panel {
+  scroll-margin-top: calc(var(--header-h, 72px) + 76px);
+  margin-bottom: clamp(40px, 6vw, 72px);
+  padding: clamp(22px, 3vw, 32px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .pospago-catalog__banner {
@@ -459,78 +475,103 @@ body.theme-cluster.page-postpago .pospago-catalog__family {
   color: #fff;
 }
 
-.pospago-toggle {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  justify-self: center;
-  padding: 4px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.pospago-toggle__btn {
-  margin: 0;
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.7);
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.pospago-toggle__btn.is-active {
-  background: #fff;
-  color: #05010a;
-}
-
 .pospago-rate-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.pospago-rate-grid--simple,
-.pospago-rate-grid--lite {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
 }
 
 .pospago-rate {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-height: 100%;
-  padding: 18px 16px 16px;
-  border-radius: 18px;
+  padding: 22px 18px 18px;
+  border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
   cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.pospago-rate.is-in {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+
+.pospago-rate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.16) 50%, transparent 65%);
+  transform: translateX(-140%);
+  pointer-events: none;
+}
+
+.pospago-rate:hover::after,
+.pospago-rate.is-on::after {
+  transform: translateX(140%);
+  transition: transform 0.7s ease;
+}
+
+.pospago-rate.is-in:hover,
+.pospago-rate.is-in:focus-visible,
+.pospago-rate.is-in.is-on {
+  transform: translateY(-8px) scale(1.03);
+  transition-delay: 0s;
 }
 
 .pospago-rate:hover,
-.pospago-rate:focus-visible {
-  transform: translateY(-4px);
+.pospago-rate:focus-visible,
+.pospago-rate.is-on {
+  transform: translateY(-8px) scale(1.03);
   border-color: rgba(217, 109, 242, 0.55);
-  background: rgba(217, 109, 242, 0.08);
+  background: linear-gradient(180deg, rgba(217, 109, 242, 0.16), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
   outline: none;
+  z-index: 2;
 }
 
 #pospago-panel-lite .pospago-rate:hover,
 #pospago-panel-lite .pospago-rate:focus-visible,
 #pospago-panel-lite .pospago-rate.is-on {
-  border-color: rgba(91, 141, 255, 0.55);
-  background: rgba(91, 141, 255, 0.1);
+  border-color: rgba(91, 141, 255, 0.6);
+  background: linear-gradient(180deg, rgba(91, 141, 255, 0.16), rgba(255, 255, 255, 0.04));
 }
 
-.pospago-rate.is-on {
-  border-color: rgba(217, 109, 242, 0.7);
-  background: rgba(217, 109, 242, 0.12);
-  transform: translateY(-4px);
+.pospago-rate.is-star {
+  border-color: rgba(217, 109, 242, 0.45);
+}
+
+#pospago-panel-lite .pospago-rate.is-star {
+  border-color: rgba(91, 141, 255, 0.45);
+}
+
+.pospago-rate__chip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #fff;
+  color: #05010a;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pospago-rate.is-star .pospago-rate__name {
+  padding-right: 72px;
 }
 
 body.theme-cluster.page-postpago .pospago-rate__name {
@@ -545,7 +586,7 @@ body.theme-cluster.page-postpago .pospago-rate__name {
 
 body.theme-cluster.page-postpago .pospago-rate__data {
   margin: 0;
-  font-size: clamp(1.55rem, 2.4vw, 2rem);
+  font-size: clamp(1.7rem, 2.8vw, 2.25rem);
   font-weight: 800;
   line-height: 1;
   color: #fff !important;
@@ -561,8 +602,8 @@ body.theme-cluster.page-postpago .pospago-rate__split {
 }
 
 body.theme-cluster.page-postpago .pospago-rate__price {
-  margin: 14px 0 0;
-  font-size: 1.2rem;
+  margin: 16px 0 0;
+  font-size: 1.28rem;
   font-weight: 800;
   color: #fff !important;
   -webkit-text-fill-color: #fff;
@@ -575,6 +616,26 @@ body.theme-cluster.page-postpago .pospago-rate__price span {
   -webkit-text-fill-color: rgba(255, 255, 255, 0.55);
 }
 
+body.theme-cluster.page-postpago .pospago-rate__porta {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.78) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.78);
+}
+
+body.theme-cluster.page-postpago .pospago-rate__porta strong {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+
+body.theme-cluster.page-postpago .pospago-rate__porta em {
+  margin-left: 4px;
+  font-style: normal;
+  color: #7aa6ff !important;
+  -webkit-text-fill-color: #7aa6ff;
+}
+
 body.theme-cluster.page-postpago .pospago-rate__note {
   margin: 10px 0 0;
   font-size: 0.72rem;
@@ -582,26 +643,6 @@ body.theme-cluster.page-postpago .pospago-rate__note {
   line-height: 1.35;
   color: #d96df2 !important;
   -webkit-text-fill-color: #d96df2;
-}
-
-#pospago-panel-lite .pospago-rate__note {
-  color: #7aa6ff !important;
-  -webkit-text-fill-color: #7aa6ff;
-}
-
-.pospago-rate__price--porta,
-.pospago-rate__note--porta {
-  display: none;
-}
-
-.pospago-catalog.is-porta .pospago-rate__price--base,
-.pospago-catalog.is-porta .pospago-rate__note--base {
-  display: none;
-}
-
-.pospago-catalog.is-porta .pospago-rate__price--porta,
-.pospago-catalog.is-porta .pospago-rate__note--porta {
-  display: block;
 }
 
 body.theme-cluster.page-postpago .pospago-catalog__legal {
@@ -617,35 +658,30 @@ body.theme-cluster.page-postpago .pospago-catalog__cta {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(320px, 100%);
-  margin: 32px auto 0;
-  padding: 14px 22px;
+  width: min(340px, 100%);
+  margin: 8px auto 0;
+  padding: 15px 24px;
   border-radius: 999px;
   background: #fff;
   color: #000 !important;
   -webkit-text-fill-color: #000;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 800;
   text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
 body.theme-cluster.page-postpago .pospago-catalog__cta:hover,
 body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
   background: #f3f3f3;
+  transform: translateY(-2px);
   outline: none;
 }
 
-@media (max-width: 980px) {
-  .pospago-rate-grid,
-  .pospago-rate-grid--simple,
-  .pospago-rate-grid--lite {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 560px) {
-  .pospago-catalog__tabs {
+  .pospago-catalog__jump {
     border-radius: 18px;
+    top: calc(var(--header-h, 64px) + 8px);
   }
 
   .pospago-catalog__tab {
@@ -653,20 +689,21 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
     padding: 10px 6px;
   }
 
-  .pospago-rate-grid,
-  .pospago-rate-grid--simple,
-  .pospago-rate-grid--lite {
-    grid-template-columns: 1fr;
+  .pospago-catalog__panel {
+    padding: 16px 12px 18px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pospago-rate {
-    transition: none;
-  }
-
+  .pospago-rate,
+  .pospago-rate.is-in,
   .pospago-rate:hover,
-  .pospago-rate.is-on {
+  .pospago-rate.is-on,
+  .pospago-rate::after,
+  .pospago-catalog__cta {
+    opacity: 1;
     transform: none;
+    transition: none;
+    animation: none;
   }
 }
