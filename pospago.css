@@ -1,7 +1,7 @@
-/* Banner pospago — fondo oscuro, paleta AT&T (#D96DF2 / #0E3EA3) sin neón */
+/* Banner pospago — fondo oscuro, paleta AT&T morado (#D96DF2) sin neón */
 .page-postpago {
   --pospago-pink: #d96df2;
-  --pospago-blue: #0e3ea3;
+  --pospago-blue: #7c3aad;
 }
 
 body.theme-cluster.page-postpago {
@@ -72,9 +72,11 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   overflow: hidden;
   color: #fff;
   background:
-    linear-gradient(180deg, rgba(5, 1, 10, 0.42) 0%, rgba(5, 1, 10, 0.62) 100%),
+    radial-gradient(ellipse 115% 72% at 50% 12%, rgba(180, 55, 220, 0.32) 0%, transparent 54%),
+    radial-gradient(ellipse 85% 55% at 50% 92%, rgba(120, 30, 165, 0.24) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(32, 10, 42, 0.58) 0%, rgba(18, 6, 28, 0.76) 55%, rgba(10, 3, 16, 0.9) 100%),
     url("assets/tiendas/city-night.jpg") center center / cover no-repeat,
-    #05010a;
+    #120818;
 }
 
 .pospago-hero__brand {
@@ -161,7 +163,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   margin-left: calc(var(--pospago-card-w) / -2);
   border-radius: 16px;
   overflow: hidden;
-  background: #0b1a44;
+  background: #1a0a28;
   transform-origin: center center;
   backface-visibility: hidden;
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
@@ -482,7 +484,7 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
 .pospago-break__fade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(5, 1, 10, 0.55) 42%, #05010a 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(18, 8, 28, 0.58) 42%, #120818 100%);
   pointer-events: none;
 }
 
@@ -528,7 +530,7 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
   border: 1.5px solid transparent;
   background:
     linear-gradient(#0b0a12, #14121c) padding-box,
-    linear-gradient(135deg, #d96df2 0%, #fff 48%, #0e3ea3 100%) border-box;
+    linear-gradient(135deg, #d96df2 0%, #fff 48%, #9b4dff 100%) border-box;
   box-shadow:
     0 10px 28px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.16);
