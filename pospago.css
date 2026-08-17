@@ -30,9 +30,17 @@ body.theme-cluster.page-postpago .site-header.is-scrolled::after {
   display: none !important;
 }
 
+body.theme-cluster.page-postpago .site-header .logo,
+body.theme-cluster.page-postpago .site-header .logo.logo--white,
 body.theme-cluster.page-postpago .site-header.is-scrolled .logo,
-body.theme-cluster.page-postpago .site-header.is-scrolled .logo.logo--white {
+body.theme-cluster.page-postpago .site-header.is-scrolled .logo.logo--white,
+[data-yaavs-theme="day"] body.theme-cluster.page-postpago .site-header .logo.logo--white,
+[data-yaavs-theme="day"] body.theme-cluster.page-postpago .site-header.is-scrolled .logo.logo--white,
+[data-yaavs-theme="night"] body.theme-cluster.page-postpago .site-header .logo.logo--white,
+[data-yaavs-theme="night"] body.theme-cluster.page-postpago .site-header.is-scrolled .logo.logo--white {
+  --logo-filter: none !important;
   filter: none !important;
+  opacity: 1 !important;
 }
 
 body.theme-cluster.page-postpago .site-header.is-scrolled .nav-bento {
@@ -453,87 +461,51 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
   50% { opacity: 1; }
 }
 
-/* Planes Pospago — catálogo visible, denso y con movimiento */
+/* Planes Pospago — iconos sueltos, sin patrón de fondo */
 .pospago-plans {
   position: relative;
   overflow: hidden;
   scroll-margin-top: calc(var(--header-h, 72px) + 12px);
   padding: clamp(48px, 6vw, 88px) max(16px, var(--pad-x, 24px)) clamp(64px, 8vw, 96px);
-  background-color: #05010a;
-  background-image:
-    url("assets/floats/float-sim.svg"),
-    url("assets/floats/float-phone.svg"),
-    url("assets/floats/float-chip.svg"),
-    url("assets/floats/float-esim.svg"),
-    url("assets/floats/float-phones.svg");
-  background-repeat: repeat;
-  background-size: 78px auto, 46px auto, 58px auto, 62px auto, 96px auto;
-  background-position: 8px 12px, 52px 48px, 28px 96px, 90px 18px, 12px 130px;
+  background: #05010a;
   color: #fff;
-}
-
-.pospago-plans::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: rgba(5, 1, 10, 0.55);
 }
 
 .pospago-floats {
   position: absolute;
   inset: 0;
   z-index: 0;
-  display: grid;
-  align-items: center;
-  justify-items: center;
   pointer-events: none;
 }
 
-.pospago-floats--section {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-template-rows: repeat(4, minmax(0, 1fr));
-}
-
-.pospago-floats--box {
-  inset: -6%;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  grid-template-rows: repeat(6, minmax(0, 1fr));
-}
-
 .pospago-float {
-  width: clamp(42px, 7vw, 86px);
+  position: absolute;
+  width: clamp(44px, 6vw, 78px);
   height: auto;
-  opacity: 0.55;
+  opacity: 0.34;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
-  animation: pospago-float-drift 8.5s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * -0.35s);
+  animation: pospago-float-drift 9s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -0.55s);
 }
 
-.pospago-floats--section .pospago-float {
-  opacity: 0.42;
-}
-
-.pospago-float:nth-child(even) {
-  opacity: 0.4;
-}
-
-.pospago-floats--box .pospago-float:nth-child(even) {
-  opacity: 0.48;
-}
-
-.pospago-float:nth-child(3n) {
-  width: clamp(34px, 5.5vw, 64px);
-}
-
-.pospago-float:nth-child(5n) {
-  width: clamp(52px, 8vw, 98px);
-}
+.pospago-float:nth-child(1)  { left: 3%;  top: 8%;  width: 58px; }
+.pospago-float:nth-child(2)  { left: 11%; top: 28%; width: 42px; }
+.pospago-float:nth-child(3)  { left: 2%;  top: 52%; width: 70px; }
+.pospago-float:nth-child(4)  { left: 8%;  top: 76%; width: 48px; }
+.pospago-float:nth-child(5)  { right: 4%; top: 10%; width: 64px; }
+.pospago-float:nth-child(6)  { right: 10%; top: 32%; width: 44px; }
+.pospago-float:nth-child(7)  { right: 2%; top: 56%; width: 72px; }
+.pospago-float:nth-child(8)  { right: 9%; top: 78%; width: 50px; }
+.pospago-float:nth-child(9)  { left: 22%; top: 6%;  width: 40px; opacity: 0.22; }
+.pospago-float:nth-child(10) { right: 24%; top: 7%; width: 46px; opacity: 0.22; }
+.pospago-float:nth-child(11) { left: 18%; bottom: 6%; width: 56px; }
+.pospago-float:nth-child(12) { right: 18%; bottom: 8%; width: 62px; }
+.pospago-float:nth-child(13) { left: 4%;  top: 40%; width: 36px; opacity: 0.2; }
+.pospago-float:nth-child(14) { right: 5%; top: 44%; width: 38px; opacity: 0.2; }
 
 @keyframes pospago-float-drift {
-  0%, 100% { transform: translateY(0) rotate(-6deg); }
-  50% { transform: translateY(-14px) rotate(6deg); }
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-12px) rotate(8deg); }
 }
 
 .pospago-plans__inner {
@@ -620,25 +592,7 @@ body.theme-cluster.page-postpago .pospago-plans__intro {
   padding: 22px 20px 20px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background-color: rgba(12, 11, 20, 0.22);
-  background-image:
-    url("assets/floats/float-sim.svg"),
-    url("assets/floats/float-phone.svg"),
-    url("assets/floats/float-chip.svg"),
-    url("assets/floats/float-esim.svg"),
-    url("assets/floats/float-phones.svg");
-  background-repeat: repeat;
-  background-size: 70px auto, 42px auto, 52px auto, 56px auto, 88px auto;
-  background-position: 6px 10px, 44px 38px, 22px 84px, 78px 16px, 10px 118px;
-}
-
-.pospago-catalog__stage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: rgba(12, 11, 20, 0.12);
+  background: #0c0b14;
 }
 
 .pospago-catalog__panel {
