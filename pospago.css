@@ -1308,14 +1308,19 @@ body.theme-cluster.page-postpago .pospago-modal__price span {
   outline: none;
 }
 
-/* Conoce nuestras tiendas — selector + mapa en la misma página */
+/* Conoce nuestras tiendas — selector a todo el ancho + despliegue */
 .pospago-stores {
   position: relative;
   z-index: 1;
-  padding: clamp(48px, 6vw, 88px) max(16px, var(--pad-x, 24px)) clamp(64px, 8vw, 96px);
+  padding: 0;
+  overflow: clip;
   background: #05010a;
   color: #fff;
-  scroll-margin-top: calc(var(--header-h, 72px) + 12px);
+  scroll-margin-top: calc(var(--header-h, 72px) + 8px);
+}
+
+.pospago-stores__head {
+  padding: clamp(36px, 5vw, 64px) max(16px, var(--pad-x, 24px)) 20px;
 }
 
 .pospago-stores[data-carrier="att"] {
@@ -1342,7 +1347,7 @@ body.theme-cluster.page-postpago .pospago-stores__title {
 }
 
 body.theme-cluster.page-postpago .pospago-stores__intro {
-  margin: 0 auto 28px;
+  margin: 0 auto;
   max-width: 36rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.72) !important;
@@ -1352,85 +1357,204 @@ body.theme-cluster.page-postpago .pospago-stores__intro {
 .pospago-stores__picks {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  width: min(920px, 100%);
-  margin: 0 auto;
+  gap: 0;
+  width: 100%;
+  min-height: min(86vh, 920px);
 }
 
 .pospago-stores__pick {
   position: relative;
   display: grid;
-  min-height: 220px;
+  min-height: min(86vh, 920px);
   overflow: hidden;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 22px;
-  background: #0c0b14;
+  border: 0;
+  border-radius: 0;
+  background: #05010a;
   color: #fff;
   font: inherit;
   cursor: pointer;
-  text-align: left;
+  isolation: isolate;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease,
+    filter 0.45s ease;
 }
 
-.pospago-stores__pick img {
+.pospago-stores__pick-bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.06);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pospago-stores__pick::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 1, 10, 0.15), rgba(5, 1, 10, 0.78));
-}
-
-.pospago-stores__pick span {
-  position: relative;
   z-index: 1;
-  display: grid;
-  align-content: end;
-  gap: 6px;
-  height: 100%;
-  padding: 22px;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
-.pospago-stores__pick strong {
-  font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+.pospago-stores__pick--att::after {
+  background:
+    linear-gradient(180deg, rgba(0, 36, 95, 0.55) 0%, rgba(0, 55, 140, 0.28) 42%, rgba(0, 18, 48, 0.88) 100%),
+    linear-gradient(240deg, rgba(0, 168, 224, 0.38) 0%, transparent 58%);
+}
+
+.pospago-stores__pick--bait::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.28) 42%, rgba(0, 0, 0, 0.88) 100%),
+    linear-gradient(120deg, rgba(255, 203, 5, 0.18) 0%, transparent 55%);
+}
+
+.pospago-stores__pick-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 100%;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pospago-stores__pick-logo {
+  width: auto;
+  height: clamp(64px, 10vw, 120px);
+  max-width: min(70%, 360px);
+  object-fit: contain;
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.45));
 }
 
 .pospago-stores__pick em {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72em 1.4em;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
   font-style: normal;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: #fff;
 }
 
-.pospago-stores__pick--att {
-  box-shadow: 0 0 0 1px rgba(0, 168, 224, 0.35);
+.pospago-stores__pick em::after {
+  content: " →";
 }
 
-.pospago-stores__pick--att:hover,
-.pospago-stores__pick--att:focus-visible {
-  box-shadow: 0 0 0 2px #00a8e0, 0 18px 40px rgba(0, 168, 224, 0.28);
+.pospago-stores__pick:hover .pospago-stores__pick-bg,
+.pospago-stores__pick:focus-visible .pospago-stores__pick-bg {
+  transform: scale(1.14);
+}
+
+.pospago-stores__pick:hover .pospago-stores__pick-copy,
+.pospago-stores__pick:focus-visible .pospago-stores__pick-copy {
+  transform: translateY(-10px);
+}
+
+.pospago-stores__pick--att:hover em,
+.pospago-stores__pick--att:focus-visible em {
+  background: #00a8e0;
+  border-color: #00a8e0;
+  color: #001018;
+  box-shadow: 0 12px 32px rgba(0, 168, 224, 0.4);
+}
+
+.pospago-stores__pick--bait:hover em,
+.pospago-stores__pick--bait:focus-visible em {
+  background: #ffcb05;
+  border-color: #ffcb05;
+  color: #111;
+  box-shadow: 0 12px 32px rgba(255, 203, 5, 0.35);
+}
+
+.pospago-stores__pick:focus-visible {
   outline: none;
+  z-index: 2;
+  box-shadow: inset 0 0 0 3px #fff;
 }
 
-.pospago-stores__pick--bait:hover,
-.pospago-stores__pick--bait:focus-visible {
-  box-shadow: 0 0 0 2px #ffcb05, 0 18px 40px rgba(255, 203, 5, 0.22);
-  outline: none;
+.pospago-stores.is-opening .pospago-stores__pick.is-dim {
+  opacity: 0;
+  transform: scale(0.92);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.pospago-stores.is-opening .pospago-stores__pick.is-chosen {
+  z-index: 3;
+  animation: pospago-pick-boom 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.pospago-stores.is-opening .pospago-stores__head {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes pospago-pick-boom {
+  0% { transform: scale(1); }
+  55% { transform: scale(1.04); }
+  100% { transform: scale(1.08); filter: brightness(1.15); }
+}
+
+.pospago-stores.is-open .pospago-stores__head {
+  display: none;
 }
 
 .pospago-stores__stage {
-  width: min(1220px, 100%);
-  margin: 0 auto;
+  width: 100%;
+  padding: 8px max(16px, var(--pad-x, 24px)) clamp(48px, 7vw, 80px);
+}
+
+.pospago-stores__stage.is-revealed {
+  animation: pospago-stage-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pospago-stores__stage.is-revealed::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin: 0 0 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #00a8e0 20%, #ff7200 80%, transparent);
+  animation: pospago-stage-beam 1.1s ease both;
+}
+
+.pospago-stores[data-carrier="bait"] .pospago-stores__stage.is-revealed::before {
+  background: linear-gradient(90deg, transparent, #ffcb05 20%, #e4007a 80%, transparent);
+}
+
+@keyframes pospago-stage-rise {
+  from {
+    opacity: 0;
+    transform: translateY(48px) scale(0.985);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes pospago-stage-beam {
+  from { transform: scaleX(0.2); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
 }
 
 .pospago-stores__toolbar {
@@ -1513,15 +1637,17 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 
 .pospago-stores__layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.4fr);
   gap: 14px;
   align-items: stretch;
+  min-height: min(72vh, 780px);
 }
 
 .pospago-stores__list {
-  max-height: 520px;
+  max-height: min(72vh, 780px);
   overflow: auto;
   display: grid;
+  align-content: start;
   gap: 8px;
   padding-right: 4px;
 }
@@ -1530,14 +1656,29 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   background: rgba(12, 11, 20, 0.88);
+  animation: pospago-store-card-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 28ms);
+}
+
+@keyframes pospago-store-card-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .pospago-stores__card.is-active {
   border-color: #00a8e0;
+  box-shadow: 0 0 0 1px rgba(0, 168, 224, 0.35), 0 12px 28px rgba(0, 168, 224, 0.16);
 }
 
 .pospago-stores[data-carrier="bait"] .pospago-stores__card.is-active {
   border-color: #ffcb05;
+  box-shadow: 0 0 0 1px rgba(255, 203, 5, 0.35), 0 12px 28px rgba(255, 203, 5, 0.14);
 }
 
 .pospago-stores__card-main {
@@ -1590,10 +1731,24 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 }
 
 .pospago-stores__map {
-  min-height: 520px;
-  border-radius: 18px;
+  min-height: min(72vh, 780px);
+  border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  animation: pospago-map-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pospago-map-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: saturate(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 .pospago-stores__pin span {
@@ -1607,6 +1762,12 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 
 .pospago-stores[data-carrier="att"] .pospago-stores__map {
   border-color: rgba(0, 168, 224, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 80, 140, 0.28);
+}
+
+.pospago-stores[data-carrier="bait"] .pospago-stores__map {
+  border-color: rgba(255, 203, 5, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 860px) {
@@ -1615,9 +1776,26 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
     grid-template-columns: 1fr;
   }
 
+  .pospago-stores__picks,
+  .pospago-stores__pick {
+    min-height: min(52vh, 420px);
+  }
+
   .pospago-stores__map,
   .pospago-stores__list {
     min-height: 320px;
-    max-height: 360px;
+    max-height: 420px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pospago-stores__pick,
+  .pospago-stores__pick-bg,
+  .pospago-stores__pick-copy,
+  .pospago-stores__stage.is-revealed,
+  .pospago-stores__card,
+  .pospago-stores__map {
+    animation: none;
+    transition: none;
   }
 }

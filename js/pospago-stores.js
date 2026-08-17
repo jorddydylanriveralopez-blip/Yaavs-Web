@@ -94,9 +94,9 @@
       return;
     }
     listEl.innerHTML = list
-      .map((store) => {
+      .map((store, i) => {
         const on = store.id === activeId ? " is-active" : "";
-        return `<article class="pospago-stores__card${on}" data-store-id="${store.id}">
+        return `<article class="pospago-stores__card${on}" data-store-id="${store.id}" style="--i:${i}">
           <button type="button" class="pospago-stores__card-main" data-store-focus="${store.id}">
             <span class="pospago-stores__card-name">${store.name}</span>
             <span class="pospago-stores__card-city">${store.city}</span>
@@ -164,32 +164,54 @@
     }
   }
 
-  function openCarrier(id) {
+  function openCarrier(id, trigger) {
     const carrier = carriers[id];
     if (!carrier) return;
     carrierId = id;
     const list = storesFor(id);
     activeId = list[0]?.id || "";
     root.dataset.carrier = id;
-    root.classList.add("is-open");
-    if (picks) picks.hidden = true;
-    if (stage) stage.hidden = false;
-    if (titleEl) titleEl.textContent = carrier.title;
-    renderList();
-    whenLeaflet(() => {
-      drawMap();
-      const first = list[0];
-      if (first) focusStore(first, false);
+    root.classList.add("is-opening");
+    root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
+      btn.classList.toggle("is-chosen", btn === trigger);
+      btn.classList.toggle("is-dim", btn !== trigger);
     });
-    stage?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    window.setTimeout(() => {
+      root.classList.remove("is-opening");
+      root.classList.add("is-open");
+      if (picks) picks.hidden = true;
+      if (stage) {
+        stage.hidden = false;
+        stage.classList.remove("is-revealed");
+        void stage.offsetWidth;
+        stage.classList.add("is-revealed");
+      }
+      if (titleEl) titleEl.textContent = carrier.title;
+      renderList();
+      whenLeaflet(() => {
+        drawMap();
+        const first = list[0];
+        if (first) focusStore(first, false);
+        window.setTimeout(() => map?.invalidateSize(), 280);
+        window.setTimeout(() => map?.invalidateSize(), 700);
+      });
+      stage?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 420);
   }
 
   function closeCarrier() {
     carrierId = "";
     root.removeAttribute("data-carrier");
-    root.classList.remove("is-open");
+    root.classList.remove("is-open", "is-opening");
+    root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
+      btn.classList.remove("is-chosen", "is-dim");
+    });
     if (picks) picks.hidden = false;
-    if (stage) stage.hidden = true;
+    if (stage) {
+      stage.hidden = true;
+      stage.classList.remove("is-revealed");
+    }
     setStatus("");
     picks?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -213,7 +235,7 @@
   }
 
   root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
-    btn.addEventListener("click", () => openCarrier(btn.getAttribute("data-store-carrier")));
+    btn.addEventListener("click", () => openCarrier(btn.getAttribute("data-store-carrier"), btn));
   });
 
   root.querySelector("[data-store-back]")?.addEventListener("click", closeCarrier);
