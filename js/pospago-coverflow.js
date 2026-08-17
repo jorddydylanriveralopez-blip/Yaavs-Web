@@ -96,10 +96,14 @@
 
   cards.forEach((card, i) => {
     card.addEventListener("click", (e) => {
+      if (wrappedOffset(i) !== 0) {
+        e.preventDefault();
+        goTo(i);
+        startTimer();
+        return;
+      }
+      if (card.matches("a[href]")) return;
       if (e.target.closest(".pospago-card__cta")) return;
-      if (wrappedOffset(i) === 0) return;
-      goTo(i);
-      startTimer();
     });
   });
 

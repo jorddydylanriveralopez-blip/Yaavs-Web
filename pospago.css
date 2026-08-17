@@ -247,6 +247,20 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
   outline: none;
 }
 
+.pospago-card--contact {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pospago-card--contact.is-active {
+  cursor: pointer;
+}
+
+body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
+  min-width: 220px;
+  max-width: 280px;
+}
+
 .pospago-hero__nav {
   position: relative;
   z-index: 4;
@@ -320,6 +334,10 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
 
   .pospago-card__cta {
     max-width: 243px;
+  }
+
+  .pospago-card--contact .pospago-card__cta {
+    max-width: 280px;
   }
 
   .pospago-hero__nav {
