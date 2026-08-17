@@ -12,13 +12,14 @@
 
   function tabFromHash() {
     const hash = (location.hash || "").replace("#", "");
+    if (hash === "pospago-panel-premium" || hash === "premium") return "premium";
     if (hash === "pospago-panel-simple" || hash === "simple") return "simple";
     if (hash === "pospago-panel-lite" || hash === "lite") return "lite";
-    return "premium";
+    return "lite";
   }
 
   function setTab(id, { syncHash } = { syncHash: true }) {
-    if (!ids.includes(id)) id = "premium";
+    if (!ids.includes(id)) id = "lite";
 
     tabs.forEach((tab) => {
       const on = tab.getAttribute("data-pospago-tab") === id;

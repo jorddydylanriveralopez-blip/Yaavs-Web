@@ -1,38 +1,9 @@
 /**
- * Tiendas en la página pospago: elige compañía y ve sucursales sin salir.
+ * Tiendas en la página pospago: sucursales AT&T integradas.
  */
 (function () {
   const root = document.querySelector("[data-pospago-stores]");
   if (!root) return;
-
-  const baitStores = [
-    {
-      id: "coacalco",
-      name: "Plaza Coacalco",
-      city: "San Francisco Coacalco, Méx.",
-      address:
-        "Av. José López Portillo #220, San Lorenzo Tetlixtac, C.P. 55714, San Francisco Coacalco, Méx.",
-      lat: 19.6266167,
-      lng: -99.0821072,
-    },
-    {
-      id: "puebla",
-      name: "Plaza Loreto",
-      city: "Puebla, Pue.",
-      address:
-        "Cal. Ignacio Zaragoza #266, Loc. 10D, dentro de Plaza Loreto, Col. Los Pinos, C.P. 72240, Puebla, Pue.",
-      lat: 19.0655554,
-      lng: -98.1766463,
-    },
-    {
-      id: "xalapa",
-      name: "Xalapa Centro",
-      city: "Xalapa, Ver.",
-      address: "C. Pípila #88 Loc. D, Col. Francisco Sarabia, C.P. 91048, Xalapa, Ver.",
-      lat: 19.5414326,
-      lng: -96.912911,
-    },
-  ];
 
   const carriers = {
     att: {
@@ -40,14 +11,8 @@
       name: "AT&T",
       title: "Sucursales AT&T",
     },
-    bait: {
-      id: "bait",
-      name: "BAIT",
-      title: "Sucursales BAIT",
-    },
   };
 
-  const picks = root.querySelector("[data-store-picks]");
   const stage = root.querySelector("[data-store-stage]");
   const listEl = root.querySelector("[data-store-list]");
   const mapHost = root.querySelector("[data-store-map]");
@@ -61,8 +26,7 @@
   let carrierId = "";
 
   function storesFor(id) {
-    if (id === "att") return window.YAAVS_ATT_STORES || [];
-    return baitStores;
+    return window.YAAVS_ATT_STORES || [];
   }
 
   function setStatus(text) {
@@ -113,10 +77,9 @@
   }
 
   function markerIcon(active) {
-    const color = carrierId === "att" ? "#d96df2" : "#ffcb05";
     return window.L.divIcon({
       className: "pospago-stores__pin" + (active ? " is-active" : ""),
-      html: `<span style="background:${color}"></span>`,
+      html: `<span style="background:#d96df2"></span>`,
       iconSize: [22, 22],
       iconAnchor: [11, 11],
     });
@@ -164,20 +127,16 @@
     }
   }
 
-  function openCarrier(id) {
+  function openCarrier(id, { scroll } = { scroll: false }) {
     const carrier = carriers[id];
     if (!carrier) return;
     carrierId = id;
     const list = storesFor(id);
     activeId = list[0]?.id || "";
     root.dataset.carrier = id;
-    root.classList.remove("is-opening");
     root.classList.add("is-open");
-    if (picks) picks.hidden = true;
     if (stage) {
       stage.hidden = false;
-      stage.classList.remove("is-revealed");
-      void stage.offsetWidth;
       stage.classList.add("is-revealed");
     }
     if (titleEl) titleEl.textContent = carrier.title;
@@ -189,20 +148,7 @@
       window.setTimeout(() => map?.invalidateSize(), 120);
       window.setTimeout(() => map?.invalidateSize(), 480);
     });
-    root.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function closeCarrier() {
-    carrierId = "";
-    root.removeAttribute("data-carrier");
-    root.classList.remove("is-open", "is-opening");
-    if (picks) picks.hidden = false;
-    if (stage) {
-      stage.hidden = true;
-      stage.classList.remove("is-revealed");
-    }
-    setStatus("");
-    root.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (scroll) root.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function whenLeaflet(cb) {
@@ -222,12 +168,6 @@
       }
     }, 80);
   }
-
-  root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
-    btn.addEventListener("click", () => openCarrier(btn.getAttribute("data-store-carrier")));
-  });
-
-  root.querySelector("[data-store-back]")?.addEventListener("click", closeCarrier);
 
   queryEl?.addEventListener("input", () => {
     const list = filteredStores();
@@ -271,6 +211,8 @@
     const store = storesFor(carrierId).find((s) => s.id === btn.getAttribute("data-store-focus"));
     if (store) focusStore(store, true);
   });
+
+  openCarrier("att");
 
   if (location.hash === "#conoce-tiendas") {
     window.setTimeout(() => root.scrollIntoView({ behavior: "smooth", block: "start" }), 180);
