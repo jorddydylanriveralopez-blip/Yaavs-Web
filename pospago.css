@@ -1,8 +1,7 @@
-/* Banner pospago — neón morado sobre negro, paleta AT&T (#D96DF2 / #0E3EA3) */
+/* Banner pospago — fondo oscuro, paleta AT&T (#D96DF2 / #0E3EA3) sin neón */
 .page-postpago {
   --pospago-pink: #d96df2;
   --pospago-blue: #0e3ea3;
-  --pospago-neon: #e8a6ff;
 }
 
 .page-postpago .site-header:not(.is-scrolled) .bento-dot {
@@ -23,23 +22,9 @@
   overflow: hidden;
   color: #fff;
   background:
-    radial-gradient(ellipse 80% 55% at 50% 110%, rgba(217, 109, 242, 0.2) 0%, transparent 58%),
-    radial-gradient(ellipse 45% 40% at 8% 18%, rgba(14, 62, 163, 0.22) 0%, transparent 62%),
-    linear-gradient(180deg, rgba(5, 1, 10, 0.38) 0%, rgba(5, 1, 10, 0.58) 100%),
+    linear-gradient(180deg, rgba(5, 1, 10, 0.42) 0%, rgba(5, 1, 10, 0.62) 100%),
     url("assets/tiendas/city-night.jpg") center center / cover no-repeat,
     #05010a;
-}
-
-.pospago-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(217, 109, 242, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 62, 163, 0.07) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 20%, transparent 78%);
 }
 
 .pospago-hero__stage {
@@ -68,17 +53,14 @@
   width: var(--pospago-card-w);
   margin-left: calc(var(--pospago-card-w) / -2);
   border-radius: 16px;
-  border: 2px solid rgba(217, 109, 242, 0.42);
-  overflow: visible;
-  background: #05010a;
+  overflow: hidden;
+  background: #0b1a44;
   transform-style: preserve-3d;
   transform-origin: center center;
   backface-visibility: hidden;
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out, border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
   pointer-events: none;
-  box-shadow:
-    0 0 10px rgba(217, 109, 242, 0.28),
-    0 0 28px rgba(14, 62, 163, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
 .pospago-coverflow:not(.is-ready) .pospago-card:not(.is-active) {
@@ -95,22 +77,9 @@
   cursor: pointer;
 }
 
-.pospago-card.is-peek {
-  border-color: rgba(217, 109, 242, 0.55);
-  box-shadow:
-    0 0 14px rgba(217, 109, 242, 0.38),
-    0 0 32px rgba(14, 62, 163, 0.28);
-}
-
 .pospago-card.is-active {
   cursor: default;
   z-index: 8;
-  border-color: var(--pospago-neon);
-  box-shadow:
-    0 0 8px #d96df2,
-    0 0 22px rgba(217, 109, 242, 0.85),
-    0 0 48px rgba(14, 62, 163, 0.5),
-    0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 .pospago-card__media {
@@ -121,16 +90,14 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  border-radius: 14px;
   pointer-events: none;
 }
 
 .pospago-card__shade {
   position: absolute;
   inset: 0;
-  border-radius: 14px;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(5, 1, 10, 0.58) 38%, rgba(14, 62, 163, 0.12) 68%, transparent 100%);
+    linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.55) 38%, rgba(0, 0, 0, 0.12) 68%, transparent 100%);
   pointer-events: none;
 }
 
@@ -154,14 +121,11 @@
   z-index: 2;
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid #f0c6ff;
-  background: rgba(217, 109, 242, 0.22);
+  background: #9b4dff;
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  text-shadow: 0 0 10px rgba(217, 109, 242, 0.9);
-  box-shadow: 0 0 14px rgba(217, 109, 242, 0.55);
 }
 
 body.theme-cluster.page-postpago .pospago-card__title {
@@ -193,30 +157,22 @@ body.theme-cluster.page-postpago .pospago-card__cta {
   width: 100%;
   padding: 12px 18px;
   border-radius: 999px;
-  border: 1.5px solid #d96df2;
-  background: #05010a;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff;
+  background: #fff;
+  color: #000 !important;
+  -webkit-text-fill-color: #000;
   font-size: 0.95rem;
   font-weight: 800;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0 0 10px rgba(217, 109, 242, 0.65);
-  box-shadow:
-    0 0 10px rgba(217, 109, 242, 0.55),
-    inset 0 0 12px rgba(217, 109, 242, 0.12);
+  text-shadow: none;
   pointer-events: auto;
   opacity: 1;
 }
 
 body.theme-cluster.page-postpago .pospago-card__cta:hover,
 body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
-  background: rgba(217, 109, 242, 0.18);
-  border-color: #f0c6ff;
-  box-shadow:
-    0 0 16px rgba(217, 109, 242, 0.85),
-    0 0 28px rgba(14, 62, 163, 0.4);
+  background: #f3f3f3;
   opacity: 1;
   outline: none;
 }
@@ -239,21 +195,17 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
   padding: 0;
   display: grid;
   place-items: center;
-  border: 1.5px solid #d96df2;
+  border: 0;
   border-radius: 50%;
-  background: #05010a;
-  color: #fff;
+  background: #fff;
+  color: #000;
   cursor: pointer;
-  box-shadow: 0 0 14px rgba(217, 109, 242, 0.55);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .pospago-hero__arrow:hover,
 .pospago-hero__arrow:focus-visible {
   transform: scale(1.1);
-  box-shadow:
-    0 0 18px rgba(217, 109, 242, 0.9),
-    0 0 32px rgba(14, 62, 163, 0.45);
   outline: none;
 }
 
@@ -264,10 +216,9 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
 .pospago-hero__count {
   min-width: 2.4rem;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
   text-align: center;
-  text-shadow: 0 0 12px rgba(217, 109, 242, 0.7);
 }
 
 @media (max-width: 768px) {
@@ -317,20 +268,16 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
     transform: none;
   }
 
-  .pospago-break__scan,
-  .pospago-break__core,
-  .pospago-break__chevron,
-  .pospago-break__line {
+  .pospago-break__chevron {
     animation: none;
   }
 }
 
-/* Separador animado banner → planes */
 .pospago-break {
   position: relative;
   z-index: 3;
-  height: 96px;
-  margin-top: -36px;
+  height: 72px;
+  margin-top: -28px;
   overflow: hidden;
   pointer-events: none;
 }
@@ -343,89 +290,29 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
 
 .pospago-break__line {
   position: absolute;
-  left: 6%;
-  right: 6%;
-  top: 46%;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    #0e3ea3 18%,
-    #d96df2 50%,
-    #0e3ea3 82%,
-    transparent 100%
-  );
-  box-shadow:
-    0 0 10px rgba(217, 109, 242, 0.85),
-    0 0 24px rgba(14, 62, 163, 0.55);
-  animation: pospago-line-breathe 2.4s ease-in-out infinite;
-}
-
-.pospago-break__scan {
-  position: absolute;
-  top: 46%;
-  left: 8%;
-  width: 140px;
-  height: 6px;
-  margin-top: -2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, #fff 35%, #e8a6ff 70%, transparent);
-  box-shadow: 0 0 18px #d96df2;
-  animation: pospago-scan 2.8s linear infinite;
-}
-
-.pospago-break__core {
-  position: absolute;
-  left: 50%;
-  top: 46%;
-  width: 14px;
-  height: 14px;
-  margin: -7px 0 0 -7px;
-  border: 1.5px solid #e8a6ff;
-  background: #05010a;
-  transform: rotate(45deg);
-  box-shadow:
-    0 0 10px #d96df2,
-    0 0 22px rgba(217, 109, 242, 0.8);
-  animation: pospago-core-pulse 1.8s ease-in-out infinite;
+  left: 12%;
+  right: 12%;
+  top: 48%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
 }
 
 .pospago-break__chevron {
   position: absolute;
   left: 50%;
-  top: 62%;
-  width: 12px;
-  height: 12px;
-  margin-left: -6px;
-  border-right: 2px solid #d96df2;
-  border-bottom: 2px solid #d96df2;
+  top: 58%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  border-right: 2px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
   transform: rotate(45deg);
-  opacity: 0.85;
-  filter: drop-shadow(0 0 6px #d96df2);
   animation: pospago-chevron 1.5s ease-in-out infinite;
 }
 
-@keyframes pospago-scan {
-  0% { left: 7%; opacity: 0; }
-  8% { opacity: 1; }
-  92% { opacity: 1; }
-  100% { left: calc(93% - 140px); opacity: 0; }
-}
-
-@keyframes pospago-core-pulse {
-  0%, 100% { transform: rotate(45deg) scale(1); box-shadow: 0 0 10px #d96df2, 0 0 22px rgba(217, 109, 242, 0.7); }
-  50% { transform: rotate(45deg) scale(1.18); box-shadow: 0 0 16px #e8a6ff, 0 0 36px rgba(217, 109, 242, 1); }
-}
-
 @keyframes pospago-chevron {
-  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.35; }
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
   50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
-}
-
-@keyframes pospago-line-breathe {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
 }
 
 /* Planes Pospago — dos columnas */
@@ -433,9 +320,7 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
   position: relative;
   scroll-margin-top: calc(var(--header-h, 72px) + 12px);
   padding: clamp(56px, 8vw, 96px) max(20px, var(--pad-x, 24px));
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(217, 109, 242, 0.14) 0%, transparent 55%),
-    #05010a;
+  background: #05010a;
   color: #fff;
 }
 
@@ -456,7 +341,6 @@ body.theme-cluster.page-postpago .pospago-plans__title {
   letter-spacing: 0.02em;
   color: #fff !important;
   -webkit-text-fill-color: #fff;
-  text-shadow: 0 0 18px rgba(217, 109, 242, 0.35);
 }
 
 body.theme-cluster.page-postpago .pospago-plans__intro {
@@ -478,21 +362,16 @@ body.theme-cluster.page-postpago .pospago-plans__intro {
   align-items: flex-start;
   padding: clamp(24px, 3vw, 36px);
   border-radius: 20px;
-  border: 1.5px solid rgba(217, 109, 242, 0.38);
-  background: rgba(12, 4, 22, 0.72);
-  box-shadow: 0 0 24px rgba(217, 109, 242, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .pospago-plan--premium {
-  border-color: #d96df2;
-  box-shadow:
-    0 0 16px rgba(217, 109, 242, 0.35),
-    0 0 40px rgba(14, 62, 163, 0.22);
+  border-color: rgba(217, 109, 242, 0.45);
 }
 
 .pospago-plan--light {
-  border-color: rgba(14, 62, 163, 0.7);
-  box-shadow: 0 0 20px rgba(14, 62, 163, 0.28);
+  border-color: rgba(14, 62, 163, 0.55);
 }
 
 body.theme-cluster.page-postpago .pospago-plan__kicker {
@@ -542,16 +421,14 @@ body.theme-cluster.page-postpago .pospago-plan__lead {
   position: absolute;
   left: 0;
   top: 0.85em;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #d96df2;
-  box-shadow: 0 0 8px #d96df2;
 }
 
 .pospago-plan--light .pospago-plan__list li::before {
   background: #5b8dff;
-  box-shadow: 0 0 8px #0e3ea3;
 }
 
 body.theme-cluster.page-postpago .pospago-plan__cta {
@@ -562,19 +439,17 @@ body.theme-cluster.page-postpago .pospago-plan__cta {
   min-width: 160px;
   padding: 12px 20px;
   border-radius: 999px;
-  border: 1.5px solid #d96df2;
-  background: transparent;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff;
+  background: #fff;
+  color: #000 !important;
+  -webkit-text-fill-color: #000;
   font-size: 0.92rem;
   font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 0 12px rgba(217, 109, 242, 0.4);
 }
 
 body.theme-cluster.page-postpago .pospago-plan__cta:hover,
 body.theme-cluster.page-postpago .pospago-plan__cta:focus-visible {
-  background: rgba(217, 109, 242, 0.18);
+  background: #f3f3f3;
   outline: none;
 }
 
