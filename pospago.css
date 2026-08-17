@@ -78,7 +78,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
 
 .pospago-hero__brand {
   position: absolute;
-  top: calc(var(--header-h, 72px) + 38px);
+  top: calc(var(--header-h, 72px) + 52px);
   left: 50%;
   z-index: 3;
   display: grid;
@@ -425,7 +425,7 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
   }
 
   .pospago-hero__brand {
-    top: calc(var(--header-h, 64px) + 8px);
+    top: calc(var(--header-h, 64px) + 24px);
     width: min(180px, 48vw);
   }
 
