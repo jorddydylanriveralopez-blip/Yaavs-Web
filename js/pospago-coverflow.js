@@ -10,13 +10,17 @@
   const nextBtn = document.querySelector("[data-pospago-next]");
   const countEl = document.querySelector("[data-pospago-count]");
   const stage = root.closest(".pospago-hero");
+  const stageFrame = root.closest(".pospago-hero__stage");
   const n = cards.length;
   if (!n) return;
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const AUTO_MS = 2500;
+  const DRAG_MIN = 42;
   let index = 0;
   let timer = 0;
+  let pointer = null;
+  let dragBlockedClick = false;
 
   function wrappedOffset(i) {
     let d = i - index;
@@ -96,6 +100,11 @@
 
   cards.forEach((card, i) => {
     card.addEventListener("click", (e) => {
+      if (dragBlockedClick) {
+        dragBlockedClick = false;
+        e.preventDefault();
+        return;
+      }
       if (wrappedOffset(i) !== 0) {
         e.preventDefault();
         goTo(i);
@@ -106,6 +115,48 @@
       if (e.target.closest(".pospago-card__cta")) return;
     });
   });
+
+  function endPointerDrag(e, cancelled) {
+    if (!pointer || e.pointerId !== pointer.id) return;
+    const dx = e.clientX - pointer.x;
+    const dy = e.clientY - pointer.y;
+    const dragged = pointer.dragged;
+    pointer = null;
+    stageFrame?.classList.remove("is-dragging");
+    try {
+      (stageFrame || stage)?.releasePointerCapture(e.pointerId);
+    } catch (_) {
+      /* noop */
+    }
+    if (!cancelled && dragged && Math.abs(dx) > DRAG_MIN && Math.abs(dx) > Math.abs(dy) * 1.05) {
+      dragBlockedClick = true;
+      go(dx < 0 ? 1 : -1);
+    }
+    startTimer();
+  }
+
+  (stageFrame || stage)?.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0) return;
+    if (e.target.closest(".pospago-card__cta")) return;
+    pointer = { x: e.clientX, y: e.clientY, dragged: false, id: e.pointerId };
+    stageFrame?.classList.add("is-dragging");
+    stopTimer();
+    try {
+      (stageFrame || stage)?.setPointerCapture(e.pointerId);
+    } catch (_) {
+      /* noop */
+    }
+  });
+
+  (stageFrame || stage)?.addEventListener("pointermove", (e) => {
+    if (!pointer || e.pointerId !== pointer.id) return;
+    const dx = e.clientX - pointer.x;
+    const dy = e.clientY - pointer.y;
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.05) pointer.dragged = true;
+  });
+
+  (stageFrame || stage)?.addEventListener("pointerup", (e) => endPointerDrag(e, false));
+  (stageFrame || stage)?.addEventListener("pointercancel", (e) => endPointerDrag(e, true));
 
   stage?.addEventListener("mouseenter", stopTimer);
   stage?.addEventListener("mouseleave", startTimer);
