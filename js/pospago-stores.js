@@ -20,14 +20,11 @@
   const statusEl = root.querySelector("[data-store-status]");
   const titleEl = root.querySelector("[data-store-title]");
   const countEl = root.querySelector("[data-store-count]");
-  const previewEl = root.querySelector("[data-store-preview]");
-  const previewImgEl = root.querySelector("[data-store-preview-img]");
-  const previewStreetEl = root.querySelector("[data-store-preview-street]");
-  const previewCaptionEl = root.querySelector("[data-store-preview-caption]");
   let map = null;
   let markers = [];
   let activeId = "";
   let carrierId = "";
+  let activePopup = null;
 
   function storesFor() {
     return window.YAAVS_ATT_STORES || [];
@@ -35,6 +32,14 @@
 
   function setStatus(text) {
     if (statusEl) statusEl.textContent = text || "";
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
   function mapsSearchUrl(store) {
@@ -55,49 +60,36 @@
     );
   }
 
-  function updatePreview(store) {
-    if (!previewEl || !store) return;
-
+  function storeThumbHtml(store) {
+    const name = escapeHtml(store.name);
     const image = store.image || store.photo || "";
-    const usePhoto = Boolean(image);
-    const caption = usePhoto
-      ? `${store.name} · Punto de venta YAAVS`
-      : `${store.name} · Vista exterior del PDV (Street View)`;
+    const media = image
+      ? `<img src="${escapeHtml(image)}" alt="Punto de venta ${name}" width="132" height="84" loading="lazy" decoding="async">`
+      : `<iframe src="${streetViewEmbedUrl(store.lat, store.lng)}" title="Vista ${name}" width="132" height="84" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
 
-    if (previewCaptionEl) previewCaptionEl.textContent = caption;
-
-    if (previewImgEl) {
-      if (usePhoto) {
-        previewImgEl.src = image;
-        previewImgEl.alt = `Punto de venta ${store.name}, ${store.city}`;
-        previewImgEl.hidden = false;
-      } else {
-        previewImgEl.hidden = true;
-        previewImgEl.removeAttribute("src");
-      }
-    }
-
-    if (previewStreetEl) {
-      if (usePhoto) {
-        previewStreetEl.hidden = true;
-        previewStreetEl.removeAttribute("src");
-      } else {
-        previewStreetEl.hidden = false;
-        previewStreetEl.src = streetViewEmbedUrl(store.lat, store.lng);
-      }
-    }
-
-    previewEl.hidden = false;
-    root.classList.add("has-store-preview");
-    window.setTimeout(() => map?.invalidateSize(), 120);
+    return `<div class="pospago-stores__map-pop">${media}<span>${name}</span></div>`;
   }
 
-  function hidePreview() {
-    if (!previewEl) return;
-    previewEl.hidden = true;
-    root.classList.remove("has-store-preview");
-    if (previewStreetEl) previewStreetEl.removeAttribute("src");
-    window.setTimeout(() => map?.invalidateSize(), 120);
+  function showMapPopup(store) {
+    if (!map || !store || typeof window.L === "undefined") return;
+
+    if (activePopup) {
+      map.closePopup(activePopup);
+      activePopup = null;
+    }
+
+    activePopup = window.L.popup({
+      className: "pospago-stores__leaflet-pop",
+      offset: [22, -12],
+      closeButton: true,
+      maxWidth: 152,
+      minWidth: 132,
+      autoPan: true,
+      autoPanPadding: [28, 28],
+    })
+      .setLatLng([store.lat, store.lng])
+      .setContent(storeThumbHtml(store))
+      .openOn(map);
   }
 
   function filteredStores() {
@@ -154,7 +146,7 @@
       map.setView([store.lat, store.lng], Math.max(map.getZoom(), 14), { animate: true });
     }
     setStatus(`${store.name} · ${store.city}`);
-    updatePreview(store);
+    showMapPopup(store);
   }
 
   function drawMap() {
@@ -170,6 +162,10 @@
         maxZoom: 19,
       }).addTo(map);
     }
+    if (activePopup) {
+      map.closePopup(activePopup);
+      activePopup = null;
+    }
     markers.forEach((item) => map.removeLayer(item.marker));
     markers = [];
     const bounds = [];
@@ -184,6 +180,8 @@
       map.fitBounds(bounds, { padding: [28, 28], maxZoom: 12 });
       window.setTimeout(() => map.invalidateSize(), 80);
     }
+    const active = list.find((store) => store.id === activeId);
+    if (active) window.setTimeout(() => showMapPopup(active), 120);
   }
 
   function openCarrier(id, { scroll } = { scroll: false }) {
@@ -233,8 +231,6 @@
     activeId = list[0]?.id || "";
     renderList();
     drawMap();
-    if (list[0]) updatePreview(list[0]);
-    else hidePreview();
   });
 
   root.querySelector("[data-store-geo]")?.addEventListener("click", () => {
