@@ -29,9 +29,9 @@
   function layout() {
     const width = root.offsetWidth || 1000;
     const mobile = window.matchMedia("(max-width: 768px)").matches;
-    const rotate = mobile ? 36 : 60;
-    const depth = mobile ? 90 : 160;
-    const spread = mobile ? 0.38 : 0.52;
+    const rotate = mobile ? 32 : 55;
+    const depth = mobile ? 80 : 110;
+    const spread = mobile ? 0.58 : 1.08;
 
     cards.forEach((card, i) => {
       const offset = wrappedOffset(i);
