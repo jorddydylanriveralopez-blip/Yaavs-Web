@@ -459,71 +459,76 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
   overflow: hidden;
   scroll-margin-top: calc(var(--header-h, 72px) + 12px);
   padding: clamp(48px, 6vw, 88px) max(16px, var(--pad-x, 24px)) clamp(64px, 8vw, 96px);
-  background: #05010a;
+  background-color: #05010a;
+  background-image:
+    url("assets/floats/float-sim.svg"),
+    url("assets/floats/float-phone.svg"),
+    url("assets/floats/float-chip.svg"),
+    url("assets/floats/float-esim.svg"),
+    url("assets/floats/float-phones.svg");
+  background-repeat: repeat;
+  background-size: 78px auto, 46px auto, 58px auto, 62px auto, 96px auto;
+  background-position: 8px 12px, 52px 48px, 28px 96px, 90px 18px, 12px 130px;
   color: #fff;
+}
+
+.pospago-plans::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(5, 1, 10, 0.55);
 }
 
 .pospago-floats {
   position: absolute;
   inset: 0;
   z-index: 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
   pointer-events: none;
 }
 
+.pospago-floats--section {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+
+.pospago-floats--box {
+  inset: -6%;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
 .pospago-float {
-  position: absolute;
+  width: clamp(42px, 7vw, 86px);
+  height: auto;
+  opacity: 0.55;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
+  animation: pospago-float-drift 8.5s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -0.35s);
+}
+
+.pospago-floats--section .pospago-float {
   opacity: 0.42;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
-  animation: pospago-float-drift 9s ease-in-out infinite;
 }
 
-.pospago-float--sim {
-  top: 8%;
-  left: 3%;
-  width: 68px;
-  animation-delay: 0s;
+.pospago-float:nth-child(even) {
+  opacity: 0.4;
 }
 
-.pospago-float--chip {
-  top: 38%;
-  left: 1.5%;
-  width: 52px;
-  animation-delay: -2.4s;
+.pospago-floats--box .pospago-float:nth-child(even) {
+  opacity: 0.48;
 }
 
-.pospago-float--phone {
-  bottom: 16%;
-  left: 5%;
-  width: 44px;
-  animation-delay: -4.2s;
+.pospago-float:nth-child(3n) {
+  width: clamp(34px, 5.5vw, 64px);
 }
 
-.pospago-float--esim {
-  top: 14%;
-  right: 4%;
-  width: 64px;
-  animation-delay: -1.6s;
-}
-
-.pospago-float--phones {
-  top: 42%;
-  right: 2%;
-  width: 92px;
-  animation-delay: -3.5s;
-}
-
-.pospago-float--phone-r {
-  bottom: 12%;
-  right: 7%;
-  width: 38px;
-  animation-delay: -5.8s;
-}
-
-.pospago-float--sim-r {
-  bottom: 36%;
-  right: 3%;
-  width: 56px;
-  animation-delay: -7.1s;
+.pospago-float:nth-child(5n) {
+  width: clamp(52px, 8vw, 98px);
 }
 
 @keyframes pospago-float-drift {
@@ -607,14 +612,44 @@ body.theme-cluster.page-postpago .pospago-plans__intro {
   color: #05010a;
 }
 
+.pospago-catalog__stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 8px;
+  padding: 22px 20px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: rgba(12, 11, 20, 0.22);
+  background-image:
+    url("assets/floats/float-sim.svg"),
+    url("assets/floats/float-phone.svg"),
+    url("assets/floats/float-chip.svg"),
+    url("assets/floats/float-esim.svg"),
+    url("assets/floats/float-phones.svg");
+  background-repeat: repeat;
+  background-size: 70px auto, 42px auto, 52px auto, 56px auto, 88px auto;
+  background-position: 6px 10px, 44px 38px, 22px 84px, 78px 16px, 10px 118px;
+}
+
+.pospago-catalog__stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(12, 11, 20, 0.12);
+}
+
 .pospago-catalog__panel {
+  position: relative;
+  z-index: 1;
   display: none;
   scroll-margin-top: calc(var(--header-h, 72px) + 72px);
-  margin-bottom: 20px;
-  padding: 20px 18px 18px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0c0b14;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .pospago-catalog__panel.is-active:not([hidden]) {
@@ -1037,7 +1072,7 @@ body.theme-cluster.page-postpago .pospago-catalog__cta {
   align-items: center;
   justify-content: center;
   width: min(320px, 100%);
-  margin: 8px auto 0;
+  margin: 0;
   padding: 14px 22px;
   border-radius: 999px;
   background: #fff;
@@ -1046,6 +1081,27 @@ body.theme-cluster.page-postpago .pospago-catalog__cta {
   font-size: 0.95rem;
   font-weight: 800;
   text-decoration: none;
+}
+
+.pospago-catalog__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px auto 0;
+}
+
+body.theme-cluster.page-postpago .pospago-catalog__cta--wa {
+  background: #25d366;
+  color: #04150b !important;
+  -webkit-text-fill-color: #04150b;
+}
+
+body.theme-cluster.page-postpago .pospago-catalog__cta--wa:hover,
+body.theme-cluster.page-postpago .pospago-catalog__cta--wa:focus-visible {
+  background: #2ee472;
 }
 
 body.theme-cluster.page-postpago .pospago-catalog__cta:hover,
@@ -1076,13 +1132,6 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
   .pospago-rate-grid--simple,
   .pospago-rate-grid--lite {
     grid-template-columns: 1fr;
-  }
-
-  .pospago-float--phones,
-  .pospago-float--chip,
-  .pospago-float--phone-r,
-  .pospago-float--esim {
-    display: none;
   }
 }
 
@@ -1119,10 +1168,10 @@ body.pospago-modal-open {
 }
 
 .pospago-modal.is-open {
-  display: grid;
+  display: grid !important;
 }
 
-.pospago-modal[hidden] {
+.pospago-modal[hidden]:not(.is-open) {
   display: none !important;
 }
 
@@ -1237,4 +1286,25 @@ body.theme-cluster.page-postpago .pospago-modal__price span {
 
 .pospago-modal .pospago-rate__facts {
   margin-bottom: 16px;
+}
+
+.pospago-modal__wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px 18px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #04150b;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pospago-modal__wa:hover,
+.pospago-modal__wa:focus-visible {
+  background: #2ee472;
+  outline: none;
 }
