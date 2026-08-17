@@ -108,20 +108,11 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
 @keyframes pospago-brand-in {
   from {
     opacity: 0;
-    transform: translateY(-14px) scale(0.94);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes pospago-brand-float {
-  from {
-    transform: translateY(0) scale(1);
-  }
-  to {
-    transform: translateY(-5px) scale(1.015);
+    transform: none;
   }
 }
 
@@ -2090,5 +2081,220 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   .pospago-stores__map {
     animation: none;
     transition: none;
+  }
+}
+
+/* Promociones AT&T — portal oficial */
+.pospago-att-promos {
+  position: relative;
+  z-index: 1;
+  padding: clamp(48px, 6vw, 72px) max(16px, var(--pad-x, 24px)) clamp(64px, 8vw, 88px);
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(217, 109, 242, 0.14), transparent 62%),
+    #080612;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pospago-att-promos__inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.pospago-att-promos__head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.pospago-att-promos__logo {
+  display: block;
+  width: auto;
+  height: clamp(42px, 5vw, 56px);
+  margin: 0 auto 14px;
+  object-fit: contain;
+}
+
+body.theme-cluster.page-postpago .pospago-att-promos__title {
+  margin: 0 0 8px;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+
+body.theme-cluster.page-postpago .pospago-att-promos__intro {
+  margin: 0 auto;
+  max-width: 42rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.72);
+}
+
+.pospago-att-promos__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pospago-att-promos__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 220px;
+  padding: 20px 18px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%),
+    #14101c;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.pospago-att-promos__card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d96df2, transparent);
+  opacity: 0.85;
+}
+
+.pospago-att-promos__card:hover,
+.pospago-att-promos__card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(217, 109, 242, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+  outline: none;
+}
+
+.pospago-att-promos__tag {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(217, 109, 242, 0.16);
+  color: #f3d4ff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.theme-cluster.page-postpago .pospago-att-promos__name {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+
+body.theme-cluster.page-postpago .pospago-att-promos__copy {
+  margin: 0;
+  flex: 1;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.68) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.68);
+}
+
+.pospago-att-promos__cta {
+  margin-top: auto;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e3a6f7;
+}
+
+.pospago-att-promos__legal {
+  margin: 18px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.pospago-att-promos__portal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(360px, 100%);
+  margin: 16px auto 0;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 109, 242, 0.45);
+  background: rgba(217, 109, 242, 0.12);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pospago-att-promos__portal:hover,
+.pospago-att-promos__portal:focus-visible {
+  background: rgba(217, 109, 242, 0.22);
+  border-color: #d96df2;
+  outline: none;
+}
+
+@media (max-width: 980px) {
+  .pospago-att-promos__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .pospago-att-promos {
+    padding: 40px 0 56px;
+  }
+
+  .pospago-att-promos__head {
+    margin-bottom: 18px;
+    padding: 0 16px;
+  }
+
+  .pospago-att-promos__grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    padding: 0 16px 4px;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .pospago-att-promos__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pospago-att-promos__card {
+    flex: 0 0 82%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .pospago-att-promos__legal,
+  .pospago-att-promos__portal {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+@media (hover: none) {
+  .pospago-att-promos__card:hover,
+  .pospago-att-promos__card:focus-visible {
+    transform: none;
   }
 }
