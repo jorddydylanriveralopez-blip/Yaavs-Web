@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=18">
+  <link rel="stylesheet" href="pospago.css?v=19">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -118,11 +118,16 @@
       </div>
     </section>
 
-    <div class="pospago-break" aria-hidden="true">
-      <span class="pospago-break__fade"></span>
-      <span class="pospago-break__line"></span>
-      <span class="pospago-break__chevron"></span>
-    </div>
+    <a class="pospago-break" href="#planes-pospago" aria-label="Bajar a planes pospago">
+      <span class="pospago-break__fade" aria-hidden="true"></span>
+      <span class="pospago-break__rail" aria-hidden="true"></span>
+      <span class="pospago-break__cue">
+        <svg class="pospago-break__icon" viewBox="0 0 24 28" fill="none" aria-hidden="true">
+          <path class="pospago-break__v pospago-break__v--a" d="M5 6.5 12 13.5 19 6.5"/>
+          <path class="pospago-break__v pospago-break__v--b" d="M5 14.5 12 21.5 19 14.5"/>
+        </svg>
+      </span>
+    </a>
 
     <section class="pospago-plans" id="planes-pospago" aria-label="Planes pospago">
       <div class="pospago-plans__inner">
