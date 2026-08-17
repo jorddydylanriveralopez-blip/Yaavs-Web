@@ -534,6 +534,8 @@ body.theme-cluster.page-postpago .pospago-plans__title {
   margin: 0 0 8px;
   font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: #fff !important;
   -webkit-text-fill-color: #fff;
 }
