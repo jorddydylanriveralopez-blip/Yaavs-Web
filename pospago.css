@@ -101,10 +101,8 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   height: auto;
   margin: 0 auto;
   background: none;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
-  animation:
-    pospago-brand-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both,
-    pospago-brand-float 4.2s ease-in-out 1s infinite alternate;
+  filter: none;
+  animation: pospago-brand-in 0.7s ease both;
 }
 
 @keyframes pospago-brand-in {
