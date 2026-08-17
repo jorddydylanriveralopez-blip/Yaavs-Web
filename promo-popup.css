@@ -76,15 +76,6 @@ body.is-promo-open {
     opacity 0.4s ease;
 }
 
-.yaavs-promo__fx {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
 .yaavs-promo--bait .yaavs-promo__card {
   width: min(920px, 100%);
   background: #000;
@@ -279,8 +270,7 @@ body.is-promo-open {
     animation: none !important;
   }
 
-  .yaavs-promo__shine,
-  .yaavs-promo__fx {
+  .yaavs-promo__shine {
     display: none;
   }
 
