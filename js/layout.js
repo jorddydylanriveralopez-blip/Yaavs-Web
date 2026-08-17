@@ -232,8 +232,7 @@
     <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
       <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
-      <a href="postpago.html" data-page="postpago">Planes Pospago</a>
-      <a href="tiendas.html" data-page="tiendas">Conoce nuestras tiendas</a>
+      <a href="postpago.html#conoce-tiendas" data-page="tiendas">Tiendas BAIT</a>
       <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
       <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
       <a href="avisos.html" data-page="avisos">Noticias Yaavs</a>
@@ -526,15 +525,12 @@
   function initPostpagoNav() {
     if (!document.body.classList.contains("page-postpago")) return;
 
-    const planes = document.getElementById("planes-pospago");
     const stores = document.getElementById("conoce-tiendas");
-    const postpagoLink = document.querySelector('.main-nav a[data-page="postpago"]');
     const tiendasLink = document.querySelector('.main-nav a[data-page="tiendas"]');
 
-    if (postpagoLink && planes) postpagoLink.setAttribute("href", "#planes-pospago");
     if (tiendasLink && stores) tiendasLink.setAttribute("href", "#conoce-tiendas");
 
-    document.querySelectorAll('a[href="#planes-pospago"], a[href="#conoce-tiendas"]').forEach((link) => {
+    document.querySelectorAll('a[href="#conoce-tiendas"], a[href="#planes-pospago"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const id = (link.getAttribute("href") || "").slice(1);
         const target = document.getElementById(id);
