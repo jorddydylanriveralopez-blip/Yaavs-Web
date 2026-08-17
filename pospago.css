@@ -10,12 +10,15 @@
 
 .pospago-hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
   padding:
-    calc(var(--header-h, 72px) + 12px)
+    calc(var(--header-h, 72px) + 36px)
     0
-    36px;
+    56px;
   overflow: hidden;
   background: linear-gradient(to top right, var(--pospago-pink) 0%, var(--pospago-blue) 100%);
   color: #fff;
