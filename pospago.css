@@ -463,25 +463,8 @@ body.theme-cluster.page-postpago .pospago-plans__kicker {
   -webkit-text-fill-color: rgba(255, 255, 255, 0.55);
 }
 
-.pospago-plans__brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.pospago-plans__logo {
-  display: block;
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border-radius: 22px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-}
-
 body.theme-cluster.page-postpago .pospago-plans__title {
-  margin: 0;
+  margin: 0 0 8px;
   font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 800;
   color: #fff !important;
@@ -1021,16 +1004,26 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
   }
 }
 
-.pospago-modal {
-  width: min(520px, calc(100vw - 32px));
-  max-height: min(88vh, 740px);
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #fff;
+body.pospago-modal-open {
+  overflow: hidden;
 }
 
-.pospago-modal::backdrop {
+.pospago-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 14000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.pospago-modal[hidden] {
+  display: none !important;
+}
+
+.pospago-modal__backdrop {
+  position: absolute;
+  inset: 0;
   background: rgba(5, 1, 10, 0.78);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -1038,12 +1031,15 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
 
 .pospago-modal__sheet {
   position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
   max-height: min(88vh, 740px);
   overflow: auto;
   padding: 28px 24px 24px;
   border-radius: 24px;
   border: 1px solid rgba(217, 109, 242, 0.4);
   background: #14121c;
+  color: #fff;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 

@@ -1,10 +1,10 @@
 /**
- * Catálogo pospago: familias en tabs y detalle en modal.
+ * Catálogo pospago: familias en tabs y detalle en popup.
  */
 (function () {
   const root = document.querySelector("[data-pospago-catalog]");
   const modal = document.querySelector("[data-pospago-modal]");
-  if (!root) return;
+  if (!root || !modal) return;
 
   const tabs = Array.from(root.querySelectorAll("[data-pospago-tab]"));
   const panels = Array.from(root.querySelectorAll("[data-pospago-panel]"));
@@ -14,6 +14,7 @@
     simple: "AT&T Simple Plus",
     lite: "AT&T Lite",
   };
+  let lastCard = null;
 
   function tabFromHash() {
     const hash = (location.hash || "").replace("#", "");
@@ -45,31 +46,29 @@
   }
 
   function closeModal() {
-    if (!modal) return;
-    if (typeof modal.close === "function" && modal.open) modal.close();
-    else modal.removeAttribute("open");
+    modal.hidden = true;
+    document.body.classList.remove("pospago-modal-open");
+    lastCard?.focus();
+    lastCard = null;
   }
 
   function openModal(card) {
-    if (!modal) return;
     const family = card.closest("[data-pospago-panel]")?.getAttribute("data-pospago-panel") || "premium";
-    const name = card.querySelector(".pospago-rate__name")?.textContent.trim() || "";
-    const data = card.querySelector(".pospago-rate__data")?.textContent.trim() || "";
-    const price = card.querySelector(".pospago-rate__price")?.innerHTML || "";
     const details = card.querySelector(".pospago-rate__details");
+    lastCard = card;
 
     modal.classList.toggle("is-lite", family === "lite");
     modal.querySelector("[data-pospago-modal-kicker]").textContent = familyLabel[family] || "Pospago";
-    modal.querySelector("#pospago-modal-title").textContent = name;
-    modal.querySelector("[data-pospago-modal-data]").textContent = data;
-    modal.querySelector("[data-pospago-modal-price]").innerHTML = price;
+    modal.querySelector("#pospago-modal-title").textContent =
+      card.querySelector(".pospago-rate__name")?.textContent.trim() || "";
+    modal.querySelector("[data-pospago-modal-data]").textContent =
+      card.querySelector(".pospago-rate__data")?.textContent.trim() || "";
+    modal.querySelector("[data-pospago-modal-price]").innerHTML =
+      card.querySelector(".pospago-rate__price")?.innerHTML || "";
     modal.querySelector("[data-pospago-modal-body]").innerHTML = details ? details.innerHTML : "";
 
-    if (typeof modal.showModal === "function") {
-      if (!modal.open) modal.showModal();
-    } else {
-      modal.setAttribute("open", "");
-    }
+    modal.hidden = false;
+    document.body.classList.add("pospago-modal-open");
     modal.querySelector("[data-pospago-modal-close]")?.focus();
   }
 
@@ -87,28 +86,25 @@
     });
   });
 
-  root.addEventListener(
-    "click",
-    (e) => {
-      const card = e.target.closest("[data-pospago-rate]");
-      if (!card) return;
+  root.querySelectorAll("[data-pospago-rate]").forEach((card) => {
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.addEventListener("click", () => openModal(card));
+    card.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
       e.preventDefault();
-      if (typeof card.open !== "undefined") card.open = false;
       openModal(card);
-    },
-    true
-  );
+    });
+  });
 
-  if (modal) {
-    modal.querySelector("[data-pospago-modal-close]")?.addEventListener("click", closeModal);
-    modal.addEventListener("cancel", (e) => {
-      e.preventDefault();
-      closeModal();
-    });
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-  }
+  modal.querySelectorAll("[data-pospago-modal-close]").forEach((el) => {
+    el.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeModal();
+  });
 
   setTab(tabFromHash(), { syncHash: false });
 })();
