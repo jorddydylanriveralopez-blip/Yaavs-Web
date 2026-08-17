@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=20">
+  <link rel="stylesheet" href="pospago.css?v=21">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -137,6 +137,18 @@
         </header>
 
         <div class="pospago-catalog" data-pospago-catalog>
+            <svg class="pospago-facts-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+              <symbol id="pf-wifi" viewBox="0 0 24 24"><path d="M4.5 10.2c4.4-4.2 10.6-4.2 15 0M7.4 13.4c2.7-2.5 6.5-2.5 9.2 0M12 18.4h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-phone" viewBox="0 0 24 24"><path d="M8.2 3.8h2.6l.9 3.1-1.8 1.1a11.5 11.5 0 0 0 5.3 5.3l1.1-1.8 3.1.9v2.6A1.7 1.7 0 0 1 17.7 18 14.6 14.6 0 0 1 6 6.3a1.7 1.7 0 0 1 2.2-1.7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-sms" viewBox="0 0 24 24"><path d="M5 6.2h14v9.2H9.2L5 19.2V6.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-social" viewBox="0 0 24 24"><path d="M8.2 10.2a2.1 2.1 0 1 0 0-4.2 2.1 2.1 0 0 0 0 4.2ZM15.8 10.2a2.1 2.1 0 1 0 0-4.2 2.1 2.1 0 0 0 0 4.2ZM12 19a2.3 2.3 0 1 0 0-4.6 2.3 2.3 0 0 0 0 4.6ZM9.9 11.4 11.1 14M14.1 11.4 12.9 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-device" viewBox="0 0 24 24"><path d="M8 3.6h8A1.6 1.6 0 0 1 17.6 5.2v13.6A1.6 1.6 0 0 1 16 20.4H8A1.6 1.6 0 0 1 6.4 18.8V5.2A1.6 1.6 0 0 1 8 3.6ZM10 17.8h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-shield" viewBox="0 0 24 24"><path d="M12 3.6 19 6.4v5.4c0 4.2-2.8 7.2-7 8.6-4.2-1.4-7-4.4-7-8.6V6.4L12 3.6ZM9.2 12.1l1.9 1.9 3.7-3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-card" viewBox="0 0 24 24"><path d="M4.4 7.2h15.2v9.6H4.4V7.2ZM4.4 10.4h15.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-gift" viewBox="0 0 24 24"><path d="M4.8 11.2h14.4v8.4H4.8V11.2ZM4.8 7.6h14.4v3.6H4.8V7.6ZM12 7.6v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+              <symbol id="pf-percent" viewBox="0 0 24 24"><path d="M18 6 6 18M8.2 8.2h.01M15.8 15.8h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+            </svg>
+
           <div class="pospago-catalog__jump" role="tablist" aria-label="Familias de planes">
             <button type="button" class="pospago-catalog__tab is-active" role="tab" id="pospago-tab-premium" aria-selected="true" aria-controls="pospago-panel-premium" data-pospago-tab="premium">Premium</button>
             <button type="button" class="pospago-catalog__tab" role="tab" id="pospago-tab-simple" aria-selected="false" aria-controls="pospago-panel-simple" data-pospago-tab="simple">Simple Plus</button>
@@ -154,158 +166,298 @@
               </ul>
             </div>
             <div class="pospago-rate-grid pospago-rate-grid--premium">
-              <article class="pospago-rate" data-pospago-rate style="--i: 0">
+              <details class="pospago-rate" data-pospago-rate style="--i: 0">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Azul</p>
                 <p class="pospago-rate__data">4 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:8%"></span></span>
+                <p class="pospago-rate__price">$279<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$279<span> / mes</span></p>
                 <p class="pospago-rate__note">Add on Control incluido</p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 1">
+                              </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 1">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Azul 1</p>
                 <p class="pospago-rate__data">5 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:10%"></span></span>
+                <p class="pospago-rate__price">$330<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$330<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 2">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 2">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Azul 2</p>
                 <p class="pospago-rate__data">8 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:15%"></span></span>
+                <p class="pospago-rate__price">$435<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$435<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 3">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 3">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Azul 3</p>
                 <p class="pospago-rate__data">14 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:26%"></span></span>
+                <p class="pospago-rate__price">$550<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$550<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate is-star" data-pospago-rate style="--i: 4">
+                                </div>
+              </details>
+              <details class="pospago-rate is-star" data-pospago-rate style="--i: 4">
+                <summary class="pospago-rate__summary">
                 <span class="pospago-rate__chip">Popular</span>
                 <p class="pospago-rate__name">AT&amp;T Plata</p>
                 <p class="pospago-rate__data">25 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:46%"></span></span>
+                <p class="pospago-rate__price">$650<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$650<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 5">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 5">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Oro</p>
                 <p class="pospago-rate__data">32 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:58%"></span></span>
+                <p class="pospago-rate__price">$725<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$725<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 6">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 6">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Black</p>
                 <p class="pospago-rate__data">42 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:76%"></span></span>
+                <p class="pospago-rate__price">$825<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$825<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 7">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 7">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Platino</p>
                 <p class="pospago-rate__data">50 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:91%"></span></span>
+                <p class="pospago-rate__price">$1,035<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$1,035<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 8">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 8">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Diamante</p>
                 <p class="pospago-rate__data">55 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:100%"></span></span>
+                <p class="pospago-rate__price">$1,300<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$1,300<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 9">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 9">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Titanio</p>
                 <p class="pospago-rate__data">42 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:76%"></span></span>
+                <p class="pospago-rate__price">$1,599<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan con equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Hasta 6 redes sociales</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
                 <ul class="pospago-rrss" aria-label="Hasta 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Hasta 6 redes</p>
-                <p class="pospago-rate__price">$1,599<span> / mes</span></p>
-              </article>
+                                </div>
+              </details>
             </div>
             <p class="pospago-catalog__legal">También meses sin intereses con bancos participantes. Consulta términos en att.com.</p>
           </section>
@@ -321,75 +473,127 @@
               </ul>
             </div>
             <div class="pospago-rate-grid pospago-rate-grid--simple">
-              <article class="pospago-rate" data-pospago-rate style="--i: 0">
+              <details class="pospago-rate" data-pospago-rate style="--i: 0">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">3 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:25%"></span></span>
+                <p class="pospago-rate__price">$299<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales ilimitadas</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-gift"></use></svg><span>Gigas de promoción incluidos</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
+                <p class="pospago-rate__split">1.5 GB + 1.5 GB promo</p>
                 <ul class="pospago-rrss" aria-label="Redes ilimitadas">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Redes ilimitadas</p>
-                <p class="pospago-rate__split">1.5 GB + 1.5 GB promo</p>
-                <p class="pospago-rate__price">$299<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 1">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 1">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">5 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:42%"></span></span>
+                <p class="pospago-rate__price">$399<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales ilimitadas</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-gift"></use></svg><span>Gigas de promoción incluidos</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
+                <p class="pospago-rate__split">2.5 GB + 2.5 GB promo</p>
                 <ul class="pospago-rrss" aria-label="Redes ilimitadas">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Redes ilimitadas</p>
-                <p class="pospago-rate__split">2.5 GB + 2.5 GB promo</p>
-                <p class="pospago-rate__price">$399<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate is-star" data-pospago-rate style="--i: 2">
+                                </div>
+              </details>
+              <details class="pospago-rate is-star" data-pospago-rate style="--i: 2">
+                <summary class="pospago-rate__summary">
                 <span class="pospago-rate__chip">Popular</span>
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">8 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:67%"></span></span>
+                <p class="pospago-rate__price">$599<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales ilimitadas</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-gift"></use></svg><span>Gigas de promoción incluidos</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
+                <p class="pospago-rate__split">4 GB + 4 GB promo</p>
                 <ul class="pospago-rrss" aria-label="Redes ilimitadas">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Redes ilimitadas</p>
-                <p class="pospago-rate__split">4 GB + 4 GB promo</p>
-                <p class="pospago-rate__price">$599<span> / mes</span></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 3">
+                                </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 3">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">Simple Plus</p>
                 <p class="pospago-rate__data">12 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:100%"></span></span>
+                <p class="pospago-rate__price">$649<span> / mes</span></p>
+                              <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales ilimitadas</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-gift"></use></svg><span>Gigas de promoción incluidos</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-card"></use></svg><span>Meses sin intereses</span></li>
+                </ul>
+                <p class="pospago-rate__split">6 GB + 6 GB promo</p>
                 <ul class="pospago-rrss" aria-label="Redes ilimitadas">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Redes ilimitadas</p>
-                <p class="pospago-rate__split">6 GB + 6 GB promo</p>
-                <p class="pospago-rate__price">$649<span> / mes</span></p>
-              </article>
+                                </div>
+              </details>
             </div>
             <p class="pospago-catalog__legal">Meses sin intereses con bancos participantes. Consulta términos en att.com.</p>
           </section>
@@ -405,128 +609,212 @@
               </ul>
             </div>
             <div class="pospago-rate-grid pospago-rate-grid--lite">
-              <article class="pospago-rate" data-pospago-rate style="--i: 0">
+              <details class="pospago-rate" data-pospago-rate style="--i: 0">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Lite</p>
                 <p class="pospago-rate__data">4 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:10%"></span></span>
-                                <ul class="pospago-rrss" aria-label="Elige 3 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                                <p class="pospago-rate__price">$299<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan sin equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales a elegir</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-percent"></use></svg><span>Descuento en portabilidad</span></li>
+                </ul>
+                <ul class="pospago-rrss" aria-label="Elige 3 redes">
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"><span>Snapchat</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"><span>YouTube</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"><span>Telegram</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Elige 3 redes</p>
-                <p class="pospago-rate__price">$299<span> / mes</span></p>
                 <p class="pospago-rate__porta">Portabilidad <strong>$270</strong> <em>−10%</em></p>
                 <p class="pospago-rate__note">Add on Control incluido</p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 1">
+                              </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 1">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Lite 1</p>
                 <p class="pospago-rate__data">12 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:18%"></span></span>
-                                <ul class="pospago-rrss" aria-label="Elige 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                                <p class="pospago-rate__price">$349<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan sin equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales a elegir</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-percent"></use></svg><span>Descuento en portabilidad</span></li>
+                </ul>
+                <ul class="pospago-rrss" aria-label="Elige 6 redes">
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"><span>Snapchat</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"><span>YouTube</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"><span>Telegram</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Elige 6 redes</p>
-                <p class="pospago-rate__price">$349<span> / mes</span></p>
                 <p class="pospago-rate__porta">Portabilidad <strong>$315</strong> <em>−10%</em></p>
-              </article>
-              <article class="pospago-rate is-star" data-pospago-rate style="--i: 2">
+                              </div>
+              </details>
+              <details class="pospago-rate is-star" data-pospago-rate style="--i: 2">
+                <summary class="pospago-rate__summary">
                 <span class="pospago-rate__chip">Popular</span>
                 <p class="pospago-rate__name">AT&amp;T Lite 2</p>
                 <p class="pospago-rate__data">20 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:22%"></span></span>
-                                <ul class="pospago-rrss" aria-label="Elige 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                                <p class="pospago-rate__price">$449<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan sin equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales a elegir</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-percent"></use></svg><span>Descuento en portabilidad</span></li>
+                </ul>
+                <ul class="pospago-rrss" aria-label="Elige 6 redes">
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"><span>Snapchat</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"><span>YouTube</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"><span>Telegram</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Elige 6 redes</p>
-                <p class="pospago-rate__price">$449<span> / mes</span></p>
                 <p class="pospago-rate__porta">Portabilidad <strong>$360</strong> <em>−20%</em></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 3">
+                              </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 3">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Lite 3</p>
                 <p class="pospago-rate__data">30 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:30%"></span></span>
-                                <ul class="pospago-rrss" aria-label="Elige 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                                <p class="pospago-rate__price">$549<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan sin equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales a elegir</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-percent"></use></svg><span>Descuento en portabilidad</span></li>
+                </ul>
+                <ul class="pospago-rrss" aria-label="Elige 6 redes">
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"><span>Snapchat</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"><span>YouTube</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"><span>Telegram</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Elige 6 redes</p>
-                <p class="pospago-rate__price">$549<span> / mes</span></p>
                 <p class="pospago-rate__porta">Portabilidad <strong>$440</strong> <em>−20%</em></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 4">
+                              </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 4">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Lite 4</p>
                 <p class="pospago-rate__data">50 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:46%"></span></span>
-                                <ul class="pospago-rrss" aria-label="Elige 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                                <p class="pospago-rate__price">$669<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan sin equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales a elegir</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-percent"></use></svg><span>Descuento en portabilidad</span></li>
+                </ul>
+                <ul class="pospago-rrss" aria-label="Elige 6 redes">
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"><span>Snapchat</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"><span>YouTube</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"><span>Telegram</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Elige 6 redes</p>
-                <p class="pospago-rate__price">$669<span> / mes</span></p>
                 <p class="pospago-rate__porta">Portabilidad <strong>$502</strong> <em>−25%</em></p>
-              </article>
-              <article class="pospago-rate" data-pospago-rate style="--i: 5">
+                              </div>
+              </details>
+              <details class="pospago-rate" data-pospago-rate style="--i: 5">
+                <summary class="pospago-rate__summary">
                 <p class="pospago-rate__name">AT&amp;T Lite 5</p>
                 <p class="pospago-rate__data">120 GB</p>
                 <span class="pospago-rate__meter" aria-hidden="true"><span style="width:100%"></span></span>
-                                <ul class="pospago-rrss" aria-label="Elige 6 redes">
-                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"></li>
-                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"></li>
+                                <p class="pospago-rate__price">$999<span> / mes</span></p>
+                                <span class="pospago-rate__toggle" aria-hidden="true"><span class="pospago-rate__toggle-open">Ver detalle</span><span class="pospago-rate__toggle-close">Cerrar</span><svg viewBox="0 0 24 28" fill="none"><path d="M5 6.5 12 13.5 19 6.5"/><path d="M5 14.5 12 21.5 19 14.5"/></svg></span>
+                </summary>
+                <div class="pospago-rate__details">
+                <ul class="pospago-rate__facts">
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-wifi"></use></svg><span>Navegación libre</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-phone"></use></svg><span>Minutos ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-sms"></use></svg><span>SMS ilimitados</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-device"></use></svg><span>Plan sin equipo</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-social"></use></svg><span>Redes sociales a elegir</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-shield"></use></svg><span>Add on Control $50</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#pf-percent"></use></svg><span>Descuento en portabilidad</span></li>
+                </ul>
+                <ul class="pospago-rrss" aria-label="Elige 6 redes">
+                  <li><img src="assets/pospago/rrss/facebook.svg?v=1" alt="Facebook" width="16" height="16"><span>Facebook</span></li>
+                  <li><img src="assets/pospago/rrss/instagram.svg?v=1" alt="Instagram" width="16" height="16"><span>Instagram</span></li>
+                  <li><img src="assets/pospago/rrss/x.svg?v=1" alt="X" width="16" height="16"><span>X</span></li>
+                  <li><img src="assets/pospago/rrss/whatsapp.svg?v=1" alt="WhatsApp" width="16" height="16"><span>WhatsApp</span></li>
+                  <li><img src="assets/pospago/rrss/snapchat.svg?v=1" alt="Snapchat" width="16" height="16"><span>Snapchat</span></li>
+                  <li><img src="assets/pospago/rrss/tiktok.svg?v=1" alt="TikTok" width="16" height="16"><span>TikTok</span></li>
+                  <li><img src="assets/pospago/rrss/youtube.svg?v=1" alt="YouTube" width="16" height="16"><span>YouTube</span></li>
+                  <li><img src="assets/pospago/rrss/messenger.svg?v=1" alt="Messenger" width="16" height="16"><span>Messenger</span></li>
+                  <li><img src="assets/pospago/rrss/telegram.svg?v=1" alt="Telegram" width="16" height="16"><span>Telegram</span></li>
+                  <li><img src="assets/pospago/rrss/linkedin.svg?v=1" alt="LinkedIn" width="16" height="16"><span>LinkedIn</span></li>
                 </ul>
                 <p class="pospago-rrss__cap">Elige 6 redes</p>
-                <p class="pospago-rate__price">$999<span> / mes</span></p>
                 <p class="pospago-rate__porta">Portabilidad <strong>$750</strong> <em>−25%</em></p>
-              </article>
+                              </div>
+              </details>
             </div>
             <p class="pospago-catalog__legal">Portabilidad: 10%, 20% o 25% de descuento en la renta mensual, según el plan. Consulta cobertura y términos en att.com.</p>
           </section>
@@ -543,6 +831,6 @@
   <script src="js/layout.js?v=46" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/pospago-coverflow.js?v=6" defer></script>
-  <script src="js/pospago-plans.js?v=5" defer></script>
+  <script src="js/pospago-plans.js?v=6" defer></script>
 </body>
 </html>
