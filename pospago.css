@@ -1,0 +1,254 @@
+/* Banner pospago — carrusel coverflow (colores AT&T México) */
+.page-postpago {
+  --pospago-pink: #d96df2;
+  --pospago-blue: #0e3ea3;
+}
+
+.page-postpago .site-header:not(.is-scrolled) .bento-dot {
+  background: #fff;
+}
+
+.pospago-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding:
+    calc(var(--header-h, 72px) + 12px)
+    0
+    36px;
+  overflow: hidden;
+  background: linear-gradient(to top right, var(--pospago-pink) 0%, var(--pospago-blue) 100%);
+  color: #fff;
+}
+
+.pospago-hero__stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: min(654px, 56vw);
+  min-height: 280px;
+}
+
+.pospago-coverflow {
+  position: relative;
+  width: min(1000px, 72vw);
+  height: 100%;
+  margin: 0 auto;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.pospago-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0b1a44 center / cover no-repeat;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  pointer-events: none;
+  box-shadow: 0 24px 60px rgba(8, 18, 60, 0.28);
+}
+
+.pospago-coverflow:not(.is-ready) .pospago-card:not(.is-active) {
+  opacity: 0;
+}
+
+.pospago-hero__arrow--prev svg {
+  transform: rotate(180deg);
+}
+
+.pospago-card.is-peek,
+.pospago-card.is-active {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.pospago-card.is-active {
+  cursor: default;
+  z-index: 8;
+}
+
+.pospago-card__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+}
+
+.pospago-card__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 58%);
+  pointer-events: none;
+}
+
+.pospago-card__copy {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 24px;
+  color: #fff;
+}
+
+.pospago-card__badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #9b4dff;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.pospago-card__title {
+  margin: 0 0 8px;
+  max-width: 36rem;
+  font-size: clamp(1.35rem, 2.2vw, 2.125rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.pospago-card__lead {
+  margin: 0 0 16px;
+  max-width: 32rem;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.pospago-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 155px;
+  max-width: 159px;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.pospago-card__cta:hover,
+.pospago-card__cta:focus-visible {
+  background: #f3f3f3;
+  outline: none;
+}
+
+.pospago-hero__nav {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+  transform: translateY(-72px);
+}
+
+.pospago-hero__arrow {
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pospago-hero__arrow:hover,
+.pospago-hero__arrow:focus-visible {
+  transform: scale(1.1);
+  outline: none;
+}
+
+.pospago-hero__arrow svg {
+  display: block;
+}
+
+.pospago-hero__count {
+  min-width: 2.4rem;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .pospago-hero {
+    padding-top: calc(var(--header-h, 64px) + 8px);
+    padding-bottom: 28px;
+  }
+
+  .pospago-hero__stage {
+    height: min(520px, 118vw);
+  }
+
+  .pospago-coverflow {
+    width: min(100%, calc(100vw - 28px));
+  }
+
+  .pospago-card {
+    border-radius: 16px;
+  }
+
+  .pospago-card__copy {
+    align-items: center;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .pospago-card__title,
+  .pospago-card__lead {
+    max-width: none;
+    text-align: center;
+  }
+
+  .pospago-card__cta {
+    max-width: 243px;
+  }
+
+  .pospago-hero__nav {
+    transform: translateY(-28px);
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pospago-card {
+    transition: opacity 0.3s ease;
+  }
+
+  .pospago-hero__arrow:hover,
+  .pospago-hero__arrow:focus-visible {
+    transform: none;
+  }
+}
