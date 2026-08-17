@@ -113,7 +113,7 @@
   }
 
   function markerIcon(active) {
-    const color = carrierId === "att" ? "#00a8e0" : "#ffcb05";
+    const color = carrierId === "att" ? "#d96df2" : "#ffcb05";
     return window.L.divIcon({
       className: "pospago-stores__pin" + (active ? " is-active" : ""),
       html: `<span style="background:${color}"></span>`,

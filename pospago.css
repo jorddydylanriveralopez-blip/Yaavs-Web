@@ -1325,8 +1325,8 @@ body.theme-cluster.page-postpago .pospago-modal__price span {
 
 .pospago-stores[data-carrier="att"] {
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 168, 224, 0.22), transparent 58%),
-    #001529;
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(217, 109, 242, 0.22), transparent 58%),
+    #120818;
 }
 
 .pospago-stores[data-carrier="bait"] {
@@ -1403,8 +1403,8 @@ body.theme-cluster.page-postpago .pospago-stores__intro {
 
 .pospago-stores__pick--att::after {
   background:
-    linear-gradient(180deg, rgba(0, 36, 95, 0.55) 0%, rgba(0, 55, 140, 0.28) 42%, rgba(0, 18, 48, 0.88) 100%),
-    linear-gradient(240deg, rgba(0, 168, 224, 0.38) 0%, transparent 58%);
+    linear-gradient(180deg, rgba(42, 12, 58, 0.55) 0%, rgba(88, 24, 110, 0.28) 42%, rgba(18, 8, 24, 0.88) 100%),
+    linear-gradient(240deg, rgba(217, 109, 242, 0.38) 0%, transparent 58%);
 }
 
 .pospago-stores__pick--bait::after {
@@ -1468,10 +1468,10 @@ body.theme-cluster.page-postpago .pospago-stores__intro {
 
 .pospago-stores__pick--att:hover em,
 .pospago-stores__pick--att:focus-visible em {
-  background: #00a8e0;
-  border-color: #00a8e0;
-  color: #001018;
-  box-shadow: 0 12px 32px rgba(0, 168, 224, 0.4);
+  background: #d96df2;
+  border-color: #d96df2;
+  color: #1a071f;
+  box-shadow: 0 12px 32px rgba(217, 109, 242, 0.4);
 }
 
 .pospago-stores__pick--bait:hover em,
@@ -1531,7 +1531,7 @@ body.theme-cluster.page-postpago .pospago-stores__intro {
   height: 3px;
   margin: 0 0 22px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, #00a8e0 20%, #ff7200 80%, transparent);
+  background: linear-gradient(90deg, transparent, #d96df2 20%, #e3a6f7 80%, transparent);
   animation: pospago-stage-beam 1.1s ease both;
 }
 
@@ -1601,8 +1601,8 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 
 .pospago-stores[data-carrier="att"] .pospago-stores__geo,
 .pospago-stores[data-carrier="att"] .pospago-stores__search button {
-  background: #00a8e0;
-  color: #001018;
+  background: #d96df2;
+  color: #1a071f;
 }
 
 .pospago-stores[data-carrier="bait"] .pospago-stores__geo,
@@ -1626,6 +1626,21 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   background: rgba(255, 255, 255, 0.06);
   color: #fff;
   font: inherit;
+}
+
+.pospago-stores[data-carrier="att"] .pospago-stores__search input:focus {
+  border-color: #d96df2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(217, 109, 242, 0.35);
+}
+
+.pospago-stores[data-carrier="att"] .pospago-stores__card-actions a {
+  color: #e3a6f7;
+}
+
+.pospago-stores[data-carrier="att"] .pospago-stores__back:hover,
+.pospago-stores[data-carrier="att"] .pospago-stores__back:focus-visible {
+  background: rgba(217, 109, 242, 0.22);
 }
 
 .pospago-stores__status {
@@ -1672,8 +1687,8 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 }
 
 .pospago-stores__card.is-active {
-  border-color: #00a8e0;
-  box-shadow: 0 0 0 1px rgba(0, 168, 224, 0.35), 0 12px 28px rgba(0, 168, 224, 0.16);
+  border-color: #d96df2;
+  box-shadow: 0 0 0 1px rgba(217, 109, 242, 0.35), 0 12px 28px rgba(217, 109, 242, 0.16);
 }
 
 .pospago-stores[data-carrier="bait"] .pospago-stores__card.is-active {
@@ -1702,7 +1717,7 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 .pospago-stores__card-hours {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #00a8e0;
+  color: #d96df2;
 }
 
 .pospago-stores[data-carrier="bait"] .pospago-stores__card-city,
@@ -1757,12 +1772,12 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   height: 14px;
   border-radius: 50%;
   border: 2px solid #fff;
-  box-shadow: 0 0 0 4px rgba(0, 168, 224, 0.28);
+  box-shadow: 0 0 0 4px rgba(217, 109, 242, 0.28);
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__map {
-  border-color: rgba(0, 168, 224, 0.45);
-  box-shadow: 0 24px 60px rgba(0, 80, 140, 0.28);
+  border-color: rgba(217, 109, 242, 0.45);
+  box-shadow: 0 24px 60px rgba(120, 40, 160, 0.28);
 }
 
 .pospago-stores[data-carrier="bait"] .pospago-stores__map {
