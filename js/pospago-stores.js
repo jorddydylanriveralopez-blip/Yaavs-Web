@@ -164,56 +164,45 @@
     }
   }
 
-  function openCarrier(id, trigger) {
+  function openCarrier(id) {
     const carrier = carriers[id];
     if (!carrier) return;
     carrierId = id;
     const list = storesFor(id);
     activeId = list[0]?.id || "";
     root.dataset.carrier = id;
-    root.classList.add("is-opening");
-    root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
-      btn.classList.toggle("is-chosen", btn === trigger);
-      btn.classList.toggle("is-dim", btn !== trigger);
+    root.classList.remove("is-opening");
+    root.classList.add("is-open");
+    if (picks) picks.hidden = true;
+    if (stage) {
+      stage.hidden = false;
+      stage.classList.remove("is-revealed");
+      void stage.offsetWidth;
+      stage.classList.add("is-revealed");
+    }
+    if (titleEl) titleEl.textContent = carrier.title;
+    renderList();
+    whenLeaflet(() => {
+      drawMap();
+      const first = list[0];
+      if (first) focusStore(first, false);
+      window.setTimeout(() => map?.invalidateSize(), 120);
+      window.setTimeout(() => map?.invalidateSize(), 480);
     });
-
-    window.setTimeout(() => {
-      root.classList.remove("is-opening");
-      root.classList.add("is-open");
-      if (picks) picks.hidden = true;
-      if (stage) {
-        stage.hidden = false;
-        stage.classList.remove("is-revealed");
-        void stage.offsetWidth;
-        stage.classList.add("is-revealed");
-      }
-      if (titleEl) titleEl.textContent = carrier.title;
-      renderList();
-      whenLeaflet(() => {
-        drawMap();
-        const first = list[0];
-        if (first) focusStore(first, false);
-        window.setTimeout(() => map?.invalidateSize(), 280);
-        window.setTimeout(() => map?.invalidateSize(), 700);
-      });
-      stage?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 420);
+    root.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function closeCarrier() {
     carrierId = "";
     root.removeAttribute("data-carrier");
     root.classList.remove("is-open", "is-opening");
-    root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
-      btn.classList.remove("is-chosen", "is-dim");
-    });
     if (picks) picks.hidden = false;
     if (stage) {
       stage.hidden = true;
       stage.classList.remove("is-revealed");
     }
     setStatus("");
-    picks?.scrollIntoView({ behavior: "smooth", block: "start" });
+    root.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function whenLeaflet(cb) {
@@ -235,7 +224,7 @@
   }
 
   root.querySelectorAll("[data-store-carrier]").forEach((btn) => {
-    btn.addEventListener("click", () => openCarrier(btn.getAttribute("data-store-carrier"), btn));
+    btn.addEventListener("click", () => openCarrier(btn.getAttribute("data-store-carrier")));
   });
 
   root.querySelector("[data-store-back]")?.addEventListener("click", closeCarrier);

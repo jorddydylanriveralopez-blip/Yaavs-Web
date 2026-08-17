@@ -1362,6 +1362,12 @@ body.theme-cluster.page-postpago .pospago-stores__intro {
   min-height: min(86vh, 920px);
 }
 
+.pospago-stores__picks[hidden],
+.pospago-stores__stage[hidden],
+.pospago-stores.is-open .pospago-stores__picks {
+  display: none !important;
+}
+
 .pospago-stores__pick {
   position: relative;
   display: grid;
