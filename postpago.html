@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=12">
+  <link rel="stylesheet" href="pospago.css?v=13">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -128,36 +128,93 @@
       <div class="pospago-plans__inner">
         <header class="pospago-plans__head">
           <h2 class="pospago-plans__title">Planes Pospago</h2>
-          <p class="pospago-plans__intro">Elige el esquema que mejor se adapta a tu cliente.</p>
+          <p class="pospago-plans__intro">Mueve el flyer, haz clic y ábrelo completo. Premium con equipo o Lite sin equipo.</p>
         </header>
-        <div class="pospago-plans__grid">
-          <article class="pospago-plan pospago-plan--premium">
-            <p class="pospago-plan__kicker">Pospago</p>
-            <h3 class="pospago-plan__name">Plan Premium</h3>
-            <p class="pospago-plan__lead">Más beneficios para clientes de alto consumo, con acompañamiento comercial YAAVS.</p>
-            <ul class="pospago-plan__list">
-              <li>GB incluidos para lo que prefieran</li>
-              <li>Redes sociales a elegir</li>
-              <li>Disponible con eSIM</li>
-              <li>Seguimiento de altas y renovaciones</li>
-            </ul>
-            <a class="pospago-plan__cta" href="contacto.html">Conoce más</a>
+        <div class="pospago-flyers" data-pospago-flyers>
+          <article class="pospago-flyer pospago-flyer--premium">
+            <button type="button" class="pospago-flyer__open" data-pospago-flyer="0" aria-haspopup="dialog" aria-controls="pospago-flyer-lightbox" aria-label="Ver flyer AT&amp;T Premium">
+              <span class="pospago-flyer__stage">
+                <span class="pospago-flyer__shot">
+                  <img
+                    src="assets/pospago/flyer-1-thumb.jpg?v=1"
+                    data-full="assets/pospago/flyer-1.jpg?v=1"
+                    alt="Flyer AT&amp;T Premium y Simple Plus: planes con equipo, gigas y renta mensual"
+                    width="720"
+                    height="1113"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                  <span class="pospago-flyer__shine" aria-hidden="true"></span>
+                </span>
+              </span>
+            </button>
+            <div class="pospago-flyer__meta">
+              <p class="pospago-plan__kicker">AT&amp;T · Con equipo</p>
+              <h3 class="pospago-plan__name">Premium</h3>
+              <p class="pospago-plan__lead">Planes Azul a Titanio, Simple Plus y meses sin intereses con bancos participantes.</p>
+              <ul class="pospago-plan__list">
+                <li>Navegación libre, minutos y SMS ilimitados</li>
+                <li>Hasta 6 redes sociales en Premium</li>
+                <li>Simple Plus con gigas extra de promoción</li>
+              </ul>
+              <div class="pospago-flyer__actions">
+                <button type="button" class="pospago-plan__cta pospago-plan__cta--ghost" data-pospago-flyer="0">Ver flyer</button>
+                <a class="pospago-plan__cta" href="contacto.html">Conoce más</a>
+              </div>
+            </div>
           </article>
-          <article class="pospago-plan pospago-plan--light">
-            <p class="pospago-plan__kicker">Pospago</p>
-            <h3 class="pospago-plan__name">Plan Light</h3>
-            <p class="pospago-plan__lead">Una opción ágil y accesible para entrar a pospago sin complicar la operación.</p>
-            <ul class="pospago-plan__list">
-              <li>Más gigas incluidos</li>
-              <li>Sin plazo forzado</li>
-              <li>Libertad para crecer el plan</li>
-              <li>Respaldo operativo en mostrador</li>
-            </ul>
-            <a class="pospago-plan__cta" href="contacto.html">Conoce más</a>
+          <article class="pospago-flyer pospago-flyer--lite">
+            <button type="button" class="pospago-flyer__open" data-pospago-flyer="1" aria-haspopup="dialog" aria-controls="pospago-flyer-lightbox" aria-label="Ver flyer AT&amp;T Lite">
+              <span class="pospago-flyer__stage">
+                <span class="pospago-flyer__shot">
+                  <img
+                    src="assets/pospago/flyer-2-thumb.jpg?v=1"
+                    data-full="assets/pospago/flyer-2.jpg?v=1"
+                    alt="Flyer AT&amp;T Lite: planes sin equipo y portabilidad con descuento"
+                    width="720"
+                    height="1113"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                  <span class="pospago-flyer__shine" aria-hidden="true"></span>
+                </span>
+              </span>
+            </button>
+            <div class="pospago-flyer__meta">
+              <p class="pospago-plan__kicker">AT&amp;T · Sin equipo</p>
+              <h3 class="pospago-plan__name">Lite</h3>
+              <p class="pospago-plan__lead">De 4 GB a 120 GB, redes sociales a elegir y precio especial si el cliente porta su número.</p>
+              <ul class="pospago-plan__list">
+                <li>Planes sin equipo desde $299 al mes</li>
+                <li>Portabilidad con hasta 25% de descuento</li>
+                <li>Add on Control disponible por $50</li>
+              </ul>
+              <div class="pospago-flyer__actions">
+                <button type="button" class="pospago-plan__cta pospago-plan__cta--ghost" data-pospago-flyer="1">Ver flyer</button>
+                <a class="pospago-plan__cta" href="contacto.html">Conoce más</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
+
+    <dialog class="pospago-flyer-lightbox" id="pospago-flyer-lightbox" aria-labelledby="pospago-flyer-lightbox-title">
+      <form method="dialog" class="pospago-flyer-lightbox__bar">
+        <p class="pospago-flyer-lightbox__title" id="pospago-flyer-lightbox-title">Flyer pospago</p>
+        <span class="pospago-flyer-lightbox__count" data-pospago-flyer-count>1/2</span>
+        <button type="submit" class="pospago-flyer-lightbox__close" aria-label="Cerrar">Cerrar</button>
+      </form>
+      <div class="pospago-flyer-lightbox__stage">
+        <button type="button" class="pospago-flyer-lightbox__nav pospago-flyer-lightbox__nav--prev" data-pospago-flyer-prev aria-label="Flyer anterior">
+          <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M5.1 6L0.5 1.4L1.9 0L7.9 6L1.9 12L0.5 10.6L5.1 6Z" fill="currentColor"/></svg>
+        </button>
+        <img id="pospago-flyer-lightbox-img" src="assets/pospago/flyer-1.jpg?v=1" alt="" width="1600" height="2473">
+        <button type="button" class="pospago-flyer-lightbox__nav pospago-flyer-lightbox__nav--next" data-pospago-flyer-next aria-label="Flyer siguiente">
+          <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M5.1 6L0.5 1.4L1.9 0L7.9 6L1.9 12L0.5 10.6L5.1 6Z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </dialog>
 
     <div id="page-cta"></div>
   </main>
@@ -165,6 +222,7 @@
   <div id="site-footer"></div>
   <script src="js/layout.js?v=46" defer></script>
   <script src="js/main.js?v=7" defer></script>
-  <script src="js/pospago-coverflow.js?v=5" defer></script>
+  <script src="js/pospago-coverflow.js?v=6" defer></script>
+  <script src="js/pospago-flyers.js?v=1" defer></script>
 </body>
 </html>

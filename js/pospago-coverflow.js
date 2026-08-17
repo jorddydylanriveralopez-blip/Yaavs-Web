@@ -100,6 +100,7 @@
 
   document.addEventListener("keydown", (e) => {
     if (!stage) return;
+    if (document.querySelector("dialog[open]")) return;
     if (e.target.closest("input, textarea, select, [contenteditable]")) return;
     if (e.key === "ArrowLeft") {
       e.preventDefault();
