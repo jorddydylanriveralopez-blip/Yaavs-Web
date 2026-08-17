@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=21">
+  <link rel="stylesheet" href="pospago.css?v=22">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -132,7 +132,11 @@
     <section class="pospago-plans" id="planes-pospago" aria-label="Planes pospago">
       <div class="pospago-plans__inner">
         <header class="pospago-plans__head">
-          <h2 class="pospago-plans__title">Planes Pospago</h2>
+          <p class="pospago-plans__kicker">Sección pospago</p>
+          <div class="pospago-plans__brand">
+            <img class="pospago-plans__logo" src="assets/servicios/icons/postpago.png?v=2" alt="Pospago" width="1081" height="1081">
+            <h2 class="pospago-plans__title">Planes Pospago</h2>
+          </div>
           <p class="pospago-plans__intro">Más gigas, más libertad. Elige Premium, Simple Plus o Lite para ver solo esos planes.</p>
         </header>
 
@@ -824,6 +828,17 @@
       </div>
     </section>
 
+    <dialog class="pospago-modal" data-pospago-modal aria-labelledby="pospago-modal-title">
+      <div class="pospago-modal__sheet">
+        <button type="button" class="pospago-modal__close" data-pospago-modal-close aria-label="Cerrar">&times;</button>
+        <p class="pospago-modal__kicker" data-pospago-modal-kicker></p>
+        <h3 class="pospago-modal__title" id="pospago-modal-title"></h3>
+        <p class="pospago-modal__data" data-pospago-modal-data></p>
+        <p class="pospago-modal__price" data-pospago-modal-price></p>
+        <div class="pospago-modal__body" data-pospago-modal-body></div>
+      </div>
+    </dialog>
+
     <div id="page-cta"></div>
   </main>
 
@@ -831,6 +846,6 @@
   <script src="js/layout.js?v=46" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/pospago-coverflow.js?v=6" defer></script>
-  <script src="js/pospago-plans.js?v=6" defer></script>
+  <script src="js/pospago-plans.js?v=7" defer></script>
 </body>
 </html>
