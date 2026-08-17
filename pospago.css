@@ -18,10 +18,30 @@ body.theme-cluster.page-postpago #contenido {
   background: #05010a;
 }
 
-body.theme-cluster.page-postpago .site-header:not(.is-scrolled) {
-  background: #05010a;
-  border-bottom-color: transparent;
-  box-shadow: none;
+body.theme-cluster.page-postpago .site-header,
+body.theme-cluster.page-postpago .site-header.is-scrolled {
+  background: #05010a !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body.theme-cluster.page-postpago .site-header.is-scrolled::after {
+  display: none !important;
+}
+
+body.theme-cluster.page-postpago .site-header.is-scrolled .logo,
+body.theme-cluster.page-postpago .site-header.is-scrolled .logo.logo--white {
+  filter: none !important;
+}
+
+body.theme-cluster.page-postpago .site-header.is-scrolled .nav-bento {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(232, 247, 251, 0.92) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
+  background: #0f2440 !important;
 }
 
 .page-postpago .site-header:not(.is-scrolled) .bento-dot {
@@ -436,14 +456,84 @@ body.theme-cluster.page-postpago .pospago-card__cta:focus-visible {
 /* Planes Pospago — catálogo visible, denso y con movimiento */
 .pospago-plans {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   scroll-margin-top: calc(var(--header-h, 72px) + 12px);
   padding: clamp(48px, 6vw, 88px) max(16px, var(--pad-x, 24px)) clamp(64px, 8vw, 96px);
   background: #05010a;
   color: #fff;
 }
 
+.pospago-floats {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pospago-float {
+  position: absolute;
+  opacity: 0.42;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+  animation: pospago-float-drift 9s ease-in-out infinite;
+}
+
+.pospago-float--sim {
+  top: 8%;
+  left: 3%;
+  width: 68px;
+  animation-delay: 0s;
+}
+
+.pospago-float--chip {
+  top: 38%;
+  left: 1.5%;
+  width: 52px;
+  animation-delay: -2.4s;
+}
+
+.pospago-float--phone {
+  bottom: 16%;
+  left: 5%;
+  width: 44px;
+  animation-delay: -4.2s;
+}
+
+.pospago-float--esim {
+  top: 14%;
+  right: 4%;
+  width: 64px;
+  animation-delay: -1.6s;
+}
+
+.pospago-float--phones {
+  top: 42%;
+  right: 2%;
+  width: 92px;
+  animation-delay: -3.5s;
+}
+
+.pospago-float--phone-r {
+  bottom: 12%;
+  right: 7%;
+  width: 38px;
+  animation-delay: -5.8s;
+}
+
+.pospago-float--sim-r {
+  bottom: 36%;
+  right: 3%;
+  width: 56px;
+  animation-delay: -7.1s;
+}
+
+@keyframes pospago-float-drift {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-14px) rotate(6deg); }
+}
+
 .pospago-plans__inner {
+  position: relative;
+  z-index: 1;
   width: min(1220px, 100%);
   margin: 0 auto;
 }
@@ -987,6 +1077,13 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
   .pospago-rate-grid--lite {
     grid-template-columns: 1fr;
   }
+
+  .pospago-float--phones,
+  .pospago-float--chip,
+  .pospago-float--phone-r,
+  .pospago-float--esim {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1002,6 +1099,10 @@ body.theme-cluster.page-postpago .pospago-catalog__cta:focus-visible {
   .pospago-rate__toggle svg {
     transition: none;
   }
+
+  .pospago-float {
+    animation: none;
+  }
 }
 
 body.pospago-modal-open {
@@ -1011,10 +1112,14 @@ body.pospago-modal-open {
 .pospago-modal {
   position: fixed;
   inset: 0;
-  z-index: 14000;
-  display: grid;
+  z-index: 20000;
+  display: none;
   place-items: center;
   padding: 24px;
+}
+
+.pospago-modal.is-open {
+  display: grid;
 }
 
 .pospago-modal[hidden] {
@@ -1024,9 +1129,13 @@ body.pospago-modal-open {
 .pospago-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(5, 1, 10, 0.78);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: rgba(5, 1, 10, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .pospago-modal__sheet {

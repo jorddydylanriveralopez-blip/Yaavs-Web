@@ -173,7 +173,9 @@
     }
 
     const swapLogoOnScroll =
-      !document.body.classList.contains("page-home") && !usesLightHeaderLogo();
+      !document.body.classList.contains("page-home")
+      && !document.body.classList.contains("page-postpago")
+      && !usesLightHeaderLogo();
 
     let ticking = false;
     function onScroll() {

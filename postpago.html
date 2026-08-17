@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=23">
+  <link rel="stylesheet" href="pospago.css?v=24">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
@@ -130,6 +130,15 @@
     </a>
 
     <section class="pospago-plans" id="planes-pospago" aria-label="Planes pospago">
+      <div class="pospago-floats" aria-hidden="true">
+        <img class="pospago-float pospago-float--sim" src="assets/floats/float-sim.svg" alt="" width="72" height="92" loading="lazy" decoding="async">
+        <img class="pospago-float pospago-float--chip" src="assets/floats/float-chip.svg" alt="" width="64" height="64" loading="lazy" decoding="async">
+        <img class="pospago-float pospago-float--phone" src="assets/floats/float-phone.svg" alt="" width="48" height="82" loading="lazy" decoding="async">
+        <img class="pospago-float pospago-float--esim" src="assets/floats/float-esim.svg" alt="" width="64" height="48" loading="lazy" decoding="async">
+        <img class="pospago-float pospago-float--phones" src="assets/floats/float-phones.svg" alt="" width="100" height="72" loading="lazy" decoding="async">
+        <img class="pospago-float pospago-float--phone-r" src="assets/floats/float-phone.svg" alt="" width="40" height="70" loading="lazy" decoding="async">
+        <img class="pospago-float pospago-float--sim-r" src="assets/floats/float-sim.svg" alt="" width="64" height="82" loading="lazy" decoding="async">
+      </div>
       <div class="pospago-plans__inner">
         <header class="pospago-plans__head">
           <p class="pospago-plans__kicker">Sección pospago</p>
@@ -825,25 +834,25 @@
       </div>
     </section>
 
-    <div class="pospago-modal" data-pospago-modal hidden>
-      <div class="pospago-modal__backdrop" data-pospago-modal-close></div>
-      <div class="pospago-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="pospago-modal-title">
-        <button type="button" class="pospago-modal__close" data-pospago-modal-close aria-label="Cerrar">&times;</button>
-        <p class="pospago-modal__kicker" data-pospago-modal-kicker></p>
-        <h3 class="pospago-modal__title" id="pospago-modal-title"></h3>
-        <p class="pospago-modal__data" data-pospago-modal-data></p>
-        <p class="pospago-modal__price" data-pospago-modal-price></p>
-        <div class="pospago-modal__body" data-pospago-modal-body></div>
-      </div>
-    </div>
-
     <div id="page-cta"></div>
   </main>
 
+  <div class="pospago-modal" data-pospago-modal hidden>
+    <button type="button" class="pospago-modal__backdrop" data-pospago-modal-close aria-label="Cerrar"></button>
+    <div class="pospago-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="pospago-modal-title">
+      <button type="button" class="pospago-modal__close" data-pospago-modal-close aria-label="Cerrar">&times;</button>
+      <p class="pospago-modal__kicker" data-pospago-modal-kicker></p>
+      <h3 class="pospago-modal__title" id="pospago-modal-title"></h3>
+      <p class="pospago-modal__data" data-pospago-modal-data></p>
+      <p class="pospago-modal__price" data-pospago-modal-price></p>
+      <div class="pospago-modal__body" data-pospago-modal-body></div>
+    </div>
+  </div>
+
   <div id="site-footer"></div>
-  <script src="js/layout.js?v=46" defer></script>
+  <script src="js/layout.js?v=47" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/pospago-coverflow.js?v=6" defer></script>
-  <script src="js/pospago-plans.js?v=8" defer></script>
+  <script src="js/pospago-plans.js?v=9" defer></script>
 </body>
 </html>

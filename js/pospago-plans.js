@@ -1,10 +1,14 @@
 /**
- * Catálogo pospago: familias en tabs y detalle en popup.
+ * Catálogo pospago: tabs, popup flotante y detalles del plan.
  */
 (function () {
   const root = document.querySelector("[data-pospago-catalog]");
   const modal = document.querySelector("[data-pospago-modal]");
   if (!root || !modal) return;
+
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
 
   const tabs = Array.from(root.querySelectorAll("[data-pospago-tab]"));
   const panels = Array.from(root.querySelectorAll("[data-pospago-panel]"));
@@ -20,7 +24,6 @@
     const hash = (location.hash || "").replace("#", "");
     if (hash === "pospago-panel-simple" || hash === "simple") return "simple";
     if (hash === "pospago-panel-lite" || hash === "lite") return "lite";
-    if (hash === "pospago-panel-premium" || hash === "premium") return "premium";
     return "premium";
   }
 
@@ -46,7 +49,10 @@
   }
 
   function closeModal() {
+    modal.classList.remove("is-open");
     modal.hidden = true;
+    modal.setAttribute("hidden", "");
+    modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("pospago-modal-open");
     lastCard?.focus();
     lastCard = null;
@@ -68,6 +74,9 @@
     modal.querySelector("[data-pospago-modal-body]").innerHTML = details ? details.innerHTML : "";
 
     modal.hidden = false;
+    modal.removeAttribute("hidden");
+    modal.setAttribute("aria-hidden", "false");
+    modal.classList.add("is-open");
     document.body.classList.add("pospago-modal-open");
     modal.querySelector("[data-pospago-modal-close]")?.focus();
   }
@@ -86,24 +95,32 @@
     });
   });
 
+  document.addEventListener("click", (e) => {
+    const closeBtn = e.target.closest("[data-pospago-modal-close]");
+    if (closeBtn) {
+      e.preventDefault();
+      closeModal();
+      return;
+    }
+    const card = e.target.closest("[data-pospago-rate]");
+    if (!card || modal.contains(card)) return;
+    e.preventDefault();
+    openModal(card);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+
   root.querySelectorAll("[data-pospago-rate]").forEach((card) => {
     card.tabIndex = 0;
     card.setAttribute("role", "button");
     card.setAttribute("aria-haspopup", "dialog");
-    card.addEventListener("click", () => openModal(card));
     card.addEventListener("keydown", (e) => {
       if (e.key !== "Enter" && e.key !== " ") return;
       e.preventDefault();
       openModal(card);
     });
-  });
-
-  modal.querySelectorAll("[data-pospago-modal-close]").forEach((el) => {
-    el.addEventListener("click", closeModal);
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
   });
 
   setTab(tabFromHash(), { syncHash: false });
