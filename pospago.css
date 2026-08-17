@@ -4,6 +4,11 @@
   --pospago-blue: #0e3ea3;
 }
 
+body.theme-cluster.page-postpago::before {
+  content: none;
+  display: none;
+}
+
 .page-postpago .site-header:not(.is-scrolled) .bento-dot {
   background: #fff;
 }
@@ -55,7 +60,6 @@
   border-radius: 16px;
   overflow: hidden;
   background: #0b1a44;
-  transform-style: preserve-3d;
   transform-origin: center center;
   backface-visibility: hidden;
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
@@ -65,6 +69,7 @@
 
 .pospago-coverflow:not(.is-ready) .pospago-card:not(.is-active) {
   opacity: 0;
+  visibility: hidden;
 }
 
 .pospago-hero__arrow--prev svg {
@@ -111,7 +116,14 @@
   align-items: flex-start;
   padding: 28px 28px 32px;
   color: #fff;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.pospago-card.is-active .pospago-card__copy {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .pospago-card__badge {
@@ -126,6 +138,11 @@
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  opacity: 0;
+}
+
+.pospago-card.is-active .pospago-card__badge {
+  opacity: 1;
 }
 
 body.theme-cluster.page-postpago .pospago-card__title {
@@ -135,7 +152,11 @@ body.theme-cluster.page-postpago .pospago-card__title {
   font-weight: 800;
   line-height: 1.18;
   color: #fff !important;
-  -webkit-text-fill-color: #fff;
+  -webkit-text-fill-color: #fff !important;
+  background: none !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.75);
 }
 
 body.theme-cluster.page-postpago .pospago-card__lead {
@@ -145,7 +166,11 @@ body.theme-cluster.page-postpago .pospago-card__lead {
   font-weight: 600;
   line-height: 1.28;
   color: #fff !important;
-  -webkit-text-fill-color: #fff;
+  -webkit-text-fill-color: #fff !important;
+  background: none !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
 }
 
 body.theme-cluster.page-postpago .pospago-card__cta {

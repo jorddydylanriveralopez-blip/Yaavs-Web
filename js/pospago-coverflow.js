@@ -27,7 +27,11 @@
   }
 
   function layout() {
-    const width = cards[0].offsetWidth || 1000;
+    const width = cards[0].getBoundingClientRect().width || cards[0].offsetWidth;
+    if (width < 48) {
+      window.requestAnimationFrame(layout);
+      return;
+    }
     const mobile = window.matchMedia("(max-width: 768px)").matches;
     const rotate = mobile ? 28 : 52;
     const depth = mobile ? 70 : 100;
@@ -42,6 +46,7 @@
       card.style.transform = `translate3d(${tx}px, 0, ${tz}px) rotateY(${ry}deg)`;
       card.style.zIndex = String(20 - abs);
       card.style.opacity = abs > 2 ? "0" : "1";
+      card.style.visibility = abs > 2 ? "hidden" : "visible";
       card.classList.toggle("is-active", offset === 0);
       card.classList.toggle("is-peek", abs === 1);
       card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
@@ -138,6 +143,9 @@
   );
 
   window.addEventListener("resize", layout);
-  layout();
+  if (typeof ResizeObserver === "function") {
+    new ResizeObserver(layout).observe(root);
+  }
+  window.requestAnimationFrame(layout);
   startTimer();
 })();
