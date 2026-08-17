@@ -232,6 +232,7 @@
     <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
       <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
+      <a href="postpago.html" data-page="postpago">Planes Pospago</a>
       <a href="tiendas.html" data-page="tiendas">Conoce nuestras tiendas</a>
       <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
       <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
@@ -522,6 +523,38 @@
     }
   }
 
+  function initPostpagoNav() {
+    if (!document.body.classList.contains("page-postpago")) return;
+
+    const planes = document.getElementById("planes-pospago");
+    const stores = document.getElementById("conoce-tiendas");
+    const postpagoLink = document.querySelector('.main-nav a[data-page="postpago"]');
+    const tiendasLink = document.querySelector('.main-nav a[data-page="tiendas"]');
+
+    if (postpagoLink && planes) postpagoLink.setAttribute("href", "#planes-pospago");
+    if (tiendasLink && stores) tiendasLink.setAttribute("href", "#conoce-tiendas");
+
+    document.querySelectorAll('a[href="#planes-pospago"], a[href="#conoce-tiendas"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const id = (link.getAttribute("href") || "").slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        closeNavMenu();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", `#${id}`);
+      });
+    });
+
+    if (location.hash === "#planes-pospago" || location.hash === "#conoce-tiendas") {
+      window.setTimeout(() => {
+        document
+          .getElementById(location.hash.slice(1))
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 160);
+    }
+  }
+
   const trustMount = document.getElementById("trust-strip");
   const ctaMount = document.getElementById("page-cta");
 
@@ -575,7 +608,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=21", headerMount),
+    loadPartial("partials/header.html?v=22", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
@@ -587,6 +620,7 @@
     initNavToggle();
     initHeaderScroll();
     initHomeSectionLinks();
+    initPostpagoNav();
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     document.dispatchEvent(new CustomEvent("yaavs:layout-ready"));

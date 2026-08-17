@@ -1307,3 +1307,317 @@ body.theme-cluster.page-postpago .pospago-modal__price span {
   background: #2ee472;
   outline: none;
 }
+
+/* Conoce nuestras tiendas — selector + mapa en la misma página */
+.pospago-stores {
+  position: relative;
+  z-index: 1;
+  padding: clamp(48px, 6vw, 88px) max(16px, var(--pad-x, 24px)) clamp(64px, 8vw, 96px);
+  background: #05010a;
+  color: #fff;
+  scroll-margin-top: calc(var(--header-h, 72px) + 12px);
+}
+
+.pospago-stores[data-carrier="att"] {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 168, 224, 0.22), transparent 58%),
+    #001529;
+}
+
+.pospago-stores[data-carrier="bait"] {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 203, 5, 0.16), transparent 58%),
+    #0a0a0a;
+}
+
+body.theme-cluster.page-postpago .pospago-stores__title {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+
+body.theme-cluster.page-postpago .pospago-stores__intro {
+  margin: 0 auto 28px;
+  max-width: 36rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.72) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.72);
+}
+
+.pospago-stores__picks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.pospago-stores__pick {
+  position: relative;
+  display: grid;
+  min-height: 220px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  background: #0c0b14;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.pospago-stores__pick img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pospago-stores__pick::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 1, 10, 0.15), rgba(5, 1, 10, 0.78));
+}
+
+.pospago-stores__pick span {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: end;
+  gap: 6px;
+  height: 100%;
+  padding: 22px;
+}
+
+.pospago-stores__pick strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.pospago-stores__pick em {
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.pospago-stores__pick--att {
+  box-shadow: 0 0 0 1px rgba(0, 168, 224, 0.35);
+}
+
+.pospago-stores__pick--att:hover,
+.pospago-stores__pick--att:focus-visible {
+  box-shadow: 0 0 0 2px #00a8e0, 0 18px 40px rgba(0, 168, 224, 0.28);
+  outline: none;
+}
+
+.pospago-stores__pick--bait:hover,
+.pospago-stores__pick--bait:focus-visible {
+  box-shadow: 0 0 0 2px #ffcb05, 0 18px 40px rgba(255, 203, 5, 0.22);
+  outline: none;
+}
+
+.pospago-stores__stage {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+}
+
+.pospago-stores__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: 16px;
+}
+
+body.theme-cluster.page-postpago .pospago-stores__heading {
+  margin: 0;
+  flex: 1 1 180px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+
+.pospago-stores__count {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.pospago-stores__back,
+.pospago-stores__geo,
+.pospago-stores__search button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pospago-stores__back {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.pospago-stores[data-carrier="att"] .pospago-stores__geo,
+.pospago-stores[data-carrier="att"] .pospago-stores__search button {
+  background: #00a8e0;
+  color: #001018;
+}
+
+.pospago-stores[data-carrier="bait"] .pospago-stores__geo,
+.pospago-stores[data-carrier="bait"] .pospago-stores__search button {
+  background: #ffcb05;
+  color: #111;
+}
+
+.pospago-stores__search {
+  display: flex;
+  flex: 1 1 280px;
+  gap: 8px;
+}
+
+.pospago-stores__search input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+}
+
+.pospago-stores__status {
+  width: 100%;
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.pospago-stores__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.pospago-stores__list {
+  max-height: 520px;
+  overflow: auto;
+  display: grid;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.pospago-stores__card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(12, 11, 20, 0.88);
+}
+
+.pospago-stores__card.is-active {
+  border-color: #00a8e0;
+}
+
+.pospago-stores[data-carrier="bait"] .pospago-stores__card.is-active {
+  border-color: #ffcb05;
+}
+
+.pospago-stores__card-main {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 14px 8px;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pospago-stores__card-name {
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.pospago-stores__card-city,
+.pospago-stores__card-hours {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #00a8e0;
+}
+
+.pospago-stores[data-carrier="bait"] .pospago-stores__card-city,
+.pospago-stores[data-carrier="bait"] .pospago-stores__card-hours {
+  color: #ffcb05;
+}
+
+.pospago-stores__card-address {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.pospago-stores__card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 14px 12px;
+}
+
+.pospago-stores__card-actions a {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+}
+
+.pospago-stores__map {
+  min-height: 520px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pospago-stores__pin span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 4px rgba(0, 168, 224, 0.28);
+}
+
+.pospago-stores[data-carrier="att"] .pospago-stores__map {
+  border-color: rgba(0, 168, 224, 0.45);
+}
+
+@media (max-width: 860px) {
+  .pospago-stores__picks,
+  .pospago-stores__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pospago-stores__map,
+  .pospago-stores__list {
+    min-height: 320px;
+    max-height: 360px;
+  }
+}
