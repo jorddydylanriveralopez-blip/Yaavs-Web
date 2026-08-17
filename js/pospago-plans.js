@@ -1,16 +1,14 @@
 /**
- * Catálogo pospago: revela tarjetas, resalta familia visible y selecciona un plan.
+ * Catálogo pospago: navegación entre familias y selección de un plan.
  */
 (function () {
   const root = document.querySelector("[data-pospago-catalog]");
   if (!root) return;
 
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const cards = Array.from(root.querySelectorAll("[data-pospago-rate]"));
   const panels = Array.from(root.querySelectorAll("[data-pospago-panel]"));
   const jumps = Array.from(root.querySelectorAll(".pospago-catalog__jump a"));
 
-  cards.forEach((card) => {
+  root.querySelectorAll("[data-pospago-rate]").forEach((card) => {
     card.tabIndex = 0;
     card.addEventListener("keydown", (e) => {
       if (e.key !== "Enter" && e.key !== " ") return;
@@ -18,22 +16,6 @@
       card.click();
     });
   });
-
-  if (!reduced && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
-    );
-    cards.forEach((card) => io.observe(card));
-  } else {
-    cards.forEach((card) => card.classList.add("is-in"));
-  }
 
   function setJump(id) {
     jumps.forEach((link) => {
@@ -50,7 +32,7 @@
         if (!visible) return;
         setJump(visible.target.id);
       },
-      { threshold: [0.25, 0.45, 0.7], rootMargin: "-20% 0px -45% 0px" }
+      { threshold: [0.2, 0.4], rootMargin: "-18% 0px -50% 0px" }
     );
     panels.forEach((panel) => navIo.observe(panel));
   }
