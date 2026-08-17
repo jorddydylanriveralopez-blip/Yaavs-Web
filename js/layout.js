@@ -232,7 +232,7 @@
     <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
       <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
-      <a href="postpago.html#conoce-tiendas" data-page="tiendas">Tiendas BAIT</a>
+      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas BAIT</a>
       <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
       <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
       <a href="avisos.html" data-page="avisos">Noticias Yaavs</a>
@@ -525,27 +525,21 @@
   function initPostpagoNav() {
     if (!document.body.classList.contains("page-postpago")) return;
 
-    const stores = document.getElementById("conoce-tiendas");
-    const tiendasLink = document.querySelector('.main-nav a[data-page="tiendas"]');
-
-    if (tiendasLink && stores) tiendasLink.setAttribute("href", "#conoce-tiendas");
-
-    document.querySelectorAll('a[href="#conoce-tiendas"], a[href="#planes-pospago"]').forEach((link) => {
+    document.querySelectorAll('a[href="#planes-pospago"]').forEach((link) => {
       link.addEventListener("click", (e) => {
-        const id = (link.getAttribute("href") || "").slice(1);
-        const target = document.getElementById(id);
+        const target = document.getElementById("planes-pospago");
         if (!target) return;
         e.preventDefault();
         closeNavMenu();
         target.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.replaceState(null, "", `#${id}`);
+        history.replaceState(null, "", "#planes-pospago");
       });
     });
 
-    if (location.hash === "#planes-pospago" || location.hash === "#conoce-tiendas") {
+    if (location.hash === "#planes-pospago") {
       window.setTimeout(() => {
         document
-          .getElementById(location.hash.slice(1))
+          .getElementById("planes-pospago")
           ?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 160);
     }
