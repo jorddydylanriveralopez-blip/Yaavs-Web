@@ -69,7 +69,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   padding:
     calc(var(--header-h, 72px) + clamp(12px, 2vh, 24px))
     0
-    clamp(88px, 12vw, 160px);
+    clamp(48px, 7vw, 88px);
   overflow: visible;
   color: #fff;
   background: none !important;
@@ -79,27 +79,22 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
 .pospago-hero__bowl {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: 50%;
   z-index: 0;
-  width: 160%;
-  height: calc(100% + clamp(36px, 6vw, 88px));
-  transform: translateX(-50%);
-  border-radius: 0 0 50% 50%;
+  width: min(92vw, 820px);
+  height: min(92vw, 820px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
   background: linear-gradient(90deg, #f0abfc 0%, #d946ef 22%, #9333ea 48%, #4f46e5 76%, #312e81 100%);
   pointer-events: none;
 }
 
 .pospago-hero__orb {
-  position: absolute;
-  left: 50%;
-  bottom: -18vw;
-  z-index: 0;
-  width: min(92vw, 920px);
-  height: min(92vw, 920px);
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 42%, transparent 70%);
-  pointer-events: none;
+  display: none;
+}
+
+body.theme-cluster.page-postpago .social-float {
+  display: none !important;
 }
 
 .pospago-hero__brand {
@@ -501,8 +496,8 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
   position: relative;
   z-index: 3;
   display: block;
-  height: 92px;
-  margin-top: -36px;
+  height: 72px;
+  margin-top: 8px;
   overflow: visible;
   text-decoration: none;
   color: inherit;
@@ -512,7 +507,6 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
   position: absolute;
   inset: 0;
   background: none;
-}
   pointer-events: none;
 }
 
