@@ -4,9 +4,14 @@
   --pospago-blue: #7c3aad;
 }
 
+html:has(body.page-postpago) {
+  overscroll-behavior-x: none;
+}
+
 body.theme-cluster.page-postpago {
   background: #07040f !important;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 body.theme-cluster.page-postpago::before {
@@ -71,6 +76,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
     0
     clamp(72px, 10vw, 128px);
   overflow: hidden;
+  overscroll-behavior-x: none;
   color: #fff;
   background: #1a0b3a !important;
 }
@@ -157,7 +163,7 @@ body.theme-cluster.page-postpago .social-float {
   isolation: isolate;
   cursor: grab;
   touch-action: pan-y;
-  overscroll-behavior-x: contain;
+  overscroll-behavior-x: none;
   user-select: none;
   -webkit-user-select: none;
 }

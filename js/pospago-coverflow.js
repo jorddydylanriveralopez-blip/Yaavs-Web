@@ -211,19 +211,32 @@
   let wheelLock = false;
   let wheelAcc = 0;
   let wheelReset = 0;
-  const WHEEL_STEP = 36;
+  const WHEEL_STEP = 28;
 
-  (stage || dragSurface).addEventListener(
+  function isHorizontalSwipe(e) {
+    return Math.abs(e.deltaX) >= 4 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 0.8;
+  }
+
+  function isOverCarousel(e) {
+    const el = e.target instanceof Element ? e.target : document.elementFromPoint(e.clientX, e.clientY);
+    if (!el) return Boolean(stage?.matches(":hover"));
+    return Boolean(
+      stage?.contains(el) ||
+        dragSurface.contains(el) ||
+        el.closest(".pospago-hero, .pospago-hero__stage, .pospago-coverflow")
+    );
+  }
+
+  window.addEventListener(
     "wheel",
     (e) => {
-      const dx = e.deltaX;
-      const dy = e.deltaY;
-      if (Math.abs(dx) < 6 || Math.abs(dx) < Math.abs(dy) * 1.15) return;
-      e.preventDefault();
+      if (!isHorizontalSwipe(e)) return;
+      if (e.cancelable) e.preventDefault();
       if (pointer) return;
+      if (!isOverCarousel(e)) return;
 
       window.clearTimeout(wheelReset);
-      wheelAcc += dx;
+      wheelAcc += e.deltaX;
       wheelReset = window.setTimeout(() => {
         wheelAcc = 0;
       }, 180);
@@ -237,7 +250,7 @@
         wheelLock = false;
       }, 420);
     },
-    { passive: false }
+    { passive: false, capture: true }
   );
 
   document.addEventListener("keydown", (e) => {
