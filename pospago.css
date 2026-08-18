@@ -157,6 +157,7 @@ body.theme-cluster.page-postpago .social-float {
   isolation: isolate;
   cursor: grab;
   touch-action: pan-y;
+  overscroll-behavior-x: contain;
   user-select: none;
   -webkit-user-select: none;
 }

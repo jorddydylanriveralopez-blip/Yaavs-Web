@@ -1,6 +1,6 @@
 /**
  * Carrusel coverflow del banner pospago (efecto tipo AT&T México).
- * Flechas, teclado y swipe / arrastre con mouse o dedo.
+ * Flechas, teclado, arrastre y swipe de dos dedos en el trackpad.
  */
 (function () {
   const root = document.querySelector("[data-pospago-coverflow]");
@@ -207,6 +207,38 @@
   stage?.addEventListener("mouseleave", () => {
     if (!pointer) startTimer();
   });
+
+  let wheelLock = false;
+  let wheelAcc = 0;
+  let wheelReset = 0;
+  const WHEEL_STEP = 36;
+
+  (stage || dragSurface).addEventListener(
+    "wheel",
+    (e) => {
+      const dx = e.deltaX;
+      const dy = e.deltaY;
+      if (Math.abs(dx) < 6 || Math.abs(dx) < Math.abs(dy) * 1.15) return;
+      e.preventDefault();
+      if (pointer) return;
+
+      window.clearTimeout(wheelReset);
+      wheelAcc += dx;
+      wheelReset = window.setTimeout(() => {
+        wheelAcc = 0;
+      }, 180);
+
+      if (wheelLock || Math.abs(wheelAcc) < WHEEL_STEP) return;
+      wheelLock = true;
+      go(wheelAcc > 0 ? 1 : -1);
+      wheelAcc = 0;
+      startTimer();
+      window.setTimeout(() => {
+        wheelLock = false;
+      }, 420);
+    },
+    { passive: false }
+  );
 
   document.addEventListener("keydown", (e) => {
     if (!stage) return;
