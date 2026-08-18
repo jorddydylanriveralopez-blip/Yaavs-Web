@@ -18,13 +18,15 @@
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const AUTO_MS = 2500;
-  const DRAG_MIN = 36;
+  const DRAG_MIN = 64;
+  const NAV_LOCK_MS = 700;
   let index = 0;
   let timer = 0;
   let pointer = null;
   let dragBlockedClick = false;
   let lastLayoutWidth = 0;
   let dragOffset = 0;
+  let navLockUntil = 0;
 
   function wrappedOffset(i) {
     let d = i - index;
@@ -81,6 +83,14 @@
     goTo(index + dir);
   }
 
+  function tryGo(dir) {
+    const now = Date.now();
+    if (now < navLockUntil) return false;
+    navLockUntil = now + NAV_LOCK_MS;
+    go(dir);
+    return true;
+  }
+
   function startTimer() {
     stopTimer();
     if (reduced || n < 2 || pointer) return;
@@ -103,7 +113,7 @@
 
   cards.forEach((card, i) => {
     card.addEventListener("click", (e) => {
-      if (dragBlockedClick) {
+      if (dragBlockedClick || Date.now() < navLockUntil) {
         dragBlockedClick = false;
         e.preventDefault();
         e.stopPropagation();
@@ -135,8 +145,6 @@
     if (!pointer || (e && e.pointerId !== pointer.id)) return;
     const dx = pointer.lastX - pointer.x;
     const dy = pointer.lastY - pointer.y;
-    const dt = Math.max(1, Date.now() - pointer.t);
-    const vx = dx / dt;
     const dragged = pointer.dragged;
     pointer = null;
     stageFrame?.classList.remove("is-dragging");
@@ -146,18 +154,18 @@
     } catch (_) {
       /* noop */
     }
-    const horizontal = Math.abs(dx) > Math.abs(dy) * 0.9;
-    const enough = Math.abs(dx) > DRAG_MIN || Math.abs(vx) > 0.45;
+    const horizontal = Math.abs(dx) > Math.abs(dy) * 1.15;
+    const enough = Math.abs(dx) > DRAG_MIN;
     if (!cancelled && dragged && horizontal && enough) {
       dragBlockedClick = true;
-      go(dx < 0 ? 1 : -1);
+      tryGo(dx < 0 ? 1 : -1);
     } else {
       dragOffset = 0;
       layout();
     }
     window.setTimeout(() => {
       dragBlockedClick = false;
-    }, 80);
+    }, 400);
     startTimer();
   }
 
@@ -189,7 +197,7 @@
     pointer.lastY = e.clientY;
     const dx = e.clientX - pointer.x;
     const dy = e.clientY - pointer.y;
-    if (!pointer.dragged && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 0.9) {
+    if (!pointer.dragged && Math.abs(dx) > 16 && Math.abs(dx) > Math.abs(dy) * 1.15) {
       pointer.dragged = true;
       document.body.classList.add("is-pospago-dragging");
     }
@@ -210,11 +218,11 @@
 
   let wheelLock = false;
   let wheelAcc = 0;
-  let wheelReset = 0;
-  const WHEEL_STEP = 28;
+  let wheelQuiet = 0;
+  const WHEEL_STEP = 72;
 
   function isHorizontalSwipe(e) {
-    return Math.abs(e.deltaX) >= 4 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 0.8;
+    return Math.abs(e.deltaX) >= 8 && Math.abs(e.deltaX) > Math.abs(e.deltaY) * 1.2;
   }
 
   function isOverCarousel(e) {
@@ -227,6 +235,11 @@
     );
   }
 
+  function releaseWheelLock() {
+    wheelLock = false;
+    wheelAcc = 0;
+  }
+
   window.addEventListener(
     "wheel",
     (e) => {
@@ -235,20 +248,16 @@
       if (pointer) return;
       if (!isOverCarousel(e)) return;
 
-      window.clearTimeout(wheelReset);
-      wheelAcc += e.deltaX;
-      wheelReset = window.setTimeout(() => {
-        wheelAcc = 0;
-      }, 180);
+      window.clearTimeout(wheelQuiet);
+      wheelQuiet = window.setTimeout(releaseWheelLock, 480);
 
-      if (wheelLock || Math.abs(wheelAcc) < WHEEL_STEP) return;
+      if (wheelLock || Date.now() < navLockUntil) return;
+      wheelAcc += e.deltaX;
+      if (Math.abs(wheelAcc) < WHEEL_STEP) return;
       wheelLock = true;
-      go(wheelAcc > 0 ? 1 : -1);
+      tryGo(wheelAcc > 0 ? 1 : -1);
       wheelAcc = 0;
       startTimer();
-      window.setTimeout(() => {
-        wheelLock = false;
-      }, 420);
     },
     { passive: false, capture: true }
   );
