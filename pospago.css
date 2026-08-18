@@ -2000,13 +2000,14 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__go {
-  background: #d96df2;
-  color: #120818;
+  background: #fff !important;
+  color: #120818 !important;
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__go:hover,
 .pospago-stores[data-carrier="att"] .pospago-stores__go:focus-visible {
-  background: #e3a6f7;
+  background: #d96df2 !important;
+  color: #fff !important;
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__back:hover,
@@ -2086,51 +2087,63 @@ body.theme-cluster.page-postpago .pospago-stores__status {
 }
 
 .pospago-stores__card-name {
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 800;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 .pospago-stores__card-city,
 .pospago-stores__card-hours {
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  color: #d96df2;
+  color: #f3d6ff !important;
+  -webkit-text-fill-color: #f3d6ff !important;
 }
 
 .pospago-stores[data-carrier="bait"] .pospago-stores__card-city,
 .pospago-stores[data-carrier="bait"] .pospago-stores__card-hours {
-  color: #ffcb05;
+  color: #ffcb05 !important;
+  -webkit-text-fill-color: #ffcb05 !important;
 }
 
 .pospago-stores__card-address {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.88) !important;
 }
 
 .pospago-stores__card-actions {
   display: flex;
-  padding: 4px 14px 12px;
+  padding: 6px 14px 14px;
 }
 
-.pospago-stores__go {
+.pospago-stores__go,
+body.theme-cluster.page-postpago .pospago-stores__go {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 132px;
-  padding: 8px 16px;
+  min-width: 148px;
+  padding: 10px 18px;
   border-radius: 999px;
-  background: #d96df2;
-  color: #120818;
-  font-size: 0.72rem;
+  background: #fff !important;
+  color: #120818 !important;
+  -webkit-text-fill-color: #120818 !important;
+  font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: none !important;
+  box-shadow: 0 0 0 1px rgba(217, 109, 242, 0.55), 0 8px 20px rgba(217, 109, 242, 0.28);
 }
 
 .pospago-stores__go:hover,
-.pospago-stores__go:focus-visible {
-  background: #e3a6f7;
+.pospago-stores__go:focus-visible,
+body.theme-cluster.page-postpago .pospago-stores__go:hover,
+body.theme-cluster.page-postpago .pospago-stores__go:focus-visible {
+  background: #d96df2 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
   outline: none;
 }
 
