@@ -143,7 +143,7 @@
           "https://wa.me/525522331210?text=" +
           encodeURIComponent("Hola, quiero cotizar el plan " + name + " pospago YAAVS");
         wa.innerHTML =
-          '<img src="assets/pospago/rrss/whatsapp.svg?v=2" alt="" width="18" height="18">Cotiza';
+          '<img src="assets/pospago/rrss/whatsapp.svg?v=2" alt="" width="18" height="18"><span>Cotiza</span>';
         card.appendChild(wa);
       }
       card.tabIndex = 0;
