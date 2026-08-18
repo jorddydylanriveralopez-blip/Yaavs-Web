@@ -69,28 +69,35 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   padding:
     calc(var(--header-h, 72px) + clamp(12px, 2vh, 24px))
     0
-    clamp(48px, 7vw, 88px);
-  overflow: visible;
+    clamp(72px, 10vw, 128px);
+  overflow: hidden;
   color: #fff;
-  background: none !important;
-  background-image: none !important;
+  background: #1a0b3a !important;
 }
 
 .pospago-hero__bowl {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 0;
   z-index: 0;
-  width: min(92vw, 820px);
-  height: min(92vw, 820px);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: linear-gradient(90deg, #f0abfc 0%, #d946ef 22%, #9333ea 48%, #4f46e5 76%, #312e81 100%);
+  width: 150%;
+  height: calc(100% + 4vw);
+  transform: translateX(-50%);
+  border-radius: 0 0 50% 50% / 0 0 18vw 18vw;
+  background:
+    radial-gradient(ellipse 58% 70% at 12% 38%, rgba(255, 196, 255, 0.55) 0%, transparent 58%),
+    radial-gradient(ellipse 52% 64% at 92% 30%, rgba(99, 102, 241, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(15, 10, 40, 0.28) 0%, transparent 70%),
+    linear-gradient(100deg, #f0abfc 0%, #d946ef 24%, #9333ea 48%, #6366f1 74%, #312e81 100%);
   pointer-events: none;
 }
 
 .pospago-hero__orb {
-  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 48% at 50% 28%, rgba(255, 255, 255, 0.16) 0%, transparent 62%);
 }
 
 body.theme-cluster.page-postpago .social-float {
