@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=19">
   <link rel="stylesheet" href="interior-light.css?v=3">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=18">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=19">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
@@ -46,6 +46,13 @@
   <link rel="shortcut icon" href="favicon.ico?v=4">
 </head>
 <body class="theme-cluster page-tiendas-map" data-page="tiendas">
+  <script>
+    (function () {
+      var c = (new URLSearchParams(location.search).get("carrier") || "bait").toLowerCase();
+      if (c !== "att") c = "bait";
+      document.body.dataset.carrier = c;
+    })();
+  </script>
   <div id="site-header"></div>
 
   <main id="contenido" class="tiendas-map" aria-label="Mapa de tiendas por compañía">
