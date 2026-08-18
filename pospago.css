@@ -1999,15 +1999,20 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   box-shadow: 0 0 0 2px rgba(217, 109, 242, 0.35);
 }
 
-.pospago-stores[data-carrier="att"] .pospago-stores__go {
-  background: #fff !important;
-  color: #120818 !important;
+.pospago-stores[data-carrier="att"] .pospago-stores__go,
+.pospago-stores[data-carrier="att"] .pospago-stores__card-actions a[href*="maps/dir"] {
+  background: #d96df2 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__go:hover,
-.pospago-stores[data-carrier="att"] .pospago-stores__go:focus-visible {
-  background: #d96df2 !important;
-  color: #fff !important;
+.pospago-stores[data-carrier="att"] .pospago-stores__go:focus-visible,
+.pospago-stores[data-carrier="att"] .pospago-stores__card-actions a[href*="maps/dir"]:hover,
+.pospago-stores[data-carrier="att"] .pospago-stores__card-actions a[href*="maps/dir"]:focus-visible {
+  background: #fff !important;
+  color: #120818 !important;
+  -webkit-text-fill-color: #120818 !important;
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__back:hover,
@@ -2118,32 +2123,44 @@ body.theme-cluster.page-postpago .pospago-stores__status {
   padding: 6px 14px 14px;
 }
 
+.pospago-stores__card-actions a[href*="maps.app.goo.gl"],
+.pospago-stores__card-actions a[href*="maps/search"] {
+  display: none !important;
+}
+
 .pospago-stores__go,
-body.theme-cluster.page-postpago .pospago-stores__go {
+.pospago-stores__card-actions a[href*="maps/dir"],
+body.theme-cluster.page-postpago .pospago-stores__go,
+body.theme-cluster.page-postpago .pospago-stores__card-actions a[href*="maps/dir"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 148px;
-  padding: 10px 18px;
+  min-width: 160px;
+  padding: 11px 20px;
+  border: 0 !important;
   border-radius: 999px;
-  background: #fff !important;
-  color: #120818 !important;
-  -webkit-text-fill-color: #120818 !important;
-  font-size: 0.78rem;
+  background: #d96df2 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none !important;
-  box-shadow: 0 0 0 1px rgba(217, 109, 242, 0.55), 0 8px 20px rgba(217, 109, 242, 0.28);
+  box-shadow: 0 8px 22px rgba(217, 109, 242, 0.45);
 }
 
 .pospago-stores__go:hover,
 .pospago-stores__go:focus-visible,
+.pospago-stores__card-actions a[href*="maps/dir"]:hover,
+.pospago-stores__card-actions a[href*="maps/dir"]:focus-visible,
 body.theme-cluster.page-postpago .pospago-stores__go:hover,
-body.theme-cluster.page-postpago .pospago-stores__go:focus-visible {
-  background: #d96df2 !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
+body.theme-cluster.page-postpago .pospago-stores__go:focus-visible,
+body.theme-cluster.page-postpago .pospago-stores__card-actions a[href*="maps/dir"]:hover,
+body.theme-cluster.page-postpago .pospago-stores__card-actions a[href*="maps/dir"]:focus-visible {
+  background: #fff !important;
+  color: #120818 !important;
+  -webkit-text-fill-color: #120818 !important;
   outline: none;
 }
 
