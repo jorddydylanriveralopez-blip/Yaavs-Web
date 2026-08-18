@@ -71,7 +71,8 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
     clamp(40px, 6vh, 56px);
   overflow: hidden;
   color: #fff;
-  background: linear-gradient(105deg, #f0abfc 0%, #d946ef 18%, #a855f7 42%, #6366f1 68%, #312e81 100%);
+  background: linear-gradient(105deg, #f0abfc 0%, #d946ef 18%, #a855f7 42%, #6366f1 68%, #312e81 100%) !important;
+  background-image: none !important;
 }
 
 .pospago-hero__brand {
