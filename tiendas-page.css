@@ -1,0 +1,379 @@
+/* Tiendas chooser — ciudad de noche alineada al mapa */
+
+html:has(body.page-tiendas),
+body.page-tiendas,
+body.theme-cluster.page-tiendas,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas {
+  background: #040a12 !important;
+  color: #f4fbff;
+  min-height: 100%;
+}
+
+/* Header claro — mismo look que el inicio */
+body.theme-cluster.page-tiendas .site-header,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .site-header,
+body.theme-cluster.page-tiendas .site-header.is-scrolled,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  border-bottom: 1px solid rgba(0, 188, 212, 0.18);
+  box-shadow:
+    0 8px 28px rgba(15, 36, 64, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  isolation: isolate;
+}
+
+body.theme-cluster.page-tiendas .site-header::before,
+body.theme-cluster.page-tiendas .site-header::after {
+  display: revert;
+}
+
+body.theme-cluster.page-tiendas .site-header .header-inner {
+  position: relative;
+  z-index: 2;
+}
+
+body.theme-cluster.page-tiendas .site-header .logo,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .site-header .logo,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .logo:not(.logo--on-light) {
+  --logo-filter: brightness(0) saturate(100%);
+}
+
+body.theme-cluster.page-tiendas .site-header .bento-dot,
+[data-yaavs-theme="day"] body.theme-cluster.page-tiendas .bento-dot {
+  background: #0f2440;
+}
+
+.page-tiendas .nav-menu-hint {
+  display: none !important;
+}
+
+body.theme-cluster.page-tiendas .main-nav--overlay {
+  background:
+    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.14) 0%, transparent 58%),
+    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.08) 0%, transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f5fcfe 42%, #e8f7fb 100%);
+}
+
+body.theme-cluster.page-tiendas .main-nav--overlay a {
+  border-bottom-color: rgba(0, 188, 212, 0.18);
+  color: #0f2440;
+  -webkit-text-fill-color: #0f2440;
+}
+
+.page-tiendas #contenido.tiendas-view {
+  --tiendas-header-offset: clamp(64px, 10vh, 88px);
+  position: relative;
+  isolation: isolate;
+  padding-top: 0;
+  min-height: 100dvh;
+  background: transparent;
+}
+
+/* Stage detrás del split (no tapa fotos de operador) */
+.tiendas-view__stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: #040a12;
+}
+
+.tiendas-view__stage-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.05) brightness(0.52) contrast(1.05);
+  transform: scale(1.04);
+  animation: tiendas-stage-drift 36s ease-in-out infinite alternate;
+}
+
+.tiendas-view__stage-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 18% 12%, rgba(0, 188, 212, 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 88% 78%, rgba(37, 99, 181, 0.2) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(4, 10, 18, 0.58) 0%, rgba(4, 10, 18, 0.45) 45%, rgba(4, 10, 18, 0.82) 100%);
+}
+
+.tiendas-view__stage-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(0, 188, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 188, 212, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, #000 15%, transparent 72%);
+}
+
+@keyframes tiendas-stage-drift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(-1%, 0.6%, 0);
+  }
+}
+
+.tiendas-chooser {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+.tiendas-chooser__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  flex: 1;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+.tiendas-choice {
+  --choice-accent: #00bcd4;
+  position: relative;
+  display: block;
+  min-height: 100dvh;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  isolation: isolate;
+}
+
+.tiendas-choice__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.tiendas-choice__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tiendas-choice__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.tiendas-choice--bait .tiendas-choice__shade {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.42) 38%, rgba(0, 0, 0, 0.88) 100%),
+    linear-gradient(120deg, rgba(0, 0, 0, 0.45) 0%, transparent 55%);
+}
+
+.tiendas-choice--att {
+  --choice-accent: #5b9fff;
+}
+
+.tiendas-choice--att .tiendas-choice__shade {
+  background:
+    linear-gradient(180deg, rgba(0, 36, 95, 0.82) 0%, rgba(0, 55, 140, 0.5) 40%, rgba(0, 28, 80, 0.92) 100%),
+    linear-gradient(240deg, rgba(0, 98, 223, 0.45) 0%, transparent 55%);
+}
+
+.tiendas-choice__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vh, 18px);
+  padding:
+    calc(var(--tiendas-header-offset) + clamp(24px, 5vh, 48px))
+    clamp(20px, 4vw, 48px)
+    clamp(36px, 6vh, 56px);
+  text-align: center;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tiendas-choice__logo {
+  width: auto;
+  height: clamp(56px, 9vh, 110px);
+  max-width: min(70%, 340px);
+  object-fit: contain;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.45));
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tiendas-choice__copy {
+  max-width: 18em;
+  font-size: clamp(0.92rem, 1.8vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.65),
+    0 4px 16px rgba(0, 0, 0, 0.55);
+}
+
+.tiendas-choice__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(4px, 1vh, 10px);
+  padding: 0.72em 1.35em;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.22),
+    0 0 0 1px color-mix(in srgb, var(--choice-accent) 35%, transparent);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.tiendas-choice__cta::after {
+  content: " →";
+}
+
+.tiendas-choice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.tiendas-choice:hover .tiendas-choice__media img,
+.tiendas-choice:focus-visible .tiendas-choice__media img {
+  transform: scale(1.1);
+}
+
+.tiendas-choice:hover .tiendas-choice__content,
+.tiendas-choice:focus-visible .tiendas-choice__content {
+  transform: translateY(-6px);
+}
+
+.tiendas-choice:hover .tiendas-choice__logo,
+.tiendas-choice:focus-visible .tiendas-choice__logo {
+  transform: scale(1.04);
+}
+
+.tiendas-choice:hover .tiendas-choice__cta,
+.tiendas-choice:focus-visible .tiendas-choice__cta {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.28),
+    0 0 28px color-mix(in srgb, var(--choice-accent) 45%, transparent);
+  transform: translateY(-2px);
+}
+
+.tiendas-choice:focus-visible {
+  outline: none;
+}
+
+.tiendas-choice:focus-visible::after {
+  box-shadow:
+    inset 0 0 0 2px #fff,
+    inset 0 0 0 4px color-mix(in srgb, var(--choice-accent) 80%, transparent);
+}
+
+@media (max-width: 900px) {
+  .page-tiendas #contenido.tiendas-view {
+    --tiendas-header-offset: clamp(56px, 9vh, 76px);
+  }
+
+  .tiendas-chooser__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    min-height: auto;
+  }
+
+  .tiendas-choice {
+    min-height: clamp(48vh, 52dvh, 56vh);
+  }
+
+  .tiendas-choice__content {
+    padding-top: clamp(64px, 12vh, 96px);
+    padding-bottom: clamp(28px, 5vh, 40px);
+  }
+
+  .tiendas-choice--bait .tiendas-choice__content {
+    padding-top: clamp(72px, 12vh, 96px);
+  }
+
+  .tiendas-choice__logo {
+    height: clamp(48px, 8vh, 78px);
+    max-width: min(72%, 280px);
+  }
+}
+
+@media (max-width: 640px) {
+  .tiendas-choice {
+    min-height: 48dvh;
+  }
+
+  .tiendas-choice__copy {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tiendas-view__stage-video,
+  .tiendas-choice__media img,
+  .tiendas-choice__content,
+  .tiendas-choice__logo,
+  .tiendas-choice__cta {
+    animation: none;
+    transition: none;
+  }
+
+  .tiendas-view__stage-video {
+    display: none;
+  }
+
+  .tiendas-view__stage {
+    background:
+      #040a12
+      url("assets/tiendas/city-night.jpg") center / cover no-repeat;
+  }
+
+  .tiendas-choice:hover .tiendas-choice__media img,
+  .tiendas-choice:focus-visible .tiendas-choice__media img {
+    transform: scale(1.04);
+  }
+
+  .tiendas-choice:hover .tiendas-choice__content,
+  .tiendas-choice:focus-visible .tiendas-choice__content,
+  .tiendas-choice:hover .tiendas-choice__logo,
+  .tiendas-choice:focus-visible .tiendas-choice__logo,
+  .tiendas-choice:hover .tiendas-choice__cta,
+  .tiendas-choice:focus-visible .tiendas-choice__cta {
+    transform: none;
+  }
+}

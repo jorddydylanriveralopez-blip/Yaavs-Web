@@ -1,0 +1,194 @@
+{
+  "siteOrigin": "https://www.yaavs.com.mx",
+  "siteName": "YAAVS",
+  "locale": "es_MX",
+  "ogImage": "/assets/pwa/icon-512.png",
+  "defaultKeywords": [
+    "YAAVS",
+    "Grupo Comercial YAAVS",
+    "distribuidor telecom México",
+    "distribución telecomunicaciones",
+    "SIM",
+    "eSIM",
+    "chips AT&T",
+    "chips Telcel",
+    "Movistar",
+    "Unefon",
+    "BAIT",
+    "RecargaKlic",
+    "tiempo aire",
+    "portabilidad",
+    "Yaavser",
+    "punto de venta telecom",
+    "activaciones SIM",
+    "red nacional telecom"
+  ],
+  "organization": {
+    "name": "Grupo Comercial YAAVS",
+    "legalName": "Grupo Comercial YAAVS",
+    "email": "Hola@yaavs.com.mx",
+    "telephone": "+52-55-2233-1210",
+    "sameAs": [
+      "https://www.facebook.com/yaavsmx",
+      "https://instagram.com/yaavsmx",
+      "https://www.linkedin.com/company/grupocomercialyaavs/",
+      "https://www.tiktok.com/@yaavsmx",
+      "https://ganayaavs.com"
+    ]
+  },
+  "pages": {
+    "index.html": {
+      "title": "YAAVS | Distribuidor #1 de SIMs y telecom en México",
+      "description": "YAAVS — Distribuidor #1 de telecom en México. SIMs, eSIM, recargas, portabilidad y red de más de 16,000 puntos de venta.",
+      "keywords": [
+        "distribuidor SIM México",
+        "mayorista telecom",
+        "RecargaKlic",
+        "eSIM AT&T"
+      ]
+    },
+    "quienes-somos.html": {
+      "title": "¿Quiénes somos? | YAAVS",
+      "description": "YAAVS: líderes distribuidores de SIMs de las principales compañías operadoras en México. Conectividad a más de 16,000 negocios e emprendimientos.",
+      "keywords": [
+        "quiénes somos YAAVS",
+        "historia YAAVS",
+        "empresa telecom México"
+      ]
+    },
+    "servicios.html": {
+      "title": "Nuestros servicios | YAAVS",
+      "description": "Servicios YAAVS: portabilidad, activaciones RecargaKlic, tiempo aire, eSIM, rotulaciones y soporte para tu punto de venta.",
+      "keywords": [
+        "servicios telecom",
+        "portabilidad",
+        "activaciones SIM",
+        "rotulaciones PDV"
+      ]
+    },
+    "tiendas.html": {
+      "title": "Conoce nuestras tiendas | YAAVS",
+      "description": "Encuentra tiendas y cobertura YAAVS por compañía en México: AT&T, Telcel, Movistar, Unefon y BAIT.",
+      "keywords": [
+        "tiendas YAAVS",
+        "mapa tiendas telecom",
+        "cobertura nacional"
+      ]
+    },
+    "tiendas-mapa.html": {
+      "title": "Mapa de tiendas | YAAVS",
+      "description": "Mapa de tiendas YAAVS por compañía: busca por ciudad o usa tu ubicación en tiempo real.",
+      "keywords": [
+        "mapa tiendas",
+        "localizar tienda YAAVS",
+        "tiendas cerca de mí"
+      ]
+    },
+    "avisos.html": {
+      "title": "Noticias Yaavs | YAAVS",
+      "description": "Noticias Yaavs: novedades, comunicados y blogs para puntos de venta y Yaavsers.",
+      "keywords": [
+        "noticias YAAVS",
+        "comunicados telecom",
+        "blog Yaavsers"
+      ]
+    },
+    "bolsa-trabajo.html": {
+      "title": "Únete a nuestro equipo | YAAVS",
+      "description": "Vacantes YAAVS en ventas, operaciones y servicio. Forma parte del talento en telecom y distribución a nivel nacional.",
+      "keywords": [
+        "vacantes YAAVS",
+        "empleo telecom México",
+        "bolsa de trabajo YAAVS",
+        "trabaja con nosotros"
+      ]
+    },
+    "ser-yaavser.html": {
+      "title": "¿Cómo ser Yaavser? | YAAVS",
+      "description": "Ser Yaavser: beneficios, requisitos y cómo afiliarte a la red YAAVS de distribución telecom.",
+      "keywords": [
+        "ser Yaavser",
+        "afiliarse YAAVS",
+        "socio comercial telecom"
+      ]
+    },
+    "contacto.html": {
+      "title": "Contacto | YAAVS",
+      "description": "Contacta a YAAVS: teléfono 55 22 33 12 10, correo Hola@yaavs.com.mx, WhatsApp y formulario.",
+      "keywords": [
+        "contacto YAAVS",
+        "WhatsApp YAAVS",
+        "soporte telecom"
+      ]
+    },
+    "testimonios.html": {
+      "title": "Testimonios | YAAVS",
+      "description": "Testimonios de socios Yaavser satisfechos con la red YAAVS en México.",
+      "keywords": [
+        "testimonios Yaavser",
+        "opiniones YAAVS",
+        "casos de éxito"
+      ]
+    },
+    "activar-chip.html": {
+      "title": "Activar chip | YAAVS",
+      "description": "Activa tu chip YAAVS con RecargaKlic: app, web, WhatsApp o soporte.",
+      "keywords": [
+        "activar chip",
+        "RecargaKlic",
+        "activación SIM"
+      ]
+    },
+    "recargar.html": {
+      "title": "Recargar tiempo aire | YAAVS",
+      "description": "Recarga tiempo aire desde YAAVS: Telcel, AT&T, Movistar, Unefon y BAIT.",
+      "keywords": [
+        "recargar tiempo aire",
+        "TAECEL",
+        "recargas Telcel AT&T"
+      ]
+    },
+    "prepago.html": {
+      "title": "Prepago | YAAVS",
+      "description": "Prepago YAAVS: chips, paquetes y activaciones rápidas para venta diaria en tu mostrador.",
+      "keywords": [
+        "prepago telecom",
+        "chips prepago",
+        "venta prepago"
+      ]
+    },
+    "postpago.html": {
+      "title": "Postpago | YAAVS",
+      "description": "Postpago YAAVS: altas y renovaciones con seguimiento comercial y respaldo operativo en México.",
+      "keywords": [
+        "postpago",
+        "planes postpago",
+        "venta postpago"
+      ]
+    },
+    "aviso-privacidad.html": {
+      "title": "Aviso de privacidad | YAAVS",
+      "description": "Aviso de privacidad del sitio web oficial de YAAVS.",
+      "keywords": [
+        "aviso de privacidad",
+        "protección de datos YAAVS"
+      ],
+      "robots": "index, follow"
+    },
+    "terminos-condiciones.html": {
+      "title": "Términos y condiciones | YAAVS",
+      "description": "Términos y condiciones del sitio web oficial de YAAVS.",
+      "keywords": [
+        "términos y condiciones",
+        "condiciones de uso YAAVS"
+      ],
+      "robots": "index, follow"
+    },
+    "offline.html": {
+      "title": "Sin conexión | YAAVS",
+      "description": "Estás sin conexión. Revisa tu red para continuar en YAAVS.",
+      "keywords": [],
+      "robots": "noindex, nofollow"
+    }
+  }
+}

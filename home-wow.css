@@ -1,0 +1,292 @@
+/**
+ * YAAVS — capa "wow": efectos dinámicos del home
+ * (barra de progreso, shimmer, auroras, tilt, reveals orgánicos al scroll)
+ */
+
+/* ─── Barra de progreso de scroll ─── */
+.wow-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9500;
+  pointer-events: none;
+  background: linear-gradient(90deg, #3b82d4, #7eb3e0 45%, #c9a000);
+  box-shadow: 0 0 12px rgba(59, 130, 212, 0.55);
+  transform: scaleX(var(--wow-scroll, 0));
+  transform-origin: left center;
+  transition: transform 80ms linear;
+}
+
+/* ─── Shimmer de gradiente en acentos de títulos ─── */
+.hx-services__cyan,
+.hx-testimonials__accent {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #0097b2;
+  color: #0097b2;
+  animation: none;
+}
+
+@keyframes wow-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ─── Subrayado animado al revelar títulos ─── */
+.hx-services__head h2[data-hx-reveal],
+.hx-ops__title[data-hx-reveal],
+.hx-ops__title,
+.hx-raffle__title[data-hx-reveal],
+.hx-raffle__title,
+#testimonios-home h2[data-hx-reveal] {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.hx-services__head h2[data-hx-reveal]::after,
+.hx-ops__title[data-hx-reveal]::after,
+.hx-ops__head.is-wow-visible .hx-ops__title::after,
+.hx-raffle__title[data-hx-reveal]::after,
+.hx-raffle__head.is-wow-visible .hx-raffle__title::after,
+#testimonios-home h2[data-hx-reveal]::after {
+  content: none;
+  display: none;
+}
+
+.hx-services__head h2[data-hx-reveal].is-visible::after,
+.hx-ops__title[data-hx-reveal].is-visible::after,
+.hx-ops__head.is-wow-visible .hx-ops__title::after,
+.hx-raffle__title[data-hx-reveal].is-visible::after,
+.hx-raffle__head.is-wow-visible .hx-raffle__title::after,
+#testimonios-home h2[data-hx-reveal].is-visible::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.hx-ops__title::after,
+.hx-ops__title[data-hx-reveal]::after,
+.hx-ops__title[data-hx-reveal].is-visible::after,
+.hx-ops__head.is-wow-visible .hx-ops__title::after {
+  content: none;
+  display: none;
+}
+
+/* ─── Reveals orgánicos al scroll (compositor: opacity + transform) ─── */
+[data-wow-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.985);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--wow-stagger, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-wow-reveal="left"] {
+  transform: translate3d(-24px, 12px, 0) scale(0.99);
+}
+
+[data-wow-reveal="right"] {
+  transform: translate3d(24px, 12px, 0) scale(0.99);
+}
+
+[data-wow-reveal="fade"] {
+  transform: translate3d(0, 8px, 0) scale(1);
+}
+
+[data-wow-reveal].is-wow-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: auto;
+}
+
+/* Secciones: micro-acento al entrar */
+.wow-section {
+  transition: opacity 0.4s ease;
+}
+
+.wow-section.is-wow-inview .hx-ops__eyebrow,
+.wow-section.is-wow-inview .hx-raffle__kicker,
+.wow-section.is-wow-inview .hx-yaavser-band__eyebrow {
+  animation: wow-kicker-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes wow-kicker-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.4em;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.14em;
+    transform: none;
+  }
+}
+
+/* Suaviza el reveal base existente */
+.page-home [data-hx-reveal] {
+  transform: translate3d(0, 36px, 0) scale(0.985);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-home [data-hx-reveal].is-visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Parallax ligero (solo capas decorativas) */
+[data-wow-parallax] {
+  transform: translate3d(0, var(--wow-py, 0px), 0);
+  will-change: transform;
+}
+
+/* ─── Aurora: desactivada ─── */
+.wow-aurora,
+.wow-aurora::before,
+.wow-aurora::after {
+  display: none !important;
+}
+
+.wow-aurora::before {
+  top: -12%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(59, 130, 212, 0.32), transparent 65%);
+  animation: wow-drift-a 18s ease-in-out infinite alternate;
+}
+
+.wow-aurora::after {
+  bottom: -18%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(201, 160, 0, 0.18), transparent 65%);
+  animation: wow-drift-b 22s ease-in-out infinite alternate;
+}
+
+@keyframes wow-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(8vw, 6vh, 0) scale(1.18); }
+}
+
+@keyframes wow-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(-7vw, -5vh, 0) scale(0.92); }
+}
+
+/* ─── Tilt 3D en tarjetas de operadores ─── */
+.page-home .hx-ops__deck {
+  perspective: 1400px;
+}
+
+.page-home .hx-ops__card[data-wow-tilt] {
+  transform:
+    rotateX(var(--wow-rx, 0deg))
+    rotateY(var(--wow-ry, 0deg))
+    translateY(var(--wow-lift, 0px));
+  transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+}
+
+/* Parallax no pelea con tilt: aplica solo a capas decorativas */
+
+.page-home .hx-ops__card[data-wow-tilt].is-wow-active {
+  box-shadow:
+    0 24px 48px rgba(15, 36, 64, 0.28),
+    0 0 0 1px rgba(59, 130, 212, 0.25);
+}
+
+/* ─── Glare (destello que sigue al cursor) ─── */
+.wow-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    420px circle at var(--wow-gx, 50%) var(--wow-gy, 50%),
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.05) 42%,
+    transparent 68%
+  );
+}
+
+.is-wow-active > .wow-glare {
+  opacity: 1;
+}
+
+/* ─── Flotantes decorativos con más vida ─── */
+.hx-services__float {
+  animation-duration: 7s !important;
+}
+
+/* ─── Accesibilidad + rendimiento ─── */
+@media (prefers-reduced-motion: reduce) {
+  .hx-services__cyan,
+  .hx-testimonials__accent {
+    animation: none;
+  }
+
+  .wow-aurora::before,
+  .wow-aurora::after,
+  .wow-section.is-wow-inview .hx-ops__eyebrow,
+  .wow-section.is-wow-inview .hx-raffle__kicker,
+  .wow-section.is-wow-inview .hx-yaavser-band__eyebrow {
+    animation: none;
+  }
+
+  .page-home .hx-ops__card[data-wow-tilt] {
+    transform: none;
+    transition: none;
+  }
+
+  .wow-progress {
+    transition: none;
+  }
+
+  [data-wow-reveal],
+  .page-home [data-hx-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  [data-wow-parallax] {
+    transform: none !important;
+  }
+}
+
+@media (hover: none) {
+  .wow-glare {
+    display: none;
+  }
+}
+
+/* Menos blur en móvil para no cargar GPU */
+@media (max-width: 768px) {
+  .wow-aurora::before,
+  .wow-aurora::after {
+    filter: blur(40px);
+    opacity: 0.28;
+    animation-duration: 24s;
+  }
+
+  [data-wow-reveal] {
+    transform: translate3d(0, 18px, 0);
+  }
+
+  [data-wow-reveal="left"],
+  [data-wow-reveal="right"] {
+    transform: translate3d(0, 16px, 0);
+  }
+}
+
+.page-home .hx-services--deck .hx-services__title::before,
+.page-home .hx-services--deck .hx-services__title::after,
+.page-home .hx-svc-group__title::before,
+.page-home .hx-svc-group__title::after {
+  content: none !important;
+  display: none !important;
+}

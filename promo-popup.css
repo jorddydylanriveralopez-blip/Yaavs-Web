@@ -1,0 +1,281 @@
+/* Promo popup — entrada home */
+
+body.is-promo-open {
+  overflow: hidden;
+}
+
+.yaavs-promo {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: max(16px, env(safe-area-inset-top, 0px)) 16px max(16px, env(safe-area-inset-bottom, 0px));
+  border: 0;
+  background: transparent;
+  color: #fff;
+  display: none;
+  place-items: center;
+  overflow: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.yaavs-promo[open],
+.yaavs-promo.is-open {
+  display: grid;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.yaavs-promo::backdrop {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(0, 151, 178, 0.28), transparent 55%),
+    rgba(6, 12, 24, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.yaavs-promo.is-open::backdrop,
+.yaavs-promo[open]::backdrop {
+  opacity: 1;
+}
+
+.yaavs-promo.is-closing {
+  display: grid;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.yaavs-promo.is-closing::backdrop {
+  opacity: 0;
+}
+
+.yaavs-promo__card {
+  position: relative;
+  z-index: 2;
+  width: min(960px, 100%);
+  max-width: 100%;
+  border-radius: clamp(16px, 2.4vw, 22px);
+  overflow: hidden;
+  background: #eaf6ff;
+  box-shadow:
+    0 0 0 1px rgba(0, 151, 178, 0.28),
+    0 0 40px rgba(0, 151, 178, 0.22),
+    0 28px 80px rgba(0, 0, 0, 0.45);
+  transform: translate3d(0, 28px, 0) scale(0.92);
+  opacity: 0;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+
+.yaavs-promo--bait .yaavs-promo__card {
+  width: min(920px, 100%);
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(255, 230, 0, 0.45),
+    0 0 48px rgba(255, 45, 149, 0.28),
+    0 28px 80px rgba(0, 0, 0, 0.55);
+}
+
+.yaavs-promo--bait .yaavs-promo__actions {
+  background: linear-gradient(180deg, #111 0%, #000 100%);
+}
+
+.yaavs-promo--bait .yaavs-promo__enter {
+  color: #111;
+  background: linear-gradient(180deg, #ffe600 0%, #f5c400 100%);
+  box-shadow:
+    0 0 0 2px rgba(255, 45, 149, 0.55),
+    0 10px 28px rgba(255, 230, 0, 0.28);
+}
+
+.yaavs-promo--bait .yaavs-promo__enter:hover,
+.yaavs-promo--bait .yaavs-promo__enter:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(255, 45, 149, 0.7),
+    0 14px 34px rgba(255, 230, 0, 0.4);
+}
+
+.yaavs-promo--bait .yaavs-promo__close:hover,
+.yaavs-promo--bait .yaavs-promo__close:focus-visible {
+  background: #ff2d95;
+}
+
+.yaavs-promo.is-open .yaavs-promo__card {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+  animation: yaavs-promo-pop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.yaavs-promo.is-closing .yaavs-promo__card {
+  transform: translate3d(0, 18px, 0) scale(0.96);
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes yaavs-promo-pop {
+  0% {
+    transform: translate3d(0, 36px, 0) scale(0.88);
+    opacity: 0;
+  }
+  60% {
+    transform: translate3d(0, -6px, 0) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.yaavs-promo__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 48%,
+    transparent 62%
+  );
+  transform: translateX(-130%) skewX(-14deg);
+  animation: yaavs-promo-shine 1.4s ease 0.45s both;
+}
+
+@keyframes yaavs-promo-shine {
+  to {
+    transform: translateX(130%) skewX(-14deg);
+  }
+}
+
+.yaavs-promo__media {
+  display: block;
+  margin: 0;
+  line-height: 0;
+}
+
+.yaavs-promo__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.yaavs-promo__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(8, 12, 22, 0.72);
+  color: #fff;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.yaavs-promo__close:hover,
+.yaavs-promo__close:focus-visible {
+  background: #0097b2;
+  transform: scale(1.06);
+  outline: none;
+}
+
+.yaavs-promo__actions {
+  display: flex;
+  justify-content: center;
+  padding: 14px 16px 16px;
+  background: linear-gradient(180deg, #eaf6ff 0%, #d7eef8 100%);
+}
+
+.yaavs-promo__enter {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(180deg, #00bcd4 0%, #0097b2 100%);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.35),
+    0 10px 28px rgba(0, 151, 178, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.yaavs-promo__enter:hover,
+.yaavs-promo__enter:focus-visible {
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.05);
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.4),
+    0 14px 34px rgba(0, 151, 178, 0.45);
+}
+
+.yaavs-promo__enter:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 640px) {
+  .yaavs-promo {
+    padding: max(12px, env(safe-area-inset-top, 0px)) 10px max(12px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .yaavs-promo__card {
+    border-radius: 14px;
+  }
+
+  .yaavs-promo__close {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .yaavs-promo__enter {
+    width: 100%;
+    max-width: 280px;
+    padding: 13px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yaavs-promo,
+  .yaavs-promo__card,
+  .yaavs-promo::backdrop,
+  .yaavs-promo__enter,
+  .yaavs-promo__close {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .yaavs-promo__shine {
+    display: none;
+  }
+
+  .yaavs-promo.is-open .yaavs-promo__card {
+    transform: none;
+    opacity: 1;
+  }
+}

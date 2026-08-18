@@ -1,0 +1,10 @@
+.env*
+.netlify
+.vercel
+.vscode/
+node_modules/
+package-lock.json
+yaavs-web-completo.zip
+entrega/
+*.zip
+.DS_Store

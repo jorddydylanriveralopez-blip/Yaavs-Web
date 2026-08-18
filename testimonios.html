@@ -4,19 +4,45 @@
   <meta charset="UTF-8">
   <script src="js/yaavs-theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#00bcd4">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="Testimonios de socios Yaavser satisfechos con YAAVS.">
+  <meta name="description" content="Testimonios de socios Yaavser satisfechos con la red YAAVS en México.">
   <title>Testimonios | YAAVS</title>
+  <!-- yaavs-seo -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Grupo Comercial YAAVS">
+  <meta name="keywords" content="YAAVS, Grupo Comercial YAAVS, distribuidor telecom México, distribución telecomunicaciones, SIM, eSIM, chips AT&amp;T, chips Telcel, Movistar, Unefon, BAIT, RecargaKlic, tiempo aire, portabilidad, Yaavser, punto de venta telecom, activaciones SIM, red nacional telecom, testimonios Yaavser, opiniones YAAVS, casos de éxito">
+  <link rel="canonical" href="https://www.yaavs.com.mx/testimonios.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="YAAVS">
+  <meta property="og:title" content="Testimonios | YAAVS">
+  <meta property="og:description" content="Testimonios de socios Yaavser satisfechos con la red YAAVS en México.">
+  <meta property="og:url" content="https://www.yaavs.com.mx/testimonios.html">
+  <meta property="og:image" content="https://www.yaavs.com.mx/assets/pwa/icon-512.png">
+  <meta property="og:image:alt" content="YAAVS — telecomunicaciones">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Testimonios | YAAVS">
+  <meta name="twitter:description" content="Testimonios de socios Yaavser satisfechos con la red YAAVS en México.">
+  <meta name="twitter:image" content="https://www.yaavs.com.mx/assets/pwa/icon-512.png">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Testimonios | YAAVS", "description": "Testimonios de socios Yaavser satisfechos con la red YAAVS en México.", "url": "https://www.yaavs.com.mx/testimonios.html", "isPartOf": {"@type": "WebSite", "url": "https://www.yaavs.com.mx/"}, "inLanguage": "es-MX"}</script>
+  <!-- /yaavs-seo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=243">
   <link rel="stylesheet" href="decorations.css">
-  <link rel="stylesheet" href="theme-light.css">
-  <link rel="stylesheet" href="theme-day-night.css">
-  <link rel="icon" href="https://www.yaavs.com.mx/images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="theme-light.css?v=11">
+  <link rel="stylesheet" href="theme-day-night.css?v=5">
+  <link rel="stylesheet" href="interior-corporate.css?v=19">
+  <link rel="stylesheet" href="interior-light.css?v=8">
+  <link rel="stylesheet" href="home-experience.css">
+  <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
+  <link rel="shortcut icon" href="favicon.ico?v=4">
 </head>
 <body class="theme-cluster page-testimonios" data-page="testimonios">
   <div id="site-header"></div>
@@ -28,6 +54,7 @@
       <div class="avisos-hero-banner__scan" aria-hidden="true"></div>
       <div class="avisos-hero-banner__shade" aria-hidden="true"></div>
       <div class="avisos-hero-banner__grid" aria-hidden="true"></div>
+      <canvas class="testimonios-hero-banner__fireworks" data-testimonios-fireworks aria-hidden="true"></canvas>
       <div class="avisos-hero-banner__content container">
         <nav class="breadcrumb avisos-hero-banner__breadcrumb" aria-label="Ruta">
           <a href="index.html">Inicio</a><span>/</span><span>Testimonios</span>
@@ -39,6 +66,11 @@
         <p class="avisos-hero-banner__lead">
           Lo que dicen nuestros socios comerciales en todo México.
         </p>
+        <div class="testimonios-hero-banner__chips" aria-label="Razones para confiar en YAAVS">
+          <span>Clientes satisfechos</span>
+          <span>Historias reales</span>
+          <span>Ventas que crecieron</span>
+        </div>
         <a href="#voces" class="scroll-hint scroll-hint--testimonios" aria-label="Ver testimonios">
           <span class="scroll-hint-line"></span>
           <span class="scroll-hint-label">Ver voces</span>
@@ -47,38 +79,289 @@
       <div class="avisos-hero-banner__rule" aria-hidden="true"></div>
     </section>
 
-    <div class="pleca pleca--bridge" aria-hidden="true">
-      <span class="pleca__line"></span>
-      <span class="pleca__label">Historias reales</span>
-      <span class="pleca__line"></span>
-    </div>
-
-    <div id="trust-strip"></div>
-
-    <section class="section section--testimonios" id="voces" aria-label="Testimonios de Yaavsers">
+    <section class="tx-reel" aria-label="Historias Yaavser en movimiento" data-tx-reel data-tx-reel-autoplay="5600">
       <div class="container">
-        <div class="testimonials-grid">
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">KD</span><div><cite>Karen Durán</cite><span>Celular Solution</span></div></div>
-            <p>«Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.»</p>
-          </blockquote>
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">JM</span><div><cite>José Juan Méndez</cite><span>Smart Accesorios</span></div></div>
-            <p>«Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.»</p>
-          </blockquote>
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">AM</span><div><cite>Abraham Manjarez</cite><span>Mc Covers</span></div></div>
-            <p>«La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.»</p>
-          </blockquote>
-          <blockquote class="glass-card testimonial">
-            <div class="testimonial-head"><span class="avatar">VG</span><div><cite>Viviana González</cite><span>Toxic</span></div></div>
-            <p>«Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.»</p>
-          </blockquote>
+        <header class="tx-reel__head">
+          <span class="hx-eyebrow">Reel YAAVS</span>
+          <h2>Yaavsers felices contando <span class="hx-testimonials__accent">por qué se quedan</span></h2>
+          <p class="tx-reel__lead">Un reel visual con historias, crecimiento y razones reales para seguir vendiendo con YAAVS en el mostrador.</p>
+        </header>
+
+        <div class="tx-reel__layout">
+          <div class="tx-reel__screen">
+            <article class="tx-reel__slide is-active" data-tx-reel-slide>
+              <img class="tx-reel__media" src="assets/hero-telecom/hero-campeones-vincula.jpg" alt="Yaavsers celebrando logros con YAAVS" width="1024" height="576" loading="eager" decoding="async">
+              <div class="tx-reel__shade" aria-hidden="true"></div>
+              <div class="tx-reel__chrome">
+                <span class="tx-reel__badge">Autoplay reel</span>
+                <span class="tx-reel__time">00:18</span>
+              </div>
+              <div class="tx-reel__story">
+                <p class="tx-reel__kicker">¿Por qué soy Yaavser?</p>
+                <h3 class="tx-reel__quote">"Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más."</h3>
+                <p class="tx-reel__author">Viviana González · Toxic</p>
+              </div>
+            </article>
+
+            <article class="tx-reel__slide" data-tx-reel-slide aria-hidden="true">
+              <img class="tx-reel__media" src="assets/yaavser/cliente-satisfecho.jpg" alt="Cliente satisfecho disfrutando los resultados" width="1920" height="1080" loading="lazy" decoding="async">
+              <div class="tx-reel__shade" aria-hidden="true"></div>
+              <div class="tx-reel__chrome">
+                <span class="tx-reel__badge">Historias reales</span>
+                <span class="tx-reel__time">00:24</span>
+              </div>
+              <div class="tx-reel__story">
+                <p class="tx-reel__kicker">¿Por qué sigo en YAAVS?</p>
+                <h3 class="tx-reel__quote">"Son los únicos que no me han fallado con su visita cada semana."</h3>
+                <p class="tx-reel__author">José Juan Méndez · Smart Accesorios</p>
+              </div>
+            </article>
+
+            <article class="tx-reel__slide" data-tx-reel-slide aria-hidden="true">
+              <img class="tx-reel__media" src="assets/hero-telecom/hero-portada-campeones.jpg" alt="Campaña conexión de campeones de YAAVS" width="1024" height="576" loading="lazy" decoding="async">
+              <div class="tx-reel__shade" aria-hidden="true"></div>
+              <div class="tx-reel__chrome">
+                <span class="tx-reel__badge">Red que impulsa</span>
+                <span class="tx-reel__time">00:16</span>
+              </div>
+              <div class="tx-reel__story">
+                <p class="tx-reel__kicker">Lo que más me gustó</p>
+                <h3 class="tx-reel__quote">"Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado."</h3>
+                <p class="tx-reel__author">Karen Durán · Celular Solution</p>
+              </div>
+            </article>
+
+            <article class="tx-reel__slide" data-tx-reel-slide aria-hidden="true">
+              <img class="tx-reel__media" src="assets/hero-telecom/hero-telecom-4.jpg" alt="Crecimiento económico con apoyo comercial" width="1920" height="1080" loading="lazy" decoding="async">
+              <div class="tx-reel__shade" aria-hidden="true"></div>
+              <div class="tx-reel__chrome">
+                <span class="tx-reel__badge">Resultados</span>
+                <span class="tx-reel__time">00:21</span>
+              </div>
+              <div class="tx-reel__story">
+                <p class="tx-reel__kicker">Lo que cambió en mi punto</p>
+                <h3 class="tx-reel__quote">"Los eventos han generado muchas ventas y las visitas constantes hacen la diferencia."</h3>
+                <p class="tx-reel__author">Abraham Manjarez · Mc Covers</p>
+              </div>
+            </article>
+
+            <div class="tx-reel__progress" aria-hidden="true">
+              <span data-tx-reel-progress></span>
+            </div>
+          </div>
+
+          <aside class="tx-reel__aside" aria-label="Lo que más valoran los Yaavsers">
+            <div class="tx-reel__panel">
+              <p class="tx-reel__panel-kicker">Lo que más se repite</p>
+              <ul class="tx-reel__facts">
+                <li>Visitas constantes en punto de venta.</li>
+                <li>Rotulación y material que sí atraen clientes.</li>
+                <li>Eventos, activaciones y respaldo para vender más.</li>
+              </ul>
+            </div>
+            <div class="tx-reel__panel tx-reel__panel--cta">
+              <p class="tx-reel__panel-copy">Historias de Yaavsers que crecieron con una red que sí acompaña.</p>
+              <a href="#voces" class="btn btn--line tx-reel__cta">Ver testimonios completos</a>
+            </div>
+          </aside>
         </div>
-        <p class="page-actions">
-          <a href="ser-yaavser.html" class="btn btn--primary">Quiero ser Yaavser</a>
+      </div>
+    </section>
+
+    <section class="hx-testimonials hx-testimonials--page hx-testimonials--light hx-testimonials--cinema" id="voces" aria-label="Testimonios de socios" data-hx-testimonials data-hx-autoplay="6000" data-hx-per-view="3">
+      <div class="hx-testimonials__beam" aria-hidden="true"></div>
+      <div class="container">
+        <header class="hx-testimonials__head">
+          <span class="hx-eyebrow">Historias reales</span>
+          <h2>Voces que <span class="hx-testimonials__accent">impulsan la red</span></h2>
+          <p class="hx-testimonials__lead">Socios comerciales en todo México que crecieron con visitas, rotulación, eventos y respaldo YAAVS.</p>
+        </header>
+      </div>
+      <div class="hx-testimonials__frame">
+        <div class="hx-testimonials__viewport" aria-roledescription="carrusel" aria-label="Testimonios">
+          <ul class="hx-testimonials__track" data-hx-testimonials-track>
+            <li class="hx-testimonials__slide is-active" data-hx-testimonial-index="0">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/karen-duran.jpg" alt="Karen Durán — Celular Solution" width="900" height="900" loading="eager" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Excelente servicio y atención al cliente. Gracias YAAVS por la rotulación de mi negocio; las ventas han aumentado.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Karen Durán</cite>
+                      <span>Celular Solution</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="1">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/jose-mendez.jpg" alt="José Juan Méndez — Smart Accesorios" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Llevo muchos años trabajando con ustedes; son los únicos que no me han fallado con su visita cada semana.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>José Juan Méndez</cite>
+                      <span>Smart Accesorios</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="2">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/abraham-manjarez.jpg" alt="Abraham Manjarez — Mc Covers" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">La calidad de su servicio y las visitas constantes hacen la diferencia. Los eventos han generado muchas ventas.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Abraham Manjarez</cite>
+                      <span>Mc Covers</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="3">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/viviana-gonzalez.jpg" alt="Viviana González — Toxic" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Con venta de chips, rotulaciones y eventos mi negocio comenzó a vender más.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Viviana González</cite>
+                      <span>Toxic</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="4">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/portada-08.jpg" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">La red YAAVS me dio herramientas reales para competir en mi zona y ganar la confianza de mis clientes.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Socio comercial</cite>
+                      <span>Red YAAVS · CDMX</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="5">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/portada-09.jpg" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Rotulación, visitas y eventos en un solo socio. Eso es lo que hace diferente a YAAVS.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Socio comercial</cite>
+                      <span>Red YAAVS · México</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="hx-testimonials__slide" data-hx-testimonial-index="6">
+              <figure class="hx-testimonials__tile">
+                <img class="hx-testimonials__photo" src="assets/testimonios/portada-10.jpg" alt="Socio comercial YAAVS" width="900" height="900" loading="lazy" decoding="async">
+                <div class="hx-testimonials__shade" aria-hidden="true"></div>
+                <figcaption class="hx-testimonials__overlay">
+                  <blockquote class="hx-testimonials__card">
+                    <p class="hx-testimonials__quote">Recomiendo YAAVS a quien quiera crecer con telecom: respaldo, capacitación y presencia en punto de venta.</p>
+                    <footer class="hx-testimonials__author">
+                      <cite>Socio comercial</cite>
+                      <span>Red YAAVS</span>
+                    </footer>
+                  </blockquote>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+        <div class="hx-testimonials__progress" aria-hidden="true"><span></span></div>
+        <div class="hx-testimonials__controls" aria-label="Controles del carrusel">
+          <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--prev" aria-label="Testimonio anterior">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="hx-testimonials__dots" role="tablist" aria-label="Ir a testimonio">
+            <button type="button" class="hx-testimonials__dot is-active" data-hx-testimonial-go="0" aria-label="Testimonio 1" aria-current="true"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="1" aria-label="Testimonio 2"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="2" aria-label="Testimonio 3"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="3" aria-label="Testimonio 4"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="4" aria-label="Testimonio 5"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="5" aria-label="Testimonio 6"></button>
+            <button type="button" class="hx-testimonials__dot" data-hx-testimonial-go="6" aria-label="Testimonio 7"></button>
+          </div>
+          <button type="button" class="hx-testimonials__arrow hx-testimonials__arrow--next" aria-label="Siguiente testimonio">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <p class="hx-testimonials__more page-actions">
+          <a href="#yaavser-lead" class="btn btn--primary" data-yaavser-lead-open>Quiero ser socio comercial</a>
           <a href="contacto.html" class="btn btn--line">Contactar</a>
         </p>
+      </div>
+    </section>
+
+        <section class="tx-gallery" aria-label="Clientes contentos de YAAVS">
+      <div class="container tx-gallery__head">
+        <span class="hx-eyebrow">Clientes contentos</span>
+        <h2>Una red que se nota en <span class="hx-testimonials__accent">cada punto de venta</span></h2>
+      </div>
+
+      <div class="tx-gallery__marquee" aria-hidden="true">
+        <div class="tx-gallery__track">
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-01.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-01.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-03.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-02.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-05.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-03.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-06.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-10.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-04.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-01.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-01.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-03.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-02.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-05.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-03.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-06.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-10.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/clientes-04.jpg?v=20260812f" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+
+      <div class="tx-gallery__marquee tx-gallery__marquee--reverse" aria-hidden="true">
+        <div class="tx-gallery__track">
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-12.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-13.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-14.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-15.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-16.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-17.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-18.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-19.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-20.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-12.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-13.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-14.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-15.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-16.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-17.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-18.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-19.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="tx-gallery__item"><img src="assets/testimonios/galeria-20.jpg" alt="" width="900" height="1200" loading="lazy" decoding="async"></figure>
+        </div>
       </div>
     </section>
 
@@ -86,9 +369,10 @@
   </main>
 
   <div id="site-footer"></div>
-  <script src="js/layout.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/layout.js?v=51" defer></script>
+  <script src="js/main.js?v=7" defer></script>
   <script src="js/interior-banners.config.js"></script>
   <script src="js/interior-banner.js"></script>
+  <script src="js/home-testimonials-carousel.js" defer></script>
 </body>
 </html>
