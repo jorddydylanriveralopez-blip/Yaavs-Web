@@ -1999,8 +1999,14 @@ body.theme-cluster.page-postpago .pospago-stores__heading {
   box-shadow: 0 0 0 2px rgba(217, 109, 242, 0.35);
 }
 
-.pospago-stores[data-carrier="att"] .pospago-stores__card-actions a {
-  color: #e3a6f7;
+.pospago-stores[data-carrier="att"] .pospago-stores__go {
+  background: #d96df2;
+  color: #120818;
+}
+
+.pospago-stores[data-carrier="att"] .pospago-stores__go:hover,
+.pospago-stores[data-carrier="att"] .pospago-stores__go:focus-visible {
+  background: #e3a6f7;
 }
 
 .pospago-stores[data-carrier="att"] .pospago-stores__back:hover,
@@ -2103,17 +2109,29 @@ body.theme-cluster.page-postpago .pospago-stores__status {
 
 .pospago-stores__card-actions {
   display: flex;
-  gap: 10px;
-  padding: 0 14px 12px;
+  padding: 4px 14px 12px;
 }
 
-.pospago-stores__card-actions a {
-  font-size: 0.68rem;
+.pospago-stores__go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 132px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #d96df2;
+  color: #120818;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
   text-decoration: none;
+}
+
+.pospago-stores__go:hover,
+.pospago-stores__go:focus-visible {
+  background: #e3a6f7;
+  outline: none;
 }
 
 .pospago-stores__map {

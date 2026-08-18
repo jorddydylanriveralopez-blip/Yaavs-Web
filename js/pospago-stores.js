@@ -44,11 +44,6 @@
       .replace(/"/g, "&quot;");
   }
 
-  function mapsSearchUrl(store) {
-    if (store.mapsLink) return store.mapsLink;
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.address || `${store.lat},${store.lng}`)}`;
-  }
-
   function storeStatusLabel(store) {
     const name = store.name || "";
     const city = (store.city || "").trim();
@@ -122,8 +117,7 @@
             ${store.hours ? `<span class="pospago-stores__card-hours">${store.hours}</span>` : ""}
           </button>
           <div class="pospago-stores__card-actions">
-            <a href="${mapsSearchUrl(store)}" target="_blank" rel="noopener noreferrer">Ver en Maps</a>
-            <a href="${mapsDirUrl(store)}" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+            <a class="pospago-stores__go" href="${mapsDirUrl(store)}" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
           </div>
         </article>`;
       })
