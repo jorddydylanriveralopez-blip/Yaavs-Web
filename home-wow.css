@@ -52,17 +52,8 @@
 .hx-raffle__title[data-hx-reveal]::after,
 .hx-raffle__head.is-wow-visible .hx-raffle__title::after,
 #testimonios-home h2[data-hx-reveal]::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: min(140px, 42%);
-  height: 3px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, transparent, #3b82d4 30%, #c9a000 70%, transparent);
-  transform: translateX(-50%) scaleX(0);
-  transform-origin: center;
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+  content: none;
+  display: none;
 }
 
 .hx-services__head h2[data-hx-reveal].is-visible::after,
@@ -75,15 +66,11 @@
 }
 
 .hx-ops__title::after,
-.hx-ops__title[data-hx-reveal]::after {
-  left: 0;
-  transform: translateX(0) scaleX(0);
-  transform-origin: left;
-}
-
+.hx-ops__title[data-hx-reveal]::after,
 .hx-ops__title[data-hx-reveal].is-visible::after,
 .hx-ops__head.is-wow-visible .hx-ops__title::after {
-  transform: translateX(0) scaleX(1);
+  content: none;
+  display: none;
 }
 
 /* ─── Reveals orgánicos al scroll (compositor: opacity + transform) ─── */
