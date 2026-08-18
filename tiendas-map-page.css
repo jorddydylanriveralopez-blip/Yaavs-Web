@@ -1051,8 +1051,13 @@ body.theme-cluster.page-tiendas-map .leaflet-marker-icon.is-active-marker {
   }
 }
 
-body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__switch {
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__switch,
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] #page-cta {
   display: none !important;
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__switch {
+  padding: 0 var(--pad-x) clamp(54px, 7vw, 88px);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__switch-grid {
