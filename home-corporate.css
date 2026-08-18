@@ -6341,11 +6341,10 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
     text-indent: 0.28em;
   }
 
+  .page-home .hx-services--deck .hx-services__title::before,
   .page-home .hx-services--deck .hx-services__title::after {
-    width: min(140px, 46vw);
-    height: 3px;
-    margin-top: 0.32em;
-    box-shadow: none;
+    content: none !important;
+    display: none !important;
   }
 
   .page-home .hx-services--deck .hx-services__hint {
@@ -7580,4 +7579,32 @@ html[data-yaavs-perf="soft"] .page-home .hx-services__floats {
 .page-home .hx-yaavser-band {
   content-visibility: auto;
   contain-intrinsic-size: auto 640px;
+}
+
+.page-home .hx-services--deck .hx-services__title::before,
+.page-home .hx-services--deck .hx-services__title::after,
+.page-home .hx-services--deck .hx-services__head h2::before,
+.page-home .hx-services--deck .hx-services__head h2::after,
+.page-home .hx-services--deck .hx-services__title-kicker::before,
+.page-home .hx-services--deck .hx-services__title-kicker::after,
+.page-home .hx-services--deck .hx-services__title-main::before,
+.page-home .hx-services--deck .hx-services__title-main::after,
+.page-home .hx-svc-group__title::before,
+.page-home .hx-svc-group__title::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.page-home .hx-services--deck .hx-services__title,
+.page-home .hx-services--deck .hx-services__title-kicker,
+.page-home .hx-services--deck .hx-services__title-main,
+.page-home .hx-svc-group__title {
+  border: 0 !important;
+  text-decoration: none !important;
+  background-image: none !important;
 }

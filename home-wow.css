@@ -282,3 +282,11 @@
     transform: translate3d(0, 16px, 0);
   }
 }
+
+.page-home .hx-services--deck .hx-services__title::before,
+.page-home .hx-services--deck .hx-services__title::after,
+.page-home .hx-svc-group__title::before,
+.page-home .hx-svc-group__title::after {
+  content: none !important;
+  display: none !important;
+}
