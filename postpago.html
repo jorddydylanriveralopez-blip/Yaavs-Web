@@ -36,23 +36,18 @@
   <link rel="stylesheet" href="theme-day-night.css?v=5">
   <link rel="stylesheet" href="interior-corporate.css?v=20">
   <link rel="stylesheet" href="interior-light.css?v=2">
-  <link rel="stylesheet" href="pospago.css?v=20260818c">
+  <link rel="stylesheet" href="pospago.css?v=20260818d">
   <style>
-    body.theme-cluster.page-postpago,
-    body.theme-cluster.page-postpago #contenido,
-    body.theme-cluster.page-postpago .pospago-hero {
-      background-image: none !important;
-      background-color: transparent !important;
-    }
     body.theme-cluster.page-postpago {
-      background: linear-gradient(105deg, #e879f9 0%, #c026d3 24%, #7c3aed 52%, #3730a3 78%, #1e1b4b 100%) !important;
-    }
-    body.theme-cluster.page-postpago .pospago-hero {
-      background: linear-gradient(105deg, #f0abfc 0%, #d946ef 18%, #a855f7 42%, #6366f1 68%, #312e81 100%) !important;
+      background: #07040f !important;
     }
     body.theme-cluster.page-postpago::before,
     body.theme-cluster.page-postpago::after {
       content: none !important;
+      background: none !important;
+      background-image: none !important;
+    }
+    body.theme-cluster.page-postpago .pospago-hero {
       background: none !important;
       background-image: none !important;
     }
@@ -67,7 +62,9 @@
   <div id="site-header"></div>
 
   <main id="contenido">
-    <section class="pospago-hero" id="postpago-hero" aria-label="Pospago YAAVS" style="background:linear-gradient(105deg,#f0abfc 0%,#d946ef 18%,#a855f7 42%,#6366f1 68%,#312e81 100%)!important;background-image:none!important">
+    <section class="pospago-hero" id="postpago-hero" aria-label="Pospago YAAVS">
+      <span class="pospago-hero__bowl" aria-hidden="true"></span>
+      <span class="pospago-hero__orb" aria-hidden="true"></span>
       <h1 class="pospago-hero__brand">
         <img src="assets/pospago/yaavs-pospago-logo.png?v=2" alt="YAAVS Pospago" width="1024" height="418">
       </h1>

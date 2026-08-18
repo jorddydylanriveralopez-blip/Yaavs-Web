@@ -5,7 +5,8 @@
 }
 
 body.theme-cluster.page-postpago {
-  background: linear-gradient(105deg, #e879f9 0%, #c026d3 24%, #7c3aed 52%, #3730a3 78%, #1e1b4b 100%) !important;
+  background: #07040f !important;
+  overflow-x: hidden;
 }
 
 body.theme-cluster.page-postpago::before {
@@ -68,11 +69,37 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
   padding:
     calc(var(--header-h, 72px) + clamp(12px, 2vh, 24px))
     0
-    clamp(40px, 6vh, 56px);
-  overflow: hidden;
+    clamp(88px, 12vw, 160px);
+  overflow: visible;
   color: #fff;
-  background: linear-gradient(105deg, #f0abfc 0%, #d946ef 18%, #a855f7 42%, #6366f1 68%, #312e81 100%) !important;
+  background: none !important;
   background-image: none !important;
+}
+
+.pospago-hero__bowl {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 0;
+  width: 160%;
+  height: calc(100% + clamp(36px, 6vw, 88px));
+  transform: translateX(-50%);
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(90deg, #f0abfc 0%, #d946ef 22%, #9333ea 48%, #4f46e5 76%, #312e81 100%);
+  pointer-events: none;
+}
+
+.pospago-hero__orb {
+  position: absolute;
+  left: 50%;
+  bottom: -18vw;
+  z-index: 0;
+  width: min(92vw, 920px);
+  height: min(92vw, 920px);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 42%, transparent 70%);
+  pointer-events: none;
 }
 
 .pospago-hero__brand {
@@ -484,7 +511,8 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
 .pospago-break__fade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(30, 27, 75, 0.45) 42%, #05010a 100%);
+  background: none;
+}
   pointer-events: none;
 }
 
