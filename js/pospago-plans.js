@@ -99,6 +99,14 @@
       modal.querySelector("[data-pospago-modal-price]").innerHTML =
         card.querySelector(".pospago-rate__price")?.innerHTML || "";
       modal.querySelector("[data-pospago-modal-body]").innerHTML = details ? details.innerHTML : "";
+      const wa = modal.querySelector(".pospago-modal__wa");
+      if (wa) {
+        const plan =
+          card.querySelector(".pospago-rate__name")?.textContent.trim() || "pospago";
+        wa.href =
+          "https://wa.me/525522331210?text=" +
+          encodeURIComponent("Hola, quiero cotizar el plan " + plan + " pospago YAAVS");
+      }
       modal.hidden = false;
       modal.removeAttribute("hidden");
       modal.setAttribute("aria-hidden", "false");
@@ -125,6 +133,19 @@
     });
 
     root.querySelectorAll("[data-pospago-rate]").forEach((card) => {
+      if (!card.querySelector(".pospago-rate__wa")) {
+        const name = card.querySelector(".pospago-rate__name")?.textContent.trim() || "pospago";
+        const wa = document.createElement("a");
+        wa.className = "pospago-rate__wa";
+        wa.target = "_blank";
+        wa.rel = "noopener noreferrer";
+        wa.href =
+          "https://wa.me/525522331210?text=" +
+          encodeURIComponent("Hola, quiero cotizar el plan " + name + " pospago YAAVS");
+        wa.innerHTML =
+          '<img src="assets/pospago/rrss/whatsapp.svg?v=2" alt="" width="18" height="18">Cotiza';
+        card.appendChild(wa);
+      }
       card.tabIndex = 0;
       card.setAttribute("role", "button");
       card.setAttribute("aria-haspopup", "dialog");

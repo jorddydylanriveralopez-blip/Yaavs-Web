@@ -1274,6 +1274,33 @@ body.theme-cluster.page-postpago .pospago-catalog__legal {
   -webkit-text-fill-color: rgba(255, 255, 255, 0.42);
 }
 
+.pospago-rate__wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #04150b;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pospago-rate__wa img {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.pospago-rate__wa:hover,
+.pospago-rate__wa:focus-visible {
+  background: #2ee472;
+  outline: none;
+}
+
 body.theme-cluster.page-postpago .pospago-catalog__cta {
   display: flex;
   align-items: center;
@@ -1301,9 +1328,17 @@ body.theme-cluster.page-postpago .pospago-catalog__cta {
 }
 
 body.theme-cluster.page-postpago .pospago-catalog__cta--wa {
+  gap: 8px;
   background: #25d366;
   color: #04150b !important;
   -webkit-text-fill-color: #04150b;
+}
+
+body.theme-cluster.page-postpago .pospago-catalog__cta--wa img,
+.pospago-modal__wa img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 }
 
 body.theme-cluster.page-postpago .pospago-catalog__cta--wa:hover,
@@ -1693,6 +1728,7 @@ body.theme-cluster.page-postpago .pospago-modal__price span {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   width: 100%;
   margin-top: 18px;
   padding: 13px 18px;
