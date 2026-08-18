@@ -1,5 +1,6 @@
 /**
  * Carrusel coverflow del banner pospago (efecto tipo AT&T México).
+ * Flechas, teclado y swipe / arrastre con mouse o dedo.
  */
 (function () {
   const root = document.querySelector("[data-pospago-coverflow]");
@@ -11,16 +12,19 @@
   const countEl = document.querySelector("[data-pospago-count]");
   const stage = root.closest(".pospago-hero");
   const stageFrame = root.closest(".pospago-hero__stage");
+  const dragSurface = stageFrame || stage || root;
   const n = cards.length;
   if (!n) return;
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const AUTO_MS = 2500;
-  const DRAG_MIN = 42;
+  const DRAG_MIN = 36;
   let index = 0;
   let timer = 0;
   let pointer = null;
   let dragBlockedClick = false;
+  let lastLayoutWidth = 0;
+  let dragOffset = 0;
 
   function wrappedOffset(i) {
     let d = i - index;
@@ -34,8 +38,6 @@
     const card = cards[0];
     return card.offsetWidth || Math.round(parseFloat(getComputedStyle(card).width)) || 0;
   }
-
-  let lastLayoutWidth = 0;
 
   function layout() {
     const width = cardLayoutWidth();
@@ -52,7 +54,7 @@
     cards.forEach((card, i) => {
       const offset = wrappedOffset(i);
       const abs = Math.abs(offset);
-      const tx = offset * width * spread;
+      const tx = offset * width * spread + dragOffset;
       const ry = offset * -rotate;
       const tz = -abs * depth;
       card.style.transform = `translate3d(${tx}px, 0, ${tz}px) rotateY(${ry}deg)`;
@@ -70,6 +72,7 @@
 
   function goTo(next) {
     if (!n) return;
+    dragOffset = 0;
     index = ((next % n) + n) % n;
     layout();
   }
@@ -80,7 +83,7 @@
 
   function startTimer() {
     stopTimer();
-    if (reduced || n < 2) return;
+    if (reduced || n < 2 || pointer) return;
     timer = window.setInterval(() => go(1), AUTO_MS);
   }
 
@@ -103,6 +106,7 @@
       if (dragBlockedClick) {
         dragBlockedClick = false;
         e.preventDefault();
+        e.stopPropagation();
         return;
       }
       if (wrappedOffset(i) !== 0) {
@@ -116,50 +120,93 @@
     });
   });
 
+  root.querySelectorAll("img").forEach((img) => {
+    img.setAttribute("draggable", "false");
+    img.addEventListener("dragstart", (e) => e.preventDefault());
+  });
+
+  function ignoreDragTarget(target) {
+    return Boolean(
+      target.closest(".pospago-card__cta, .pospago-hero__arrow, .pospago-hero__nav, a[href], button")
+    );
+  }
+
   function endPointerDrag(e, cancelled) {
-    if (!pointer || e.pointerId !== pointer.id) return;
-    const dx = e.clientX - pointer.x;
-    const dy = e.clientY - pointer.y;
+    if (!pointer || (e && e.pointerId !== pointer.id)) return;
+    const dx = pointer.lastX - pointer.x;
+    const dy = pointer.lastY - pointer.y;
+    const dt = Math.max(1, Date.now() - pointer.t);
+    const vx = dx / dt;
     const dragged = pointer.dragged;
     pointer = null;
     stageFrame?.classList.remove("is-dragging");
+    document.body.classList.remove("is-pospago-dragging");
     try {
-      (stageFrame || stage)?.releasePointerCapture(e.pointerId);
+      dragSurface.releasePointerCapture(e.pointerId);
     } catch (_) {
       /* noop */
     }
-    if (!cancelled && dragged && Math.abs(dx) > DRAG_MIN && Math.abs(dx) > Math.abs(dy) * 1.05) {
+    const horizontal = Math.abs(dx) > Math.abs(dy) * 0.9;
+    const enough = Math.abs(dx) > DRAG_MIN || Math.abs(vx) > 0.45;
+    if (!cancelled && dragged && horizontal && enough) {
       dragBlockedClick = true;
       go(dx < 0 ? 1 : -1);
+    } else {
+      dragOffset = 0;
+      layout();
     }
+    window.setTimeout(() => {
+      dragBlockedClick = false;
+    }, 80);
     startTimer();
   }
 
-  (stageFrame || stage)?.addEventListener("pointerdown", (e) => {
+  dragSurface.addEventListener("pointerdown", (e) => {
     if (e.button !== 0) return;
-    if (e.target.closest(".pospago-card__cta")) return;
-    pointer = { x: e.clientX, y: e.clientY, dragged: false, id: e.pointerId };
+    if (ignoreDragTarget(e.target)) return;
+    pointer = {
+      x: e.clientX,
+      y: e.clientY,
+      lastX: e.clientX,
+      lastY: e.clientY,
+      t: Date.now(),
+      dragged: false,
+      id: e.pointerId,
+    };
+    dragOffset = 0;
     stageFrame?.classList.add("is-dragging");
     stopTimer();
     try {
-      (stageFrame || stage)?.setPointerCapture(e.pointerId);
+      dragSurface.setPointerCapture(e.pointerId);
     } catch (_) {
       /* noop */
     }
   });
 
-  (stageFrame || stage)?.addEventListener("pointermove", (e) => {
+  dragSurface.addEventListener("pointermove", (e) => {
     if (!pointer || e.pointerId !== pointer.id) return;
+    pointer.lastX = e.clientX;
+    pointer.lastY = e.clientY;
     const dx = e.clientX - pointer.x;
     const dy = e.clientY - pointer.y;
-    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.05) pointer.dragged = true;
+    if (!pointer.dragged && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 0.9) {
+      pointer.dragged = true;
+      document.body.classList.add("is-pospago-dragging");
+    }
+    if (!pointer.dragged) return;
+    dragOffset = dx;
+    layout();
   });
 
-  (stageFrame || stage)?.addEventListener("pointerup", (e) => endPointerDrag(e, false));
-  (stageFrame || stage)?.addEventListener("pointercancel", (e) => endPointerDrag(e, true));
+  dragSurface.addEventListener("pointerup", (e) => endPointerDrag(e, false));
+  dragSurface.addEventListener("pointercancel", (e) => endPointerDrag(e, true));
 
-  stage?.addEventListener("mouseenter", stopTimer);
-  stage?.addEventListener("mouseleave", startTimer);
+  stage?.addEventListener("mouseenter", () => {
+    if (!pointer) stopTimer();
+  });
+  stage?.addEventListener("mouseleave", () => {
+    if (!pointer) startTimer();
+  });
 
   document.addEventListener("keydown", (e) => {
     if (!stage) return;
@@ -176,35 +223,6 @@
       startTimer();
     }
   });
-
-  let swipe = null;
-  stage?.addEventListener(
-    "touchstart",
-    (e) => {
-      if (e.touches.length !== 1) return;
-      swipe = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-      stopTimer();
-    },
-    { passive: true }
-  );
-  stage?.addEventListener(
-    "touchend",
-    (e) => {
-      if (!swipe) {
-        startTimer();
-        return;
-      }
-      const t = e.changedTouches[0];
-      const dx = t.clientX - swipe.x;
-      const dy = t.clientY - swipe.y;
-      swipe = null;
-      if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy) * 1.1) {
-        go(dx < 0 ? 1 : -1);
-      }
-      startTimer();
-    },
-    { passive: true }
-  );
 
   function relayoutIfNeeded() {
     const width = cardLayoutWidth();

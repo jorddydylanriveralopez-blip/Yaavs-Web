@@ -158,14 +158,23 @@ body.theme-cluster.page-postpago .social-float {
   cursor: grab;
   touch-action: pan-y;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.pospago-hero__stage.is-dragging {
+.pospago-hero__stage.is-dragging,
+.pospago-hero__stage.is-dragging .pospago-card,
+.pospago-hero__stage.is-dragging .pospago-card.is-active,
+.pospago-hero__stage.is-dragging .pospago-card.is-peek {
   cursor: grabbing;
 }
 
 .pospago-hero__stage.is-dragging .pospago-card {
-  transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+  transition: none;
+}
+
+body.is-pospago-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .pospago-coverflow {
@@ -208,11 +217,10 @@ body.theme-cluster.page-postpago .social-float {
 .pospago-card.is-peek,
 .pospago-card.is-active {
   pointer-events: auto;
-  cursor: pointer;
+  cursor: grab;
 }
 
 .pospago-card.is-active {
-  cursor: default;
   z-index: 8;
 }
 
@@ -225,6 +233,8 @@ body.theme-cluster.page-postpago .social-float {
   object-position: center;
   display: block;
   pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .pospago-card__shade {
@@ -321,6 +331,7 @@ body.theme-cluster.page-postpago .pospago-card__cta {
   text-decoration: none;
   text-shadow: none;
   pointer-events: auto;
+  cursor: pointer;
   opacity: 1;
 }
 
