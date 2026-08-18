@@ -5,7 +5,7 @@
 }
 
 body.theme-cluster.page-postpago {
-  background: #05010a !important;
+  background: linear-gradient(105deg, #e879f9 0%, #c026d3 24%, #7c3aed 52%, #3730a3 78%, #1e1b4b 100%) !important;
 }
 
 body.theme-cluster.page-postpago::before {
@@ -15,15 +15,15 @@ body.theme-cluster.page-postpago::before {
 }
 
 body.theme-cluster.page-postpago #contenido {
-  background: #05010a;
+  background: transparent;
 }
 
 body.theme-cluster.page-postpago .site-header,
 body.theme-cluster.page-postpago .site-header.is-scrolled {
-  background: #05010a !important;
-  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(18, 12, 42, 0.28) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
   box-shadow: none !important;
-  backdrop-filter: none !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 body.theme-cluster.page-postpago .site-header.is-scrolled::after {
@@ -71,12 +71,7 @@ body.theme-cluster.page-postpago .site-header.is-scrolled .bento-dot {
     clamp(40px, 6vh, 56px);
   overflow: hidden;
   color: #fff;
-  background:
-    radial-gradient(ellipse 115% 72% at 50% 12%, rgba(180, 55, 220, 0.32) 0%, transparent 54%),
-    radial-gradient(ellipse 85% 55% at 50% 92%, rgba(120, 30, 165, 0.24) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(32, 10, 42, 0.58) 0%, rgba(18, 6, 28, 0.76) 55%, rgba(10, 3, 16, 0.9) 100%),
-    url("assets/tiendas/city-night.jpg") center center / cover no-repeat,
-    #120818;
+  background: linear-gradient(105deg, #f0abfc 0%, #d946ef 18%, #a855f7 42%, #6366f1 68%, #312e81 100%);
 }
 
 .pospago-hero__brand {
@@ -488,7 +483,7 @@ body.theme-cluster.page-postpago .pospago-card--contact .pospago-card__cta {
 .pospago-break__fade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(18, 8, 28, 0.58) 42%, #120818 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(30, 27, 75, 0.45) 42%, #05010a 100%);
   pointer-events: none;
 }
 
