@@ -5,9 +5,9 @@
 /* ─── Header ─── */
 .header-menu {
   flex-shrink: 0;
-  margin-left: auto;
+  margin-left: 0;
   gap: 10px;
-  min-width: 148px;
+  min-width: 0;
   justify-content: flex-end;
 }
 

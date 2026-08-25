@@ -75,85 +75,55 @@
     const mainNav = document.getElementById("main-nav");
     if (!navToggle || !mainNav) return;
 
-    let closeTimer = null;
-    const hoverNavMq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const drawerMq = window.matchMedia("(max-width: 900px)");
 
-    function canHoverNav() {
-      return hoverNavMq.matches;
+    function isDrawerMode() {
+      return drawerMq.matches;
     }
 
     function setMenuOpen(open) {
+      if (!isDrawerMode()) open = false;
       navToggle.setAttribute("aria-expanded", String(open));
       navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
       mainNav.classList.toggle("is-open", open);
       document.body.classList.toggle("nav-open", open);
     }
 
-    function clearCloseTimer() {
-      if (!closeTimer) return;
-      window.clearTimeout(closeTimer);
-      closeTimer = null;
-    }
-
-    function scheduleClose() {
-      clearCloseTimer();
-      closeTimer = window.setTimeout(() => {
-        setMenuOpen(false);
-        closeTimer = null;
-      }, 200);
+    function closeMenu() {
+      setMenuOpen(false);
     }
 
     navToggle.addEventListener("click", (e) => {
       e.stopPropagation();
-      clearCloseTimer();
+      if (!isDrawerMode()) return;
       const open = navToggle.getAttribute("aria-expanded") !== "true";
       setMenuOpen(open);
     });
 
-    /* Desktop: hover en hamburguesa abre; salir del menú cierra */
-    navToggle.addEventListener("mouseenter", () => {
-      if (!canHoverNav()) return;
-      clearCloseTimer();
-      setMenuOpen(true);
-    });
-
-    navToggle.addEventListener("mouseleave", () => {
-      if (!canHoverNav()) return;
-      scheduleClose();
-    });
-
-    mainNav.addEventListener("mouseenter", () => {
-      if (!canHoverNav()) return;
-      clearCloseTimer();
-      setMenuOpen(true);
-    });
-
-    mainNav.addEventListener("mouseleave", () => {
-      if (!canHoverNav()) return;
-      scheduleClose();
-    });
-
-    /* Clic fuera del panel (backdrop / página) cierra el menú */
     document.addEventListener("click", (e) => {
       if (!document.body.classList.contains("nav-open")) return;
       if (mainNav.contains(e.target) || navToggle.contains(e.target)) return;
-      clearCloseTimer();
-      setMenuOpen(false);
+      closeMenu();
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && mainNav.classList.contains("is-open")) {
-        clearCloseTimer();
-        setMenuOpen(false);
-      }
+      if (e.key === "Escape" && mainNav.classList.contains("is-open")) closeMenu();
     });
 
     mainNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        clearCloseTimer();
-        setMenuOpen(false);
+        if (isDrawerMode()) closeMenu();
       });
     });
+
+    const onViewportChange = () => {
+      if (!isDrawerMode()) closeMenu();
+    };
+    if (typeof drawerMq.addEventListener === "function") {
+      drawerMq.addEventListener("change", onViewportChange);
+    } else if (typeof drawerMq.addListener === "function") {
+      drawerMq.addListener(onViewportChange);
+    }
   }
 
   function initHeaderScroll() {
@@ -219,6 +189,15 @@
     <a href="index.html" class="logo-link logo-link--compact" aria-label="YAAVS inicio">
       <img src="assets/yaavs-logo-white.png" alt="YAAVS" class="logo logo--sm logo--white" width="160" height="56">
     </a>
+    <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
+      <a href="index.html" data-page="inicio">Inicio</a>
+      <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
+      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas BAIT</a>
+      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
+      <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
+      <a href="avisos.html" data-page="avisos">Noticias Yaavs</a>
+      <a href="contacto.html" data-page="contacto">Contacto</a>
+    </nav>
     <div class="header-menu">
       <a class="header-wa" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_whatsapp">
         <span class="header-wa__icon" aria-hidden="true"></span>
@@ -229,15 +208,6 @@
         <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
       </button>
     </div>
-    <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
-      <a href="index.html" data-page="inicio">Inicio</a>
-      <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
-      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas BAIT</a>
-      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
-      <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
-      <a href="avisos.html" data-page="avisos">Noticias Yaavs</a>
-      <a href="contacto.html" data-page="contacto">Contacto</a>
-    </nav>
   </div>
 </header>`,
     "partials/footer.html": `<div class="site-floats" aria-hidden="true">
@@ -598,7 +568,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=22", headerMount),
+    loadPartial("partials/header.html?v=23", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
