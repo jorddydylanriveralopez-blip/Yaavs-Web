@@ -3973,6 +3973,22 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   z-index: 2;
 }
 
+/* Logo | menú centrado | WhatsApp */
+.site-header:has(.main-nav--bar) .header-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 22px);
+}
+
+.site-header:has(.main-nav--bar) .logo-link {
+  justify-self: start;
+}
+
+.site-header:has(.main-nav--bar) .header-menu {
+  justify-self: end;
+}
+
 .site-header .main-nav--bar {
   position: relative;
   z-index: 5;
@@ -3990,14 +4006,15 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   flex-direction: row !important;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: flex-end;
-  gap: clamp(10px, 1.4vw, 22px);
-  flex: 1 1 auto;
+  justify-content: center;
+  justify-self: center;
+  gap: clamp(12px, 1.6vw, 26px);
+  flex: 0 1 auto;
   width: auto !important;
-  max-width: none !important;
+  max-width: min(100%, 960px) !important;
   height: auto !important;
   min-width: 0;
-  margin: 0 12px;
+  margin: 0;
   padding: 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
@@ -4040,11 +4057,11 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   box-shadow: none !important;
   color: rgba(255, 255, 255, 0.92) !important;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
-  font-size: clamp(0.7rem, 0.85vw, 0.82rem) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
+  font-size: clamp(0.66rem, 0.78vw, 0.8rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
   line-height: 1.2 !important;
-  text-transform: none;
+  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
@@ -4141,6 +4158,16 @@ body.page-tiendas-map .site-header .main-nav--bar a.is-active {
 }
 
 @media (max-width: 900px) {
+  .site-header:has(.main-nav--bar) .header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    min-height: 56px;
+    gap: 8px;
+    padding-block: 8px;
+  }
+
   .site-header .logo-link {
     order: 1;
   }
@@ -4153,35 +4180,31 @@ body.page-tiendas-map .site-header .main-nav--bar a.is-active {
     order: 3;
     flex: 1 1 100%;
     width: 100% !important;
+    max-width: 100% !important;
     margin: 4px 0 0;
-    justify-content: flex-start;
-    gap: 14px;
+    justify-content: center;
+    justify-self: center;
+    gap: clamp(10px, 3vw, 16px);
   }
 
   .main-nav--bar a {
-    font-size: 0.72rem !important;
+    font-size: 0.64rem !important;
+    letter-spacing: 0.1em !important;
   }
 
   .site-header {
     --header-bar-h: auto;
   }
-
-  .site-header .header-inner {
-    flex-wrap: wrap;
-    height: auto;
-    min-height: 56px;
-    gap: 8px;
-    padding-block: 8px;
-  }
 }
 
 @media (min-width: 1400px) {
   .main-nav--bar {
-    gap: 24px;
+    gap: 28px;
   }
 
   .main-nav--bar a {
-    font-size: 0.86rem !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.15em !important;
   }
 }
 
