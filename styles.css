@@ -3990,6 +3990,15 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   opacity: 0;
 }
 
+.main-nav--bar .nav-full {
+  display: none !important;
+}
+
+.main-nav--bar .nav-short {
+  display: inline !important;
+}
+
+.site-header .header-inner:has(.main-nav--bar),
 .site-header--nav-bar .header-inner {
   position: relative;
   z-index: 2;
