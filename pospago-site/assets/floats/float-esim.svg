@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 72" fill="none" aria-hidden="true">
+  <rect x="8" y="10" width="80" height="52" rx="8" stroke="#00eeff" stroke-width="2" stroke-opacity="0.7"/>
+  <path d="M32 26 H64 M32 36 H56 M32 46 H48" stroke="#00eeff" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.45"/>
+  <text x="48" y="34" text-anchor="middle" fill="#00eeff" fill-opacity="0.8" font-family="Montserrat,Arial,sans-serif" font-size="11" font-weight="700">eSIM</text>
+</svg>

@@ -66,11 +66,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.yaavs.com.mx/postpago.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.yaavs.com.mx/aviso-privacidad.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>

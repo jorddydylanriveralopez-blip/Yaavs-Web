@@ -465,7 +465,7 @@
     if (!document.querySelector("script[data-yaavbot-main]")) {
       await new Promise((resolve) => {
         const main = document.createElement("script");
-        main.src = "js/yaavs-chatbot.js?v=6";
+        main.src = "js/yaavs-chatbot.js?v=7";
         main.dataset.yaavbotMain = "true";
         main.onload = resolve;
         main.onerror = resolve;

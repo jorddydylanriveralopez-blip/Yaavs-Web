@@ -19,7 +19,7 @@ QUIÉN ES YAAVS
 MAPA DEL SITIO (guía a personas perdidas — usa estos links relativos)
 - Inicio: index.html
 - ¿Quiénes somos?: quienes-somos.html
-- Servicios: servicios.html · Prepago: prepago.html · Postpago: postpago.html
+- Servicios: servicios.html · Prepago: prepago.html · Postpago (sitio aparte): https://pospago-yaavs-site.hostingersite.com/
 - Activar chip: activar-chip.html
 - Recargar tiempo aire: recargar.html
 - Ser socio comercial / Yaavser: ser-yaavser.html

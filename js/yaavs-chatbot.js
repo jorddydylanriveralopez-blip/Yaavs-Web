@@ -31,7 +31,7 @@
     "quienes-somos.html": "¿Quiénes somos?",
     "servicios.html": "Ver servicios",
     "prepago.html": "Ver prepago",
-    "postpago.html": "Ver postpago",
+    "postpago.html": "Ver pospago (sitio aparte)",
     "activar-chip.html": "Activar chip",
     "recargar.html": "Recargar tiempo aire",
     "ser-yaavser.html": "Ser socio comercial",
@@ -224,10 +224,10 @@
       return "Para activar un chip / SIM: [Activar chip](activar-chip.html). YAAVS es líder distribuidor de SIMs en México (multi-operador).";
     }
     if (/telcel|movistar|at&t|unefon|bait|operador|compañ/.test(q)) {
-      return "Trabajamos multi-operador (Telcel, AT&T, Movistar, Unefon, BAIT y más). Mira el panorama en [Servicios](servicios.html), o ve a [Prepago](prepago.html) / [Postpago](postpago.html).";
+      return "Trabajamos multi-operador (Telcel, AT&T, Movistar, Unefon, BAIT y más). Mira el panorama en [Servicios](servicios.html), o ve a [Prepago](prepago.html) / [Pospago](https://pospago-yaavs-site.hostingersite.com/).";
     }
     if (/portabilidad|porta/.test(q)) {
-      return "Sí hacemos portabilidad. Revisa [Servicios](servicios.html) o [Postpago](postpago.html), o escríbenos por [WhatsApp](https://wa.me/525522331210).";
+      return "Sí hacemos portabilidad. Revisa [Servicios](servicios.html) o [Pospago](https://pospago-yaavs-site.hostingersite.com/), o escríbenos por [WhatsApp](https://wa.me/525522331210).";
     }
     if (/qui[eé]nes|somos|empresa|historia/.test(q)) {
       return "Somos líder distribuidor de SIMs en México, con conectividad a +16,000 negocios. Conócenos aquí: [Quiénes somos](quienes-somos.html).";
