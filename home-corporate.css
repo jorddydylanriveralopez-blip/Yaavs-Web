@@ -32,7 +32,29 @@ body.page-home {
     box-shadow 0.35s var(--ease);
 }
 
-.page-home .site-header::before {
+.page-home .site-header:has(.main-nav--bar)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 12, 24, 0.84) 0%,
+    rgba(5, 12, 24, 0.52) 72%,
+    transparent 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  animation: none;
+  transition: opacity 0.35s var(--ease);
+}
+
+.page-home .site-header:has(.main-nav--bar).is-scrolled::before {
+  opacity: 0;
+}
+
+.page-home .site-header:not(:has(.main-nav--bar))::before {
   content: none;
   display: none;
   animation: none;
@@ -64,10 +86,9 @@ body.page-home {
 }
 
 .page-home .site-header .logo-link,
-.page-home .site-header .header-menu,
-.page-home .site-header .main-nav--bar {
+.page-home .site-header .header-menu {
   position: relative;
-  z-index: 5;
+  z-index: 6;
 }
 
 .page-home .site-header .logo:not(.logo--on-light):not(.logo--white) {

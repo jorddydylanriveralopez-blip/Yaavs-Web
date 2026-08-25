@@ -190,13 +190,13 @@
       <img src="assets/yaavs-logo-white.png" alt="YAAVS" class="logo logo--sm logo--white" width="160" height="56">
     </a>
     <nav class="main-nav main-nav--bar" id="main-nav" aria-label="Principal">
-      <a href="index.html" data-page="inicio">Inicio</a>
-      <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
-      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas BAIT</a>
-      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete a nuestro equipo</a>
-      <a href="index.html#testimonios-home" data-page="testimonios">Clientes satisfechos</a>
-      <a href="avisos.html" data-page="avisos">Noticias Yaavs</a>
-      <a href="contacto.html" data-page="contacto">Contacto</a>
+      <a href="index.html" data-page="inicio"><span class="nav-full">Inicio</span><span class="nav-short">Inicio</span></a>
+      <a href="quienes-somos.html" data-page="quienes-somos"><span class="nav-full">¿Quiénes somos?</span><span class="nav-short">Nosotros</span></a>
+      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas"><span class="nav-full">Tiendas BAIT</span><span class="nav-short">BAIT</span></a>
+      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo"><span class="nav-full">Únete a nuestro equipo</span><span class="nav-short">Únete</span></a>
+      <a href="index.html#testimonios-home" data-page="testimonios"><span class="nav-full">Clientes satisfechos</span><span class="nav-short">Clientes</span></a>
+      <a href="avisos.html" data-page="avisos"><span class="nav-full">Noticias Yaavs</span><span class="nav-short">Noticias</span></a>
+      <a href="contacto.html" data-page="contacto"><span class="nav-full">Contacto</span><span class="nav-short">Contacto</span></a>
     </nav>
     <div class="header-menu">
       <a class="header-wa" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_whatsapp">
@@ -576,7 +576,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=25", headerMount),
+    loadPartial("partials/header.html?v=26", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
