@@ -4171,6 +4171,14 @@ body.page-tiendas-map .site-header.is-scrolled .main-nav--bar a {
     gap: 8px;
   }
 
+  .site-header .logo-link {
+    order: 1;
+  }
+
+  .site-header .header-menu {
+    order: 2;
+  }
+
   .main-nav--bar {
     order: 3;
     flex: 1 1 100%;
