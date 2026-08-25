@@ -1314,7 +1314,7 @@ a:hover { opacity: 0.65; }
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1200;
   isolation: isolate;
   padding-top: var(--safe-top);
   background: transparent;
@@ -3969,6 +3969,15 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   display: none !important;
 }
 
+.site-header .header-inner {
+  z-index: 2;
+}
+
+.site-header .main-nav--bar {
+  position: relative;
+  z-index: 5;
+}
+
 .main-nav--bar {
   position: relative !important;
   inset: auto !important;
@@ -3976,7 +3985,7 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   right: auto !important;
   bottom: auto !important;
   left: auto !important;
-  z-index: 2;
+  z-index: 5;
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: nowrap;
@@ -6680,7 +6689,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 #site-header {
   position: relative;
-  z-index: 1100;
+  z-index: 1200;
   pointer-events: none;
 }
 

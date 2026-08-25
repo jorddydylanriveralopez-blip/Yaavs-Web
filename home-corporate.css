@@ -64,9 +64,10 @@ body.page-home {
 }
 
 .page-home .site-header .logo-link,
-.page-home .site-header .header-menu {
+.page-home .site-header .header-menu,
+.page-home .site-header .main-nav--bar {
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 .page-home .site-header .logo:not(.logo--on-light):not(.logo--white) {

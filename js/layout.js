@@ -350,11 +350,19 @@
     }
   }
 
-  function mountNavOverlay() {
+  /** Mantener el menú dentro del header (ya no va como overlay en body). */
+  function ensureNavInHeader() {
     const mainNav = document.getElementById("main-nav");
-    if (!mainNav || mainNav.dataset.mounted === "true") return;
-    document.body.appendChild(mainNav);
-    mainNav.dataset.mounted = "true";
+    const headerInner = document.querySelector(".site-header .header-inner");
+    const headerMenu = document.querySelector(".site-header .header-menu");
+    if (!mainNav || !headerInner) return;
+    if (headerInner.contains(mainNav)) return;
+    if (headerMenu && headerMenu.parentElement === headerInner) {
+      headerInner.insertBefore(mainNav, headerMenu);
+    } else {
+      headerInner.appendChild(mainNav);
+    }
+    delete mainNav.dataset.mounted;
   }
 
   function revealFloatingDock() {
@@ -574,7 +582,7 @@
     loadPartial("partials/page-cta.html?v=5", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
-    mountNavOverlay();
+    ensureNavInHeader();
     setActiveNav();
     initHeaderLogo();
     initNavToggle();
