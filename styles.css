@@ -3963,136 +3963,264 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   -webkit-text-fill-color: #0f2440;
 }
 
-/* Desktop: menú horizontal normal (sin hamburguesa) */
+/* ─── Header barra multiplataforma (links siempre visibles) ─── */
+.site-header .nav-bento[hidden] {
+  display: none !important;
+}
+
+.main-nav--bar {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 2;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  flex: 1 1 auto;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  min-width: 0;
+  margin: 0 8px;
+  padding: 4px !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: rgba(8, 18, 36, 0.55) !important;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  transform: none !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.main-nav--bar::-webkit-scrollbar {
+  display: none;
+}
+
+.main-nav--bar::before,
+.main-nav--bar::after {
+  content: none !important;
+  display: none !important;
+}
+
+.main-nav--bar .nav-short {
+  display: none;
+}
+
+.main-nav--bar .nav-full {
+  display: inline;
+}
+
+.main-nav--bar a {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  min-height: 36px;
+  padding: 8px 12px !important;
+  border: 0 !important;
+  border-radius: 999px;
+  border-bottom: none !important;
+  background: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.15 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  text-shadow: none !important;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.main-nav--bar a::before {
+  content: none !important;
+  display: none !important;
+}
+
+.main-nav--bar a:hover,
+.main-nav--bar a:focus-visible {
+  padding-left: 12px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #7ef0ff !important;
+  -webkit-text-fill-color: #7ef0ff !important;
+  outline: none;
+}
+
+.main-nav--bar a.is-active,
+.main-nav--bar a.main-nav__cta {
+  background: linear-gradient(135deg, #00d4ee 0%, #00bcd4 48%, #0097b2 100%) !important;
+  color: #041828 !important;
+  -webkit-text-fill-color: #041828 !important;
+  box-shadow: 0 6px 16px rgba(0, 188, 212, 0.35);
+}
+
+.main-nav--bar a.main-nav__cta:hover,
+.main-nav--bar a.main-nav__cta:focus-visible,
+.main-nav--bar a.is-active:hover {
+  background: linear-gradient(135deg, #5ce8f7 0%, #00d4ee 55%, #00bcd4 100%) !important;
+  color: #041828 !important;
+  -webkit-text-fill-color: #041828 !important;
+  transform: translateY(-1px);
+}
+
+.site-header.is-scrolled .main-nav--bar {
+  border-color: rgba(0, 151, 178, 0.22) !important;
+  background: rgba(245, 252, 254, 0.92) !important;
+  box-shadow: 0 4px 14px rgba(15, 36, 64, 0.08) !important;
+}
+
+.site-header.is-scrolled .main-nav--bar a {
+  color: #0f2440 !important;
+  -webkit-text-fill-color: #0f2440 !important;
+}
+
+.site-header.is-scrolled .main-nav--bar a:hover,
+.site-header.is-scrolled .main-nav--bar a:focus-visible {
+  background: rgba(0, 188, 212, 0.12) !important;
+  color: #0097b2 !important;
+  -webkit-text-fill-color: #0097b2 !important;
+}
+
+.site-header.is-scrolled .main-nav--bar a.is-active,
+.site-header.is-scrolled .main-nav--bar a.main-nav__cta {
+  background: linear-gradient(135deg, #00d4ee 0%, #00bcd4 48%, #0097b2 100%) !important;
+  color: #041828 !important;
+  -webkit-text-fill-color: #041828 !important;
+}
+
+.page-home .site-header.is-scrolled .main-nav--bar {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  background: rgba(8, 18, 36, 0.72) !important;
+}
+
+.page-home .site-header.is-scrolled .main-nav--bar a {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.page-home .site-header.is-scrolled .main-nav--bar a:hover,
+.page-home .site-header.is-scrolled .main-nav--bar a:focus-visible {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #7ef0ff !important;
+  -webkit-text-fill-color: #7ef0ff !important;
+}
+
+.page-home .site-header.is-scrolled .main-nav--bar a.is-active,
+.page-home .site-header.is-scrolled .main-nav--bar a.main-nav__cta {
+  background: linear-gradient(135deg, #00d4ee 0%, #00bcd4 48%, #0097b2 100%) !important;
+  color: #041828 !important;
+  -webkit-text-fill-color: #041828 !important;
+}
+
+body.page-postpago .site-header .main-nav--bar,
+body.page-tiendas-map .site-header .main-nav--bar {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  background: rgba(8, 18, 36, 0.62) !important;
+}
+
+body.page-postpago .site-header .main-nav--bar a,
+body.page-tiendas-map .site-header .main-nav--bar a,
+body.page-postpago .site-header.is-scrolled .main-nav--bar a,
+body.page-tiendas-map .site-header.is-scrolled .main-nav--bar a {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+@media (max-width: 1180px) {
+  .main-nav--bar .nav-full {
+    display: none;
+  }
+
+  .main-nav--bar .nav-short {
+    display: inline;
+  }
+
+  .main-nav--bar a {
+    min-height: 34px;
+    padding: 7px 11px !important;
+    font-size: 0.68rem !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    gap: 8px;
+  }
+
+  .main-nav--bar {
+    order: 3;
+    flex: 1 1 100%;
+    width: 100% !important;
+    margin: 2px 0 0;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 5px !important;
+  }
+
+  .main-nav--bar a {
+    min-height: 40px;
+    padding: 8px 14px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .site-header {
+    --header-bar-h: auto;
+  }
+
+  .site-header .header-inner {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 56px;
+    padding-block: 8px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .main-nav--bar {
+    gap: 6px;
+    padding: 5px !important;
+  }
+
+  .main-nav--bar a {
+    min-height: 40px;
+    padding: 9px 16px !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.05em !important;
+  }
+}
+
+/* Legacy overlay desktop overrides (si queda cache viejo) */
 @media (min-width: 901px) {
   .nav-bento {
     display: none !important;
   }
 
-  .header-menu {
-    min-width: 0;
-    margin-left: 0;
-  }
-
-  .header-inner {
-    gap: 10px;
-  }
-
-  .main-nav--overlay {
-    position: static;
-    inset: auto;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    width: auto;
-    max-width: none;
-    height: auto;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: clamp(8px, 1.05vw, 18px);
-    padding: 0 10px 0 12px;
-    margin: 0;
-    overflow: visible;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    transform: none !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-
-  .main-nav--overlay::before,
-  .main-nav--overlay::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  .main-nav--overlay a {
-    width: auto;
-    padding: 6px 0;
-    border-bottom: none !important;
-    background: none !important;
-    font-size: clamp(0.58rem, 0.72vw, 0.7rem);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    line-height: 1.2;
-    white-space: nowrap;
-    color: rgba(255, 255, 255, 0.9) !important;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
-    transition: color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .main-nav--overlay a::before {
-    content: none !important;
-    display: none !important;
-  }
-
-  .main-nav--overlay a:hover,
-  .main-nav--overlay a.is-active {
-    padding-left: 0;
-    color: #5ce8f7 !important;
-    -webkit-text-fill-color: #5ce8f7 !important;
-    background: none !important;
-    border-bottom: none !important;
-  }
-
-  .site-header.is-scrolled .main-nav--overlay a {
-    color: #0f2440 !important;
-    -webkit-text-fill-color: #0f2440 !important;
-    text-shadow: none;
-  }
-
-  .site-header.is-scrolled .main-nav--overlay a:hover,
-  .site-header.is-scrolled .main-nav--overlay a.is-active {
-    color: #0097b2 !important;
-    -webkit-text-fill-color: #0097b2 !important;
-  }
-
-  .page-home .site-header.is-scrolled .main-nav--overlay a {
-    color: rgba(255, 255, 255, 0.9) !important;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
-  }
-
-  .page-home .site-header.is-scrolled .main-nav--overlay a:hover,
-  .page-home .site-header.is-scrolled .main-nav--overlay a.is-active {
-    color: #5ce8f7 !important;
-    -webkit-text-fill-color: #5ce8f7 !important;
-  }
-
-  body.page-postpago .site-header.is-scrolled .main-nav--overlay a,
-  body.page-tiendas-map .site-header.is-scrolled .main-nav--overlay a {
-    color: rgba(255, 255, 255, 0.9) !important;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
-  }
-
-  body.page-postpago .site-header.is-scrolled .main-nav--overlay a:hover,
-  body.page-postpago .site-header.is-scrolled .main-nav--overlay a.is-active,
-  body.page-tiendas-map .site-header.is-scrolled .main-nav--overlay a:hover,
-  body.page-tiendas-map .site-header.is-scrolled .main-nav--overlay a.is-active {
-    color: #5ce8f7 !important;
-    -webkit-text-fill-color: #5ce8f7 !important;
-  }
-
   body.nav-open::before {
     display: none !important;
-  }
-}
-
-@media (min-width: 901px) and (max-width: 1180px) {
-  .main-nav--overlay {
-    gap: clamp(6px, 0.9vw, 12px);
-  }
-
-  .main-nav--overlay a {
-    font-size: 0.56rem;
-    letter-spacing: 0.04em;
   }
 }
 
