@@ -184,7 +184,7 @@
   }
 
   const FALLBACK_PARTIALS = {
-    "partials/header.html": `<header class="site-header" id="header">
+    "partials/header.html": `<header class="site-header site-header--nav-bar" id="header">
   <div class="header-inner">
     <a href="index.html" class="logo-link logo-link--compact" aria-label="YAAVS inicio">
       <img src="assets/yaavs-logo-white.png" alt="YAAVS" class="logo logo--sm logo--white" width="160" height="56">
@@ -576,7 +576,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=26", headerMount),
+    loadPartial("partials/header.html?v=27", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
