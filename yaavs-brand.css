@@ -114,10 +114,22 @@ body::after,
 }
 
 .page-intro,
-.home-tech-backdrop,
-.site-header::before,
-.site-header--nav-bar::before {
+.home-tech-backdrop {
   background-color: var(--yaavs-deep) !important;
+}
+
+/* Header: nunca capas oscuras detrás del blanco */
+.site-header::before,
+.site-header::after,
+.site-header--nav-bar::before,
+.site-header--nav-bar::after,
+.site-header .header-inner::before,
+.site-header .header-inner::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  opacity: 0 !important;
 }
 
 .hero-banner__shade,
@@ -139,13 +151,18 @@ body::after,
   box-shadow: none !important;
 }
 
-/* ─── Header cristal limpio ─── */
-.site-header,
-.site-header.is-scrolled {
-  background: var(--yaavs-deep) !important;
+/* ─── Header blanco desde el primer paint ─── */
+html body .site-header,
+html body .site-header.is-scrolled,
+html body.page-home .site-header,
+html body.page-home .site-header.is-scrolled,
+html body .site-header.site-header--nav-bar,
+html body .site-header.site-header--corp {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   background-image: none !important;
-  border-bottom: 1px solid rgba(1, 37, 143, 0.85) !important;
-  box-shadow: none !important;
+  border-bottom: 3px solid #01258f !important;
+  box-shadow: 0 8px 28px rgba(1, 17, 66, 0.12) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -155,8 +172,8 @@ body::after,
 .site-header.is-scrolled .main-nav--bar a,
 .page-home .site-header.is-scrolled .main-nav--bar a,
 .main-nav--overlay a {
-  color: var(--yaavs-ink-soft) !important;
-  -webkit-text-fill-color: var(--yaavs-ink-soft) !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   background: transparent !important;
   background-image: none !important;
   text-shadow: none !important;
@@ -168,15 +185,17 @@ body::after,
 .site-header .main-nav--bar a:focus-visible,
 .site-header.is-scrolled .main-nav--bar a:hover,
 .main-nav--overlay a:hover {
-  color: var(--yaavs-ink) !important;
-  -webkit-text-fill-color: var(--yaavs-ink) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #01258f !important;
 }
 
 .site-header .main-nav--bar a.is-active,
 .site-header.is-scrolled .main-nav--bar a.is-active,
 .main-nav--overlay a.is-active {
-  color: var(--yaavs-ink) !important;
-  -webkit-text-fill-color: var(--yaavs-ink) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #011142 !important;
 }
 
 .site-header .main-nav--bar a.is-active::after {
@@ -745,5 +764,104 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   .site-header--corp .nav-bento[hidden] {
     display: none !important;
   }
+}
+
+/* ═══════════════════════════════════════════
+   OVERRIDE FINAL — header blanco + azules YAAVS
+   Gana contra home-corporate / styles / theme
+   ═══════════════════════════════════════════ */
+html body .site-header,
+html body .site-header.is-scrolled,
+html body.page-home .site-header,
+html body.page-home .site-header.is-scrolled,
+html body .site-header.site-header--nav-bar,
+html body .site-header.site-header--corp,
+html body.page-home .site-header.site-header--corp,
+html body.page-home .site-header.site-header--nav-bar {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-bottom: 3px solid #01258f !important;
+  box-shadow: 0 10px 32px rgba(1, 17, 66, 0.14) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body .site-header::before,
+html body .site-header::after,
+html body .site-header--nav-bar::before,
+html body .site-header--nav-bar::after,
+html body.page-home .site-header::before,
+html body.page-home .site-header::after,
+html body.page-home .site-header--nav-bar::before,
+html body.page-home .site-header--nav-bar::after,
+html body .site-header .header-inner::before,
+html body.page-home .site-header .header-inner::before {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .site-header .main-nav a,
+html body .site-header .main-nav--bar a,
+html body .site-header .main-nav--corp a,
+html body.page-home .site-header .main-nav a,
+html body.page-home .site-header .main-nav--bar a,
+html body.page-home .site-header .main-nav--corp a {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+html body .site-header .main-nav a:hover,
+html body .site-header .main-nav--bar a:hover,
+html body .site-header .main-nav--corp a:hover,
+html body.page-home .site-header .main-nav a:hover,
+html body.page-home .site-header .main-nav--corp a:hover {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #01258f !important;
+}
+
+html body .site-header .main-nav a.is-active,
+html body .site-header .main-nav--corp a.is-active,
+html body.page-home .site-header .main-nav a.is-active,
+html body.page-home .site-header .main-nav--corp a.is-active {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #011142 !important;
+}
+
+html body .site-header .header-cta,
+html body.page-home .site-header .header-cta {
+  background: #01258f !important;
+  background-image: none !important;
+  border: 1px solid #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(1, 37, 143, 0.28) !important;
+}
+
+html body .site-header .header-cta:hover,
+html body.page-home .site-header .header-cta:hover {
+  background: #011142 !important;
+  border-color: #011142 !important;
+  color: #ffffff !important;
+}
+
+html body .site-header .logo,
+html body .site-header .logo.logo--white,
+html body .site-header .logo.logo--on-light,
+html body.page-home .site-header .logo,
+html body.page-home .site-header .logo.logo--white,
+html body.page-home .site-header .logo.logo--on-light {
+  filter: none !important;
+  opacity: 1 !important;
 }
 

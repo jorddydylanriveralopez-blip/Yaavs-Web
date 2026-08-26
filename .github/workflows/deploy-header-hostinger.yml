@@ -65,6 +65,7 @@ jobs:
           }
 
           upload_one yaavs-brand.css yaavs-brand.css
+          upload_one home-corporate.css home-corporate.css
           upload_one js/layout.js js/layout.js
           upload_one partials/header.html partials/header.html
           upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png
