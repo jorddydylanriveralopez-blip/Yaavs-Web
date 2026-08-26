@@ -1078,8 +1078,20 @@ html body.page-home .site-header .logo.logo--on-light {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+    background: #011142 !important;
+    border: 2px solid #011142 !important;
+    box-shadow: 0 6px 16px rgba(1, 17, 66, 0.22) !important;
+  }
+
+  html body .site-header .nav-bento .bento-dot,
+  html body .site-header .bento-dot,
+  html body.page-home .site-header .bento-dot,
+  html body .site-header.is-scrolled .bento-dot,
+  html body.page-home .site-header.is-scrolled .bento-dot,
+  html body.nav-open .site-header .nav-bento .bento-dot,
+  html body.page-home.nav-open .nav-bento .bento-dot,
+  .site-header--corp .bento-dot {
     background: #ffffff !important;
-    border: 1.5px solid #01258f !important;
   }
 
   html body .site-header .main-nav.main-nav--corp,
@@ -1538,11 +1550,20 @@ html body.page-home section#servicios-preview {
 html body.page-home .hx-svc-deck-layout {
   display: grid !important;
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  gap: clamp(12px, 1.4vw, 18px) !important;
+  gap: clamp(12px, 1.4vw, 20px) !important;
   width: 100% !important;
-  max-width: 1180px !important;
-  margin: 0 auto !important;
+  max-width: none !important;
+  margin: 0 !important;
   align-items: stretch !important;
+}
+
+html body.page-home .hx-svc-deck-wrap,
+html body.page-home .hx-services .hx-svc-deck-wrap,
+html body.page-home .hx-services--deck-square .hx-svc-deck-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 clamp(16px, 2.2vw, 36px) !important;
+  box-sizing: border-box !important;
 }
 
 html body.page-home .hx-svc-deck,
