@@ -1559,7 +1559,7 @@ html body.page-home #servicios-preview > .hx-services__photo {
   background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  filter: saturate(0.18) brightness(0.28) contrast(1.08);
+  filter: saturate(0.22) brightness(0.4) contrast(1.1);
   opacity: 1 !important;
 }
 
@@ -1570,9 +1570,9 @@ html body.page-home #servicios-preview > .hx-services__photo::after {
   inset: 0 !important;
   background: linear-gradient(
     180deg,
-    rgba(1, 17, 66, 0.86) 0%,
-    rgba(1, 17, 66, 0.9) 42%,
-    rgba(1, 17, 66, 0.94) 100%
+    rgba(1, 17, 66, 0.78) 0%,
+    rgba(1, 17, 66, 0.84) 48%,
+    rgba(1, 17, 66, 0.9) 100%
   ) !important;
 }
 
