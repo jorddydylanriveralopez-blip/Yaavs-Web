@@ -184,22 +184,24 @@
   }
 
   const FALLBACK_PARTIALS = {
-    "partials/header.html": `<header class="site-header site-header--nav-bar" id="header">
-  <div class="header-inner">
-    <a href="index.html" class="logo-link logo-link--compact" aria-label="YAAVS inicio">
-      <img src="assets/yaavs-logo-white.png" alt="YAAVS" class="logo logo--sm logo--white" width="160" height="56">
+    "partials/header.html": `<header class="site-header site-header--nav-bar site-header--corp" id="header">
+  <div class="header-inner header-inner--corp">
+    <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
+      <img src="assets/yaavs-logo-white.png?v=2" alt="YAAVS" class="logo logo--corp logo--white" width="180" height="64">
+      <span class="logo-link__tag">Telecom México</span>
     </a>
-    <nav class="main-nav main-nav--bar" id="main-nav" aria-label="Principal">
+    <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
       <a href="quienes-somos.html" data-page="quienes-somos">Nosotros</a>
-      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">BAIT</a>
+      <a href="servicios.html" data-page="servicios">Servicios</a>
+      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas</a>
       <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete</a>
-      <a href="index.html#testimonios-home" data-page="testimonios">Clientes</a>
       <a href="avisos.html" data-page="avisos">Noticias</a>
       <a href="contacto.html" data-page="contacto">Contacto</a>
     </nav>
-    <div class="header-menu">
-      <a class="header-wa" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_whatsapp">
+    <div class="header-menu header-menu--corp">
+      <a class="header-cta" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_cta">Cotizar ahora</a>
+      <a class="header-wa" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp YAAVS" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_whatsapp">
         <span class="header-wa__icon" aria-hidden="true"></span>
       </a>
       <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú" hidden>
@@ -350,12 +352,18 @@
     }
   }
 
-  /** Activa layout del header con menú en barra (también si el partial cacheado es viejo). */
+  /** Activa layout del header corporativo (también si el partial cacheado es viejo). */
   function ensureHeaderNavBar() {
     const header = document.querySelector(".site-header");
     const mainNav = document.getElementById("main-nav");
-    if (!header || !mainNav?.classList.contains("main-nav--bar")) return;
-    header.classList.add("site-header--nav-bar");
+    if (!header) return;
+    header.classList.add("site-header--nav-bar", "site-header--corp");
+    if (mainNav) {
+      mainNav.classList.add("main-nav--bar", "main-nav--corp");
+      document.querySelector(".header-inner")?.classList.add("header-inner--corp");
+      document.querySelector(".header-menu")?.classList.add("header-menu--corp");
+      document.querySelector(".logo-link")?.classList.add("logo-link--corp");
+    }
   }
 
   /** Mantener el menú dentro del header (ya no va como overlay en body). */
@@ -584,7 +592,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=28", headerMount),
+    loadPartial("partials/header.html?v=29", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
