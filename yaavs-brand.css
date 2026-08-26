@@ -1752,7 +1752,7 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
   }
 }
 
-/* ─── Clientes satisfechos: franja clara + red telecom ─── */
+/* ─── Clientes satisfechos: mismo bloque, fondo imagen telecom (no blanco) ─── */
 html body.page-home #testimonios-home.tx-gallery--home,
 html body.page-home.hx-band--dark #testimonios-home.tx-gallery--home,
 html body.page-home[data-yaavs-theme="day"] #testimonios-home.tx-gallery--home,
@@ -1760,10 +1760,10 @@ html body.page-home[data-yaavs-theme="day"] #testimonios-home.tx-gallery--home,
   position: relative !important;
   isolation: isolate;
   overflow: hidden !important;
-  background: #f3f6fb !important;
-  background-color: #f3f6fb !important;
+  background: #050910 !important;
+  background-color: #050910 !important;
   background-image: none !important;
-  border-block: 1px solid rgba(1, 37, 143, 0.08) !important;
+  border-block: none !important;
 }
 
 html body.page-home #testimonios-home::before,
@@ -1785,23 +1785,25 @@ html body.page-home #testimonios-home .tx-clients__scene {
 
 html body.page-home #testimonios-home .tx-clients__scene-img {
   position: absolute;
-  inset: -8%;
-  width: 116%;
-  height: 116%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.48;
-  filter: brightness(2.15) saturate(1.2) contrast(1.12);
-  animation: yaavs-tx-drift 28s ease-in-out infinite alternate;
+  opacity: 1;
+  filter: none;
 }
 
 html body.page-home #testimonios-home .tx-clients__scene::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(243, 246, 251, 0.55) 0%, rgba(243, 246, 251, 0.38) 46%, rgba(243, 246, 251, 0.7) 100%),
-    radial-gradient(ellipse 55% 50% at 50% 40%, rgba(0, 194, 203, 0.1), transparent 70%);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 9, 16, 0.42) 0%,
+    rgba(5, 9, 16, 0.22) 42%,
+    rgba(5, 9, 16, 0.48) 100%
+  );
 }
 
 html body.page-home #testimonios-home > *:not(.tx-clients__scene) {
@@ -1812,117 +1814,31 @@ html body.page-home #testimonios-home > *:not(.tx-clients__scene) {
 html body.page-home #testimonios-home .tx-gallery__title-line,
 html body.page-home #testimonios-home .tx-gallery__title-main,
 html body.page-home.hx-band--dark #testimonios-home .tx-gallery__title-main,
-html body.page-home #testimonios-home h2 {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
-  background: none !important;
-  background-image: none !important;
-  text-shadow: none !important;
-  white-space: normal !important;
-  flex-wrap: wrap;
-}
-
+html body.page-home #testimonios-home h2,
 html body.page-home #testimonios-home .tx-gallery__title-accent,
 html body.page-home #testimonios-home .hx-testimonials__accent {
-  color: #00a8b3 !important;
-  -webkit-text-fill-color: #00a8b3 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   background: none !important;
   background-image: none !important;
   -webkit-background-clip: border-box !important;
   background-clip: border-box !important;
   filter: none !important;
-  animation: yaavs-tx-pop 2.8s ease-in-out infinite;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
 }
 
-html body.page-home #testimonios-home .tx-clients__card {
-  box-shadow:
-    0 16px 36px rgba(1, 17, 66, 0.16),
-    0 0 0 3px rgba(255, 255, 255, 0.9);
-  animation: yaavs-tx-float 5.6s ease-in-out infinite;
+html body.page-home #testimonios-home .tx-gallery__title-line {
+  white-space: nowrap;
 }
 
-html body.page-home #testimonios-home .tx-clients__card:nth-child(2n) {
-  animation-delay: -1.6s;
-}
-
-html body.page-home #testimonios-home .tx-clients__card:nth-child(3n) {
-  animation-delay: -3.1s;
-}
-
-html body.page-home #testimonios-home .tx-clients__feature .tx-gallery__feature-video-frame {
-  animation: yaavs-tx-glow 3.4s ease-in-out infinite;
-}
-
-html body.page-home #testimonios-home .tx-clients__nav {
-  animation: yaavs-tx-nudge 2.4s ease-in-out infinite;
-}
-
-html body.page-home #testimonios-home .tx-clients__nav--next {
-  animation-delay: 1.2s;
-}
-
-html body.page-home #testimonios-home .tx-gallery__gana {
-  animation: yaavs-tx-cta 3.2s ease-in-out infinite;
-}
-
-@keyframes yaavs-tx-drift {
-  from { transform: scale(1.04) translate3d(-1.4%, 0.6%, 0); }
-  to { transform: scale(1.1) translate3d(1.6%, -0.8%, 0); }
-}
-
-@keyframes yaavs-tx-pop {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-@keyframes yaavs-tx-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
-}
-
-@keyframes yaavs-tx-glow {
-  0%, 100% {
-    box-shadow:
-      0 28px 64px rgba(8, 20, 38, 0.28),
-      0 0 0 3px rgba(255, 255, 255, 0.92),
-      0 0 0 5px rgba(1, 37, 143, 0.28),
-      0 0 36px rgba(0, 194, 203, 0.18);
-  }
-  50% {
-    box-shadow:
-      0 32px 70px rgba(8, 20, 38, 0.32),
-      0 0 0 3px rgba(255, 255, 255, 0.96),
-      0 0 0 6px rgba(0, 168, 179, 0.38),
-      0 0 52px rgba(0, 194, 203, 0.32);
-  }
-}
-
-@keyframes yaavs-tx-nudge {
-  0%, 100% { transform: translateY(-50%); }
-  50% { transform: translateY(calc(-50% - 4px)); }
-}
-
-@keyframes yaavs-tx-cta {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@media (max-width: 700px) {
-  html body.page-home #testimonios-home .tx-clients__scene-img {
-    opacity: 0.34;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
+@media (max-width: 900px) {
   html body.page-home #testimonios-home .tx-gallery__title-line {
-    font-size: clamp(1.2rem, 7vw, 1.85rem) !important;
+    white-space: normal !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: clamp(1.2rem, 6.4vw, 2.2rem) !important;
     letter-spacing: 0.06em;
     gap: 0.18em;
-  }
-
-  html body.page-home #testimonios-home .tx-clients__card {
-    animation: none;
   }
 }
 
@@ -1931,31 +1847,6 @@ html body.page-home #testimonios-home .tx-gallery__gana {
   html body.page-home #testimonios-home .tx-gallery__more {
     width: min(1240px, 100%);
     margin-inline: auto;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  html body.page-home #testimonios-home .tx-clients__nav:hover,
-  html body.page-home #testimonios-home .tx-clients__nav:focus-visible {
-    animation: none;
-    transform: translateY(-50%) scale(1.08);
-  }
-
-  html body.page-home #testimonios-home .tx-gallery__gana:hover,
-  html body.page-home #testimonios-home .tx-gallery__gana:focus-visible {
-    animation: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html body.page-home #testimonios-home .tx-clients__scene-img,
-  html body.page-home #testimonios-home .tx-gallery__title-accent,
-  html body.page-home #testimonios-home .hx-testimonials__accent,
-  html body.page-home #testimonios-home .tx-clients__card,
-  html body.page-home #testimonios-home .tx-clients__feature .tx-gallery__feature-video-frame,
-  html body.page-home #testimonios-home .tx-clients__nav,
-  html body.page-home #testimonios-home .tx-gallery__gana {
-    animation: none !important;
   }
 }
 
