@@ -21,7 +21,6 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"username\":\"${USERNAME}\",\"domain\":\"${DOMAIN}\"}")
           echo "creds keys: $(echo "$CREDS" | jq -r 'keys|join(",")')"
-          echo "$CREDS" | jq -c 'del(..|strings|select(length>40))' || echo "$CREDS" | head -c 300
           URL=$(echo "$CREDS" | jq -r '.url // .data.url // empty')
           AUTH=$(echo "$CREDS" | jq -r '.auth_key // .data.auth_key // empty')
           REST=$(echo "$CREDS" | jq -r '.rest_auth_key // .data.rest_auth_key // empty')
@@ -74,7 +73,7 @@ jobs:
             upload_one "$f" "$f"
           done
 
-          # Clear cache (try known endpoints; ignore failures)
-          curl -sS -X POST "https://developers.hostinger.com/api/hosting/v1/domains/${DOMAIN}/cache/clear" \
+          curl -sS -X POST \
+            "https://developers.hostinger.com/api/hosting/v1/accounts/${USERNAME}/websites/${DOMAIN}/cache" \
             -H "Authorization: Bearer ${HOSTINGER_API_TOKEN}" || true
           echo DONE
