@@ -1,7 +1,7 @@
 /* OneSignal v16 Service Worker + YAAVS PWA cache */
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
 
-const CACHE_VERSION = "yaavs-pwa-v6";
+const CACHE_VERSION = "yaavs-pwa-v7";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -13,16 +13,16 @@ const PRECACHE = [
   "./assets/yaavs-logo-white.png?v=2",
   "./assets/favicon-yaavs.png",
   "./styles.css?v=266",
-  "./yaavs-brand.css?v=18",
-  "./js/layout.js?v=73",
+  "./yaavs-brand.css?v=22",
+  "./js/layout.js?v=74",
   "./js/pwa.js?v=7",
   /* Shell partials — menu/footer must work offline */
-  "./partials/header.html?v=34",
+  "./partials/header.html?v=35",
   "./partials/footer.html?v=18",
   "./partials/trust-strip.html",
   "./partials/page-cta.html?v=5",
   "./partials/social-float.html",
-  "./partials/yaavs-chatbot.html?v=3",
+  "./partials/whatsapp-float.html?v=1",
   /* Main nav destinations */
   "./quienes-somos.html",
   "./tiendas.html",

@@ -1328,3 +1328,57 @@ html body.page-home .hx-pulse .hx-pulse__stat:focus-visible .hx-pulse__cap {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+/* ─── WhatsApp flotante (reemplaza Yaavsti) ─── */
+.yaavbot,
+[data-yaavbot],
+.yaavbot__fab,
+.yaavbot__panel,
+.site-header .header-wa,
+.header-wa {
+  display: none !important;
+}
+
+html body .wa-float,
+html body.page-home .wa-float {
+  position: fixed !important;
+  right: max(16px, env(safe-area-inset-right)) !important;
+  bottom: max(18px, calc(env(safe-area-inset-bottom) + 14px)) !important;
+  z-index: 1260 !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 58px !important;
+  height: 58px !important;
+  border-radius: 50% !important;
+  background: #25d366 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  box-shadow: 0 10px 28px rgba(18, 140, 70, 0.42) !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+html body .wa-float svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+html body .wa-float:hover,
+html body .wa-float:focus-visible {
+  color: #ffffff !important;
+  background: #1ebe57 !important;
+  opacity: 1 !important;
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(18, 140, 70, 0.5) !important;
+  outline: none;
+}
+
+html body .wa-float:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}

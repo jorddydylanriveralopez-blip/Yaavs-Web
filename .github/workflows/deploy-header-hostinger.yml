@@ -70,6 +70,7 @@ jobs:
           upload_one theme-day-night.css theme-day-night.css
           upload_one js/layout.js js/layout.js
           upload_one partials/header.html partials/header.html
+          upload_one partials/whatsapp-float.html partials/whatsapp-float.html
           upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png
           upload_one assets/yaavs-logo.png assets/yaavs-logo.png
           upload_one assets/yaavs-logo-header-color.png assets/yaavs-logo-header-color.png

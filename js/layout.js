@@ -210,10 +210,7 @@
       <a href="contacto.html" data-page="contacto">Contacto</a>
     </nav>
     <div class="header-menu header-menu--corp">
-      <a class="header-cta" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_cta">Cotizar ahora</a>
-      <a class="header-wa" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp YAAVS" data-header-wa data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_whatsapp">
-        <span class="header-wa__icon" aria-hidden="true"></span>
-      </a>
+      <a class="header-cta" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_cta">Cotizar ahora</a>
       <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú" hidden>
         <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
         <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
@@ -304,6 +301,7 @@
     "partials/trust-strip.html",
     "partials/page-cta.html",
     "partials/social-float.html",
+    "partials/whatsapp-float.html",
     "partials/yaavs-chatbot.html",
     "partials/site-floats.html",
   ]);
@@ -392,7 +390,7 @@
   }
 
   function revealFloatingDock() {
-    document.querySelectorAll(".social-float, .yaavbot").forEach((el) => {
+    document.querySelectorAll(".social-float, .yaavbot, .wa-float").forEach((el) => {
       el.style.opacity = "1";
       el.style.visibility = "visible";
     });
@@ -448,48 +446,28 @@
   }
 
   async function mountChatbot() {
-    if (document.querySelector("[data-yaavbot]")) {
+    document.querySelectorAll("[data-yaavbot], .yaavbot").forEach((el) => el.remove());
+    if (document.querySelector("[data-wa-float]")) {
       revealFloatingDock();
       return;
     }
 
     const mount = document.createElement("div");
-    mount.id = "yaavbot-mount";
+    mount.id = "wa-float-mount";
     mount.hidden = true;
     document.body.appendChild(mount);
 
-    await loadPartial("partials/yaavs-chatbot.html?v=3", mount);
+    await loadPartial("partials/whatsapp-float.html?v=1", mount);
 
-    const bot = mount.querySelector("[data-yaavbot]");
-    if (!bot) {
+    const fab = mount.querySelector("[data-wa-float]");
+    if (!fab) {
       mount.remove();
       return;
     }
 
-    document.body.appendChild(bot);
+    document.body.appendChild(fab);
     mount.remove();
-
-    if (!document.querySelector("script[data-yaavbot-config]")) {
-      await new Promise((resolve) => {
-        const cfg = document.createElement("script");
-        cfg.src = "js/yaavs-chatbot.config.js?v=6";
-        cfg.dataset.yaavbotConfig = "true";
-        cfg.onload = resolve;
-        cfg.onerror = resolve;
-        document.body.appendChild(cfg);
-      });
-    }
-
-    if (!document.querySelector("script[data-yaavbot-main]")) {
-      await new Promise((resolve) => {
-        const main = document.createElement("script");
-        main.src = "js/yaavs-chatbot.js?v=7";
-        main.dataset.yaavbotMain = "true";
-        main.onload = resolve;
-        main.onerror = resolve;
-        document.body.appendChild(main);
-      });
-    }
+    revealFloatingDock();
   }
 
   function closeNavMenu() {
@@ -602,7 +580,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=34", headerMount),
+    loadPartial("partials/header.html?v=35", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
