@@ -654,6 +654,10 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
 }
 
 .hero-carousel__arrow {
+  display: none !important;
+}
+
+.hero-carousel__arrow {
   position: absolute;
   top: 50%;
   z-index: 5;
@@ -661,7 +665,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   height: 48px;
   margin: 0;
   padding: 0;
-  display: grid;
+  display: none;
   place-items: center;
   border: 1px solid rgba(0, 212, 238, 0.4);
   border-radius: 50%;
@@ -2350,29 +2354,7 @@ body.page-home.hero-slide--graphic.hero-carousel--kenburns .hero-banner__visual 
 }
 
 .hero-promo__scrim {
-  display: block;
-  position: absolute;
-  left: max(-28px, calc(var(--pad-x) * -1.1));
-  top: -18%;
-  bottom: -18%;
-  width: min(72vw, 720px);
-  z-index: 0;
-  pointer-events: none;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  background: #01258f;
-}
-
-body.page-home.hero-slide--light-bg .hero-promo__scrim {
-  background: #01258f;
-}
-
-.hero-promo__scrim::before,
-.hero-promo__scrim::after {
-  display: none;
+  display: none !important;
 }
 
 .hero-promo__rail {

@@ -121,11 +121,22 @@ body::after,
 }
 
 .hero-banner__shade,
-.hero-promo__scrim,
-[class*="__shade"],
-[class*="__scrim"] {
-  background: rgba(1, 17, 66, 0.55) !important;
+.hero-promo__scrim {
+  display: none !important;
+  background: none !important;
   background-image: none !important;
+}
+
+.hero-carousel__arrow {
+  display: none !important;
+}
+
+[class*="__glow"],
+[class*="__orb"],
+[class*="__bowl"],
+[class*="aurora"] {
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
 /* ─── Header cristal limpio ─── */
