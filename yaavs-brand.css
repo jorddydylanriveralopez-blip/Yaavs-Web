@@ -1441,13 +1441,13 @@ html body.page-home .hx-pulse .hx-pulse__stat:focus-visible .hx-pulse__cap {
   -webkit-text-fill-color: #ffffff !important;
 }
 
-/* ─── Home Nuestros servicios — banda blanca, grid plano ─── */
+/* ─── Home Nuestros servicios — foto oscura, grid plano ─── */
 html body.page-home .hx-services,
 html body.page-home .hx-services--deck,
 html body.page-home .hx-services[data-hx-band="light"] {
-  background: #ffffff !important;
+  background: #011142 !important;
   background-image: none !important;
-  color: #011142 !important;
+  color: #ffffff !important;
   border: none !important;
 }
 
@@ -1548,39 +1548,35 @@ html body.page-home section#servicios-preview {
   background-image: none !important;
 }
 
-html body.page-home #servicios-preview::before {
-  content: "" !important;
-  display: block !important;
+html body.page-home #servicios-preview > .hx-services__photo {
   position: absolute !important;
   inset: 0 !important;
   z-index: 0 !important;
   pointer-events: none !important;
-  background:
-    url("assets/tiendas/city-night.jpg") center / cover no-repeat !important;
-  filter: saturate(0.28) brightness(0.42) contrast(1.05);
+  display: block !important;
+  background-color: #011142 !important;
+  background-image: url("assets/tiendas/city-night.jpg") !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  filter: saturate(0.18) brightness(0.28) contrast(1.08);
   opacity: 1 !important;
-  height: auto !important;
 }
 
-html body.page-home #servicios-preview::after {
+html body.page-home #servicios-preview > .hx-services__photo::after {
   content: "" !important;
   display: block !important;
   position: absolute !important;
   inset: 0 !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(1, 17, 66, 0.78) 0%,
-      rgba(1, 17, 66, 0.86) 45%,
-      rgba(1, 17, 66, 0.9) 100%
-    ) !important;
-  opacity: 1 !important;
-  height: auto !important;
+  background: linear-gradient(
+    180deg,
+    rgba(1, 17, 66, 0.86) 0%,
+    rgba(1, 17, 66, 0.9) 42%,
+    rgba(1, 17, 66, 0.94) 100%
+  ) !important;
 }
 
-html body.page-home #servicios-preview > * {
+html body.page-home #servicios-preview > *:not(.hx-services__photo) {
   position: relative;
   z-index: 1;
 }
