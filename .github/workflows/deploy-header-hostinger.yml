@@ -72,6 +72,8 @@ jobs:
           upload_one partials/header.html partials/header.html
           upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png
           upload_one assets/yaavs-logo.png assets/yaavs-logo.png
+          upload_one assets/yaavs-logo-header-color.png assets/yaavs-logo-header-color.png
+          upload_one OneSignalSDKWorker.js OneSignalSDKWorker.js
 
           for f in *.html; do
             upload_one "$f" "$f"

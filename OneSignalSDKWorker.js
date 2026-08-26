@@ -1,7 +1,7 @@
 /* OneSignal v16 Service Worker + YAAVS PWA cache */
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
 
-const CACHE_VERSION = "yaavs-pwa-v5";
+const CACHE_VERSION = "yaavs-pwa-v6";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -9,15 +9,15 @@ const PRECACHE = [
   "./manifest.webmanifest",
   "./assets/pwa/icon-192.png",
   "./assets/pwa/icon-512.png",
-  "./assets/yaavs-logo-on-light.png",
-  "./assets/yaavs-logo-white.png",
+  "./assets/yaavs-logo-header-color.png?v=1",
   "./assets/yaavs-logo-white.png?v=2",
   "./assets/favicon-yaavs.png",
-  "./styles.css?v=242",
-  "./js/layout.js?v=67",
-  "./js/pwa.js?v=6",
+  "./styles.css?v=264",
+  "./yaavs-brand.css?v=16",
+  "./js/layout.js?v=73",
+  "./js/pwa.js?v=7",
   /* Shell partials — menu/footer must work offline */
-  "./partials/header.html?v=21",
+  "./partials/header.html?v=34",
   "./partials/footer.html?v=18",
   "./partials/trust-strip.html",
   "./partials/page-cta.html?v=5",
@@ -106,21 +106,18 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  /* Header/menu + other layout partials */
+  /* Header/menu + other layout partials — network first (avoid stale white logo) */
   if (url.pathname.includes("/partials/")) {
     event.respondWith(
-      matchCached(request).then((cached) => {
-        const network = fetch(request)
-          .then((response) => {
-            if (response && response.ok) {
-              const copy = response.clone();
-              caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
-            }
-            return response;
-          })
-          .catch(() => cached);
-        return cached || network;
-      })
+      fetch(request)
+        .then((response) => {
+          if (response && response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => matchCached(request))
     );
     return;
   }
@@ -129,6 +126,22 @@ self.addEventListener("fetch", (event) => {
     url.pathname.match(/\.(css|js|png|jpg|jpeg|webp|svg|woff2?|webmanifest|html)$/i) ||
     url.pathname.includes("/assets/")
   ) {
+    /* Logos: always prefer network so white/blue never get stuck in cache */
+    if (/yaavs-logo/i.test(url.pathname)) {
+      event.respondWith(
+        fetch(request)
+          .then((response) => {
+            if (response && response.ok) {
+              const copy = response.clone();
+              caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
+            }
+            return response;
+          })
+          .catch(() => matchCached(request))
+      );
+      return;
+    }
+
     event.respondWith(
       matchCached(request).then((cached) => {
         const network = fetch(request)

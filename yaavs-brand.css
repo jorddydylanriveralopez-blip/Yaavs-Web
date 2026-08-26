@@ -1120,3 +1120,14 @@ html body.page-home .site-header .logo-link--corp .logo {
   }
 }
 
+
+/* Logo header: SOLO azul a color (nunca blanco / nunca invert) */
+html body .site-header.site-header--corp .logo-link--corp > img.logo,
+html body.page-home .site-header.site-header--corp .logo-link--corp > img.logo {
+  content: normal !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  -webkit-text-fill-color: initial !important;
+}

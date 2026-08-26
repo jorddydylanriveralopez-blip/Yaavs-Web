@@ -55,12 +55,12 @@
       || (forceLight !== false && usesLightHeaderLogo());
 
     if (useLight) {
-      img.src = "assets/yaavs-logo-on-light.png?v=6";
+      img.src = "assets/yaavs-logo-header-color.png?v=1";
       img.classList.add("logo--on-light", "logo--corp");
       img.classList.remove("logo--white");
     } else {
       /* Header blanco: siempre logo azul original */
-      img.src = "assets/yaavs-logo-on-light.png?v=6";
+      img.src = "assets/yaavs-logo-header-color.png?v=1";
       img.classList.add("logo--on-light", "logo--corp");
       img.classList.remove("logo--white");
     }
@@ -68,11 +68,15 @@
     img.height = 52;
     img.decoding = "async";
     img.style.removeProperty("--logo-filter");
-    img.style.removeProperty("filter");
+    img.style.setProperty("filter", "none", "important");
+    img.style.setProperty("-webkit-filter", "none", "important");
+    img.style.setProperty("opacity", "1", "important");
     img.onerror = function () {
       this.onerror = null;
-      this.src = "assets/yaavs-logo-on-light.png?v=6";
+      this.src = "assets/yaavs-logo-header-color.png?v=1";
       this.classList.add("logo--on-light", "logo--corp");
+      this.classList.remove("logo--white");
+      this.style.setProperty("filter", "none", "important");
     };
   }
 
@@ -194,7 +198,7 @@
     "partials/header.html": `<header class="site-header site-header--nav-bar site-header--corp" id="header">
   <div class="header-inner header-inner--corp">
     <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
-      <img src="assets/yaavs-logo-on-light.png?v=6" alt="YAAVS" class="logo logo--corp logo--on-light" width="148" height="52">
+      <img src="assets/yaavs-logo-header-color.png?v=1" alt="YAAVS" class="logo logo--corp logo--on-light" width="148" height="52">
     </a>
     <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
@@ -598,7 +602,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=33", headerMount),
+    loadPartial("partials/header.html?v=34", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
