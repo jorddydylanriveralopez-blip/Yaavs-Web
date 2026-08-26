@@ -340,8 +340,7 @@ body.page-home {
   .page-home .site-header .logo.logo--on-light,
   .page-home .site-header .logo.logo--white {
     --logo-filter: none;
-    filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35)) !important;
-    animation: none;
+    filter: none !important;
   }
 }
 
@@ -452,8 +451,7 @@ body.page-home {
   .page-home .site-header .logo.logo--on-light,
   .page-home .site-header .logo.logo--white {
     --logo-filter: none;
-    filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35)) !important;
-    animation: none;
+    filter: none !important;
   }
 }
 
