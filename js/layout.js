@@ -620,9 +620,10 @@
 
     scheduleIdle(async () => {
       if (!window.YAAVS_PERF?.lite) mountSiteFloats();
-      await mountSocialDock();
+      /* Redes sociales flotantes desactivadas a petición */
+      /* await mountSocialDock(); */
       await mountChatbot();
-      initSocialFloatScroll();
+      /* initSocialFloatScroll(); */
       initCookies();
       initAnalytics();
       initPwa();
