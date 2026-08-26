@@ -368,6 +368,14 @@ button:hover,
   box-shadow: none !important;
 }
 
+/* Redes flotantes ocultas */
+.social-float,
+#social-float-mount {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 .site-footer a,
 .social-float a,
 .yaavbot a {
@@ -423,15 +431,15 @@ section {
    Header corporativo — presencia + claridad
    ═══════════════════════════════════════════ */
 :root {
-  --header-h: 84px;
-  --header-h-scrolled: 72px;
+  --header-h: 96px;
+  --header-h-scrolled: 80px;
 }
 
 .site-header.site-header--corp,
 .site-header.site-header--corp.is-scrolled {
-  --header-bar-h: 84px;
+  --header-bar-h: 96px;
   --header-pad-y: 0;
-  --logo-h: 48px;
+  --logo-h: 40px;
   position: fixed;
   top: 0;
   left: 0;
@@ -447,8 +455,8 @@ section {
 }
 
 .site-header.site-header--corp.is-scrolled {
-  --header-bar-h: 72px;
-  --logo-h: 42px;
+  --header-bar-h: 80px;
+  --logo-h: 36px;
   box-shadow: 0 8px 22px rgba(1, 17, 66, 0.55) !important;
 }
 
@@ -462,32 +470,41 @@ section {
 
 .site-header--corp .header-inner--corp {
   display: grid !important;
-  grid-template-columns: minmax(160px, 240px) 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 16px 28px;
+  column-gap: clamp(28px, 4vw, 56px);
+  row-gap: 12px;
   width: min(100% - 2 * var(--pad-x), 1280px);
   max-width: 1280px;
   margin: 0 auto;
   min-height: var(--header-bar-h);
-  padding: 10px 0;
+  padding: 18px 0;
 }
 
-/* Marca */
+/* Marca — proporción real del PNG (410×95) */
 .site-header--corp .logo-link--corp {
-  display: flex !important;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  display: inline-flex !important;
+  flex-direction: row;
+  align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
   min-width: 0;
+  transform: none !important;
 }
 
-.site-header--corp .logo.logo--corp {
+.site-header--corp .logo.logo--corp,
+html body .site-header.site-header--corp .logo.logo--corp,
+html body .page-home .site-header.site-header--corp .logo.logo--white {
+  display: block !important;
   width: auto !important;
   height: var(--logo-h) !important;
   max-height: var(--logo-h) !important;
+  max-width: min(220px, 42vw) !important;
+  aspect-ratio: 410 / 95 !important;
+  object-fit: contain !important;
+  object-position: left center !important;
   filter: none !important;
-  drop-shadow: none;
+  transform: none !important;
 }
 
 .site-header--corp .logo-link__tag {
@@ -507,11 +524,11 @@ section {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
   width: max-content;
   max-width: 100%;
   margin: 0 auto;
-  padding: 6px !important;
+  padding: 8px 10px !important;
   border: 1px solid rgba(1, 37, 143, 0.95) !important;
   border-radius: 999px !important;
   background: rgba(1, 37, 143, 0.28) !important;
@@ -543,7 +560,7 @@ section {
   background: transparent !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  font-size: 0.74rem !important;
+  font-size: 0.72rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase;
@@ -588,7 +605,8 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   display: flex !important;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 14px;
+  flex-shrink: 0;
 }
 
 .site-header--corp .header-cta {
