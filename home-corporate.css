@@ -1848,13 +1848,14 @@ body.page-home {
   }
 }
 
-/* Pulse — métricas dentro de servicios */
+/* Pulse — métricas de la red */
+.page-home .hx-pulse,
 .page-home .hx-services > .hx-pulse {
   margin: 0;
-  padding: clamp(24px, 4vw, 40px) 0 clamp(20px, 3vw, 32px);
-  background: transparent;
+  padding: clamp(28px, 4.5vw, 52px) clamp(16px, 4vw, 40px);
+  background: #ffffff;
   border: none;
-  border-top: 1px solid rgba(1, 37, 143, 0.14);
+  border-top: none;
 }
 
 .page-home .hx-pulse__mesh,
@@ -1862,9 +1863,16 @@ body.page-home {
   display: none;
 }
 
-.page-home .hx-pulse__scan::after {
-  background: #01258f;
-  box-shadow: 0 0 16px rgba(0, 212, 238, 0.25);
+.page-home .hx-pulse__inner {
+  max-width: min(920px, 100%);
+}
+
+.page-home .hx-pulse__stats {
+  background: #ffffff;
+  border: 1px solid rgba(1, 37, 143, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 18px 44px rgba(1, 17, 66, 0.1);
+  overflow: hidden;
 }
 
 .page-home .hx-pulse__label {
@@ -1877,17 +1885,30 @@ body.page-home {
 .page-home .hx-pulse__stat {
   border: none;
   border-top: none;
-  background: transparent;
+  background: #ffffff;
   border-radius: 0;
   box-shadow: none;
+  opacity: 1;
+  cursor: default;
+  transition:
+    background 0.28s ease,
+    color 0.28s ease;
 }
 
-.page-home .hx-pulse__stat:hover {
+.page-home .hx-pulse__stat:hover,
+.page-home .hx-pulse__stat:focus-visible {
   border-color: transparent;
   border-top-color: transparent;
-  background: transparent;
+  background: #01258f;
   box-shadow: none;
   transform: none;
+  opacity: 1;
+  z-index: 1;
+}
+
+.page-home .hx-pulse__stat:hover + .hx-pulse__stat::before,
+.page-home .hx-pulse__stat:hover::before {
+  opacity: 0;
 }
 
 .page-home .hx-pulse__num {
@@ -1899,6 +1920,17 @@ body.page-home {
   text-shadow: none;
   font-size: clamp(1.85rem, 4.2vw, 2.75rem);
   letter-spacing: -0.03em;
+  display: inline-block;
+  transition:
+    color 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-home .hx-pulse__stat:hover .hx-pulse__num,
+.page-home .hx-pulse__stat:focus-visible .hx-pulse__num {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  transform: scale(1.06);
 }
 
 .page-home .hx-pulse__cap {
@@ -1907,6 +1939,12 @@ body.page-home {
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition: color 0.28s ease;
+}
+
+.page-home .hx-pulse__stat:hover .hx-pulse__cap,
+.page-home .hx-pulse__stat:focus-visible .hx-pulse__cap {
+  color: rgba(255, 255, 255, 0.88);
 }
 
 @media (max-width: 900px) {
@@ -1939,17 +1977,12 @@ body.page-home {
   }
 }
 
-.theme-cluster.page-home .hx-pulse__label,
-.theme-cluster.page-home .hx-pulse__cap {
-  color: inherit;
-}
-
 .theme-cluster.page-home .hx-pulse__label {
   color: #01258f;
 }
 
 .theme-cluster.page-home .hx-pulse__cap {
-  color: #01258f;
+  color: #3a5268;
 }
 
 .page-home .hx-pulse__operators {
@@ -7020,11 +7053,15 @@ body.page-home.hx-band--dark .hx-pulse__label {
   color: rgba(232, 240, 246, 0.72) !important;
 }
 
-/* Métricas en franja editorial (sin tarjetas) */
 body.page-home.hx-band--dark .hx-pulse__stat {
-  background: transparent !important;
+  background: #ffffff !important;
   border-color: transparent !important;
   box-shadow: none !important;
+}
+
+body.page-home.hx-band--dark .hx-pulse__stat:hover,
+body.page-home.hx-band--dark .hx-pulse__stat:focus-visible {
+  background: #01258f !important;
 }
 
 body.page-home.hx-band--dark .hx-pulse__stat .hx-pulse__num {
@@ -7033,8 +7070,19 @@ body.page-home.hx-band--dark .hx-pulse__stat .hx-pulse__num {
   background: none !important;
 }
 
+body.page-home.hx-band--dark .hx-pulse__stat:hover .hx-pulse__num,
+body.page-home.hx-band--dark .hx-pulse__stat:focus-visible .hx-pulse__num {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
 body.page-home.hx-band--dark .hx-pulse__stat .hx-pulse__cap {
   color: #3a5268 !important;
+}
+
+body.page-home.hx-band--dark .hx-pulse__stat:hover .hx-pulse__cap,
+body.page-home.hx-band--dark .hx-pulse__stat:focus-visible .hx-pulse__cap {
+  color: rgba(255, 255, 255, 0.88) !important;
 }
 
 body.page-home.hx-band--dark .tx-gallery__more .btn--line {

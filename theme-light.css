@@ -475,8 +475,8 @@
 }
 
 [data-yaavs-theme="day"] .page-home .hx-pulse {
-  background: #01258f;
-  border-block-color: rgba(1, 37, 143, 0.22);
+  background: #ffffff;
+  border-block-color: rgba(1, 37, 143, 0.12);
 }
 
 [data-yaavs-theme="day"] .page-home .hx-pulse__stat {

@@ -161,7 +161,7 @@
   border-color: transparent;
   box-shadow: none;
   transform: none;
-  opacity: 0.92;
+  opacity: 1;
 }
 
 /* Pulse — reveal re-activable al scroll */

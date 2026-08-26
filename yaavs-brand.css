@@ -1282,3 +1282,49 @@ html body.page-home .hx-somos .hx-somos__cta:focus-visible span {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+/* ─── Home métricas — hover azul con texto blanco ─── */
+html body.page-home .hx-pulse,
+html body.page-home .hx-services > .hx-pulse,
+html body.page-home[data-yaavs-theme="day"] .hx-pulse,
+html body.page-home .hx-pulse[data-hx-pulse] {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #011142 !important;
+}
+
+html body.page-home .hx-pulse .hx-pulse__stats {
+  background: #ffffff !important;
+}
+
+html body.page-home .hx-pulse .hx-pulse__stat {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+html body.page-home .hx-pulse .hx-pulse__num,
+html body.page-home .hx-pulse .hx-pulse__cap {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-home .hx-pulse .hx-pulse__cap {
+  color: #3a5268 !important;
+  -webkit-text-fill-color: #3a5268 !important;
+}
+
+html body.page-home .hx-pulse .hx-pulse__stat:hover,
+html body.page-home .hx-pulse .hx-pulse__stat:focus-visible {
+  background: #01258f !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+html body.page-home .hx-pulse .hx-pulse__stat:hover .hx-pulse__num,
+html body.page-home .hx-pulse .hx-pulse__stat:focus-visible .hx-pulse__num,
+html body.page-home .hx-pulse .hx-pulse__stat:hover .hx-pulse__cap,
+html body.page-home .hx-pulse .hx-pulse__stat:focus-visible .hx-pulse__cap {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
