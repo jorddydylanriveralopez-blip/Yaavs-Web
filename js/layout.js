@@ -30,8 +30,9 @@
     });
   }
 
-  /** Páginas con header claro desde el tope → logo a color. */
+  /** Header corporativo blanco → siempre logo a color. */
   function usesLightHeaderLogo() {
+    if (document.querySelector(".site-header--corp")) return true;
     return document.body.classList.contains("page-tiendas")
       || document.body.classList.contains("page-tiendas-map")
       || document.body.classList.contains("page-terminos")
@@ -67,7 +68,7 @@
   }
 
   function initHeaderLogo() {
-    applyHeaderLogo(usesLightHeaderLogo() ? true : false);
+    applyHeaderLogo(true);
   }
 
   function initNavToggle() {
@@ -187,7 +188,7 @@
     "partials/header.html": `<header class="site-header site-header--nav-bar site-header--corp" id="header">
   <div class="header-inner header-inner--corp">
     <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
-      <img src="assets/yaavs-logo-white.png?v=2" alt="YAAVS" class="logo logo--corp logo--white" width="410" height="95">
+      <img src="assets/yaavs-logo-on-light.png?v=3" alt="YAAVS" class="logo logo--corp logo--on-light" width="410" height="95">
     </a>
     <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
@@ -599,6 +600,7 @@
     ensureFooterStyles();
     ensureNavInHeader();
     ensureHeaderNavBar();
+    applyHeaderLogo(true);
     setActiveNav();
     initHeaderLogo();
     initNavToggle();
