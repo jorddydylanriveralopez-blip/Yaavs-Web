@@ -2827,4 +2827,51 @@
     if (typeof mq.addEventListener === "function") mq.addEventListener("change", apply);
     else if (typeof mq.addListener === "function") mq.addListener(apply);
   })();
+
+  (function typeOpsHeadline() {
+    const head = document.querySelector("#carriers .hx-ops__head");
+    const main = document.querySelector("#carriers [data-hx-type]");
+    const accent = document.querySelector("#carriers .hx-ops__title-accent");
+    if (!head || !main) return;
+    const full = (main.getAttribute("data-hx-type") || main.textContent || "").trim();
+    if (!full) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      main.textContent = full;
+      accent?.classList.add("is-in");
+      head.closest("#carriers")?.classList.add("is-typed");
+      return;
+    }
+
+    const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+    let running = false;
+
+    async function play() {
+      if (running) return;
+      running = true;
+      while (document.contains(main)) {
+        accent?.classList.remove("is-in");
+        main.textContent = "";
+        main.classList.add("has-caret");
+        for (let i = 1; i <= full.length; i += 1) {
+          main.textContent = full.slice(0, i);
+          await wait(38);
+        }
+        main.classList.remove("has-caret");
+        accent?.classList.add("is-in");
+        head.closest("#carriers")?.classList.add("is-typed");
+        await wait(2800);
+      }
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          io.disconnect();
+          play();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(head);
+  })();
 })();

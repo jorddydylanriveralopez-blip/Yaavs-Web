@@ -159,7 +159,7 @@
       .page-home .hero-scroll-hint__chevron { animation: none; }
     }
   </style>
-  <link rel="stylesheet" href="yaavs-brand.css?v=31">
+  <link rel="stylesheet" href="yaavs-brand.css?v=34">
 </head>
 <body class="theme-cluster page-home page-bg--photo page-intro-active" data-page="inicio">
   <script>
@@ -908,10 +908,18 @@
 
       <section class="hx-ops" id="carriers" aria-label="Socios comerciales YAAVS" data-hx-ops data-hx-band="light">
         <header class="hx-ops__head">
+          <img
+            class="hx-ops__logo"
+            src="assets/yaavs-logo-header-color.png?v=1"
+            alt="YAAVS"
+            width="168"
+            height="58"
+          >
           <h3 class="hx-ops__title">
-            <span class="hx-ops__title-main">Tu acceso a las grandes compa&ntilde;&iacute;as</span>
+            <span class="hx-ops__title-main" data-hx-type="Tu acceso a las grandes compañías">Tu acceso a las grandes compañías</span>
             <span class="hx-ops__title-accent">solo con nosotros</span>
           </h3>
+          <p class="hx-ops__pick">Elige tu compañía</p>
         </header>
 
         <button type="button" class="hx-ops__back" aria-label="Volver a todos los socios" hidden>
@@ -1393,7 +1401,7 @@
       /* Deck: carga al acercarse a servicios (no compite con el hero) */
       loadWhenVisible("#servicios-preview", "home-deck", [
         "js/deck-media.config.js?v=225",
-        "js/home-experience.js?v=242",
+        "js/home-experience.js?v=244",
       ], perf.soft ? "180px 0px" : "320px 0px");
 
       const deckHashes = [
@@ -1410,7 +1418,7 @@
       if (deckHashes.includes(window.location.hash)) {
         void loadBatchOnce("home-deck", [
           "js/deck-media.config.js?v=225",
-          "js/home-experience.js?v=242",
+          "js/home-experience.js?v=244",
         ]);
       }
 
