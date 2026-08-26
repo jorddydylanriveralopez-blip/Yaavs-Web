@@ -42,7 +42,16 @@
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) return;
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./OneSignalSDKWorker.js", { scope: "./" }).catch(() => {});
+      navigator.serviceWorker
+        .register("./OneSignalSDKWorker.js", { scope: "./" })
+        .then((reg) => {
+          try {
+            reg.update();
+          } catch (_) {
+            /* noop */
+          }
+        })
+        .catch(() => {});
     });
   }
 
