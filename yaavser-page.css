@@ -22,7 +22,7 @@
 }
 
 .page-ser-yaavser .yaavser-present__glow {
-  background: radial-gradient(circle at 30% 20%, rgba(0, 159, 219, 0.28) 0%, transparent 55%);
+  background: #01258f;
 }
 
 .page-ser-yaavser .yaavser-present__corner {
@@ -67,13 +67,8 @@
   pointer-events: none;
   opacity: 0.35;
   background:
-    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(0, 159, 219, 0.15) 0%, transparent 60%),
-    repeating-linear-gradient(
-      -12deg,
-      transparent,
-      transparent 48px,
-      rgba(255, 255, 255, 0.015) 49px
-    );
+    #01258f,
+    repeating-#01258f;
 }
 
 .yaavser-benefits-section .section-header {
@@ -134,7 +129,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0, 16, 40, 0.85) 100%);
+  background: #01258f;
   pointer-events: none;
 }
 
@@ -202,7 +197,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(105deg, rgba(0, 24, 60, 0.92) 0%, rgba(0, 36, 80, 0.88) 45%, rgba(0, 48, 135, 0.82) 100%);
+    #01258f;
 }
 
 .yaavser-join__yaavsty {
@@ -292,7 +287,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--hx-att-navy, #0f2440), var(--accent-bright, #3d7db5));
+  background: #01258f;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.5s var(--ease);
@@ -318,7 +313,7 @@
   font-size: 0.85rem;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, #0f2440, #3d7db5);
+  background: #01258f;
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(0, 159, 219, 0.35);
 }

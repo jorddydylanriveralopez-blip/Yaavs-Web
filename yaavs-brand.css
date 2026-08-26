@@ -1,0 +1,207 @@
+/**
+ * YAAVS brand — solo #011142 y #01258f, sin degradados.
+ * Cargar al final de todas las páginas.
+ */
+:root {
+  --yaavs-deep: #011142;
+  --yaavs-blue: #01258f;
+  --yaavs-navy: #011142;
+  --yaavs-navy-mid: #011142;
+  --yaavs-navy-soft: #01258f;
+  --yaavs-cyan: #01258f;
+  --yaavs-cyan-bright: #01258f;
+  --yaavs-teal: #01258f;
+  --yaavs-mist: #01258f;
+  --yaavs-cloud: #011142;
+  --yaavs-gold: #01258f;
+  --yaavs-bait-rosa: #01258f;
+  --yaavs-bait-amarillo: #01258f;
+  --yaavs-forest: #011142;
+  --yaavs-violet: #011142;
+  --bg: #011142;
+  --bg-soft: #011142;
+  --bg-tech: #011142;
+  --surface: #011142;
+  --surface-soft: #01258f;
+  --ink: #01258f;
+  --ink-muted: #01258f;
+  --ink-soft: #01258f;
+  --border-on-light: #01258f;
+  --accent-on-light: #01258f;
+  --text: #01258f;
+  --text-muted: #01258f;
+  --muted: #01258f;
+  --caption: #01258f;
+  --accent: #01258f;
+  --accent-bright: #01258f;
+  --accent-soft: #01258f;
+  --accent-glow: transparent;
+  --border: #01258f;
+  --border-accent: #01258f;
+  --border-strong: #01258f;
+  --glass: #011142;
+}
+
+html,
+body,
+body.theme-cluster,
+body.page-home,
+body.page-intro-active,
+#contenido {
+  background-color: #011142 !important;
+  background-image: none !important;
+  color: #01258f !important;
+}
+
+/* Anula degradados residuales en capas decorativas */
+body::before,
+body::after,
+.page-intro,
+.page-intro__aurora,
+.page-intro__scene,
+.home-tech-backdrop,
+.site-header::before,
+.site-header::after,
+.site-header--nav-bar::before,
+.main-nav--overlay::before,
+.main-nav--overlay::after,
+.hero-banner__shade,
+.hero-promo__scrim,
+[class*="__shade"],
+[class*="__scrim"],
+[class*="__glow"],
+[class*="__orb"],
+[class*="__bowl"],
+[class*="aurora"],
+[class*="gradient"] {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.page-intro,
+.home-tech-backdrop,
+.site-header::before,
+.site-header--nav-bar::before {
+  background-color: #011142 !important;
+}
+
+.site-header,
+.site-header.is-scrolled {
+  background: #011142 !important;
+  background-image: none !important;
+  border-bottom: 1px solid #01258f !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.site-header .main-nav a,
+.site-header .main-nav--bar a,
+.site-header.is-scrolled .main-nav--bar a,
+.page-home .site-header.is-scrolled .main-nav--bar a,
+.main-nav--overlay a {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: transparent !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  border-color: #01258f !important;
+}
+
+.site-header .main-nav--bar a.is-active::after {
+  background: #01258f !important;
+  box-shadow: none !important;
+}
+
+.header-wa,
+.header-wa:hover,
+.header-wa:focus-visible {
+  background: #01258f !important;
+  background-image: none !important;
+  border: 2px solid #011142 !important;
+  box-shadow: none !important;
+  animation: none !important;
+  color: #011142 !important;
+}
+
+.header-wa__icon {
+  filter: none !important;
+  background-color: transparent;
+}
+
+.nav-bento,
+.nav-bento[aria-expanded="true"] {
+  background: #011142 !important;
+  background-image: none !important;
+  border: 1px solid #01258f !important;
+  box-shadow: none !important;
+}
+
+.bento-dot,
+.site-header.is-scrolled .bento-dot,
+body.nav-open .nav-bento .bento-dot,
+body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
+  background: #01258f !important;
+}
+
+/* Secciones / cards / botones: sólido, sin glow */
+section,
+[class*="hx-"],
+[class*="card"],
+[class*="panel"],
+[class*="modal"],
+.site-footer,
+.social-float,
+.yaavbot,
+.yaavser-lead,
+.promo-popup,
+.cookies-banner {
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.site-footer,
+.social-float,
+.yaavbot,
+.yaavser-lead {
+  background-color: #011142 !important;
+  color: #01258f !important;
+  border-color: #01258f !important;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6, p, li, label, td, th, figcaption {
+  color: #01258f !important;
+}
+
+a,
+a:visited {
+  color: #01258f !important;
+}
+
+button,
+.btn,
+[class*="__cta"],
+[class*="__btn"],
+[class*="-cta"],
+[class*="-btn"] {
+  background-color: #01258f !important;
+  background-image: none !important;
+  color: #011142 !important;
+  border-color: #011142 !important;
+  box-shadow: none !important;
+}
+
+/* Inputs */
+input, textarea, select {
+  background: #011142 !important;
+  color: #01258f !important;
+  border: 1px solid #01258f !important;
+  box-shadow: none !important;
+}
+
+/* Sin sombras de color / glows */
+* {
+  text-shadow: none !important;
+}

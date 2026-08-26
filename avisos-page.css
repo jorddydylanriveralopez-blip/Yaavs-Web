@@ -3,17 +3,17 @@
  */
 
 .page-anuncios {
-  --an-ink: #0f2440;
+  --an-ink: #011142;
   --an-muted: #3a5166;
-  --an-soft: #4a6278;
+  --an-soft: #01258f;
   --an-navy: #003087;
-  --an-cyan: #0097b2;
-  --an-line: rgba(15, 36, 64, 0.12);
+  --an-cyan: #01258f;
+  --an-line: rgba(1, 17, 66, 0.12);
   --an-surface: #f4fafc;
   background:
-    radial-gradient(ellipse 70% 45% at 10% 18%, rgba(0, 188, 212, 0.1) 0%, transparent 58%),
-    radial-gradient(ellipse 55% 40% at 92% 70%, rgba(37, 99, 181, 0.08) 0%, transparent 60%),
-    linear-gradient(180deg, #f8fcfe 0%, #eef6fa 50%, #e6f1f7 100%) !important;
+    #01258f,
+    #01258f,
+    #01258f !important;
   color: var(--an-ink);
 }
 
@@ -82,8 +82,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(4, 12, 28, 0.92) 0%, rgba(4, 12, 28, 0.72) 42%, rgba(4, 12, 28, 0.35) 100%),
-    linear-gradient(180deg, rgba(4, 12, 28, 0.45) 0%, transparent 40%, rgba(4, 12, 28, 0.88) 100%);
+    #01258f,
+    #01258f;
   pointer-events: none;
 }
 
@@ -95,7 +95,7 @@
   right: -8%;
   bottom: -18%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 188, 212, 0.28) 0%, transparent 70%);
+  background: #01258f;
   filter: blur(8px);
   pointer-events: none;
 }
@@ -209,11 +209,11 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   padding: clamp(16px, 2.5vw, 22px);
   border-radius: 28px;
   background:
-    linear-gradient(165deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 250, 252, 0.94) 100%);
-  border: 1px solid rgba(0, 151, 178, 0.18);
+    #01258f;
+  border: 1px solid rgba(1, 37, 143, 0.18);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.8) inset,
-    0 24px 56px rgba(15, 36, 64, 0.12);
+    0 24px 56px rgba(1, 17, 66, 0.12);
 }
 
 .anuncios-feature__media {
@@ -221,7 +221,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   margin: 0;
   overflow: hidden;
   border-radius: 20px;
-  background: #0f2440;
+  background: #011142;
   min-height: clamp(240px, 36vh, 420px);
 }
 
@@ -245,7 +245,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   z-index: 1;
   padding: 7px 12px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #003087 0%, #0097b2 100%);
+  background: #01258f;
   color: #ffffff;
   font-size: 0.68rem;
   font-weight: 800;
@@ -318,7 +318,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   min-height: 46px;
   padding: 0 18px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #003087 0%, #0097b2 100%);
+  background: #01258f;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 800;
@@ -375,12 +375,12 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   padding: 6px 14px 6px 6px;
   border-radius: 999px;
   background: #ffffff;
-  border: 1px solid rgba(0, 151, 178, 0.2);
+  border: 1px solid rgba(1, 37, 143, 0.2);
   color: var(--an-ink);
   text-decoration: none;
   font-size: 0.84rem;
   font-weight: 700;
-  box-shadow: 0 8px 20px rgba(15, 36, 64, 0.06);
+  box-shadow: 0 8px 20px rgba(1, 17, 66, 0.06);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
@@ -401,7 +401,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #003087, #0097b2);
+  background: #01258f;
   color: #ffffff;
   font-size: 0.62rem;
   font-weight: 800;
@@ -411,8 +411,8 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
 .anuncios-chip:hover,
 .anuncios-chip:focus-visible {
   transform: translateY(-2px);
-  border-color: rgba(0, 188, 212, 0.55);
-  box-shadow: 0 14px 28px rgba(0, 151, 178, 0.16);
+  border-color: rgba(1, 37, 143, 0.55);
+  box-shadow: 0 14px 28px rgba(1, 37, 143, 0.16);
   outline: none;
 }
 

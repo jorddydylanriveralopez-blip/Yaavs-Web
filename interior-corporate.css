@@ -23,12 +23,7 @@
 }
 
 body.theme-cluster:not(.page-home) .site-header {
-  background: linear-gradient(
-    180deg,
-    rgba(4, 12, 28, 0.78) 0%,
-    rgba(4, 12, 28, 0.42) 55%,
-    rgba(4, 12, 28, 0) 100%
-  );
+  background: #01258f;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
@@ -44,8 +39,8 @@ body.theme-cluster:not(.page-home) .site-header.is-scrolled {
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-bottom-color: rgba(0, 151, 178, 0.22);
-  box-shadow: 0 4px 16px rgba(15, 36, 64, 0.08);
+  border-bottom-color: rgba(1, 37, 143, 0.22);
+  box-shadow: 0 4px 16px rgba(1, 17, 66, 0.08);
 }
 
 body.theme-cluster:not(.page-home) .site-header::before {
@@ -63,7 +58,7 @@ body.theme-cluster:not(.page-home) .site-header::after {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  background: linear-gradient(90deg, #0097b2 0%, #00bcd4 48%, #00d4ee 100%);
+  background: #01258f;
   transition: height 0.35s var(--ease), opacity 0.35s var(--ease);
 }
 
@@ -97,48 +92,48 @@ body.theme-cluster:not(.page-home):not(.page-postpago) .site-header.is-scrolled 
 }
 
 body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .nav-bento {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(232, 247, 251, 0.92) 100%) !important;
-  border: 1px solid rgba(0, 188, 212, 0.28) !important;
+  background: #01258f !important;
+  border: 1px solid rgba(1, 37, 143, 0.28) !important;
   box-shadow:
     0 4px 14px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .bento-dot {
-  background: #0f2440 !important;
+  background: #011142 !important;
 }
 
 body.theme-cluster:not(.page-home) .site-header:not(.is-scrolled) .header-wa {
   box-shadow:
-    0 6px 18px rgba(37, 211, 102, 0.35),
+    0 6px 18px rgba(1, 37, 143, 0.35),
     0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .bento-dot {
-  background: var(--ink, #0f2440) !important;
+  background: var(--ink, #011142) !important;
 }
 
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento {
-  background: rgba(15, 36, 64, 0.06) !important;
-  border: 1px solid rgba(15, 36, 64, 0.28) !important;
+  background: rgba(1, 17, 66, 0.06) !important;
+  border: 1px solid rgba(1, 17, 66, 0.28) !important;
 }
 
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento:hover,
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento:focus-visible {
-  background: rgba(0, 151, 178, 0.1) !important;
-  border-color: rgba(0, 151, 178, 0.45) !important;
+  background: rgba(1, 37, 143, 0.1) !important;
+  border-color: rgba(1, 37, 143, 0.45) !important;
 }
 
 body.theme-cluster:not(.page-home) .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
-  background: var(--accent, #0097b2) !important;
+  background: var(--accent, #01258f) !important;
 }
 
 /* Páginas sin hero oscuro: barra clara desde el inicio */
 body.theme-cluster.page-terminos .site-header:not(.is-scrolled),
 body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) {
   background: rgba(255, 255, 255, 0.97);
-  border-bottom-color: rgba(0, 151, 178, 0.18);
-  box-shadow: 0 4px 16px rgba(15, 36, 64, 0.06);
+  border-bottom-color: rgba(1, 37, 143, 0.18);
+  box-shadow: 0 4px 16px rgba(1, 17, 66, 0.06);
 }
 
 body.theme-cluster.page-terminos .site-header:not(.is-scrolled) .logo.logo--white,
@@ -148,8 +143,8 @@ body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) .logo.logo--wh
 
 body.theme-cluster.page-terminos .site-header:not(.is-scrolled) .nav-bento,
 body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) .nav-bento {
-  background: rgba(15, 36, 64, 0.06) !important;
-  border: 1px solid rgba(15, 36, 64, 0.28) !important;
+  background: rgba(1, 17, 66, 0.06) !important;
+  border: 1px solid rgba(1, 17, 66, 0.28) !important;
   box-shadow: none;
 }
 
@@ -188,25 +183,25 @@ body.theme-cluster.page-privacidad .site-header:not(.is-scrolled) .nav-bento {
 
 /* ─── Tema claro global — turquesa YAAVS (paridad con home) ─── */
 body.theme-cluster:not(.page-home) {
-  --accent: #0097b2;
-  --accent-bright: #00bcd4;
-  --accent-soft: #7edce8;
-  --accent-glow: rgba(0, 188, 212, 0.12);
-  --hx-att-blue: #0097b2;
-  --hx-att-blue-bright: #00bcd4;
-  --hx-att-navy: #0f2440;
-  --hx-corp-navy: #1a3a5c;
+  --accent: #01258f;
+  --accent-bright: #01258f;
+  --accent-soft: #01258f;
+  --accent-glow: rgba(1, 37, 143, 0.12);
+  --hx-att-blue: #01258f;
+  --hx-att-blue-bright: #01258f;
+  --hx-att-navy: #011142;
+  --hx-corp-navy: #011142;
   --hx-corp-slate: #eef8fc;
   --surface: #ffffff;
   --surface-soft: #f0fbfd;
-  --ink: #0f2440;
-  --ink-muted: rgba(15, 36, 64, 0.72);
-  --ink-soft: rgba(15, 36, 64, 0.52);
-  --muted: rgba(15, 36, 64, 0.62);
-  --caption: rgba(15, 36, 64, 0.42);
-  --border-on-light: rgba(0, 188, 212, 0.12);
-  --accent-on-light: #0097b2;
-  --bg-soft: #f5fcfe;
+  --ink: #011142;
+  --ink-muted: rgba(1, 17, 66, 0.72);
+  --ink-soft: rgba(1, 17, 66, 0.52);
+  --muted: rgba(1, 17, 66, 0.62);
+  --caption: rgba(1, 17, 66, 0.42);
+  --border-on-light: rgba(1, 37, 143, 0.12);
+  --accent-on-light: #01258f;
+  --bg-soft: #011142;
   --bg: #ffffff;
   background: var(--bg);
   color: var(--ink);
@@ -219,9 +214,9 @@ body.theme-cluster:not(.page-home)::before {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 42% 38% at 18% 32%, rgba(0, 188, 212, 0.07) 0%, transparent 62%),
-    radial-gradient(ellipse 38% 34% at 82% 68%, rgba(0, 151, 178, 0.05) 0%, transparent 58%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(245, 252, 254, 0.9) 0%, transparent 55%),
+    #01258f,
+    #01258f,
+    #01258f,
     var(--bg);
 }
 
@@ -256,21 +251,21 @@ body.theme-cluster:not(.page-home) .main-nav:not(.main-nav--overlay) a.is-active
 /* Menú panel derecho — blanco + turquesa corporativo */
 body.theme-cluster:not(.page-home) .main-nav--overlay {
   background:
-    radial-gradient(ellipse 80% 58% at 12% 12%, rgba(0, 188, 212, 0.14) 0%, transparent 58%),
-    radial-gradient(ellipse 68% 52% at 88% 88%, rgba(37, 99, 181, 0.08) 0%, transparent 62%),
-    linear-gradient(180deg, #ffffff 0%, #f5fcfe 42%, #e8f7fb 100%);
+    #01258f,
+    #01258f,
+    #01258f;
 }
 
 body.theme-cluster:not(.page-home) .main-nav--overlay a {
-  border-bottom-color: rgba(0, 188, 212, 0.18);
-  color: #0f2440;
-  -webkit-text-fill-color: #0f2440;
+  border-bottom-color: rgba(1, 37, 143, 0.18);
+  color: #011142;
+  -webkit-text-fill-color: #011142;
 }
 
 body.theme-cluster:not(.page-home) .main-nav--overlay a:hover,
 body.theme-cluster:not(.page-home) .main-nav--overlay a.is-active {
-  color: #0097b2;
-  -webkit-text-fill-color: #0097b2;
+  color: #01258f;
+  -webkit-text-fill-color: #01258f;
 }
 
 /* Tipografía legible sobre fondo claro */
@@ -325,17 +320,17 @@ body.theme-cluster:not(.page-home) .glass-card {
   border-color: var(--border-on-light);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(15, 36, 64, 0.06);
+  box-shadow: 0 8px 32px rgba(1, 17, 66, 0.06);
 }
 
 body.theme-cluster:not(.page-home) .glass-card:hover {
   border-color: var(--border-accent);
   background: var(--surface);
-  box-shadow: 0 12px 40px rgba(15, 36, 64, 0.1);
+  box-shadow: 0 12px 40px rgba(1, 17, 66, 0.1);
 }
 
 body.theme-cluster:not(.page-home) .glass-card::before {
-  background: linear-gradient(180deg, var(--accent-bright), transparent);
+  background: #01258f;
 }
 
 body.theme-cluster:not(.page-home) .about-card {
@@ -387,15 +382,8 @@ body.theme-cluster:not(.page-home) .form-title {
 
 /* Franjas y separadores */
 .trust-strip {
-  background: linear-gradient(
-    90deg,
-    #f0fbfd 0%,
-    #ffffff 25%,
-    #eef8fc 50%,
-    #ffffff 75%,
-    #f0fbfd 100%
-  );
-  border-block: 1px solid rgba(0, 188, 212, 0.18);
+  background: #01258f;
+  border-block: 1px solid rgba(1, 37, 143, 0.18);
 }
 
 .trust-strip__item strong {
@@ -411,7 +399,7 @@ body.theme-cluster:not(.page-home) .form-title {
 }
 
 .pleca__line {
-  background: linear-gradient(90deg, transparent, rgba(61, 125, 181, 0.45), transparent);
+  background: #01258f;
 }
 
 .pleca__label {
@@ -419,11 +407,11 @@ body.theme-cluster:not(.page-home) .form-title {
 }
 
 .pleca--band {
-  background: linear-gradient(90deg, transparent, rgba(61, 125, 181, 0.35), transparent);
+  background: #01258f;
 }
 
 .page-cta-band {
-  background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+  background: #01258f;
   border-top: 1px solid var(--border-on-light);
 }
 
@@ -433,8 +421,8 @@ body.theme-cluster:not(.page-home) .form-title {
 .page-cta-band .page-cta-band__text,
 .page-cta-band .page-cta-band__eyebrow,
 .page-cta-band .page-cta-band__proof {
-  color: #0f2440 !important;
-  -webkit-text-fill-color: #0f2440 !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   opacity: 1;
 }
 
@@ -468,32 +456,24 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner__media {
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner__aurora {
   background:
-    radial-gradient(ellipse 50% 45% at 20% 30%, rgba(0, 188, 212, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 45% 40% at 80% 55%, rgba(0, 151, 178, 0.1) 0%, transparent 52%),
-    radial-gradient(ellipse 55% 48% at 50% 100%, rgba(0, 188, 212, 0.06) 0%, transparent 50%);
+    #01258f,
+    #01258f,
+    #01258f;
   opacity: 0.38;
 }
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner__shade {
   background:
-    linear-gradient(
-      90deg,
-      rgba(2, 10, 22, 0.96) 0%,
-      rgba(2, 10, 22, 0.9) 24%,
-      rgba(2, 10, 22, 0.72) 42%,
-      rgba(2, 10, 22, 0.42) 58%,
-      rgba(2, 10, 22, 0.16) 74%,
-      transparent 88%
-    ),
-    linear-gradient(0deg, rgba(2, 8, 18, 0.9) 0%, rgba(2, 8, 18, 0.42) 42%, transparent 68%),
-    linear-gradient(180deg, rgba(2, 8, 18, 0.62) 0%, transparent 30%);
+    #01258f,
+    #01258f,
+    #01258f;
 }
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner__grid {
   opacity: 0.1;
   background-image:
-    linear-gradient(rgba(0, 188, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 188, 212, 0.08) 1px, transparent 1px);
+    #01258f,
+    #01258f;
 }
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner__scan {
@@ -511,7 +491,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner__content::before {
   z-index: -1;
   border-radius: 22px;
   background:
-    radial-gradient(ellipse 120% 100% at 0% 50%, rgba(2, 10, 22, 0.72) 0%, rgba(2, 10, 22, 0.38) 58%, transparent 100%);
+    #01258f;
   pointer-events: none;
 }
 
@@ -535,8 +515,8 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner__title {
 body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__title .bolsa-hero-banner__yaavs,
 body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__title .avisos-hero-banner__accent {
   display: block;
-  color: #3b82d4 !important;
-  -webkit-text-fill-color: #3b82d4 !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
   background: none !important;
   -webkit-background-clip: border-box !important;
   background-clip: border-box !important;
@@ -564,7 +544,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner__lead {
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner__eyebrow {
   color: #b8f0f8;
-  border-color: rgba(0, 188, 212, 0.55);
+  border-color: rgba(1, 37, 143, 0.55);
   background: rgba(2, 10, 22, 0.62);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
@@ -584,8 +564,8 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner__breadcrumb span {
 }
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner__rule {
-  background: linear-gradient(90deg, transparent, var(--accent-bright), transparent);
-  box-shadow: 0 0 24px rgba(0, 188, 212, 0.35);
+  background: #01258f;
+  box-shadow: 0 0 24px rgba(1, 37, 143, 0.35);
 }
 
 body.theme-cluster:not(.page-home) .testimonios-hero-banner__chips span {
@@ -601,21 +581,14 @@ body.theme-cluster:not(.page-home) .testimonios-hero-banner__chips span {
 @media (max-width: 768px) {
   body.theme-cluster:not(.page-home) .avisos-hero-banner__shade {
     background:
-      linear-gradient(
-        180deg,
-        rgba(2, 10, 22, 0.58) 0%,
-        rgba(2, 10, 22, 0.48) 28%,
-        rgba(2, 10, 22, 0.72) 52%,
-        rgba(2, 10, 22, 0.92) 72%,
-        rgba(2, 10, 22, 0.97) 100%
-      );
+      #01258f;
   }
 
   body.theme-cluster:not(.page-home) .avisos-hero-banner__content::before {
     inset: -14px -12px;
     border-radius: 18px;
     background:
-      radial-gradient(ellipse 130% 110% at 50% 100%, rgba(2, 10, 22, 0.82) 0%, rgba(2, 10, 22, 0.55) 55%, transparent 100%);
+      #01258f;
   }
 }
 
@@ -635,38 +608,33 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint:hover {
 }
 
 body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
-  background: linear-gradient(180deg, transparent, rgba(0, 188, 212, 0.95));
+  background: #01258f;
 }
 
 /* Puente logo */
 .banner-logo-bridge {
-  background: linear-gradient(180deg, #f0fbfd 0%, #ffffff 50%, #eef8fc 100%);
-  border-block: 1px solid rgba(0, 188, 212, 0.16);
+  background: #01258f;
+  border-block: 1px solid rgba(1, 37, 143, 0.16);
   padding: clamp(20px, 3.5vw, 32px) var(--pad-x);
 }
 
 .banner-logo-bridge__img.logo--on-light {
   width: min(280px, 72vw);
-  filter: drop-shadow(0 8px 28px rgba(0, 188, 212, 0.22));
+  filter: drop-shadow(0 8px 28px rgba(1, 37, 143, 0.22));
 }
 
 /* Franja eslogan quienes somos */
 .yaavs-tagline-band {
   background:
-    linear-gradient(
-      105deg,
-      rgba(240, 251, 253, 0.96) 0%,
-      rgba(255, 255, 255, 0.92) 45%,
-      rgba(232, 247, 251, 0.94) 100%
-    ),
+    #01258f,
     url("assets/hero-telecom/hero-telecom-3.jpg") center 40% / cover no-repeat;
-  border-block: 1px solid rgba(0, 188, 212, 0.18);
+  border-block: 1px solid rgba(1, 37, 143, 0.18);
 }
 
 .yaavs-tagline-band__glow {
   background:
-    radial-gradient(ellipse 50% 55% at 22% 50%, rgba(0, 188, 212, 0.14) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 78% 50%, rgba(0, 151, 178, 0.1) 0%, transparent 60%);
+    #01258f,
+    #01258f;
 }
 
 .yaavs-tagline-band__mesh {
@@ -679,7 +647,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .theme-cluster .yaavs-tagline-band__line--accent {
-  background: linear-gradient(135deg, #0097b2 0%, #00bcd4 100%);
+  background: #01258f;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -687,18 +655,11 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .yaavs-tagline-band__rule {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 188, 212, 0.25) 15%,
-    var(--accent-bright) 50%,
-    rgba(0, 188, 212, 0.25) 85%,
-    transparent
-  );
+  background: #01258f;
 }
 
 .yaavs-tagline-band__yaavsty-img {
-  filter: drop-shadow(0 12px 40px rgba(0, 188, 212, 0.28));
+  filter: drop-shadow(0 12px 40px rgba(1, 37, 143, 0.28));
   animation: none;
 }
 
@@ -712,7 +673,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .page-quienes-somos .valores-carousel__ambient {
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  background: #01258f;
 }
 
 .page-quienes-somos .valores-carousel__eyebrow {
@@ -720,7 +681,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .page-quienes-somos .valores-carousel__progress {
-  background: linear-gradient(90deg, var(--hx-att-navy), var(--accent-bright));
+  background: #01258f;
 }
 
 .page-quienes-somos .valores-carousel__rail-btn {
@@ -753,13 +714,13 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .page-quienes-somos .valores-carousel__content--accent {
-  border-color: rgba(0, 188, 212, 0.35);
+  border-color: rgba(1, 37, 143, 0.35);
   background: rgba(2, 10, 22, 0.55);
   backdrop-filter: blur(10px);
 }
 
 .page-quienes-somos #contenido > .section--about {
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 50%, var(--bg) 100%);
+  background: #01258f;
 }
 
 .page-quienes-somos .about-closing,
@@ -784,7 +745,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .page-servicios .section--svc-showcase {
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  background: #01258f;
 }
 
 .page-servicios .svc-showcase__copy {
@@ -967,15 +928,15 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 
 .page-bolsa-trabajo .jobs-catalog__item.is-openable:hover,
 .page-bolsa-trabajo .jobs-catalog__item.is-openable:focus-visible {
-  border-color: rgba(37, 99, 181, 0.55);
-  box-shadow: 0 14px 36px rgba(15, 36, 64, 0.16);
+  border-color: rgba(1, 37, 143, 0.55);
+  box-shadow: 0 14px 36px rgba(1, 17, 66, 0.16);
   outline: none;
   transform: translateY(-2px);
 }
 
 .page-bolsa-trabajo .jobs-catalog__item.is-expanded {
-  border-color: rgba(37, 99, 181, 0.45);
-  box-shadow: 0 18px 44px rgba(15, 36, 64, 0.2);
+  border-color: rgba(1, 37, 143, 0.45);
+  box-shadow: 0 18px 44px rgba(1, 17, 66, 0.2);
   transform: none;
 }
 
@@ -1015,7 +976,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   padding: 5px 9px;
   border-radius: 999px;
   color: #0b3d91;
-  background: rgba(37, 99, 181, 0.1);
+  background: rgba(1, 37, 143, 0.1);
 }
 
 .page-bolsa-trabajo .jobs-catalog__status {
@@ -1034,8 +995,8 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 .page-bolsa-trabajo .jobs-catalog__chevron {
   width: 10px;
   height: 10px;
-  border-right: 2px solid rgba(37, 99, 181, 0.7);
-  border-bottom: 2px solid rgba(37, 99, 181, 0.7);
+  border-right: 2px solid rgba(1, 37, 143, 0.7);
+  border-bottom: 2px solid rgba(1, 37, 143, 0.7);
   transform: rotate(45deg);
   transition: transform 0.25s ease;
   margin-left: 2px;
@@ -1049,7 +1010,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   padding: 0 20px 20px;
   border-top: 1px solid rgba(61, 125, 181, 0.16);
   background:
-    linear-gradient(180deg, rgba(236, 246, 255, 0.65) 0%, rgba(255, 255, 255, 0.2) 48%);
+    #01258f;
   animation: jobsDetailIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1077,10 +1038,10 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   border-radius: 16px;
   overflow: hidden;
   background:
-    linear-gradient(160deg, #eef6ff 0%, #f7fbff 55%, #e8f2fb 100%);
+    #01258f;
   box-shadow:
-    0 18px 40px rgba(15, 36, 64, 0.18),
-    0 0 0 1px rgba(37, 99, 181, 0.12);
+    0 18px 40px rgba(1, 17, 66, 0.18),
+    0 0 0 1px rgba(1, 37, 143, 0.12);
 }
 
 .page-bolsa-trabajo .jobs-catalog__photo-btn {
@@ -1096,7 +1057,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 }
 
 .page-bolsa-trabajo .jobs-catalog__photo-btn:focus-visible {
-  outline: 2px solid #2563b5;
+  outline: 2px solid #01258f;
   outline-offset: 2px;
 }
 
@@ -1122,7 +1083,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #fff;
-  background: rgba(15, 36, 64, 0.78);
+  background: rgba(1, 17, 66, 0.78);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   pointer-events: none;
@@ -1153,8 +1114,8 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   font-weight: 650;
   line-height: 1.3;
   color: #1e3a5f;
-  background: rgba(37, 99, 181, 0.08);
-  border: 1px solid rgba(37, 99, 181, 0.14);
+  background: rgba(1, 37, 143, 0.08);
+  border: 1px solid rgba(1, 37, 143, 0.14);
 }
 
 .page-bolsa-trabajo .jobs-catalog__chip--salary {
@@ -1210,21 +1171,21 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   letter-spacing: 0.02em;
   text-decoration: none;
   color: #fff;
-  background: #2563b5;
-  box-shadow: 0 8px 18px rgba(37, 99, 181, 0.28);
+  background: #01258f;
+  box-shadow: 0 8px 18px rgba(1, 37, 143, 0.28);
 }
 
 .page-bolsa-trabajo .job-platform--occ {
-  background: linear-gradient(135deg, #ff6a00 0%, #e45700 100%);
+  background: #01258f;
   box-shadow: 0 8px 18px rgba(228, 87, 0, 0.28);
 }
 
 .page-bolsa-trabajo .job-platform--indeed {
-  background: linear-gradient(135deg, #2557a7 0%, #163a78 100%);
+  background: #01258f;
 }
 
 .page-bolsa-trabajo .job-platform--facebook {
-  background: linear-gradient(135deg, #1877f2 0%, #0f5fd0 100%);
+  background: #01258f;
 }
 
 .page-bolsa-trabajo .job-platform:hover,
@@ -1346,7 +1307,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   max-height: calc(94vh - 58px);
   overflow: auto;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 20%, rgba(61, 125, 181, 0.18), transparent 60%),
+    #01258f,
     #0a1628;
 }
 
@@ -1371,7 +1332,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   isolation: isolate;
   overflow: hidden;
   padding-block: clamp(48px, 8vw, 88px);
-  background: linear-gradient(180deg, #ffffff 0%, #f5fcfe 55%, #eef8fc 100%);
+  background: #01258f;
   transition: background 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1400,7 +1361,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(6, 12, 24, 0.78) 0%, rgba(6, 12, 24, 0.88) 48%, rgba(6, 12, 24, 0.94) 100%),
+    #01258f,
     rgba(0, 0, 0, 0.45);
   opacity: 0;
   transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
@@ -1439,7 +1400,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   text-transform: uppercase;
   line-height: 1.15;
   text-align: center;
-  text-shadow: 0 2px 24px rgba(0, 188, 212, 0.35);
+  text-shadow: 0 2px 24px rgba(1, 37, 143, 0.35);
 }
 
 .page-bolsa-trabajo .jobs-catalog-section.is-scene-on .jobs-section-title--hero {
@@ -1447,7 +1408,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   text-shadow:
     0 0 28px rgba(0, 212, 238, 0.45),
     0 4px 28px rgba(0, 0, 0, 0.55);
-  background: linear-gradient(90deg, #ffffff 0%, #7ec8ff 48%, #00d4ee 100%);
+  background: #01258f;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1574,7 +1535,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   padding: clamp(72px, 10vw, 112px) 0 clamp(80px, 11vw, 120px);
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(180deg, #f5fcfe 0%, #ffffff 45%, #eef8fc 100%);
+  background: #01258f;
 }
 
 .page-bolsa-trabajo .jobs-apply-backdrop {
@@ -1598,20 +1559,20 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(245, 252, 254, 0.82) 45%, rgba(238, 248, 252, 0.92) 100%),
-    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(0, 188, 212, 0.12) 0%, transparent 68%);
+    #01258f,
+    #01258f;
 }
 
 .page-bolsa-trabajo .jobs-apply-backdrop__grid {
   position: absolute;
   inset: 0;
   background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, #000 25%, transparent 90%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, #000 25%, transparent 90%);
+  mask-image: #01258f;
+  -webkit-mask-image: #01258f;
   opacity: 0.18;
   background-image:
-    linear-gradient(rgba(0, 188, 212, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 188, 212, 0.08) 1px, transparent 1px);
+    #01258f,
+    #01258f;
 }
 
 .page-bolsa-trabajo .jobs-apply-backdrop__glow {
@@ -1626,13 +1587,13 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 .page-bolsa-trabajo .jobs-apply-backdrop__glow--left {
   top: 10%;
   left: -10%;
-  background: rgba(0, 188, 212, 0.2);
+  background: rgba(1, 37, 143, 0.2);
 }
 
 .page-bolsa-trabajo .jobs-apply-backdrop__glow--right {
   bottom: 5%;
   right: -8%;
-  background: rgba(0, 151, 178, 0.18);
+  background: rgba(1, 37, 143, 0.18);
 }
 
 .page-bolsa-trabajo .jobs-apply-section__inner {
@@ -1647,10 +1608,10 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   padding: clamp(28px, 4.5vw, 44px);
   border-radius: 22px;
   background: #ffffff;
-  border: 1px solid rgba(0, 188, 212, 0.22);
+  border: 1px solid rgba(1, 37, 143, 0.22);
   box-shadow:
-    0 0 40px rgba(0, 188, 212, 0.08),
-    0 24px 64px rgba(15, 36, 64, 0.06),
+    0 0 40px rgba(1, 37, 143, 0.08),
+    0 24px 64px rgba(1, 17, 66, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   backdrop-filter: none;
 }
@@ -1662,9 +1623,9 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   border-radius: inherit;
   padding: 1px;
   pointer-events: none;
-  background: linear-gradient(135deg, rgba(0, 188, 212, 0.55), rgba(0, 151, 178, 0.15), rgba(0, 188, 212, 0.4));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: #01258f;
+  -webkit-mask: #01258f content-box, #01258f;
+  mask: #01258f content-box, #01258f;
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0.7;
@@ -1704,11 +1665,11 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   grid-column: 1 / -1;
   justify-self: start;
   margin-top: 4px;
-  box-shadow: 0 10px 28px rgba(0, 188, 212, 0.28);
+  box-shadow: 0 10px 28px rgba(1, 37, 143, 0.28);
 }
 
 .page-bolsa-trabajo .jobs-apply-submit:hover {
-  box-shadow: 0 14px 36px rgba(0, 188, 212, 0.38);
+  box-shadow: 0 14px 36px rgba(1, 37, 143, 0.38);
 }
 
 .page-bolsa-trabajo .jobs-apply-form .field select {
@@ -1723,8 +1684,8 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 
 .page-bolsa-trabajo .jobs-apply-form .field select:focus {
   outline: none;
-  border-color: rgba(0, 188, 212, 0.55);
-  box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.12);
+  border-color: rgba(1, 37, 143, 0.55);
+  box-shadow: 0 0 0 2px rgba(1, 37, 143, 0.12);
 }
 
 .page-bolsa-trabajo .jobs-apply-form .field input,
@@ -1736,8 +1697,8 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 
 .page-bolsa-trabajo .jobs-apply-form .field input:focus,
 .page-bolsa-trabajo .jobs-apply-form .field textarea:focus {
-  border-color: rgba(0, 188, 212, 0.55);
-  box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.1);
+  border-color: rgba(1, 37, 143, 0.55);
+  box-shadow: 0 0 0 2px rgba(1, 37, 143, 0.1);
 }
 
 .page-bolsa-trabajo .jobs-apply-form .field--file {
@@ -1757,9 +1718,9 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
   align-items: center;
   min-height: 52px;
   padding: 14px 16px;
-  border: 1px dashed rgba(0, 188, 212, 0.3);
+  border: 1px dashed rgba(1, 37, 143, 0.3);
   border-radius: 2px;
-  background: rgba(0, 188, 212, 0.04);
+  background: rgba(1, 37, 143, 0.04);
   color: var(--ink-muted);
   font-size: 0.92rem;
   transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
@@ -1893,7 +1854,7 @@ body.theme-cluster:not(.page-home) .avisos-hero-banner .scroll-hint-line {
 
 /* Footer — legible en páginas interiores (tema claro no debe oscurecer el pie) */
 body.theme-cluster:not(.page-home) .site-footer {
-  background: linear-gradient(180deg, var(--yaavs-navy-mid) 0%, var(--yaavs-navy) 100%);
+  background: #01258f;
   color: #fff;
   border-top-color: rgba(255, 255, 255, 0.12);
 }

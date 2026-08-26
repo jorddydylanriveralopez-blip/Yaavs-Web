@@ -15,10 +15,10 @@
   padding: clamp(56px, 8vw, 88px) 0 clamp(28px, 4vw, 40px);
   color: #f4f8fc;
   background:
-    radial-gradient(ellipse 70% 55% at 12% 0%, rgba(0, 188, 212, 0.16), transparent 55%),
-    radial-gradient(ellipse 55% 45% at 92% 100%, rgba(37, 99, 181, 0.18), transparent 52%),
-    linear-gradient(165deg, #0a1628 0%, #07111f 48%, #050d18 100%);
-  border-top: 1px solid rgba(0, 188, 212, 0.22);
+    #01258f,
+    #01258f,
+    #01258f;
+  border-top: 1px solid rgba(1, 37, 143, 0.22);
 }
 
 .site-footer__glow {
@@ -26,7 +26,7 @@
   inset: auto 10% -40% 10%;
   height: 55%;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(0, 188, 212, 0.14), transparent 68%);
+  background: #01258f;
 }
 
 .site-footer__mesh {
@@ -35,11 +35,11 @@
   pointer-events: none;
   opacity: 0.22;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    #01258f,
+    #01258f;
   background-size: 56px 56px;
-  mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
+  mask-image: #01258f;
+  -webkit-mask-image: #01258f;
 }
 
 .site-footer__inner {
@@ -99,9 +99,9 @@
 
 .footer-cta--primary {
   color: #041018;
-  background: linear-gradient(135deg, #5ce8f7, #00bcd4 55%, #0097b2);
+  background: #01258f;
   border: 1px solid transparent;
-  box-shadow: 0 10px 28px rgba(0, 188, 212, 0.28);
+  box-shadow: 0 10px 28px rgba(1, 37, 143, 0.28);
 }
 
 .footer-cta--primary:hover {
@@ -117,7 +117,7 @@
 
 .footer-cta--ghost:hover {
   border-color: rgba(0, 229, 255, 0.45);
-  background: rgba(0, 188, 212, 0.12);
+  background: rgba(1, 37, 143, 0.12);
   color: #fff;
 }
 

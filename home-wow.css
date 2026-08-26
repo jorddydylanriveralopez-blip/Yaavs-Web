@@ -12,7 +12,7 @@
   height: 3px;
   z-index: 9500;
   pointer-events: none;
-  background: linear-gradient(90deg, #3b82d4, #7eb3e0 45%, #c9a000);
+  background: #01258f;
   box-shadow: 0 0 12px rgba(59, 130, 212, 0.55);
   transform: scaleX(var(--wow-scroll, 0));
   transform-origin: left center;
@@ -25,8 +25,8 @@
   background: none;
   -webkit-background-clip: unset;
   background-clip: unset;
-  -webkit-text-fill-color: #0097b2;
-  color: #0097b2;
+  -webkit-text-fill-color: #01258f;
+  color: #01258f;
   animation: none;
 }
 
@@ -154,14 +154,14 @@
 .wow-aurora::before {
   top: -12%;
   left: -8%;
-  background: radial-gradient(circle, rgba(59, 130, 212, 0.32), transparent 65%);
+  background: #01258f;
   animation: wow-drift-a 18s ease-in-out infinite alternate;
 }
 
 .wow-aurora::after {
   bottom: -18%;
   right: -10%;
-  background: radial-gradient(circle, rgba(201, 160, 0, 0.18), transparent 65%);
+  background: #01258f;
   animation: wow-drift-b 22s ease-in-out infinite alternate;
 }
 
@@ -192,7 +192,7 @@
 
 .page-home .hx-ops__card[data-wow-tilt].is-wow-active {
   box-shadow:
-    0 24px 48px rgba(15, 36, 64, 0.28),
+    0 24px 48px rgba(1, 17, 66, 0.28),
     0 0 0 1px rgba(59, 130, 212, 0.25);
 }
 
@@ -205,12 +205,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
-  background: radial-gradient(
-    420px circle at var(--wow-gx, 50%) var(--wow-gy, 50%),
-    rgba(255, 255, 255, 0.22),
-    rgba(255, 255, 255, 0.05) 42%,
-    transparent 68%
-  );
+  background: #01258f;
 }
 
 .is-wow-active > .wow-glare {

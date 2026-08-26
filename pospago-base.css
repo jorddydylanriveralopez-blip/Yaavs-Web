@@ -27,7 +27,7 @@ body.page-postpago {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
-  background: #07040f;
+  background: #011142;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   min-height: 100dvh;
@@ -53,16 +53,16 @@ a {
   border-radius: 50%;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(145deg, #2ee06a 0%, #25d366 45%, #1da851 100%);
+  background: #01258f;
   border: 2px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.42);
+  box-shadow: 0 4px 16px rgba(1, 37, 143, 0.42);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
 .header-wa:hover,
 .header-wa:focus-visible {
   transform: scale(1.06);
-  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+  box-shadow: 0 8px 28px rgba(1, 37, 143, 0.55);
   outline: none;
 }
 
