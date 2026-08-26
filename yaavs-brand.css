@@ -1752,6 +1752,61 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
   }
 }
 
+/* ─── Frase socios comerciales ─── */
+html body.page-home #carriers .hx-ops__head {
+  background: #ffffff !important;
+  border: 1px solid rgba(1, 37, 143, 0.14) !important;
+  box-shadow: 0 18px 46px rgba(1, 17, 66, 0.12) !important;
+}
+
+html body.page-home #carriers .hx-ops__title,
+html body.page-home #carriers .hx-ops__title-main {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: none !important;
+  background-image: none !important;
+  filter: none !important;
+}
+
+html body.page-home #carriers .hx-ops__head .hx-ops__title {
+  font-size: clamp(1.28rem, 0.85rem + 2.2vw, 2.55rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em;
+  gap: 0.28em;
+  text-shadow: none !important;
+}
+
+html body.page-home #carriers .hx-ops__title-accent {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.12em;
+  padding: 0.22em 0.82em 0.28em;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #011142 0%, #01258f 45%, #011142 100%) !important;
+  background-image: linear-gradient(100deg, #011142 0%, #01258f 45%, #011142 100%) !important;
+  background-size: 220% 100% !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  letter-spacing: 0.16em;
+  font-size: 0.92em;
+  box-shadow: 0 12px 28px rgba(1, 17, 66, 0.28);
+  animation: yaavs-ops-flow 3.6s ease-in-out infinite;
+}
+
+@keyframes yaavs-ops-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.page-home #carriers .hx-ops__title-accent {
+    animation: none !important;
+    background: #011142 !important;
+    background-image: none !important;
+  }
+}
+
 /* ─── WhatsApp flotante (reemplaza Yaavsti) ─── */
 .yaavbot,
 [data-yaavbot],
