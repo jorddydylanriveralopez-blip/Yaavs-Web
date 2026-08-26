@@ -1825,6 +1825,49 @@ html body.page-home #testimonios-home .tx-gallery__title-line {
   }
 }
 
+/* ─── Quiénes somos: lienzo blanco ─── */
+html:has(body.page-quienes-somos),
+html:has(body.page-asi-somos),
+html body.theme-cluster.page-quienes-somos,
+html body.theme-cluster.page-asi-somos,
+html body.page-quienes-somos,
+html body.page-asi-somos {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #011142 !important;
+}
+
+html body.theme-cluster.page-quienes-somos #contenido,
+html body.theme-cluster.page-asi-somos #contenido,
+html body.page-quienes-somos #contenido,
+html body.page-asi-somos #contenido,
+html body.theme-cluster.page-asi-somos .asi-somos {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #011142 !important;
+}
+
+html body.theme-cluster.page-asi-somos .asi-ambient,
+html body.theme-cluster.page-asi-somos .asi-floats {
+  display: none !important;
+}
+
+html body.theme-cluster.page-asi-somos .asi-somos__hero {
+  background: #ffffff !important;
+}
+
+html body.theme-cluster.page-asi-somos .asi-carriers__item {
+  background: #ffffff !important;
+}
+
+@media (min-width: 1400px) {
+  html body.theme-cluster.page-asi-somos .asi-somos__shell {
+    width: min(1180px, 100%);
+    margin-inline: auto;
+  }
+}
+
 /* ─── WhatsApp flotante (reemplaza Yaavsti) ─── */
 .yaavbot,
 [data-yaavbot],
