@@ -188,7 +188,6 @@
   <div class="header-inner header-inner--corp">
     <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
       <img src="assets/yaavs-logo-white.png?v=2" alt="YAAVS" class="logo logo--corp logo--white" width="180" height="64">
-      <span class="logo-link__tag">Telecom México</span>
     </a>
     <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
@@ -592,7 +591,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=29", headerMount),
+    loadPartial("partials/header.html?v=30", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
