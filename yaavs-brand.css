@@ -525,20 +525,21 @@ section {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  padding: 8px 14px !important;
+  min-height: 40px;
+  padding: 10px 16px !important;
   border-radius: 999px !important;
-  border: 0 !important;
+  border: 1px solid transparent !important;
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.82) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.82) !important;
-  font-size: 0.72rem !important;
-  font-weight: 700 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: 0.74rem !important;
+  font-weight: 800 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.2s ease, color 0.2s ease;
+  opacity: 1 !important;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
 .site-header--corp .main-nav--corp a::before,
@@ -547,20 +548,28 @@ section {
   display: none !important;
 }
 
-.site-header--corp .main-nav--corp a:hover,
-.site-header--corp .main-nav--corp a:focus-visible {
-  background: #01258f !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+html body .site-header.site-header--corp .main-nav.main-nav--corp a:hover,
+html body .site-header.site-header--corp .main-nav.main-nav--corp a:focus-visible,
+html body .site-header.site-header--corp.is-scrolled .main-nav.main-nav--corp a:hover,
+html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a:hover {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   outline: none;
-  transform: none !important;
+  transform: translateY(-1px) !important;
+  opacity: 1 !important;
 }
 
-.site-header--corp .main-nav--corp a.is-active {
+html body .site-header.site-header--corp .main-nav.main-nav--corp a.is-active,
+html body .site-header.site-header--corp.is-scrolled .main-nav.main-nav--corp a.is-active,
+html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.is-active {
   background: #01258f !important;
+  border-color: #ffffff !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   box-shadow: none !important;
+  opacity: 1 !important;
 }
 
 /* Acciones */

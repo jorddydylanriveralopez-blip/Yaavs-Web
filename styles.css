@@ -4042,10 +4042,10 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
 .main-nav--bar a:hover,
 .main-nav--bar a:focus-visible {
   padding-left: 0 !important;
-  background: none !important;
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
-  transform: translateY(-1px);
+  background: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transform: none;
   outline: none;
 }
 
@@ -4076,28 +4076,30 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
 }
 
 .site-header.is-scrolled .main-nav--bar a {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   text-shadow: none !important;
 }
 
 .site-header.is-scrolled .main-nav--bar a:hover,
 .site-header.is-scrolled .main-nav--bar a:focus-visible,
 .site-header.is-scrolled .main-nav--bar a.is-active {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #01258f !important;
 }
 
 .page-home .site-header.is-scrolled .main-nav--bar a {
-  color: rgba(255, 255, 255, 0.92) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 .page-home .site-header.is-scrolled .main-nav--bar a:hover,
 .page-home .site-header.is-scrolled .main-nav--bar a:focus-visible,
 .page-home .site-header.is-scrolled .main-nav--bar a.is-active {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #01258f !important;
 }
 
 body.page-postpago .site-header .main-nav--bar a,
@@ -4112,8 +4114,9 @@ body.page-postpago .site-header .main-nav--bar a:hover,
 body.page-tiendas-map .site-header .main-nav--bar a:hover,
 body.page-postpago .site-header .main-nav--bar a.is-active,
 body.page-tiendas-map .site-header .main-nav--bar a.is-active {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #01258f !important;
 }
 
 @media (max-width: 1100px) {
