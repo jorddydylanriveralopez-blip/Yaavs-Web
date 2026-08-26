@@ -496,35 +496,43 @@ section {
     0 12px 28px rgba(1, 17, 66, 0.08) !important;
 }
 
-.site-header--corp .header-inner--corp {
+html body .site-header.site-header--corp .header-inner.header-inner--corp,
+html body .site-header.site-header--nav-bar .header-inner.header-inner--corp,
+html body .site-header.site-header--corp .header-inner:has(.main-nav--bar),
+html body .site-header.site-header--nav-bar .header-inner:has(.main-nav--bar) {
   display: grid !important;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: clamp(20px, 3.5vw, 48px);
-  row-gap: 0;
-  width: min(100% - 2 * var(--pad-x), 1240px);
-  max-width: 1240px;
-  margin: 0 auto;
-  min-height: var(--header-bar-h);
-  padding: 14px 0;
+  grid-template-columns: minmax(150px, 200px) minmax(0, 1fr) max-content !important;
+  align-items: center !important;
+  column-gap: clamp(36px, 4.5vw, 72px) !important;
+  row-gap: 0 !important;
+  width: min(100% - 2 * var(--pad-x), 1240px) !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  min-height: var(--header-bar-h) !important;
+  padding: 14px 0 !important;
 }
 
-/* Marca — siempre visible, a color */
-.site-header--corp .logo-link--corp {
+/* Marca — siempre visible, logo a COLOR */
+html body .site-header.site-header--corp .logo-link.logo-link--corp,
+html body .site-header.site-header--nav-bar .logo-link.logo-link--corp {
   display: inline-flex !important;
-  flex-direction: row;
-  align-items: center;
-  text-decoration: none;
-  flex-shrink: 0;
-  min-width: 140px;
-  z-index: 2;
+  flex-direction: row !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+  grid-column: 1 !important;
+  min-width: 150px !important;
+  width: auto !important;
+  z-index: 5 !important;
   transform: none !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-.site-header--corp .logo.logo--corp,
 html body .site-header.site-header--corp .logo.logo--corp,
+html body .site-header.site-header--corp .logo.logo--on-light,
+html body .site-header.site-header--corp .logo.logo--white,
+html body .page-home .site-header.site-header--corp .logo,
 html body .page-home .site-header.site-header--corp .logo.logo--white,
 html body .page-home .site-header.site-header--corp .logo.logo--on-light,
 html body .site-header.site-header--corp.is-scrolled .logo {
@@ -532,11 +540,12 @@ html body .site-header.site-header--corp.is-scrolled .logo {
   width: auto !important;
   height: var(--logo-h) !important;
   max-height: var(--logo-h) !important;
-  max-width: min(200px, 48vw) !important;
+  max-width: 190px !important;
   aspect-ratio: 248 / 87 !important;
   object-fit: contain !important;
   object-position: left center !important;
   filter: none !important;
+  -webkit-filter: none !important;
   transform: none !important;
   opacity: 1 !important;
   visibility: visible !important;
@@ -657,14 +666,28 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   background: #011142 !important;
 }
 
-/* Acciones */
-.site-header--corp .header-menu--corp {
+/* Acciones — columna propia, sin montarse sobre el nav */
+html body .site-header.site-header--corp .header-menu.header-menu--corp,
+html body .site-header.site-header--nav-bar .header-menu.header-menu--corp {
   display: flex !important;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  flex-shrink: 0;
-  z-index: 2;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+  grid-column: 3 !important;
+  width: max-content !important;
+  min-width: max-content !important;
+  margin-left: 8px !important;
+  z-index: 4 !important;
+}
+
+html body .site-header.site-header--corp .main-nav.main-nav--corp,
+html body .site-header.site-header--nav-bar .main-nav.main-nav--corp {
+  grid-column: 2 !important;
+  justify-self: center !important;
+  width: auto !important;
+  max-width: 100% !important;
+  padding-right: 8px !important;
 }
 
 .site-header--corp .header-cta {

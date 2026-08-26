@@ -55,13 +55,14 @@
       || (forceLight !== false && usesLightHeaderLogo());
 
     if (useLight) {
-      img.src = "assets/yaavs-logo-on-light.png?v=3";
+      img.src = "assets/yaavs-logo-on-light.png?v=4";
       img.classList.add("logo--on-light");
       img.classList.remove("logo--white");
     } else {
-      img.src = "assets/yaavs-logo-white.png?v=2";
-      img.classList.add("logo--white");
-      img.classList.remove("logo--on-light");
+      /* Header blanco: siempre logo a color */
+      img.src = "assets/yaavs-logo-on-light.png?v=4";
+      img.classList.add("logo--on-light");
+      img.classList.remove("logo--white");
     }
     img.style.removeProperty("--logo-filter");
     img.style.removeProperty("filter");
@@ -188,7 +189,7 @@
     "partials/header.html": `<header class="site-header site-header--nav-bar site-header--corp" id="header">
   <div class="header-inner header-inner--corp">
     <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
-      <img src="assets/yaavs-logo-on-light.png?v=3" alt="YAAVS" class="logo logo--corp logo--on-light" width="410" height="95">
+      <img src="assets/yaavs-logo-on-light.png?v=4" alt="YAAVS" class="logo logo--corp logo--on-light" width="410" height="95">
     </a>
     <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>

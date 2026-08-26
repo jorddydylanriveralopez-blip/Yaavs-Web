@@ -3920,9 +3920,9 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
   position: relative;
   z-index: 2;
   display: grid !important;
-  grid-template-columns: clamp(100px, 11vw, 170px) minmax(0, 1fr) clamp(44px, 5vw, 64px);
+  grid-template-columns: minmax(150px, 200px) minmax(0, 1fr) max-content !important;
   align-items: center;
-  column-gap: clamp(8px, 1vw, 16px);
+  column-gap: clamp(32px, 4vw, 64px) !important;
 }
 
 .site-header--nav-bar .logo-link {
