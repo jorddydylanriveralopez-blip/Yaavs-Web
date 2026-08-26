@@ -2439,60 +2439,121 @@ body.page-home.hero-slide--graphic.hero-carousel--kenburns .hero-banner__visual 
 }
 
 .hero-promo__cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0;
+  margin-top: 4px;
   padding: 0;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
-  background: none;
+  color: #011142;
+  background: transparent;
   border: none;
-  border-radius: 0;
+  border-radius: 999px;
   box-shadow: none;
-  transition: color 0.22s ease, transform 0.22s ease;
+  overflow: visible;
+  isolation: isolate;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), filter 0.28s ease;
   pointer-events: auto;
 }
 
 .hero-promo__cta span {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 0;
-  border-bottom: 2px solid #fff;
-  box-shadow: none;
-  transition: border-color 0.22s ease, box-shadow 0.22s ease, gap 0.22s ease;
+  gap: 12px;
+  padding: 15px 28px 15px 26px;
+  border: 0;
+  border-radius: 999px;
+  color: #011142;
+  -webkit-text-fill-color: #011142;
+  background: #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 10px 28px rgba(1, 17, 66, 0.28),
+    0 2px 6px rgba(1, 17, 66, 0.18);
+  overflow: hidden;
+  transition:
+    gap 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.28s ease,
+    color 0.28s ease,
+    box-shadow 0.28s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-promo__cta span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.55) 48%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
 }
 
 .hero-promo__cta span::after {
   content: "→";
-  font-size: 1.1em;
+  font-size: 1.15em;
+  line-height: 1;
   opacity: 1;
-  color: #fff;
-  transition: transform 0.22s ease;
+  color: inherit;
+  -webkit-text-fill-color: inherit;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-promo__cta:hover {
-  transform: none;
-  color: #fff;
+.hero-promo__cta:hover,
+.hero-promo__cta:focus-visible {
+  transform: translateY(-3px);
+  color: #ffffff;
+  filter: drop-shadow(0 12px 24px rgba(1, 37, 143, 0.35));
 }
 
-.hero-promo__cta:hover span {
-  border-color: #fff;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
-  gap: 14px;
+.hero-promo__cta:hover span,
+.hero-promo__cta:focus-visible span {
+  gap: 16px;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: #01258f;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.22) inset,
+    0 14px 34px rgba(1, 17, 66, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
-.hero-promo__cta:hover span::after {
-  transform: translateX(4px);
+.hero-promo__cta:hover span::before,
+.hero-promo__cta:focus-visible span::before {
+  animation: yaavs-hero-cta-shine 0.7s ease forwards;
+}
+
+.hero-promo__cta:hover span::after,
+.hero-promo__cta:focus-visible span::after {
+  transform: translateX(5px);
+}
+
+.hero-promo__cta:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .hero-promo__cta:focus-visible {
-  outline: 2px solid var(--accent-bright);
-  outline-offset: 6px;
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+@keyframes yaavs-hero-cta-shine {
+  to {
+    transform: translateX(120%);
+  }
 }
 
 .hero-promo__box,
@@ -2507,12 +2568,27 @@ body.page-home.hero-slide--graphic.hero-carousel--kenburns .hero-banner__visual 
 .hero-banner__promo .hero-promo__dot,
 .hero-banner__promo .hero-promo__title,
 .hero-banner__promo .hero-promo__accent,
-.hero-banner__promo .hero-promo__lead,
-.hero-banner__promo .hero-promo__cta,
-.hero-banner__promo .hero-promo__cta span {
+.hero-banner__promo .hero-promo__lead {
   color: #fff;
   opacity: 1;
   -webkit-text-fill-color: #fff;
+}
+
+.hero-banner__promo .hero-promo__cta {
+  color: #011142;
+  opacity: 1;
+}
+
+.hero-banner__promo .hero-promo__cta span {
+  color: #011142;
+  -webkit-text-fill-color: #011142;
+  opacity: 1;
+}
+
+.hero-banner__promo .hero-promo__cta:hover span,
+.hero-banner__promo .hero-promo__cta:focus-visible span {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .hero-home__eyebrow {

@@ -258,10 +258,9 @@ body.nav-open .nav-bento .bento-dot {
   -webkit-text-fill-color: var(--yaavs-ink) !important;
 }
 
-.hero-promo__cta,
 .hx-somos__cta,
 a.hx-svc-deck__cta,
-[class*="__cta"] {
+[class*="__cta"]:not(.hero-promo__cta) {
   color: var(--yaavs-ink) !important;
   background-image: none !important;
 }
@@ -1130,4 +1129,66 @@ html body.page-home .site-header.site-header--corp .logo-link--corp > img.logo {
   opacity: 1 !important;
   mix-blend-mode: normal !important;
   -webkit-text-fill-color: initial !important;
+}
+
+/* ─── Hero carousel CTA — pastilla con volumen ─── */
+@keyframes yaavs-hero-cta-shine {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+html body .hero-banner .hero-promo__cta,
+html body.page-home .hero-banner .hero-promo__cta {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+html body .hero-banner .hero-promo__cta span,
+html body.page-home .hero-banner .hero-promo__cta span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 15px 28px 15px 26px !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 999px !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 12px 30px rgba(1, 17, 66, 0.3),
+    0 3px 8px rgba(1, 17, 66, 0.18) !important;
+  text-shadow: none !important;
+}
+
+html body .hero-banner .hero-promo__cta:hover,
+html body .hero-banner .hero-promo__cta:focus-visible,
+html body.page-home .hero-banner .hero-promo__cta:hover,
+html body.page-home .hero-banner .hero-promo__cta:focus-visible {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transform: translateY(-3px) !important;
+}
+
+html body .hero-banner .hero-promo__cta:hover span,
+html body .hero-banner .hero-promo__cta:focus-visible span,
+html body.page-home .hero-banner .hero-promo__cta:hover span,
+html body.page-home .hero-banner .hero-promo__cta:focus-visible span {
+  gap: 16px !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: #01258f !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.24) inset,
+    0 16px 36px rgba(1, 17, 66, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.16) !important;
 }
