@@ -1,0 +1,80 @@
+name: Deploy header patch to Hostinger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload header files via Hostinger TUS
+        env:
+          HOSTINGER_API_TOKEN: ${{ secrets.HOSTINGER_API_TOKEN }}
+          DOMAIN: skyblue-porpoise-148439.hostingersite.com
+          USERNAME: u376360150
+        run: |
+          set -euo pipefail
+          CREDS=$(curl -sS -X POST "https://developers.hostinger.com/api/hosting/v1/files/upload-urls" \
+            -H "Authorization: Bearer ${HOSTINGER_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"username\":\"${USERNAME}\",\"domain\":\"${DOMAIN}\"}")
+          echo "creds keys: $(echo "$CREDS" | jq -r 'keys|join(",")')"
+          echo "$CREDS" | jq -c 'del(..|strings|select(length>40))' || echo "$CREDS" | head -c 300
+          URL=$(echo "$CREDS" | jq -r '.url // .data.url // empty')
+          AUTH=$(echo "$CREDS" | jq -r '.auth_key // .data.auth_key // empty')
+          REST=$(echo "$CREDS" | jq -r '.rest_auth_key // .data.rest_auth_key // empty')
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then echo "FAIL CREDS: $CREDS"; exit 1; fi
+
+          upload_one() {
+            local FILE="$1"
+            local DEST="$2"
+            local SIZE
+            SIZE=$(stat -c%s "$FILE")
+            local DEST_URL="${URL%/}/${DEST}?override=true"
+            echo "Uploading ${DEST} (${SIZE} bytes)"
+            CODE=$(curl -sS -o /tmp/tus_post.txt -w "%{http_code}" -X POST "$DEST_URL" \
+              -H "X-Auth: ${AUTH}" \
+              -H "X-Auth-Rest: ${REST}" \
+              -H "Tus-Resumable: 1.0.0" \
+              -H "Upload-Length: ${SIZE}" \
+              -H "Upload-Offset: 0")
+            if [ "$CODE" != "201" ]; then
+              echo "X-Auth POST=$CODE body=$(head -c 200 /tmp/tus_post.txt)"
+              CODE=$(curl -sS -o /tmp/tus_post.txt -w "%{http_code}" -X POST "$DEST_URL" \
+                -H "Authorization: Bearer ${AUTH}" \
+                -H "Auth-Data: ${REST}" \
+                -H "Tus-Resumable: 1.0.0" \
+                -H "Upload-Length: ${SIZE}" \
+                -H "Upload-Offset: 0" \
+                -H "Content-Length: 0")
+            fi
+            echo "POST=$CODE"
+            test "$CODE" = "201"
+            PATCH=$(curl -sS -o /tmp/tus_patch.txt -w "%{http_code}" -X PATCH "$DEST_URL" \
+              -H "X-Auth: ${AUTH}" \
+              -H "X-Auth-Rest: ${REST}" \
+              -H "Authorization: Bearer ${AUTH}" \
+              -H "Auth-Data: ${REST}" \
+              -H "Tus-Resumable: 1.0.0" \
+              -H "Content-Type: application/offset+octet-stream" \
+              -H "Upload-Offset: 0" \
+              --data-binary @"${FILE}")
+            echo "PATCH=$PATCH body=$(head -c 120 /tmp/tus_patch.txt)"
+            test "$PATCH" = "204" -o "$PATCH" = "200" -o "$PATCH" = "201"
+          }
+
+          upload_one yaavs-brand.css yaavs-brand.css
+          upload_one js/layout.js js/layout.js
+          upload_one partials/header.html partials/header.html
+          upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png
+
+          for f in *.html; do
+            upload_one "$f" "$f"
+          done
+
+          # Clear cache (try known endpoints; ignore failures)
+          curl -sS -X POST "https://developers.hostinger.com/api/hosting/v1/domains/${DOMAIN}/cache/clear" \
+            -H "Authorization: Bearer ${HOSTINGER_API_TOKEN}" || true
+          echo DONE
