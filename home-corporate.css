@@ -4757,7 +4757,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 
 /* Servicios — panel compacto con hover (home) */
 .page-home .hx-services--deck {
-  padding-bottom: clamp(20px, 3vw, 32px);
+  padding: clamp(40px, 6vw, 72px) 0 clamp(48px, 7vw, 80px);
   overflow: visible;
 }
 
@@ -5191,13 +5191,8 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 }
 
 .page-home .hx-svc-deck::before {
-  content: "";
-  position: absolute;
-  inset: -20% -5%;
-  pointer-events: none;
-  z-index: 0;
-  background: #01258f;
-  opacity: 0.85;
+  content: none;
+  display: none;
 }
 
 .page-home .hx-svc-deck__item {
@@ -5868,6 +5863,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   }
 
   .page-home .hx-svc-deck-more-panel {
+    display: block;
     width: 100%;
     max-height: none;
     opacity: 1;
@@ -5876,6 +5872,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
     pointer-events: auto;
     padding-top: 0;
     margin-bottom: 0;
+    visibility: visible;
   }
 
   .page-home .hx-svc-deck-layout.is-deck-more-open .hx-svc-deck-more-panel {
@@ -6217,15 +6214,8 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 
   /* Atmósfera de escena — no intercepta taps */
   .page-home .hx-services--deck::before {
-    content: "";
-    position: absolute;
-    inset: -8% -12% 10%;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      #01258f,
-      #01258f,
-      #01258f;
+    content: none;
+    display: none;
   }
 
   .page-home .hx-services--deck .hx-services__head {
@@ -6472,12 +6462,8 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
     align-items: stretch;
   }
 
-  /* Última tarjeta sola: centrada en la fila */
-  .page-home .hx-svc-deck-masonry .hx-svc-deck__item[data-deck-svc="soporte-tecnico"] {
-    grid-column: 2;
-  }
-
-  .page-home .hx-svc-deck-layout:not(.is-deck-masonry-mob) [data-hx-svc-deck-more] .hx-svc-deck__item[data-deck-svc="soporte-tecnico"] {
+  /* Última tarjeta huérfana en grilla de 3: centrada */
+  .page-home .hx-svc-deck-masonry .hx-svc-deck__item:last-child:nth-child(3n + 1) {
     grid-column: 2;
   }
 

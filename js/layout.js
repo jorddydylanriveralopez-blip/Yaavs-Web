@@ -211,7 +211,7 @@
     </nav>
     <div class="header-menu header-menu--corp">
       <a class="header-cta" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_cta">Cotizar ahora</a>
-      <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú" hidden>
+      <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
         <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
         <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
         <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
@@ -580,7 +580,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=35", headerMount),
+    loadPartial("partials/header.html?v=36", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),

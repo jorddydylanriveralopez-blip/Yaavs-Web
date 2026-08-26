@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- yaavs-cache: 20260729-v239 -->
+  <!-- yaavs-cache: 20260826-v240 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#011142">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=266">
   <link rel="stylesheet" href="theme-light.css?v=14">
-  <link rel="stylesheet" href="home-corporate.css?v=20260826g">
+  <link rel="stylesheet" href="home-corporate.css?v=20260826i">
   <link rel="stylesheet" href="promo-popup.css?v=5">
   <link rel="stylesheet" href="theme-day-night.css?v=7" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=20260826b" media="print" onload="this.media='all'">
@@ -159,7 +159,7 @@
       .page-home .hero-scroll-hint__chevron { animation: none; }
     }
   </style>
-  <link rel="stylesheet" href="yaavs-brand.css?v=22">
+  <link rel="stylesheet" href="yaavs-brand.css?v=24">
 </head>
 <body class="theme-cluster page-home page-bg--photo page-intro-active" data-page="inicio">
   <script>
@@ -360,35 +360,104 @@
           </h2>
         </header>
 
-        <div class="hx-svc-deck-wrap" data-hx-deck-wrap data-hx-deck-groups>
-          <div class="hx-svc-catalog-tabs" data-hx-svc-tabs role="tablist" aria-label="Categorías de servicios">
-            <button type="button" class="hx-svc-catalog-tabs__btn is-active" data-hx-svc-tab="prepago" role="tab" aria-selected="true" aria-controls="svc-panel-prepago" id="svc-tab-prepago">Prepago</button>
-            <button type="button" class="hx-svc-catalog-tabs__btn" data-hx-svc-tab="pospago" role="tab" aria-selected="false" aria-controls="svc-panel-pospago" id="svc-tab-pospago">Pospago</button>
-            <button type="button" class="hx-svc-catalog-tabs__btn" data-hx-svc-tab="extra" role="tab" aria-selected="false" aria-controls="svc-panel-extra" id="svc-tab-extra">Otros negocios</button>
-          </div>
+        <div class="hx-svc-deck-wrap" data-hx-deck-wrap>
           <div class="hx-svc-deck-layout" data-hx-deck-layout>
-            <div class="hx-svc-group is-active" data-hx-svc-group="prepago" id="svc-panel-prepago" role="tabpanel" aria-labelledby="svc-tab-prepago">
-              <h3 class="hx-svc-group__title">Prepago</h3>
-              <div class="hx-svc-deck" data-hx-svc-deck>
-                <a href="#prepago-modal" class="hx-svc-deck__item" data-deck-svc="prepago" data-hx-prepago-open data-masonry="short" data-accent="cyan" style="--deck-i: 0; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="prepago-modal">
-                  <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/servicios/icons/prepago.png?v=1" alt="" width="1081" height="1081" loading="lazy" decoding="async">
-                  </span>
-                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                  <span class="hx-svc-deck__label">Prepago</span>
-                  <span class="hx-svc-deck__body">
-                    <span class="hx-svc-deck__title">Prepago</span>
-                    <span class="hx-svc-deck__desc">Activaciones y productos prepago con respaldo comercial YAAVS.</span>
-                    <span class="hx-svc-deck__cta">Ver servicios →</span>
-                  </span>
-                </a>
-              </div>
+            <div class="hx-svc-deck" data-hx-svc-deck>
+              <a href="#recargaklic-modal" class="hx-svc-deck__item" data-deck-svc="recargaklic" data-hx-rk-open data-masonry="short" data-accent="cyan" style="--deck-i: 0; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="recargaklic-modal">
+                <span class="hx-svc-deck__bg" aria-hidden="true">
+                  <img src="assets/servicios/icons/recargaklic.png?v=5" alt="" width="400" height="400" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                <span class="hx-svc-deck__label">RecargaKlic</span>
+                <span class="hx-svc-deck__body">
+                  <span class="hx-svc-deck__title">RecargaKlic</span>
+                  <span class="hx-svc-deck__desc">Activa y recarga desde la app con respaldo YAAVS.</span>
+                  <span class="hx-svc-deck__cta">Descargar app →</span>
+                </span>
+              </a>
+
+              <a href="#vinculaciones-modal" class="hx-svc-deck__item" data-deck-svc="vinculaciones" data-hx-vinc-open data-masonry="short" data-accent="navy" style="--deck-i: 1; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="vinculaciones-modal">
+                <span class="hx-svc-deck__bg" aria-hidden="true">
+                  <img src="assets/servicios/icons/vinculaciones.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                <span class="hx-svc-deck__label">Vinculaciones</span>
+                <span class="hx-svc-deck__body">
+                  <span class="hx-svc-deck__title">Vinculaciones</span>
+                  <span class="hx-svc-deck__desc">Vincula la línea con el portal oficial de cada compañía.</span>
+                  <span class="hx-svc-deck__cta">Ver pasos →</span>
+                </span>
+              </a>
+
+              <a href="#porta-modal" class="hx-svc-deck__item" data-deck-svc="portabilidad" data-hx-porta-open data-masonry="short" data-accent="gold" style="--deck-i: 2; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="porta-modal">
+                <span class="hx-svc-deck__bg" aria-hidden="true">
+                  <img src="assets/servicios/icons/portabilidad.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                <span class="hx-svc-deck__label">Portabilidad</span>
+                <span class="hx-svc-deck__body">
+                  <span class="hx-svc-deck__title">Portabilidad</span>
+                  <span class="hx-svc-deck__desc">Cambia de compañía y conserva el número.</span>
+                  <span class="hx-svc-deck__cta">Elegir compañía →</span>
+                </span>
+              </a>
+
+              <a href="#esim-modal" class="hx-svc-deck__item" data-deck-svc="esims" data-hx-esim-open data-masonry="short" data-accent="green" style="--deck-i: 3; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="esim-modal">
+                <span class="hx-svc-deck__bg" aria-hidden="true">
+                  <img src="assets/servicios/icons/esim.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                <span class="hx-svc-deck__label">eSIMs</span>
+                <span class="hx-svc-deck__body">
+                  <span class="hx-svc-deck__title">eSIMs</span>
+                  <span class="hx-svc-deck__desc">Línea digital para celulares compatibles.</span>
+                  <span class="hx-svc-deck__cta">Activar eSIM →</span>
+                </span>
+              </a>
+
+              <a href="#yaavsta-modal" class="hx-svc-deck__item" data-deck-svc="tiempo-aire" data-hx-yaavsta-open data-masonry="short" data-accent="cyan" style="--deck-i: 4; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="yaavsta-modal">
+                <span class="hx-svc-deck__bg" aria-hidden="true">
+                  <img src="assets/servicios/icons/yaavsta.png?v=1" alt="" width="400" height="400" loading="lazy" decoding="async">
+                </span>
+                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                <span class="hx-svc-deck__label">YaavsTA</span>
+                <span class="hx-svc-deck__body">
+                  <span class="hx-svc-deck__title">YaavsTA</span>
+                  <span class="hx-svc-deck__desc">Tiempo aire y recargas desde la app.</span>
+                  <span class="hx-svc-deck__cta">Descargar app →</span>
+                </span>
+              </a>
             </div>
 
-            <div class="hx-svc-group" data-hx-svc-group="pospago" id="svc-panel-pospago" role="tabpanel" aria-labelledby="svc-tab-pospago">
-              <h3 class="hx-svc-group__title">Pospago</h3>
-              <div class="hx-svc-deck" data-hx-svc-deck>
-                <a href="https://pospago-yaavs-site.hostingersite.com/" class="hx-svc-deck__item" data-deck-svc="postpago" data-masonry="short" data-accent="navy" style="--deck-i: 1; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
+            <div class="hx-svc-deck-more-panel" data-hx-deck-more-panel>
+              <div class="hx-svc-deck" data-hx-svc-deck-more>
+                <a href="#rotulaciones-modal" class="hx-svc-deck__item" data-deck-svc="rotulaciones" data-hx-rotul-open data-masonry="short" data-accent="green" style="--deck-i: 5; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="rotulaciones-modal">
+                  <span class="hx-svc-deck__bg" aria-hidden="true">
+                    <img src="assets/servicios/icons/rotulaciones.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+                  </span>
+                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                  <span class="hx-svc-deck__label">Rotulaciones</span>
+                  <span class="hx-svc-deck__body">
+                    <span class="hx-svc-deck__title">Rotulaciones</span>
+                    <span class="hx-svc-deck__desc">Imagen comercial para tu punto de venta.</span>
+                    <span class="hx-svc-deck__cta">Ver galería →</span>
+                  </span>
+                </a>
+
+                <a href="https://wa.me/525522331210" class="hx-svc-deck__item" data-deck-svc="soporte-tecnico" data-masonry="short" data-accent="coral" style="--deck-i: 6; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
+                  <span class="hx-svc-deck__bg" aria-hidden="true">
+                    <img src="assets/servicios/icons/soporte.png" alt="" width="400" height="400" loading="lazy" decoding="async">
+                  </span>
+                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
+                  <span class="hx-svc-deck__label">Soporte</span>
+                  <span class="hx-svc-deck__body">
+                    <span class="hx-svc-deck__title">Soporte técnico</span>
+                    <span class="hx-svc-deck__desc">Incidencias y operación con apoyo YAAVS.</span>
+                    <span class="hx-svc-deck__cta">Escribir por WhatsApp →</span>
+                  </span>
+                </a>
+
+                <a href="https://pospago-yaavs-site.hostingersite.com/" class="hx-svc-deck__item" data-deck-svc="postpago" data-masonry="short" data-accent="navy" style="--deck-i: 7; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
                   <span class="hx-svc-deck__bg" aria-hidden="true">
                     <img src="assets/servicios/icons/postpago.png?v=1" alt="" width="1081" height="1081" loading="lazy" decoding="async">
                   </span>
@@ -396,17 +465,12 @@
                   <span class="hx-svc-deck__label">Pospago</span>
                   <span class="hx-svc-deck__body">
                     <span class="hx-svc-deck__title">Pospago</span>
-                    <span class="hx-svc-deck__desc">Planes pospago con respaldo comercial YAAVS para tu punto de venta.</span>
+                    <span class="hx-svc-deck__desc">Planes pospago con respaldo comercial YAAVS.</span>
                     <span class="hx-svc-deck__cta">Ver pospago →</span>
                   </span>
                 </a>
-              </div>
-            </div>
 
-            <div class="hx-svc-group" data-hx-svc-group="extra" id="svc-panel-extra" role="tabpanel" aria-labelledby="svc-tab-extra">
-              <h3 class="hx-svc-group__title">Otros negocios</h3>
-              <div class="hx-svc-deck" data-hx-svc-deck-more>
-                <a href="#yaavshop-modal" class="hx-svc-deck__item" data-deck-svc="yaashop" data-hx-yaavshop-open data-masonry="short" data-accent="cyan" style="--deck-i: 2; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="yaavshop-modal">
+                <a href="#yaavshop-modal" class="hx-svc-deck__item" data-deck-svc="yaashop" data-hx-yaavshop-open data-masonry="short" data-accent="cyan" style="--deck-i: 8; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="yaavshop-modal">
                   <span class="hx-svc-deck__bg" aria-hidden="true">
                     <img src="assets/servicios/icons/yaashop.png" alt="" width="540" height="540" loading="lazy" decoding="async">
                   </span>
@@ -414,14 +478,14 @@
                   <span class="hx-svc-deck__label">YAAVSHOP</span>
                   <span class="hx-svc-deck__body">
                     <span class="hx-svc-deck__title">YAAVSHOP</span>
-                    <span class="hx-svc-deck__desc">Tienda en redes: pide por WhatsApp con el catálogo Yaavstar.</span>
+                    <span class="hx-svc-deck__desc">Catálogo Yaavstar: pide por WhatsApp.</span>
                     <span class="hx-svc-deck__cta">Ver catálogo →</span>
                   </span>
                 </a>
 
-                <a href="https://academiayaavs.com/" class="hx-svc-deck__item" data-deck-svc="academia-yaavs" data-masonry="short" data-accent="violet" style="--deck-i: 3; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
+                <a href="https://academiayaavs.com/" class="hx-svc-deck__item" data-deck-svc="academia-yaavs" data-masonry="short" data-accent="violet" style="--deck-i: 9; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
                   <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/testimonios/viviana-gonzalez.jpg" alt="" width="400" height="400" loading="lazy" decoding="async">
+                    <img src="assets/servicios/icons/academia.png" alt="" width="400" height="400" loading="lazy" decoding="async">
                   </span>
                   <span class="hx-svc-deck__shade" aria-hidden="true"></span>
                   <span class="hx-svc-deck__label">Academia</span>
@@ -433,14 +497,6 @@
                 </a>
               </div>
             </div>
-
-            <div class="hx-svc-deck-more-panel" data-hx-deck-more-panel aria-hidden="true" hidden></div>
-
-            <button type="button" class="hx-svc-deck-more-toggle" data-hx-deck-more-toggle aria-expanded="false" hidden>
-              <span class="hx-svc-deck-more-toggle__shine" aria-hidden="true"></span>
-              <span data-hx-deck-more-label>Ver más</span>
-              <span class="hx-svc-deck-more-toggle__chev" aria-hidden="true">↓</span>
-            </button>
           </div>
         </div>
       </section>
@@ -1266,7 +1322,7 @@
   </script>
   <script src="js/hero-carousel.config.js?v=20260814b" defer></script>
   <script src="js/hero-carousel.js?v=20260826a" defer></script>
-  <script src="js/layout.js?v=74" defer></script>
+  <script src="js/layout.js?v=75" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script>
     (function () {

@@ -264,8 +264,6 @@ a.hx-svc-deck__cta,
 }
 
 /* ─── Servicios / deck ─── */
-.hx-services,
-.hx-services--deck,
 .hx-svc-deck-wrap,
 .hx-svc-group,
 .hx-svc-catalog-tabs {
@@ -422,7 +420,7 @@ section:not(.hx-somos) {
 }
 
 .hx-partners,
-[data-hx-band="light"]:not(.hx-somos) {
+[data-hx-band="light"]:not(.hx-somos):not(.hx-services) {
   background-color: var(--yaavs-deep) !important;
   color: var(--yaavs-ink) !important;
   border-color: var(--yaavs-blue) !important;
@@ -1045,6 +1043,108 @@ html body.page-home .site-header .logo.logo--on-light {
   max-width: 160px !important;
 }
 
+/* Header multiplataforma: links en desktop, menú hamburguesa en tablet/móvil */
+@media (max-width: 900px) {
+  html body .site-header .header-inner.header-inner--corp,
+  html body .site-header .header-inner:has(.main-nav--bar) {
+    grid-template-columns: minmax(120px, 1fr) auto !important;
+    column-gap: 10px !important;
+  }
+
+  html body .site-header .header-menu.header-menu--corp {
+    grid-column: 2 !important;
+    gap: 8px !important;
+  }
+
+  html body .site-header .header-cta,
+  html body.page-home .site-header .header-cta,
+  .site-header--corp .header-cta {
+    display: inline-flex !important;
+    min-height: 40px !important;
+    padding: 0 14px !important;
+    font-size: 0.68rem !important;
+  }
+
+  html body .site-header .nav-bento,
+  html body .site-header .nav-bento[hidden],
+  html body.page-home .site-header .nav-bento,
+  .site-header--corp .nav-bento,
+  .site-header--corp .nav-bento[hidden] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    background: #ffffff !important;
+    border: 1.5px solid #01258f !important;
+  }
+
+  html body .site-header .main-nav.main-nav--corp,
+  html body .site-header .main-nav.main-nav--bar,
+  html body.page-home .site-header .main-nav.main-nav--corp {
+    position: fixed !important;
+    top: calc(var(--header-bar-h, 72px) + var(--safe-top, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    grid-column: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 12px 16px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 4px !important;
+    background: #ffffff !important;
+    border-bottom: 3px solid #01258f !important;
+    box-shadow: 0 16px 32px rgba(1, 17, 66, 0.16) !important;
+    transform: translateY(-120%) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: 1290 !important;
+  }
+
+  html body .site-header .main-nav.main-nav--corp.is-open,
+  html body.nav-open .site-header .main-nav.main-nav--corp,
+  html body.page-home.nav-open .site-header .main-nav.main-nav--corp {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  html body .site-header .main-nav.main-nav--corp a,
+  html body.page-home .site-header .main-nav.main-nav--corp a {
+    justify-content: flex-start !important;
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    font-size: 0.92rem !important;
+    letter-spacing: 0.08em !important;
+    opacity: 1 !important;
+    color: #011142 !important;
+    -webkit-text-fill-color: #011142 !important;
+  }
+
+  html body .site-header .main-nav.main-nav--corp a:hover,
+  html body .site-header .main-nav.main-nav--corp a.is-active {
+    background: rgba(1, 37, 143, 0.08) !important;
+    color: #01258f !important;
+    -webkit-text-fill-color: #01258f !important;
+  }
+}
+
+@media (min-width: 901px) {
+  html body .site-header .nav-bento,
+  html body .site-header .nav-bento[hidden] {
+    display: none !important;
+  }
+}
+
 /* Restaura franja animada (el bloque anterior apagaba ::after) */
 html body .site-header.site-header--corp::after {
   content: "" !important;
@@ -1327,6 +1427,181 @@ html body.page-home .hx-pulse .hx-pulse__stat:hover .hx-pulse__cap,
 html body.page-home .hx-pulse .hx-pulse__stat:focus-visible .hx-pulse__cap {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ─── Home Nuestros servicios — banda blanca, grid plano ─── */
+html body.page-home .hx-services,
+html body.page-home .hx-services--deck,
+html body.page-home .hx-services[data-hx-band="light"] {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #011142 !important;
+  border: none !important;
+}
+
+html body.page-home .hx-services .hx-services__title,
+html body.page-home .hx-services .hx-services__title-main {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: none !important;
+}
+
+html body.page-home .hx-services .hx-services__title-kicker,
+html body.page-home .hx-services .hx-services__cyan {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: none !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck,
+html body.page-home .hx-services .hx-svc-deck-wrap,
+html body.page-home .hx-services .hx-svc-deck-layout,
+html body.page-home .hx-services .hx-svc-deck-more-panel {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck::before,
+html body.page-home .hx-services .hx-svc-deck::after,
+html body.page-home .hx-services--deck::before,
+html body.page-home .hx-services--deck::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck-wrap::before {
+  background: rgba(1, 37, 143, 0.08) !important;
+  opacity: 1 !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck-wrap::after {
+  background: rgba(1, 17, 66, 0.06) !important;
+  opacity: 1 !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck__item {
+  background-color: #011142 !important;
+  border: 1px solid rgba(1, 17, 66, 0.1) !important;
+  box-shadow: 0 14px 36px rgba(1, 17, 66, 0.1) !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck__item:hover,
+html body.page-home .hx-services .hx-svc-deck__item:focus-visible,
+html body.page-home .hx-services .hx-svc-deck__item.is-deck-expanded,
+html body.page-home .hx-services .hx-svc-deck__item.is-active {
+  background-color: #011142 !important;
+  border-color: rgba(1, 37, 143, 0.35) !important;
+  box-shadow:
+    0 22px 52px rgba(1, 17, 66, 0.2),
+    0 0 0 1px rgba(1, 37, 143, 0.22) !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck__label,
+html body.page-home .hx-services .hx-svc-deck__title,
+html body.page-home .hx-services .hx-svc-deck__desc,
+html body.page-home .hx-services .hx-svc-deck__cta {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck__icon,
+html body.page-home .hx-services .hx-svc-deck__bg {
+  background-color: #0a1630 !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html body.page-home .hx-svc-catalog-tabs,
+html body.page-home .hx-svc-group,
+html body.page-home .hx-svc-group__title,
+html body.page-home .hx-svc-deck-more-toggle {
+  display: none !important;
+}
+
+html body.page-home .hx-services .hx-svc-deck-more-panel {
+  display: contents !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-height: none !important;
+}
+
+html body.page-home #servicios-preview.hx-services,
+html body.page-home #servicios-preview.hx-services--deck,
+html body.page-home section#servicios-preview {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+html body.page-home .hx-svc-deck-layout {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: clamp(12px, 1.4vw, 18px) !important;
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+html body.page-home .hx-svc-deck,
+html body.page-home .hx-svc-deck--square,
+html body.page-home [data-hx-svc-deck],
+html body.page-home [data-hx-svc-deck-more] {
+  display: contents !important;
+  height: auto !important;
+  min-height: 0 !important;
+  background: none !important;
+}
+
+html body.page-home .hx-svc-deck__item,
+html body.page-home .hx-svc-deck--square .hx-svc-deck__item,
+html body.page-home .hx-svc-deck--square .hx-svc-deck__item:hover,
+html body.page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-expanded,
+html body.page-home .hx-svc-deck--square .hx-svc-deck__item.is-active {
+  flex: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  opacity: 1 !important;
+  transform: none;
+}
+
+html body.page-home .hx-svc-deck__item:hover,
+html body.page-home .hx-svc-deck__item:focus-visible,
+html body.page-home .hx-svc-deck__item.is-deck-expanded {
+  transform: translateY(-8px) scale(1.03) !important;
+  z-index: 6 !important;
+}
+
+@media (max-width: 1100px) {
+  html body.page-home .hx-svc-deck-layout {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html body.page-home .hx-svc-deck-layout,
+  html body.page-home .hx-svc-deck-masonry {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    max-width: none !important;
+  }
+
+  html body.page-home .hx-svc-deck,
+  html body.page-home [data-hx-svc-deck],
+  html body.page-home [data-hx-svc-deck-more],
+  html body.page-home .hx-svc-deck-more-panel {
+    display: contents !important;
+  }
+
+  html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item:last-child:nth-child(3n + 1) {
+    grid-column: auto !important;
+  }
 }
 
 /* ─── WhatsApp flotante (reemplaza Yaavsti) ─── */
