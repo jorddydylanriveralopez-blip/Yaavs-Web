@@ -592,7 +592,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=31", headerMount),
+    loadPartial("partials/header.html?v=32", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
