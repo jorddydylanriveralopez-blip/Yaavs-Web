@@ -146,10 +146,7 @@
       return Math.max(28, Math.min(48, banner.offsetHeight * 0.04));
     }
 
-    const swapLogoOnScroll =
-      !document.body.classList.contains("page-home")
-      && !document.body.classList.contains("page-postpago")
-      && !usesLightHeaderLogo();
+    const swapLogoOnScroll = false;
 
     let ticking = false;
     function onScroll() {
@@ -159,7 +156,7 @@
         const scrolled = window.scrollY > getThreshold();
         header.classList.toggle("is-scrolled", scrolled);
         document.body.classList.toggle("header-scrolled", scrolled);
-        if (swapLogoOnScroll) applyHeaderLogo(scrolled);
+        applyHeaderLogo(true);
         ticking = false;
       });
     }

@@ -828,7 +828,7 @@ html body .site-header.site-header--nav-bar .main-nav.main-nav--corp {
 }
 
 /* ═══════════════════════════════════════════
-   OVERRIDE FINAL — barra blanca + marca YAAVS
+   OVERRIDE FINAL — blanco siempre (scroll + temas)
    ═══════════════════════════════════════════ */
 html body .site-header,
 html body .site-header.is-scrolled,
@@ -837,7 +837,18 @@ html body.page-home .site-header.is-scrolled,
 html body .site-header.site-header--nav-bar,
 html body .site-header.site-header--corp,
 html body.page-home .site-header.site-header--corp,
-html body.page-home .site-header.site-header--nav-bar {
+html body.page-home .site-header.site-header--nav-bar,
+html body.page-home .site-header.site-header--corp.is-scrolled,
+html body.page-home .site-header.site-header--nav-bar.is-scrolled,
+[data-yaavs-theme="day"] .page-home .site-header,
+[data-yaavs-theme="day"] .page-home .site-header.is-scrolled,
+[data-yaavs-theme="night"] .page-home .site-header,
+[data-yaavs-theme="night"] .page-home .site-header.is-scrolled,
+[data-yaavs-theme="day"] body.theme-cluster .site-header,
+[data-yaavs-theme="day"] body.theme-cluster .site-header.is-scrolled,
+[data-yaavs-theme="night"] body.theme-cluster .site-header,
+[data-yaavs-theme="night"] body.theme-cluster .site-header.is-scrolled,
+html body.header-scrolled .site-header {
   background: #ffffff !important;
   background-color: #ffffff !important;
   background-image: none !important;

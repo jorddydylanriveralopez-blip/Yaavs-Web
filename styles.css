@@ -1384,13 +1384,15 @@ a:hover { opacity: 0.65; }
 
 /* Home: header oscuro al scroll → puntos claros */
 .page-home .site-header.is-scrolled {
-  background: rgba(8, 18, 36, 0.92);
-  border-bottom-color: rgba(1, 37, 143, 0.3);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  background: #ffffff !important;
+  border-bottom-color: transparent;
+  box-shadow:
+    inset 0 -3px 0 #01258f,
+    0 14px 32px rgba(1, 17, 66, 0.1) !important;
 }
 
 .page-home .site-header.is-scrolled .bento-dot {
-  background: #fff !important;
+  background: #011142 !important;
 }
 
 .site-header.is-scrolled .nav-bento[aria-expanded="true"] .bento-dot {
@@ -4058,30 +4060,30 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
 }
 
 .site-header.is-scrolled .main-nav--bar a {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   text-shadow: none !important;
 }
 
 .site-header.is-scrolled .main-nav--bar a:hover,
 .site-header.is-scrolled .main-nav--bar a:focus-visible,
 .site-header.is-scrolled .main-nav--bar a.is-active {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: #01258f !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: transparent !important;
 }
 
 .page-home .site-header.is-scrolled .main-nav--bar a {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
 }
 
 .page-home .site-header.is-scrolled .main-nav--bar a:hover,
 .page-home .site-header.is-scrolled .main-nav--bar a:focus-visible,
 .page-home .site-header.is-scrolled .main-nav--bar a.is-active {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: #01258f !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: transparent !important;
 }
 
 body.page-postpago .site-header .main-nav--bar a,
