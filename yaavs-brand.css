@@ -447,18 +447,19 @@ section {
 }
 
 /* ═══════════════════════════════════════════
-   Header corporativo — presencia + claridad
+   Header — barra blanca full-bleed (telecom)
+   Logo fuerte · links limpios · CTA azul
    ═══════════════════════════════════════════ */
 :root {
-  --header-h: 96px;
-  --header-h-scrolled: 80px;
+  --header-h: 84px;
+  --header-h-scrolled: 72px;
 }
 
 .site-header.site-header--corp,
 .site-header.site-header--corp.is-scrolled {
-  --header-bar-h: 96px;
+  --header-bar-h: 84px;
   --header-pad-y: 0;
-  --logo-h: 40px;
+  --logo-h: 44px;
   position: fixed;
   top: 0;
   left: 0;
@@ -466,17 +467,17 @@ section {
   z-index: 1300;
   background: #ffffff !important;
   background-image: none !important;
-  border-bottom: 3px solid #01258f !important;
-  box-shadow: 0 8px 28px rgba(1, 17, 66, 0.12) !important;
+  border-bottom: 1px solid rgba(1, 37, 143, 0.14) !important;
+  box-shadow: 0 1px 0 rgba(1, 17, 66, 0.04), 0 12px 28px rgba(1, 17, 66, 0.08) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   padding-top: var(--safe-top);
 }
 
 .site-header.site-header--corp.is-scrolled {
-  --header-bar-h: 80px;
-  --logo-h: 36px;
-  box-shadow: 0 10px 32px rgba(1, 17, 66, 0.16) !important;
+  --header-bar-h: 72px;
+  --logo-h: 38px;
+  box-shadow: 0 1px 0 rgba(1, 37, 143, 0.12), 0 14px 32px rgba(1, 17, 66, 0.1) !important;
 }
 
 .site-header.site-header--corp::before,
@@ -487,28 +488,39 @@ section {
   background: none !important;
 }
 
+/* Franja azul inferior sutil */
+.site-header.site-header--corp {
+  border-bottom: none !important;
+  box-shadow:
+    inset 0 -3px 0 #01258f,
+    0 12px 28px rgba(1, 17, 66, 0.08) !important;
+}
+
 .site-header--corp .header-inner--corp {
   display: grid !important;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: clamp(28px, 4vw, 56px);
-  row-gap: 12px;
-  width: min(100% - 2 * var(--pad-x), 1280px);
-  max-width: 1280px;
+  column-gap: clamp(20px, 3.5vw, 48px);
+  row-gap: 0;
+  width: min(100% - 2 * var(--pad-x), 1240px);
+  max-width: 1240px;
   margin: 0 auto;
   min-height: var(--header-bar-h);
-  padding: 18px 0;
+  padding: 14px 0;
 }
 
-/* Marca — proporción real del PNG (410×95) */
+/* Marca — siempre visible, a color */
 .site-header--corp .logo-link--corp {
   display: inline-flex !important;
   flex-direction: row;
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
-  min-width: 0;
+  min-width: 140px;
+  z-index: 2;
   transform: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .site-header--corp .logo.logo--corp,
@@ -520,42 +532,36 @@ html body .site-header.site-header--corp.is-scrolled .logo {
   width: auto !important;
   height: var(--logo-h) !important;
   max-height: var(--logo-h) !important;
-  max-width: min(220px, 42vw) !important;
-  aspect-ratio: 410 / 95 !important;
+  max-width: min(200px, 48vw) !important;
+  aspect-ratio: 248 / 87 !important;
   object-fit: contain !important;
   object-position: left center !important;
   filter: none !important;
   transform: none !important;
   opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .site-header--corp .logo-link__tag {
-  display: block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62) !important;
-  line-height: 1.2;
-  white-space: nowrap;
+  display: none !important;
 }
 
-/* Nav rail centrado — blanco + azul corporativo */
+/* Nav limpio — sin pastilla */
 .site-header--corp .main-nav--corp {
   display: flex !important;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: max-content;
+  gap: clamp(4px, 1.2vw, 18px);
+  width: auto;
   max-width: 100%;
   margin: 0 auto;
-  padding: 8px 10px !important;
-  border: 1px solid #01258f !important;
-  border-radius: 999px !important;
-  background: #ffffff !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   background-image: none !important;
-  box-shadow: 0 0 0 4px rgba(1, 37, 143, 0.08) !important;
+  box-shadow: none !important;
   overflow-x: auto;
   scrollbar-width: none;
   position: static !important;
@@ -571,55 +577,84 @@ html body .site-header.site-header--corp.is-scrolled .logo {
 }
 
 .site-header--corp .main-nav--corp a {
+  position: relative !important;
   flex: 0 0 auto;
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 10px 16px !important;
-  border-radius: 999px !important;
-  border: 1px solid transparent !important;
+  min-height: 44px;
+  padding: 8px 10px !important;
+  border-radius: 0 !important;
+  border: 0 !important;
   background: transparent !important;
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  opacity: 1 !important;
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  opacity: 0.78 !important;
+  transition: color 0.18s ease, opacity 0.18s ease;
 }
 
-.site-header--corp .main-nav--corp a::before,
-.site-header--corp .main-nav--corp a::after {
+.site-header--corp .main-nav--corp a::before {
   content: none !important;
   display: none !important;
+}
+
+.site-header--corp .main-nav--corp a::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 10px;
+  right: 10px;
+  bottom: 6px;
+  height: 2px !important;
+  width: auto !important;
+  border-radius: 2px;
+  background: #01258f !important;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+  box-shadow: none !important;
 }
 
 html body .site-header.site-header--corp .main-nav.main-nav--corp a:hover,
 html body .site-header.site-header--corp .main-nav.main-nav--corp a:focus-visible,
 html body .site-header.site-header--corp.is-scrolled .main-nav.main-nav--corp a:hover,
 html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a:hover {
-  background: #01258f !important;
-  border-color: #01258f !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
   outline: none;
-  transform: translateY(-1px) !important;
+  transform: none !important;
   opacity: 1 !important;
+}
+
+html body .site-header.site-header--corp .main-nav.main-nav--corp a:hover::after,
+html body .site-header.site-header--corp .main-nav.main-nav--corp a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 html body .site-header.site-header--corp .main-nav.main-nav--corp a.is-active,
 html body .site-header.site-header--corp.is-scrolled .main-nav.main-nav--corp a.is-active,
 html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.is-active {
-  background: #011142 !important;
-  border-color: #011142 !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   box-shadow: none !important;
   opacity: 1 !important;
+  font-weight: 800 !important;
+}
+
+html body .site-header.site-header--corp .main-nav.main-nav--corp a.is-active::after,
+html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.is-active::after {
+  transform: scaleX(1);
+  background: #011142 !important;
 }
 
 /* Acciones */
@@ -627,8 +662,9 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   display: flex !important;
   align-items: center;
   justify-content: flex-end;
-  gap: 14px;
+  gap: 10px;
   flex-shrink: 0;
+  z-index: 2;
 }
 
 .site-header--corp .header-cta {
@@ -636,21 +672,21 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: 0 18px !important;
-  border-radius: 10px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
   background: #01258f !important;
   background-image: none !important;
   border: 1px solid #01258f !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  font-size: 0.78rem !important;
+  font-size: 0.76rem !important;
   font-weight: 800 !important;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: none !important;
-  transition: background 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 8px 18px rgba(1, 37, 143, 0.22) !important;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .site-header--corp .header-cta:hover,
@@ -661,22 +697,24 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   transform: translateY(-1px);
   outline: none;
   color: #ffffff !important;
+  box-shadow: 0 10px 22px rgba(1, 17, 66, 0.28) !important;
 }
 
 .site-header--corp .header-wa {
   width: 44px !important;
   height: 44px !important;
-  background: #01258f !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
   background-image: none !important;
-  border: 1px solid #01258f !important;
+  border: 1.5px solid #01258f !important;
   box-shadow: none !important;
   animation: none !important;
 }
 
 .site-header--corp .header-wa:hover,
 .site-header--corp .header-wa:focus-visible {
-  background: #011142 !important;
-  border-color: #011142 !important;
+  background: #01258f !important;
+  border-color: #01258f !important;
   filter: none;
   transform: scale(1.04);
 }
@@ -686,7 +724,7 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
   height: 44px;
   border-radius: 10px !important;
   background: #ffffff !important;
-  border: 1px solid #01258f !important;
+  border: 1.5px solid #01258f !important;
 }
 
 .site-header--corp .bento-dot {
@@ -767,8 +805,7 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
 }
 
 /* ═══════════════════════════════════════════
-   OVERRIDE FINAL — header blanco + azules YAAVS
-   Gana contra home-corporate / styles / theme
+   OVERRIDE FINAL — barra blanca + marca YAAVS
    ═══════════════════════════════════════════ */
 html body .site-header,
 html body .site-header.is-scrolled,
@@ -781,8 +818,10 @@ html body.page-home .site-header.site-header--nav-bar {
   background: #ffffff !important;
   background-color: #ffffff !important;
   background-image: none !important;
-  border-bottom: 3px solid #01258f !important;
-  box-shadow: 0 10px 32px rgba(1, 17, 66, 0.14) !important;
+  border-bottom: none !important;
+  box-shadow:
+    inset 0 -3px 0 #01258f,
+    0 12px 28px rgba(1, 17, 66, 0.08) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
@@ -806,6 +845,17 @@ html body.page-home .site-header .header-inner::before {
   box-shadow: none !important;
 }
 
+html body .site-header .main-nav,
+html body .site-header .main-nav--bar,
+html body .site-header .main-nav--corp,
+html body.page-home .site-header .main-nav--corp {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
 html body .site-header .main-nav a,
 html body .site-header .main-nav--bar a,
 html body .site-header .main-nav--corp a,
@@ -815,8 +865,10 @@ html body.page-home .site-header .main-nav--corp a {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
   background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   text-shadow: none !important;
-  opacity: 1 !important;
+  opacity: 0.78 !important;
 }
 
 html body .site-header .main-nav a:hover,
@@ -824,18 +876,20 @@ html body .site-header .main-nav--bar a:hover,
 html body .site-header .main-nav--corp a:hover,
 html body.page-home .site-header .main-nav a:hover,
 html body.page-home .site-header .main-nav--corp a:hover {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: #01258f !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: transparent !important;
+  opacity: 1 !important;
 }
 
 html body .site-header .main-nav a.is-active,
 html body .site-header .main-nav--corp a.is-active,
 html body.page-home .site-header .main-nav a.is-active,
 html body.page-home .site-header .main-nav--corp a.is-active {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: #011142 !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
+  opacity: 1 !important;
 }
 
 html body .site-header .header-cta,
@@ -845,7 +899,8 @@ html body.page-home .site-header .header-cta {
   border: 1px solid #01258f !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  box-shadow: 0 6px 16px rgba(1, 37, 143, 0.28) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 8px 18px rgba(1, 37, 143, 0.22) !important;
 }
 
 html body .site-header .header-cta:hover,
@@ -855,13 +910,24 @@ html body.page-home .site-header .header-cta:hover {
   color: #ffffff !important;
 }
 
+html body .site-header .logo-link,
+html body .site-header .logo-link--corp,
+html body.page-home .site-header .logo-link {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-width: 140px !important;
+}
+
 html body .site-header .logo,
 html body .site-header .logo.logo--white,
 html body .site-header .logo.logo--on-light,
 html body.page-home .site-header .logo,
 html body.page-home .site-header .logo.logo--white,
 html body.page-home .site-header .logo.logo--on-light {
+  display: block !important;
   filter: none !important;
   opacity: 1 !important;
+  visibility: visible !important;
 }
 
