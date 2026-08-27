@@ -1859,24 +1859,99 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
   }
 }
 
-@media (max-width: 768px) {
-  html body.page-home .hx-svc-deck-layout,
-  html body.page-home .hx-svc-deck-masonry {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
+@media (max-width: 900px) {
+  /* Layout must be a single full-width lane — never a 2-col parent that
+     shrinks the masonry/deck child to half the screen. */
+  html body.page-home .hx-svc-deck-layout {
+    display: block !important;
+    width: 100% !important;
     max-width: none !important;
+    margin: 0 !important;
   }
 
   html body.page-home .hx-svc-deck,
+  html body.page-home .hx-svc-deck--square,
   html body.page-home [data-hx-svc-deck],
   html body.page-home [data-hx-svc-deck-more],
-  html body.page-home .hx-svc-deck-more-panel {
-    display: contents !important;
+  html body.page-home .hx-svc-deck-masonry {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(10px, 2vw, 14px) !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item:last-child:nth-child(3n + 1) {
+  html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > .hx-svc-deck,
+  html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > .hx-svc-deck-more-panel {
+    display: none !important;
+  }
+
+  html body.page-home .hx-svc-deck-wrap,
+  html body.page-home .hx-services .hx-svc-deck-wrap {
+    width: 100% !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+    padding: 0 clamp(14px, 3.5vw, 22px) !important;
+  }
+
+  html body.page-home .hx-svc-deck__item,
+  html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    aspect-ratio: 1 / 1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body.page-home .hx-svc-deck-layout {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  html body.page-home .hx-svc-deck,
+  html body.page-home .hx-svc-deck--square,
+  html body.page-home [data-hx-svc-deck],
+  html body.page-home [data-hx-svc-deck-more],
+  html body.page-home .hx-svc-deck-masonry {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(10px, 3vw, 14px) !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  html body.page-home .hx-svc-deck-wrap,
+  html body.page-home .hx-services .hx-svc-deck-wrap {
+    padding: 0 max(14px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px), var(--pad-x, 16px)) !important;
+  }
+
+  html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item:last-child:nth-child(odd) {
     grid-column: auto !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck__shade::after {
+    font-size: 0.58rem;
+    padding: 5px 9px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  html body.page-home .hx-services .hx-services__title,
+  html body.page-home .hx-services .hx-services__title-main,
+  html body.page-home .hx-services .hx-services__head h2 {
+    font-size: clamp(2.1rem, 11vw, 2.85rem) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  html body.page-home .hx-svc-deck,
+  html body.page-home .hx-svc-deck-masonry,
+  html body.page-home [data-hx-svc-deck],
+  html body.page-home [data-hx-svc-deck-more] {
+    gap: 8px !important;
   }
 }
 
