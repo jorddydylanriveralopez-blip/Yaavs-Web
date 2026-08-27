@@ -844,29 +844,37 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 .asi-somos__story {
   position: relative;
   isolation: isolate;
-  margin: 0;
-  width: auto;
+  width: 100%;
   max-width: none;
-  padding: clamp(36px, 5.5vw, 72px) 0;
+  margin: 0;
+  padding: clamp(40px, 6vw, 80px) 0;
   border-radius: 0;
-  overflow: visible;
+  overflow: hidden;
   box-shadow: none;
+  background: #011142;
+}
+
+.asi-somos__story-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .asi-somos__story-scene {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  max-width: 100vw;
-  transform: translateX(-50%);
+  inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
   background: #011142;
   border-radius: 0;
   box-shadow: none;
+  width: auto;
+  max-width: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: none;
 }
 
 .asi-somos__story-scene img {
@@ -876,7 +884,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   object-fit: cover;
   object-position: center 48%;
   transform: scale(1.08);
-  filter: saturate(1.1) brightness(0.88);
+  filter: saturate(0.85) brightness(0.55);
   animation: asi-story-pan 26s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -886,8 +894,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    radial-gradient(ellipse 90% 70% at 50% 45%, transparent 10%, rgba(1, 17, 66, 0.32) 100%);
+  background: rgba(1, 17, 66, 0.55);
   pointer-events: none;
 }
 
@@ -899,19 +906,17 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   background:
     linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.82) 0%,
-      rgba(255, 255, 255, 0.28) 8%,
-      rgba(1, 17, 66, 0.3) 22%,
-      rgba(1, 17, 66, 0.24) 55%,
-      rgba(1, 17, 66, 0.36) 88%,
-      rgba(255, 255, 255, 0.88) 100%
+      rgba(1, 17, 66, 0.72) 0%,
+      rgba(1, 17, 66, 0.58) 35%,
+      rgba(1, 17, 66, 0.62) 70%,
+      rgba(1, 17, 66, 0.78) 100%
     );
   pointer-events: none;
 }
 
 @keyframes asi-story-pan {
   from { transform: scale(1.06) translate3d(0, 0, 0); }
-  to { transform: scale(1.14) translate3d(-2%, 1.4%, 0); }
+  to { transform: scale(1.12) translate3d(-1.5%, 1%, 0); }
 }
 
 .asi-somos__grid {
@@ -1236,21 +1241,22 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 
   .asi-somos__story {
     margin: 0;
-    width: auto;
+    width: 100%;
     max-width: none;
-    padding: 24px 0 32px;
+    padding: 28px 0 36px;
     border-radius: 0;
   }
 
   .asi-somos__story-scene {
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
+    inset: 0;
+    left: 0;
+    width: auto;
+    transform: none;
   }
 
   .asi-somos__story-scene img {
     animation-duration: 32s;
-    filter: saturate(1.08) brightness(0.86);
+    filter: saturate(0.85) brightness(0.5);
   }
 
   .asi-somos__grid {
