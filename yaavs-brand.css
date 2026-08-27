@@ -3459,3 +3459,134 @@ html body.page-bolsa-trabajo .jobs-catalog__chevron {
   }
 }
 
+/* Formulario de postulación — legible sobre tarjeta blanca */
+html body.page-bolsa-trabajo .jobs-apply-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(1, 37, 143, 0.14) !important;
+  box-shadow: 0 20px 56px rgba(1, 17, 66, 0.14) !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-head .section-tag {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-head h2,
+html body.page-bolsa-trabajo .jobs-apply-head .jobs-section-title {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-lead {
+  color: #4a5d7a !important;
+  -webkit-text-fill-color: #4a5d7a !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-lead a {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  text-decoration: underline !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field > span {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field input,
+html body.page-bolsa-trabajo .jobs-apply-form .field textarea,
+html body.page-bolsa-trabajo .jobs-apply-form .field select {
+  background: #f4f7fc !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  border: 1px solid rgba(1, 37, 143, 0.22) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field input::placeholder,
+html body.page-bolsa-trabajo .jobs-apply-form .field textarea::placeholder {
+  color: #6b7f9e !important;
+  -webkit-text-fill-color: #6b7f9e !important;
+  opacity: 1 !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field input:focus,
+html body.page-bolsa-trabajo .jobs-apply-form .field textarea:focus,
+html body.page-bolsa-trabajo .jobs-apply-form .field select:focus {
+  background: #ffffff !important;
+  border-color: #01258f !important;
+  box-shadow: 0 0 0 3px rgba(1, 37, 143, 0.12) !important;
+  outline: none !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field select option {
+  color: #011142 !important;
+  background: #ffffff !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field-file__hint {
+  color: #4a5d7a !important;
+  -webkit-text-fill-color: #4a5d7a !important;
+  background: #f4f7fc !important;
+  border: 1px dashed rgba(1, 37, 143, 0.28) !important;
+  border-radius: 10px !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field--file:hover .field-file__hint,
+html body.page-bolsa-trabajo .jobs-apply-form .field--file:focus-within .field-file__hint {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: #e8f0fe !important;
+  border-color: rgba(1, 37, 143, 0.45) !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field--file.is-filled .field-file__hint {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  border-color: rgba(1, 37, 143, 0.35) !important;
+  background: #ffffff !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form__note {
+  color: #4a5d7a !important;
+  -webkit-text-fill-color: #4a5d7a !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form__note strong {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-submit {
+  background: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  min-height: 52px !important;
+  padding: 0 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-submit:hover,
+html body.page-bolsa-trabajo .jobs-apply-submit:focus-visible {
+  background: #0135b8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-status {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-status.is-success {
+  color: #0d7a3e !important;
+  -webkit-text-fill-color: #0d7a3e !important;
+}
+
