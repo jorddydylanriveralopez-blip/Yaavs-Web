@@ -1994,9 +1994,9 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
     max-width: none !important;
     max-height: none !important;
     margin: 0 !important;
-    padding: 16% 12% 26% !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     object-position: center !important;
     opacity: 1 !important;
     visibility: visible !important;
