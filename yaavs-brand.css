@@ -326,7 +326,7 @@ a.hx-svc-deck__cta,
 }
 
 /* ─── Botones CTA ─── */
-button:not(.hero-carousel__dot):not(.tx-clients__nav),
+button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card),
 .btn,
 [class*="__btn"]:not(.hx-svc-catalog-tabs__btn),
 a[class*="-cta"],
@@ -338,14 +338,14 @@ a[class*="__cta"]:not(.hx-svc-deck__cta):not(.hx-somos__cta) {
   box-shadow: none !important;
 }
 
-button:not(.hero-carousel__dot):not(.tx-clients__nav):hover,
+button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):hover,
 .btn:hover {
   background-color: var(--yaavs-blue) !important;
   filter: brightness(1.08);
 }
 
 /* ─── Cards / paneles / modales ─── */
-[class*="card"],
+[class*="card"]:not(.asi-card):not(.asi-card__media),
 [class*="panel"],
 [class*="modal"],
 .promo-popup,
@@ -2119,6 +2119,39 @@ html body.theme-cluster.page-asi-somos .asi-telecom__icon--chip {
   html body.theme-cluster.page-asi-somos .asi-telecom__icon {
     animation: none !important;
   }
+}
+
+html body.page-quienes-somos button.asi-card,
+html body.page-asi-somos button.asi-card,
+html body.page-quienes-somos a.asi-card,
+html body.page-asi-somos a.asi-card {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  color: inherit !important;
+}
+
+html body.page-quienes-somos .asi-card__media,
+html body.page-asi-somos .asi-card__media {
+  border: 0 !important;
+  box-shadow:
+    0 16px 40px rgba(1, 17, 66, 0.16),
+    0 0 0 1px rgba(1, 17, 66, 0.06) !important;
+}
+
+html body.page-quienes-somos .asi-card__title,
+html body.page-asi-somos .asi-card__title {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body.page-quienes-somos .asi-card:hover .asi-card__media::after,
+html body.page-asi-somos .asi-card:hover .asi-card__media::after {
+  background: linear-gradient(to top, rgba(1, 17, 66, 0.58) 0%, transparent 52%) !important;
+  opacity: 1 !important;
 }
 
 /* ─── WhatsApp flotante (reemplaza Yaavsti) ─── */

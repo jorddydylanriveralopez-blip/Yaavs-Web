@@ -68,6 +68,7 @@ jobs:
           upload_one home-corporate.css home-corporate.css
           upload_one styles.css styles.css
           upload_one theme-day-night.css theme-day-night.css
+          upload_one quienes-asi.css quienes-asi.css
           upload_one js/layout.js js/layout.js
           upload_one js/hero-carousel.js js/hero-carousel.js
           upload_one partials/header.html partials/header.html
