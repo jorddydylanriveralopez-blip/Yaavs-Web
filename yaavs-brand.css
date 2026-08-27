@@ -3274,9 +3274,13 @@ html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__rule {
 
 /* Catálogo Netflix — filas horizontales con posters */
 html body.page-bolsa-trabajo .jobs-catalog-section--netflix {
-  background: #050b18 !important;
+  background: #ffffff !important;
   padding-block: clamp(48px, 8vw, 88px) !important;
   overflow: hidden !important;
+}
+
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix.is-scene-on {
+  background: #ffffff !important;
 }
 
 html body.page-bolsa-trabajo .jobs-catalog-section__inner--netflix {
@@ -3285,13 +3289,15 @@ html body.page-bolsa-trabajo .jobs-catalog-section__inner--netflix {
   padding-inline: clamp(16px, 3vw, 28px) !important;
 }
 
-html body.page-bolsa-trabajo .jobs-catalog-backdrop {
-  opacity: 0.14 !important;
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix .jobs-catalog-backdrop,
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix.is-scene-on .jobs-catalog-backdrop {
+  opacity: 0 !important;
+  transform: none !important;
 }
 
-html body.page-bolsa-trabajo .jobs-catalog-backdrop__veil {
-  background: linear-gradient(180deg, rgba(5, 11, 24, 0.94) 0%, rgba(1, 17, 66, 0.92) 100%) !important;
-  opacity: 1 !important;
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix .jobs-catalog-backdrop__veil,
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix.is-scene-on .jobs-catalog-backdrop__veil {
+  opacity: 0 !important;
 }
 
 html body.page-bolsa-trabajo .jobs-section-head--netflix {
@@ -3299,24 +3305,28 @@ html body.page-bolsa-trabajo .jobs-section-head--netflix {
   margin-bottom: clamp(20px, 4vw, 32px) !important;
 }
 
-html body.page-bolsa-trabajo .jobs-catalog-section .section-tag {
-  color: #7dd3fc !important;
-  -webkit-text-fill-color: #7dd3fc !important;
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix .section-tag,
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix.is-scene-on .section-tag {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
   text-align: left !important;
 }
 
-html body.page-bolsa-trabajo .jobs-catalog-section .jobs-section-title--hero {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix .jobs-section-title--hero,
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix.is-scene-on .jobs-section-title--hero {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   text-align: left !important;
   font-size: clamp(1.75rem, 4.5vw, 2.6rem) !important;
   letter-spacing: -0.02em !important;
   text-transform: none !important;
+  text-shadow: none !important;
 }
 
-html body.page-bolsa-trabajo .jobs-catalog-section .jobs-section-lead {
-  color: rgba(255, 255, 255, 0.78) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.78) !important;
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix .jobs-section-lead,
+html body.page-bolsa-trabajo .jobs-catalog-section--netflix.is-scene-on .jobs-section-lead {
+  color: rgba(1, 17, 66, 0.72) !important;
+  -webkit-text-fill-color: rgba(1, 17, 66, 0.72) !important;
   text-align: left !important;
   max-width: 40rem !important;
   margin-inline: 0 !important;
@@ -3325,7 +3335,8 @@ html body.page-bolsa-trabajo .jobs-catalog-section .jobs-section-lead {
 html body.page-bolsa-trabajo .jobs-open-pill {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
-  background: rgba(255, 255, 255, 0.94) !important;
+  background: rgba(1, 37, 143, 0.1) !important;
+  border: 1px solid rgba(1, 37, 143, 0.16);
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-stage {
@@ -3353,8 +3364,8 @@ html body.page-bolsa-trabajo .jobs-netflix-row__head {
 
 html body.page-bolsa-trabajo .jobs-netflix-row__title {
   margin: 0;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   font-size: clamp(1rem, 2.2vw, 1.2rem) !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em;
@@ -3368,20 +3379,22 @@ html body.page-bolsa-trabajo .jobs-netflix-row__nav {
 html body.page-bolsa-trabajo .jobs-netflix-row__btn {
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(1, 37, 143, 0.18);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  background: #ffffff;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 14px rgba(1, 17, 66, 0.08);
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-row__btn:hover,
 html body.page-bolsa-trabajo .jobs-netflix-row__btn:focus-visible {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(1, 37, 143, 0.08);
+  border-color: rgba(1, 37, 143, 0.35);
   transform: scale(1.05);
   outline: none;
 }
@@ -3441,8 +3454,8 @@ html body.page-bolsa-trabajo .jobs-netflix-card__poster {
   border-radius: 10px;
   overflow: hidden;
   background: #01258f;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 28px rgba(1, 17, 66, 0.14);
+  border: 1px solid rgba(1, 37, 143, 0.1);
   isolation: isolate;
 }
 
@@ -3669,16 +3682,16 @@ html body.page-bolsa-trabajo .jobs-netflix-card__info {
 
 html body.page-bolsa-trabajo .jobs-netflix-card__area {
   margin: 0;
-  color: rgba(255, 255, 255, 0.68) !important;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.68) !important;
+  color: rgba(1, 17, 66, 0.68) !important;
+  -webkit-text-fill-color: rgba(1, 17, 66, 0.68) !important;
   font-size: 0.78rem;
   line-height: 1.35;
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__salary {
   margin: 6px 0 0;
-  color: #7dd3fc !important;
-  -webkit-text-fill-color: #7dd3fc !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
   font-size: 0.76rem;
   font-weight: 700;
 }
@@ -3936,8 +3949,8 @@ html body.page-bolsa-trabajo .jobs-netflix-spotlight .jobs-catalog__actions {
     min-height: 50px;
   }
 
-  html body.page-bolsa-trabajo .jobs-catalog-backdrop {
-    opacity: 0.12 !important;
+  html body.page-bolsa-trabajo .jobs-catalog-section--netflix .jobs-catalog-backdrop {
+    opacity: 0 !important;
   }
 }
 
