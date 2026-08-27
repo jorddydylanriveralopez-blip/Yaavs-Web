@@ -1256,7 +1256,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 
   .asi-somos__story-scene img {
     animation-duration: 32s;
-    filter: saturate(0.85) brightness(0.5);
+    filter: saturate(0.9) brightness(0.7);
   }
 
   .asi-somos__grid {
