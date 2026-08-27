@@ -623,29 +623,27 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   z-index: 6;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 8px;
+  gap: 2px;
+  padding: 4px 8px;
   border-radius: 999px;
-  background: rgba(1, 17, 66, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(16px) saturate(1.15);
-  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .hero-carousel__dot {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
   padding: 0;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0;
   background: transparent;
   cursor: pointer;
-  transition: transform 0.25s var(--ease);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -655,9 +653,9 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   height: 8px;
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.42);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
-  transition: width 0.35s ease, background 0.35s ease;
+  background: #ffffff;
+  opacity: 0.42;
+  transition: width 0.28s ease, opacity 0.28s ease;
 }
 
 .hero-carousel__dot-fill {
@@ -669,18 +667,18 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
 }
 
 .hero-carousel__dot.is-active .hero-carousel__dot-bar {
-  width: 28px;
-  background: rgba(255, 255, 255, 0.22);
+  width: 22px;
+  opacity: 1;
 }
 
 .hero-carousel__dot:hover .hero-carousel__dot-bar,
 .hero-carousel__dot:focus-visible .hero-carousel__dot-bar {
-  background: rgba(255, 255, 255, 0.7);
+  opacity: 0.85;
 }
 
 .hero-carousel__dot:focus-visible {
   outline: 2px solid #ffffff;
-  outline-offset: 2px;
+  outline-offset: -8px;
 }
 
 .hero-carousel__arrow {

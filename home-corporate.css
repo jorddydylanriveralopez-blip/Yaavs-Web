@@ -2542,13 +2542,6 @@ body.page-home {
 
 .page-home .hero-carousel__dots {
   bottom: max(78px, calc(60px + var(--safe-bottom)));
-  padding: 6px 8px;
-  border-radius: 999px;
-  border-color: rgba(255, 255, 255, 0.38);
-  background: rgba(1, 17, 66, 0.42);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .page-home .hero-carousel__dot.is-active {

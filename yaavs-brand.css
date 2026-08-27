@@ -326,7 +326,7 @@ a.hx-svc-deck__cta,
 }
 
 /* ─── Botones CTA ─── */
-button,
+button:not(.hero-carousel__dot):not(.tx-clients__nav),
 .btn,
 [class*="__btn"]:not(.hx-svc-catalog-tabs__btn),
 a[class*="-cta"],
@@ -338,7 +338,7 @@ a[class*="__cta"]:not(.hx-svc-deck__cta):not(.hx-somos__cta) {
   box-shadow: none !important;
 }
 
-button:hover,
+button:not(.hero-carousel__dot):not(.tx-clients__nav):hover,
 .btn:hover {
   background-color: var(--yaavs-blue) !important;
   filter: brightness(1.08);
@@ -1286,31 +1286,36 @@ html body.page-home .hero-banner.is-swiping {
 
 html body.page-home .hero-banner .hero-carousel__dots {
   z-index: 6;
-  gap: 4px;
-  padding: 6px 8px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px !important;
   border-radius: 999px !important;
-  background: rgba(1, 17, 66, 0.42) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
-  backdrop-filter: blur(16px) saturate(1.15);
-  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  background: rgba(0, 0, 0, 0.38) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 html body.page-home .hero-banner .hero-carousel__dot {
-  display: grid !important;
-  place-items: center;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
   width: 44px !important;
   height: 44px !important;
   min-width: 44px;
   min-height: 44px;
+  margin: 0 !important;
   padding: 0 !important;
   border: 0 !important;
-  border-radius: 999px !important;
+  border-radius: 0 !important;
   background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
+  filter: none !important;
   transform: none !important;
+  outline: none;
 }
 
 html body.page-home .hero-banner .hero-carousel__dot-bar {
@@ -1319,13 +1324,16 @@ html body.page-home .hero-banner .hero-carousel__dot-bar {
   height: 8px;
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.45);
-  transition: width 0.35s ease, background 0.35s ease;
+  background: #ffffff;
+  opacity: 0.42;
+  box-shadow: none;
+  transition: width 0.28s ease, opacity 0.28s ease;
 }
 
 html body.page-home .hero-banner .hero-carousel__dot.is-active .hero-carousel__dot-bar {
-  width: 28px;
-  background: rgba(255, 255, 255, 0.22);
+  width: 22px;
+  opacity: 1;
+  background: #ffffff;
 }
 
 html body.page-home .hero-banner .hero-carousel__dot-fill {
@@ -1338,7 +1346,13 @@ html body.page-home .hero-banner .hero-carousel__dot-fill {
 
 html body.page-home .hero-banner .hero-carousel__dot:hover .hero-carousel__dot-bar,
 html body.page-home .hero-banner .hero-carousel__dot:focus-visible .hero-carousel__dot-bar {
-  background: rgba(255, 255, 255, 0.75);
+  opacity: 0.85;
+}
+
+html body.page-home .hero-banner .hero-carousel__dot:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -8px;
+  border-radius: 10px !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
