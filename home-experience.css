@@ -5371,16 +5371,17 @@ a.hx-plan-picker__card {
   max-height: min(90dvh, 860px);
   overflow-y: auto;
   padding: clamp(22px, 3.5vw, 32px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: #01258f;
+  border-radius: 22px;
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #ffffff;
   box-shadow:
-    0 28px 64px rgba(8, 40, 64, 0.24),
-    0 0 0 1px rgba(220, 100, 130, 0.12);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0 28px 64px rgba(1, 17, 66, 0.22),
+    0 0 0 1px rgba(1, 17, 66, 0.04);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   transform: translateY(22px) scale(0.96);
   transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  color: #011142;
 }
 
 .hx-vinc-modal.is-open .hx-vinc-modal__sheet {
@@ -5391,56 +5392,57 @@ a.hx-plan-picker__card {
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(12, 48, 72, 0.12);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(1, 17, 66, 0.12);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.75);
-  color: #0a2a40;
+  background: #f4f6fb;
+  color: #011142;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .hx-vinc-modal__close:hover,
 .hx-vinc-modal__close:focus-visible {
-  background: rgba(220, 100, 130, 0.14);
-  border-color: rgba(220, 100, 130, 0.4);
+  background: #011142;
+  border-color: #011142;
+  color: #ffffff;
   outline: none;
 }
 
 .hx-vinc-modal__kicker {
   margin: 0 0 6px;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #c45a78;
+  color: #01258f;
 }
 
 .hx-vinc-modal__title {
   margin: 0 0 8px;
-  padding-right: 36px;
+  padding-right: 40px;
   font-family: Montserrat, system-ui, sans-serif;
   font-size: clamp(1.2rem, 2.6vw, 1.55rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-vinc-modal__desc {
   margin: 0 0 18px;
   font-size: 0.92rem;
   line-height: 1.45;
-  color: rgba(10, 42, 64, 0.72);
+  color: rgba(1, 17, 66, 0.72);
 }
 
 .hx-vinc-modal__carriers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .hx-vinc-modal__carrier {
@@ -5449,26 +5451,32 @@ a.hx-plan-picker__card {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 88px;
-  padding: 12px 10px;
-  border-radius: 14px;
-  border: 1px solid rgba(12, 48, 72, 0.12);
-  background: rgba(255, 255, 255, 0.72);
+  min-height: 92px;
+  padding: 14px 10px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(1, 17, 66, 0.12);
+  background: #f7f9fc;
+  color: #011142;
   cursor: pointer;
+  box-shadow: none;
   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .hx-vinc-modal__carrier:hover,
 .hx-vinc-modal__carrier:focus-visible {
-  border-color: rgba(196, 90, 120, 0.45);
+  border-color: rgba(1, 37, 143, 0.45);
+  background: #ffffff;
   outline: none;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(1, 17, 66, 0.1);
 }
 
 .hx-vinc-modal__carrier.is-active {
-  border-color: rgba(196, 90, 120, 0.55);
-  background: rgba(255, 246, 249, 0.95);
-  box-shadow: 0 8px 20px rgba(196, 90, 120, 0.12);
+  border-color: #01258f;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px #01258f,
+    0 12px 28px rgba(1, 37, 143, 0.16);
 }
 
 .hx-vinc-modal__carrier-logo {
@@ -5489,10 +5497,10 @@ a.hx-plan-picker__card {
 
 .hx-vinc-modal__carrier-name {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-vinc-modal__panel {
@@ -5505,10 +5513,18 @@ a.hx-plan-picker__card {
 
 .hx-vinc-modal__steps {
   margin: 0 0 18px;
-  padding-left: 1.2rem;
-  color: rgba(10, 42, 64, 0.82);
+  padding: 16px 16px 16px 1.35rem;
+  border-radius: 16px;
+  background: #f4f6fb;
+  border: 1px solid rgba(1, 17, 66, 0.08);
+  color: rgba(1, 17, 66, 0.82);
   font-size: 0.92rem;
   line-height: 1.5;
+}
+
+.hx-vinc-modal__steps strong {
+  color: #011142;
+  font-weight: 800;
 }
 
 .hx-vinc-modal__steps li + li {
@@ -5534,9 +5550,10 @@ a.hx-plan-picker__card {
   height: 160px;
   margin: 0 auto;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #fff;
-  border: 1px solid rgba(12, 48, 72, 0.1);
+  border: 1px solid rgba(1, 17, 66, 0.1);
+  box-shadow: 0 8px 20px rgba(1, 17, 66, 0.08);
   image-rendering: pixelated;
 }
 
@@ -5545,12 +5562,32 @@ a.hx-plan-picker__card {
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: rgba(10, 42, 64, 0.58);
+  color: rgba(1, 17, 66, 0.62);
 }
 
 .hx-vinc-modal__cta {
-  min-width: min(100%, 220px);
+  min-width: min(100%, 240px);
   text-align: center;
+  border-radius: 999px;
+  padding: 14px 22px;
+  background: #011142;
+  color: #ffffff;
+  border: 0;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(1, 17, 66, 0.22);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hx-vinc-modal__cta:hover,
+.hx-vinc-modal__cta:focus-visible {
+  background: #01258f;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(1, 37, 143, 0.28);
+  outline: none;
 }
 
 @media (max-width: 640px) {

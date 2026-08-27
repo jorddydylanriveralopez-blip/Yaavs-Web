@@ -66,6 +66,7 @@ jobs:
 
           upload_one yaavs-brand.css yaavs-brand.css
           upload_one home-corporate.css home-corporate.css
+          upload_one home-experience.css home-experience.css
           upload_one styles.css styles.css
           upload_one theme-day-night.css theme-day-night.css
           upload_one quienes-asi.css quienes-asi.css

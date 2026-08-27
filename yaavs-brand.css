@@ -326,11 +326,11 @@ a.hx-svc-deck__cta,
 }
 
 /* ─── Botones CTA ─── */
-button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card),
+button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vinc-modal__carrier):not(.hx-vinc-modal__close),
 .btn,
 [class*="__btn"]:not(.hx-svc-catalog-tabs__btn),
 a[class*="-cta"],
-a[class*="__cta"]:not(.hx-svc-deck__cta):not(.hx-somos__cta) {
+a[class*="__cta"]:not(.hx-svc-deck__cta):not(.hx-somos__cta):not(.hx-vinc-modal__cta) {
   background-color: var(--yaavs-blue) !important;
   background-image: none !important;
   color: var(--yaavs-ink) !important;
@@ -338,7 +338,7 @@ a[class*="__cta"]:not(.hx-svc-deck__cta):not(.hx-somos__cta) {
   box-shadow: none !important;
 }
 
-button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):hover,
+button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vinc-modal__carrier):not(.hx-vinc-modal__close):hover,
 .btn:hover {
   background-color: var(--yaavs-blue) !important;
   filter: brightness(1.08);
@@ -346,8 +346,8 @@ button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):hover,
 
 /* ─── Cards / paneles / modales ─── */
 [class*="card"]:not(.asi-card):not(.asi-card__media):not(.asi-card__title),
-[class*="panel"],
-[class*="modal"],
+[class*="panel"]:not(.hx-vinc-modal__panel),
+[class*="modal"]:not(.hx-vinc-modal):not(.hx-vinc-modal__sheet),
 .promo-popup,
 .cookies-banner,
 [class*="cookie"],
@@ -2154,13 +2154,13 @@ html body.page-asi-somos .asi-somos__story-scene img {
   display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
-  filter: saturate(0.85) brightness(0.55) !important;
+  filter: saturate(0.9) brightness(0.72) !important;
 }
 
 html body.page-quienes-somos .asi-somos__story-scene::before,
 html body.page-asi-somos .asi-somos__story-scene::before {
   display: block !important;
-  background: rgba(1, 17, 66, 0.55) !important;
+  background: rgba(1, 17, 66, 0.32) !important;
   background-image: none !important;
   opacity: 1 !important;
 }
@@ -2168,14 +2168,14 @@ html body.page-asi-somos .asi-somos__story-scene::before {
 html body.page-quienes-somos .asi-somos__story-scene::after,
 html body.page-asi-somos .asi-somos__story-scene::after {
   display: block !important;
-  background: rgba(1, 17, 66, 0.62) !important;
+  background: rgba(1, 17, 66, 0.4) !important;
   background-image:
     linear-gradient(
       180deg,
-      rgba(1, 17, 66, 0.72) 0%,
-      rgba(1, 17, 66, 0.58) 35%,
-      rgba(1, 17, 66, 0.62) 70%,
-      rgba(1, 17, 66, 0.78) 100%
+      rgba(1, 17, 66, 0.48) 0%,
+      rgba(1, 17, 66, 0.36) 35%,
+      rgba(1, 17, 66, 0.4) 70%,
+      rgba(1, 17, 66, 0.52) 100%
     ) !important;
   opacity: 1 !important;
 }
@@ -2218,6 +2218,135 @@ html body.page-quienes-somos .asi-card:hover .asi-card__media::after,
 html body.page-asi-somos .asi-card:hover .asi-card__media::after {
   background: linear-gradient(to top, rgba(1, 17, 66, 0.58) 0%, transparent 52%) !important;
   opacity: 1 !important;
+}
+
+/* ─── Modal vinculaciones: hoja blanca + acentos navy (legible) ─── */
+html body .hx-vinc-modal__sheet,
+html body.page-home .hx-vinc-modal__sheet {
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid rgba(1, 17, 66, 0.12) !important;
+  box-shadow:
+    0 28px 64px rgba(1, 17, 66, 0.22),
+    0 0 0 1px rgba(1, 17, 66, 0.04) !important;
+  color: #011142 !important;
+}
+
+html body .hx-vinc-modal__kicker,
+html body.page-home .hx-vinc-modal__kicker {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+}
+
+html body .hx-vinc-modal__title,
+html body.page-home .hx-vinc-modal__title,
+html body .hx-vinc-modal__title.h3,
+html body.page-home .hx-vinc-modal h3 {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body .hx-vinc-modal__desc,
+html body.page-home .hx-vinc-modal__desc,
+html body .hx-vinc-modal__steps,
+html body.page-home .hx-vinc-modal__steps,
+html body .hx-vinc-modal__steps li,
+html body.page-home .hx-vinc-modal__steps li,
+html body .hx-vinc-modal p,
+html body.page-home .hx-vinc-modal p {
+  color: rgba(1, 17, 66, 0.78) !important;
+  -webkit-text-fill-color: rgba(1, 17, 66, 0.78) !important;
+}
+
+html body .hx-vinc-modal__steps strong,
+html body.page-home .hx-vinc-modal__steps strong {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body .hx-vinc-modal__carrier,
+html body.page-home .hx-vinc-modal__carrier {
+  background: #f7f9fc !important;
+  background-color: #f7f9fc !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(1, 17, 66, 0.12) !important;
+  color: #011142 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+html body .hx-vinc-modal__carrier.is-active,
+html body.page-home .hx-vinc-modal__carrier.is-active {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border-color: #01258f !important;
+  box-shadow:
+    0 0 0 1px #01258f,
+    0 12px 28px rgba(1, 37, 143, 0.16) !important;
+}
+
+html body .hx-vinc-modal__carrier-name,
+html body.page-home .hx-vinc-modal__carrier-name,
+html body .hx-vinc-modal__carrier span,
+html body.page-home .hx-vinc-modal__carrier span {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body .hx-vinc-modal__steps,
+html body.page-home .hx-vinc-modal__steps {
+  background: #f4f6fb !important;
+  border: 1px solid rgba(1, 17, 66, 0.08) !important;
+}
+
+html body .hx-vinc-modal__qr figcaption,
+html body.page-home .hx-vinc-modal__qr figcaption {
+  color: rgba(1, 17, 66, 0.62) !important;
+  -webkit-text-fill-color: rgba(1, 17, 66, 0.62) !important;
+}
+
+html body .hx-vinc-modal__cta,
+html body.page-home .hx-vinc-modal__cta,
+html body a.hx-vinc-modal__cta,
+html body.page-home a.hx-vinc-modal__cta {
+  background: #011142 !important;
+  background-color: #011142 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 0 !important;
+  box-shadow: 0 12px 28px rgba(1, 17, 66, 0.22) !important;
+  filter: none !important;
+  opacity: 1 !important;
+  text-decoration: none !important;
+}
+
+html body .hx-vinc-modal__cta:hover,
+html body.page-home .hx-vinc-modal__cta:hover,
+html body .hx-vinc-modal__cta:focus-visible,
+html body.page-home .hx-vinc-modal__cta:focus-visible {
+  background: #01258f !important;
+  background-color: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body .hx-vinc-modal__close,
+html body.page-home .hx-vinc-modal__close {
+  background: #f4f6fb !important;
+  background-color: #f4f6fb !important;
+  color: #011142 !important;
+  border: 1px solid rgba(1, 17, 66, 0.12) !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+html body .hx-vinc-modal__close:hover,
+html body.page-home .hx-vinc-modal__close:hover {
+  background: #011142 !important;
+  color: #ffffff !important;
+  border-color: #011142 !important;
 }
 
 /* ─── WhatsApp flotante (reemplaza Yaavsti) ─── */
