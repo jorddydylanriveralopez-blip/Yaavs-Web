@@ -211,10 +211,10 @@
     </nav>
     <div class="header-menu header-menu--corp">
       <a class="header-cta" href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="header_cta">Cotizar ahora</a>
-      <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
-        <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
-        <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
-        <span class="bento-dot"></span><span class="bento-dot"></span><span class="bento-dot"></span>
+      <button type="button" class="nav-bento nav-hamburger" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span class="nav-hamburger__bar" aria-hidden="true"></span>
+        <span class="nav-hamburger__bar" aria-hidden="true"></span>
+        <span class="nav-hamburger__bar" aria-hidden="true"></span>
       </button>
     </div>
   </div>

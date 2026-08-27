@@ -1066,33 +1066,77 @@ html body.page-home .site-header .logo.logo--on-light {
     font-size: 0.68rem !important;
   }
 
+  /* Classic hamburger — clearer than the 9-dot bento on phone */
   html body .site-header .nav-bento,
   html body .site-header .nav-bento[hidden],
   html body.page-home .site-header .nav-bento,
   .site-header--corp .nav-bento,
-  .site-header--corp .nav-bento[hidden] {
+  .site-header--corp .nav-bento[hidden],
+  html body .site-header .nav-hamburger {
     display: inline-flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    gap: 5px !important;
+    grid-template-columns: none !important;
     width: 44px !important;
     height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 0 !important;
+    margin: 0 !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
     background: #011142 !important;
     border: 2px solid #011142 !important;
+    border-radius: 12px !important;
     box-shadow: 0 6px 16px rgba(1, 17, 66, 0.22) !important;
+    overflow: visible !important;
+  }
+
+  html body .site-header .nav-bento::before,
+  html body.page-home .site-header .nav-bento::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  html body .site-header .nav-hamburger__bar,
+  html body.page-home .site-header .nav-hamburger__bar,
+  .site-header--corp .nav-hamburger__bar {
+    display: block !important;
+    width: 18px !important;
+    height: 2px !important;
+    margin: 0 !important;
+    border-radius: 2px !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transform-origin: center !important;
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.2s ease !important;
   }
 
   html body .site-header .nav-bento .bento-dot,
-  html body .site-header .bento-dot,
-  html body.page-home .site-header .bento-dot,
-  html body .site-header.is-scrolled .bento-dot,
-  html body.page-home .site-header.is-scrolled .bento-dot,
-  html body.nav-open .site-header .nav-bento .bento-dot,
-  html body.page-home.nav-open .nav-bento .bento-dot,
-  .site-header--corp .bento-dot {
-    background: #ffffff !important;
+  html body .site-header .bento-dot {
+    display: none !important;
+  }
+
+  html body .site-header .nav-bento[aria-expanded="true"] .nav-hamburger__bar:nth-child(1),
+  html body.nav-open .site-header .nav-hamburger__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg) !important;
+  }
+
+  html body .site-header .nav-bento[aria-expanded="true"] .nav-hamburger__bar:nth-child(2),
+  html body.nav-open .site-header .nav-hamburger__bar:nth-child(2) {
+    opacity: 0 !important;
+    transform: scaleX(0.2) !important;
+  }
+
+  html body .site-header .nav-bento[aria-expanded="true"] .nav-hamburger__bar:nth-child(3),
+  html body.nav-open .site-header .nav-hamburger__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg) !important;
   }
 
   html body .site-header .main-nav.main-nav--corp,
