@@ -850,7 +850,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   --asi-card-delay: 0ms;
   position: relative;
   display: block;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
   border-radius: clamp(16px, 2.2vw, 22px);
   background: transparent;
@@ -889,9 +889,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 
 .asi-card--filosofia .asi-card__media,
 .asi-card--vision .asi-card__media {
-  box-shadow:
-    0 16px 40px rgba(1, 17, 66, 0.16),
-    0 0 0 1px rgba(1, 17, 66, 0.06);
+  box-shadow: 0 18px 40px rgba(1, 17, 66, 0.16);
 }
 
 .asi-card--filosofia .asi-card__hint,
@@ -901,14 +899,13 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 
 .asi-card__media {
   position: relative;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0;
   overflow: hidden;
   border: 0;
   border-radius: inherit;
   background: #0b1a33;
-  box-shadow:
-    0 16px 40px rgba(1, 17, 66, 0.16),
-    0 0 0 1px rgba(1, 17, 66, 0.06);
+  box-shadow: 0 18px 40px rgba(1, 17, 66, 0.16);
   aspect-ratio: 16 / 9;
   isolation: isolate;
   transition:
@@ -987,9 +984,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   }
 
   .asi-card:hover .asi-card__media {
-    box-shadow:
-      0 26px 52px rgba(1, 17, 66, 0.22),
-      0 0 0 1px rgba(1, 17, 66, 0.1);
+    box-shadow: 0 28px 56px rgba(1, 17, 66, 0.24);
   }
 
   .asi-card:hover .asi-card__media img {
@@ -3338,7 +3333,7 @@ body.is-manifiesto-open {
 
 /* Tipografía legible forzada sobre fondo claro */
 body.theme-cluster.page-asi-somos .asi-somos__shell,
-body.theme-cluster.page-asi-somos .asi-somos__shell *:not(.asi-card__hint) {
+body.theme-cluster.page-asi-somos .asi-somos__shell *:not(.asi-card__hint):not(.asi-card__title) {
   color: #011142;
 }
 
