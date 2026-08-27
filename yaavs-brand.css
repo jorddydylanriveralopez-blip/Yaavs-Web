@@ -1860,23 +1860,37 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
 }
 
 @media (max-width: 900px) {
-  /* Layout must be a single full-width lane — never a 2-col parent that
-     shrinks the masonry/deck child to half the screen. */
+  /* Parent must be ONE full-width lane. Never put columns on .hx-svc-deck-layout
+     when masonry is a single child — that left-aligns the whole grid. */
+  html body.page-home #servicios-preview .hx-svc-deck-wrap,
+  html body.page-home .hx-svc-deck-wrap,
+  html body.page-home .hx-services .hx-svc-deck-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 clamp(16px, 4vw, 28px) !important;
+    box-sizing: border-box !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck-layout,
   html body.page-home .hx-svc-deck-layout {
     display: block !important;
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
+    grid-template-columns: none !important;
   }
 
+  html body.page-home #servicios-preview .hx-svc-deck-masonry,
+  html body.page-home .hx-svc-deck-masonry,
   html body.page-home .hx-svc-deck,
   html body.page-home .hx-svc-deck--square,
   html body.page-home [data-hx-svc-deck],
-  html body.page-home [data-hx-svc-deck-more],
-  html body.page-home .hx-svc-deck-masonry {
+  html body.page-home [data-hx-svc-deck-more] {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: clamp(10px, 2vw, 14px) !important;
+    gap: clamp(12px, 2.2vw, 16px) !important;
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
@@ -1884,59 +1898,100 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
   }
 
   html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > .hx-svc-deck,
-  html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > .hx-svc-deck-more-panel {
+  html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > .hx-svc-deck-more-panel,
+  html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > [data-hx-svc-deck],
+  html body.page-home .hx-svc-deck-layout.is-deck-masonry-mob > [data-hx-deck-more-panel] {
     display: none !important;
   }
 
-  html body.page-home .hx-svc-deck-wrap,
-  html body.page-home .hx-services .hx-svc-deck-wrap {
-    width: 100% !important;
-    max-width: none !important;
-    margin-inline: auto !important;
-    padding: 0 clamp(14px, 3.5vw, 22px) !important;
-  }
-
-  html body.page-home .hx-svc-deck__item,
+  html body.page-home #servicios-preview .hx-svc-deck__item,
   html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item {
     width: 100% !important;
     max-width: none !important;
     min-width: 0 !important;
     aspect-ratio: 1 / 1 !important;
   }
-}
 
-@media (max-width: 640px) {
-  html body.page-home .hx-svc-deck-layout {
+  /* Chip "Ver →" overlaps titles on small tiles — hint already covers this. */
+  html body.page-home #servicios-preview .hx-svc-deck__shade::after {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck__body,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__body {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 3 !important;
+    padding: 8px 8px 10px !important;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(1, 17, 66, 0.55) 55%,
+      rgba(1, 17, 66, 0.82) 100%
+    ) !important;
+    border: 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck__title,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__title {
     display: block !important;
     width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 2px !important;
+    font-size: clamp(0.58rem, 2.4vw, 0.72rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-break: break-word !important;
+    hyphens: auto;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45) !important;
   }
 
+  html body.page-home #servicios-preview .hx-svc-deck__desc,
+  html body.page-home #servicios-preview .hx-svc-deck__cta,
+  html body.page-home #servicios-preview .hx-svc-deck__label {
+    display: none !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck__bg img {
+    object-fit: contain !important;
+    padding: 14% 12% 22% !important;
+  }
+}
+
+@media (max-width: 700px) {
+  html body.page-home #servicios-preview .hx-svc-deck-masonry,
+  html body.page-home .hx-svc-deck-masonry,
   html body.page-home .hx-svc-deck,
-  html body.page-home .hx-svc-deck--square,
   html body.page-home [data-hx-svc-deck],
-  html body.page-home [data-hx-svc-deck-more],
-  html body.page-home .hx-svc-deck-masonry {
-    display: grid !important;
+  html body.page-home [data-hx-svc-deck-more] {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: clamp(10px, 3vw, 14px) !important;
-    width: 100% !important;
-    max-width: none !important;
+    gap: clamp(12px, 3.2vw, 16px) !important;
   }
 
-  html body.page-home .hx-svc-deck-wrap,
-  html body.page-home .hx-services .hx-svc-deck-wrap {
-    padding: 0 max(14px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px), var(--pad-x, 16px)) !important;
+  html body.page-home #servicios-preview .hx-svc-deck-wrap,
+  html body.page-home .hx-svc-deck-wrap {
+    padding: 0 max(16px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)) !important;
   }
 
-  html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item:last-child:nth-child(odd) {
-    grid-column: auto !important;
-  }
-
-  html body.page-home #servicios-preview .hx-svc-deck__shade::after {
-    font-size: 0.58rem;
-    padding: 5px 9px;
-    right: 8px;
-    bottom: 8px;
+  html body.page-home #servicios-preview .hx-svc-deck__title,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__title {
+    font-size: clamp(0.64rem, 3.2vw, 0.8rem) !important;
+    letter-spacing: 0.03em !important;
   }
 
   html body.page-home .hx-services .hx-services__title,
@@ -1944,14 +1999,21 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
   html body.page-home .hx-services .hx-services__head h2 {
     font-size: clamp(2.1rem, 11vw, 2.85rem) !important;
   }
+
+  html body.page-home .hx-svc-deck-masonry .hx-svc-deck__item:last-child:nth-child(odd) {
+    grid-column: auto !important;
+  }
 }
 
 @media (max-width: 380px) {
-  html body.page-home .hx-svc-deck,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry,
   html body.page-home .hx-svc-deck-masonry,
-  html body.page-home [data-hx-svc-deck],
-  html body.page-home [data-hx-svc-deck-more] {
-    gap: 8px !important;
+  html body.page-home .hx-svc-deck {
+    gap: 10px !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck__title {
+    font-size: 0.6rem !important;
   }
 }
 
