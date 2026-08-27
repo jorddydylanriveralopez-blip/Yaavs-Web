@@ -1751,6 +1751,7 @@ html body.page-home section#servicios-preview {
   position: relative !important;
   isolation: isolate;
   overflow: visible !important;
+  scroll-margin-top: calc(var(--header-bar-h, 72px) + env(safe-area-inset-top, 0px) + 12px);
   background: #f3f6fb !important;
   background-color: #f3f6fb !important;
   background-image: none !important;
@@ -3030,3 +3031,96 @@ html body .wa-float:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 4px;
 }
+
+/* ─── Bolsa de trabajo: hero con foto visible ─── */
+html body.page-bolsa-trabajo .bolsa-hero-banner.avisos-hero-banner {
+  background: #011142 !important;
+  overflow: hidden !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__media {
+  background: #011142 !important;
+  opacity: 1 !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__photo,
+html body.page-bolsa-trabajo .bolsa-hero-banner .page-hero-banner__slide,
+html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__video {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__shade {
+  background: linear-gradient(
+    90deg,
+    rgba(1, 17, 66, 0.94) 0%,
+    rgba(1, 17, 66, 0.82) 34%,
+    rgba(1, 17, 66, 0.35) 58%,
+    rgba(1, 17, 66, 0.12) 78%,
+    transparent 100%
+  ) !important;
+  opacity: 1 !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__content::before {
+  content: none !important;
+  display: none !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  min-height: 54px !important;
+  padding: 0 28px !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  box-shadow: 0 14px 32px rgba(1, 17, 66, 0.28) !important;
+  transition: transform 0.28s ease, box-shadow 0.28s ease !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__cta-arrow {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__cta:hover,
+html body.page-bolsa-trabajo .bolsa-hero-banner__cta:focus-visible {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 40px rgba(1, 17, 66, 0.36) !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+}
+
+@media (max-width: 768px) {
+  html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__shade {
+    background: linear-gradient(
+      180deg,
+      rgba(1, 17, 66, 0.55) 0%,
+      rgba(1, 17, 66, 0.78) 45%,
+      rgba(1, 17, 66, 0.92) 100%
+    ) !important;
+  }
+
+  html body.page-bolsa-trabajo .bolsa-hero-banner--tienda .avisos-hero-banner__content {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    padding-inline: var(--pad-x, 16px) !important;
+  }
+}
+
