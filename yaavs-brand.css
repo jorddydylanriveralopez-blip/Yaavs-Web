@@ -3032,13 +3032,14 @@ html body .wa-float:focus-visible {
   outline-offset: 4px;
 }
 
-/* ─── Bolsa de trabajo: hero con foto visible ─── */
-html body.page-bolsa-trabajo .bolsa-hero-banner.avisos-hero-banner {
+/* ─── Bolsa de trabajo: hero premium con animaciones ─── */
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium.avisos-hero-banner {
   background: #011142 !important;
   overflow: hidden !important;
+  isolation: isolate !important;
 }
 
-html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__media {
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__media {
   background: #011142 !important;
   opacity: 1 !important;
 }
@@ -3051,51 +3052,242 @@ html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__video {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  object-position: center center !important;
+  object-position: center 35% !important;
   display: block !important;
   opacity: 1 !important;
+  transform: scale(1.06);
+  animation: yaavs-bolsa-kenburns 18s ease-in-out infinite alternate;
 }
 
-html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__shade {
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__aurora {
+  display: block !important;
+  opacity: 0.55 !important;
+  background:
+    radial-gradient(ellipse 80% 60% at 12% 80%, rgba(1, 37, 143, 0.75), transparent 62%),
+    radial-gradient(ellipse 55% 45% at 88% 18%, rgba(56, 189, 248, 0.22), transparent 58%),
+    #011142 !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__scan,
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__grid,
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__rule {
+  display: block !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__grid {
+  opacity: 0.14 !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__scan {
+  opacity: 0.1 !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__shade {
   background: linear-gradient(
-    90deg,
-    rgba(1, 17, 66, 0.94) 0%,
-    rgba(1, 17, 66, 0.82) 34%,
-    rgba(1, 17, 66, 0.35) 58%,
-    rgba(1, 17, 66, 0.12) 78%,
+    105deg,
+    rgba(1, 17, 66, 0.96) 0%,
+    rgba(1, 17, 66, 0.88) 30%,
+    rgba(1, 17, 66, 0.52) 52%,
+    rgba(1, 17, 66, 0.18) 72%,
     transparent 100%
   ) !important;
   opacity: 1 !important;
 }
 
-html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__content::before {
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__content::before {
   content: none !important;
   display: none !important;
 }
 
-/* All hero copy in white for contrast on navy */
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__content {
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  padding-bottom: clamp(28px, 5vw, 52px) !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(14px, 2.2vw, 20px);
+  width: min(100%, 38rem);
+  padding: clamp(20px, 3.5vw, 32px);
+  border-radius: clamp(18px, 2.8vw, 26px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(145deg, rgba(1, 17, 66, 0.72) 0%, rgba(1, 37, 143, 0.38) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: yaavs-bolsa-panel-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(56, 189, 248, 0.25) 45%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__orbs {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.45;
+  animation: yaavs-bolsa-orb-float 9s ease-in-out infinite;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__orb--1 {
+  width: clamp(120px, 18vw, 220px);
+  height: clamp(120px, 18vw, 220px);
+  top: 18%;
+  right: 12%;
+  background: rgba(56, 189, 248, 0.35);
+  animation-delay: 0s;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__orb--2 {
+  width: clamp(90px, 14vw, 160px);
+  height: clamp(90px, 14vw, 160px);
+  bottom: 22%;
+  right: 28%;
+  background: rgba(1, 37, 143, 0.55);
+  animation-delay: -3s;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__orb--3 {
+  width: clamp(70px, 10vw, 120px);
+  height: clamp(70px, 10vw, 120px);
+  top: 42%;
+  right: 8%;
+  background: rgba(255, 255, 255, 0.18);
+  animation-delay: -6s;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.45);
+  background: rgba(1, 37, 143, 0.42);
+  color: #b8f0f8 !important;
+  font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  animation: yaavs-bolsa-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+  animation: yaavs-bolsa-pulse-dot 2s ease-in-out infinite;
+}
+
 html body.page-bolsa-trabajo .bolsa-hero-banner .bolsa-hero-banner__title,
-html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__title,
-html body.page-bolsa-trabajo .bolsa-hero-banner .bolsa-hero-banner__lead,
-html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__lead {
+html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__title {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.04em !important;
+  margin: 0 !important;
+  max-width: none !important;
+  font-size: clamp(2rem, 5.8vw, 3.6rem) !important;
+  font-weight: 900 !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.03em !important;
+  text-transform: uppercase !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   background: none !important;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45) !important;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.55),
+    0 12px 36px rgba(0, 0, 0, 0.42) !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__line {
+  display: block;
+  overflow: hidden;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__line:nth-child(1) {
+  animation: yaavs-bolsa-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner__line:nth-child(2) {
+  animation: yaavs-bolsa-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
 }
 
 html body.page-bolsa-trabajo .bolsa-hero-banner__title .bolsa-hero-banner__yaavs,
 html body.page-bolsa-trabajo .bolsa-hero-banner__title .avisos-hero-banner__accent,
 html body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__title .bolsa-hero-banner__yaavs,
 html body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__title .avisos-hero-banner__accent {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  background-clip: border-box !important;
-  text-shadow:
-    0 0 28px rgba(255, 255, 255, 0.35),
-    0 2px 12px rgba(0, 0, 0, 0.4) !important;
+  display: block !important;
+  margin-top: 0.12em !important;
+  font-size: 1.08em !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.06em !important;
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    #bae6fd 38%,
+    #38bdf8 68%,
+    #ffffff 100%
+  ) !important;
+  background-size: 220% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 0 22px rgba(56, 189, 248, 0.45));
+  animation:
+    yaavs-bolsa-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both,
+    yaavs-bolsa-yaavs-shimmer 4.5s ease-in-out 1.2s infinite;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner .bolsa-hero-banner__lead,
+html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__lead {
+  margin: 0 !important;
+  max-width: min(100%, 32rem) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+  font-size: clamp(0.98rem, 2vw, 1.12rem) !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.42) !important;
+  animation: yaavs-bolsa-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both;
 }
 
 html body.page-bolsa-trabajo a.bolsa-hero-banner__cta,
@@ -3106,26 +3298,31 @@ html body.page-bolsa-trabajo .bolsa-hero-banner__cta {
   justify-content: center !important;
   gap: 12px !important;
   min-height: 58px !important;
-  padding: 0 32px !important;
-  border: 2px solid rgba(255, 255, 255, 0.92) !important;
+  padding: 0 clamp(26px, 4vw, 36px) !important;
+  border: 0 !important;
   border-radius: 999px !important;
   overflow: hidden !important;
-  background: linear-gradient(135deg, #01258f 0%, #011142 100%) !important;
-  background-image: linear-gradient(135deg, #01258f 0%, #011142 100%) !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  font-size: clamp(0.92rem, 2.2vw, 1.05rem) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 48%, #ffffff 100%) !important;
+  background-size: 200% 100% !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  font-size: clamp(0.9rem, 2.1vw, 1.02rem) !important;
   font-weight: 900 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
   box-shadow:
-    0 16px 36px rgba(1, 17, 66, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.12) inset !important;
+    0 18px 42px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+    0 0 36px rgba(56, 189, 248, 0.28) !important;
+  transform: translateZ(0);
   transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s ease,
-    filter 0.3s ease !important;
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    filter 0.35s ease !important;
+  animation:
+    yaavs-bolsa-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both,
+    yaavs-bolsa-cta-pulse 2.8s ease-in-out 1.4s infinite;
 }
 
 html body.page-bolsa-trabajo .bolsa-hero-banner__cta::before {
@@ -3134,49 +3331,98 @@ html body.page-bolsa-trabajo .bolsa-hero-banner__cta::before {
   inset: 0 !important;
   background: linear-gradient(
     115deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.28) 50%,
-    transparent 70%
+    transparent 32%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 68%
   ) !important;
   background-size: 220% 100% !important;
-  animation: yaavs-bolsa-cta-shine 2.8s ease-in-out infinite;
+  animation: yaavs-bolsa-cta-shine 3s ease-in-out infinite;
   pointer-events: none !important;
 }
 
+html body.page-bolsa-trabajo .bolsa-hero-banner__cta-label,
 html body.page-bolsa-trabajo .bolsa-hero-banner__cta > * {
   position: relative !important;
   z-index: 1 !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
 }
 
 html body.page-bolsa-trabajo .bolsa-hero-banner__cta-arrow {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 1.7rem !important;
-  height: 1.7rem !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
   border-radius: 999px !important;
-  background: rgba(255, 255, 255, 0.18) !important;
+  background: rgba(1, 17, 66, 0.1) !important;
   font-size: 1em !important;
   line-height: 1 !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  animation: yaavs-bolsa-arrow-bounce 1.6s ease-in-out infinite;
 }
 
 html body.page-bolsa-trabajo a.bolsa-hero-banner__cta:hover,
 html body.page-bolsa-trabajo a.bolsa-hero-banner__cta:focus-visible,
 html body.page-bolsa-trabajo .bolsa-hero-banner__cta:hover,
 html body.page-bolsa-trabajo .bolsa-hero-banner__cta:focus-visible {
-  transform: translateY(-3px) scale(1.03) !important;
-  filter: brightness(1.08);
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  border-color: #ffffff !important;
+  transform: translateY(-4px) scale(1.04) !important;
+  filter: brightness(1.03);
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   box-shadow:
-    0 22px 48px rgba(1, 17, 66, 0.48),
-    0 0 0 2px rgba(255, 255, 255, 0.35) !important;
+    0 26px 54px rgba(0, 0, 0, 0.38),
+    0 0 0 2px rgba(56, 189, 248, 0.45),
+    0 0 48px rgba(56, 189, 248, 0.35) !important;
   outline: none !important;
+}
+
+html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__rule {
+  height: 3px !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #38bdf8 20%,
+    #ffffff 50%,
+    #38bdf8 80%,
+    transparent 100%
+  ) !important;
+  background-size: 200% 100% !important;
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.45) !important;
+  animation: yaavs-bolsa-rule-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes yaavs-bolsa-kenburns {
+  0% { transform: scale(1.04); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes yaavs-bolsa-panel-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes yaavs-bolsa-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes yaavs-bolsa-yaavs-shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 
 @keyframes yaavs-bolsa-cta-shine {
@@ -3184,20 +3430,77 @@ html body.page-bolsa-trabajo .bolsa-hero-banner__cta:focus-visible {
   100% { background-position: -20% 0; }
 }
 
+@keyframes yaavs-bolsa-cta-pulse {
+  0%, 100% {
+    box-shadow:
+      0 18px 42px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+      0 0 36px rgba(56, 189, 248, 0.28);
+  }
+  50% {
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.36),
+      0 0 0 1px rgba(255, 255, 255, 0.85) inset,
+      0 0 52px rgba(56, 189, 248, 0.42);
+  }
+}
+
+@keyframes yaavs-bolsa-arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@keyframes yaavs-bolsa-orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12px, -16px) scale(1.08); }
+}
+
+@keyframes yaavs-bolsa-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+@keyframes yaavs-bolsa-rule-shimmer {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 100% 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html body.page-bolsa-trabajo .bolsa-hero-banner__cta::before {
+  html body.page-bolsa-trabajo .bolsa-hero-banner__photo,
+  html body.page-bolsa-trabajo .bolsa-hero-banner .page-hero-banner__slide,
+  html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__video,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__panel,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__eyebrow,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__line,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__title .bolsa-hero-banner__yaavs,
+  html body.page-bolsa-trabajo .bolsa-hero-banner .bolsa-hero-banner__lead,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__cta {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  html body.page-bolsa-trabajo .bolsa-hero-banner__cta::before,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__cta-arrow,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__orb,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__eyebrow::before,
+  html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__rule {
     animation: none !important;
   }
 }
 
 @media (max-width: 768px) {
-  html body.page-bolsa-trabajo .bolsa-hero-banner .avisos-hero-banner__shade {
+  html body.page-bolsa-trabajo .bolsa-hero-banner--premium .avisos-hero-banner__shade {
     background: linear-gradient(
       180deg,
-      rgba(1, 17, 66, 0.55) 0%,
-      rgba(1, 17, 66, 0.78) 45%,
-      rgba(1, 17, 66, 0.92) 100%
+      rgba(1, 17, 66, 0.35) 0%,
+      rgba(1, 17, 66, 0.72) 38%,
+      rgba(1, 17, 66, 0.94) 100%
     ) !important;
+  }
+
+  html body.page-bolsa-trabajo .bolsa-hero-banner__panel {
+    width: 100%;
+    padding: clamp(18px, 4.5vw, 24px);
   }
 
   html body.page-bolsa-trabajo .bolsa-hero-banner--tienda .avisos-hero-banner__content {
@@ -3205,6 +3508,23 @@ html body.page-bolsa-trabajo .bolsa-hero-banner__cta:focus-visible {
     max-width: none !important;
     margin-left: 0 !important;
     padding-inline: var(--pad-x, 16px) !important;
+  }
+
+  html body.page-bolsa-trabajo a.bolsa-hero-banner__cta,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__cta {
+    width: 100%;
+    min-height: 54px;
+  }
+
+  html body.page-bolsa-trabajo .bolsa-hero-banner__orb--2,
+  html body.page-bolsa-trabajo .bolsa-hero-banner__orb--3 {
+    opacity: 0.28;
+  }
+}
+
+@media (min-width: 1400px) {
+  html body.page-bolsa-trabajo .bolsa-hero-banner__panel {
+    width: min(100%, 42rem);
   }
 }
 
