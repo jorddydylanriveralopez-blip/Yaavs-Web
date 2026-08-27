@@ -2121,6 +2121,19 @@ html body.theme-cluster.page-asi-somos .asi-telecom__icon--chip {
   }
 }
 
+html body.page-quienes-somos .asi-somos__story-scene,
+html body.page-asi-somos .asi-somos__story-scene {
+  display: block !important;
+  background: #011142 !important;
+}
+
+html body.page-quienes-somos .asi-somos__story-scene img,
+html body.page-asi-somos .asi-somos__story-scene img {
+  display: block !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
 html body.page-quienes-somos button.asi-card,
 html body.page-asi-somos button.asi-card,
 html body.page-quienes-somos a.asi-card,
