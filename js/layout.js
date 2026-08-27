@@ -203,7 +203,7 @@
     <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
       <a href="quienes-somos.html" data-page="quienes-somos">Nosotros</a>
-      <a href="servicios.html" data-page="servicios">Servicios</a>
+      <a href="index.html#servicios-preview" data-page="servicios">Servicios</a>
       <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas</a>
       <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete</a>
       <a href="avisos.html" data-page="avisos">Noticias</a>
@@ -481,27 +481,34 @@
 
   /** Anclas del menú hacia secciones del inicio (sin abrir otra página). */
   function initHomeSectionLinks() {
-    document.querySelectorAll('a[href*="#testimonios-home"]').forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const target = document.getElementById("testimonios-home");
-        if (!target || !document.body.classList.contains("page-home")) return;
-        e.preventDefault();
-        closeNavMenu();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.replaceState(null, "", "#testimonios-home");
-      });
-    });
+    const homeAnchors = [
+      { hash: "#testimonios-home", id: "testimonios-home" },
+      { hash: "#servicios-preview", id: "servicios-preview" },
+    ];
 
-    if (
-      document.body.classList.contains("page-home") &&
-      location.hash === "#testimonios-home"
-    ) {
-      window.setTimeout(() => {
-        document
-          .getElementById("testimonios-home")
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 120);
-    }
+    homeAnchors.forEach(({ hash, id }) => {
+      document.querySelectorAll(`a[href*="${hash}"]`).forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const target = document.getElementById(id);
+          if (!target || !document.body.classList.contains("page-home")) return;
+          e.preventDefault();
+          closeNavMenu();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.replaceState(null, "", hash);
+        });
+      });
+
+      if (
+        document.body.classList.contains("page-home") &&
+        location.hash === hash
+      ) {
+        window.setTimeout(() => {
+          document
+            .getElementById(id)
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 120);
+      }
+    });
   }
 
   function initPostpagoNav() {
