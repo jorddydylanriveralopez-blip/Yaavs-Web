@@ -251,6 +251,7 @@ body.nav-open .nav-bento .bento-dot {
 }
 
 .hero-promo__accent,
+.hero-word--accent,
 .hx-services__cyan,
 [class*="__accent"] {
   color: var(--yaavs-ink) !important;
@@ -1237,6 +1238,38 @@ html body.page-home .site-header.site-header--corp .logo-link--corp > img.logo {
   opacity: 1 !important;
   mix-blend-mode: normal !important;
   -webkit-text-fill-color: initial !important;
+}
+
+html body.page-home .hero-banner .hero-promo__title,
+html body.page-home .hero-banner .hero-promo__title span,
+html body.page-home .hero-banner .hero-promo__accent,
+html body.page-home .hero-banner .hero-word--title,
+html body.page-home .hero-banner .hero-word--accent,
+html body.page-home .hero-banner .hero-promo__lead,
+html body.page-home .hero-banner .hero-promo__lead span,
+html body.page-home .hero-banner .hero-word--lead,
+html body.page-home .hero-banner .hero-promo__kicker,
+html body.page-home .hero-banner .hero-promo__eyebrow,
+html body.page-home .hero-banner .hero-promo__badge {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+  background-image: none !important;
+  filter: none !important;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.62),
+    0 10px 28px rgba(0, 0, 0, 0.48) !important;
+}
+
+html body.page-home .hero-banner .hero-promo__title {
+  white-space: normal !important;
+}
+
+@media (max-width: 700px) {
+  html body.page-home .hero-banner .hero-promo__title {
+    font-size: clamp(1.55rem, 8vw, 2.15rem) !important;
+    line-height: 1.08 !important;
+  }
 }
 
 /* ─── Hero carousel CTA — pastilla con volumen ─── */
