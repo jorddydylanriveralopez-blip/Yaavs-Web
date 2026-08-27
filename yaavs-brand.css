@@ -345,7 +345,7 @@ button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vin
 }
 
 /* ─── Cards / paneles / modales ─── */
-[class*="card"]:not(.asi-card):not(.asi-card__media):not(.asi-card__title):not(.jobs-apply-card),
+[class*="card"]:not(.asi-card):not(.asi-card__media):not(.asi-card__title):not(.jobs-apply-card):not(.jobs-netflix-card):not([class*="jobs-netflix-card"]),
 [class*="panel"]:not(.hx-vinc-modal__panel):not(.hx-esim-modal__panel),
 [class*="modal"]:not(.hx-vinc-modal):not(.hx-vinc-modal__sheet):not(.hx-porta-modal):not(.hx-porta-modal__sheet):not(.hx-rotul-modal):not(.hx-rotul-modal__sheet):not(.hx-yaavshop-modal):not(.hx-yaavshop-modal__sheet):not(.hx-esim-modal):not(.hx-esim-modal__sheet):not(.hx-act-modal):not(.hx-act-modal__sheet):not(.hx-rk-modal),
 .promo-popup,
@@ -3437,44 +3437,60 @@ html body.page-bolsa-trabajo .jobs-netflix-card.is-closed {
 html body.page-bolsa-trabajo .jobs-netflix-card__poster {
   position: relative;
   aspect-ratio: 2 / 3;
+  min-height: 220px;
   border-radius: 10px;
   overflow: hidden;
   background: #01258f;
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  isolation: isolate;
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-poster-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: brightness(1.08) contrast(1.05) saturate(1.06);
+  transform: scale(1.03);
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__art {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 8px;
-  padding: 14px 12px 16px;
+  padding: 0;
   background: linear-gradient(155deg, #01258f 0%, #011142 100%);
   overflow: hidden;
+  pointer-events: none;
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__art.has-photo {
-  background: #0c1f4f;
+  background: transparent;
 }
 
-html body.page-bolsa-trabajo .jobs-netflix-card__photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
-  filter: brightness(1.1) contrast(1.04) saturate(1.08);
-  transform: scale(1.02);
+html body.page-bolsa-trabajo .jobs-netflix-card__art-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 12px 16px;
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__art.has-photo .jobs-netflix-card__art-glow {
-  opacity: 0.35;
-  background: radial-gradient(circle at 70% 12%, rgba(255, 255, 255, 0.45) 0%, transparent 62%);
+  opacity: 0.28;
+  background: radial-gradient(circle at 70% 12%, rgba(255, 255, 255, 0.42) 0%, transparent 62%);
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__art-glow {
@@ -3574,6 +3590,7 @@ html body.page-bolsa-trabajo .jobs-netflix-card__art-mark {
   position: absolute;
   top: 12px;
   right: 10px;
+  z-index: 2;
   color: rgba(255, 255, 255, 0.18) !important;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.18) !important;
   font-size: 0.62rem;
@@ -3584,17 +3601,19 @@ html body.page-bolsa-trabajo .jobs-netflix-card__art-mark {
 html body.page-bolsa-trabajo .jobs-netflix-card__veil {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(180deg, rgba(1, 17, 66, 0.08) 0%, rgba(1, 17, 66, 0.42) 100%);
   pointer-events: none;
 }
 
-html body.page-bolsa-trabajo .jobs-netflix-card__poster:has(.has-photo) .jobs-netflix-card__veil {
+html body.page-bolsa-trabajo .jobs-netflix-card__poster:has(.jobs-netflix-poster-img) .jobs-netflix-card__veil {
+  z-index: 1;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(1, 17, 66, 0.08) 34%,
-    rgba(1, 17, 66, 0.72) 72%,
-    rgba(1, 17, 66, 0.94) 100%
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(1, 17, 66, 0.05) 30%,
+    rgba(1, 17, 66, 0.55) 68%,
+    rgba(1, 17, 66, 0.92) 100%
   );
 }
 
@@ -3602,6 +3621,7 @@ html body.page-bolsa-trabajo .jobs-netflix-card__badge {
   position: absolute;
   top: 10px;
   left: 10px;
+  z-index: 3;
   padding: 4px 8px;
   border-radius: 999px;
   background: rgba(16, 185, 129, 0.92);
@@ -3621,6 +3641,7 @@ html body.page-bolsa-trabajo .jobs-netflix-card__play {
   position: absolute;
   right: 10px;
   bottom: 10px;
+  z-index: 3;
   width: 34px;
   height: 34px;
   border-radius: 50%;
