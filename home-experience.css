@@ -4321,14 +4321,15 @@ a.hx-plan-picker__card {
   max-height: min(88dvh, 680px);
   overflow-y: auto;
   padding: clamp(24px, 4vw, 34px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: #01258f;
+  border-radius: 22px;
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #ffffff;
   box-shadow:
-    0 28px 64px rgba(8, 40, 64, 0.22),
-    0 0 0 1px rgba(53, 195, 243, 0.12);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0 28px 64px rgba(1, 17, 66, 0.22),
+    0 0 0 1px rgba(1, 17, 66, 0.04);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: #011142;
   transform: translateY(24px) scale(0.96);
   transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -4341,49 +4342,50 @@ a.hx-plan-picker__card {
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(12, 48, 72, 0.12);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(1, 17, 66, 0.12);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
-  color: #0a2a40;
+  background: #f4f6fb;
+  color: #011142;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .hx-porta-modal__close:hover,
 .hx-porta-modal__close:focus-visible {
-  background: rgba(53, 195, 243, 0.16);
-  border-color: rgba(53, 195, 243, 0.45);
+  background: #011142;
+  border-color: #011142;
+  color: #ffffff;
   outline: none;
 }
 
 .hx-porta-modal__kicker {
   margin: 0 0 6px;
   font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #0088b8;
+  color: #01258f;
 }
 
 .hx-porta-modal__title {
   margin: 0 0 8px;
-  padding-right: 36px;
+  padding-right: 40px;
   font-size: clamp(1.15rem, 3.4vw, 1.5rem);
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1.18;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-porta-modal__desc {
   margin: 0 0 22px;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: rgba(10, 42, 64, 0.72);
+  color: rgba(1, 17, 66, 0.72);
 }
 
 .hx-porta-modal__options {
@@ -4398,20 +4400,21 @@ a.hx-plan-picker__card {
   align-items: center;
   gap: 10px;
   padding: 18px 12px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 136, 184, 0.18);
-  background: rgba(255, 255, 255, 0.82);
+  border-radius: 16px;
+  border: 1.5px solid rgba(1, 17, 66, 0.12);
+  background: #f7f9fc;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 8px 22px rgba(8, 40, 64, 0.06);
+  box-shadow: none;
   transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
 }
 
 .hx-porta-modal__option:hover,
 .hx-porta-modal__option:focus-visible {
   transform: translateY(-3px);
-  border-color: rgba(0, 136, 184, 0.5);
+  border-color: #01258f;
   background: #fff;
+  box-shadow: 0 12px 28px rgba(1, 37, 143, 0.14);
   box-shadow: 0 14px 32px rgba(8, 40, 64, 0.14);
   outline: none;
 }
@@ -4439,10 +4442,10 @@ a.hx-plan-picker__card {
 
 .hx-porta-modal__option-cta {
   font-size: 0.74rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #0088b8;
+  color: #01258f;
 }
 
 @media (max-width: 640px) {
@@ -4509,8 +4512,8 @@ a.hx-plan-picker__card {
   overflow-y: auto;
   padding: clamp(24px, 4vw, 34px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: #01258f;
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #ffffff;
   box-shadow:
     0 28px 64px rgba(8, 40, 64, 0.22),
     0 0 0 1px rgba(53, 195, 243, 0.12);
@@ -4550,10 +4553,10 @@ a.hx-plan-picker__card {
 .hx-act-modal__kicker {
   margin: 0 0 6px;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #c48a12;
+  color: #01258f;
 }
 
 .hx-act-modal__title {
@@ -4563,14 +4566,14 @@ a.hx-plan-picker__card {
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1.18;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-act-modal__desc {
   margin: 0 0 22px;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: rgba(10, 42, 64, 0.72);
+  color: rgba(1, 17, 66, 0.72);
 }
 
 .hx-act-modal__options {
@@ -4732,8 +4735,8 @@ a.hx-plan-picker__card {
   overflow-y: auto;
   padding: clamp(22px, 3.5vw, 32px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: #01258f;
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #ffffff;
   box-shadow:
     0 28px 64px rgba(8, 40, 64, 0.24),
     0 0 0 1px rgba(40, 180, 120, 0.12);
@@ -4773,10 +4776,10 @@ a.hx-plan-picker__card {
 .hx-rotul-modal__kicker {
   margin: 0 0 6px;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #1a9a6a;
+  color: #01258f;
 }
 
 .hx-rotul-modal__title {
@@ -4786,14 +4789,14 @@ a.hx-plan-picker__card {
   font-size: clamp(1.2rem, 2.6vw, 1.55rem);
   font-weight: 700;
   line-height: 1.2;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-rotul-modal__desc {
   margin: 0 0 18px;
   font-size: 0.92rem;
   line-height: 1.45;
-  color: rgba(10, 42, 64, 0.72);
+  color: rgba(1, 17, 66, 0.72);
 }
 
 .hx-rotul-carousel__viewport {
@@ -4987,8 +4990,8 @@ a.hx-plan-picker__card {
   overflow-y: auto;
   padding: clamp(20px, 3.5vw, 30px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: #01258f;
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #ffffff;
   box-shadow:
     0 28px 64px rgba(8, 40, 64, 0.24),
     0 0 0 1px rgba(1, 37, 143, 0.12);
@@ -5113,7 +5116,7 @@ a.hx-plan-picker__card {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #0a8fa3;
+  color: #01258f;
 }
 
 .hx-yaavshop-modal__title {
@@ -5123,7 +5126,7 @@ a.hx-plan-picker__card {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-yaavshop-modal__desc {
@@ -5131,7 +5134,7 @@ a.hx-plan-picker__card {
   max-width: 42em;
   font-size: 0.92rem;
   line-height: 1.45;
-  color: rgba(10, 42, 64, 0.72);
+  color: rgba(1, 17, 66, 0.72);
 }
 
 .hx-yaavshop-flip {
@@ -5652,8 +5655,8 @@ a.hx-plan-picker__card {
   overflow-y: auto;
   padding: clamp(22px, 3.5vw, 32px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: #01258f;
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #ffffff;
   box-shadow:
     0 28px 64px rgba(8, 40, 64, 0.24),
     0 0 0 1px rgba(40, 180, 120, 0.14);
@@ -5693,10 +5696,10 @@ a.hx-plan-picker__card {
 .hx-esim-modal__kicker {
   margin: 0 0 6px;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #1a9a6a;
+  color: #01258f;
 }
 
 .hx-esim-modal__title {
@@ -5706,25 +5709,25 @@ a.hx-plan-picker__card {
   font-size: clamp(1.2rem, 2.6vw, 1.55rem);
   font-weight: 700;
   line-height: 1.2;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-esim-modal__desc {
   margin: 0 0 10px;
   font-size: 0.92rem;
   line-height: 1.45;
-  color: rgba(10, 42, 64, 0.72);
+  color: rgba(1, 17, 66, 0.72);
 }
 
 .hx-esim-modal__note {
   margin: 0 0 18px;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(26, 154, 106, 0.28);
-  background: rgba(26, 154, 106, 0.08);
+  border: 1px solid rgba(1, 17, 66, 0.12);
+  background: #f4f6fb;
   font-size: 0.84rem;
   line-height: 1.4;
-  color: #0a4a34;
+  color: #011142;
 }
 
 .hx-esim-modal__carriers {
@@ -5740,26 +5743,32 @@ a.hx-plan-picker__card {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 88px;
-  padding: 12px 10px;
-  border-radius: 14px;
-  border: 1px solid rgba(12, 48, 72, 0.12);
-  background: rgba(255, 255, 255, 0.72);
+  min-height: 92px;
+  padding: 14px 10px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(1, 17, 66, 0.12);
+  background: #f7f9fc;
+  color: #011142;
   cursor: pointer;
+  box-shadow: none;
   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .hx-esim-modal__carrier:hover,
 .hx-esim-modal__carrier:focus-visible {
-  border-color: rgba(26, 154, 106, 0.45);
+  border-color: rgba(1, 37, 143, 0.45);
+  background: #ffffff;
   outline: none;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(1, 17, 66, 0.1);
 }
 
 .hx-esim-modal__carrier.is-active {
-  border-color: rgba(26, 154, 106, 0.55);
-  background: rgba(236, 250, 244, 0.95);
-  box-shadow: 0 8px 20px rgba(26, 154, 106, 0.12);
+  border-color: #01258f;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px #01258f,
+    0 12px 28px rgba(1, 37, 143, 0.16);
 }
 
 .hx-esim-modal__carrier-logo {
@@ -5783,7 +5792,7 @@ a.hx-plan-picker__card {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #0a2a40;
+  color: #011142;
 }
 
 .hx-esim-modal__panel {
