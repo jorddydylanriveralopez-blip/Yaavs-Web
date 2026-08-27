@@ -1919,6 +1919,71 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
     animation: none !important;
   }
 
+  /* Icons: mobile corporate hides .hx-svc-deck__bg img (opacity:0) and relies on
+     JS .hx-svc-deck__icon — force the PNG in every card so logos never vanish. */
+  html body.page-home #servicios-preview .hx-svc-deck__bg,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__bg,
+  html body.page-home #servicios-preview .hx-svc-deck__icon,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__icon {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: #011142 !important;
+    background-color: #011142 !important;
+    pointer-events: none !important;
+  }
+
+  html body.page-home #servicios-preview .hx-svc-deck__bg img,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__bg img,
+  html body.page-home #servicios-preview .hx-svc-deck__icon img,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__icon img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 16% 12% 26% !important;
+    box-sizing: border-box !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Soft veil only — never a solid blue plate over the icons */
+  html body.page-home #servicios-preview .hx-svc-deck__shade,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__shade {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+    pointer-events: none !important;
+  }
+
+  /* Prefer static icons over autoplay video on phone */
+  html body.page-home #servicios-preview .hx-svc-deck__media,
+  html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__media {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
   html body.page-home #servicios-preview .hx-svc-deck__body,
   html body.page-home #servicios-preview .hx-svc-deck-masonry .hx-svc-deck__body {
     position: absolute !important;
@@ -1965,11 +2030,6 @@ html body.page-home #servicios-preview .hx-svc-deck__shade::after {
   html body.page-home #servicios-preview .hx-svc-deck__cta,
   html body.page-home #servicios-preview .hx-svc-deck__label {
     display: none !important;
-  }
-
-  html body.page-home #servicios-preview .hx-svc-deck__bg img {
-    object-fit: contain !important;
-    padding: 14% 12% 22% !important;
   }
 }
 
