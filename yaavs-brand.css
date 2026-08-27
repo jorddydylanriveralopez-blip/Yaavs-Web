@@ -1712,6 +1712,25 @@ html body.page-home .hx-services .hx-svc-deck__bg {
   box-shadow: none !important;
 }
 
+/* Icon art fills the whole tile (PNG already includes navy square) */
+html body.page-home #servicios-preview .hx-svc-deck__bg,
+html body.page-home #servicios-preview .hx-svc-deck__icon {
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+}
+
+html body.page-home #servicios-preview .hx-svc-deck__bg img,
+html body.page-home #servicios-preview .hx-svc-deck__icon img {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
 html body.page-home .hx-svc-catalog-tabs,
 html body.page-home .hx-svc-group,
 html body.page-home .hx-svc-group__title,
@@ -2197,6 +2216,131 @@ html body.page-home #testimonios-home .tx-clients {
   html body.page-home #testimonios-home .tx-gallery__more {
     width: min(1240px, 100%);
     margin-inline: auto;
+  }
+}
+
+/* ─── CTA “Gana con nosotros” — grande y con presencia ─── */
+html body.page-home .tx-gallery__more {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: clamp(28px, 5vw, 48px) !important;
+  margin-bottom: clamp(8px, 2vw, 16px) !important;
+  padding-inline: clamp(16px, 4vw, 28px) !important;
+}
+
+html body.page-home a.tx-gallery__gana,
+html body.page-home .btn.tx-gallery__gana {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(10px, 2vw, 16px) !important;
+  width: min(100%, 420px) !important;
+  min-height: 64px !important;
+  padding: clamp(18px, 3.2vw, 24px) clamp(28px, 5vw, 44px) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: linear-gradient(135deg, #011142 0%, #01258f 55%, #0a3ab8 100%) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: clamp(0.95rem, 2.8vw, 1.2rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  box-shadow:
+    0 18px 42px rgba(1, 17, 66, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset !important;
+  transform: translateZ(0);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    filter 0.35s ease !important;
+  animation: yaavs-gana-pulse 2.8s ease-in-out infinite;
+}
+
+html body.page-home a.tx-gallery__gana::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 65%
+  ) !important;
+  background-size: 220% 100% !important;
+  animation: yaavs-gana-shine 3.2s ease-in-out infinite;
+  pointer-events: none !important;
+}
+
+html body.page-home .tx-gallery__gana-label {
+  position: relative !important;
+  z-index: 1 !important;
+  white-space: normal !important;
+  line-height: 1.15 !important;
+}
+
+html body.page-home .tx-gallery__gana-arrow {
+  position: relative !important;
+  z-index: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  font-size: 1.05em !important;
+  line-height: 1 !important;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+html body.page-home a.tx-gallery__gana:hover,
+html body.page-home a.tx-gallery__gana:focus-visible {
+  transform: translateY(-4px) scale(1.03) !important;
+  filter: brightness(1.06);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow:
+    0 24px 52px rgba(1, 17, 66, 0.34),
+    0 0 0 2px rgba(1, 37, 143, 0.35) !important;
+  outline: none !important;
+}
+
+html body.page-home a.tx-gallery__gana:hover .tx-gallery__gana-arrow,
+html body.page-home a.tx-gallery__gana:focus-visible .tx-gallery__gana-arrow {
+  transform: translateX(4px) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
+@keyframes yaavs-gana-pulse {
+  0%, 100% { box-shadow: 0 18px 42px rgba(1, 17, 66, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.12) inset; }
+  50% { box-shadow: 0 22px 48px rgba(1, 17, 66, 0.34), 0 0 0 1px rgba(255, 255, 255, 0.18) inset; }
+}
+
+@keyframes yaavs-gana-shine {
+  0% { background-position: 120% 0; }
+  100% { background-position: -20% 0; }
+}
+
+@media (max-width: 640px) {
+  html body.page-home a.tx-gallery__gana,
+  html body.page-home .btn.tx-gallery__gana {
+    width: 100% !important;
+    min-height: 60px !important;
+    font-size: clamp(0.88rem, 4.2vw, 1.05rem) !important;
+    letter-spacing: 0.1em !important;
+    padding: 18px 22px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.page-home a.tx-gallery__gana,
+  html body.page-home a.tx-gallery__gana::before {
+    animation: none !important;
   }
 }
 
