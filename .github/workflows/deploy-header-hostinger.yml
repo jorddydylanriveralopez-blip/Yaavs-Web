@@ -69,8 +69,6 @@ jobs:
           upload_one styles.css styles.css
           upload_one theme-day-night.css theme-day-night.css
           upload_one quienes-asi.css quienes-asi.css
-          upload_one assets/quienes-somos-fondo.jpg assets/quienes-somos-fondo.jpg
-          upload_one assets/quienes/ciudad-dia.jpg assets/quienes/ciudad-dia.jpg
           upload_one js/layout.js js/layout.js
           upload_one js/hero-carousel.js js/hero-carousel.js
           upload_one partials/header.html partials/header.html
@@ -83,6 +81,10 @@ jobs:
           for f in *.html; do
             upload_one "$f" "$f"
           done
+
+          # Large images last; ignore timeout so CSS/HTML still ship
+          upload_one assets/quienes-somos-fondo.jpg assets/quienes-somos-fondo.jpg || true
+          upload_one assets/quienes/ciudad-dia.jpg assets/quienes/ciudad-dia.jpg || true
 
           curl -sS -X POST \
             "https://developers.hostinger.com/api/hosting/v1/accounts/${USERNAME}/websites/${DOMAIN}/cache" \
