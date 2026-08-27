@@ -843,12 +843,18 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
 .asi-somos__story {
   position: relative;
   isolation: isolate;
-  padding-block: clamp(28px, 4.5vw, 56px);
+  margin: 0;
+  width: auto;
+  max-width: none;
+  padding: clamp(28px, 4.5vw, 56px) clamp(14px, 2.8vw, 28px);
+  border-radius: clamp(22px, 3vw, 36px);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(1, 17, 66, 0.12);
 }
 
 .asi-somos__story-scene {
   position: absolute;
-  inset: -12px calc(50% - 50vw);
+  inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -860,30 +866,43 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 42%;
-  transform: scale(1.06);
-  animation: asi-story-pan 22s ease-in-out infinite alternate;
+  object-position: center 48%;
+  transform: scale(1.08);
+  filter: saturate(1.08) brightness(0.92);
+  animation: asi-story-pan 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.asi-somos__story-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, transparent 20%, rgba(1, 17, 66, 0.28) 100%);
+  pointer-events: none;
 }
 
 .asi-somos__story-scene::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     linear-gradient(
       180deg,
-      #ffffff 0%,
-      rgba(255, 255, 255, 0.78) 7%,
-      rgba(1, 17, 66, 0.22) 22%,
-      rgba(1, 17, 66, 0.32) 52%,
-      rgba(1, 17, 66, 0.24) 84%,
-      #ffffff 100%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(1, 17, 66, 0.28) 14%,
+      rgba(1, 17, 66, 0.22) 48%,
+      rgba(1, 17, 66, 0.34) 82%,
+      rgba(255, 255, 255, 0.62) 100%
     );
+  pointer-events: none;
 }
 
 @keyframes asi-story-pan {
-  from { transform: scale(1.05) translate3d(0, 0, 0); }
-  to { transform: scale(1.12) translate3d(-1.6%, 1.2%, 0); }
+  from { transform: scale(1.06) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-2%, 1.4%, 0); }
 }
 
 .asi-somos__grid {
@@ -953,7 +972,7 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   border: 0;
   border-radius: inherit;
   background: #0b1a33;
-  box-shadow: 0 18px 40px rgba(1, 17, 66, 0.16);
+  box-shadow: 0 20px 48px rgba(1, 17, 66, 0.28);
   aspect-ratio: 16 / 9;
   isolation: isolate;
   transition:
@@ -1207,15 +1226,16 @@ body.theme-cluster.page-asi-somos .site-header .logo.logo--on-light,
   }
 
   .asi-somos__story {
-    padding-block: 20px 28px;
-  }
-
-  .asi-somos__story-scene {
-    inset: -8px calc(50% - 50vw);
+    margin-inline: -14px;
+    width: auto;
+    max-width: none;
+    padding: 20px 12px 28px;
+    border-radius: 20px;
   }
 
   .asi-somos__story-scene img {
-    animation-duration: 28s;
+    animation-duration: 32s;
+    filter: saturate(1.05) brightness(0.9);
   }
 
   .asi-somos__grid {
