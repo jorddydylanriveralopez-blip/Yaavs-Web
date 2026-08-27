@@ -585,32 +585,40 @@
     return match ? match[0] : text.split("·")[0].trim();
   }
 
+  function renderPosterArt(item, job, tone) {
+    const salary = job?.salary ? shortSalary(job.salary) : "";
+    return `
+      <div class="jobs-netflix-card__art jobs-netflix-card__art--${tone}" aria-hidden="true">
+        <div class="jobs-netflix-card__art-glow"></div>
+        <span class="jobs-netflix-card__dept">${escapeHtml(item.department)}</span>
+        <p class="jobs-netflix-card__poster-title">${escapeHtml(item.title)}</p>
+        ${salary ? `<span class="jobs-netflix-card__poster-salary">${escapeHtml(salary)}</span>` : ""}
+        <span class="jobs-netflix-card__art-mark">YAAVS</span>
+      </div>`;
+  }
+
   function renderNetflixCard(item, featured) {
     const job = item.jobId ? OPEN_BY_ID[item.jobId] : null;
     const stillOpen = Boolean(item.open && job && isJobActive(job));
     const closed = !stillOpen;
     const isOpenDetail = Boolean(job && stillOpen);
-    const image = job?.image ? `${escapeHtml(job.image)}?v=3` : "";
     const salary = job?.salary ? shortSalary(job.salary) : "";
     const tone = deptTone(item.department);
+    const ariaLabel = [item.title, item.detail, salary].filter(Boolean).join(" · ");
+    const baseClass = `jobs-netflix-card${featured ? " jobs-netflix-card--featured" : ""}${closed ? " is-closed" : ""}${isOpenDetail ? " is-openable" : ""}`;
     const rowAttrs = isOpenDetail
-      ? ` class="jobs-netflix-card is-openable${featured ? " jobs-netflix-card--featured" : ""}" tabindex="0" role="button" aria-expanded="false" data-job-toggle="${escapeHtml(item.jobId)}"`
-      : ` class="jobs-netflix-card${closed ? " is-closed" : ""}${featured ? " jobs-netflix-card--featured" : ""}"`;
-
-    const poster = image
-      ? `<img class="jobs-netflix-card__img" src="${image}" alt="" width="400" height="600" loading="lazy" decoding="async">`
-      : `<div class="jobs-netflix-card__fallback jobs-netflix-card__fallback--${tone}" aria-hidden="true"><span>${escapeHtml(item.department.slice(0, 1))}</span></div>`;
+      ? ` class="${baseClass}" tabindex="0" role="button" aria-expanded="false" aria-label="${escapeHtml(ariaLabel)}" data-job-toggle="${escapeHtml(item.jobId)}"`
+      : ` class="${baseClass}" aria-label="${escapeHtml(ariaLabel)}"`;
 
     return `
       <article${rowAttrs}>
         <div class="jobs-netflix-card__poster">
-          ${poster}
+          ${renderPosterArt(item, job, tone)}
           <div class="jobs-netflix-card__veil" aria-hidden="true"></div>
           <span class="jobs-netflix-card__badge${stillOpen ? "" : " is-muted"}">${stillOpen ? "Abierta" : "Cerrada"}</span>
           ${isOpenDetail ? `<span class="jobs-netflix-card__play" aria-hidden="true">▶</span>` : ""}
         </div>
         <div class="jobs-netflix-card__info">
-          <h4 class="jobs-netflix-card__title">${escapeHtml(item.title)}</h4>
           <p class="jobs-netflix-card__area">${escapeHtml(item.detail)}</p>
           ${salary ? `<p class="jobs-netflix-card__salary">${escapeHtml(salary)}</p>` : ""}
         </div>
@@ -704,7 +712,7 @@
     const featuredItems = CATALOG.filter((item) => {
       if (!item.open || !item.jobId) return false;
       const job = OPEN_BY_ID[item.jobId];
-      return job && isJobActive(job) && job.image;
+      return job && isJobActive(job);
     });
 
     const rows = [];

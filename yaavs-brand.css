@@ -3441,36 +3441,126 @@ html body.page-bolsa-trabajo .jobs-netflix-card__poster {
   overflow: hidden;
   background: #01258f;
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-html body.page-bolsa-trabajo .jobs-netflix-card__img {
+html body.page-bolsa-trabajo .jobs-netflix-card__art {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 12px 16px;
+  background: linear-gradient(155deg, #01258f 0%, #011142 100%);
 }
 
-html body.page-bolsa-trabajo .jobs-netflix-card__fallback {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  font-size: 2.4rem;
+html body.page-bolsa-trabajo .jobs-netflix-card__art-glow {
+  position: absolute;
+  top: -18%;
+  right: -22%;
+  width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--tech {
+  background: linear-gradient(155deg, #0ea5e9 0%, #01258f 52%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--marketing {
+  background: linear-gradient(155deg, #818cf8 0%, #4f46e5 48%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--finance {
+  background: linear-gradient(155deg, #34d399 0%, #059669 45%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--accounting {
+  background: linear-gradient(155deg, #2dd4bf 0%, #0d9488 45%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--sales {
+  background: linear-gradient(155deg, #fbbf24 0%, #d97706 42%, #01258f 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--field {
+  background: linear-gradient(155deg, #f472b6 0%, #db2777 45%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--ops {
+  background: linear-gradient(155deg, #60a5fa 0%, #2563eb 48%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art--admin {
+  background: linear-gradient(155deg, #a78bfa 0%, #7c3aed 48%, #011142 100%);
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__dept {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(1, 17, 66, 0.35);
+  color: rgba(255, 255, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 0.58rem;
   font-weight: 800;
-  color: #ffffff;
-  background: linear-gradient(145deg, #01258f, #011142);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-html body.page-bolsa-trabajo .jobs-netflix-card__fallback--tech { background: linear-gradient(145deg, #0ea5e9, #01258f); }
-html body.page-bolsa-trabajo .jobs-netflix-card__fallback--marketing { background: linear-gradient(145deg, #6366f1, #01258f); }
-html body.page-bolsa-trabajo .jobs-netflix-card__fallback--finance { background: linear-gradient(145deg, #10b981, #011142); }
-html body.page-bolsa-trabajo .jobs-netflix-card__fallback--sales { background: linear-gradient(145deg, #f59e0b, #01258f); }
-html body.page-bolsa-trabajo .jobs-netflix-card__fallback--field { background: linear-gradient(145deg, #ec4899, #011142); }
+html body.page-bolsa-trabajo .jobs-netflix-card__poster-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-size: clamp(0.82rem, 2.4vw, 0.98rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__poster-salary {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(1, 17, 66, 0.55);
+  color: #7dd3fc !important;
+  -webkit-text-fill-color: #7dd3fc !important;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+html body.page-bolsa-trabajo .jobs-netflix-card__art-mark {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.18) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.18) !important;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
 
 html body.page-bolsa-trabajo .jobs-netflix-card__veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(1, 17, 66, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(1, 17, 66, 0.08) 0%, rgba(1, 17, 66, 0.42) 100%);
   pointer-events: none;
 }
 
@@ -3519,16 +3609,7 @@ html body.page-bolsa-trabajo .jobs-netflix-card.is-active .jobs-netflix-card__pl
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__info {
-  padding: 10px 4px 0;
-}
-
-html body.page-bolsa-trabajo .jobs-netflix-card__title {
-  margin: 0 0 4px;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.25;
+  padding: 8px 4px 0;
 }
 
 html body.page-bolsa-trabajo .jobs-netflix-card__area {
