@@ -345,7 +345,7 @@ button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vin
 }
 
 /* ─── Cards / paneles / modales ─── */
-[class*="card"]:not(.asi-card):not(.asi-card__media):not(.asi-card__title),
+[class*="card"]:not(.asi-card):not(.asi-card__media):not(.asi-card__title):not(.jobs-apply-card),
 [class*="panel"]:not(.hx-vinc-modal__panel):not(.hx-esim-modal__panel),
 [class*="modal"]:not(.hx-vinc-modal):not(.hx-vinc-modal__sheet):not(.hx-porta-modal):not(.hx-porta-modal__sheet):not(.hx-rotul-modal):not(.hx-rotul-modal__sheet):not(.hx-yaavshop-modal):not(.hx-yaavshop-modal__sheet):not(.hx-esim-modal):not(.hx-esim-modal__sheet):not(.hx-act-modal):not(.hx-act-modal__sheet):not(.hx-rk-modal),
 .promo-popup,
@@ -397,18 +397,18 @@ button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vin
   color: var(--yaavs-ink) !important;
 }
 
-/* ─── Forms ─── */
-input,
-textarea,
-select {
+/* ─── Forms (except bolsa apply — styled at end of file) ─── */
+body:not(.page-bolsa-trabajo) input,
+body:not(.page-bolsa-trabajo) textarea,
+body:not(.page-bolsa-trabajo) select {
   background: var(--yaavs-deep) !important;
   color: var(--yaavs-ink) !important;
   border: 1px solid var(--yaavs-blue) !important;
   box-shadow: none !important;
 }
 
-input::placeholder,
-textarea::placeholder {
+body:not(.page-bolsa-trabajo) input::placeholder,
+body:not(.page-bolsa-trabajo) textarea::placeholder {
   color: var(--yaavs-ink-mute) !important;
 }
 
@@ -3459,57 +3459,117 @@ html body.page-bolsa-trabajo .jobs-catalog__chevron {
   }
 }
 
-/* Formulario de postulación — legible sobre tarjeta blanca */
-html body.page-bolsa-trabajo .jobs-apply-card {
+/* Formulario de postulación — tarjeta blanca limpia */
+html body.page-bolsa-trabajo .jobs-apply-section {
+  background: linear-gradient(180deg, #011142 0%, #01258f 100%) !important;
+  padding-block: clamp(56px, 9vw, 96px) !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-backdrop__photo {
+  opacity: 0.18 !important;
+  filter: grayscale(0.35) brightness(0.7) !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-backdrop__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 17, 66, 0.92) 0%,
+    rgba(1, 37, 143, 0.88) 100%
+  ) !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-card,
+html body.page-bolsa-trabajo .jobs-apply-card--clean {
   background: #ffffff !important;
-  border: 1px solid rgba(1, 37, 143, 0.14) !important;
-  box-shadow: 0 20px 56px rgba(1, 17, 66, 0.14) !important;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(1, 37, 143, 0.1) !important;
+  border-radius: 24px !important;
+  padding: clamp(28px, 5vw, 44px) !important;
+  box-shadow:
+    0 28px 72px rgba(1, 17, 66, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-card--clean::before,
+html body.page-bolsa-trabajo .jobs-apply-card--neon::before {
+  display: none !important;
+  content: none !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-head {
+  text-align: center !important;
+  margin-bottom: clamp(24px, 4vw, 32px) !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-head .section-tag {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
+  margin-bottom: 8px !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-head h2,
 html body.page-bolsa-trabajo .jobs-apply-head .jobs-section-title {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
+  font-size: clamp(1.5rem, 3.5vw, 2rem) !important;
+  font-weight: 800 !important;
+  margin: 0 0 10px !important;
+  text-align: center !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-lead {
-  color: #4a5d7a !important;
-  -webkit-text-fill-color: #4a5d7a !important;
+  color: #5a6d88 !important;
+  -webkit-text-fill-color: #5a6d88 !important;
+  text-align: center !important;
+  max-width: 36rem !important;
+  margin-inline: auto !important;
+  line-height: 1.6 !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-lead a {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
   text-decoration: underline !important;
+  font-weight: 600 !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form {
+  gap: 18px 20px !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field {
+  gap: 8px !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field > span {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
+  font-size: 0.72rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field input,
 html body.page-bolsa-trabajo .jobs-apply-form .field textarea,
 html body.page-bolsa-trabajo .jobs-apply-form .field select {
-  background: #f4f7fc !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
-  border: 1px solid rgba(1, 37, 143, 0.22) !important;
-  border-radius: 10px !important;
+  border: 1.5px solid #d4deec !important;
+  border-radius: 12px !important;
+  padding: 15px 16px !important;
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
   box-shadow: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field input::placeholder,
 html body.page-bolsa-trabajo .jobs-apply-form .field textarea::placeholder {
-  color: #6b7f9e !important;
-  -webkit-text-fill-color: #6b7f9e !important;
+  color: #8a9bb5 !important;
+  -webkit-text-fill-color: #8a9bb5 !important;
   opacity: 1 !important;
 }
 
@@ -3517,9 +3577,19 @@ html body.page-bolsa-trabajo .jobs-apply-form .field input:focus,
 html body.page-bolsa-trabajo .jobs-apply-form .field textarea:focus,
 html body.page-bolsa-trabajo .jobs-apply-form .field select:focus {
   background: #ffffff !important;
+  background-color: #ffffff !important;
   border-color: #01258f !important;
-  box-shadow: 0 0 0 3px rgba(1, 37, 143, 0.12) !important;
+  box-shadow: 0 0 0 3px rgba(1, 37, 143, 0.14) !important;
   outline: none !important;
+}
+
+html body.page-bolsa-trabajo .jobs-apply-form .field select {
+  cursor: pointer !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23012142' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  padding-right: 40px !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field select option {
@@ -3528,31 +3598,38 @@ html body.page-bolsa-trabajo .jobs-apply-form .field select option {
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field-file__hint {
-  color: #4a5d7a !important;
-  -webkit-text-fill-color: #4a5d7a !important;
-  background: #f4f7fc !important;
-  border: 1px dashed rgba(1, 37, 143, 0.28) !important;
-  border-radius: 10px !important;
+  color: #5a6d88 !important;
+  -webkit-text-fill-color: #5a6d88 !important;
+  background: #f7f9fc !important;
+  border: 1.5px dashed #c5d3e8 !important;
+  border-radius: 12px !important;
+  min-height: 72px !important;
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: 0.9rem !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field--file:hover .field-file__hint,
 html body.page-bolsa-trabajo .jobs-apply-form .field--file:focus-within .field-file__hint {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
-  background: #e8f0fe !important;
-  border-color: rgba(1, 37, 143, 0.45) !important;
+  background: #eef4ff !important;
+  border-color: #01258f !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form .field--file.is-filled .field-file__hint {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
-  border-color: rgba(1, 37, 143, 0.35) !important;
+  border-style: solid !important;
+  border-color: rgba(1, 37, 143, 0.3) !important;
   background: #ffffff !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form__note {
-  color: #4a5d7a !important;
-  -webkit-text-fill-color: #4a5d7a !important;
+  color: #5a6d88 !important;
+  -webkit-text-fill-color: #5a6d88 !important;
+  text-align: center !important;
+  font-size: 0.84rem !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-form__note strong {
@@ -3561,32 +3638,54 @@ html body.page-bolsa-trabajo .jobs-apply-form__note strong {
 }
 
 html body.page-bolsa-trabajo .jobs-apply-submit {
-  background: #01258f !important;
+  width: 100% !important;
+  max-width: 320px !important;
+  margin: 8px auto 0 !important;
+  justify-self: center !important;
+  grid-column: 1 / -1 !important;
+  background: linear-gradient(135deg, #011142 0%, #01258f 100%) !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   border: 0 !important;
   border-radius: 999px !important;
-  min-height: 52px !important;
-  padding: 0 28px !important;
+  min-height: 54px !important;
+  padding: 0 32px !important;
   font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
+  box-shadow: 0 14px 36px rgba(1, 17, 66, 0.28) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-submit:hover,
 html body.page-bolsa-trabajo .jobs-apply-submit:focus-visible {
-  background: #0135b8 !important;
+  background: linear-gradient(135deg, #01258f 0%, #0135b8 100%) !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 18px 44px rgba(1, 17, 66, 0.34) !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-status {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
+  text-align: center !important;
 }
 
 html body.page-bolsa-trabajo .jobs-apply-status.is-success {
   color: #0d7a3e !important;
   -webkit-text-fill-color: #0d7a3e !important;
+}
+
+@media (max-width: 720px) {
+  html body.page-bolsa-trabajo .jobs-apply-card,
+  html body.page-bolsa-trabajo .jobs-apply-card--clean {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+  }
+
+  html body.page-bolsa-trabajo .jobs-apply-submit {
+    max-width: none !important;
+  }
 }
 
