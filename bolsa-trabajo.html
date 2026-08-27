@@ -42,7 +42,7 @@
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
   <link rel="shortcut icon" href="favicon.ico?v=4">
-  <link rel="stylesheet" href="yaavs-brand.css?v=67">
+  <link rel="stylesheet" href="yaavs-brand.css?v=68">
 </head>
 <body class="theme-cluster page-bolsa-trabajo" data-page="bolsa-trabajo">
   <div id="site-header"></div>
@@ -81,7 +81,7 @@
       <div class="avisos-hero-banner__rule" aria-hidden="true"></div>
     </section>
 
-    <section class="section section--jobs-catalog jobs-catalog-section" id="catalogo-vacantes" aria-label="Vacantes en YAAVS">
+    <section class="section section--jobs-catalog jobs-catalog-section jobs-catalog-section--netflix" id="catalogo-vacantes" aria-label="Vacantes en YAAVS">
       <div class="jobs-catalog-backdrop" aria-hidden="true">
         <img
           class="jobs-catalog-backdrop__photo"
@@ -94,19 +94,20 @@
         >
         <div class="jobs-catalog-backdrop__veil"></div>
       </div>
-      <div class="container jobs-catalog-section__inner">
-        <header class="jobs-section-head">
+      <div class="container jobs-catalog-section__inner jobs-catalog-section__inner--netflix">
+        <header class="jobs-section-head jobs-section-head--netflix">
           <p class="section-tag">Convocatorias</p>
-          <h2 class="jobs-section-title jobs-section-title--hero">VACANTES EN YAAVS</h2>
+          <h2 class="jobs-section-title jobs-section-title--hero">Vacantes en YAAVS</h2>
           <p class="jobs-section-lead">
             <span class="jobs-open-pill" id="jobs-open-count-wrap" hidden>
               <strong id="jobs-open-count">0</strong>
               <span>abiertas ahora</span>
             </span>
-            Toca una vacante para ver sueldo, requisitos, flyer y postular por WhatsApp o en OCC / Indeed / Facebook.
+            Desliza, explora y toca una vacante para ver sueldo, requisitos y postular.
           </p>
         </header>
-        <div class="jobs-catalog-groups" id="jobs-catalog-list"></div>
+        <div class="jobs-netflix-spotlight" id="jobs-netflix-spotlight" hidden aria-live="polite"></div>
+        <div class="jobs-catalog-groups jobs-netflix-stage" id="jobs-catalog-list"></div>
       </div>
     </section>
 
@@ -207,7 +208,7 @@
   <div id="site-footer"></div>
   <script src="js/layout.js?v=77" defer></script>
   <script src="js/main.js?v=7" defer></script>
-  <script src="js/bolsa-vacantes.js?v=10"></script>
+  <script src="js/bolsa-vacantes.js?v=11"></script>
   <script src="js/interior-banners.config.js?v=4"></script>
   <script src="js/interior-banner.js?v=3"></script>
 </body>

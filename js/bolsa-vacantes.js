@@ -495,6 +495,17 @@
     return `<div class="jobs-catalog__chips">${chips.join("")}</div>`;
   }
 
+  function renderJobSpecs(job) {
+    if (!job) return "";
+    const reqs = job.requirements?.length
+      ? `<div class="jobs-catalog__specs"><h4>Requisitos / perfil</h4>${renderList(job.requirements, "jobs-catalog__specs-list")}</div>`
+      : "";
+    const benefits = job.benefits?.length
+      ? `<div class="jobs-catalog__specs"><h4>Ofrecemos</h4>${renderList(job.benefits, "jobs-catalog__specs-list")}</div>`
+      : "";
+    return `${reqs}${benefits}`;
+  }
+
   function renderJobDetail(job) {
     if (!job) return "";
     const wa = whatsappHref(job);
@@ -528,7 +539,7 @@
       : "";
 
     return `
-      <div class="jobs-catalog__detail" id="vacante-${escapeHtml(job.id)}" hidden>
+      <div class="jobs-catalog__detail jobs-catalog__detail--spotlight" id="vacante-${escapeHtml(job.id)}">
         <div class="jobs-catalog__detail-grid${photo ? " has-photo" : ""}">
           <div class="jobs-catalog__copy">
             ${desc}
@@ -554,6 +565,121 @@
       .replace(/\s+/g, "-");
   }
 
+  function deptTone(dept) {
+    const map = {
+      Tecnología: "tech",
+      Marketing: "marketing",
+      Finanzas: "finance",
+      Contabilidad: "accounting",
+      Ventas: "sales",
+      Foráneas: "field",
+      Operaciones: "ops",
+      Administración: "admin",
+    };
+    return map[dept] || "default";
+  }
+
+  function shortSalary(salary) {
+    const text = String(salary || "");
+    const match = text.match(/\$[\d,.]+(?:\s*[–-]\s*\$[\d,.]+)?/);
+    return match ? match[0] : text.split("·")[0].trim();
+  }
+
+  function renderNetflixCard(item, featured) {
+    const job = item.jobId ? OPEN_BY_ID[item.jobId] : null;
+    const stillOpen = Boolean(item.open && job && isJobActive(job));
+    const closed = !stillOpen;
+    const isOpenDetail = Boolean(job && stillOpen);
+    const image = job?.image ? `${escapeHtml(job.image)}?v=3` : "";
+    const salary = job?.salary ? shortSalary(job.salary) : "";
+    const tone = deptTone(item.department);
+    const rowAttrs = isOpenDetail
+      ? ` class="jobs-netflix-card is-openable${featured ? " jobs-netflix-card--featured" : ""}" tabindex="0" role="button" aria-expanded="false" data-job-toggle="${escapeHtml(item.jobId)}"`
+      : ` class="jobs-netflix-card${closed ? " is-closed" : ""}${featured ? " jobs-netflix-card--featured" : ""}"`;
+
+    const poster = image
+      ? `<img class="jobs-netflix-card__img" src="${image}" alt="" width="400" height="600" loading="lazy" decoding="async">`
+      : `<div class="jobs-netflix-card__fallback jobs-netflix-card__fallback--${tone}" aria-hidden="true"><span>${escapeHtml(item.department.slice(0, 1))}</span></div>`;
+
+    return `
+      <article${rowAttrs}>
+        <div class="jobs-netflix-card__poster">
+          ${poster}
+          <div class="jobs-netflix-card__veil" aria-hidden="true"></div>
+          <span class="jobs-netflix-card__badge${stillOpen ? "" : " is-muted"}">${stillOpen ? "Abierta" : "Cerrada"}</span>
+          ${isOpenDetail ? `<span class="jobs-netflix-card__play" aria-hidden="true">▶</span>` : ""}
+        </div>
+        <div class="jobs-netflix-card__info">
+          <h4 class="jobs-netflix-card__title">${escapeHtml(item.title)}</h4>
+          <p class="jobs-netflix-card__area">${escapeHtml(item.detail)}</p>
+          ${salary ? `<p class="jobs-netflix-card__salary">${escapeHtml(salary)}</p>` : ""}
+        </div>
+      </article>`;
+  }
+
+  function renderNetflixRow(title, items, options = {}) {
+    if (!items.length) return "";
+    const slug = deptSlug(title);
+    const featured = Boolean(options.featured);
+    const cards = items.map((item) => renderNetflixCard(item, featured)).join("");
+    return `
+      <section class="jobs-netflix-row${featured ? " jobs-netflix-row--featured" : ""}" aria-labelledby="jobs-row-${slug}">
+        <div class="jobs-netflix-row__head">
+          <h3 class="jobs-netflix-row__title" id="jobs-row-${slug}">${escapeHtml(title)}</h3>
+          <div class="jobs-netflix-row__nav" aria-hidden="true">
+            <button type="button" class="jobs-netflix-row__btn jobs-netflix-row__btn--prev" aria-label="Ver vacantes anteriores en ${escapeHtml(title)}">‹</button>
+            <button type="button" class="jobs-netflix-row__btn jobs-netflix-row__btn--next" aria-label="Ver más vacantes en ${escapeHtml(title)}">›</button>
+          </div>
+        </div>
+        <div class="jobs-netflix-row__scroller">
+          <div class="jobs-netflix-track" tabindex="0" role="list">${cards}</div>
+        </div>
+      </section>`;
+  }
+
+  function renderSpotlight(job) {
+    if (!job) return "";
+    const wa = whatsappHref(job);
+    const waLabel = job.contactName
+      ? `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)} · ${job.contactName}`
+      : `WhatsApp ${formatWhatsAppDisplay(job.whatsapp)}`;
+    const waLink = wa
+      ? `<a class="job-whatsapp jobs-netflix-spotlight__wa" href="${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="whatsapp_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(waLabel)}</a>`
+      : "";
+    const externalUrl = safeExternalUrl(job.link || job.externalUrl);
+    const tone = externalLinkTone(externalUrl);
+    const platformLink = externalUrl
+      ? `<a class="job-platform job-platform--${tone} jobs-netflix-spotlight__platform" href="${escapeHtml(externalUrl)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="job_platform_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(externalLinkLabel(externalUrl))} →</a>`
+      : "";
+    const photo = job.image
+      ? `<img class="jobs-netflix-spotlight__flyer" src="${escapeHtml(job.image)}?v=3" alt="Flyer vacante ${escapeHtml(job.title)}" width="480" height="600" loading="lazy" decoding="async">`
+      : "";
+    const pills = (job.pills || [])
+      .map((pill) => `<span class="jobs-netflix-spotlight__pill">${escapeHtml(pill)}</span>`)
+      .join("");
+
+    return `
+      <div class="jobs-netflix-spotlight__inner">
+        <button type="button" class="jobs-netflix-spotlight__close" aria-label="Cerrar detalle de vacante">✕</button>
+        <div class="jobs-netflix-spotlight__copy">
+          <p class="jobs-netflix-spotlight__eyebrow">Vacante abierta</p>
+          <h3 class="jobs-netflix-spotlight__title">${escapeHtml(job.title)}</h3>
+          ${pills ? `<div class="jobs-netflix-spotlight__pills">${pills}</div>` : ""}
+          ${job.description ? `<p class="jobs-netflix-spotlight__desc">${escapeHtml(job.description)}</p>` : ""}
+          ${renderMetaChips(job)}
+          <div class="jobs-netflix-spotlight__actions">
+            ${waLink}
+            ${platformLink}
+            <a href="#postular" class="job-apply jobs-netflix-spotlight__apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
+          </div>
+        </div>
+        ${photo ? `<div class="jobs-netflix-spotlight__media">${photo}</div>` : ""}
+      </div>
+      <div class="jobs-netflix-spotlight__detail">
+        ${renderJobSpecs(job)}
+      </div>`;
+  }
+
   function renderCatalog() {
     if (!catalogList) return;
 
@@ -575,50 +701,127 @@
       return acc;
     }, {});
 
-    catalogList.innerHTML = DEPARTMENT_ORDER.filter((dept) => grouped[dept]?.length)
-      .map((dept) => {
-        const slug = deptSlug(dept);
-        const items = grouped[dept]
-          .map((item) => {
-            const job = item.jobId ? OPEN_BY_ID[item.jobId] : null;
-            const stillOpen = Boolean(item.open && job && isJobActive(job));
-            const closed = !stillOpen;
-            const isOpenDetail = Boolean(job && stillOpen);
-            const hasPlatform = Boolean(isOpenDetail && safeExternalUrl(job.link || job.externalUrl));
-            const rowAttrs = isOpenDetail
-              ? ` class="jobs-catalog__item is-openable${hasPlatform ? " has-platform" : ""}" tabindex="0" role="button" aria-expanded="false" data-job-toggle="${escapeHtml(item.jobId)}"`
-              : ` class="jobs-catalog__item${closed ? " is-closed" : ""}"`;
-            const platformHint = hasPlatform
-              ? `<span class="jobs-catalog__platform-hint">${escapeHtml(externalLinkLabel(job.link))}</span>`
-              : "";
-            return `
-              <li${rowAttrs}>
-                <div class="jobs-catalog__row">
-                  <div class="jobs-catalog__main">
-                    <span class="jobs-catalog__title">${escapeHtml(item.title)}</span>
-                    <span class="jobs-catalog__area">${escapeHtml(item.detail)}</span>
-                  </div>
-                  <div class="jobs-catalog__badges">
-                    ${platformHint}
-                    <span class="jobs-catalog__status">${stillOpen ? "Vacante abierta" : "Sin vacante activa"}</span>
-                    ${isOpenDetail ? `<span class="jobs-catalog__chevron" aria-hidden="true"></span>` : ""}
-                  </div>
-                </div>
-                ${isOpenDetail ? renderJobDetail(job) : ""}
-              </li>`;
-          })
-          .join("");
+    const featuredItems = CATALOG.filter((item) => {
+      if (!item.open || !item.jobId) return false;
+      const job = OPEN_BY_ID[item.jobId];
+      return job && isJobActive(job) && job.image;
+    });
 
-        return `
-          <section class="jobs-catalog-group" aria-labelledby="jobs-dept-${slug}">
-            <h3 class="jobs-catalog-group__title" id="jobs-dept-${slug}">${escapeHtml(dept)}</h3>
-            <ul class="jobs-catalog">${items}</ul>
-          </section>`;
-      })
-      .join("");
+    const rows = [];
+    if (featuredItems.length) {
+      rows.push(renderNetflixRow("Destacadas", featuredItems, { featured: true }));
+    }
 
-    bindCatalogToggles();
+    DEPARTMENT_ORDER.filter((dept) => grouped[dept]?.length).forEach((dept) => {
+      rows.push(renderNetflixRow(dept, grouped[dept]));
+    });
+
+    catalogList.innerHTML = rows.join("");
+
+    bindNetflixCards();
+    bindRowNav();
     bindFlyerLightbox();
+  }
+
+  function bindNetflixCards() {
+    const spotlight = document.getElementById("jobs-netflix-spotlight");
+    if (!catalogList) return;
+
+    catalogList.querySelectorAll("[data-job-toggle]").forEach((card) => {
+      const openSpotlight = () => {
+        const jobId = card.getAttribute("data-job-toggle");
+        const job = jobId ? OPEN_BY_ID[jobId] : null;
+        if (!job || !spotlight) return;
+
+        catalogList.querySelectorAll(".jobs-netflix-card.is-active").forEach((el) => {
+          el.classList.remove("is-active");
+          el.setAttribute("aria-expanded", "false");
+        });
+
+        card.classList.add("is-active");
+        card.setAttribute("aria-expanded", "true");
+        spotlight.innerHTML = renderSpotlight(job);
+        spotlight.hidden = false;
+        spotlight.classList.add("is-open");
+        bindApplyLinks();
+        bindFlyerLightbox();
+
+        const closeBtn = spotlight.querySelector(".jobs-netflix-spotlight__close");
+        closeBtn?.addEventListener("click", closeSpotlight, { once: true });
+
+        spotlight.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      };
+
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("a, button, [data-flyer-src]")) return;
+        openSpotlight();
+      });
+
+      card.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault();
+        openSpotlight();
+      });
+    });
+  }
+
+  function closeSpotlight() {
+    const spotlight = document.getElementById("jobs-netflix-spotlight");
+    if (!spotlight) return;
+    spotlight.hidden = true;
+    spotlight.classList.remove("is-open");
+    spotlight.innerHTML = "";
+    catalogList?.querySelectorAll(".jobs-netflix-card.is-active").forEach((el) => {
+      el.classList.remove("is-active");
+      el.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function bindRowNav() {
+    if (!catalogList) return;
+
+    catalogList.querySelectorAll(".jobs-netflix-row").forEach((row) => {
+      const track = row.querySelector(".jobs-netflix-track");
+      const prev = row.querySelector(".jobs-netflix-row__btn--prev");
+      const next = row.querySelector(".jobs-netflix-row__btn--next");
+      if (!track || !prev || !next) return;
+
+      const scrollByCards = (dir) => {
+        const card = track.querySelector(".jobs-netflix-card");
+        const gap = 12;
+        const amount = card ? card.offsetWidth + gap : 280;
+        track.scrollBy({ left: dir * amount * 2, behavior: "smooth" });
+      };
+
+      prev.addEventListener("click", () => scrollByCards(-1));
+      next.addEventListener("click", () => scrollByCards(1));
+    });
+  }
+
+  function bindFlyerLightbox() {
+    const dialog = ensureFlyerLightbox();
+    const img = dialog.querySelector("#jobs-flyer-lightbox-img");
+    const title = dialog.querySelector("#jobs-flyer-lightbox-title");
+    const roots = [catalogList, document.getElementById("jobs-netflix-spotlight")].filter(Boolean);
+
+    roots.forEach((root) => {
+      root.querySelectorAll("[data-flyer-src]").forEach((btn) => {
+        if (btn.dataset.flyerBound === "1") return;
+        btn.dataset.flyerBound = "1";
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const src = btn.getAttribute("data-flyer-src");
+          const alt = btn.getAttribute("data-flyer-alt") || "Flyer de vacante";
+          if (!src || !img) return;
+          img.src = src;
+          img.alt = alt;
+          if (title) title.textContent = alt;
+          if (typeof dialog.showModal === "function") dialog.showModal();
+          else dialog.setAttribute("open", "");
+        });
+      });
+    });
   }
 
   function ensureFlyerLightbox() {
@@ -646,68 +849,9 @@
     return dialog;
   }
 
-  function bindFlyerLightbox() {
-    if (!catalogList) return;
-    const dialog = ensureFlyerLightbox();
-    const img = dialog.querySelector("#jobs-flyer-lightbox-img");
-    const title = dialog.querySelector("#jobs-flyer-lightbox-title");
-
-    catalogList.querySelectorAll("[data-flyer-src]").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const src = btn.getAttribute("data-flyer-src");
-        const alt = btn.getAttribute("data-flyer-alt") || "Flyer de vacante";
-        if (!src || !img) return;
-        img.src = src;
-        img.alt = alt;
-        if (title) title.textContent = alt;
-        if (typeof dialog.showModal === "function") dialog.showModal();
-        else dialog.setAttribute("open", "");
-      });
-    });
-  }
-
-  function bindCatalogToggles() {
-    if (!catalogList) return;
-
-    catalogList.querySelectorAll("[data-job-toggle]").forEach((row) => {
-      const toggle = () => {
-        const detail = row.querySelector(".jobs-catalog__detail");
-        if (!detail) return;
-        const willOpen = !row.classList.contains("is-expanded");
-
-        if (willOpen) {
-          catalogList.querySelectorAll(".jobs-catalog__item.is-expanded").forEach((other) => {
-            if (other === row) return;
-            other.classList.remove("is-expanded");
-            other.setAttribute("aria-expanded", "false");
-            const otherDetail = other.querySelector(".jobs-catalog__detail");
-            if (otherDetail) otherDetail.hidden = true;
-          });
-        }
-
-        row.classList.toggle("is-expanded", willOpen);
-        detail.hidden = !willOpen;
-        row.setAttribute("aria-expanded", willOpen ? "true" : "false");
-      };
-
-      row.addEventListener("click", (e) => {
-        if (e.target.closest("a, button, [data-flyer-src]")) return;
-        toggle();
-      });
-
-      row.addEventListener("keydown", (e) => {
-        if (e.key !== "Enter" && e.key !== " ") return;
-        if (e.target.closest("a, button, [data-flyer-src]")) return;
-        e.preventDefault();
-        toggle();
-      });
-    });
-  }
-
   function bindApplyLinks() {
-    document.querySelectorAll(".job-apply").forEach((btn) => {
+    document.querySelectorAll(".job-apply:not([data-apply-bound])").forEach((btn) => {
+      btn.dataset.applyBound = "1";
       btn.addEventListener("click", (e) => {
         const vacante = btn.getAttribute("data-vacante");
         const field = applyForm?.querySelector('[name="vacante"]');
