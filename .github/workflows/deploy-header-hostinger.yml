@@ -69,6 +69,7 @@ jobs:
           upload_one styles.css styles.css
           upload_one theme-day-night.css theme-day-night.css
           upload_one js/layout.js js/layout.js
+          upload_one js/hero-carousel.js js/hero-carousel.js
           upload_one partials/header.html partials/header.html
           upload_one partials/whatsapp-float.html partials/whatsapp-float.html
           upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png

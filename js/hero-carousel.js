@@ -795,6 +795,13 @@
   }
 
   function kickProgress() {
+    document.querySelectorAll(".hero-carousel__dot-fill").forEach((el) => {
+      el.style.animation = "none";
+      el.style.width = "0%";
+    });
+    autoplayProgress = document.querySelector(
+      ".hero-carousel__dot.is-active .hero-carousel__dot-fill"
+    );
     if (!autoplayProgress || reducedMotion) return;
     const ms = getSlideInterval(index);
     autoplayProgress.style.animation = "none";
@@ -941,6 +948,8 @@
       btn.setAttribute("role", "tab");
       btn.setAttribute("aria-label", `${label} — ${i + 1} de ${slides.length}`);
       btn.setAttribute("aria-selected", i === 0 ? "true" : "false");
+      btn.innerHTML =
+        '<span class="hero-carousel__dot-bar" aria-hidden="true"><span class="hero-carousel__dot-fill"></span></span>';
       btn.addEventListener("click", () => {
         if (i === index) return;
         goTo(i, i > index ? 1 : -1);
@@ -951,6 +960,7 @@
     });
 
     banner.appendChild(dots);
+    kickProgress();
 
     /* Flechas del hero ocultas: estorban la lectura del copy */
     /*
@@ -976,8 +986,6 @@
     });
 
     /* Click en la imagen/video = mismo destino que el botón del slide */
-    const ctaClickIgnore =
-      "a:not(.hero-banner__slide-link), button, input, textarea, select, label, .hero-carousel__dots, .hero-carousel__arrow, .hero-scroll-hint, .site-header, .social-float, .yaavs-chatbot";
     let suppressBannerClick = false;
 
     function followActivePromoCta() {
@@ -995,9 +1003,10 @@
         e.preventDefault();
         return;
       }
-      if (e.target.closest(ctaClickIgnore)) return;
-      /* El overlay ya tiene el href / lead del slide activo */
-      if (e.target.closest(".hero-banner__slide-link")) return;
+      if (e.target.closest(".hero-carousel__dots, .hero-carousel__arrow, .hero-scroll-hint, .site-header, .social-float, .yaavs-chatbot")) {
+        return;
+      }
+      if (e.target.closest(".hero-promo__cta")) return;
       if (!slideHasCta(slides[index])) return;
       e.preventDefault();
       followActivePromoCta();
@@ -1076,6 +1085,62 @@
       },
       { passive: true }
     );
+
+    /* Arrastre con mouse / trackpad: en lugar de flechas */
+    const SWIPE_SKIP =
+      ".hero-carousel__dots, .hero-promo__cta, .hero-scroll-hint, .site-header, .social-float, .yaavs-chatbot";
+    let pointerSwipe = null;
+
+    function endPointerSwipe(e) {
+      if (!pointerSwipe || e.pointerId !== pointerSwipe.id) return;
+      if (!pointerSwipe.swiped && pointerSwipe.moved) {
+        pointerSwipe.swiped = finishTouchSwipe(
+          e.clientX - pointerSwipe.x,
+          e.clientY - pointerSwipe.y
+        );
+      }
+      if (pointerSwipe.swiped) suppressBannerClick = true;
+      pointerSwipe = null;
+      banner.classList.remove("is-swiping");
+      if (!reducedMotion && !document.hidden) startTimer();
+    }
+
+    banner.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "touch") return;
+      if (e.button != null && e.button !== 0) return;
+      if (e.target.closest(SWIPE_SKIP)) return;
+      pointerSwipe = {
+        id: e.pointerId,
+        x: e.clientX,
+        y: e.clientY,
+        moved: false,
+        swiped: false,
+      };
+      banner.classList.add("is-swiping");
+      stopTimer();
+    });
+
+    banner.addEventListener(
+      "pointermove",
+      (e) => {
+        if (!pointerSwipe || e.pointerId !== pointerSwipe.id) return;
+        const dx = e.clientX - pointerSwipe.x;
+        const dy = e.clientY - pointerSwipe.y;
+        if (Math.abs(dx) > 8 || Math.abs(dy) > 8) pointerSwipe.moved = true;
+        if (
+          !pointerSwipe.swiped &&
+          pointerSwipe.moved &&
+          Math.abs(dx) >= SWIPE_MIN_PX &&
+          Math.abs(dx) > Math.abs(dy) * 1.15
+        ) {
+          pointerSwipe.swiped = finishTouchSwipe(dx, dy);
+        }
+      },
+      { passive: true }
+    );
+
+    banner.addEventListener("pointerup", endPointerSwipe);
+    banner.addEventListener("pointercancel", endPointerSwipe);
   }
 
   if (!reducedMotion && preferLiteMedia) startTimer();

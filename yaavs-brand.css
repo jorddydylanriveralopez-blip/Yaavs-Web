@@ -1272,6 +1272,87 @@ html body.page-home .hero-banner .hero-promo__title {
   }
 }
 
+html body.page-home .hero-banner {
+  touch-action: pan-y;
+}
+
+html body.page-home .hero-banner.hero-banner--cta-click {
+  cursor: pointer;
+}
+
+html body.page-home .hero-banner.is-swiping {
+  cursor: grabbing;
+}
+
+html body.page-home .hero-banner .hero-carousel__dots {
+  z-index: 6;
+  gap: 4px;
+  padding: 6px 8px !important;
+  border-radius: 999px !important;
+  background: rgba(1, 17, 66, 0.42) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+}
+
+html body.page-home .hero-banner .hero-carousel__dot {
+  display: grid !important;
+  place-items: center;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+html body.page-home .hero-banner .hero-carousel__dot-bar {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.45);
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+html body.page-home .hero-banner .hero-carousel__dot.is-active .hero-carousel__dot-bar {
+  width: 28px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+html body.page-home .hero-banner .hero-carousel__dot-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: #ffffff;
+}
+
+html body.page-home .hero-banner .hero-carousel__dot:hover .hero-carousel__dot-bar,
+html body.page-home .hero-banner .hero-carousel__dot:focus-visible .hero-carousel__dot-bar {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.page-home .hero-banner .hero-carousel__dot-bar,
+  html body.page-home .hero-banner .hero-carousel__dot-fill {
+    transition: none;
+    animation: none !important;
+  }
+
+  html body.page-home .hero-banner .hero-carousel__dot.is-active .hero-carousel__dot-fill {
+    width: 100%;
+  }
+}
+
 /* ─── Hero carousel CTA — pastilla con volumen ─── */
 @keyframes yaavs-hero-cta-shine {
   to {
