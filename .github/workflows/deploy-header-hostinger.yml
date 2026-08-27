@@ -83,6 +83,10 @@ jobs:
             upload_one "$f" "$f"
           done
 
+          upload_one assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg || true
+          upload_one assets/bolsa/bolsa-hero-tienda.jpg assets/bolsa/bolsa-hero-tienda.jpg || true
+          upload_one js/interior-banner.js js/interior-banner.js || true
+
           for f in *.html; do
             upload_one "$f" "$f"
           done
