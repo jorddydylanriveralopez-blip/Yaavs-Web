@@ -587,8 +587,13 @@
 
   function renderPosterArt(item, job, tone) {
     const salary = job?.salary ? shortSalary(job.salary) : "";
+    const poster = job?.id ? `assets/bolsa/posters/${job.id}.jpg` : "";
+    const photo = poster
+      ? `<img class="jobs-netflix-card__photo" src="${escapeHtml(poster)}?v=1" alt="" width="400" height="600" loading="lazy" decoding="async">`
+      : "";
     return `
-      <div class="jobs-netflix-card__art jobs-netflix-card__art--${tone}" aria-hidden="true">
+      <div class="jobs-netflix-card__art jobs-netflix-card__art--${tone}${poster ? " has-photo" : ""}" aria-hidden="true">
+        ${photo}
         <div class="jobs-netflix-card__art-glow"></div>
         <span class="jobs-netflix-card__dept">${escapeHtml(item.department)}</span>
         <p class="jobs-netflix-card__poster-title">${escapeHtml(item.title)}</p>
@@ -659,9 +664,12 @@
     const platformLink = externalUrl
       ? `<a class="job-platform job-platform--${tone} jobs-netflix-spotlight__platform" href="${escapeHtml(externalUrl)}" target="_blank" rel="noopener noreferrer" data-yaavs-track="job_platform_click" data-yaavs-track-label="bolsa_${escapeHtml(job.id)}">${escapeHtml(externalLinkLabel(externalUrl))} →</a>`
       : "";
-    const photo = job.image
-      ? `<img class="jobs-netflix-spotlight__flyer" src="${escapeHtml(job.image)}?v=3" alt="Flyer vacante ${escapeHtml(job.title)}" width="480" height="600" loading="lazy" decoding="async">`
-      : "";
+    const posterSrc = job.id ? `assets/bolsa/posters/${job.id}.jpg` : "";
+    const photo = posterSrc
+      ? `<img class="jobs-netflix-spotlight__poster" src="${escapeHtml(posterSrc)}?v=1" alt="Profesional en vacante ${escapeHtml(job.title)}" width="480" height="600" loading="lazy" decoding="async">`
+      : job.image
+        ? `<img class="jobs-netflix-spotlight__flyer" src="${escapeHtml(job.image)}?v=3" alt="Flyer vacante ${escapeHtml(job.title)}" width="480" height="600" loading="lazy" decoding="async">`
+        : "";
     const pills = (job.pills || [])
       .map((pill) => `<span class="jobs-netflix-spotlight__pill">${escapeHtml(pill)}</span>`)
       .join("");
