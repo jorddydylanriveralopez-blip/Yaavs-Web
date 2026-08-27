@@ -66,7 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="styles.css?v=266">
   <link rel="stylesheet" href="theme-light.css?v=14">
-  <link rel="stylesheet" href="home-corporate.css?v=20260827a">
+  <link rel="stylesheet" href="home-corporate.css?v=20260827b">
   <link rel="stylesheet" href="promo-popup.css?v=5">
   <link rel="stylesheet" href="theme-day-night.css?v=7" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-experience.css?v=20260826b" media="print" onload="this.media='all'">
@@ -159,7 +159,7 @@
       .page-home .hero-scroll-hint__chevron { animation: none; }
     }
   </style>
-  <link rel="stylesheet" href="yaavs-brand.css?v=42">
+  <link rel="stylesheet" href="yaavs-brand.css?v=43">
 </head>
 <body class="theme-cluster page-home page-bg--photo page-intro-active" data-page="inicio">
   <script>
@@ -1076,6 +1076,8 @@
         video.defaultMuted = false;
         video.removeAttribute("muted");
         video.setAttribute("controls", "");
+        video.defaultPlaybackRate = 1.5;
+        video.playbackRate = 1.5;
         const playPromise = video.play();
         frame.classList.add("is-playing");
         if (playPromise && typeof playPromise.catch === "function") {
@@ -1086,8 +1088,13 @@
       };
 
       playBtn.addEventListener("click", startWithSound);
+      video.addEventListener("loadedmetadata", () => {
+        video.defaultPlaybackRate = 1.5;
+        video.playbackRate = 1.5;
+      });
       video.addEventListener("play", () => {
         video.muted = false;
+        video.playbackRate = 1.5;
         frame.classList.add("is-playing");
       });
       video.addEventListener("pause", () => {

@@ -1850,8 +1850,14 @@ html body.page-home #testimonios-home .tx-gallery__title-line {
   }
 }
 
+html body.page-home #testimonios-home .tx-clients {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 @media (min-width: 1400px) {
-  html body.page-home #testimonios-home .tx-clients,
   html body.page-home #testimonios-home .tx-gallery__more {
     width: min(1240px, 100%);
     margin-inline: auto;
