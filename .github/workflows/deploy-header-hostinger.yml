@@ -71,6 +71,7 @@ jobs:
           upload_one quienes-asi.css quienes-asi.css
           upload_one tiendas-page.css tiendas-page.css
           upload_one tiendas-map-page.css tiendas-map-page.css
+          upload_one avisos-page.css avisos-page.css
           upload_one js/layout.js js/layout.js
           upload_one js/tiendas-map.js js/tiendas-map.js
           upload_one js/hero-carousel.js js/hero-carousel.js

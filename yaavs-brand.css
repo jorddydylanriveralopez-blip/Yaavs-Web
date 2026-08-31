@@ -50,9 +50,9 @@
 }
 
 /* ─── Lienzo ─── */
-html:not(:has(body.page-asi-somos)):not(:has(body.page-quienes-somos)):not(:has(body.page-tiendas-map)):not(:has(body.page-tiendas)),
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas),
-body.theme-cluster:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo),
+html:not(:has(body.page-asi-somos)):not(:has(body.page-quienes-somos)):not(:has(body.page-tiendas-map)):not(:has(body.page-tiendas)):not(:has(body.page-avisos)):not(:has(body.page-anuncios)),
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-avisos):not(.page-anuncios),
+body.theme-cluster:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios),
 body.page-home,
 body.page-intro-active {
   background-color: var(--yaavs-deep) !important;
@@ -60,18 +60,18 @@ body.page-intro-active {
   color: var(--yaavs-ink) !important;
 }
 
-body:not(.page-bolsa-trabajo) #contenido {
+body:not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) #contenido {
   background: transparent !important;
   color: var(--yaavs-ink) !important;
 }
 
 /* Tipografía legible sobre el profundo */
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) h1,
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) h2,
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) h3,
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) h4,
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) h5,
-body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) h6 {
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) h1,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) h2,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) h3,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) h4,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) h5,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) h6 {
   color: var(--yaavs-ink) !important;
 }
 
@@ -81,8 +81,8 @@ p, li, label, td, th, figcaption, span, small {
 
 .page-home p,
 .page-home li,
-body.theme-cluster:not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) p,
-body.theme-cluster:not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo) li {
+body.theme-cluster:not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) p,
+body.theme-cluster:not(.page-tiendas-map):not(.page-tiendas):not(.page-bolsa-trabajo):not(.page-avisos):not(.page-anuncios) li {
   color: var(--yaavs-ink-soft) !important;
 }
 
@@ -3248,6 +3248,58 @@ html body .wa-float:focus-visible {
 html body .wa-float:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 4px;
+}
+
+/* ─── Noticias / avisos — lienzo claro corporativo ─── */
+html body.page-avisos,
+html body.page-anuncios,
+html body.theme-cluster.page-avisos,
+html body.theme-cluster.page-anuncios {
+  background: #f5f7fb !important;
+  background-color: #f5f7fb !important;
+  color: #011142 !important;
+}
+
+html body.page-avisos #contenido,
+html body.page-anuncios #contenido {
+  background: #f5f7fb !important;
+  color: #011142 !important;
+}
+
+html body.page-anuncios .anuncios-feed__heading,
+html body.page-anuncios .anuncios-feature__title,
+html body.page-anuncios .anuncios-feature__lead,
+html body.page-anuncios .anuncios-feature__note,
+html body.page-anuncios .anuncios-feature__meta,
+html body.page-anuncios .anuncios-next {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-anuncios .anuncios-feature__lead,
+html body.page-anuncios .anuncios-feature__note,
+html body.page-anuncios .anuncios-next {
+  color: rgba(1, 17, 66, 0.72) !important;
+  -webkit-text-fill-color: rgba(1, 17, 66, 0.72) !important;
+}
+
+html body.page-anuncios .anuncios-feed__kicker,
+html body.page-anuncios .anuncios-feature__meta,
+html body.page-anuncios .anuncios-attachments__label {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+}
+
+html body.page-anuncios .anuncios-feature__cta,
+html body.page-anuncios a.anuncios-feature__cta {
+  background: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html body.page-anuncios .anuncios-feature__link {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
 }
 
 /* ─── Bolsa de trabajo: hero + catálogo armoniosos ─── */

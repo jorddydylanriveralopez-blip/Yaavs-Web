@@ -4,21 +4,18 @@
 
 .page-anuncios {
   --an-ink: #011142;
-  --an-muted: #3a5166;
+  --an-muted: rgba(1, 17, 66, 0.72);
   --an-soft: #01258f;
-  --an-navy: #003087;
+  --an-navy: #011142;
   --an-cyan: #01258f;
-  --an-line: rgba(1, 17, 66, 0.12);
-  --an-surface: #f4fafc;
-  background:
-    #01258f,
-    #01258f,
-    #01258f !important;
+  --an-line: rgba(1, 37, 143, 0.12);
+  --an-surface: #ffffff;
+  background: #f5f7fb !important;
   color: var(--an-ink);
 }
 
 .page-anuncios #contenido {
-  background: transparent;
+  background: #f5f7fb;
 }
 
 /* Sin iconos flotantes (SIM / eSIM) — layout editorial limpio */
@@ -81,23 +78,19 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(
+    100deg,
+    rgba(1, 17, 66, 0.95) 0%,
+    rgba(1, 17, 66, 0.86) 32%,
+    rgba(1, 17, 66, 0.52) 58%,
+    rgba(1, 17, 66, 0.18) 82%,
+    transparent 100%
+  );
   pointer-events: none;
 }
 
 .anuncios-hero__glow {
-  position: absolute;
-  z-index: 1;
-  width: min(52vw, 420px);
-  height: min(52vw, 420px);
-  right: -8%;
-  bottom: -18%;
-  border-radius: 50%;
-  background: #01258f;
-  filter: blur(8px);
-  pointer-events: none;
+  display: none;
 }
 
 .anuncios-hero__content {
@@ -125,9 +118,22 @@ body.theme-cluster.page-anuncios .anuncios-hero__breadcrumb {
 }
 
 body.theme-cluster.page-anuncios .anuncios-hero__breadcrumb a {
-  color: #5ce8f7;
+  color: #7dd3fc;
   text-decoration: none;
   font-weight: 700;
+}
+
+body.theme-cluster.page-anuncios .anuncios-hero__title {
+  margin: 0 0 14px;
+  max-width: 14ch;
+  font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 
 body.theme-cluster.page-anuncios .anuncios-hero__breadcrumb a:hover {
@@ -141,26 +147,13 @@ body.theme-cluster.page-anuncios .anuncios-hero__kicker {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #5ce8f7;
-}
-
-body.theme-cluster.page-anuncios .anuncios-hero__title {
-  margin: 0 0 14px;
-  max-width: 12ch;
-  font-size: clamp(2.4rem, 7vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
-  text-transform: uppercase;
-  color: #ffffff;
-  -webkit-text-fill-color: #ffffff;
-  text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 body.theme-cluster.page-anuncios .anuncios-hero__title span {
   display: block;
-  color: #5ce8f7;
-  -webkit-text-fill-color: #5ce8f7;
+  color: #7dd3fc;
+  -webkit-text-fill-color: #7dd3fc;
 }
 
 body.theme-cluster.page-anuncios .anuncios-hero__lead {
@@ -176,7 +169,20 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
 .anuncios-feed {
   position: relative;
   z-index: 1;
-  padding: clamp(40px, 7vw, 72px) 0 clamp(64px, 9vw, 96px);
+  padding: clamp(48px, 7vw, 80px) 0 clamp(72px, 9vw, 96px);
+  background: #ffffff;
+  border-top: 1px solid rgba(1, 37, 143, 0.08);
+}
+
+.anuncios-feed::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #01258f 0 55%, rgba(1, 37, 143, 0.15) 100%);
+  pointer-events: none;
 }
 
 .anuncios-feed__head {
@@ -189,7 +195,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--an-cyan);
+  color: #01258f;
 }
 
 .anuncios-feed__heading {
@@ -197,23 +203,34 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   font-size: clamp(1.55rem, 3.2vw, 2.1rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--an-navy);
+  color: #011142;
 }
 
 /* ─── Featured post ─── */
 .anuncios-feature {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: clamp(22px, 4vw, 48px);
   align-items: stretch;
-  padding: clamp(16px, 2.5vw, 22px);
-  border-radius: 28px;
-  background:
-    #01258f;
-  border: 1px solid rgba(1, 37, 143, 0.18);
+  padding: clamp(18px, 2.5vw, 24px);
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(1, 37, 143, 0.12);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
-    0 24px 56px rgba(1, 17, 66, 0.12);
+    0 18px 48px rgba(1, 17, 66, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.anuncios-feature::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: 20px 0 0 20px;
+  background: linear-gradient(180deg, #01258f, #7dd3fc);
+  pointer-events: none;
 }
 
 .anuncios-feature__media {
@@ -267,11 +284,11 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   align-items: center;
   gap: 8px;
   margin: 0 0 12px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--an-cyan);
+  color: #01258f;
 }
 
 .anuncios-feature__title {
@@ -279,15 +296,15 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   font-size: clamp(1.45rem, 3vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.035em;
-  line-height: 1.12;
-  color: var(--an-navy);
+  line-height: 1.15;
+  color: #011142;
 }
 
 .anuncios-feature__lead {
   margin: 0 0 14px;
-  font-size: clamp(1rem, 1.7vw, 1.12rem);
-  line-height: 1.55;
-  color: var(--an-muted);
+  font-size: clamp(1rem, 1.7vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(1, 17, 66, 0.74);
   font-weight: 500;
 }
 
@@ -295,7 +312,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   margin: 0 0 22px;
   font-size: 0.92rem;
   line-height: 1.5;
-  color: var(--an-soft);
+  color: rgba(1, 17, 66, 0.68);
 }
 
 .anuncios-feature__note strong {
@@ -335,7 +352,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
 }
 
 .anuncios-feature__link {
-  color: var(--an-cyan);
+  color: #01258f;
   font-size: 0.92rem;
   font-weight: 800;
   text-decoration: underline;
@@ -343,7 +360,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
 }
 
 .anuncios-feature__link:hover {
-  color: var(--an-navy);
+  color: #011142;
 }
 
 /* ─── Attachments ─── */
@@ -358,7 +375,7 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--an-soft);
+  color: #01258f;
 }
 
 .anuncios-attachments__row {
@@ -374,9 +391,9 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   min-height: 48px;
   padding: 6px 14px 6px 6px;
   border-radius: 999px;
-  background: #ffffff;
-  border: 1px solid rgba(1, 37, 143, 0.2);
-  color: var(--an-ink);
+  background: #f5f7fb;
+  border: 1px solid rgba(1, 37, 143, 0.14);
+  color: #011142;
   text-decoration: none;
   font-size: 0.84rem;
   font-weight: 700;
@@ -421,11 +438,11 @@ body.theme-cluster.page-anuncios .anuncios-hero__lead {
   text-align: center;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--an-soft);
+  color: rgba(1, 17, 66, 0.62);
 }
 
 .anuncios-next span {
-  color: var(--an-cyan);
+  color: #01258f;
   font-weight: 800;
 }
 
