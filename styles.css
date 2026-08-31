@@ -4191,20 +4191,41 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
 }
 
 body.page-postpago .site-header .main-nav--bar a,
-body.page-tiendas-map .site-header .main-nav--bar a,
-body.page-postpago .site-header.is-scrolled .main-nav--bar a,
-body.page-tiendas-map .site-header.is-scrolled .main-nav--bar a {
+body.page-postpago .site-header.is-scrolled .main-nav--bar a {
   color: rgba(255, 255, 255, 0.92) !important;
   -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
 }
 
+body.page-tiendas-map .site-header .main-nav--bar a,
+body.page-tiendas-map .site-header.is-scrolled .main-nav--bar a,
+body.page-tiendas .site-header .main-nav--bar a,
+body.page-tiendas .site-header.is-scrolled .main-nav--bar a {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
+}
+
 body.page-postpago .site-header .main-nav--bar a:hover,
-body.page-tiendas-map .site-header .main-nav--bar a:hover,
-body.page-postpago .site-header .main-nav--bar a.is-active,
-body.page-tiendas-map .site-header .main-nav--bar a.is-active {
+body.page-postpago .site-header .main-nav--bar a.is-active {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   background: #01258f !important;
+}
+
+body.page-tiendas-map .site-header .main-nav--bar a:hover,
+body.page-tiendas-map .site-header .main-nav--bar a:focus-visible,
+body.page-tiendas .site-header .main-nav--bar a:hover,
+body.page-tiendas .site-header .main-nav--bar a:focus-visible {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: transparent !important;
+}
+
+body.page-tiendas-map .site-header .main-nav--bar a.is-active,
+body.page-tiendas .site-header .main-nav--bar a.is-active {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
 }
 
 @media (max-width: 1100px) {

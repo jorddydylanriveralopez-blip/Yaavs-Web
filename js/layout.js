@@ -204,7 +204,7 @@
       <a href="index.html" data-page="inicio">Inicio</a>
       <a href="quienes-somos.html" data-page="quienes-somos">Nosotros</a>
       <a href="index.html#servicios-preview" data-page="servicios">Servicios</a>
-      <a href="tiendas-mapa.html?carrier=bait" data-page="tiendas">Tiendas</a>
+      <a href="tiendas.html" data-page="tiendas">Tiendas</a>
       <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete</a>
       <a href="avisos.html" data-page="avisos">Noticias</a>
       <a href="contacto.html" data-page="contacto">Contacto</a>
@@ -587,7 +587,7 @@
   }
 
   Promise.all([
-    loadPartial("partials/header.html?v=36", headerMount),
+    loadPartial("partials/header.html?v=37", headerMount),
     loadPartial("partials/footer.html?v=18", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),

@@ -79,6 +79,35 @@ body.theme-cluster.page-tiendas-map .site-header .bento-dot,
   background: #011142;
 }
 
+html body.page-tiendas-map .site-header .main-nav a,
+html body.page-tiendas-map .site-header .main-nav--bar a,
+html body.page-tiendas-map .site-header .main-nav--corp a,
+html body.page-tiendas-map .site-header.is-scrolled .main-nav--bar a {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
+  opacity: 0.86 !important;
+}
+
+html body.page-tiendas-map .site-header .main-nav a:hover,
+html body.page-tiendas-map .site-header .main-nav--bar a:hover,
+html body.page-tiendas-map .site-header .main-nav--corp a:hover,
+html body.page-tiendas-map .site-header .main-nav a:focus-visible {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+html body.page-tiendas-map .site-header .main-nav a.is-active,
+html body.page-tiendas-map .site-header .main-nav--bar a.is-active,
+html body.page-tiendas-map .site-header .main-nav--corp a.is-active {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
 .page-tiendas-map .nav-menu-hint {
   display: none !important;
 }
