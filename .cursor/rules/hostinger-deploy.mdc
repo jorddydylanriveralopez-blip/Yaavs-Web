@@ -1,0 +1,20 @@
+---
+description: Commit and push Yaavs-Web to GitHub for Hostinger after site changes
+alwaysApply: true
+---
+
+# Hostinger deploy (Yaavs-Web)
+
+When you finish user-requested changes to this website, ship them unless the user explicitly says not to.
+
+## End-of-task workflow
+
+1. Stage and commit only the files you changed (concise message focused on why).
+2. Push to `origin/main`.
+3. Tell the user Hostinger syncs from GitHub; live site is the Hostinger URL (e.g. https://royal-blue-gear-650111.hostingersite.com) or the custom domain when configured.
+
+## Notes
+
+- Do **not** deploy with Vercel (`npx vercel`, `vercel.json`, etc.). This project is Hostinger-only.
+- **Always bump cache** on every site change: raise `?v=` on every CSS/JS (and video/config URLs) you touched in the HTML loaders. Prefer a clear jump (e.g. +1 or a date stamp) so Hostinger/CDN cannot serve stale assets. Never ship asset edits without bumping.
+- Skip commit/push only when the user asks for local-only or draft work.

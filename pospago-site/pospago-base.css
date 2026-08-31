@@ -1,0 +1,74 @@
+/* YAAVS Pospago — base mínima (sitio independiente, sin Yaavs corporate) */
+:root {
+  --font: "Montserrat", system-ui, sans-serif;
+  --header-h: 72px;
+  --header-h-scrolled: 64px;
+  --pad-x: clamp(16px, 4vw, 40px);
+  --ease: cubic-bezier(0.25, 1, 0.35, 1);
+  --text: #f5f0ff;
+  --text-muted: rgba(245, 240, 255, 0.72);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body.page-postpago {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: #07040f;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.header-wa {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(145deg, #2ee06a 0%, #25d366 45%, #1da851 100%);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.42);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.header-wa:hover,
+.header-wa:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+  outline: none;
+}
+
+.header-wa__icon {
+  width: 20px;
+  height: 20px;
+  background: url("assets/social/whatsapp.svg") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+}

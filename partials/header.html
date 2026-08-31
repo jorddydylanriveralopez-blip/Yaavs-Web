@@ -1,36 +1,41 @@
-<a class="skip-link" href="#contenido">Saltar al contenido</a>
-
-<header class="site-header" id="header">
-  <div class="header-inner">
-    <a href="index.html" class="logo-link logo-link--compact" aria-label="YAAVS inicio">
-      <img src="https://www.yaavs.com.mx/images/logo.svg" alt="YAAVS" class="logo logo--sm" width="140" height="50">
+<header class="site-header site-header--nav-bar site-header--corp" id="header">
+  <div class="header-inner header-inner--corp">
+    <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
+      <img
+        src="assets/yaavs-logo-header-color.png?v=1"
+        alt="YAAVS"
+        class="logo logo--corp logo--on-light"
+        width="148"
+        height="52"
+      >
     </a>
-    <div class="header-menu">
-      <div class="nav-menu-hint" id="nav-menu-hint" aria-hidden="true">
-        <span class="nav-menu-hint__label">Menú</span>
-        <span class="nav-menu-hint__arrow"></span>
-      </div>
-      <button type="button" class="nav-bento" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-        <span class="bento-dot"></span>
-      </button>
-    </div>
-    <nav class="main-nav main-nav--overlay" id="main-nav" aria-label="Principal">
+
+    <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">
       <a href="index.html" data-page="inicio">Inicio</a>
-      <a href="quienes-somos.html" data-page="quienes-somos">¿Quiénes somos?</a>
-      <a href="servicios.html" data-page="servicios">Servicios</a>
-      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Bolsa de trabajo</a>
-      <a href="ser-yaavser.html" data-page="ser-yaavser">Ser Yaavser</a>
-      <a href="testimonios.html" data-page="testimonios">Testimonios</a>
-      <a href="avisos.html" data-page="avisos">Avisos</a>
+      <a href="quienes-somos.html" data-page="quienes-somos">Nosotros</a>
+      <a href="index.html#servicios-preview" data-page="servicios">Servicios</a>
+      <a href="tiendas.html" data-page="tiendas">Tiendas</a>
+      <a href="bolsa-trabajo.html" data-page="bolsa-trabajo">Únete</a>
+      <a href="avisos.html" data-page="avisos">Noticias</a>
       <a href="contacto.html" data-page="contacto">Contacto</a>
     </nav>
+
+    <div class="header-menu header-menu--corp">
+      <a
+        class="header-cta"
+        href="https://wa.me/525522331210?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20YAAVS"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-yaavs-track="whatsapp_click"
+        data-yaavs-track-label="header_cta"
+      >
+        Cotizar ahora
+      </a>
+      <button type="button" class="nav-bento nav-hamburger" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span class="nav-hamburger__bar" aria-hidden="true"></span>
+        <span class="nav-hamburger__bar" aria-hidden="true"></span>
+        <span class="nav-hamburger__bar" aria-hidden="true"></span>
+      </button>
+    </div>
   </div>
 </header>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <defs>
+    <filter id="glow-e" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <circle cx="100" cy="100" r="68" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <g filter="url(#glow-e)" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="62" y="58" width="76" height="84" rx="10"/>
+    <path d="M62 72 H138"/>
+    <path d="M74 92 H126" stroke-opacity="0.55"/>
+    <path d="M74 104 H110" stroke-opacity="0.45"/>
+    <path d="M88 58 V46 A12 12 0 0 1 112 46 V58"/>
+    <circle cx="128" cy="118" r="14"/>
+    <path d="M128 110 V126 M120 118 H136"/>
+  </g>
+  <text x="100" y="112" text-anchor="middle" fill="#ffffff" font-family="Montserrat,Arial,sans-serif" font-size="20" font-weight="800" letter-spacing="0.06em">eSIM</text>
+</svg>

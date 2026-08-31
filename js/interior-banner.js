@@ -46,7 +46,10 @@
     });
 
     if (slides.length < 2 || reducedMotion) {
-      host.style.backgroundImage = `url("${images[0]}")`;
+      /* Keep any static <img> already in the hero (e.g. bolsa-trabajo). */
+      if (!host.querySelector("img.bolsa-hero-banner__photo, img.page-hero-banner__photo")) {
+        host.style.backgroundImage = `url("${images[0]}")`;
+      }
       slides.forEach((img) => img.remove());
       return;
     }

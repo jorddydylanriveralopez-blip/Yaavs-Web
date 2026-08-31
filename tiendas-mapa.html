@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script src="js/yaavs-theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f6fa">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Mapa de tiendas YAAVS por compañía: busca por ciudad o usa tu ubicación en tiempo real.">
+  <title>Mapa de tiendas | YAAVS</title>
+  <!-- yaavs-seo -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Grupo Comercial YAAVS">
+  <meta name="keywords" content="YAAVS, Grupo Comercial YAAVS, distribuidor telecom México, distribución telecomunicaciones, SIM, eSIM, chips AT&amp;T, chips Telcel, Movistar, Unefon, BAIT, RecargaKlic, tiempo aire, portabilidad, Yaavser, punto de venta telecom, activaciones SIM, red nacional telecom, mapa tiendas, localizar tienda YAAVS, tiendas cerca de mí">
+  <link rel="canonical" href="https://www.yaavs.com.mx/tiendas-mapa.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="YAAVS">
+  <meta property="og:title" content="Mapa de tiendas | YAAVS">
+  <meta property="og:description" content="Mapa de tiendas YAAVS por compañía: busca por ciudad o usa tu ubicación en tiempo real.">
+  <meta property="og:url" content="https://www.yaavs.com.mx/tiendas-mapa.html">
+  <meta property="og:image" content="https://www.yaavs.com.mx/assets/pwa/icon-512.png">
+  <meta property="og:image:alt" content="YAAVS — telecomunicaciones">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mapa de tiendas | YAAVS">
+  <meta name="twitter:description" content="Mapa de tiendas YAAVS por compañía: busca por ciudad o usa tu ubicación en tiempo real.">
+  <meta name="twitter:image" content="https://www.yaavs.com.mx/assets/pwa/icon-512.png">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mapa de tiendas | YAAVS", "description": "Mapa de tiendas YAAVS por compañía: busca por ciudad o usa tu ubicación en tiempo real.", "url": "https://www.yaavs.com.mx/tiendas-mapa.html", "isPartOf": {"@type": "WebSite", "url": "https://www.yaavs.com.mx/"}, "inLanguage": "es-MX"}</script>
+  <!-- /yaavs-seo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=269">
+  <link rel="stylesheet" href="decorations.css">
+  <link rel="stylesheet" href="theme-light.css?v=14">
+  <link rel="stylesheet" href="theme-day-night.css?v=7">
+  <link rel="stylesheet" href="interior-corporate.css?v=27">
+  <link rel="stylesheet" href="interior-light.css?v=3">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
+  <link rel="shortcut icon" href="favicon.ico?v=4">
+  <link rel="stylesheet" href="yaavs-brand.css?v=79">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=28">
+  <style>
+    /* Texto oscuro en mapa claro — gana a CSS viejo del service worker */
+    html body.theme-cluster.page-tiendas-map .tiendas-map__title,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__nav-title,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__store-name,
+    html body.theme-cluster.page-tiendas-map h1,
+    html body.theme-cluster.page-tiendas-map h2 {
+      color: #011142 !important;
+      -webkit-text-fill-color: #011142 !important;
+    }
+    html body.theme-cluster.page-tiendas-map .tiendas-map__lead,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__brand-sub,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__status,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__store-address,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__nav-address,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__pegman-hint,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__switch-note,
+    html body.theme-cluster.page-tiendas-map p {
+      color: rgba(1, 17, 66, 0.78) !important;
+      -webkit-text-fill-color: rgba(1, 17, 66, 0.78) !important;
+    }
+    html body.theme-cluster.page-tiendas-map .tiendas-map__search label {
+      color: #011142 !important;
+      -webkit-text-fill-color: #011142 !important;
+    }
+  </style>
+</head>
+<body class="theme-cluster page-tiendas-map" data-page="tiendas">
+  <script>
+    (function () {
+      var c = (new URLSearchParams(location.search).get("carrier") || "bait").toLowerCase();
+      if (c !== "att") c = "bait";
+      document.body.dataset.carrier = c;
+    })();
+  </script>
+  <div id="site-header"></div>
+
+  <main id="contenido" class="tiendas-map" aria-label="Mapa de tiendas por compañía">
+    <div class="tiendas-map__stage" aria-hidden="true">
+      <video
+        class="tiendas-map__stage-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="assets/tiendas/city-night.jpg"
+      >
+        <source src="assets/tiendas/city-night.mp4" type="video/mp4">
+      </video>
+      <span class="tiendas-map__stage-veil"></span>
+      <span class="tiendas-map__stage-grid"></span>
+    </div>
+
+    <div class="tiendas-map__floaters" aria-hidden="true">
+      <span class="tm-stripe tm-stripe--top"></span>
+      <span class="tm-stripe tm-stripe--side"></span>
+
+      <span class="tm-spark tm-spark--1"></span>
+      <span class="tm-spark tm-spark--2 tm-spark--pink"></span>
+      <span class="tm-spark tm-spark--3 tm-spark--blue"></span>
+      <span class="tm-spark tm-spark--4"></span>
+      <span class="tm-spark tm-spark--5 tm-spark--pink"></span>
+      <span class="tm-spark tm-spark--6 tm-spark--blue"></span>
+      <span class="tm-spark tm-spark--7"></span>
+      <span class="tm-spark tm-spark--8 tm-spark--pink"></span>
+
+      <span class="tm-hex tm-hex--1"></span>
+      <span class="tm-hex tm-hex--2"></span>
+      <span class="tm-hex tm-hex--3"></span>
+
+      <span class="tm-beam tm-beam--1"></span>
+      <span class="tm-beam tm-beam--2"></span>
+
+      <span class="tm-ring tm-ring--1"></span>
+      <span class="tm-ring tm-ring--2"></span>
+      <span class="tm-pulse tm-pulse--1"></span>
+      <span class="tm-pulse tm-pulse--2"></span>
+
+      <span class="tm-chip tm-chip--1"></span>
+      <span class="tm-chip tm-chip--2"></span>
+      <span class="tm-chip tm-chip--3"></span>
+
+      <img class="tm-icon tm-icon--1" src="assets/floats/float-sim.svg" alt="" width="56" height="70" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--2" src="assets/floats/float-chip.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--3" src="assets/floats/float-signal.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--4" src="assets/floats/float-phone.svg" alt="" width="44" height="72" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--5" src="assets/floats/float-esim.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+
+      <span class="tm-badge tm-badge--1" data-bait-label>BAIT</span>
+      <span class="tm-badge tm-badge--2">GPS</span>
+      <span class="tm-badge tm-badge--3" data-att-label>AT&amp;T</span>
+      <span class="tm-badge tm-badge--4">Mapa</span>
+
+      <div class="tm-flanks">
+        <div class="tm-flank tm-flank--left">
+          <span class="tm-flank__dot"></span>
+          <span class="tm-flank__pill tm-flank__pill--yellow">Sucursales</span>
+          <span class="tm-flank__dot tm-flank__dot--pink"></span>
+          <span class="tm-flank__pill tm-flank__pill--pink">YAAVS</span>
+        </div>
+        <div class="tm-flank tm-flank--right">
+          <span class="tm-flank__pill tm-flank__pill--blue">Cobertura</span>
+          <span class="tm-flank__dot tm-flank__dot--blue"></span>
+          <span class="tm-flank__pill tm-flank__pill--yellow">Encuéntranos</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="tiendas-map__hero">
+      <div class="container">
+        <p class="tiendas-map__kicker" id="carrier-kicker">Cobertura YAAVS</p>
+        <div class="tiendas-map__title-row">
+          <img
+            class="tiendas-map__title-logo"
+            id="carrier-title-logo"
+            src="assets/operadores/bait-logo-animated.gif"
+            alt="BAIT"
+            width="160"
+            height="91"
+            decoding="async"
+          >
+          <h1 class="tiendas-map__title" id="carrier-title">Selecciona tu ubicación para ver tiendas</h1>
+        </div>
+        <p class="tiendas-map__lead" id="carrier-lead">
+          Busca por ciudad, colonia o estado, o usa tu ubicación para ver tiendas cercanas en tiempo real.
+        </p>
+      </div>
+    </section>
+
+    <section class="tiendas-map__panel">
+      <div class="container tiendas-map__panel-inner">
+        <div class="tiendas-map__brand">
+          <img id="carrier-logo" src="assets/operadores/bait-carriers-color.svg" alt="Compañía" width="220" height="88" loading="lazy" decoding="async">
+          <div class="tiendas-map__brand-copy">
+            <p class="tiendas-map__brand-sub" id="carrier-brand-sub">Puntos de venta en toda la República Mexicana</p>
+          </div>
+        </div>
+
+        <form class="tiendas-map__search" id="carrier-map-form">
+          <label for="carrier-map-query">Selecciona tu ubicación o busca por lugar</label>
+          <div class="tiendas-map__controls">
+            <input
+              id="carrier-map-query"
+              name="q"
+              type="text"
+              placeholder="Ej. Guadalajara, Jalisco"
+              autocomplete="off"
+            >
+            <button type="submit">Buscar</button>
+            <button type="button" id="carrier-map-geolocate">Ubicación cerca de mí</button>
+          </div>
+          <p class="tiendas-map__status" id="carrier-map-status" aria-live="polite"></p>
+        </form>
+
+        <div class="tiendas-map__stores" id="carrier-stores" hidden></div>
+
+        <aside class="tiendas-map__nav" id="carrier-nav-panel" hidden>
+          <p class="tiendas-map__nav-kicker">GPS · Cómo llegar</p>
+          <h2 class="tiendas-map__nav-title" id="carrier-nav-title">Sucursal</h2>
+          <p class="tiendas-map__nav-address" id="carrier-nav-address"></p>
+          <div class="tiendas-map__nav-actions">
+            <a
+              class="tiendas-map__nav-go"
+              id="carrier-nav-go"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ir allá</a>
+            <a
+              class="tiendas-map__nav-open"
+              id="carrier-nav-open"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Abrir en Google Maps</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="tiendas-map__viewer" aria-label="Mapa de tiendas">
+      <div class="container">
+        <div class="tiendas-map__map-tools" aria-label="Controles del mapa">
+          <button type="button" id="carrier-map-zoom-in" title="Acercar">+</button>
+          <button type="button" id="carrier-map-zoom-out" title="Alejar">−</button>
+          <button type="button" id="carrier-map-fit-all" title="Ver todas las sucursales">Ver todas</button>
+          <button type="button" id="carrier-pegman-reset" title="Poner personita en la sucursal">Personita aquí</button>
+          <button type="button" id="carrier-street-toggle" title="Ver la calle en 360°">Street View</button>
+        </div>
+        <p class="tiendas-map__pegman-hint" id="carrier-pegman-hint">
+          Arrastra la <strong>personita amarilla</strong> a la calle: Street View se abre <strong>en este mismo mapa</strong>.
+        </p>
+        <div class="tiendas-map__canvas" id="carrier-map-canvas">
+          <div id="carrier-map-host" class="tiendas-map__leaflet" hidden></div>
+          <iframe
+            id="carrier-map-frame"
+            class="tiendas-map__streetview"
+            title="Street View"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            allow="accelerometer; gyroscope; fullscreen"
+            src=""
+            hidden
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="tiendas-map__switch" aria-label="Cambiar compañía">
+      <div class="container tiendas-map__switch-grid">
+        <a href="tiendas-mapa.html?carrier=att" data-carrier-link="att">AT&amp;T</a>
+        <a href="tiendas-mapa.html?carrier=bait" data-carrier-link="bait">BAIT</a>
+      </div>
+      <p class="tiendas-map__switch-note container">
+        El mapa interactivo muestra directorios oficiales de AT&amp;T y BAIT.
+        Para Movistar, Unefon y otras marcas, consulta <a href="tiendas.html">Tiendas</a> o <a href="contacto.html">Contacto</a>.
+      </p>
+    </section>
+    <div id="page-cta"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="js/layout.js?v=80" defer></script>
+  <script src="js/main.js?v=7" defer></script>
+  <script src="js/tiendas-att-stores.js?v=1" defer></script>
+  <script src="js/tiendas-map.js?v=16" defer></script>
+</body>
+</html>

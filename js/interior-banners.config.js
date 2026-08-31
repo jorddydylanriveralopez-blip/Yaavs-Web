@@ -3,11 +3,8 @@
  */
 window.YAAVS_PAGE_BANNERS = {
   avisos: {
-    mp4: "assets/avisos/avisos-banner.mp4",
-    webm: "assets/avisos/avisos-banner.webm",
-    gif: "assets/avisos/avisos-banner.gif",
-    poster: "assets/hero-banner-1.jpg",
-    images: ["assets/hero-banner-1.jpg", "assets/hero-banner-2.jpg"],
+    poster: "assets/avisos/noticias-banner-20260808@2x.jpg",
+    images: ["assets/avisos/noticias-banner-20260808@2x.jpg"],
   },
   "quienes-somos": {
     images: ["assets/hero-banner-1.jpg", "assets/hero-banner-2.jpg", "assets/hero-banner-5.jpg"],
@@ -20,13 +17,17 @@ window.YAAVS_PAGE_BANNERS = {
     interval: 5500,
   },
   "bolsa-trabajo": {
-    images: ["assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg", "assets/hero-banner-5.jpg"],
-    poster: "assets/hero-banner-1.jpg",
+    images: ["assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg"],
+    poster: "assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg",
     interval: 6000,
   },
   "ser-yaavser": {
-    images: ["assets/hero-banner-4.jpg", "assets/hero-banner-5.jpg", "assets/hero-banner-2.jpg"],
-    poster: "assets/hero-banner-3.jpg",
+    images: [
+      "assets/yaavser/cliente-satisfecho.jpg",
+      "assets/servicios/activaciones.jpg",
+      "assets/quienes-somos.png",
+    ],
+    poster: "assets/yaavser/cliente-satisfecho.jpg",
     interval: 6000,
   },
   contacto: {
@@ -35,13 +36,32 @@ window.YAAVS_PAGE_BANNERS = {
     interval: 6500,
   },
   testimonios: {
-    images: ["assets/hero-banner-2.jpg", "assets/hero-banner-3.jpg"],
-    poster: "assets/hero-banner-4.jpg",
-    interval: 6000,
+    images: [
+      "assets/yaavser/cliente-satisfecho.jpg",
+      "assets/hero-telecom/hero-portada-campeones.jpg",
+      "assets/hero-telecom/hero-campeones-vincula.jpg",
+    ],
+    poster: "assets/yaavser/cliente-satisfecho.jpg",
+    interval: 6500,
   },
   "activar-chip": {
     images: ["assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg"],
     poster: "assets/hero-banner-1.jpg",
+    interval: 6000,
+  },
+  prepago: {
+    images: ["assets/operadores/bait.jpg", "assets/hero-banner-2.jpg", "assets/servicios/activaciones.jpg"],
+    poster: "assets/operadores/bait.jpg",
+    interval: 6000,
+  },
+  recargar: {
+    images: ["assets/servicios/tiempo-aire.jpg", "assets/hero-banner-2.jpg", "assets/operadores/att.jpg"],
+    poster: "assets/servicios/tiempo-aire.jpg",
+    interval: 6000,
+  },
+  postpago: {
+    images: ["assets/operadores/att.jpg", "assets/hero-banner-3.jpg", "assets/hero-banner-4.jpg"],
+    poster: "assets/operadores/att.jpg",
     interval: 6000,
   },
 };
