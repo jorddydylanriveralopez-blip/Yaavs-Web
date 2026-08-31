@@ -81,8 +81,8 @@ p, li, label, td, th, figcaption, span, small {
 
 .page-home p,
 .page-home li,
-body.theme-cluster p,
-body.theme-cluster li {
+body.theme-cluster:not(.page-tiendas-map):not(.page-tiendas) p,
+body.theme-cluster:not(.page-tiendas-map):not(.page-tiendas) li {
   color: var(--yaavs-ink-soft) !important;
 }
 
@@ -4400,5 +4400,44 @@ html body.page-bolsa-trabajo .jobs-apply-status.is-success {
   html body.page-bolsa-trabajo .jobs-apply-submit {
     max-width: none !important;
   }
+}
+
+/* ─── Tiendas mapa: texto oscuro legible (última palabra) ─── */
+html body.theme-cluster.page-tiendas-map,
+html body.page-tiendas-map,
+html body.theme-cluster.page-tiendas-map #contenido,
+html body.page-tiendas-map #contenido {
+  color: #011142 !important;
+}
+
+html body.theme-cluster.page-tiendas-map h1,
+html body.theme-cluster.page-tiendas-map h2,
+html body.theme-cluster.page-tiendas-map h3,
+html body.theme-cluster.page-tiendas-map .tiendas-map__title,
+html body.theme-cluster.page-tiendas-map .tiendas-map__nav-title,
+html body.theme-cluster.page-tiendas-map .tiendas-map__brand-name,
+html body.theme-cluster.page-tiendas-map .tiendas-map__store-name,
+html body.theme-cluster.page-tiendas-map [class*="tiendas-map__title"] {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.theme-cluster.page-tiendas-map p,
+html body.theme-cluster.page-tiendas-map li,
+html body.theme-cluster.page-tiendas-map label,
+html body.theme-cluster.page-tiendas-map .tiendas-map__lead,
+html body.theme-cluster.page-tiendas-map .tiendas-map__brand-sub,
+html body.theme-cluster.page-tiendas-map .tiendas-map__status,
+html body.theme-cluster.page-tiendas-map .tiendas-map__store-address,
+html body.theme-cluster.page-tiendas-map .tiendas-map__nav-address,
+html body.theme-cluster.page-tiendas-map .tiendas-map__switch-note,
+html body.theme-cluster.page-tiendas-map .tiendas-map__pegman-hint {
+  color: rgba(1, 17, 66, 0.78) !important;
+  -webkit-text-fill-color: rgba(1, 17, 66, 0.78) !important;
+}
+
+html body.theme-cluster.page-tiendas-map .tiendas-map__search label {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
 }
 
