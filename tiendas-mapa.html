@@ -43,8 +43,34 @@
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
   <link rel="shortcut icon" href="favicon.ico?v=4">
-  <link rel="stylesheet" href="yaavs-brand.css?v=78">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=27">
+  <link rel="stylesheet" href="yaavs-brand.css?v=79">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=28">
+  <style>
+    /* Texto oscuro en mapa claro — gana a CSS viejo del service worker */
+    html body.theme-cluster.page-tiendas-map .tiendas-map__title,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__nav-title,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__store-name,
+    html body.theme-cluster.page-tiendas-map h1,
+    html body.theme-cluster.page-tiendas-map h2 {
+      color: #011142 !important;
+      -webkit-text-fill-color: #011142 !important;
+    }
+    html body.theme-cluster.page-tiendas-map .tiendas-map__lead,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__brand-sub,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__status,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__store-address,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__nav-address,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__pegman-hint,
+    html body.theme-cluster.page-tiendas-map .tiendas-map__switch-note,
+    html body.theme-cluster.page-tiendas-map p {
+      color: rgba(1, 17, 66, 0.78) !important;
+      -webkit-text-fill-color: rgba(1, 17, 66, 0.78) !important;
+    }
+    html body.theme-cluster.page-tiendas-map .tiendas-map__search label {
+      color: #011142 !important;
+      -webkit-text-fill-color: #011142 !important;
+    }
+  </style>
 </head>
 <body class="theme-cluster page-tiendas-map" data-page="tiendas">
   <script>
@@ -244,7 +270,7 @@
 
   <div id="site-footer"></div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
-  <script src="js/layout.js?v=78" defer></script>
+  <script src="js/layout.js?v=79" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script src="js/tiendas-att-stores.js?v=1" defer></script>
   <script src="js/tiendas-map.js?v=16" defer></script>

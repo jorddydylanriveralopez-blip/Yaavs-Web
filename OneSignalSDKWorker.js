@@ -1,7 +1,7 @@
 /* OneSignal v16 Service Worker + YAAVS PWA cache */
 importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js");
 
-const CACHE_VERSION = "yaavs-pwa-v7";
+const CACHE_VERSION = "yaavs-pwa-v8";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -12,10 +12,10 @@ const PRECACHE = [
   "./assets/yaavs-logo-header-color.png?v=1",
   "./assets/yaavs-logo-white.png?v=2",
   "./assets/favicon-yaavs.png",
-  "./styles.css?v=266",
-  "./yaavs-brand.css?v=22",
-  "./js/layout.js?v=74",
-  "./js/pwa.js?v=7",
+  "./styles.css?v=269",
+  "./yaavs-brand.css?v=79",
+  "./js/layout.js?v=79",
+  "./js/pwa.js?v=8",
   /* Shell partials — menu/footer must work offline */
   "./partials/header.html?v=35",
   "./partials/footer.html?v=18",
@@ -126,8 +126,14 @@ self.addEventListener("fetch", (event) => {
     url.pathname.match(/\.(css|js|png|jpg|jpeg|webp|svg|woff2?|webmanifest|html)$/i) ||
     url.pathname.includes("/assets/")
   ) {
-    /* Logos: always prefer network so white/blue never get stuck in cache */
-    if (/yaavs-logo/i.test(url.pathname)) {
+    /* CSS/JS + logos: network first so ?v= bumps and brand fixes are never stuck
+       behind ignoreSearch matches to old precache entries (e.g. yaavs-brand.css?v=22). */
+    if (
+      /yaavs-logo/i.test(url.pathname) ||
+      /\.(css|js)$/i.test(url.pathname) ||
+      /OneSignalSDKWorker\.js$/i.test(url.pathname) ||
+      /\/sw\.js$/i.test(url.pathname)
+    ) {
       event.respondWith(
         fetch(request)
           .then((response) => {
