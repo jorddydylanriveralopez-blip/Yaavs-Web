@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="theme-day-night.css?v=7">
   <link rel="stylesheet" href="interior-corporate.css?v=27">
   <link rel="stylesheet" href="interior-light.css?v=3">
-  <link rel="stylesheet" href="tiendas-map-page.css?v=24">
+  <link rel="stylesheet" href="tiendas-map-page.css?v=25">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
@@ -74,15 +74,58 @@
     </div>
 
     <div class="tiendas-map__floaters" aria-hidden="true">
-      <span class="tiendas-map__floater tiendas-map__floater--orb-1"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--orb-2"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--orb-3"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--ring-1"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--ring-2"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--beam-1"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--beam-2"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--chip"></span>
-      <span class="tiendas-map__floater tiendas-map__floater--sim"></span>
+      <span class="tm-stripe tm-stripe--top"></span>
+      <span class="tm-stripe tm-stripe--side"></span>
+
+      <span class="tm-spark tm-spark--1"></span>
+      <span class="tm-spark tm-spark--2 tm-spark--pink"></span>
+      <span class="tm-spark tm-spark--3 tm-spark--blue"></span>
+      <span class="tm-spark tm-spark--4"></span>
+      <span class="tm-spark tm-spark--5 tm-spark--pink"></span>
+      <span class="tm-spark tm-spark--6 tm-spark--blue"></span>
+      <span class="tm-spark tm-spark--7"></span>
+      <span class="tm-spark tm-spark--8 tm-spark--pink"></span>
+
+      <span class="tm-hex tm-hex--1"></span>
+      <span class="tm-hex tm-hex--2"></span>
+      <span class="tm-hex tm-hex--3"></span>
+
+      <span class="tm-beam tm-beam--1"></span>
+      <span class="tm-beam tm-beam--2"></span>
+
+      <span class="tm-ring tm-ring--1"></span>
+      <span class="tm-ring tm-ring--2"></span>
+      <span class="tm-pulse tm-pulse--1"></span>
+      <span class="tm-pulse tm-pulse--2"></span>
+
+      <span class="tm-chip tm-chip--1"></span>
+      <span class="tm-chip tm-chip--2"></span>
+      <span class="tm-chip tm-chip--3"></span>
+
+      <img class="tm-icon tm-icon--1" src="assets/floats/float-sim.svg" alt="" width="56" height="70" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--2" src="assets/floats/float-chip.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--3" src="assets/floats/float-signal.svg" alt="" width="52" height="52" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--4" src="assets/floats/float-phone.svg" alt="" width="44" height="72" loading="lazy" decoding="async">
+      <img class="tm-icon tm-icon--5" src="assets/floats/float-esim.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
+
+      <span class="tm-badge tm-badge--1" data-bait-label>BAIT</span>
+      <span class="tm-badge tm-badge--2">GPS</span>
+      <span class="tm-badge tm-badge--3" data-att-label>AT&amp;T</span>
+      <span class="tm-badge tm-badge--4">Mapa</span>
+
+      <div class="tm-flanks">
+        <div class="tm-flank tm-flank--left">
+          <span class="tm-flank__dot"></span>
+          <span class="tm-flank__pill tm-flank__pill--yellow">Sucursales</span>
+          <span class="tm-flank__dot tm-flank__dot--pink"></span>
+          <span class="tm-flank__pill tm-flank__pill--pink">YAAVS</span>
+        </div>
+        <div class="tm-flank tm-flank--right">
+          <span class="tm-flank__pill tm-flank__pill--blue">Cobertura</span>
+          <span class="tm-flank__dot tm-flank__dot--blue"></span>
+          <span class="tm-flank__pill tm-flank__pill--yellow">Encuéntranos</span>
+        </div>
+      </div>
     </div>
 
     <section class="tiendas-map__hero">
