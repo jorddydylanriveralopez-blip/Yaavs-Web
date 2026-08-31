@@ -343,7 +343,7 @@ a[class*="__cta"]:not(.hx-svc-deck__cta):not(.hx-somos__cta):not(.hx-vinc-modal_
   box-shadow: none !important;
 }
 
-button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vinc-modal__carrier):not(.hx-vinc-modal__close):not(.hx-esim-modal__carrier):not(.hx-esim-modal__close):not(.hx-porta-modal__close):not(.hx-rotul-modal__close):not(.hx-yaavshop-modal__close):not(.hx-yaavshop-modal__fs):not(.hx-act-modal__close):not(.hx-rotul-carousel__nav):not(.hx-rotul-carousel__dot):not(.jobs-netflix-row__btn):hover,
+button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vinc-modal__carrier):not(.hx-vinc-modal__close):not(.hx-esim-modal__carrier):not(.hx-esim-modal__close):not(.hx-porta-modal__close):not(.hx-rotul-modal__close):not(.hx-yaavshop-modal__close):not(.hx-yaavshop-modal__fs):not(.hx-act-modal__close):not(.hx-rotul-carousel__nav):not(.hx-rotul-carousel__dot):not(.jobs-netflix-row__btn):not(.jobs-netflix-spotlight__close):hover,
 .btn:hover {
   background-color: var(--yaavs-blue) !important;
   filter: brightness(1.08);
