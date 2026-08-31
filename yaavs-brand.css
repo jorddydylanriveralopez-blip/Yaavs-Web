@@ -3309,6 +3309,17 @@ html body.page-anuncios .anuncios-billboard__link {
   -webkit-text-fill-color: #01258f !important;
 }
 
+/* Banda CTA “Conviértete en socio” retirada en interiores */
+#page-cta,
+.page-cta-band {
+  display: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
 /* ─── Bolsa de trabajo: hero + catálogo armoniosos ─── */
 html body.page-bolsa-trabajo,
 html body.theme-cluster.page-bolsa-trabajo {

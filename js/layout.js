@@ -539,7 +539,6 @@
   }
 
   const trustMount = document.getElementById("trust-strip");
-  const ctaMount = document.getElementById("page-cta");
 
   function ensureFooterStyles() {
     if (document.querySelector('link[data-site-footer-css]')) return;
@@ -594,7 +593,6 @@
     loadPartial("partials/header.html?v=37", headerMount),
     loadPartial("partials/footer.html?v=19", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
-    loadPartial("partials/page-cta.html?v=5", ctaMount),
   ]).then(async () => {
     ensureFooterStyles();
     ensureNavInHeader();
