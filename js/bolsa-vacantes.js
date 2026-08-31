@@ -637,17 +637,19 @@
     const slug = deptSlug(title);
     const featured = Boolean(options.featured);
     const cards = items.map((item) => renderNetflixCard(item, featured)).join("");
+    const chevronPrev =
+      '<svg class="jobs-netflix-row__chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M14.7 5.3a1 1 0 0 1 0 1.4L9.4 12l5.3 5.3a1 1 0 1 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0z" fill="currentColor"/></svg>';
+    const chevronNext =
+      '<svg class="jobs-netflix-row__chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M9.3 5.3a1 1 0 0 1 1.4 0l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 1 1-1.4-1.4L14.6 12 9.3 6.7a1 1 0 0 1 0-1.4z" fill="currentColor"/></svg>';
     return `
       <section class="jobs-netflix-row${featured ? " jobs-netflix-row--featured" : ""}" aria-labelledby="jobs-row-${slug}">
         <div class="jobs-netflix-row__head">
           <h3 class="jobs-netflix-row__title" id="jobs-row-${slug}">${escapeHtml(title)}</h3>
-          <div class="jobs-netflix-row__nav" aria-hidden="true">
-            <button type="button" class="jobs-netflix-row__btn jobs-netflix-row__btn--prev" aria-label="Ver vacantes anteriores en ${escapeHtml(title)}">‹</button>
-            <button type="button" class="jobs-netflix-row__btn jobs-netflix-row__btn--next" aria-label="Ver más vacantes en ${escapeHtml(title)}">›</button>
-          </div>
         </div>
         <div class="jobs-netflix-row__scroller">
+          <button type="button" class="jobs-netflix-row__btn jobs-netflix-row__btn--prev" aria-label="Ver vacantes anteriores en ${escapeHtml(title)}">${chevronPrev}</button>
           <div class="jobs-netflix-track" tabindex="0" role="list">${cards}</div>
+          <button type="button" class="jobs-netflix-row__btn jobs-netflix-row__btn--next" aria-label="Ver más vacantes en ${escapeHtml(title)}">${chevronNext}</button>
         </div>
       </section>`;
   }
