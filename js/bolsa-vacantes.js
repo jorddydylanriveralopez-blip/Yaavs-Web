@@ -565,20 +565,6 @@
       .replace(/\s+/g, "-");
   }
 
-  function deptTone(dept) {
-    const map = {
-      Tecnología: "tech",
-      Marketing: "marketing",
-      Finanzas: "finance",
-      Contabilidad: "accounting",
-      Ventas: "sales",
-      Foráneas: "field",
-      Operaciones: "ops",
-      Administración: "admin",
-    };
-    return map[dept] || "default";
-  }
-
   function shortSalary(salary) {
     const text = String(salary || "");
     const match = text.match(/\$[\d,.]+(?:\s*[–-]\s*\$[\d,.]+)?/);
@@ -672,24 +658,28 @@
       .join("");
 
     return `
-      <div class="jobs-netflix-spotlight__inner">
+      <div class="jobs-netflix-spotlight__panel">
         <button type="button" class="jobs-netflix-spotlight__close" aria-label="Cerrar detalle de vacante">✕</button>
-        <div class="jobs-netflix-spotlight__copy">
-          <p class="jobs-netflix-spotlight__eyebrow">Vacante abierta</p>
-          <h3 class="jobs-netflix-spotlight__title">${escapeHtml(job.title)}</h3>
-          ${pills ? `<div class="jobs-netflix-spotlight__pills">${pills}</div>` : ""}
-          ${job.description ? `<p class="jobs-netflix-spotlight__desc">${escapeHtml(job.description)}</p>` : ""}
-          ${renderMetaChips(job)}
-          <div class="jobs-netflix-spotlight__actions">
-            ${waLink}
-            ${platformLink}
-            <a href="#postular" class="job-apply jobs-netflix-spotlight__apply" data-vacante="${escapeHtml(job.title)}">Postular aquí →</a>
+        <div class="jobs-netflix-spotlight__hero">
+          <div class="jobs-netflix-spotlight__copy">
+            <p class="jobs-netflix-spotlight__eyebrow">Vacante abierta</p>
+            <h3 class="jobs-netflix-spotlight__title">${escapeHtml(job.title)}</h3>
+            ${pills ? `<div class="jobs-netflix-spotlight__pills">${pills}</div>` : ""}
+            ${job.description ? `<p class="jobs-netflix-spotlight__desc">${escapeHtml(job.description)}</p>` : ""}
+            ${renderMetaChips(job)}
+            <div class="jobs-netflix-spotlight__actions">
+              ${waLink}
+              ${platformLink}
+              <a href="#postular" class="job-apply jobs-netflix-spotlight__apply" data-vacante="${escapeHtml(job.title)}">Postular aquí</a>
+            </div>
+          </div>
+          ${photo ? `<div class="jobs-netflix-spotlight__media">${photo}</div>` : ""}
+        </div>
+        <div class="jobs-netflix-spotlight__detail">
+          <div class="jobs-netflix-spotlight__specs-grid">
+            ${renderJobSpecs(job)}
           </div>
         </div>
-        ${photo ? `<div class="jobs-netflix-spotlight__media">${photo}</div>` : ""}
-      </div>
-      <div class="jobs-netflix-spotlight__detail">
-        ${renderJobSpecs(job)}
       </div>`;
   }
 
