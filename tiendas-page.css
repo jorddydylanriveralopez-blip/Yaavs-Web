@@ -7,6 +7,15 @@ body.theme-cluster.page-tiendas,
   background: #040a12 !important;
   color: #f4fbff;
   min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body.page-tiendas #page-cta,
+body.page-tiendas #site-footer,
+body.theme-cluster.page-tiendas #page-cta,
+body.theme-cluster.page-tiendas #site-footer {
+  display: none !important;
 }
 
 /* Header claro — mismo look que el inicio */
@@ -96,13 +105,17 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
   position: relative;
   isolation: isolate;
   padding-top: 0;
+  padding-bottom: 0;
+  height: 100dvh;
   min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
   background: transparent;
 }
 
 /* Stage detrás del split (no tapa fotos de operador) */
 .tiendas-view__stage {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
@@ -156,7 +169,8 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  height: 100%;
+  min-height: 0;
   width: 100%;
 }
 
@@ -164,7 +178,8 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   flex: 1;
-  min-height: 100dvh;
+  min-height: 0;
+  height: 100%;
   width: 100%;
 }
 
@@ -172,7 +187,8 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
   --choice-accent: #01258f;
   position: relative;
   display: block;
-  min-height: 100dvh;
+  min-height: 0;
+  height: 100%;
   overflow: hidden;
   text-decoration: none;
   color: #fff;
@@ -333,18 +349,36 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
 }
 
 @media (max-width: 900px) {
+  html:has(body.page-tiendas),
+  body.page-tiendas,
+  body.theme-cluster.page-tiendas {
+    overflow: auto;
+    height: auto;
+  }
+
   .page-tiendas #contenido.tiendas-view {
     --tiendas-header-offset: clamp(56px, 9vh, 76px);
+    height: auto;
+    min-height: 100dvh;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .tiendas-chooser {
+    min-height: 100dvh;
+    height: auto;
   }
 
   .tiendas-chooser__grid {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, minmax(0, 1fr));
-    min-height: auto;
+    min-height: 100dvh;
+    height: auto;
   }
 
   .tiendas-choice {
-    min-height: clamp(48vh, 52dvh, 56vh);
+    min-height: 50dvh;
+    height: auto;
   }
 
   .tiendas-choice__content {
@@ -364,7 +398,7 @@ body.theme-cluster.page-tiendas .main-nav--overlay a {
 
 @media (max-width: 640px) {
   .tiendas-choice {
-    min-height: 48dvh;
+    min-height: 50dvh;
   }
 
   .tiendas-choice__copy {
