@@ -24,20 +24,34 @@ body.theme-cluster.page-tiendas-map,
   min-height: 100%;
 }
 
+/* BAIT: rosa + amarillo + negro */
 body.page-tiendas-map[data-carrier="bait"] {
-  --carrier-accent: #01258f;
-  --carrier-accent-strong: #01258f;
-  --carrier-accent-soft: rgba(1, 37, 143, 0.12);
-  --carrier-accent-glow: rgba(1, 37, 143, 0.2);
-  --carrier-highlight: #b8860b;
+  --carrier-accent: #e4007a;
+  --carrier-accent-strong: #c10068;
+  --carrier-accent-soft: rgba(228, 0, 122, 0.12);
+  --carrier-accent-glow: rgba(228, 0, 122, 0.28);
+  --carrier-highlight: #ffcb05;
+  --carrier-highlight-ink: #0a0a0a;
+  --carrier-secondary: #0a0a0a;
+  --carrier-on-accent: #ffffff;
+  --map-bg: #fff8fb;
+  --map-border: rgba(228, 0, 122, 0.18);
+  --map-shadow: 0 12px 40px rgba(228, 0, 122, 0.1);
 }
 
+/* AT&T: azul globo característico */
 body.page-tiendas-map[data-carrier="att"] {
-  --carrier-accent: #009fdb;
-  --carrier-accent-strong: #0077b6;
-  --carrier-accent-soft: rgba(0, 159, 219, 0.12);
-  --carrier-accent-glow: rgba(0, 159, 219, 0.22);
-  --carrier-highlight: #009fdb;
+  --carrier-accent: #00a8e0;
+  --carrier-accent-strong: #0082c8;
+  --carrier-accent-soft: rgba(0, 168, 224, 0.14);
+  --carrier-accent-glow: rgba(0, 168, 224, 0.28);
+  --carrier-highlight: #00a8e0;
+  --carrier-highlight-ink: #ffffff;
+  --carrier-secondary: #001d4a;
+  --carrier-on-accent: #ffffff;
+  --map-bg: #f3faff;
+  --map-border: rgba(0, 168, 224, 0.2);
+  --map-shadow: 0 12px 40px rgba(0, 168, 224, 0.1);
 }
 
 /* Header claro — mismo look que el inicio */
@@ -126,7 +140,7 @@ body.page-tiendas-map .site-floats {
   display: none;
 }
 
-/* Stage — fondo claro sutil (sin video nocturno) */
+/* Stage — fondo claro con tinte de compañía */
 body.theme-cluster.page-tiendas-map .tiendas-map__stage {
   position: fixed;
   inset: 0;
@@ -134,9 +148,25 @@ body.theme-cluster.page-tiendas-map .tiendas-map__stage {
   pointer-events: none;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 80% 60% at 12% 8%, rgba(1, 37, 143, 0.06), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 88% 18%, rgba(1, 37, 143, 0.05), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 12% 8%, var(--carrier-accent-soft), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 88% 18%, color-mix(in srgb, var(--carrier-highlight, var(--carrier-accent)) 18%, transparent), transparent 50%),
     var(--map-bg);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__stage {
+  background:
+    radial-gradient(ellipse 75% 55% at 10% 6%, rgba(228, 0, 122, 0.14), transparent 55%),
+    radial-gradient(ellipse 65% 45% at 92% 12%, rgba(255, 203, 5, 0.22), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(228, 0, 122, 0.06), transparent 60%),
+    #fff8fb;
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__stage {
+  background:
+    radial-gradient(ellipse 75% 55% at 10% 6%, rgba(0, 168, 224, 0.16), transparent 55%),
+    radial-gradient(ellipse 65% 45% at 92% 12%, rgba(0, 130, 200, 0.12), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(0, 168, 224, 0.07), transparent 60%),
+    #f3faff;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__stage-video {
@@ -368,6 +398,20 @@ body.theme-cluster.page-tiendas-map .tiendas-map__kicker {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   box-shadow: 0 2px 8px rgba(1, 17, 66, 0.06);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__kicker {
+  border-color: rgba(255, 203, 5, 0.65);
+  background: #ffcb05;
+  color: #0a0a0a;
+  box-shadow: 0 4px 14px rgba(255, 203, 5, 0.45);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__kicker {
+  border-color: rgba(0, 168, 224, 0.35);
+  background: linear-gradient(135deg, #00a8e0, #0082c8);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 168, 224, 0.35);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__title {
@@ -639,6 +683,22 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store.is-active {
   transform: translateY(-1px);
 }
 
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__store:hover,
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__store.is-active {
+  border-color: #e4007a;
+  background: linear-gradient(180deg, #fff5fa 0%, #ffffff 100%);
+  box-shadow:
+    0 8px 24px rgba(228, 0, 122, 0.18),
+    0 0 0 1px rgba(255, 203, 5, 0.35);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__store:hover,
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__store.is-active {
+  border-color: #00a8e0;
+  background: linear-gradient(180deg, #f0faff 0%, #ffffff 100%);
+  box-shadow: 0 8px 24px rgba(0, 168, 224, 0.2);
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__store-name {
   display: block;
   font-size: 0.92rem;
@@ -655,6 +715,11 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store-city {
   font-weight: 700;
   color: var(--carrier-accent) !important;
   -webkit-text-fill-color: var(--carrier-accent);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__store-city {
+  color: #e4007a !important;
+  -webkit-text-fill-color: #e4007a;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__store-address {
@@ -724,6 +789,41 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store-go {
   text-decoration: none;
 }
 
+/* BAIT CTA: amarillo + texto negro (firma de marca) */
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__store-go,
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__nav-go,
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__controls button[type="submit"] {
+  background: #ffcb05;
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a;
+  box-shadow: 0 4px 14px rgba(255, 203, 5, 0.45);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__controls button[type="button"],
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__nav-open {
+  border-color: rgba(228, 0, 122, 0.35);
+  color: #e4007a !important;
+  -webkit-text-fill-color: #e4007a;
+  background: #fff;
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__store-go,
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__nav-go,
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__controls button[type="submit"] {
+  background: linear-gradient(135deg, #00a8e0, #0082c8);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 168, 224, 0.35);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__controls button[type="button"],
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__nav-open {
+  border-color: rgba(0, 168, 224, 0.4);
+  color: #0082c8 !important;
+  -webkit-text-fill-color: #0082c8;
+  background: #fff;
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__nav {
   margin-top: 18px;
   padding: 20px 20px 18px;
@@ -731,6 +831,18 @@ body.theme-cluster.page-tiendas-map .tiendas-map__nav {
   border: 1px solid rgba(1, 37, 143, 0.16);
   background: linear-gradient(135deg, #eef3fb 0%, #f8faff 100%);
   box-shadow: 0 4px 16px rgba(1, 17, 66, 0.06);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__nav {
+  border-color: rgba(228, 0, 122, 0.22);
+  background: linear-gradient(135deg, #ffe8f4 0%, #fff9e8 100%);
+  box-shadow: 0 6px 20px rgba(228, 0, 122, 0.12);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__nav {
+  border-color: rgba(0, 168, 224, 0.28);
+  background: linear-gradient(135deg, #e5f7fd 0%, #f5fcff 100%);
+  box-shadow: 0 6px 20px rgba(0, 168, 224, 0.14);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__nav-kicker {
@@ -809,27 +921,54 @@ body.theme-cluster.page-tiendas-map .tiendas-map__map-tools button {
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__map-tools button:hover {
   border-color: var(--carrier-accent);
-  background: #f8faff;
+  background: var(--carrier-accent-soft);
+  color: var(--carrier-accent-strong);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__map-tools button:hover {
+  border-color: #e4007a;
+  background: #ffe8f4;
+  color: #e4007a;
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__map-tools button:hover {
+  border-color: #00a8e0;
+  background: #e5f7fd;
+  color: #0082c8;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__pegman-hint {
   margin: 0 0 12px;
   padding: 12px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(1, 37, 143, 0.14);
-  background: #eef3fb;
+  border: 1px solid var(--map-border);
+  background: var(--carrier-accent-soft);
   color: var(--map-muted);
   font-size: 0.88rem;
   line-height: 1.45;
 }
 
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__pegman-hint {
+  border-color: rgba(255, 203, 5, 0.55);
+  background: linear-gradient(90deg, #fff6d6, #ffe8f4);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__pegman-hint {
+  border-color: rgba(0, 168, 224, 0.35);
+  background: #e5f7fd;
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__pegman-hint strong {
   color: var(--carrier-accent);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__pegman-hint strong {
+  color: #e4007a;
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__street-head {
@@ -1084,6 +1223,18 @@ body.theme-cluster.page-tiendas-map .tiendas-map__switch a.is-active {
   background: var(--carrier-accent);
   color: var(--carrier-on-accent);
   box-shadow: 0 4px 14px var(--carrier-accent-glow);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__switch a[data-carrier-link="att"],
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__switch a.is-active {
+  background: linear-gradient(135deg, #00a8e0, #0082c8);
+  color: #fff;
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__switch a[data-carrier-link="bait"],
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__switch a.is-active {
+  background: #ffcb05;
+  color: #0a0a0a;
 }
 
 body.theme-cluster.page-tiendas-map #site-footer,
