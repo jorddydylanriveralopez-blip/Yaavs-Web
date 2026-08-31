@@ -35,6 +35,7 @@
       id: "bait",
       name: "BAIT",
       logo: "assets/operadores/bait-carriers-color.svg",
+      titleLogo: "assets/operadores/bait-logo-animated.gif",
       lead: "Explora el mapa, elige una sucursal y usa GPS para ir hasta allá.",
       title: "Sucursales BAIT YAAVS",
       brandSub: "3 sucursales autorizadas YAAVS · mapa interactivo",
@@ -45,6 +46,7 @@
       id: "att",
       name: "AT&T",
       logo: "assets/operadores/att-carriers-color.svg",
+      titleLogo: "assets/operadores/att-carriers-color.svg",
       lead: "Solo PDVs AT&T / Pospago YAAVS del directorio oficial. Elige una y usa GPS para ir.",
       title: "Sucursales AT&T YAAVS",
       brandSub: `${(window.YAAVS_ATT_STORES || []).length} PDVs del directorio Pospago YAAVS`,
@@ -64,6 +66,7 @@
   if (themeMeta) themeMeta.setAttribute("content", carrier.themeColor);
 
   const titleEl = document.getElementById("carrier-title");
+  const titleLogoEl = document.getElementById("carrier-title-logo");
   const leadEl = document.getElementById("carrier-lead");
   const brandSubEl = document.getElementById("carrier-brand-sub");
   const logoEl = document.getElementById("carrier-logo");
@@ -90,6 +93,10 @@
   if (!formEl || !queryEl) return;
 
   if (titleEl) titleEl.textContent = carrier.title;
+  if (titleLogoEl && carrier.titleLogo) {
+    titleLogoEl.src = carrier.titleLogo;
+    titleLogoEl.alt = carrier.name;
+  }
   if (leadEl) leadEl.textContent = carrier.lead;
   if (brandSubEl) brandSubEl.textContent = carrier.brandSub;
   if (logoEl) {

@@ -774,7 +774,7 @@ body.theme-cluster.page-tiendas-map .tiendas-map__kicker {
   animation: tiendas-map-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-body.theme-cluster.page-tiendas-map .tiendas-map__title {
+body.theme-cluster.page-tiendas-map .tiendas-map__title-row {
   animation: tiendas-map-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
 }
 
@@ -897,8 +897,42 @@ body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__kicker {
   color: #00a8e0;
 }
 
+body.theme-cluster.page-tiendas-map .tiendas-map__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
+  margin-top: 18px;
+}
+
+body.theme-cluster.page-tiendas-map .tiendas-map__title-logo {
+  display: block;
+  width: auto;
+  height: clamp(44px, 7vw, 72px);
+  max-width: min(42vw, 180px);
+  object-fit: contain;
+  flex: 0 0 auto;
+  border-radius: 12px;
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__title-logo {
+  background: #0a0a0a;
+  padding: 6px 10px;
+  box-shadow: 0 8px 24px rgba(10, 10, 10, 0.18);
+  border: 1px solid rgba(255, 203, 5, 0.35);
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="att"] .tiendas-map__title-logo {
+  background: #ffffff;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 168, 224, 0.25);
+  box-shadow: 0 8px 22px rgba(0, 61, 165, 0.1);
+  height: clamp(40px, 6vw, 58px);
+  max-width: min(46vw, 200px);
+}
+
 body.theme-cluster.page-tiendas-map .tiendas-map__title {
-  margin: 18px 0 0;
+  margin: 0;
   color: var(--map-ink);
   font-size: clamp(2.1rem, 5vw, 3.6rem);
   font-weight: 800;
@@ -906,7 +940,8 @@ body.theme-cluster.page-tiendas-map .tiendas-map__title {
   letter-spacing: -0.04em;
   text-wrap: balance;
   text-shadow: none;
-  max-width: 16ch;
+  max-width: 14ch;
+  flex: 1 1 min(220px, 100%);
 }
 
 body.theme-cluster.page-tiendas-map .tiendas-map__lead {
@@ -1322,10 +1357,17 @@ body.theme-cluster.page-tiendas-map .tiendas-map__store-go {
   text-decoration: none;
 }
 
-/* BAIT CTA: amarillo primario + negro secundario */
-body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__store-go,
-body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__nav-go,
+/* BAIT: Buscar blanco sobre negro; IR ALLÁ amarillo */
 body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__controls button[type="submit"] {
+  background: #0a0a0a;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__store-go,
+body.theme-cluster.page-tiendas-map[data-carrier="bait"] .tiendas-map__nav-go {
   background: #ffcb05;
   color: #0a0a0a !important;
   -webkit-text-fill-color: #0a0a0a;

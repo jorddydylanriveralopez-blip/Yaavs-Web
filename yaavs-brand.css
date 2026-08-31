@@ -2431,7 +2431,13 @@ html body.page-tiendas-map .tiendas-map__controls input {
   border: 1px solid rgba(1, 17, 66, 0.12) !important;
 }
 
-html body.page-tiendas-map[data-carrier="bait"] .tiendas-map__controls button[type="submit"],
+html body.page-tiendas-map[data-carrier="bait"] .tiendas-map__controls button[type="submit"] {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: transparent !important;
+}
+
 html body.page-tiendas-map[data-carrier="bait"] .tiendas-map__store-go,
 html body.page-tiendas-map[data-carrier="bait"] .tiendas-map__nav-go {
   background: #ffcb05 !important;

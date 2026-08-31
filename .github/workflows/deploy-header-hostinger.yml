@@ -83,6 +83,8 @@ jobs:
           for f in assets/floats/*.svg; do
             upload_one "$f" "$f" || true
           done
+          upload_one assets/operadores/bait-logo-animated.gif assets/operadores/bait-logo-animated.gif || true
+          upload_one assets/operadores/att-carriers-color.svg assets/operadores/att-carriers-color.svg || true
           upload_one OneSignalSDKWorker.js OneSignalSDKWorker.js
 
           for f in assets/servicios/icons/*.png; do
