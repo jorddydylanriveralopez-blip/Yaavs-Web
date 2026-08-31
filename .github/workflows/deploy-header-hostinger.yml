@@ -80,6 +80,9 @@ jobs:
           upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png
           upload_one assets/yaavs-logo.png assets/yaavs-logo.png
           upload_one assets/yaavs-logo-header-color.png assets/yaavs-logo-header-color.png
+          for f in assets/floats/*.svg; do
+            upload_one "$f" "$f" || true
+          done
           upload_one OneSignalSDKWorker.js OneSignalSDKWorker.js
 
           for f in assets/servicios/icons/*.png; do
