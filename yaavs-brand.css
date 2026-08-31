@@ -50,9 +50,9 @@
 }
 
 /* ─── Lienzo ─── */
-html,
-body,
-body.theme-cluster,
+html:not(:has(body.page-asi-somos)):not(:has(body.page-quienes-somos)),
+body:not(.page-asi-somos):not(.page-quienes-somos),
+body.theme-cluster:not(.page-asi-somos):not(.page-quienes-somos),
 body.page-home,
 body.page-intro-active {
   background-color: var(--yaavs-deep) !important;
@@ -66,7 +66,12 @@ body.page-intro-active {
 }
 
 /* Tipografía legible sobre el profundo */
-h1, h2, h3, h4, h5, h6 {
+body:not(.page-asi-somos):not(.page-quienes-somos) h1,
+body:not(.page-asi-somos):not(.page-quienes-somos) h2,
+body:not(.page-asi-somos):not(.page-quienes-somos) h3,
+body:not(.page-asi-somos):not(.page-quienes-somos) h4,
+body:not(.page-asi-somos):not(.page-quienes-somos) h5,
+body:not(.page-asi-somos):not(.page-quienes-somos) h6 {
   color: var(--yaavs-ink) !important;
 }
 
@@ -242,8 +247,8 @@ body.nav-open .nav-bento .bento-dot {
 .hx-services__title-kicker,
 .hx-services__title-main,
 .hx-partners__title,
-[class*="__title"],
-[class*="__kicker"] {
+body:not(.page-asi-somos):not(.page-quienes-somos) [class*="__title"],
+body:not(.page-asi-somos):not(.page-quienes-somos) [class*="__kicker"] {
   color: var(--yaavs-ink) !important;
   -webkit-text-fill-color: var(--yaavs-ink) !important;
   background: none !important;
@@ -2374,6 +2379,72 @@ html body.theme-cluster.page-asi-somos .asi-floats,
 html body.theme-cluster.page-asi-somos .asi-blob,
 html body.theme-cluster.page-asi-somos .asi-blob * {
   display: none !important;
+}
+
+html body.theme-cluster.page-asi-somos .asi-telecom,
+html body.theme-cluster.page-quienes-somos .asi-telecom {
+  display: none !important;
+}
+
+html body.theme-cluster.page-asi-somos::before,
+html body.theme-cluster.page-quienes-somos::before,
+html body.page-asi-somos::before,
+html body.page-quienes-somos::before {
+  content: none !important;
+  display: none !important;
+}
+
+html body.page-asi-somos .asi-somos,
+html body.page-quienes-somos .asi-somos {
+  min-height: 100vh;
+  background: #ffffff !important;
+}
+
+html body.page-asi-somos .asi-somos__shell,
+html body.page-quienes-somos .asi-somos__shell {
+  position: relative;
+  z-index: 2;
+}
+
+html body.page-asi-somos .asi-somos__hero,
+html body.page-quienes-somos .asi-somos__hero {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid rgba(1, 37, 143, 0.12) !important;
+  box-shadow: 0 18px 48px rgba(1, 17, 66, 0.08) !important;
+}
+
+html body.page-asi-somos .asi-somos__title,
+html body.page-quienes-somos .asi-somos__title,
+html body.page-asi-somos .asi-somos__title span,
+html body.page-quienes-somos .asi-somos__title span {
+  color: #003087 !important;
+  -webkit-text-fill-color: #003087 !important;
+}
+
+html body.page-asi-somos .asi-somos__title span,
+html body.page-quienes-somos .asi-somos__title span {
+  color: #007a96 !important;
+  -webkit-text-fill-color: #007a96 !important;
+}
+
+html body.page-asi-somos .asi-somos__statement,
+html body.page-asi-somos .asi-somos__punch,
+html body.page-quienes-somos .asi-somos__statement,
+html body.page-quienes-somos .asi-somos__punch,
+html body.page-asi-somos .asi-somos__shell p,
+html body.page-quienes-somos .asi-somos__shell p {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-asi-somos .asi-somos__breadcrumb,
+html body.page-asi-somos .asi-somos__breadcrumb a,
+html body.page-asi-somos .asi-carriers__kicker,
+html body.page-quienes-somos .asi-somos__breadcrumb,
+html body.page-quienes-somos .asi-somos__breadcrumb a,
+html body.page-quienes-somos .asi-carriers__kicker {
+  color: #24384c !important;
+  -webkit-text-fill-color: #24384c !important;
 }
 
 html body.theme-cluster.page-asi-somos .asi-somos__hero {
