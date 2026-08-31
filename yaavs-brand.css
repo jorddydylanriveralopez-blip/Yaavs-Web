@@ -50,9 +50,9 @@
 }
 
 /* ─── Lienzo ─── */
-html:not(:has(body.page-asi-somos)):not(:has(body.page-quienes-somos)),
-body:not(.page-asi-somos):not(.page-quienes-somos),
-body.theme-cluster:not(.page-asi-somos):not(.page-quienes-somos),
+html:not(:has(body.page-asi-somos)):not(:has(body.page-quienes-somos)):not(:has(body.page-tiendas-map)):not(:has(body.page-tiendas)),
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas),
+body.theme-cluster:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas),
 body.page-home,
 body.page-intro-active {
   background-color: var(--yaavs-deep) !important;
@@ -66,12 +66,12 @@ body.page-intro-active {
 }
 
 /* Tipografía legible sobre el profundo */
-body:not(.page-asi-somos):not(.page-quienes-somos) h1,
-body:not(.page-asi-somos):not(.page-quienes-somos) h2,
-body:not(.page-asi-somos):not(.page-quienes-somos) h3,
-body:not(.page-asi-somos):not(.page-quienes-somos) h4,
-body:not(.page-asi-somos):not(.page-quienes-somos) h5,
-body:not(.page-asi-somos):not(.page-quienes-somos) h6 {
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) h1,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) h2,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) h3,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) h4,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) h5,
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) h6 {
   color: var(--yaavs-ink) !important;
 }
 
@@ -247,8 +247,8 @@ body.nav-open .nav-bento .bento-dot {
 .hx-services__title-kicker,
 .hx-services__title-main,
 .hx-partners__title,
-body:not(.page-asi-somos):not(.page-quienes-somos) [class*="__title"],
-body:not(.page-asi-somos):not(.page-quienes-somos) [class*="__kicker"] {
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) [class*="__title"],
+body:not(.page-asi-somos):not(.page-quienes-somos):not(.page-tiendas-map):not(.page-tiendas) [class*="__kicker"] {
   color: var(--yaavs-ink) !important;
   -webkit-text-fill-color: var(--yaavs-ink) !important;
   background: none !important;
@@ -403,17 +403,17 @@ button:not(.hero-carousel__dot):not(.tx-clients__nav):not(.asi-card):not(.hx-vin
 }
 
 /* ─── Forms (except bolsa apply — styled at end of file) ─── */
-body:not(.page-bolsa-trabajo) input,
-body:not(.page-bolsa-trabajo) textarea,
-body:not(.page-bolsa-trabajo) select {
+body:not(.page-bolsa-trabajo):not(.page-tiendas-map) input,
+body:not(.page-bolsa-trabajo):not(.page-tiendas-map) textarea,
+body:not(.page-bolsa-trabajo):not(.page-tiendas-map) select {
   background: var(--yaavs-deep) !important;
   color: var(--yaavs-ink) !important;
   border: 1px solid var(--yaavs-blue) !important;
   box-shadow: none !important;
 }
 
-body:not(.page-bolsa-trabajo) input::placeholder,
-body:not(.page-bolsa-trabajo) textarea::placeholder {
+body:not(.page-bolsa-trabajo):not(.page-tiendas-map) input::placeholder,
+body:not(.page-bolsa-trabajo):not(.page-tiendas-map) textarea::placeholder {
   color: var(--yaavs-ink-mute) !important;
 }
 
@@ -2348,6 +2348,86 @@ html body.page-home a.tx-gallery__gana:focus-visible .tx-gallery__gana-arrow {
   html body.page-home a.tx-gallery__gana::before {
     animation: none !important;
   }
+}
+
+/* ─── Tiendas / mapa: lienzo claro corporativo ─── */
+html:has(body.page-tiendas-map),
+html:has(body.page-tiendas),
+html body.theme-cluster.page-tiendas-map,
+html body.theme-cluster.page-tiendas,
+html body.page-tiendas-map,
+html body.page-tiendas {
+  background: #f4f6fa !important;
+  background-color: #f4f6fa !important;
+  background-image: none !important;
+  color: #011142 !important;
+}
+
+html body.theme-cluster.page-tiendas-map #contenido,
+html body.theme-cluster.page-tiendas #contenido,
+html body.page-tiendas-map #contenido,
+html body.page-tiendas #contenido {
+  background: transparent !important;
+  color: #011142 !important;
+}
+
+html body.page-tiendas-map h1,
+html body.page-tiendas-map h2,
+html body.page-tiendas-map h3,
+html body.page-tiendas h1,
+html body.page-tiendas h2,
+html body.page-tiendas h3 {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-tiendas-map p,
+html body.page-tiendas-map li,
+html body.page-tiendas p,
+html body.page-tiendas li {
+  color: rgba(1, 17, 66, 0.78) !important;
+}
+
+html body.page-tiendas-map .tiendas-map__panel-inner,
+html body.page-tiendas-map .tiendas-map__viewer .container,
+html body.page-tiendas-map .tiendas-map__store {
+  background: #ffffff !important;
+  box-shadow: 0 12px 40px rgba(1, 17, 66, 0.08) !important;
+}
+
+html body.page-tiendas-map .tiendas-map__nav {
+  background: linear-gradient(135deg, #eef3fb 0%, #f8faff 100%) !important;
+  box-shadow: 0 4px 16px rgba(1, 17, 66, 0.06) !important;
+}
+
+html body.page-tiendas-map .tiendas-map__title,
+html body.page-tiendas-map .tiendas-map__kicker,
+html body.page-tiendas-map .tiendas-map__nav-title {
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
+}
+
+html body.page-tiendas-map .tiendas-map__kicker {
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
+}
+
+html body.page-tiendas-map .tiendas-map__controls input {
+  background: #f8fafc !important;
+  color: #011142 !important;
+  border: 1px solid rgba(1, 37, 143, 0.14) !important;
+}
+
+html body.page-tiendas-map .tiendas-map__controls button[type="submit"] {
+  background: #01258f !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+html body.page-tiendas-map .tiendas-map__controls button[type="button"] {
+  background: #ffffff !important;
+  color: #01258f !important;
+  border: 1px solid rgba(1, 37, 143, 0.14) !important;
 }
 
 /* ─── Quiénes somos: lienzo blanco ─── */
