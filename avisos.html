@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="theme-light.css?v=14">
   <link rel="stylesheet" href="theme-day-night.css?v=7" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="interior-corporate.css?v=27">
-  <link rel="stylesheet" href="avisos-page.css?v=6">
+  <link rel="stylesheet" href="avisos-page.css?v=8">
   <noscript>
     <link rel="stylesheet" href="theme-day-night.css?v=7">
   </noscript>
@@ -45,7 +45,27 @@
   <link rel="icon" href="assets/favicon-yaavs-dark.png?v=4" type="image/png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="assets/favicon-yaavs-light.png?v=4" type="image/png">
   <link rel="shortcut icon" href="favicon.ico?v=4">
-  <link rel="stylesheet" href="yaavs-brand.css?v=83">
+  <link rel="stylesheet" href="yaavs-brand.css?v=85">
+  <style>
+    html body.theme-cluster.page-anuncios,
+    html body.theme-cluster.page-avisos {
+      background: #f5f7fb !important;
+      color: #011142 !important;
+    }
+    html body.theme-cluster.page-anuncios #contenido,
+    html body.theme-cluster.page-avisos #contenido,
+    html body.theme-cluster.page-anuncios .anuncios-feed {
+      background: #f5f7fb !important;
+      color: #011142 !important;
+    }
+    html body.theme-cluster.page-anuncios .anuncios-feed__heading,
+    html body.theme-cluster.page-anuncios .anuncios-billboard__title,
+    html body.theme-cluster.page-anuncios .anuncios-billboard__lead,
+    html body.theme-cluster.page-anuncios .anuncios-billboard__note {
+      color: #011142 !important;
+      -webkit-text-fill-color: #011142 !important;
+    }
+  </style>
 </head>
 <body class="theme-cluster page-avisos page-anuncios" data-page="avisos">
   <div id="site-header"></div>
@@ -84,83 +104,87 @@
     </section>
 
     <section class="anuncios-feed" aria-label="Últimos anuncios">
-      <div class="container">
+      <div class="container anuncios-feed__stage">
         <header class="anuncios-feed__head" data-anuncios-reveal>
           <p class="anuncios-feed__kicker">Destacado</p>
           <h2 class="anuncios-feed__heading">Lo último de la red</h2>
+          <p class="anuncios-feed__sub">Comunicados y novedades para la red YAAVS</p>
         </header>
 
-        <article class="anuncios-feature" data-anuncios-reveal>
-          <figure class="anuncios-feature__media">
-            <img
-              src="assets/servicios/activaciones.jpg"
-              alt="Activaciones RecargaKlic en punto de venta"
-              width="1200"
-              height="900"
-              loading="lazy"
-              decoding="async"
-            >
-            <span class="anuncios-feature__badge">Nuevo</span>
-          </figure>
+        <article class="anuncios-billboard" data-anuncios-reveal>
+          <div class="anuncios-billboard__frame">
+            <figure class="anuncios-billboard__visual">
+              <img
+                src="assets/servicios/activaciones.jpg"
+                alt="Activaciones RecargaKlic en punto de venta"
+                width="1600"
+                height="720"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="anuncios-billboard__badge">Nuevo</span>
+              <span class="anuncios-billboard__watermark" aria-hidden="true">YAAVS</span>
+            </figure>
 
-          <div class="anuncios-feature__body">
-            <div class="anuncios-feature__meta">
-              <time datetime="2026-06-01">1 jun 2026</time>
-              <span aria-hidden="true">·</span>
-              <span>RecargaKlic</span>
-            </div>
+            <div class="anuncios-billboard__panel">
+              <div class="anuncios-billboard__meta">
+                <time datetime="2026-06-01">1 jun 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>RecargaKlic</span>
+              </div>
 
-            <h3 class="anuncios-feature__title">
-              RecargaKlic: activaciones más rápidas en tu punto de venta
-            </h3>
+              <h3 class="anuncios-billboard__title">
+                RecargaKlic: activaciones más rápidas en tu punto de venta
+              </h3>
 
-            <p class="anuncios-feature__lead">
-              Ya está disponible la nueva versión de RecargaKlic para toda la red.
-              Activa SIM en minutos, consulta saldo y comisiones desde la app —
-              sin filas ni llamadas.
-            </p>
+              <p class="anuncios-billboard__lead">
+                Ya está disponible la nueva versión de RecargaKlic para toda la red.
+                Activa SIM en minutos, consulta saldo y comisiones desde la app —
+                sin filas ni llamadas.
+              </p>
 
-            <p class="anuncios-feature__note">
-              <strong>Vigencia:</strong> desde 1 jun 2026
-              <span aria-hidden="true">·</span>
-              <strong>Para:</strong> puntos de venta y Yaavsers activos
-            </p>
+              <p class="anuncios-billboard__note">
+                <strong>Vigencia:</strong> desde 1 jun 2026
+                <span aria-hidden="true">·</span>
+                <strong>Para:</strong> puntos de venta y Yaavsers activos
+              </p>
 
-            <div class="anuncios-feature__actions">
-              <a href="activar-chip.html" class="anuncios-feature__cta">Cómo activar un chip</a>
-              <a href="servicios.html" class="anuncios-feature__link">Ver servicios</a>
-            </div>
+              <div class="anuncios-billboard__actions">
+                <a href="activar-chip.html" class="anuncios-billboard__cta">Cómo activar un chip</a>
+                <a href="servicios.html" class="anuncios-billboard__link">Ver servicios</a>
+              </div>
 
-            <div class="anuncios-attachments" role="group" aria-label="Documentos del anuncio">
-              <p class="anuncios-attachments__label">Materiales</p>
-              <div class="anuncios-attachments__row">
-                <a
-                  class="anuncios-chip"
-                  href="assets/quienes-somos-small-1.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="assets/quienes-somos-small-1.png" alt="" width="48" height="48" loading="lazy" decoding="async">
-                  <span>Folleto</span>
-                </a>
-                <a
-                  class="anuncios-chip"
-                  href="assets/quienes-somos-small-2.png"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="assets/quienes-somos-small-2.png" alt="" width="48" height="48" loading="lazy" decoding="async">
-                  <span>Material PDV</span>
-                </a>
-                <a
-                  class="anuncios-chip anuncios-chip--pdf"
-                  href="assets/avisos/recargaklic-jun2026.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span class="anuncios-chip__pdf" aria-hidden="true">PDF</span>
-                  <span>Comunicado</span>
-                </a>
+              <div class="anuncios-attachments" role="group" aria-label="Documentos del anuncio">
+                <p class="anuncios-attachments__label">Materiales</p>
+                <div class="anuncios-attachments__row">
+                  <a
+                    class="anuncios-chip"
+                    href="assets/quienes-somos-small-1.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="assets/quienes-somos-small-1.png" alt="" width="48" height="48" loading="lazy" decoding="async">
+                    <span>Folleto</span>
+                  </a>
+                  <a
+                    class="anuncios-chip"
+                    href="assets/quienes-somos-small-2.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="assets/quienes-somos-small-2.png" alt="" width="48" height="48" loading="lazy" decoding="async">
+                    <span>Material PDV</span>
+                  </a>
+                  <a
+                    class="anuncios-chip anuncios-chip--pdf"
+                    href="assets/avisos/recargaklic-jun2026.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span class="anuncios-chip__pdf" aria-hidden="true">PDF</span>
+                    <span>Comunicado</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

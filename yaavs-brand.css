@@ -3266,38 +3266,46 @@ html body.page-anuncios #contenido {
   color: #011142 !important;
 }
 
+html body.page-anuncios .anuncios-feed,
+html body.page-anuncios .anuncios-billboard__panel,
+html body.page-anuncios .anuncios-billboard__frame {
+  background: #ffffff !important;
+  color: #011142 !important;
+}
+
 html body.page-anuncios .anuncios-feed__heading,
-html body.page-anuncios .anuncios-feature__title,
-html body.page-anuncios .anuncios-feature__lead,
-html body.page-anuncios .anuncios-feature__note,
-html body.page-anuncios .anuncios-feature__meta,
+html body.page-anuncios .anuncios-billboard__title,
+html body.page-anuncios .anuncios-billboard__lead,
+html body.page-anuncios .anuncios-billboard__note,
+html body.page-anuncios .anuncios-billboard__meta,
 html body.page-anuncios .anuncios-next {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
 }
 
-html body.page-anuncios .anuncios-feature__lead,
-html body.page-anuncios .anuncios-feature__note,
+html body.page-anuncios .anuncios-feed__sub,
+html body.page-anuncios .anuncios-billboard__lead,
+html body.page-anuncios .anuncios-billboard__note,
 html body.page-anuncios .anuncios-next {
   color: rgba(1, 17, 66, 0.72) !important;
   -webkit-text-fill-color: rgba(1, 17, 66, 0.72) !important;
 }
 
 html body.page-anuncios .anuncios-feed__kicker,
-html body.page-anuncios .anuncios-feature__meta,
+html body.page-anuncios .anuncios-billboard__meta,
 html body.page-anuncios .anuncios-attachments__label {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
 }
 
-html body.page-anuncios .anuncios-feature__cta,
-html body.page-anuncios a.anuncios-feature__cta {
+html body.page-anuncios .anuncios-billboard__cta,
+html body.page-anuncios a.anuncios-billboard__cta {
   background: #01258f !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-html body.page-anuncios .anuncios-feature__link {
+html body.page-anuncios .anuncios-billboard__link {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
 }
