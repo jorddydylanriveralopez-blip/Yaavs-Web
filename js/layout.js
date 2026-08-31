@@ -231,8 +231,12 @@
   <img class="site-float site-float--phone-r" src="assets/floats/float-phone.svg" alt="" width="40" height="70" loading="lazy" decoding="async">
   <img class="site-float site-float--signal-r" src="assets/floats/float-signal.svg" alt="" width="48" height="48" loading="lazy" decoding="async">
 </div>
-<footer class="site-footer">
+<footer class="site-footer site-footer--pro">
+  <div class="site-footer__shimmer" aria-hidden="true"></div>
   <div class="site-footer__glow" aria-hidden="true"></div>
+  <div class="site-footer__orb site-footer__orb--a" aria-hidden="true"></div>
+  <div class="site-footer__orb site-footer__orb--b" aria-hidden="true"></div>
+  <div class="site-footer__orb site-footer__orb--c" aria-hidden="true"></div>
   <div class="site-footer__mesh" aria-hidden="true"></div>
   <div class="container site-footer__inner">
     <div class="footer-top">
@@ -541,7 +545,7 @@
     if (document.querySelector('link[data-site-footer-css]')) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "site-footer.css?v=1";
+    link.href = "site-footer.css?v=2";
     link.dataset.siteFooterCss = "true";
     document.head.appendChild(link);
   }
@@ -588,7 +592,7 @@
 
   Promise.all([
     loadPartial("partials/header.html?v=37", headerMount),
-    loadPartial("partials/footer.html?v=18", footerMount),
+    loadPartial("partials/footer.html?v=19", footerMount),
     loadPartial("partials/trust-strip.html", trustMount),
     loadPartial("partials/page-cta.html?v=5", ctaMount),
   ]).then(async () => {
@@ -604,6 +608,7 @@
     initPostpagoNav();
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+    await loadScriptOnce("js/footer.js?v=1", "data-footer-js");
     document.dispatchEvent(new CustomEvent("yaavs:layout-ready"));
     initPageEnter();
     void initYaavserLead();
