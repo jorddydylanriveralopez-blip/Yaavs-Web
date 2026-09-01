@@ -1,6 +1,6 @@
 {
   "name": "Yaavs-Web",
-  "install": "npm config set prefix \"$HOME/.npm-global\" && npm install -g netlify-cli@27.4.2",
+  "install": "npm install -g --prefix \"$HOME/.npm-global\" netlify-cli@27.4.2",
   "terminals": [
     {
       "name": "netlify-dev",
