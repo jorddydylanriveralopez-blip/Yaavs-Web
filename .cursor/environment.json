@@ -1,0 +1,11 @@
+{
+  "name": "Yaavs-Web",
+  "install": "npm install -g --prefix \"$HOME/.npm-global\" netlify-cli@27.4.2",
+  "terminals": [
+    {
+      "name": "netlify-dev",
+      "command": "export PATH=\"$HOME/.npm-global/bin:$PATH\" && cd /workspace && netlify dev --offline"
+    }
+  ],
+  "ports": [8888]
+}
