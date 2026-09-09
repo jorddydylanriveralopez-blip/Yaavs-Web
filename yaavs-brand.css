@@ -1627,17 +1627,17 @@ html body.page-home .hx-services[data-hx-band="light"] {
   border: none !important;
 }
 
-html body.page-home .hx-services .hx-services__title,
-html body.page-home .hx-services .hx-services__title-main,
-html body.page-home .hx-services .hx-services__head h2 {
+html body.page-home #servicios-preview .hx-services__title,
+html body.page-home #servicios-preview .hx-services__title-main,
+html body.page-home #servicios-preview .hx-services__head h2 {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
   background: none !important;
   filter: none !important;
 }
 
-html body.page-home .hx-services .hx-services__title-kicker,
-html body.page-home .hx-services .hx-services__cyan {
+html body.page-home #servicios-preview .hx-services__title-kicker,
+html body.page-home #servicios-preview .hx-services__cyan {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
   background: none !important;
@@ -1647,13 +1647,13 @@ html body.page-home .hx-services .hx-services__tap-hint {
   display: block !important;
   margin: 10px 0 0;
   text-align: center;
-  color: #7dd3ea !important;
-  -webkit-text-fill-color: #7dd3ea !important;
+  color: #01258f !important;
+  -webkit-text-fill-color: #01258f !important;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.9;
+  opacity: 0.82;
   animation: yaavs-svc-hint 1.8s ease-in-out infinite;
 }
 
@@ -1756,9 +1756,9 @@ html body.page-home section#servicios-preview {
   isolation: isolate;
   overflow: visible !important;
   scroll-margin-top: calc(var(--header-bar-h, 72px) + env(safe-area-inset-top, 0px) + 12px);
-  background: linear-gradient(160deg, #011142 0%, #01258f 55%, #011142 100%) !important;
-  background-color: #011142 !important;
-  background-image: linear-gradient(160deg, #011142 0%, #01258f 55%, #011142 100%) !important;
+  background: linear-gradient(155deg, #eef3fb 0%, #f7f9fd 45%, #eaf1fa 100%) !important;
+  background-color: #f2f6fc !important;
+  background-image: linear-gradient(155deg, #eef3fb 0%, #f7f9fd 45%, #eaf1fa 100%) !important;
 }
 
 html body.page-home #servicios-preview > .hx-services__photo {
@@ -1768,14 +1768,18 @@ html body.page-home #servicios-preview > .hx-services__photo {
   pointer-events: none !important;
   display: block !important;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(0, 212, 255, 0.16), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(0, 212, 255, 0.1), transparent 55%),
-    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 64px),
-    linear-gradient(160deg, #011142 0%, #01258f 55%, #011142 100%) !important;
+    radial-gradient(ellipse 55% 45% at 8% 10%, rgba(1, 37, 143, 0.14), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 95% 12%, rgba(0, 168, 210, 0.12), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 90% 92%, rgba(1, 37, 143, 0.1), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 5% 95%, rgba(0, 168, 210, 0.08), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(1, 37, 143, 0.025) 0px, rgba(1, 37, 143, 0.025) 1px, transparent 1px, transparent 56px),
+    linear-gradient(155deg, #eef3fb 0%, #f7f9fd 45%, #eaf1fa 100%) !important;
   background-image:
-    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(0, 212, 255, 0.16), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(0, 212, 255, 0.1), transparent 55%),
-    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 64px) !important;
+    radial-gradient(ellipse 55% 45% at 8% 10%, rgba(1, 37, 143, 0.14), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 95% 12%, rgba(0, 168, 210, 0.12), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 90% 92%, rgba(1, 37, 143, 0.1), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 5% 95%, rgba(0, 168, 210, 0.08), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(1, 37, 143, 0.025) 0px, rgba(1, 37, 143, 0.025) 1px, transparent 1px, transparent 56px) !important;
   filter: none;
   opacity: 1 !important;
   animation: yaavs-svc-glow 14s ease-in-out infinite alternate;
