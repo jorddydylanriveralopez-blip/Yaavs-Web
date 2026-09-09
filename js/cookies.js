@@ -37,7 +37,7 @@
     if (document.querySelector('link[data-yaavs-cookies-css]')) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "cookies.css?v=4";
+    link.href = "cookies.css?v=5";
     link.dataset.yaavsCookiesCss = "true";
     document.head.appendChild(link);
   }
