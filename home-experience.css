@@ -9246,7 +9246,7 @@ body.has-hx-stat-panel {
   .hx-yaavser-band__media img,
   .hx-yaavser-band__fallback,
   .hx-yaavser-band__video {
-    object-position: 70% 20%;
+    object-position: center 15%;
   }
 
   .hx-yaavser-band__veil {
