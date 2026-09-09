@@ -2593,7 +2593,14 @@
       video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
-      video.preload = cfg.mp4 ? (autoMobileVideo ? "auto" : "metadata") : "none";
+      /* "auto" siempre en desktop: si se deja en "metadata", el navegador
+         no descarga el video hasta el primer hover, y esos ~300-800ms de
+         descarga+decode se ven como un hueco vacío (el fondo azul del item)
+         antes de que el video tenga un frame que mostrar. Con "auto" el
+         navegador puede empezar a bajarlo en cuanto se crea el <video>
+         (el deck ya se carga lazy al acercarse a la sección), así casi
+         siempre está listo para el primer hover real del usuario. */
+      video.preload = cfg.mp4 ? "auto" : "none";
       /* Sin poster del <video>: evita flash de foto distinta al icono antes del primer frame. */
       if (cfg.mp4) video.removeAttribute("poster");
       else if (cfg.poster) video.poster = cfg.poster;
@@ -2635,11 +2642,16 @@
         },
         enter() {
           if (!deckVideosEnabled() || !deckHoverMq.matches) return;
-          /* Cancela el corte pendiente si el mouse vuelve a esta misma
-             tarjeta rápido (ej. se resbaló un pixel a la vecina y regresó). */
+          /* Si el corte de stopDeckMedia todavía no se ejecutó (mouse
+             resbaló un pixel a la vecina y volvió rápido), solo cancela
+             el timer: el video sigue con is-deck-video-on puesto, así que
+             NO hay que llamar playDeckMedia de nuevo — eso reiniciaría el
+             video desde cero (playDeckMedia empieza quitando
+             is-deck-video-on) y se vería el mismo hueco vacío otra vez. */
           if (leaveTimer) {
             clearTimeout(leaveTimer);
             leaveTimer = null;
+            if (item.classList.contains("is-deck-video-on")) return;
           }
           playDeckMedia(item);
         },
