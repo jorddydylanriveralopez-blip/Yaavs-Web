@@ -2622,6 +2622,7 @@
       }
 
       let loaded = false;
+      let leaveTimer = null;
       const handlers = {
         loadVideo() {
           if ((!deckVideosEnabled() && !autoMobileVideo) || cfg.gif || !cfg.mp4) return null;
@@ -2634,13 +2635,27 @@
         },
         enter() {
           if (!deckVideosEnabled() || !deckHoverMq.matches) return;
+          /* Cancela el corte pendiente si el mouse vuelve a esta misma
+             tarjeta rápido (ej. se resbaló un pixel a la vecina y regresó). */
+          if (leaveTimer) {
+            clearTimeout(leaveTimer);
+            leaveTimer = null;
+          }
           playDeckMedia(item);
         },
         leave(event) {
           if (event?.type === "focusout" && item.contains(event.relatedTarget)) return;
           if (!deckHoverMq.matches && item.classList.contains("is-deck-preview")) return;
           if (autoMobileVideo) return;
-          stopDeckMedia(item);
+          /* Colchón de 280ms: en trackpad es fácil que el cursor se
+             resbale un instante a la tarjeta vecina y vuelva. Sin este
+             margen el video se corta y la tarjeta se ve vacía antes de
+             que se note el efecto. Si el mouse no vuelve, se detiene igual. */
+          if (leaveTimer) clearTimeout(leaveTimer);
+          leaveTimer = window.setTimeout(() => {
+            leaveTimer = null;
+            stopDeckMedia(item);
+          }, 280);
         },
       };
       squareHandlers.set(item, handlers);
