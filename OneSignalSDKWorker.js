@@ -48,6 +48,23 @@ function matchCached(request) {
   });
 }
 
+/* Cache API rejects 206 Partial Content responses (thrown as an unhandled
+   promise rejection): "Failed to execute 'put' on 'Cache': Partial response
+   (status code 206) is unsupported". Browsers request video/audio with
+   Range headers (for streaming/seek), and the server replies 206 — so any
+   media file matched by the /assets/ rule below would trigger this on every
+   play. Guard every cache.put with this helper instead of calling it raw. */
+function safeCachePut(request, response) {
+  if (!response || !response.ok || response.status === 206) return;
+  const copy = response.clone();
+  caches
+    .open(CACHE_VERSION)
+    .then((cache) => cache.put(request, copy))
+    .catch(() => {
+      /* ignore — caching is a best-effort optimization, never block the response */
+    });
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -79,8 +96,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
+          safeCachePut(request, response);
           return response;
         })
         .catch(async () => {
@@ -95,10 +111,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
-          }
+          safeCachePut(request, response);
           return response;
         })
         .catch(() => matchCached(request))
@@ -111,14 +124,19 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
-          }
+          safeCachePut(request, response);
           return response;
         })
         .catch(() => matchCached(request))
     );
+    return;
+  }
+
+  /* Video/audio: always network, never touch the Cache API. Range requests
+     (streaming/seek) get a 206 back, which Cache API can't store anyway —
+     skip the whole cache dance so playback never depends on it. */
+  if (/\.(mp4|webm|mov|m4v|mp3)$/i.test(url.pathname)) {
+    event.respondWith(fetch(request));
     return;
   }
 
@@ -137,10 +155,7 @@ self.addEventListener("fetch", (event) => {
       event.respondWith(
         fetch(request)
           .then((response) => {
-            if (response && response.ok) {
-              const copy = response.clone();
-              caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
-            }
+            safeCachePut(request, response);
             return response;
           })
           .catch(() => matchCached(request))
@@ -152,10 +167,7 @@ self.addEventListener("fetch", (event) => {
       matchCached(request).then((cached) => {
         const network = fetch(request)
           .then((response) => {
-            if (response && response.ok) {
-              const copy = response.clone();
-              caches.open(CACHE_VERSION).then((cache) => cache.put(request, copy));
-            }
+            safeCachePut(request, response);
             return response;
           })
           .catch(() => cached);
