@@ -672,7 +672,7 @@
   function initCookies() {
     if (document.querySelector("script[data-yaavs-cookies]")) return;
     const s = document.createElement("script");
-    s.src = "js/cookies.js?v=1";
+    s.src = "js/cookies.js?v=2";
     s.defer = true;
     s.dataset.yaavsCookies = "true";
     document.body.appendChild(s);
