@@ -1,16 +1,16 @@
 /* ============================================================
-   YVS Services Deck v1 — reescritura aislada del deck de servicios.
-   Prefijo "yvs-" único: nunca colisiona con las reglas globales de
-   yaavs-brand.css (que usan [class*="cookie"], [class*="__title"],
-   [class*="__kicker"], [class*="__btn"], [class*="__cta"] y pisan
-   cualquier clase que contenga esas palabras). Sin !important salvo
-   donde se anota por qué.
+   YVS Services Deck v2 — dinámico: bento grid, colores por categoría,
+   textura sutil, glow de acento en hover. Sigue aislado con prefijo
+   "yvs-" (verificado contra todos los selectores [class*="..."] de
+   yaavs-brand.css — cookie, __title, __kicker, __btn, __cta, card,
+   panel, modal — cero colisiones).
    ============================================================ */
 
 .yvs-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
+  grid-auto-flow: dense;
+  gap: 16px;
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
@@ -18,27 +18,96 @@
   box-sizing: border-box;
 }
 
+/* La primera tarjeta (RecargaKlic) destaca en 2x2 — rompe la
+   monotonía del grid uniforme sin dejar huecos gracias a dense. */
+.yvs-tile--hero {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
 .yvs-tile {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: flex-end;
   aspect-ratio: 1 / 1;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  background: #0d1a4d;
   text-decoration: none;
   color: #ffffff;
   isolation: isolate;
-  /* Elevación en hover vía box-shadow/border, NUNCA transform: el
-     <video> anidado dentro de un ancestro con transform activo es lo
-     que causaba que Chrome dejara de pintar su frame (confirmado con
-     diagnóstico en vivo: video.currentTime avanzaba, opacity:1, pero
-     no se componía visualmente en pantalla mientras el padre tenía
-     transform: scale(...) aplicado). */
-  box-shadow: 0 10px 24px rgba(1, 17, 66, 0.16);
-  border: 1px solid rgba(1, 37, 143, 0.12);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-  animation: yvs-tile-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Gradiente base + variantes por acento vía --yvs-a1/--yvs-a2,
+     definidas por [data-accent] más abajo. Sin transform en reposo
+     ni en hover: es lo que rompía el pintado del <video> anidado. */
+  background:
+    radial-gradient(ellipse 140% 100% at 15% 0%, color-mix(in srgb, var(--yvs-a1, #01258f) 55%, transparent), transparent 60%),
+    linear-gradient(155deg, var(--yvs-a2, #011142) 0%, #050e33 65%, #030820 100%);
+  box-shadow: 0 10px 26px rgba(1, 17, 66, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Solo la animación de entrada (una vez, al cargar) toca "transform" en
+     .yvs-tile. Nunca se anima transform de forma continua ni en hover aquí:
+     el <video> anidado va dentro de este mismo elemento, y un ancestro con
+     transform activo (incluso solo animándose) es justo lo que rompía el
+     pintado del video en Chrome en la versión anterior. El "pulso" de vida
+     va en el glow (::after), que es un pseudo-elemento hermano del video,
+     no un ancestro — animarlo a él es seguro. */
+  animation: yvs-tile-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: calc(var(--yvs-i, 0) * 0.05s);
+}
+
+/* Textura fina de líneas diagonales — la misma idea sutil que ya usa
+   el fondo de la sección de servicios, para que la tarjeta se sienta
+   parte del mismo sistema visual sin heredar CSS ajeno. */
+.yvs-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.035) 0px,
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+  pointer-events: none;
+}
+
+/* Glow de esquina con el color de acento — visible siempre, se
+   intensifica en hover. Es lo que le da personalidad por categoría. */
+.yvs-tile::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 65%;
+  height: 65%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--yvs-a1, #01258f) 70%, transparent) 0%, transparent 70%);
+  opacity: 0.5;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+  animation: yvs-glow-pulse 4.5s ease-in-out infinite;
+  animation-delay: calc(var(--yvs-i, 0) * 0.2s);
+}
+
+@keyframes yvs-glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.yvs-tile:hover,
+.yvs-tile:focus-visible {
+  box-shadow: 0 20px 44px rgba(1, 17, 66, 0.32), 0 0 0 1px color-mix(in srgb, var(--yvs-a1, #01258f) 55%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: color-mix(in srgb, var(--yvs-a1, #01258f) 60%, transparent);
+  outline: none;
+}
+
+.yvs-tile:hover::after,
+.yvs-tile:focus-visible::after {
+  opacity: 0.85;
+  transform: scale(1.15);
 }
 
 @keyframes yvs-tile-in {
@@ -46,20 +115,27 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-.yvs-tile:hover,
-.yvs-tile:focus-visible {
-  box-shadow: 0 18px 36px rgba(1, 17, 66, 0.28);
-  border-color: rgba(0, 212, 255, 0.35);
-  outline: none;
-}
-
 .yvs-tile__icon {
   position: absolute;
   inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.2s ease;
+  padding: 22%;
+  box-sizing: border-box;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yvs-tile--hero .yvs-tile__icon {
+  padding: 16%;
+}
+
+.yvs-tile:hover .yvs-tile__icon,
+.yvs-tile:focus-visible .yvs-tile__icon {
+  transform: scale(1.06);
 }
 
 .yvs-tile.is-playing .yvs-tile__icon {
@@ -69,13 +145,13 @@
 .yvs-tile__video {
   position: absolute;
   inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
-  background: #0d1a4d;
 }
 
 .yvs-tile.is-playing .yvs-tile__video {
@@ -83,13 +159,11 @@
 }
 
 .yvs-tile__overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   z-index: 2;
+  width: 100%;
   padding: 14px 14px 12px;
-  background: linear-gradient(180deg, transparent 0%, rgba(1, 17, 66, 0.55) 55%, rgba(1, 17, 66, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(1, 8, 32, 0.6) 45%, rgba(1, 8, 32, 0.92) 100%);
   transform: translateY(100%);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -108,6 +182,10 @@
   margin-bottom: 2px;
 }
 
+.yvs-tile--hero .yvs-tile__name {
+  font-size: 1.15rem;
+}
+
 .yvs-tile__desc {
   display: none;
 }
@@ -116,7 +194,7 @@
   display: block;
   font-size: 0.72rem;
   font-weight: 700;
-  color: #7ee4ff;
+  color: var(--yvs-a1, #7ee4ff);
   margin-top: 2px;
 }
 
@@ -124,20 +202,34 @@
    cuando el usuario no está haciendo hover — solo el nombre, abajo. */
 .yvs-tile__label {
   position: absolute;
-  left: 10px;
-  bottom: 10px;
-  z-index: 1;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
   font-size: 0.78rem;
   font-weight: 800;
   color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   transition: opacity 0.2s ease;
+}
+
+.yvs-tile--hero .yvs-tile__label {
+  font-size: 1rem;
 }
 
 .yvs-tile:hover .yvs-tile__label,
 .yvs-tile:focus-visible .yvs-tile__label {
   opacity: 0;
 }
+
+/* ── Paleta de acentos por categoría — todas dentro de la familia de
+   marca (azules), con un tinte distinto para dar variedad sin perder
+   coherencia. Se asignan por [data-accent] en el HTML. ── */
+.yvs-tile[data-accent="cyan"]   { --yvs-a1: #00b8e6; --yvs-a2: #012a5e; }
+.yvs-tile[data-accent="navy"]   { --yvs-a1: #3b5bdb; --yvs-a2: #050b2e; }
+.yvs-tile[data-accent="teal"]   { --yvs-a1: #00c9a7; --yvs-a2: #04203a; }
+.yvs-tile[data-accent="gold"]   { --yvs-a1: #e0a940; --yvs-a2: #241a05; }
+.yvs-tile[data-accent="coral"]  { --yvs-a1: #ff6b6b; --yvs-a2: #2a0e14; }
+.yvs-tile[data-accent="violet"] { --yvs-a1: #9b6bff; --yvs-a2: #180b34; }
 
 @media (max-width: 1100px) {
   .yvs-grid {
@@ -150,12 +242,19 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
   }
+  .yvs-tile--hero {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
   .yvs-tile__overlay {
     transform: translateY(0);
-    background: linear-gradient(180deg, transparent 40%, rgba(1, 17, 66, 0.85) 100%);
+    background: linear-gradient(180deg, transparent 35%, rgba(1, 8, 32, 0.92) 100%);
   }
   .yvs-tile__label {
     display: none;
+  }
+  .yvs-tile {
+    animation: yvs-tile-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 
@@ -163,6 +262,11 @@
   .yvs-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+  }
+  .yvs-tile--hero {
+    grid-column: span 2;
+    grid-row: span 1;
+    aspect-ratio: 2 / 1;
   }
   .yvs-tile__name {
     font-size: 0.8rem;
@@ -173,7 +277,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .yvs-tile {
+  .yvs-tile,
+  .yvs-tile::after {
     animation: none;
   }
 }
