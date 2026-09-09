@@ -37,7 +37,7 @@
     if (document.querySelector('link[data-yaavs-cookies-css]')) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "cookies.css?v=3";
+    link.href = "cookies.css?v=4";
     link.dataset.yaavsCookiesCss = "true";
     document.head.appendChild(link);
   }
@@ -101,6 +101,7 @@
   function buildManageButton() {
     const btn = document.createElement("button");
     btn.type = "button";
+    btn.id = "yaavs-cookies-manage";
     btn.className = "yaavs-cookies__manage";
     btn.hidden = true;
     btn.textContent = "Cookies";

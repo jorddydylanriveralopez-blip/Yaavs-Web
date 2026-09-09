@@ -1,5 +1,8 @@
 /* Cookie consent — YAAVS */
-.yaavs-cookies {
+/* Nota: los selectores usan #yaavs-cookies como prefijo para ganar en
+   especificidad sobre las reglas globales con !important de yaavs-brand.css
+   (ej. [class*="__btn"]:not(...):not(...) tiene alta especificidad). */
+#yaavs-cookies.yaavs-cookies {
   position: fixed;
   left: max(12px, env(safe-area-inset-left, 0px));
   right: max(12px, env(safe-area-inset-right, 0px));
@@ -9,7 +12,7 @@
   margin: 0 auto;
   padding: 24px 24px 20px;
   border-radius: 24px;
-  background: linear-gradient(135deg, rgba(1, 37, 143, 0.95) 0%, rgba(0, 48, 135, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(1, 37, 143, 0.95) 0%, rgba(0, 48, 135, 0.95) 100%) !important;
   border: 2px solid rgba(0, 212, 255, 0.3);
   box-shadow:
     0 22px 60px rgba(4, 16, 31, 0.4),
@@ -28,7 +31,7 @@
   -webkit-backdrop-filter: blur(10px);
 }
 
-.yaavs-cookies.is-open {
+#yaavs-cookies.yaavs-cookies.is-open {
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
@@ -38,7 +41,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.yaavs-cookies__kicker {
+#yaavs-cookies .yaavs-cookies__kicker {
   margin: 0 0 8px;
   font-size: 0.75rem;
   font-weight: 900;
@@ -51,7 +54,7 @@
   color: transparent !important;
 }
 
-.yaavs-cookies__title {
+#yaavs-cookies .yaavs-cookies__title {
   margin: 0 0 12px;
   font-size: 1.28rem;
   font-weight: 900;
@@ -63,14 +66,14 @@
   color: transparent !important;
 }
 
-.yaavs-cookies__text {
+#yaavs-cookies .yaavs-cookies__text {
   margin: 0 0 16px;
   font-size: 0.95rem;
   line-height: 1.6;
   color: #e0e7ff !important;
 }
 
-.yaavs-cookies__text a {
+#yaavs-cookies .yaavs-cookies__text a {
   color: #00d4ff !important;
   font-weight: 700;
   text-decoration: none;
@@ -78,41 +81,41 @@
   transition: all 0.3s ease;
 }
 
-.yaavs-cookies__text a:hover {
+#yaavs-cookies .yaavs-cookies__text a:hover {
   border-bottom-color: #00d4ff;
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
-.yaavs-cookies__options {
+#yaavs-cookies .yaavs-cookies__options {
   display: grid;
   gap: 10px;
   margin: 0 0 18px;
   padding: 14px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 255, 136, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 255, 136, 0.08) 100%) !important;
   border: 1.5px solid rgba(0, 212, 255, 0.2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-.yaavs-cookies__option {
+#yaavs-cookies .yaavs-cookies__option {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #e0e7ff;
+  color: #e0e7ff !important;
   padding: 8px;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
-.yaavs-cookies__option:hover {
-  background: rgba(0, 212, 255, 0.1);
+#yaavs-cookies .yaavs-cookies__option:hover {
+  background: rgba(0, 212, 255, 0.1) !important;
   border-radius: 12px;
 }
 
-.yaavs-cookies__option input {
+#yaavs-cookies .yaavs-cookies__option input {
   margin-top: 4px;
   accent-color: #00d4ff;
   cursor: pointer;
@@ -120,32 +123,32 @@
   height: 18px;
 }
 
-.yaavs-cookies__option strong {
+#yaavs-cookies .yaavs-cookies__option strong {
   display: block;
   color: #ffffff !important;
   font-weight: 800;
   margin-bottom: 2px;
 }
 
-.yaavs-cookies__option span {
+#yaavs-cookies .yaavs-cookies__option span {
   display: block;
   color: #b8c5d6 !important;
   font-size: 0.85rem;
   line-height: 1.4;
 }
 
-.yaavs-cookies__actions {
+#yaavs-cookies .yaavs-cookies__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.yaavs-cookies__btn {
-  appearance: none;
-  border: 0;
+#yaavs-cookies .yaavs-cookies__btn {
+  appearance: none !important;
+  border: 0 !important;
   min-height: 44px;
   padding: 0 18px;
-  border-radius: 12px;
+  border-radius: 12px !important;
   font: inherit;
   font-size: 0.88rem;
   font-weight: 800;
@@ -160,45 +163,49 @@
   letter-spacing: 0.5px;
 }
 
-.yaavs-cookies__btn:hover,
-.yaavs-cookies__btn:focus-visible {
+#yaavs-cookies .yaavs-cookies__btn:hover,
+#yaavs-cookies .yaavs-cookies__btn:focus-visible {
   transform: translateY(-2px);
   outline: none;
 }
 
-.yaavs-cookies__btn--primary {
+#yaavs-cookies .yaavs-cookies__btn--primary {
   background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%) !important;
   background-image: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%) !important;
+  background-color: transparent !important;
   color: #011142 !important;
   font-weight: 900;
   border: none !important;
   box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3) !important;
 }
 
-.yaavs-cookies__btn--primary:hover {
+#yaavs-cookies .yaavs-cookies__btn--primary:hover {
   box-shadow:
     0 12px 30px rgba(0, 212, 255, 0.4),
     0 0 20px rgba(0, 212, 255, 0.2) !important;
 }
 
-.yaavs-cookies__btn--ghost {
+#yaavs-cookies .yaavs-cookies__btn--ghost {
   background: rgba(255, 255, 255, 0.12) !important;
   background-image: none !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
   color: #ffffff !important;
   border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-.yaavs-cookies__btn--ghost:hover {
+#yaavs-cookies .yaavs-cookies__btn--ghost:hover {
   background: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
   border-color: rgba(255, 255, 255, 0.4) !important;
   box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15) !important;
 }
 
-.yaavs-cookies__btn--link {
+#yaavs-cookies .yaavs-cookies__btn--link {
   background: transparent !important;
   background-image: none !important;
+  background-color: transparent !important;
   color: #00d4ff !important;
   text-decoration: none;
   min-height: auto;
@@ -208,22 +215,23 @@
   border-bottom: 2px solid rgba(0, 212, 255, 0.3) !important;
 }
 
-.yaavs-cookies__btn--link:hover {
-  border-bottom-color: #00d4ff;
+#yaavs-cookies .yaavs-cookies__btn--link:hover {
+  border-bottom-color: #00d4ff !important;
   text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
 }
 
-.yaavs-cookies__manage {
+#yaavs-cookies-manage.yaavs-cookies__manage {
   position: fixed;
   left: max(12px, env(safe-area-inset-left, 0px));
   bottom: max(12px, env(safe-area-inset-bottom, 0px));
   z-index: 11990;
   min-height: 42px;
   padding: 0 16px;
-  border-radius: 999px;
+  border-radius: 999px !important;
   border: 1.5px solid rgba(0, 212, 255, 0.35) !important;
   background: linear-gradient(135deg, rgba(1, 37, 143, 0.9) 0%, rgba(0, 48, 135, 0.9) 100%) !important;
   background-image: linear-gradient(135deg, rgba(1, 37, 143, 0.9) 0%, rgba(0, 48, 135, 0.9) 100%) !important;
+  background-color: transparent !important;
   color: #ffffff !important;
   font: inherit;
   font-size: 0.8rem;
@@ -232,25 +240,25 @@
   letter-spacing: 0.5px;
   box-shadow:
     0 10px 28px rgba(1, 17, 66, 0.3),
-    0 0 20px rgba(0, 212, 255, 0.1);
+    0 0 20px rgba(0, 212, 255, 0.1) !important;
   cursor: pointer;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
-.yaavs-cookies__manage:hover,
-.yaavs-cookies__manage:focus-visible {
-  border-color: rgba(0, 212, 255, 0.7);
+#yaavs-cookies-manage.yaavs-cookies__manage:hover,
+#yaavs-cookies-manage.yaavs-cookies__manage:focus-visible {
+  border-color: rgba(0, 212, 255, 0.7) !important;
   box-shadow:
     0 12px 32px rgba(1, 17, 66, 0.35),
-    0 0 30px rgba(0, 212, 255, 0.25);
+    0 0 30px rgba(0, 212, 255, 0.25) !important;
   transform: translateY(-2px);
   outline: none;
 }
 
 @media (min-width: 720px) {
-  .yaavs-cookies {
+  #yaavs-cookies.yaavs-cookies {
     left: auto;
     right: max(20px, env(safe-area-inset-right, 0px));
     bottom: max(20px, env(safe-area-inset-bottom, 0px));
@@ -259,7 +267,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .yaavs-cookies {
+  #yaavs-cookies.yaavs-cookies {
     transition: none;
   }
 }
