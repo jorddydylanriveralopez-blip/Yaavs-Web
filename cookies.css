@@ -1,11 +1,13 @@
 /* Cookie consent — YAAVS */
 /* Nota: los selectores usan #yaavs-cookies como prefijo para ganar en
-   especificidad sobre las reglas globales con !important de yaavs-brand.css
-   (ej. [class*="__btn"]:not(...):not(...) tiene alta especificidad).
-   También se fuerza -webkit-text-fill-color junto con color: yaavs-brand.css
-   tiene reglas [class*="__title"]/[class*="__kicker"] que fijan
-   -webkit-text-fill-color:#fff !important, y esa propiedad gana sobre "color"
-   en el pintado visual aunque "color" ya esté ganando en el cascade normal.
+   especificidad sobre las reglas globales con !important de yaavs-brand.css.
+   IMPORTANTE: yaavs-brand.css tiene esta regla que afecta a CUALQUIER
+   elemento cuya clase contenga la palabra "cookie" (todas las nuestras):
+     [class*="cookie"] { background: var(--yaavs-deep) !important;
+       color: var(--yaavs-ink) !important; border: 1px solid var(--yaavs-blue) !important; }
+   Por eso TODO elemento interno debe declarar explícitamente su propio
+   background/border/color/-webkit-text-fill-color (aunque sea "none"),
+   nunca dejarlos implícitos, o esa regla global los pinta de azul oscuro.
    Paleta alineada a la marca real del sitio: #011142 (profundo), #01258f (azul), blanco. */
 #yaavs-cookies.yaavs-cookies {
   position: fixed;
@@ -18,7 +20,7 @@
   padding: 22px 22px 18px;
   border-radius: 18px;
   background: #ffffff !important;
-  border: 1px solid rgba(1, 37, 143, 0.14);
+  border: 1px solid rgba(1, 37, 143, 0.14) !important;
   box-shadow: 0 20px 50px rgba(1, 17, 66, 0.18);
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
@@ -46,6 +48,7 @@
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
   background: none !important;
+  border: none !important;
 }
 
 #yaavs-cookies .yaavs-cookies__title {
@@ -56,6 +59,7 @@
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
   background: none !important;
+  border: none !important;
 }
 
 #yaavs-cookies .yaavs-cookies__text {
@@ -64,11 +68,15 @@
   line-height: 1.55;
   color: #4a5877 !important;
   -webkit-text-fill-color: #4a5877 !important;
+  background: none !important;
+  border: none !important;
 }
 
 #yaavs-cookies .yaavs-cookies__text a {
   color: #01258f !important;
   -webkit-text-fill-color: #01258f !important;
+  background: none !important;
+  border: none !important;
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -86,7 +94,7 @@
   padding: 4px;
   border-radius: 12px;
   background: rgba(1, 37, 143, 0.03) !important;
-  border: 1px solid rgba(1, 37, 143, 0.1);
+  border: 1px solid rgba(1, 37, 143, 0.1) !important;
 }
 
 #yaavs-cookies .yaavs-cookies__option {
@@ -97,6 +105,8 @@
   line-height: 1.4;
   color: #4a5877 !important;
   -webkit-text-fill-color: #4a5877 !important;
+  background: transparent !important;
+  border: none !important;
   padding: 10px 8px;
   border-radius: 8px;
   transition: background 0.2s ease;
@@ -119,6 +129,8 @@
   display: block;
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
+  background: none !important;
+  border: none !important;
   font-weight: 700;
   font-size: 0.88rem;
   margin-bottom: 1px;
@@ -128,6 +140,8 @@
   display: block;
   color: #6b7690 !important;
   -webkit-text-fill-color: #6b7690 !important;
+  background: none !important;
+  border: none !important;
   font-size: 0.8rem;
   line-height: 1.35;
 }
@@ -137,6 +151,8 @@
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+  background: none !important;
+  border: none !important;
 }
 
 #yaavs-cookies .yaavs-cookies__btn {
