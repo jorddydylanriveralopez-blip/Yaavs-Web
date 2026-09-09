@@ -15,7 +15,7 @@
     0 22px 60px rgba(4, 16, 31, 0.4),
     0 0 40px rgba(0, 212, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  color: #ffffff !important;
   transform: translateY(110%);
   opacity: 0;
   visibility: hidden;
@@ -44,10 +44,11 @@
   font-weight: 900;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #00d4ff 0%, #00ff88 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(90deg, #00d4ff 0%, #00ff88 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
 }
 
 .yaavs-cookies__title {
@@ -55,22 +56,22 @@
   font-size: 1.28rem;
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: #ffffff;
-  background: linear-gradient(90deg, #ffffff 0%, #e0f2ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(90deg, #ffffff 0%, #e0f2ff 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
 }
 
 .yaavs-cookies__text {
   margin: 0 0 16px;
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #e0e7ff;
+  color: #e0e7ff !important;
 }
 
 .yaavs-cookies__text a {
-  color: #00d4ff;
+  color: #00d4ff !important;
   font-weight: 700;
   text-decoration: none;
   border-bottom: 2px solid rgba(0, 212, 255, 0.4);
@@ -121,14 +122,14 @@
 
 .yaavs-cookies__option strong {
   display: block;
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: 800;
   margin-bottom: 2px;
 }
 
 .yaavs-cookies__option span {
   display: block;
-  color: #b8c5d6;
+  color: #b8c5d6 !important;
   font-size: 0.85rem;
   line-height: 1.4;
 }
@@ -166,40 +167,45 @@
 }
 
 .yaavs-cookies__btn--primary {
-  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-  color: #011142;
+  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%) !important;
+  background-image: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%) !important;
+  color: #011142 !important;
   font-weight: 900;
-  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+  border: none !important;
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3) !important;
 }
 
 .yaavs-cookies__btn--primary:hover {
   box-shadow:
     0 12px 30px rgba(0, 212, 255, 0.4),
-    0 0 20px rgba(0, 212, 255, 0.2);
+    0 0 20px rgba(0, 212, 255, 0.2) !important;
 }
 
 .yaavs-cookies__btn--ghost {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12) !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 .yaavs-cookies__btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15) !important;
 }
 
 .yaavs-cookies__btn--link {
-  background: transparent;
-  color: #00d4ff;
+  background: transparent !important;
+  background-image: none !important;
+  color: #00d4ff !important;
   text-decoration: none;
   min-height: auto;
   padding: 8px 0;
   font-size: 0.85rem;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  border: none !important;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.3) !important;
 }
 
 .yaavs-cookies__btn--link:hover {
@@ -215,9 +221,10 @@
   min-height: 42px;
   padding: 0 16px;
   border-radius: 999px;
-  border: 1.5px solid rgba(0, 212, 255, 0.35);
-  background: linear-gradient(135deg, rgba(1, 37, 143, 0.9) 0%, rgba(0, 48, 135, 0.9) 100%);
-  color: #ffffff;
+  border: 1.5px solid rgba(0, 212, 255, 0.35) !important;
+  background: linear-gradient(135deg, rgba(1, 37, 143, 0.9) 0%, rgba(0, 48, 135, 0.9) 100%) !important;
+  background-image: linear-gradient(135deg, rgba(1, 37, 143, 0.9) 0%, rgba(0, 48, 135, 0.9) 100%) !important;
+  color: #ffffff !important;
   font: inherit;
   font-size: 0.8rem;
   font-weight: 800;
