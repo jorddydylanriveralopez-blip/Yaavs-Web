@@ -5549,7 +5549,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media,
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__media {
-    opacity: 1;
+    opacity: 1 !important;
     z-index: 5;
   }
 
@@ -5573,7 +5573,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__video {
-    opacity: 1;
+    opacity: 1 !important;
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media-fallback {
@@ -5832,7 +5832,7 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-video-on .hx-svc-deck__media,
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item.is-deck-fallback-on .hx-svc-deck__media {
-    opacity: 1;
+    opacity: 1 !important;
   }
 
   .page-home .hx-svc-deck-layout .hx-svc-deck--square .hx-svc-deck__item:hover .hx-svc-deck__label,
