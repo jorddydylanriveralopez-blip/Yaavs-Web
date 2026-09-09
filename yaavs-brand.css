@@ -1647,13 +1647,13 @@ html body.page-home .hx-services .hx-services__tap-hint {
   display: block !important;
   margin: 10px 0 0;
   text-align: center;
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #7dd3ea !important;
+  -webkit-text-fill-color: #7dd3ea !important;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.82;
+  opacity: 0.9;
   animation: yaavs-svc-hint 1.8s ease-in-out infinite;
 }
 
@@ -1756,9 +1756,9 @@ html body.page-home section#servicios-preview {
   isolation: isolate;
   overflow: visible !important;
   scroll-margin-top: calc(var(--header-bar-h, 72px) + env(safe-area-inset-top, 0px) + 12px);
-  background: #f3f6fb !important;
-  background-color: #f3f6fb !important;
-  background-image: none !important;
+  background: linear-gradient(160deg, #011142 0%, #01258f 55%, #011142 100%) !important;
+  background-color: #011142 !important;
+  background-image: linear-gradient(160deg, #011142 0%, #01258f 55%, #011142 100%) !important;
 }
 
 html body.page-home #servicios-preview > .hx-services__photo {
@@ -1768,12 +1768,14 @@ html body.page-home #servicios-preview > .hx-services__photo {
   pointer-events: none !important;
   display: block !important;
   background:
-    radial-gradient(ellipse 70% 55% at 12% 18%, rgba(1, 37, 143, 0.1), transparent 58%),
-    radial-gradient(ellipse 65% 50% at 88% 82%, rgba(1, 17, 66, 0.08), transparent 52%),
-    #f3f6fb !important;
+    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(0, 212, 255, 0.16), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(0, 212, 255, 0.1), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 64px),
+    linear-gradient(160deg, #011142 0%, #01258f 55%, #011142 100%) !important;
   background-image:
-    radial-gradient(ellipse 70% 55% at 12% 18%, rgba(1, 37, 143, 0.1), transparent 58%),
-    radial-gradient(ellipse 65% 50% at 88% 82%, rgba(1, 17, 66, 0.08), transparent 52%) !important;
+    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(0, 212, 255, 0.16), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 85%, rgba(0, 212, 255, 0.1), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 64px) !important;
   filter: none;
   opacity: 1 !important;
   animation: yaavs-svc-glow 14s ease-in-out infinite alternate;
