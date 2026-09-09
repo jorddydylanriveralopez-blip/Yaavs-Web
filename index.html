@@ -72,6 +72,7 @@
   <link rel="stylesheet" href="home-experience.css?v=21260827svc3" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="decorations.css?v=13" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="home-wow.css?v=6" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/yvs-services-deck.css?v=1">
   <link rel="stylesheet" href="yaavser-lead.css?v=5" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="testimonios-historias.css?v=3" media="print" onload="this.media='all'">
   <style>
@@ -362,144 +363,116 @@
           <p class="hx-services__tap-hint">Toca una tarjeta para ver más</p>
         </header>
 
-        <div class="hx-svc-deck-wrap" data-hx-deck-wrap>
-          <div class="hx-svc-deck-layout" data-hx-deck-layout>
-            <div class="hx-svc-deck" data-hx-svc-deck>
-              <a href="#recargaklic-modal" class="hx-svc-deck__item" data-deck-svc="recargaklic" data-hx-rk-open data-masonry="short" data-accent="cyan" style="--deck-i: 0; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="recargaklic-modal">
-                <span class="hx-svc-deck__bg" aria-hidden="true">
-                  <img src="assets/servicios/icons/recargaklic.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                </span>
-                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                <span class="hx-svc-deck__label">RecargaKlic</span>
-                <span class="hx-svc-deck__body">
-                  <span class="hx-svc-deck__title">RecargaKlic</span>
-                  <span class="hx-svc-deck__desc">Activa y recarga desde la app con respaldo YAAVS.</span>
-                  <span class="hx-svc-deck__cta">Descargar app →</span>
-                </span>
-              </a>
+        <div class="yvs-grid" id="yvs-services-grid">
+          <a href="#recargaklic-modal" class="yvs-tile" data-deck-svc="recargaklic" data-hx-rk-open aria-haspopup="dialog" aria-controls="recargaklic-modal" style="--yvs-i: 0">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/recargaklic.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/recargaklic.mp4"></video>
+            <span class="yvs-tile__label">RecargaKlic</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">RecargaKlic</span>
+              <span class="yvs-tile__desc">Activa y recarga desde la app con respaldo YAAVS.</span>
+              <span class="yvs-tile__action">Descargar app →</span>
+            </span>
+          </a>
 
-              <a href="#vinculaciones-modal" class="hx-svc-deck__item" data-deck-svc="vinculaciones" data-hx-vinc-open data-masonry="short" data-accent="navy" style="--deck-i: 1; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="vinculaciones-modal">
-                <span class="hx-svc-deck__bg" aria-hidden="true">
-                  <img src="assets/servicios/icons/vinculaciones.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                </span>
-                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                <span class="hx-svc-deck__label">Vinculaciones</span>
-                <span class="hx-svc-deck__body">
-                  <span class="hx-svc-deck__title">Vinculaciones</span>
-                  <span class="hx-svc-deck__desc">Vincula la línea con el portal oficial de cada compañía.</span>
-                  <span class="hx-svc-deck__cta">Ver pasos →</span>
-                </span>
-              </a>
+          <a href="#vinculaciones-modal" class="yvs-tile" data-deck-svc="vinculaciones" data-hx-vinc-open aria-haspopup="dialog" aria-controls="vinculaciones-modal" style="--yvs-i: 1">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/vinculaciones.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/vinculaciones.mp4?v=6"></video>
+            <span class="yvs-tile__label">Vinculaciones</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">Vinculaciones</span>
+              <span class="yvs-tile__desc">Vincula la línea con el portal oficial de cada compañía.</span>
+              <span class="yvs-tile__action">Ver pasos →</span>
+            </span>
+          </a>
 
-              <a href="#porta-modal" class="hx-svc-deck__item" data-deck-svc="portabilidad" data-hx-porta-open data-masonry="short" data-accent="gold" style="--deck-i: 2; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="porta-modal">
-                <span class="hx-svc-deck__bg" aria-hidden="true">
-                  <img src="assets/servicios/icons/portabilidad.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                </span>
-                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                <span class="hx-svc-deck__label">Portabilidad</span>
-                <span class="hx-svc-deck__body">
-                  <span class="hx-svc-deck__title">Portabilidad</span>
-                  <span class="hx-svc-deck__desc">Cambia de compañía y conserva el número.</span>
-                  <span class="hx-svc-deck__cta">Elegir compañía →</span>
-                </span>
-              </a>
+          <a href="#porta-modal" class="yvs-tile" data-deck-svc="portabilidad" data-hx-porta-open aria-haspopup="dialog" aria-controls="porta-modal" style="--yvs-i: 2">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/portabilidad.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/portabilidad.mp4?v=6"></video>
+            <span class="yvs-tile__label">Portabilidad</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">Portabilidad</span>
+              <span class="yvs-tile__desc">Cambia de compañía y conserva el número.</span>
+              <span class="yvs-tile__action">Elegir compañía →</span>
+            </span>
+          </a>
 
-              <a href="#esim-modal" class="hx-svc-deck__item" data-deck-svc="esims" data-hx-esim-open data-masonry="short" data-accent="green" style="--deck-i: 3; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="esim-modal">
-                <span class="hx-svc-deck__bg" aria-hidden="true">
-                  <img src="assets/servicios/icons/esim.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                </span>
-                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                <span class="hx-svc-deck__label">eSIMs</span>
-                <span class="hx-svc-deck__body">
-                  <span class="hx-svc-deck__title">eSIMs</span>
-                  <span class="hx-svc-deck__desc">Línea digital para celulares compatibles.</span>
-                  <span class="hx-svc-deck__cta">Activar eSIM →</span>
-                </span>
-              </a>
+          <a href="#esim-modal" class="yvs-tile" data-deck-svc="esims" data-hx-esim-open aria-haspopup="dialog" aria-controls="esim-modal" style="--yvs-i: 3">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/esim.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/esims.mp4?v=6"></video>
+            <span class="yvs-tile__label">eSIMs</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">eSIMs</span>
+              <span class="yvs-tile__desc">Línea digital para celulares compatibles.</span>
+              <span class="yvs-tile__action">Activar eSIM →</span>
+            </span>
+          </a>
 
-              <a href="#yaavsta-modal" class="hx-svc-deck__item" data-deck-svc="tiempo-aire" data-hx-yaavsta-open data-masonry="short" data-accent="cyan" style="--deck-i: 4; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="yaavsta-modal">
-                <span class="hx-svc-deck__bg" aria-hidden="true">
-                  <img src="assets/servicios/icons/yaavsta.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                </span>
-                <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                <span class="hx-svc-deck__label">YaavsTA</span>
-                <span class="hx-svc-deck__body">
-                  <span class="hx-svc-deck__title">YaavsTA</span>
-                  <span class="hx-svc-deck__desc">Tiempo aire y recargas desde la app.</span>
-                  <span class="hx-svc-deck__cta">Descargar app →</span>
-                </span>
-              </a>
-            </div>
+          <a href="#yaavsta-modal" class="yvs-tile" data-deck-svc="tiempo-aire" data-hx-yaavsta-open aria-haspopup="dialog" aria-controls="yaavsta-modal" style="--yvs-i: 4">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/yaavsta.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/yaavsta.mp4?v=1"></video>
+            <span class="yvs-tile__label">YaavsTA</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">YaavsTA</span>
+              <span class="yvs-tile__desc">Tiempo aire y recargas desde la app.</span>
+              <span class="yvs-tile__action">Descargar app →</span>
+            </span>
+          </a>
 
-            <div class="hx-svc-deck-more-panel" data-hx-deck-more-panel>
-              <div class="hx-svc-deck" data-hx-svc-deck-more>
-                <a href="#rotulaciones-modal" class="hx-svc-deck__item" data-deck-svc="rotulaciones" data-hx-rotul-open data-masonry="short" data-accent="green" style="--deck-i: 5; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="rotulaciones-modal">
-                  <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/servicios/icons/rotulaciones.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                  </span>
-                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                  <span class="hx-svc-deck__label">Rotulaciones</span>
-                  <span class="hx-svc-deck__body">
-                    <span class="hx-svc-deck__title">Rotulaciones</span>
-                    <span class="hx-svc-deck__desc">Imagen comercial para tu punto de venta.</span>
-                    <span class="hx-svc-deck__cta">Ver galería →</span>
-                  </span>
-                </a>
+          <a href="#rotulaciones-modal" class="yvs-tile" data-deck-svc="rotulaciones" data-hx-rotul-open aria-haspopup="dialog" aria-controls="rotulaciones-modal" style="--yvs-i: 5">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/rotulaciones.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/rotulaciones.mp4"></video>
+            <span class="yvs-tile__label">Rotulaciones</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">Rotulaciones</span>
+              <span class="yvs-tile__desc">Imagen comercial para tu punto de venta.</span>
+              <span class="yvs-tile__action">Ver galería →</span>
+            </span>
+          </a>
 
-                <a href="https://wa.me/525522331210" class="hx-svc-deck__item" data-deck-svc="soporte-tecnico" data-masonry="short" data-accent="coral" style="--deck-i: 6; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
-                  <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/servicios/icons/soporte.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                  </span>
-                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                  <span class="hx-svc-deck__label">Soporte</span>
-                  <span class="hx-svc-deck__body">
-                    <span class="hx-svc-deck__title">Soporte técnico</span>
-                    <span class="hx-svc-deck__desc">Incidencias y operación con apoyo YAAVS.</span>
-                    <span class="hx-svc-deck__cta">Escribir por WhatsApp →</span>
-                  </span>
-                </a>
+          <a href="https://wa.me/525522331210" class="yvs-tile" data-deck-svc="soporte-tecnico" target="_blank" rel="noopener noreferrer" style="--yvs-i: 6">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/soporte.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/soporte-tecnico.mp4?v=6"></video>
+            <span class="yvs-tile__label">Soporte</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">Soporte técnico</span>
+              <span class="yvs-tile__desc">Incidencias y operación con apoyo YAAVS.</span>
+              <span class="yvs-tile__action">Escribir por WhatsApp →</span>
+            </span>
+          </a>
 
-                <a href="https://pospago-yaavs-site.hostingersite.com/" class="hx-svc-deck__item" data-deck-svc="postpago" data-masonry="short" data-accent="navy" style="--deck-i: 7; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
-                  <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/servicios/icons/postpago.png?v=21" alt="" width="1081" height="1081" loading="lazy" decoding="async">
-                  </span>
-                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                  <span class="hx-svc-deck__label">Pospago</span>
-                  <span class="hx-svc-deck__body">
-                    <span class="hx-svc-deck__title">Pospago</span>
-                    <span class="hx-svc-deck__desc">Planes pospago con respaldo comercial YAAVS.</span>
-                    <span class="hx-svc-deck__cta">Ver pospago →</span>
-                  </span>
-                </a>
+          <a href="https://pospago-yaavs-site.hostingersite.com/" class="yvs-tile" data-deck-svc="postpago" target="_blank" rel="noopener noreferrer" style="--yvs-i: 7">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/postpago.png?v=21" alt="" width="1081" height="1081" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/postpago.mp4?v=6"></video>
+            <span class="yvs-tile__label">Pospago</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">Pospago</span>
+              <span class="yvs-tile__desc">Planes pospago con respaldo comercial YAAVS.</span>
+              <span class="yvs-tile__action">Ver pospago →</span>
+            </span>
+          </a>
 
-                <a href="#yaavshop-modal" class="hx-svc-deck__item" data-deck-svc="yaashop" data-hx-yaavshop-open data-masonry="short" data-accent="cyan" style="--deck-i: 8; --masonry-ratio: 1 / 1" aria-haspopup="dialog" aria-controls="yaavshop-modal">
-                  <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/servicios/icons/yaashop.png?v=21" alt="" width="540" height="540" loading="lazy" decoding="async">
-                  </span>
-                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                  <span class="hx-svc-deck__label">YAAVSHOP</span>
-                  <span class="hx-svc-deck__body">
-                    <span class="hx-svc-deck__title">YAAVSHOP</span>
-                    <span class="hx-svc-deck__desc">Catálogo Yaavstar: pide por WhatsApp.</span>
-                    <span class="hx-svc-deck__cta">Ver catálogo →</span>
-                  </span>
-                </a>
+          <a href="#yaavshop-modal" class="yvs-tile" data-deck-svc="yaashop" data-hx-yaavshop-open aria-haspopup="dialog" aria-controls="yaavshop-modal" style="--yvs-i: 8">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/yaashop.png?v=21" alt="" width="540" height="540" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/yaashop.mp4"></video>
+            <span class="yvs-tile__label">YAAVSHOP</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">YAAVSHOP</span>
+              <span class="yvs-tile__desc">Catálogo Yaavstar: pide por WhatsApp.</span>
+              <span class="yvs-tile__action">Ver catálogo →</span>
+            </span>
+          </a>
 
-                <a href="https://academiayaavs.com/" class="hx-svc-deck__item" data-deck-svc="academia-yaavs" data-masonry="short" data-accent="violet" style="--deck-i: 9; --masonry-ratio: 1 / 1" target="_blank" rel="noopener noreferrer">
-                  <span class="hx-svc-deck__bg" aria-hidden="true">
-                    <img src="assets/servicios/icons/academia.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
-                  </span>
-                  <span class="hx-svc-deck__shade" aria-hidden="true"></span>
-                  <span class="hx-svc-deck__label">Academia</span>
-                  <span class="hx-svc-deck__body">
-                    <span class="hx-svc-deck__title">Academia YAAVS</span>
-                    <span class="hx-svc-deck__desc">Capacitación para vender mejor en mostrador.</span>
-                    <span class="hx-svc-deck__cta">Conocer academia →</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <a href="https://academiayaavs.com/" class="yvs-tile" data-deck-svc="academia-yaavs" target="_blank" rel="noopener noreferrer" style="--yvs-i: 9">
+            <img class="yvs-tile__icon" src="assets/servicios/icons/academia.png?v=21" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <video class="yvs-tile__video" muted loop playsinline preload="auto" src="assets/servicios/videos/academia-yaavs.mp4?v=6"></video>
+            <span class="yvs-tile__label">Academia</span>
+            <span class="yvs-tile__overlay">
+              <span class="yvs-tile__name">Academia YAAVS</span>
+              <span class="yvs-tile__desc">Capacitación para vender mejor en mostrador.</span>
+              <span class="yvs-tile__action">Conocer academia →</span>
+            </span>
+          </a>
         </div>
       </section>
 
@@ -1113,6 +1086,7 @@
   <script src="js/hero-carousel.config.js?v=21260814b" defer></script>
   <script src="js/hero-carousel.js?v=21260827a" defer></script>
   <script src="js/layout.js?v=88" defer></script>
+  <script src="js/yvs-services-deck.js?v=1" defer></script>
   <script src="js/main.js?v=7" defer></script>
   <script>
     (function () {
