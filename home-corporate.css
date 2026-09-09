@@ -5560,7 +5560,6 @@ html.is-tx-clients-lb-open .page-home .tx-clients.is-marquee:not(.is-js-marquee)
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: translateZ(0);
   }
 
   .page-home .hx-svc-deck--square .hx-svc-deck__video {
