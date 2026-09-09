@@ -1050,14 +1050,23 @@ html body.page-home .site-header .logo.logo--on-light {
 
 /* Header multiplataforma: links en desktop, menú hamburguesa en tablet/móvil */
 @media (max-width: 900px) {
-  html body .site-header .header-inner.header-inner--corp,
-  html body .site-header .header-inner:has(.main-nav--bar) {
+  /* Nota: se repite .site-header--corp/.site-header--nav-bar para igualar
+     la especificidad (4 clases) de la regla universal de 3 columnas de
+     más abajo en este mismo archivo — si no, esa gana con !important a
+     pesar de este @media, porque especificidad no depende del @media. */
+  html body .site-header.site-header--corp .header-inner.header-inner--corp,
+  html body .site-header.site-header--nav-bar .header-inner.header-inner--corp,
+  html body .site-header.site-header--corp .header-inner:has(.main-nav--bar),
+  html body .site-header.site-header--nav-bar .header-inner:has(.main-nav--bar) {
     grid-template-columns: minmax(120px, 1fr) auto !important;
     column-gap: 10px !important;
   }
 
-  html body .site-header .header-menu.header-menu--corp {
+  html body .site-header.site-header--corp .header-menu.header-menu--corp,
+  html body .site-header.site-header--nav-bar .header-menu.header-menu--corp {
     grid-column: 2 !important;
+    width: auto !important;
+    min-width: 0 !important;
     gap: 8px !important;
   }
 
@@ -1068,6 +1077,7 @@ html body.page-home .site-header .logo.logo--on-light {
     min-height: 40px !important;
     padding: 0 14px !important;
     font-size: 0.68rem !important;
+    white-space: nowrap !important;
   }
 
   /* Classic hamburger — clearer than the 9-dot bento on phone */
