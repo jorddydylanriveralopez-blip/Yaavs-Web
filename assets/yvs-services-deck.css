@@ -1,6 +1,7 @@
 /* ============================================================
-   YVS Services Deck v2 — dinámico: bento grid, colores por categoría,
-   textura sutil, glow de acento en hover. Sigue aislado con prefijo
+   YVS Services Deck v2 — dinámico: grid uniforme (los 10 servicios
+   pesan igual, ninguno destaca sobre los demás), colores por categoría
+   vía recoloreo de icono, entrada animada. Sigue aislado con prefijo
    "yvs-" (verificado contra todos los selectores [class*="..."] de
    yaavs-brand.css — cookie, __title, __kicker, __btn, __cta, card,
    panel, modal — cero colisiones).
@@ -9,20 +10,12 @@
 .yvs-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-auto-flow: dense;
   gap: 16px;
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 clamp(16px, 2.2vw, 36px);
   box-sizing: border-box;
-}
-
-/* La primera tarjeta (RecargaKlic) destaca en 2x2 — rompe la
-   monotonía del grid uniforme sin dejar huecos gracias a dense. */
-.yvs-tile--hero {
-  grid-column: span 2;
-  grid-row: span 2;
 }
 
 .yvs-tile {
@@ -132,10 +125,6 @@
   margin-bottom: 2px;
 }
 
-.yvs-tile--hero .yvs-tile__name {
-  font-size: 1.15rem;
-}
-
 .yvs-tile__desc {
   display: none;
 }
@@ -160,10 +149,6 @@
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   transition: opacity 0.2s ease;
-}
-
-.yvs-tile--hero .yvs-tile__label {
-  font-size: 1rem;
 }
 
 .yvs-tile:hover .yvs-tile__label,
@@ -213,10 +198,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
   }
-  .yvs-tile--hero {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
   .yvs-tile__overlay {
     transform: translateY(0);
     background: linear-gradient(180deg, transparent 35%, rgba(1, 8, 32, 0.92) 100%);
@@ -233,11 +214,6 @@
   .yvs-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
-  }
-  .yvs-tile--hero {
-    grid-column: span 2;
-    grid-row: span 1;
-    aspect-ratio: 2 / 1;
   }
   .yvs-tile__name {
     font-size: 0.8rem;
