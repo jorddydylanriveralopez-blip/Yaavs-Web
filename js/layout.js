@@ -197,7 +197,7 @@
   const FALLBACK_PARTIALS = {
     "partials/header.html": `<header class="site-header site-header--nav-bar site-header--corp" id="header">
   <div class="header-inner header-inner--corp">
-    <a href="index.html" class="logo-link logo-link--corp" aria-label="YAAVS inicio">
+    <a href="index.html" class="logo-link logo-link--corp yvs-logo-fx" aria-label="YAAVS inicio">
       <img src="assets/yaavs-logo-header-color.png?v=1" alt="YAAVS" class="logo logo--corp logo--on-light" width="148" height="52">
     </a>
     <nav class="main-nav main-nav--bar main-nav--corp" id="main-nav" aria-label="Principal">

@@ -1,0 +1,70 @@
+/* ============================================================
+   YVS Logo FX — brillo animado + hover para el logo del header.
+   Clase aislada "yvs-logo-fx" (verificada contra todos los
+   [class*="..."] de yaavs-brand.css y demás CSS del sitio: cero
+   colisiones). No usa transform en ningún ancestro con <video>,
+   así que es seguro combinarlo con cualquier otra parte del sitio.
+   ============================================================ */
+
+.yvs-logo-fx {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  isolation: isolate;
+}
+
+/* Barra de brillo diagonal que cruza el logo cada pocos segundos,
+   como un "shimmer" sutil de marca premium. mix-blend-mode hace que
+   solo aclare donde hay pixeles del logo, no el fondo del header. */
+.yvs-logo-fx::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -60%;
+  width: 35%;
+  height: 140%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.75) 45%,
+    rgba(0, 212, 255, 0.55) 55%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+  animation: yvs-logo-shine 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes yvs-logo-shine {
+  0%, 58%, 100% { left: -60%; }
+  75% { left: 130%; }
+}
+
+/* Realce al pasar el mouse / foco: leve escala + resplandor de acento,
+   independiente del filtro (drop-shadow) que ya aplica el sitio. */
+.yvs-logo-fx img.logo {
+  transition:
+    height var(--header-ease, 0.3s ease),
+    width var(--header-ease, 0.3s ease),
+    max-width var(--header-ease, 0.3s ease),
+    filter 0.35s var(--ease, ease),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yvs-logo-fx:hover img.logo,
+.yvs-logo-fx:focus-visible img.logo {
+  transform: scale(1.07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yvs-logo-fx::after {
+    animation: none;
+    display: none;
+  }
+  .yvs-logo-fx img.logo {
+    transition: none;
+  }
+}
