@@ -102,8 +102,7 @@ body.page-intro-active {
   position: fixed;
   inset: 0;
   z-index: 3000;
-  background:
-    #01258f;
+  background: radial-gradient(ellipse 120% 90% at 50% 38%, #0a2a8f 0%, #011142 55%, #04081f 100%);
   pointer-events: all;
   overflow: hidden;
 }
@@ -125,14 +124,16 @@ body.page-intro-active {
 
 .page-intro__aurora--a {
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.45), transparent 55%),
+    radial-gradient(circle at 70% 65%, rgba(1, 37, 143, 0.65), transparent 60%);
+  filter: blur(60px);
 }
 
 .page-intro__aurora--b {
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 75% 25%, rgba(1, 37, 143, 0.55), transparent 55%),
+    radial-gradient(circle at 25% 75%, rgba(92, 232, 247, 0.3), transparent 60%);
+  filter: blur(70px);
 }
 
 .page-intro.is-playing .page-intro__aurora--a {
@@ -160,11 +161,11 @@ body.page-intro-active {
   inset: 0;
   opacity: 0;
   background-image:
-    #01258f,
-    #01258f;
+    linear-gradient(rgba(146, 214, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(146, 214, 255, 0.16) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: #01258f;
-  -webkit-mask-image: #01258f;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 35%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 35%, transparent 75%);
 }
 
 .page-intro.is-playing .page-intro__grid {
