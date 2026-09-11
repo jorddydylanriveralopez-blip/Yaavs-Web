@@ -716,8 +716,9 @@ html body .site-header.site-header--corp.is-scrolled .main-nav.main-nav--corp a:
 html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a:hover {
   background: transparent !important;
   border-color: transparent !important;
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
+  text-shadow: 0 0 4px rgba(0, 212, 238, 0.35) !important;
   outline: none;
   transform: none !important;
   opacity: 1 !important;
@@ -733,8 +734,9 @@ html body .site-header.site-header--corp.is-scrolled .main-nav.main-nav--corp a.
 html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.is-active {
   background: transparent !important;
   border-color: transparent !important;
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
+  text-shadow: none !important;
   box-shadow: none !important;
   opacity: 1 !important;
   font-weight: 800 !important;
@@ -743,7 +745,7 @@ html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.i
 html body .site-header.site-header--corp .main-nav.main-nav--corp a.is-active::after,
 html body .page-home .site-header.site-header--corp .main-nav.main-nav--corp a.is-active::after {
   transform: scaleX(1);
-  background: #011142 !important;
+  background: #00d4ee !important;
 }
 
 /* Acciones — columna propia, sin montarse sobre el nav */
@@ -968,10 +970,10 @@ html body .site-header .main-nav--bar a:hover,
 html body .site-header .main-nav--corp a:hover,
 html body.page-home .site-header .main-nav a:hover,
 html body.page-home .site-header .main-nav--corp a:hover {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
   background: transparent !important;
-  text-shadow: 0 0 14px rgba(0, 212, 238, 0.85) !important;
+  text-shadow: 0 0 4px rgba(0, 212, 238, 0.35) !important;
   opacity: 1 !important;
 }
 
@@ -979,10 +981,10 @@ html body .site-header .main-nav a.is-active,
 html body .site-header .main-nav--corp a.is-active,
 html body.page-home .site-header .main-nav a.is-active,
 html body.page-home .site-header .main-nav--corp a.is-active {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
   background: transparent !important;
-  text-shadow: 0 0 10px rgba(0, 212, 238, 0.6) !important;
+  text-shadow: none !important;
   opacity: 1 !important;
 }
 
