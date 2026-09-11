@@ -9,14 +9,26 @@
    glow del botón hamburguesa/WhatsApp, y el acento del panel móvil.
    ============================================================ */
 
-/* CTA "Cotizar ahora": pulso sutil de glow para que respire. */
+/* CTA "Cotizar ahora": pulso leve para que respire y llame la
+   atención. Anima transform (nadie más lo marca !important en este
+   botón, así que siempre se ve) además del glow — el box-shadow base
+   del botón está en !important en yaavs-brand.css, y una animación
+   normal no puede ganarle a un !important estático en la misma
+   propiedad, por eso el pulso necesita apoyarse en transform. */
 .site-header--corp .header-cta {
-  animation: yvs-cta-pulse 3.2s ease-in-out infinite;
+  animation: yvs-cta-pulse 2.6s ease-in-out infinite;
+  transform-origin: center;
 }
 
 @keyframes yvs-cta-pulse {
-  0%, 100% { box-shadow: 0 8px 22px rgba(0, 212, 238, 0.3); }
-  50% { box-shadow: 0 8px 26px rgba(0, 212, 238, 0.55); }
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 22px rgba(0, 212, 238, 0.3);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 10px 28px rgba(0, 212, 238, 0.6);
+  }
 }
 
 /* Botón WhatsApp del header (icono redondo). */

@@ -1118,8 +1118,9 @@ html body.page-home .site-header .header-cta {
   background: linear-gradient(135deg, #00d4ee 0%, #2f8bff 100%) !important;
   background-image: linear-gradient(135deg, #00d4ee 0%, #2f8bff 100%) !important;
   border: 1px solid rgba(0, 212, 238, 0.6) !important;
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(1, 17, 66, 0.35) !important;
   border-radius: 999px !important;
   box-shadow: 0 8px 22px rgba(0, 212, 238, 0.3) !important;
 }
