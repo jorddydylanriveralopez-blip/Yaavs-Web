@@ -909,7 +909,7 @@ html body.header-scrolled .site-header {
       rgba(4, 19, 107, 0.85) 100%
     ) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-radius: 0 0 28px 28px !important;
+  border-radius: 0 !important;
   box-shadow:
     0 8px 32px rgba(2, 40, 90, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
