@@ -977,6 +977,36 @@ html body.page-home .site-header .header-inner::before {
   box-shadow: none !important;
 }
 
+/* Toque urbano: textura de ladrillo muy sutil, SOLO al hacer scroll
+   (encima del glassmorphism) — mezcla minimalista/elegante (el vidrio
+   esmerilado) con el carácter de barrio de la marca (tianguis,
+   puestos de chips, tienditas). Patrón de "aparejo" de ladrillo hecho
+   con gradientes diagonales, en blanco muy translúcido y
+   mix-blend-mode:overlay para que tiña sutil en vez de verse como una
+   pared literal — un guiño, no un fondo de Minecraft. */
+html body .site-header.is-scrolled::before,
+html body .site-header--nav-bar.is-scrolled::before,
+html body.page-home .site-header.is-scrolled::before,
+html body.page-home .site-header--nav-bar.is-scrolled::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+  mix-blend-mode: overlay !important;
+  background-image:
+    linear-gradient(335deg, rgba(255, 255, 255, 0.16) 23px, transparent 23px),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.16) 23px, transparent 23px),
+    linear-gradient(335deg, rgba(255, 255, 255, 0.16) 23px, transparent 23px),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.16) 23px, transparent 23px) !important;
+  background-size: 58px 58px !important;
+  background-position: 0px 2px, 4px 26px, 29px 30px, 33px 6px !important;
+  box-shadow: none !important;
+}
+
 /* Header transparente en reposo: sin remate ni glow, nada que "corte"
    sobre el hero. */
 html body .site-header::after,
