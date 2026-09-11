@@ -1,18 +1,27 @@
 /* ============================================================
-   YVS Services Deck v3 — tarjetas rectangulares editoriales: icono
-   a la izquierda (con video en hover, como antes), nombre +
-   descripción SIEMPRE visibles a la derecha (ya no ocultos hasta el
-   hover) — pedido explícito del usuario tras ver el grid de cuadros
-   como "básico". Prefijo "yvs-" aislado, verificado contra todos los
+   YVS Services Deck v4 — grid de cuadros con inclinación 3D tipo
+   Apple: cada tarjeta se inclina siguiendo el mouse (JS en
+   js/yvs-services-deck.js), con una sombra que se mueve y un brillo
+   que recorre la superficie. Sensación premium sobre el mismo grid
+   uniforme, sin rehacer el layout — pedido explícito del usuario
+   tras rechazar la v3 de tarjetas rectangulares.
+
+   Nota: esta versión YA NO reproduce video en hover. Un tilt 3D real
+   necesita transform en .yvs-tile, y un <video> anidado dentro de un
+   ancestro con transform activo es justo el bug de compositing de
+   Chrome que motivó la reescritura completa del deck hace unas
+   iteraciones — con video no se puede hacer tilt de forma confiable.
+   Se prioriza el tilt (lo que pidió el usuario) sobre el preview en
+   video. Prefijo "yvs-" aislado, verificado contra los
    [class*="..."] de yaavs-brand.css — cero colisiones.
    ============================================================ */
 
 .yvs-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
   width: 100%;
-  max-width: 1120px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 clamp(16px, 2.2vw, 36px);
   box-sizing: border-box;
@@ -20,51 +29,44 @@
 
 .yvs-tile {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 18px 14px 14px;
-  border-radius: 18px;
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
   color: #ffffff;
   isolation: isolate;
-  /* Gradiente base + variantes por acento vía --yvs-a1/--yvs-a2,
-     definidas por [data-accent] más abajo. Sin transform en reposo
-     ni en hover: el <video> anidado en .yvs-tile__media es lo que
-     rompía el pintado en Chrome si un ancestro tenía transform. */
+  perspective: 800px;
   background:
-    radial-gradient(ellipse 90% 140% at 0% 50%, color-mix(in srgb, var(--yvs-a1, #01258f) 45%, transparent), transparent 65%),
-    linear-gradient(105deg, var(--yvs-a2, #011142) 0%, #050e33 60%, #030820 100%);
-  box-shadow: 0 8px 20px rgba(1, 17, 66, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    radial-gradient(ellipse 140% 100% at 15% 0%, color-mix(in srgb, var(--yvs-a1, #01258f) 55%, transparent), transparent 60%),
+    linear-gradient(155deg, var(--yvs-a2, #011142) 0%, #050e33 65%, #030820 100%);
+  box-shadow: var(--yvs-shadow, 0 10px 26px rgba(1, 17, 66, 0.22)), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   animation: yvs-tile-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: calc(var(--yvs-i, 0) * 0.05s);
 }
 
-.yvs-tile:hover,
-.yvs-tile:focus-visible {
-  box-shadow: 0 16px 34px rgba(1, 17, 66, 0.28), 0 0 0 1px color-mix(in srgb, var(--yvs-a1, #01258f) 55%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-color: color-mix(in srgb, var(--yvs-a1, #01258f) 60%, transparent);
-  outline: none;
+/* El tilt real vive en este wrapper interno (JS pone
+   --yvs-rx/--yvs-ry vía transform inline) — así .yvs-tile conserva
+   overflow:hidden + border-radius limpios mientras el contenido
+   rota en 3D dentro. */
+.yvs-tile__tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--yvs-ry, 0deg)) rotateY(var(--yvs-rx, 0deg)) scale(var(--yvs-scale, 1));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.yvs-tile:hover .yvs-tile__tilt,
+.yvs-tile:focus-visible .yvs-tile__tilt {
+  transition: transform 0.08s linear;
 }
 
 @keyframes yvs-tile-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* ── Caja del icono/video, a la izquierda — tamaño fijo, redondeada ── */
-.yvs-tile__media {
-  position: relative;
-  flex: 0 0 auto;
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .yvs-tile__icon {
@@ -75,94 +77,95 @@
   height: 100%;
   object-fit: cover;
   /* Los PNG de servicio ya traen su propio fondo azul de marca de borde
-     a borde (icono blanco sobre #01258f) — por eso llenan la caja sin
-     padding. La variedad de color por categoría se logra recoloreando
-     ese fondo con un filtro hue-rotate/saturate por [data-accent]: el
-     blanco del glifo no lo afecta, solo el azul de fondo cambia de tono. */
+     a borde — la variedad de color por categoría se logra recoloreando
+     ese fondo con un filtro hue-rotate/saturate por [data-accent]. */
   filter: var(--yvs-icon-filter, none);
-  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.yvs-tile:hover .yvs-tile__icon,
-.yvs-tile:focus-visible .yvs-tile__icon {
-  transform: scale(1.08);
-}
-
-.yvs-tile.is-playing .yvs-tile__icon {
-  opacity: 0;
-}
-
-.yvs-tile__video {
+/* Brillo que recorre la superficie, posicionado por JS vía
+   --yvs-mx/--yvs-my (0-100%). Pseudo-elemento hermano del icono, no
+   ancestro de nada — seguro de animar. */
+.yvs-tile__shine {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  z-index: 2;
+  background: radial-gradient(
+    circle at var(--yvs-mx, 50%) var(--yvs-my, 50%),
+    rgba(255, 255, 255, 0.35),
+    transparent 42%
+  );
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
+  mix-blend-mode: overlay;
 }
 
-.yvs-tile.is-playing .yvs-tile__video {
+.yvs-tile:hover .yvs-tile__shine,
+.yvs-tile:focus-visible .yvs-tile__shine {
   opacity: 1;
 }
 
-/* ── Contenido, siempre visible — ya no hay overlay que aparece solo
-   al hover, ni etiqueta que desaparece. ── */
-.yvs-tile__body {
-  position: relative;
-  z-index: 2;
-  flex: 1 1 auto;
-  min-width: 0;
+.yvs-tile__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 14px 14px 12px;
+  background: linear-gradient(180deg, transparent 0%, rgba(1, 8, 32, 0.6) 45%, rgba(1, 8, 32, 0.92) 100%);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.yvs-tile:hover .yvs-tile__overlay,
+.yvs-tile:focus-visible .yvs-tile__overlay {
+  transform: translateY(0);
 }
 
 .yvs-tile__name {
   display: block;
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0.01em;
   color: #ffffff;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .yvs-tile__desc {
-  display: block;
-  font-size: 0.78rem;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  display: none;
 }
 
 .yvs-tile__action {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  display: block;
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--yvs-a1, #7ee4ff);
-  transition: gap 0.2s ease;
+  margin-top: 2px;
 }
 
-.yvs-tile:hover .yvs-tile__action,
-.yvs-tile:focus-visible .yvs-tile__action {
-  gap: 8px;
+/* Etiqueta simple visible siempre (sin overlay), como referencia rápida
+   cuando el usuario no está haciendo hover — solo el nombre, abajo. */
+.yvs-tile__label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 3;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease;
 }
 
-/* Ya no existen __overlay ni __label en el HTML v3 — el nombre y la
-   descripción viven directo en .yvs-tile__body, siempre visibles. */
+.yvs-tile:hover .yvs-tile__label,
+.yvs-tile:focus-visible .yvs-tile__label {
+  opacity: 0;
+}
 
 /* ── Paleta de acentos por categoría — todas dentro de la familia de
    marca (azules), con un tinte distinto para dar variedad sin perder
-   coherencia. Se asignan por [data-accent] en el HTML. --yvs-icon-filter
-   gira el tono del fondo azul del PNG hacia el acento correspondiente;
-   --yvs-a1/--yvs-a2 quedan como respaldo de fondo (visible si el icono
-   tarda en cargar) y colorean el borde/sombra en hover. ── */
+   coherencia. Se asignan por [data-accent] en el HTML. ── */
 .yvs-tile[data-accent="cyan"] {
   --yvs-a1: #00b8e6; --yvs-a2: #012a5e;
   --yvs-icon-filter: hue-rotate(-35deg) saturate(1.3);
@@ -188,28 +191,56 @@
   --yvs-icon-filter: hue-rotate(40deg) saturate(1.15);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1100px) {
   .yvs-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 420px) {
-  .yvs-tile__media {
-    width: 60px;
-    height: 60px;
+@media (max-width: 860px) {
+  .yvs-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .yvs-tile__overlay {
+    transform: translateY(0);
+    background: linear-gradient(180deg, transparent 35%, rgba(1, 8, 32, 0.92) 100%);
+  }
+  .yvs-tile__label {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .yvs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
   .yvs-tile__name {
-    font-size: 0.92rem;
+    font-size: 0.8rem;
   }
-  .yvs-tile__desc {
-    font-size: 0.74rem;
+  .yvs-tile__action {
+    font-size: 0.64rem;
+  }
+}
+
+/* Tilt es un efecto de mouse fino — se desactiva por completo en
+   touch (el JS tampoco lo activa ahí) y con reduced-motion. */
+@media (hover: none) {
+  .yvs-tile__tilt {
+    transform: none !important;
+  }
+  .yvs-tile__shine {
+    display: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .yvs-tile {
     animation: none;
+  }
+  .yvs-tile__tilt {
+    transition: none;
+    transform: none !important;
   }
 }
