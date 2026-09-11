@@ -7140,8 +7140,8 @@ body.page-home.hx-band--dark .site-footer .footer {
 }
 
 @keyframes yvs-somos-drift {
-  0% { background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0 0; }
-  100% { background-position: 8% 10%, 92% 12%, 88% 88%, 8% 90%, 0 0; }
+  0% { background-position: 0% 0%, 100% 100%, 0 0; }
+  100% { background-position: 6% 8%, 94% 92%, 0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

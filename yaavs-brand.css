@@ -913,11 +913,11 @@ html body.page-home .site-header.site-header--nav-bar.is-scrolled,
 html body.header-scrolled .site-header {
   background: linear-gradient(
     90deg,
-    rgba(4, 19, 107, 0.85) 0%,
-    rgba(10, 47, 158, 0.85) 24%,
-    rgba(0, 168, 201, 0.8) 50%,
-    rgba(10, 47, 158, 0.85) 76%,
-    rgba(4, 19, 107, 0.85) 100%
+    rgba(3, 12, 64, 0.97) 0%,
+    rgba(7, 33, 112, 0.97) 24%,
+    rgba(0, 130, 158, 0.95) 50%,
+    rgba(7, 33, 112, 0.97) 76%,
+    rgba(3, 12, 64, 0.97) 100%
   ) !important;
   background-color: transparent !important;
   background-size: 300% 100% !important;
@@ -1618,13 +1618,11 @@ html body.page-home .hero-banner .hero-promo__cta:focus-visible span {
 html body.page-home .hx-somos,
 html body.page-home .hx-somos[data-hx-band="light"] {
   background:
-    radial-gradient(ellipse 50% 65% at 6% 15%, rgba(0, 212, 238, 0.28), transparent 58%),
-    radial-gradient(ellipse 48% 60% at 96% 10%, rgba(47, 139, 255, 0.3), transparent 58%),
-    radial-gradient(ellipse 55% 60% at 85% 95%, rgba(0, 201, 167, 0.24), transparent 60%),
-    radial-gradient(ellipse 45% 55% at 10% 100%, rgba(155, 107, 255, 0.18), transparent 58%),
-    linear-gradient(165deg, #f7faff 0%, #ffffff 45%, #f2f7ff 100%) !important;
-  background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100% !important;
-  animation: yvs-somos-drift 22s ease-in-out infinite alternate !important;
+    radial-gradient(ellipse 65% 85% at -8% -15%, rgba(0, 212, 238, 0.4), transparent 55%),
+    radial-gradient(ellipse 55% 70% at 108% 112%, rgba(47, 139, 255, 0.26), transparent 58%),
+    linear-gradient(155deg, #eaf6ff 0%, #ffffff 42%, #ffffff 62%, #f2f8ff 100%) !important;
+  background-size: 160% 160%, 160% 160%, 100% 100% !important;
+  animation: yvs-somos-drift 26s ease-in-out infinite alternate !important;
   color: #011142 !important;
   border: none !important;
 }
@@ -1722,12 +1720,10 @@ html body.page-home .hx-services > .hx-pulse,
 html body.page-home[data-yaavs-theme="day"] .hx-pulse,
 html body.page-home .hx-pulse[data-hx-pulse] {
   background:
-    radial-gradient(ellipse 55% 85% at 12% 50%, rgba(0, 212, 238, 0.26), transparent 60%),
-    radial-gradient(ellipse 55% 85% at 88% 50%, rgba(47, 139, 255, 0.28), transparent 60%),
-    radial-gradient(ellipse 60% 90% at 50% 120%, rgba(0, 201, 167, 0.18), transparent 62%),
-    linear-gradient(180deg, #f6faff 0%, #eef5ff 100%) !important;
-  background-size: 180% 180%, 180% 180%, 180% 180%, 100% 100% !important;
-  animation: yvs-pulse-drift 18s ease-in-out infinite alternate !important;
+    radial-gradient(ellipse 70% 140% at 100% 50%, rgba(0, 212, 238, 0.22), transparent 62%),
+    linear-gradient(100deg, #eef6ff 0%, #f7fbff 55%, #eef6ff 100%) !important;
+  background-size: 160% 160%, 100% 100% !important;
+  animation: yvs-pulse-drift 20s ease-in-out infinite alternate !important;
   color: #011142 !important;
 }
 
