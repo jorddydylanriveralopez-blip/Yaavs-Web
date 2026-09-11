@@ -772,9 +772,7 @@ body.page-home.hero-slide--graphic .hero-carousel__slide img {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  background:
-    #01258f,
-    rgba(0, 0, 0, 0.06);
+  background: rgba(1, 8, 32, 0.06);
 }
 
 .hero-carousel__slide--video-banner .hero-carousel__video-media img {
@@ -805,10 +803,7 @@ body.page-home.hero-slide--video-banner .page-bg__shade {
 body.page-home.hero-slide--video-banner.hero-slide--has-promo .hero-banner__shade,
 body.page-home.hero-slide--video-banner.hero-slide--has-promo .page-bg__shade {
   opacity: 0.55;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 body.page-home.hero-slide--video-banner.hero-slide--has-promo .hero-banner__promo {
@@ -851,10 +846,7 @@ body.page-home.hero-slide--video-banner.hero-slide--has-promo .hero-banner__prom
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
   transition: opacity 0.4s var(--ease);
 }
 
@@ -1023,9 +1015,7 @@ body.page-home.hero-slide--video .page-bg__shade {
 .page-bg__shade {
   position: absolute;
   inset: 0;
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 /* Canvas de red — desactivado (sin efecto plexus en el fondo) */
@@ -1885,17 +1875,12 @@ body.page-intro-active .nav-menu-hint {
 
 body.page-home.hero-slide--light-bg:not(.hero-slide--graphic) .hero-banner__shade,
 body.page-home.hero-slide--light-bg:not(.hero-slide--graphic).page-bg--photo .page-bg__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 body.page-home.page-bg--photo:not(.hero-slide--graphic) .hero-banner__shade,
 body.page-home.page-bg--photo:not(.hero-slide--graphic) .page-bg__shade {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 .hero-banner__shade {
@@ -1903,25 +1888,16 @@ body.page-home.page-bg--photo:not(.hero-slide--graphic) .page-bg__shade {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 body.page-home.page-bg--photo:not(.hero-slide--graphic) .hero-banner__shade {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 body.page-home[data-hero-align="right"] .hero-banner__shade,
 body.page-home[data-hero-align="right"].page-bg--photo .page-bg__shade {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(120deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 /* Hero — transparente; efecto en .page-canvas */
@@ -2233,21 +2209,15 @@ body.page-home[data-hero-align="right"].page-bg--photo .page-bg__shade {
 
 body.page-home.hero-slide--light-shade .hero-banner__shade,
 body.page-home.hero-slide--light-shade.page-bg--photo .hero-banner__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 body.page-home.hero-slide--graphic.page-bg--photo .page-bg__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 body.page-home.hero-slide--graphic .hero-banner__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
   pointer-events: none;
 }
 
@@ -2265,9 +2235,7 @@ body.page-home:not(.header-scrolled) .home-tech-backdrop {
 }
 
 body.page-home.hero-slide--graphic.hero-slide--light-shade .hero-banner__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 .hero-banner.hero-banner--cta-click {
@@ -2899,8 +2867,8 @@ body.page-intro-active .hero-logo {
   position: absolute;
   inset: -25%;
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 32% 30%, rgba(92, 232, 247, 0.5), transparent 60%),
+    radial-gradient(circle at 68% 70%, rgba(1, 37, 143, 0.6), transparent 65%);
   filter: blur(48px);
   opacity: 0.55;
   animation: home-about-glow 9s ease-in-out infinite alternate;
@@ -2911,11 +2879,11 @@ body.page-intro-active .hero-logo {
   inset: 0;
   opacity: 0.35;
   background-image:
-    #01258f,
-    #01258f;
+    linear-gradient(rgba(146, 214, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(146, 214, 255, 0.14) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: #01258f;
-  -webkit-mask-image: #01258f;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
   animation: home-about-grid-drift 28s linear infinite;
 }
 
@@ -2923,19 +2891,7 @@ body.page-intro-active .hero-logo {
   position: absolute;
   inset: 0;
   opacity: 0.2;
-  background:
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f;
+  background: radial-gradient(rgba(146, 214, 255, 0.9) 1.4px, transparent 1.6px);
 }
 
 .home-about__bg-scan {
@@ -2943,8 +2899,8 @@ body.page-intro-active .hero-logo {
   inset: 0;
   overflow: hidden;
   opacity: 0.15;
-  mask-image: #01258f;
-  -webkit-mask-image: #01258f;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
 }
 
 .home-about__bg-scan::after {
@@ -3422,18 +3378,18 @@ body.page-intro-active .hero-logo {
   pointer-events: none;
   opacity: 0.35;
   background:
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f,
-    #01258f;
+    radial-gradient(1.6px 1.6px at 10% 20%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1.2px 1.2px at 25% 65%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.8px 1.8px at 40% 15%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.3px 1.3px at 55% 80%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.6px 1.6px at 68% 35%, rgba(255,255,255,0.85), transparent),
+    radial-gradient(1.2px 1.2px at 80% 55%, rgba(255,255,255,0.65), transparent),
+    radial-gradient(1.9px 1.9px at 90% 20%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1.3px 1.3px at 15% 85%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.5px 1.5px at 48% 48%, rgba(255,255,255,0.75), transparent),
+    radial-gradient(1.4px 1.4px at 72% 90%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.7px 1.7px at 30% 40%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 85% 75%, rgba(255,255,255,0.7), transparent);
 }
 
 .manifesto__inner {
@@ -3739,9 +3695,7 @@ body.page-intro-active .hero-logo {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
   transition: opacity 0.4s var(--ease);
 }
 
@@ -3842,10 +3796,7 @@ body.page-intro-active .hero-logo {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(165deg, rgba(255,255,255,0.97) 0%, rgba(238,245,255,0.95) 55%, rgba(255,255,255,0.98) 100%);
   backdrop-filter: blur(22px) saturate(1.15);
   -webkit-backdrop-filter: blur(22px) saturate(1.15);
   border-left: 1px solid rgba(1, 37, 143, 0.22);
@@ -3868,11 +3819,11 @@ body.page-intro-active .hero-logo {
   pointer-events: none;
   opacity: 0.35;
   background-image:
-    #01258f,
-    #01258f;
+    linear-gradient(rgba(1, 37, 143, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1, 37, 143, 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
-  mask-image: #01258f;
-  -webkit-mask-image: #01258f;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
 }
 
 .main-nav--overlay::after {
@@ -3972,10 +3923,7 @@ body.nav-open .site-header {
 
 /* Menú panel — tema corporativo (theme-cluster) */
 .theme-cluster .main-nav--overlay {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(165deg, rgba(255,255,255,0.97) 0%, rgba(238,245,255,0.95) 55%, rgba(255,255,255,0.98) 100%);
 }
 
 body.nav-open .nav-bento .bento-dot {
@@ -4581,11 +4529,11 @@ body.theme-cluster #contenido > .section {
   position: absolute;
   inset: -30% -10%;
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 30% 30%, rgba(92, 232, 247, 0.35), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(1, 37, 143, 0.5), transparent 60%);
   background-size: 48px 48px;
-  mask-image: #01258f;
-  -webkit-mask-image: #01258f;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
   opacity: 0.55;
 }
 
@@ -4593,8 +4541,8 @@ body.theme-cluster #contenido > .section {
   position: absolute;
   inset: 0;
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 32% 30%, rgba(92, 232, 247, 0.5), transparent 60%),
+    radial-gradient(circle at 68% 70%, rgba(1, 37, 143, 0.6), transparent 65%);
 }
 
 .valores-carousel__scan {
@@ -4781,17 +4729,12 @@ body.theme-cluster #contenido > .section {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
   pointer-events: none;
 }
 
 .valores-carousel__panel--mission .valores-carousel__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 .valores-carousel__badge {
@@ -4940,15 +4883,11 @@ body.theme-cluster #contenido > .section {
 }
 
 .valores-carousel__panel--valores .valores-carousel__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 .valores-carousel__panel--filosofia .valores-carousel__shade {
-  background:
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
 }
 
 .valores-carousel__text em {
@@ -5592,16 +5531,13 @@ body.theme-cluster #contenido > .section {
 
 .quienes-hero-banner .avisos-hero-banner__aurora {
   background:
-    #01258f,
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%),
+    linear-gradient(160deg, #0a2a8f 0%, #011142 60%, #04081f 100%);
 }
 
 .quienes-hero-banner .avisos-hero-banner__shade {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 .bolsa-hero-banner .avisos-hero-banner__aurora {
@@ -5632,10 +5568,7 @@ body.theme-cluster #contenido > .section {
 }
 
 .bolsa-hero-banner .avisos-hero-banner__shade {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 .bolsa-hero-banner--tienda .avisos-hero-banner__scan,
@@ -5743,41 +5676,38 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
 .servicios-hero-banner .avisos-hero-banner__aurora {
   background:
-    #01258f,
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%),
+    linear-gradient(160deg, #0a2a8f 0%, #011142 60%, #04081f 100%);
 }
 
 .servicios-hero-banner .avisos-hero-banner__shade {
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 .yaavser-hero-banner .avisos-hero-banner__aurora {
   background:
-    #01258f,
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%),
+    linear-gradient(160deg, #0a2a8f 0%, #011142 60%, #04081f 100%);
 }
 
 .contacto-hero-banner .avisos-hero-banner__aurora {
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%);
 }
 
 .testimonios-hero-banner .avisos-hero-banner__aurora {
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%);
 }
 
 .activar-hero-banner .avisos-hero-banner__aurora {
   background:
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%);
 }
 
 .benefit-icon {
@@ -5837,9 +5767,9 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   inset: -20%;
   z-index: 0;
   background:
-    #01258f,
-    #01258f,
-    #01258f;
+    radial-gradient(circle at 28% 30%, rgba(92, 232, 247, 0.4), transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(1, 37, 143, 0.6), transparent 60%),
+    linear-gradient(160deg, #0a2a8f 0%, #011142 60%, #04081f 100%);
   animation: avisos-aurora 14s ease-in-out infinite alternate;
   opacity: 0.9;
 }
@@ -5900,10 +5830,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
 }
 
 .avisos-hero-banner__grid {
@@ -5912,11 +5839,11 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   z-index: 2;
   opacity: 0.2;
   background-image:
-    #01258f,
-    #01258f;
+    linear-gradient(rgba(146, 214, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(146, 214, 255, 0.14) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: #01258f;
-  -webkit-mask-image: #01258f;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 80%);
   pointer-events: none;
 }
 
@@ -6037,10 +5964,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   align-items: start;
   padding: clamp(28px, 5vw, 48px);
   border: 1px solid rgba(90, 156, 196, 0.28);
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(165deg, #0b1830 0%, #061024 55%, #030812 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     inset 0 -12px 32px rgba(0, 0, 0, 0.55),
@@ -7010,16 +6934,12 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
   body.page-home.hero-slide--graphic.page-bg--photo .page-bg__shade,
   body.page-home.hero-slide--graphic.hero-slide--light-shade.page-bg--photo .page-bg__shade {
-    background:
-      #01258f,
-      #01258f;
+    background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
   }
 
   body.page-home.hero-slide--graphic .hero-banner__shade,
   body.page-home.hero-slide--graphic.hero-slide--light-shade .hero-banner__shade {
-    background:
-      #01258f,
-      #01258f;
+    background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
   }
 
   body.page-home.hero-slide--graphic .hero-carousel__dots {
@@ -7289,9 +7209,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   }
 
   .video-banner__shade {
-    background:
-      #01258f,
-      #01258f;
+    background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
   }
 
   .video-banner__overlay {
@@ -7463,17 +7381,12 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
 
   body.page-home.hero-slide--light-bg.page-bg--photo:not(.hero-slide--graphic) .hero-banner__shade,
   body.page-home.hero-slide--light-bg.page-bg--photo:not(.hero-slide--graphic) .page-bg__shade {
-    background:
-      #01258f,
-      #01258f;
+    background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.82) 100%);
   }
 
   body.page-home.page-bg--photo:not(.hero-slide--graphic):not(.hero-slide--light-bg) .hero-banner__shade,
   body.page-home.page-bg--photo:not(.hero-slide--graphic):not(.hero-slide--light-bg) .page-bg__shade {
-    background:
-      #01258f,
-      #01258f,
-      #01258f;
+    background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
   }
 
   .hero-promo__title {
@@ -7937,10 +7850,7 @@ body.theme-cluster.page-bolsa-trabajo .bolsa-hero-banner__yaavs {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    #01258f,
-    #01258f,
-    #01258f;
+  background: linear-gradient(180deg, rgba(1, 8, 32, 0) 0%, rgba(1, 8, 32, 0.5) 55%, rgba(1, 8, 32, 0.88) 100%);
   pointer-events: none;
 }
 
@@ -9096,10 +9006,7 @@ video {
   }
 
   .site-header::before {
-    background:
-      #01258f,
-      #01258f,
-      #01258f;
+    background: #01258f;
   }
 
   .site-header::after {
