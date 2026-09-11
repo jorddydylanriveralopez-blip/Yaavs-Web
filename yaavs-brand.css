@@ -847,35 +847,46 @@ html body .site-header.site-header--nav-bar .main-nav.main-nav--corp {
    Ver commit "Fix: header móvil se salía de pantalla" para el diagnóstico. */
 
 /* ═══════════════════════════════════════════
-   OVERRIDE FINAL — Aurora en movimiento (scroll + temas)
-   Segunda vuelta del rediseño: el usuario pidió algo "diferente,
-   tecnológico, dinámico, que no sea sólido ni cuadrado ni muy oscuro"
-   en vez del HUD de vidrio oscuro anterior. Ahora el fondo es un
-   degradado animado que fluye entre azul marino, azul de marca y
-   cian/turquesa — nunca un color plano — con las esquinas inferiores
-   redondeadas (nada de bloque rectangular duro) y un remate difuso
-   en vez de una línea recta. Misma estructura de selectores de
+   OVERRIDE FINAL — Transparente arriba, aurora al hacer scroll
+   Tercera vuelta: el usuario pidió header transparente con letras
+   blancas. Queda transparente mientras estás arriba de la página
+   (flota sobre el hero, que en las 15 páginas siempre es oscuro/foto),
+   y cuando bajas ("is-scrolled") recupera el fondo de aurora en
+   movimiento de la versión anterior — si se quedara transparente
+   también al hacer scroll, el texto blanco se perdería sobre las
+   secciones claras del sitio. Misma estructura de selectores de
    "fuerza bruta" que ya tenía este bloque (es la capa de cascada
    más alta de todo el sitio para el header) — solo cambian los
    valores.
    ═══════════════════════════════════════════ */
 html body .site-header,
-html body .site-header.is-scrolled,
 html body.page-home .site-header,
-html body.page-home .site-header.is-scrolled,
 html body .site-header.site-header--nav-bar,
 html body .site-header.site-header--corp,
 html body.page-home .site-header.site-header--corp,
 html body.page-home .site-header.site-header--nav-bar,
+[data-yaavs-theme="day"] .page-home .site-header,
+[data-yaavs-theme="night"] .page-home .site-header,
+[data-yaavs-theme="day"] body.theme-cluster .site-header,
+[data-yaavs-theme="night"] body.theme-cluster .site-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  animation: none !important;
+}
+
+html body .site-header.is-scrolled,
+html body.page-home .site-header.is-scrolled,
 html body.page-home .site-header.site-header--corp.is-scrolled,
 html body.page-home .site-header.site-header--nav-bar.is-scrolled,
-[data-yaavs-theme="day"] .page-home .site-header,
 [data-yaavs-theme="day"] .page-home .site-header.is-scrolled,
-[data-yaavs-theme="night"] .page-home .site-header,
 [data-yaavs-theme="night"] .page-home .site-header.is-scrolled,
-[data-yaavs-theme="day"] body.theme-cluster .site-header,
 [data-yaavs-theme="day"] body.theme-cluster .site-header.is-scrolled,
-[data-yaavs-theme="night"] body.theme-cluster .site-header,
 [data-yaavs-theme="night"] body.theme-cluster .site-header.is-scrolled,
 html body.header-scrolled .site-header {
   background: linear-gradient(
@@ -925,14 +936,25 @@ html body.page-home .site-header .header-inner::before {
   box-shadow: none !important;
 }
 
-/* Remate difuso al pie del header — un resplandor borroso que fluye,
-   nunca una línea recta y dura. Se asoma bajo las esquinas
-   redondeadas para reforzar que el header "flota" en vez de cortar
-   la página en seco. */
+/* Header transparente en reposo: sin remate ni glow, nada que "corte"
+   sobre el hero. */
 html body .site-header::after,
 html body .site-header--nav-bar::after,
 html body.page-home .site-header::after,
 html body.page-home .site-header--nav-bar::after {
+  content: "" !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* Remate difuso al pie del header SOLO al hacer scroll — un resplandor
+   borroso que fluye, nunca una línea recta y dura. Se asoma bajo las
+   esquinas redondeadas para reforzar que el header "flota" en vez de
+   cortar la página en seco. */
+html body .site-header.is-scrolled::after,
+html body .site-header--nav-bar.is-scrolled::after,
+html body.page-home .site-header.is-scrolled::after,
+html body.page-home .site-header--nav-bar.is-scrolled::after {
   content: "" !important;
   display: block !important;
   position: absolute !important;
@@ -1233,9 +1255,16 @@ html body.page-home .site-header .logo.logo--on-light {
 }
 
 /* Restaura franja animada (el bloque anterior apagaba ::after).
-   Rediseño "aurora en movimiento": remate difuso y borroso en vez de
-   una línea recta — se asoma bajo las esquinas redondeadas del header. */
+   Header transparente: en reposo no hay remate (nada que "corte"
+   sobre el hero); al hacer scroll vuelve el resplandor difuso bajo
+   las esquinas redondeadas del header. */
 html body .site-header.site-header--corp::after {
+  content: "" !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+html body .site-header.site-header--corp.is-scrolled::after {
   content: "" !important;
   display: block !important;
   position: absolute !important;
