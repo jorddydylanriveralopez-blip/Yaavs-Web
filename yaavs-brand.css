@@ -845,7 +845,12 @@ html body .site-header.site-header--nav-bar .main-nav.main-nav--corp {
    Ver commit "Fix: header móvil se salía de pantalla" para el diagnóstico. */
 
 /* ═══════════════════════════════════════════
-   OVERRIDE FINAL — blanco siempre (scroll + temas)
+   OVERRIDE FINAL — HUD oscuro siempre (scroll + temas)
+   Rediseño futurista: vidrio azul marino + acentos de azul eléctrico
+   (#00d4ee), pedido explícitamente por el usuario en reemplazo del
+   header blanco anterior. Misma estructura de selectores de "fuerza
+   bruta" que ya tenía este bloque (es la capa de cascada más alta de
+   todo el sitio para el header) — solo cambian los valores.
    ═══════════════════════════════════════════ */
 html body .site-header,
 html body .site-header.is-scrolled,
@@ -866,25 +871,21 @@ html body.page-home .site-header.site-header--nav-bar.is-scrolled,
 [data-yaavs-theme="night"] body.theme-cluster .site-header,
 [data-yaavs-theme="night"] body.theme-cluster .site-header.is-scrolled,
 html body.header-scrolled .site-header {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
+  background: rgba(3, 13, 36, 0.86) !important;
+  background-color: rgba(3, 13, 36, 0.86) !important;
   background-image: none !important;
-  border-bottom: none !important;
+  border-bottom: 1px solid rgba(0, 212, 238, 0.22) !important;
   box-shadow:
-    inset 0 -3px 0 #01258f,
-    0 12px 28px rgba(1, 17, 66, 0.08) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    inset 0 -1px 0 rgba(0, 212, 238, 0.1) !important;
+  backdrop-filter: blur(22px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.4) !important;
 }
 
 html body .site-header::before,
-html body .site-header::after,
 html body .site-header--nav-bar::before,
-html body .site-header--nav-bar::after,
 html body.page-home .site-header::before,
-html body.page-home .site-header::after,
 html body.page-home .site-header--nav-bar::before,
-html body.page-home .site-header--nav-bar::after,
 html body .site-header .header-inner::before,
 html body.page-home .site-header .header-inner::before {
   content: none !important;
@@ -894,6 +895,45 @@ html body.page-home .site-header .header-inner::before {
   opacity: 0 !important;
   height: 0 !important;
   box-shadow: none !important;
+}
+
+/* Línea de escaneo animada al pie del header — el toque "HUD". */
+html body .site-header::after,
+html body .site-header--nav-bar::after,
+html body.page-home .site-header::after,
+html body.page-home .site-header--nav-bar::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 2px !important;
+  opacity: 0.9 !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #00d4ee 20%,
+    #2f8bff 50%,
+    #00d4ee 80%,
+    transparent 100%
+  ) !important;
+  background-size: 220% 100% !important;
+  box-shadow: none !important;
+  animation: yvs-hud-scan 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes yvs-hud-scan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: -220% 0%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .site-header::after,
+  html body .site-header--nav-bar::after {
+    animation: none !important;
+  }
 }
 
 html body .site-header .main-nav,
@@ -913,13 +953,14 @@ html body .site-header .main-nav--corp a,
 html body.page-home .site-header .main-nav a,
 html body.page-home .site-header .main-nav--bar a,
 html body.page-home .site-header .main-nav--corp a {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: rgba(235, 248, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(235, 248, 255, 0.88) !important;
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   text-shadow: none !important;
-  opacity: 0.78 !important;
+  opacity: 1 !important;
+  transition: color 0.22s ease, text-shadow 0.22s ease !important;
 }
 
 html body .site-header .main-nav a:hover,
@@ -927,9 +968,10 @@ html body .site-header .main-nav--bar a:hover,
 html body .site-header .main-nav--corp a:hover,
 html body.page-home .site-header .main-nav a:hover,
 html body.page-home .site-header .main-nav--corp a:hover {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   background: transparent !important;
+  text-shadow: 0 0 14px rgba(0, 212, 238, 0.85) !important;
   opacity: 1 !important;
 }
 
@@ -937,28 +979,31 @@ html body .site-header .main-nav a.is-active,
 html body .site-header .main-nav--corp a.is-active,
 html body.page-home .site-header .main-nav a.is-active,
 html body.page-home .site-header .main-nav--corp a.is-active {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   background: transparent !important;
+  text-shadow: 0 0 10px rgba(0, 212, 238, 0.6) !important;
   opacity: 1 !important;
 }
 
 html body .site-header .header-cta,
 html body.page-home .site-header .header-cta {
-  background: #01258f !important;
-  background-image: none !important;
-  border: 1px solid #01258f !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  background: linear-gradient(135deg, #00d4ee 0%, #2f8bff 100%) !important;
+  background-image: linear-gradient(135deg, #00d4ee 0%, #2f8bff 100%) !important;
+  border: 1px solid rgba(0, 212, 238, 0.6) !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
   border-radius: 999px !important;
-  box-shadow: 0 8px 18px rgba(1, 37, 143, 0.22) !important;
+  box-shadow: 0 8px 22px rgba(0, 212, 238, 0.3) !important;
 }
 
 html body .site-header .header-cta:hover,
 html body.page-home .site-header .header-cta:hover {
-  background: #011142 !important;
-  border-color: #011142 !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #ffffff 0%, #00d4ee 100%) !important;
+  background-image: linear-gradient(135deg, #ffffff 0%, #00d4ee 100%) !important;
+  border-color: #ffffff !important;
+  color: #011142 !important;
+  -webkit-text-fill-color: #011142 !important;
 }
 
 html body .site-header .logo-link,
@@ -977,12 +1022,12 @@ html body.page-home .site-header .logo,
 html body.page-home .site-header .logo.logo--white,
 html body.page-home .site-header .logo.logo--on-light {
   display: block !important;
-  filter: none !important;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 238, 0.35)) !important;
   opacity: 1 !important;
   visibility: visible !important;
-  width: 148px !important;
-  height: var(--logo-h, 48px) !important;
-  max-width: 160px !important;
+  width: 173px !important;
+  height: var(--logo-h, 40px) !important;
+  max-width: 185px !important;
 }
 
 /* Header multiplataforma: links en desktop, menú hamburguesa en tablet/móvil */
@@ -1153,7 +1198,9 @@ html body.page-home .site-header .logo.logo--on-light {
   }
 }
 
-/* Restaura franja animada (el bloque anterior apagaba ::after) */
+/* Restaura franja animada (el bloque anterior apagaba ::after).
+   Rediseño HUD: gradiente de azul eléctrico en vez del azul de marca
+   plano — es la franja de "escaneo" que remata el header oscuro. */
 html body .site-header.site-header--corp::after {
   content: "" !important;
   display: block !important;
@@ -1161,19 +1208,19 @@ html body .site-header.site-header--corp::after {
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  height: 3px !important;
-  opacity: 1 !important;
+  height: 2px !important;
+  opacity: 0.9 !important;
   pointer-events: none !important;
   background: linear-gradient(
     90deg,
-    #011142 0%,
-    #01258f 25%,
-    #3b82f6 50%,
-    #01258f 75%,
-    #011142 100%
+    transparent 0%,
+    #00d4ee 20%,
+    #2f8bff 50%,
+    #00d4ee 80%,
+    transparent 100%
   ) !important;
-  background-size: 200% 100% !important;
-  animation: yaavs-header-line 7s linear infinite !important;
+  background-size: 220% 100% !important;
+  animation: yaavs-header-line 6s linear infinite !important;
   box-shadow: none !important;
 }
 
@@ -1224,12 +1271,13 @@ html body.page-home .site-header .logo-link--corp .logo {
 }
 
 
-/* Logo header: SOLO azul a color (nunca blanco / nunca invert) */
+/* Logo header HUD: blanco con glow eléctrico (antes forzaba azul sólido
+   sin filtro — el rediseño usa assets/yaavs-logo-white.png). */
 html body .site-header.site-header--corp .logo-link--corp > img.logo,
 html body.page-home .site-header.site-header--corp .logo-link--corp > img.logo {
   content: normal !important;
-  filter: none !important;
-  -webkit-filter: none !important;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 238, 0.35)) !important;
+  -webkit-filter: drop-shadow(0 0 10px rgba(0, 212, 238, 0.35)) !important;
   opacity: 1 !important;
   mix-blend-mode: normal !important;
   -webkit-text-fill-color: initial !important;
