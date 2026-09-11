@@ -4113,29 +4113,29 @@ body.nav-open .nav-bento[aria-expanded="true"] .bento-dot:nth-child(5) {
 }
 
 .site-header.is-scrolled .main-nav--bar a {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: rgba(235, 248, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(235, 248, 255, 0.88) !important;
   text-shadow: none !important;
 }
 
 .site-header.is-scrolled .main-nav--bar a:hover,
 .site-header.is-scrolled .main-nav--bar a:focus-visible,
 .site-header.is-scrolled .main-nav--bar a.is-active {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
   background: transparent !important;
 }
 
 .page-home .site-header.is-scrolled .main-nav--bar a {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: rgba(235, 248, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(235, 248, 255, 0.88) !important;
 }
 
 .page-home .site-header.is-scrolled .main-nav--bar a:hover,
 .page-home .site-header.is-scrolled .main-nav--bar a:focus-visible,
 .page-home .site-header.is-scrolled .main-nav--bar a.is-active {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
   background: transparent !important;
 }
 
@@ -4149,8 +4149,8 @@ body.page-tiendas-map .site-header .main-nav--bar a,
 body.page-tiendas-map .site-header.is-scrolled .main-nav--bar a,
 body.page-tiendas .site-header .main-nav--bar a,
 body.page-tiendas .site-header.is-scrolled .main-nav--bar a {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: rgba(235, 248, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(235, 248, 255, 0.88) !important;
   background: transparent !important;
 }
 
@@ -4165,15 +4165,15 @@ body.page-tiendas-map .site-header .main-nav--bar a:hover,
 body.page-tiendas-map .site-header .main-nav--bar a:focus-visible,
 body.page-tiendas .site-header .main-nav--bar a:hover,
 body.page-tiendas .site-header .main-nav--bar a:focus-visible {
-  color: #01258f !important;
-  -webkit-text-fill-color: #01258f !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
   background: transparent !important;
 }
 
 body.page-tiendas-map .site-header .main-nav--bar a.is-active,
 body.page-tiendas .site-header .main-nav--bar a.is-active {
-  color: #011142 !important;
-  -webkit-text-fill-color: #011142 !important;
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
   background: transparent !important;
 }
 

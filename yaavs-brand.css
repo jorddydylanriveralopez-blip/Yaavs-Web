@@ -172,10 +172,37 @@ html body .site-header.site-header--corp {
   -webkit-backdrop-filter: none !important;
 }
 
+/* Nav del header (desktop, ambos estados) — header oscuro: texto claro.
+   Separado del panel móvil (.main-nav--overlay, vidrio claro, texto
+   oscuro) que se queda como estaba, más abajo. */
 .site-header .main-nav a,
 .site-header .main-nav--bar a,
 .site-header.is-scrolled .main-nav--bar a,
-.page-home .site-header.is-scrolled .main-nav--bar a,
+.page-home .site-header.is-scrolled .main-nav--bar a {
+  color: rgba(235, 248, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(235, 248, 255, 0.88) !important;
+  background: transparent !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  border: 0 !important;
+  opacity: 1 !important;
+}
+
+.site-header .main-nav--bar a:hover,
+.site-header .main-nav--bar a:focus-visible,
+.site-header.is-scrolled .main-nav--bar a:hover {
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
+  background: transparent !important;
+}
+
+.site-header .main-nav--bar a.is-active,
+.site-header.is-scrolled .main-nav--bar a.is-active {
+  color: #00d4ee !important;
+  -webkit-text-fill-color: #00d4ee !important;
+  background: transparent !important;
+}
+
 .main-nav--overlay a {
   color: #011142 !important;
   -webkit-text-fill-color: #011142 !important;
@@ -186,17 +213,12 @@ html body .site-header.site-header--corp {
   opacity: 1 !important;
 }
 
-.site-header .main-nav--bar a:hover,
-.site-header .main-nav--bar a:focus-visible,
-.site-header.is-scrolled .main-nav--bar a:hover,
 .main-nav--overlay a:hover {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   background: #01258f !important;
 }
 
-.site-header .main-nav--bar a.is-active,
-.site-header.is-scrolled .main-nav--bar a.is-active,
 .main-nav--overlay a.is-active {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
