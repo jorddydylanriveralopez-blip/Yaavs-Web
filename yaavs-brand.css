@@ -1609,11 +1609,22 @@ html body.page-home .hero-banner .hero-promo__cta:focus-visible span {
     0 0 0 1px rgba(255, 255, 255, 0.16) !important;
 }
 
-/* ─── Home ¿Quiénes somos? — banda blanca editorial ─── */
+/* ─── Home ¿Quiénes somos? — banda editorial dinámica: acentos de
+   color a la deriva (azul eléctrico, azul de marca, turquesa,
+   violeta) sobre base clara — pedido explícito del usuario, "no
+   plana ni cuadrada". Animación en home-corporate.css
+   (yvs-somos-drift); aquí solo se desactiva el !important que la
+   tapaba. ─── */
 html body.page-home .hx-somos,
 html body.page-home .hx-somos[data-hx-band="light"] {
-  background: #ffffff !important;
-  background-image: none !important;
+  background:
+    radial-gradient(ellipse 50% 65% at 6% 15%, rgba(0, 212, 238, 0.28), transparent 58%),
+    radial-gradient(ellipse 48% 60% at 96% 10%, rgba(47, 139, 255, 0.3), transparent 58%),
+    radial-gradient(ellipse 55% 60% at 85% 95%, rgba(0, 201, 167, 0.24), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 10% 100%, rgba(155, 107, 255, 0.18), transparent 58%),
+    linear-gradient(165deg, #f7faff 0%, #ffffff 45%, #f2f7ff 100%) !important;
+  background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100% !important;
+  animation: yvs-somos-drift 22s ease-in-out infinite alternate !important;
   color: #011142 !important;
   border: none !important;
 }
@@ -1703,13 +1714,20 @@ html body.page-home .hx-somos .hx-somos__cta:focus-visible span {
   -webkit-text-fill-color: #ffffff !important;
 }
 
-/* ─── Home métricas — hover azul con texto blanco ─── */
+/* ─── Home métricas — fondo dinámico con acentos de color a la
+   deriva (mismo sistema que .hx-somos), las tarjetas de cada
+   métrica se quedan blancas encima (ver reglas siguientes). ─── */
 html body.page-home .hx-pulse,
 html body.page-home .hx-services > .hx-pulse,
 html body.page-home[data-yaavs-theme="day"] .hx-pulse,
 html body.page-home .hx-pulse[data-hx-pulse] {
-  background: #ffffff !important;
-  background-image: none !important;
+  background:
+    radial-gradient(ellipse 55% 85% at 12% 50%, rgba(0, 212, 238, 0.26), transparent 60%),
+    radial-gradient(ellipse 55% 85% at 88% 50%, rgba(47, 139, 255, 0.28), transparent 60%),
+    radial-gradient(ellipse 60% 90% at 50% 120%, rgba(0, 201, 167, 0.18), transparent 62%),
+    linear-gradient(180deg, #f6faff 0%, #eef5ff 100%) !important;
+  background-size: 180% 180%, 180% 180%, 180% 180%, 100% 100% !important;
+  animation: yvs-pulse-drift 18s ease-in-out infinite alternate !important;
   color: #011142 !important;
 }
 

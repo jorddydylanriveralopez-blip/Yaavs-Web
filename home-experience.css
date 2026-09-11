@@ -45,9 +45,26 @@
   padding: clamp(24px, 4vw, 40px) var(--pad-x);
   overflow: hidden;
   border-block: 1px solid var(--border-accent);
-  background: var(--bg-soft);
+  background:
+    radial-gradient(ellipse 55% 85% at 12% 50%, rgba(0, 212, 238, 0.14), transparent 62%),
+    radial-gradient(ellipse 55% 85% at 88% 50%, rgba(47, 139, 255, 0.16), transparent 62%),
+    radial-gradient(ellipse 60% 90% at 50% 120%, rgba(0, 201, 167, 0.1), transparent 65%),
+    linear-gradient(180deg, #f6faff 0%, #eef5ff 100%);
+  background-size: 180% 180%, 180% 180%, 180% 180%, 100% 100%;
+  animation: yvs-pulse-drift 18s ease-in-out infinite alternate;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+@keyframes yvs-pulse-drift {
+  0% { background-position: 0% 50%, 100% 50%, 50% 100%, 0 0; }
+  100% { background-position: 12% 42%, 88% 58%, 54% 92%, 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hx-pulse {
+    animation: none;
+  }
 }
 
 /* Métricas con respiro bajo el carril de servicios */
@@ -71,10 +88,13 @@
 }
 
 .hx-pulse__mesh {
-  opacity: 0.12;
-  background:
-    #01258f,
-    #01258f;
+  opacity: 0.1;
+  background-image:
+    linear-gradient(rgba(1, 37, 143, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1, 37, 143, 0.5) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 40%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 40%, transparent 82%);
 }
 
 .hx-pulse__scan {
