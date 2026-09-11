@@ -908,17 +908,36 @@ html body.header-scrolled .site-header {
       rgba(10, 47, 158, 0.85) 76%,
       rgba(4, 19, 107, 0.85) 100%
     ) !important;
-  border-bottom: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16) !important;
   border-radius: 0 0 28px 28px !important;
-  box-shadow: 0 12px 28px rgba(2, 40, 90, 0.28) !important;
-  backdrop-filter: blur(18px) saturate(1.3) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(1.3) !important;
+  box-shadow:
+    0 8px 32px rgba(2, 40, 90, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(26px) saturate(1.6) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(1.6) !important;
   animation: yvs-aurora-flow 16s ease-in-out infinite !important;
 }
 
 @keyframes yvs-aurora-flow {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+}
+
+/* Tamaño del header CONGELADO: sin animación de "encogerse" al hacer
+   scroll (pedido explícito del usuario — antes 3 capas distintas de
+   este archivo/styles.css redefinían --header-bar-h/--logo-h más
+   chicos en .is-scrolled). Mismo tamaño arriba y abajo, siempre. */
+html body .site-header,
+html body .site-header.is-scrolled,
+html body.page-home .site-header,
+html body.page-home .site-header.is-scrolled,
+html body .site-header.site-header--corp,
+html body .site-header.site-header--corp.is-scrolled,
+html body .site-header.site-header--nav-bar,
+html body .site-header.site-header--nav-bar.is-scrolled {
+  --header-bar-h: 84px !important;
+  --header-pad-y: 0px !important;
+  --logo-h: 48px !important;
 }
 
 html body .site-header::before,
@@ -1081,9 +1100,9 @@ html body.page-home .site-header .logo.logo--on-light {
   filter: drop-shadow(0 0 10px rgba(0, 212, 238, 0.35)) !important;
   opacity: 1 !important;
   visibility: visible !important;
-  width: 173px !important;
-  height: var(--logo-h, 40px) !important;
-  max-width: 185px !important;
+  width: auto !important;
+  height: var(--logo-h, 48px) !important;
+  max-width: 220px !important;
 }
 
 /* Header multiplataforma: links en desktop, menú hamburguesa en tablet/móvil */
