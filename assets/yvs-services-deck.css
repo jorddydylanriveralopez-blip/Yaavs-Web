@@ -1,23 +1,23 @@
 /* ============================================================
-   YVS Services Deck v6 — tarjetas horizontales tipo cine, con dos
-   ajustes pedidos por el usuario sobre la v5:
-   1. "Se ve muy sencillo" — los videos (capturas de teléfono sobre
-      fondo azul liso) se sentían vacíos. Se agrega .yvs-tile__tint,
-      un velo de color por categoría con mix-blend-mode:color SIEMPRE
-      presente — tiñe el video con el acento de marca sin taparlo
-      (preserva luminosidad/detalle, solo reemplaza matiz), así cada
-      tarjeta se siente diseñada y no "un video cualquiera".
-   2. "Si se ven al mismo tiempo se pierde" — vuelve a reproducirse
-      UN SOLO video a la vez, el de la tarjeta en hover/foco (como en
-      las versiones con icono); las demás quedan en su poster/primer
-      frame, con el tinte de color puesto para que no se vean "vacías
-      y congeladas" sino intencionalmente estáticas.
+   YVS Services Deck v7 — tres ajustes pedidos por el usuario sobre
+   la v6:
+   1. "Anima las tarjetas" — además de la entrada escalonada de
+      siempre, ahora el glow de cada tarjeta respira (pulso continuo
+      de opacidad/sombra) y el ícono de marca flota suavemente. Nada
+      de esto toca transform en .yvs-tile ni en el <video> — el icono
+      es un elemento hermano del video, no un ancestro, así que
+      animarlo a él es seguro.
+   2. "Que no sea redondeado, rectangular normal" — border-radius: 0.
+   3. "Marca todas las tarjetas que se vean genial" — el primer frame
+      de cada video varía mucho en qué tan bien se ve en reposo
+      (algunos arrancan con una escena vacía). Se vuelve a mostrar el
+      ÍCONO de marca de cada servicio, centrado sobre el degradado de
+      acento, SIEMPRE en reposo — consistente y con buena pinta en
+      las 10 tarjetas por igual — y el ícono se desvanece revelando
+      el video real solo mientras se reproduce (hover/foco).
 
    Nota de seguridad (misma de siempre en este archivo): CERO
-   transform en .yvs-tile o en cualquier ancestro del <video> — es lo
-   que rompía el pintado en Chrome. El hover se resuelve con
-   box-shadow/borde + scale en el propio <video> (hermano, no
-   ancestro, de sí mismo), nunca tocan el compositing.
+   transform en .yvs-tile o en cualquier ancestro del <video>.
    ============================================================ */
 
 .yvs-grid {
@@ -35,17 +35,21 @@
   position: relative;
   display: block;
   aspect-ratio: 16 / 9;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
   text-decoration: none;
   color: #ffffff;
   isolation: isolate;
-  background: linear-gradient(155deg, var(--yvs-a2, #011142) 0%, #050e33 65%, #030820 100%);
-  box-shadow: 0 10px 26px rgba(1, 17, 66, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(ellipse 120% 100% at 20% 0%, color-mix(in srgb, var(--yvs-a1, #01258f) 45%, transparent), transparent 60%),
+    linear-gradient(155deg, var(--yvs-a2, #011142) 0%, #050e33 65%, #030820 100%);
+  box-shadow: var(--yvs-glow, 0 10px 26px rgba(1, 17, 66, 0.22)), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  animation: yvs-tile-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: calc(var(--yvs-i, 0) * 0.05s);
+  animation:
+    yvs-tile-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both,
+    yvs-tile-breathe 5s ease-in-out calc(0.6s + var(--yvs-i, 0) * 0.15s) infinite;
+  animation-delay: calc(var(--yvs-i, 0) * 0.05s), calc(0.6s + var(--yvs-i, 0) * 0.15s);
 }
 
 .yvs-tile:hover,
@@ -53,11 +57,19 @@
   box-shadow: 0 18px 38px rgba(1, 17, 66, 0.3), 0 0 0 1px color-mix(in srgb, var(--yvs-a1, #01258f) 60%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border-color: color-mix(in srgb, var(--yvs-a1, #01258f) 65%, transparent);
   outline: none;
+  animation-play-state: paused, paused;
 }
 
 @keyframes yvs-tile-in {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Respiro continuo del glow — el "anímalas" pedido, sin tocar
+   transform: solo box-shadow vía --yvs-glow. */
+@keyframes yvs-tile-breathe {
+  0%, 100% { --yvs-glow: 0 10px 26px rgba(1, 17, 66, 0.22); }
+  50% { --yvs-glow: 0 14px 34px color-mix(in srgb, var(--yvs-a1, #01258f) 38%, rgba(1, 17, 66, 0.22)); }
 }
 
 .yvs-tile__video {
@@ -71,30 +83,54 @@
   transition: transform 0.4s ease;
 }
 
-/* Poster/fallback: el propio <video> ya trae poster= con el icono de
-   marca de ese servicio, así que si el navegador tarda en cargar o
-   el autoplay falla, se ve el icono en vez de un rectángulo vacío. */
-
 .yvs-tile:hover .yvs-tile__video,
 .yvs-tile:focus-visible .yvs-tile__video {
   transform: scale(1.04);
 }
 
-/* Tinte de color por categoría — SIEMPRE presente (no solo hover).
-   mix-blend-mode:color reemplaza el matiz del video por el acento de
-   marca conservando su luminosidad/detalle, así cualquier video (aunque
-   sea una captura simple sobre fondo azul) se siente parte del mismo
-   sistema visual en vez de "vacío". Se afloja un poco en hover para
-   que el video protagonista se vea más nítido/vivo. */
+/* Ícono de marca, siempre visible en reposo — así las 10 tarjetas
+   arrancan con la misma pinta "diseñada" en vez de depender del
+   primer frame (muy variable) de cada video. Se desvanece al
+   reproducir, revelando el video real debajo. Flota suave — es un
+   hermano del <video>, no su ancestro, así que animar su transform
+   es seguro. */
+.yvs-tile__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: clamp(56px, 16%, 84px);
+  height: clamp(56px, 16%, 84px);
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(1, 8, 32, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.14);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  animation: yvs-icon-float 4.5s ease-in-out calc(var(--yvs-i, 0) * 0.15s) infinite;
+}
+
+.yvs-tile.is-playing .yvs-tile__icon {
+  opacity: 0;
+}
+
+@keyframes yvs-icon-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-6px); }
+}
+
+/* Tinte de color por categoría — SIEMPRE presente sobre el video
+   (se afloja en hover/is-playing para que el video protagonista se
+   vea más nítido/vivo). */
 .yvs-tile__tint {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   background: linear-gradient(
     155deg,
-    color-mix(in srgb, var(--yvs-a1, #01258f) 70%, transparent) 0%,
-    color-mix(in srgb, var(--yvs-a1, #01258f) 30%, transparent) 40%,
-    color-mix(in srgb, var(--yvs-a2, #011142) 80%, transparent) 100%
+    color-mix(in srgb, var(--yvs-a1, #01258f) 65%, transparent) 0%,
+    color-mix(in srgb, var(--yvs-a1, #01258f) 25%, transparent) 40%,
+    color-mix(in srgb, var(--yvs-a2, #011142) 78%, transparent) 100%
   );
   mix-blend-mode: color;
   opacity: 0.9;
@@ -119,9 +155,8 @@
   pointer-events: none;
 }
 
-/* Pequeño indicio de "play" en reposo — un triángulo discreto en la
-   esquina, para que se entienda que hay video sin tener que
-   adivinarlo. Desaparece mientras se reproduce. */
+/* Pequeño indicio de "play" en la esquina, para que se entienda que
+   hay video sin tener que adivinarlo. Desaparece mientras reproduce. */
 .yvs-tile__play {
   position: absolute;
   top: 12px;
@@ -229,7 +264,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .yvs-tile {
+  .yvs-tile,
+  .yvs-tile__icon {
     animation: none;
   }
   .yvs-tile__video {
