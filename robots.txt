@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /offline.html
+Disallow: /api/
+Disallow: /partials/
+Disallow: /scripts/
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://www.yaavs.com.mx/sitemap.xml

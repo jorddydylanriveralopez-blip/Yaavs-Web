@@ -1,0 +1,19 @@
+---
+description: Every UI change must work on phone, tablet, desktop, and large screens.
+alwaysApply: true
+---
+
+# Multiplataforma (Yaavs-Web)
+
+Every layout, section, animation, and control must work on **celular, tablet, PC y pantallas grandes**. Do not ship desktop-only or mobile-only treatments.
+
+## Checklist on every visual change
+
+- Phone (≈360–430px): readable type, tap targets ≥44px, no horizontal scroll, stacked or 2-column grids.
+- Tablet (≈700–900px): no clipped headlines, no unused empty navy bands, cards remain tappable.
+- Desktop (≥901px): use available width without forcing `100dvh` sections unless the design needs a full-screen stage.
+- Large screens (≥1400px): constrain inner content (`min(1180px, 100%)` or similar) so lines and cards do not stretch endlessly.
+- Prefer `clamp()`, CSS grid, and wrapping (`white-space: normal`) over fixed `px` widths and `nowrap`.
+- `prefers-reduced-motion: reduce` must keep content readable without relying on the animation.
+
+If a section looks like a separate floating box over a dark full-viewport band, join it with the content below on a light/clear band unless the user asks for a dark stage.

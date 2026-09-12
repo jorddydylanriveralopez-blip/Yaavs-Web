@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 112" fill="none" aria-hidden="true">
+  <path d="M12 8 H76 A8 8 0 0 1 84 16 V96 A8 8 0 0 1 76 104 H12 A8 8 0 0 1 4 96 V16 A8 8 0 0 1 12 8 Z" stroke="#00eeff" stroke-width="2" stroke-opacity="0.85"/>
+  <path d="M4 28 H20 V44 H4 Z" fill="#00eeff" fill-opacity="0.2" stroke="#00eeff" stroke-width="1.5" stroke-opacity="0.6"/>
+  <text x="44" y="62" text-anchor="middle" fill="#00eeff" fill-opacity="0.75" font-family="Montserrat,Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="0.12em">SIM</text>
+</svg>

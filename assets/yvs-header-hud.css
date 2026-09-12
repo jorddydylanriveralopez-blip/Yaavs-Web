@@ -1,0 +1,68 @@
+/* ============================================================
+   YVS Header HUD — complementos del rediseño futurista del header.
+   El grueso del rediseño (fondo de vidrio oscuro, línea de escaneo,
+   links, CTA, logo) vive directamente en el bloque "OVERRIDE FINAL"
+   de yaavs-brand.css — es la capa de cascada más alta del sitio para
+   el header, así que editarla ahí evita una guerra de especificidad
+   con selectores "html body .site-header..." de fuerza bruta. Este
+   archivo solo añade lo que ese bloque no cubre: pulso del CTA,
+   glow del botón hamburguesa/WhatsApp, y el acento del panel móvil.
+   ============================================================ */
+
+/* CTA "Cotizar ahora": pulso leve para que respire y llame la
+   atención. Anima transform (nadie más lo marca !important en este
+   botón, así que siempre se ve) además del glow — el box-shadow base
+   del botón está en !important en yaavs-brand.css, y una animación
+   normal no puede ganarle a un !important estático en la misma
+   propiedad, por eso el pulso necesita apoyarse en transform. */
+.site-header--corp .header-cta {
+  animation: yvs-cta-pulse 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes yvs-cta-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 22px rgba(0, 212, 238, 0.3);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 10px 28px rgba(0, 212, 238, 0.6);
+  }
+}
+
+/* Botón WhatsApp del header (icono redondo). */
+.site-header--corp .header-wa {
+  background: rgba(0, 212, 238, 0.08) !important;
+  border: 1.5px solid rgba(0, 212, 238, 0.55) !important;
+}
+
+.site-header--corp .header-wa:hover,
+.site-header--corp .header-wa:focus-visible {
+  background: #00d4ee !important;
+  border-color: #00d4ee !important;
+}
+
+/* Hamburguesa / nav-bento: glow eléctrico sobre el vidrio oscuro. */
+.site-header--corp .nav-bento {
+  box-shadow: 0 0 14px rgba(0, 212, 238, 0.2);
+}
+
+.site-header--corp .nav-bento:hover,
+.site-header--corp .nav-bento:focus-visible {
+  box-shadow: 0 0 20px rgba(0, 212, 238, 0.4);
+}
+
+/* Panel de menú móvil: el acento lateral pasa a azul eléctrico para
+   combinar con el header nuevo (el resto del panel — vidrio claro —
+   ya se arregló aparte en el fix de gradientes rotos). */
+.main-nav--overlay::after {
+  background: #00d4ee !important;
+  box-shadow: 0 0 16px rgba(0, 212, 238, 0.5) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header--corp .header-cta {
+    animation: none !important;
+  }
+}

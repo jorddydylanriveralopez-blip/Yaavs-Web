@@ -1,0 +1,119 @@
+name: Deploy header patch to Hostinger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload header files via Hostinger TUS
+        env:
+          HOSTINGER_API_TOKEN: ${{ secrets.HOSTINGER_API_TOKEN }}
+          DOMAIN: skyblue-porpoise-148439.hostingersite.com
+          USERNAME: u376360150
+        run: |
+          set -euo pipefail
+          CREDS=$(curl -sS -X POST "https://developers.hostinger.com/api/hosting/v1/files/upload-urls" \
+            -H "Authorization: Bearer ${HOSTINGER_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"username\":\"${USERNAME}\",\"domain\":\"${DOMAIN}\"}")
+          echo "creds keys: $(echo "$CREDS" | jq -r 'keys|join(",")')"
+          URL=$(echo "$CREDS" | jq -r '.url // .data.url // empty')
+          AUTH=$(echo "$CREDS" | jq -r '.auth_key // .data.auth_key // empty')
+          REST=$(echo "$CREDS" | jq -r '.rest_auth_key // .data.rest_auth_key // empty')
+          if [ -z "$URL" ] || [ "$URL" = "null" ]; then echo "FAIL CREDS: $CREDS"; exit 1; fi
+
+          upload_one() {
+            local FILE="$1"
+            local DEST="$2"
+            local SIZE
+            SIZE=$(stat -c%s "$FILE")
+            local DEST_URL="${URL%/}/${DEST}?override=true"
+            echo "Uploading ${DEST} (${SIZE} bytes)"
+            CODE=$(curl -sS -o /tmp/tus_post.txt -w "%{http_code}" -X POST "$DEST_URL" \
+              -H "X-Auth: ${AUTH}" \
+              -H "X-Auth-Rest: ${REST}" \
+              -H "Tus-Resumable: 1.0.0" \
+              -H "Upload-Length: ${SIZE}" \
+              -H "Upload-Offset: 0")
+            if [ "$CODE" != "201" ]; then
+              echo "X-Auth POST=$CODE body=$(head -c 200 /tmp/tus_post.txt)"
+              CODE=$(curl -sS -o /tmp/tus_post.txt -w "%{http_code}" -X POST "$DEST_URL" \
+                -H "Authorization: Bearer ${AUTH}" \
+                -H "Auth-Data: ${REST}" \
+                -H "Tus-Resumable: 1.0.0" \
+                -H "Upload-Length: ${SIZE}" \
+                -H "Upload-Offset: 0" \
+                -H "Content-Length: 0")
+            fi
+            echo "POST=$CODE"
+            test "$CODE" = "201"
+            PATCH=$(curl -sS -o /tmp/tus_patch.txt -w "%{http_code}" -X PATCH "$DEST_URL" \
+              -H "X-Auth: ${AUTH}" \
+              -H "X-Auth-Rest: ${REST}" \
+              -H "Authorization: Bearer ${AUTH}" \
+              -H "Auth-Data: ${REST}" \
+              -H "Tus-Resumable: 1.0.0" \
+              -H "Content-Type: application/offset+octet-stream" \
+              -H "Upload-Offset: 0" \
+              --data-binary @"${FILE}")
+            echo "PATCH=$PATCH body=$(head -c 120 /tmp/tus_patch.txt)"
+            test "$PATCH" = "204" -o "$PATCH" = "200" -o "$PATCH" = "201"
+          }
+
+          upload_one yaavs-brand.css yaavs-brand.css
+          upload_one home-corporate.css home-corporate.css
+          upload_one styles.css styles.css
+          upload_one theme-day-night.css theme-day-night.css
+          upload_one quienes-asi.css quienes-asi.css
+          upload_one tiendas-page.css tiendas-page.css
+          upload_one tiendas-map-page.css tiendas-map-page.css
+          upload_one site-footer.css site-footer.css
+          upload_one partials/footer.html partials/footer.html
+          upload_one js/footer.js js/footer.js
+          upload_one js/layout.js js/layout.js
+          upload_one js/tiendas-map.js js/tiendas-map.js
+          upload_one js/hero-carousel.js js/hero-carousel.js
+          upload_one js/deck-media.config.js js/deck-media.config.js
+          upload_one partials/header.html partials/header.html
+          upload_one partials/whatsapp-float.html partials/whatsapp-float.html
+          upload_one assets/yaavs-logo-on-light.png assets/yaavs-logo-on-light.png
+          upload_one assets/yaavs-logo.png assets/yaavs-logo.png
+          upload_one assets/yaavs-logo-header-color.png assets/yaavs-logo-header-color.png
+          for f in assets/floats/*.svg; do
+            upload_one "$f" "$f" || true
+          done
+          upload_one assets/operadores/bait-logo-animated.gif assets/operadores/bait-logo-animated.gif || true
+          upload_one assets/operadores/att-carriers-color.svg assets/operadores/att-carriers-color.svg || true
+          upload_one OneSignalSDKWorker.js OneSignalSDKWorker.js
+          upload_one sw.js sw.js
+          upload_one js/pwa.js js/pwa.js
+
+          for f in assets/servicios/icons/*.png; do
+            upload_one "$f" "$f"
+          done
+
+          upload_one assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg assets/bolsa/bolsa-hero-equipo-20260808@2x.jpg || true
+          upload_one assets/bolsa/bolsa-hero-tienda.jpg assets/bolsa/bolsa-hero-tienda.jpg || true
+          upload_one js/bolsa-vacantes.js js/bolsa-vacantes.js
+          for f in assets/bolsa/posters/*.jpg; do
+            upload_one "$f" "$f" || true
+          done
+          upload_one js/interior-banner.js js/interior-banner.js || true
+
+          for f in *.html; do
+            upload_one "$f" "$f"
+          done
+
+          # Large files last; do not block HTML/CSS ship on timeout
+          upload_one home-experience.css home-experience.css || true
+          upload_one assets/quienes-somos-fondo.jpg assets/quienes-somos-fondo.jpg || true
+          upload_one assets/quienes/ciudad-dia.jpg assets/quienes/ciudad-dia.jpg || true
+
+          curl -sS -X POST \
+            "https://developers.hostinger.com/api/hosting/v1/accounts/${USERNAME}/websites/${DOMAIN}/cache" \
+            -H "Authorization: Bearer ${HOSTINGER_API_TOKEN}" || true
+          echo DONE

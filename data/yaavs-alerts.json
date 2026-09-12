@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30T15:40:00-06:00",
+  "items": [
+    {
+      "id": "promo-esim-jul2026",
+      "type": "promo",
+      "title": "Conoce nuestras nuevas ofertas",
+      "body": "eSIM AT&T gratis con Nucel y $100 de tiempo aire. Solo Península y sureste. Vigente julio 2026.",
+      "url": "index.html#promo",
+      "createdAt": "2026-07-30"
+    },
+    {
+      "id": "blog-recargaklic-jun",
+      "type": "blog",
+      "title": "Nueva nota en Noticias Yaavs",
+      "body": "RecargaKlic: activaciones más rápidas en tu punto de venta. Léelo en Noticias.",
+      "url": "avisos.html",
+      "createdAt": "2026-06-01"
+    },
+    {
+      "id": "job-asesor-att",
+      "type": "vacante",
+      "title": "Nueva vacante: Asesor de ventas AT&T",
+      "body": "Entra a Únete a nuestro equipo y revisa tus notificaciones de vacantes.",
+      "url": "bolsa-trabajo.html#catalogo-vacantes",
+      "createdAt": "2026-05-12"
+    },
+    {
+      "id": "job-ejecutivo-nl",
+      "type": "vacante",
+      "title": "Nueva vacante: Ejecutivo de ventas a detalle",
+      "body": "Oportunidad en Nuevo León. Revisa el catálogo de vacantes YAAVS.",
+      "url": "bolsa-trabajo.html#catalogo-vacantes",
+      "createdAt": "2026-05-18"
+    },
+    {
+      "id": "job-guardia-ojo",
+      "type": "vacante",
+      "title": "Nueva vacante: Guardia de seguridad",
+      "body": "Vacante en Ojo de agua. Ve tus notificaciones y postula en Únete a nuestro equipo.",
+      "url": "bolsa-trabajo.html#catalogo-vacantes",
+      "createdAt": "2026-05-22"
+    }
+  ]
+}

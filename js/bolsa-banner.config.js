@@ -3,12 +3,8 @@
  * Opcional: assets/bolsa/bolsa-banner.mp4 para video loop.
  */
 window.YAAVS_BOLSA_BANNER = {
-  images: [
-    "assets/hero-banner-3.jpg",
-    "assets/hero-banner-4.jpg",
-    "assets/hero-banner-5.jpg",
-  ],
-  poster: "assets/hero-banner-1.jpg",
+  images: ["assets/bolsa/bolsa-hero-tienda.jpg"],
+  poster: "assets/bolsa/bolsa-hero-tienda.jpg",
   mp4: "",
   webm: "",
   interval: 6000,

@@ -59,6 +59,14 @@ O pega un enlace de YouTube en `youtube` y deja `src` vacío.
 
 ## Estructura
 
+Ver también la entrega exportable:
+
+```bash
+./scripts/exportar-sitio.sh
+```
+
+Genera `entrega/yaavs-web/` (sitio + docs ordenados) y un ZIP en `entrega/`.
+
 - `styles.css` — estilos globales
 - `js/layout.js` — carga header y footer
 - `js/main.js` — formularios, animaciones

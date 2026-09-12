@@ -1,0 +1,10 @@
+.git
+.vercel
+.vscode
+node_modules
+.env*
+yaavs-web-completo.zip
+*.psd
+agent-transcripts
+.cursor
+*.zip

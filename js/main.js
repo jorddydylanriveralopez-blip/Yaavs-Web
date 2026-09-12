@@ -3,32 +3,70 @@
     const yaavserForm = document.getElementById("yaavser-form");
     const contactForm = document.getElementById("contact-form");
 
+    function isBotSubmission(form, data) {
+      const honey = String(data.get("website") || data.get("hp_url") || "").trim();
+      if (honey) return true;
+      const started = Number(form.dataset.formStarted || 0);
+      if (started && Date.now() - started < 1200) return true;
+      return false;
+    }
+
+    function cleanField(value) {
+      return String(value || "")
+        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
+        .replace(/[<>]/g, "")
+        .trim()
+        .slice(0, 2000);
+    }
+
     function handleFormSubmit(form, statusId, subjectPrefix) {
       if (!form) return;
+      if (form.hasAttribute("data-yaavser-lead-form")) return;
+      if (!form.dataset.formStarted) {
+        form.dataset.formStarted = String(Date.now());
+      }
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         const status = document.getElementById(statusId);
         const data = new FormData(form);
+        if (isBotSubmission(form, data)) {
+          if (status) {
+            status.textContent = "Solicitud recibida. Gracias.";
+            status.classList.add("is-success");
+          }
+          form.reset();
+          form.dataset.formStarted = String(Date.now());
+          return;
+        }
         if (!form.checkValidity()) {
           form.reportValidity();
           return;
         }
+        const skip = new Set(["website", "hp_url", "privacidad"]);
         const body = Array.from(data.entries())
-          .map(([k, v]) => `${k}: ${v}`)
-          .join("\n");
-        window.location.href = `mailto:Hola@yaavs.com.mx?subject=${encodeURIComponent(
-          subjectPrefix
-        )}&body=${encodeURIComponent(body)}`;
+          .filter(([k]) => !skip.has(k))
+          .map(([k, v]) => `${cleanField(k)}: ${cleanField(v)}`)
+          .join("\n")
+          .slice(0, 3500);
+        /* WhatsApp: funciona en celular sin app de correo */
+        const waText = encodeURIComponent(`Contacto YAAVS\n\n${body}`);
+        const waUrl = `https://wa.me/525522331210?text=${waText}`;
+        const opened = window.open(waUrl, "_blank", "noopener,noreferrer");
+        if (!opened) {
+          window.location.href = waUrl;
+        }
         if (status) {
           status.textContent =
-            "Se abrió tu cliente de correo. Si no aparece, escríbenos a Hola@yaavs.com.mx";
+            "Listo: abrimos WhatsApp con tu mensaje. Si no aparece, usa el botón Continuar por WhatsApp o escribe a Hola@yaavs.com.mx.";
           status.classList.add("is-success");
+          status.classList.remove("is-error");
         }
         form.reset();
+        form.dataset.formStarted = String(Date.now());
       });
     }
 
-    handleFormSubmit(yaavserForm, "form-status", "Solicitud Yaavser - ");
+    handleFormSubmit(yaavserForm, "form-status", "Solicitud socio comercial - ");
     handleFormSubmit(contactForm, "contact-status", "Contacto YAAVS - ");
   }
 
@@ -47,7 +85,9 @@
 
     if (vacante && contactAsunto) {
       contactAsunto.value = "Bolsa de trabajo";
-      if (msgField) msgField.value = `Me interesa la vacante: ${vacante}.`;
+      if (msgField) {
+        msgField.value = `Me interesa la vacante: ${vacante}.`;
+      }
     } else {
       const stored = sessionStorage.getItem("yaavs-vacante");
       if (stored && contactAsunto && window.location.pathname.includes("contacto")) {
@@ -57,6 +97,71 @@
         }
         sessionStorage.removeItem("yaavs-vacante");
       }
+    }
+
+    const asuntoParam = params.get("asunto");
+    if (asuntoParam && contactAsunto) {
+      const match = Array.from(contactAsunto.options).find(
+        (opt) => opt.value.toLowerCase() === asuntoParam.toLowerCase()
+      );
+      if (match) contactAsunto.value = match.value;
+    }
+  }
+
+  function initActivationOperatorContext() {
+    if (!window.location.pathname.includes("activar-chip")) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const operator = (params.get("operador") || "").toLowerCase();
+    if (!operator) return;
+
+    const labels = {
+      bait: {
+        eyebrow: "BAIT",
+        title: "BAIT",
+        lead: "Activa y vende BAIT con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de BAIT",
+      },
+      att: {
+        eyebrow: "AT&T",
+        title: "AT&T",
+        lead: "Activa y vende AT&T con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de AT&T",
+      },
+      movistar: {
+        eyebrow: "Movistar",
+        title: "Movistar",
+        lead: "Activa y vende Movistar con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de Movistar",
+      },
+      unefon: {
+        eyebrow: "Unefon",
+        title: "Unefon",
+        lead: "Activa y vende Unefon con soporte YAAVS en app, web, WhatsApp o atención directa.",
+        cta: "Abrir activación de Unefon",
+      },
+    };
+
+    const config = labels[operator];
+    if (!config) return;
+
+    const eyebrowEl = document.querySelector("[data-activar-eyebrow]");
+    const titleEl = document.querySelector("[data-activar-title]");
+    const leadEl = document.querySelector("[data-activar-lead]");
+    const ctaEl = document.querySelector("[data-activar-cta]");
+    const anchor = document.querySelector(".scroll-hint--activar");
+
+    if (eyebrowEl) eyebrowEl.textContent = config.eyebrow;
+    if (titleEl) titleEl.textContent = config.title;
+    if (leadEl) leadEl.textContent = config.lead;
+    if (ctaEl) {
+      ctaEl.textContent = config.cta;
+      ctaEl.style.display = "inline-flex";
+    }
+    if (anchor) {
+      anchor.href = "#canales";
+      const anchorLabel = anchor.querySelector(".scroll-hint-label");
+      if (anchorLabel) anchorLabel.textContent = "Ir a canales";
     }
   }
 
@@ -92,11 +197,79 @@
     );
   }
 
+  function initHeroScrollHint() {
+    const hint = document.querySelector("[data-hero-scroll-hint]");
+    if (!hint || hint.dataset.bound === "1") return;
+    hint.dataset.bound = "1";
+
+    /* No depender de layout-ready: mostrar ya en el hero */
+    const update = () => {
+      const scrolled = window.scrollY > 80;
+      hint.classList.toggle("is-hidden", scrolled);
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    document.addEventListener("yaavs:intro-done", () => {
+      hint.classList.remove("is-hidden");
+      update();
+    });
+    update();
+
+    hint.addEventListener("click", (event) => {
+      const href = hint.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  function initContactWhatsApp() {
+    const form = document.getElementById("contact-form");
+    const btn = document.getElementById("contact-whatsapp-btn");
+    if (!form || !btn) return;
+
+    const base = "https://wa.me/525522331210?text=";
+
+    function buildMessage() {
+      const data = new FormData(form);
+      const nombre = String(data.get("nombre") || "").trim();
+      const asunto = String(data.get("asunto") || "").trim();
+      const mensaje = String(data.get("mensaje") || "").trim();
+      const ubicacion = String(data.get("ubicacion") || "").trim();
+      const parts = ["Hola, quiero información de YAAVS."];
+      if (nombre) parts.push(`Me llamo ${nombre}.`);
+      if (asunto) parts.push(`Asunto: ${asunto}.`);
+      if (ubicacion) parts.push(`Ubicación: ${ubicacion}.`);
+      if (mensaje) parts.push(mensaje);
+      return parts.join(" ");
+    }
+
+    function syncHref() {
+      btn.href = base + encodeURIComponent(buildMessage());
+    }
+
+    form.addEventListener("input", syncHref);
+    form.addEventListener("change", syncHref);
+    syncHref();
+  }
+
   function boot() {
     initForms();
     initJobApply();
+    initContactWhatsApp();
+    initActivationOperatorContext();
     initReveal();
     initHeroParallax();
+    initHeroScrollHint();
+  }
+
+  /* Flecha del hero: no esperar al header */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroScrollHint, { once: true });
+  } else {
+    initHeroScrollHint();
   }
 
   if (document.getElementById("site-header")?.innerHTML.trim()) {
