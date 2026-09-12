@@ -189,6 +189,53 @@
     onScroll();
   }
 
+  /** "Pulso de señal": foco cyan que sigue al mouse sobre el header
+   *  (solo scroll/glass, y solo en dispositivos con hover real — nada
+   *  de listeners de más en touch). Solo pone variables CSS; el look
+   *  vive en yaavs-brand.css (::before del header). */
+  function initHeaderSpotlight() {
+    const header = document.getElementById("header");
+    if (!header) return;
+    if (
+      !window.matchMedia ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) {
+      return;
+    }
+
+    let raf = 0;
+    let pendingX = 0;
+    let pendingY = 0;
+
+    function apply() {
+      raf = 0;
+      const rect = header.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const x = ((pendingX - rect.left) / rect.width) * 100;
+      const y = ((pendingY - rect.top) / rect.height) * 100;
+      header.style.setProperty("--yvs-mx", `${x.toFixed(1)}%`);
+      header.style.setProperty("--yvs-my", `${y.toFixed(1)}%`);
+    }
+
+    header.addEventListener(
+      "mousemove",
+      (e) => {
+        pendingX = e.clientX;
+        pendingY = e.clientY;
+        if (!raf) raf = requestAnimationFrame(apply);
+      },
+      { passive: true }
+    );
+
+    header.addEventListener("mouseenter", () => {
+      header.classList.add("is-spotlit");
+    });
+
+    header.addEventListener("mouseleave", () => {
+      header.classList.remove("is-spotlit");
+    });
+  }
+
   const FALLBACK_PARTIALS = {
     "partials/header.html": `<header class="site-header site-header--nav-bar site-header--corp" id="header">
   <div class="header-inner header-inner--corp">
@@ -597,6 +644,7 @@
     initHeaderLogo();
     initNavToggle();
     initHeaderScroll();
+    initHeaderSpotlight();
     initHomeSectionLinks();
     initPostpagoNav();
     const yearEl = document.getElementById("year");
